@@ -1,0 +1,46 @@
+<contentUrlSpecifications>
+   <contentUrlSpecification contentType="Testimonial" url="/testimonials/testimonial">
+      <keyParam name="Testimonial" type="CONTENT"/>
+      <parentKeyParam name="PersonalFinanceTopic" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="MoneyLesson" url="/money101/lesson101">
+      <keyParam name="MoneyLesson" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="MoneyArticle" url="/money101/lesson101">
+      <keyParam name="MoneyArticle" type="CONTENT"/>
+      <parentKeyParam name="MoneyLesson" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="MoneyCalculator" url="/money101/tools">
+      <keyParam name="MoneyArticle" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="PersonalFinanceTopic" url="/financetopics/index">
+      <keyParam name="PersonalFinanceTopic" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="NewsLetterIssue" url="/newsletter/nlissueindex">
+      <keyParam name="NewsletterIssue" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="NewsLetterSection" url="/newsletter/nlsectionindex">
+      <keyParam name="NewsletterSection" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="NewsLetterArticle" url="/newsletter/nlarticle">
+      <keyParam name="NewsLetterArticle" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="StandAloneArticle" url="/articles/article">
+      <keyParam name="StandAloneArticle" type="CONTENT"/>
+      <parentKeyParam name="PersonalFinanceTopic" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="StandAloneTool" url="/do/search/standAloneToolRedirector">
+      <keyParam name="contentKey" type="QUERY"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="WebSeminar" url="/webcasts/webcasts">
+      <keyParam name="WebSeminar" type="CONTENT"/>
+      <parentKeyParam name="parentkeyparam" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="Glossary_Category" url="/glossary/manulife_terms">
+      <keyParam name="Glossary_Category" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="MoneyGlossaryCategory" url="/glossary/glossary">
+      <keyParam name="MoneyGlossaryCategory" type="CONTENT"/>
+   </contentUrlSpecification>
+</contentUrlSpecifications>
+

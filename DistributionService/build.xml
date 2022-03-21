@@ -1,0 +1,125 @@
+<project name="DistributionServiceEJB" default="dist" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
+	<import file="../common/ant/common-generated-service.xml" />
+
+	<property name="component.name" value="Distribution" />
+	<property name="config.deploy.dir" value="${root.dir}/apps/PlanSponsor/Config"/>
+
+	<path id="deploy.classpath">
+		<path refid="commons-lang" />
+		<path refid="commons-beanutils" />
+		<path refid="commons-collections" />
+		<path refid="commons-logging" />
+		<path refid="log4j" />
+		<path refid="commons-configuration" />
+		<path refid="fop"/>
+		<fileset dir="${common.lib.dir}">
+			<include name="USGPSUtilities.jar" />
+			<include name="mrl.jar" />
+			<include name="MrlLoggerService.jar" />
+			<include name="EmployeeService.jar" />
+			<include name="AccountService.jar" />
+			<include name="EnvironmentService.jar" />
+			<include name="NotificationService.jar" />
+			<include name="BrowseService.jar" />
+			<include name="ContractService.jar" />
+			<include name="SecurityService.jar" />
+			<include name="SynchronizationService.jar" />
+			<include name="jdom.jar" />
+			<include name="iText-2.1.2u.jar" />
+			<include name="EventUtil.jar" />
+		</fileset>
+	</path>
+
+	<path id="compile.only.classpath">
+		<fileset dir="${common.lib.dir}">
+			<include name="j2ee.jar" />
+		</fileset>
+	</path>
+
+	<path id="test.classpath">
+		<path refid="junit.classpath" />
+		<fileset dir="${common.lib.dir}">
+			<include name="USGPSTestUtilities.jar" />
+			<include name="js-1.6R7.jar" />
+			<include name="xstream-1.0.2.jar" />
+			<include name="commons-dbcp-1.2.2.jar" />
+			<include name="commons-pool-1.3.jar" />
+		</fileset>
+		<fileset dir="${common.weblib.dir}">
+			<include name="intware_xml.jar" />
+		</fileset>
+		<path refid="db2jcc.classpath" />
+		<path refid="mockejb.classpath" />
+		<pathelement location="config.deploy.dir" />
+		<pathelement location="../PlanSponsor/PlanSponsorConfig" />
+		<pathelement location="${classes}" />
+		<pathelement location="${test.classes}" />
+		<pathelement location="${common.devlib.dir}" />
+		<path refid="deploy.classpath" />
+		<path refid="compile.only.classpath" />
+	</path>
+
+	<property name="deploy.classpath" refid="deploy.classpath" />
+	
+	<target name="jacoco_coverage" depends="jacoco_tests,coverage-report" description="Compile, instrument ourself, run the tests and generate JUnit and coverage reports."/>
+
+	<!-- Init targets -->
+	<target name="jacoco_init" >
+		<!--  Junit & jacoco specific property values  -->
+		<mkdir dir="${target.reports.xml.dir}"/>
+		<mkdir dir="${target.reports.html.dir}"/>
+		<mkdir dir="${target.coverage.html.dir}"/>
+		<tstamp />
+	</target>
+
+	<!-- ============================================================ -->
+	<!-- Target: compiles & Runs all the junit Test classes                                              -->
+	<!-- ============================================================ -->
+
+	<target name="jacoco_tests" depends="build_tests, jacoco_init" description="Run the tests using jacoco">
+		<delete file="${jacoco.datafile.path}" />
+		<jacoco:coverage destfile="${jacoco.datafile.path}">
+			<junit fork="yes" dir="${target}/.."  haltonerror="${junit.haltonerror}" 
+			                         haltonfailure="${junit.haltonfailure}" printsummary="yes">
+				<classpath>
+					<pathelement location="${target.dir.classes}" />
+					<path refid="test.classpath" />
+				</classpath>
+				<formatter type="xml" />
+				<test name="${testcase}" todir="${target.reports.xml.dir}" if="testcase" />
+				<batchtest todir="${target.reports.xml.dir}" unless="testcase" >
+					<fileset dir="${test.src}">
+						<include name="**/*Test.java" />
+						<!--<include name="tests/**/*Test*.java"/> this pattern will cover TestAll class too-->
+					</fileset>
+				</batchtest>
+			</junit>
+		</jacoco:coverage>
+		<junitreport todir="${target.reports.xml.dir}">
+			<fileset dir="${target.reports.xml.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${target.reports.html.dir}" />
+		</junitreport>
+	</target>
+
+	<target name="coverage-report">
+		<jacoco:report>
+			<executiondata>
+				<file file="${jacoco.datafile.path}"/>
+
+			</executiondata>
+			<structure name="${component.name}">
+				<classfiles>
+					<fileset dir="${classes}" />
+				</classfiles>
+				<sourcefiles encoding="UTF-8">
+					<fileset dir="${src}"/>
+				</sourcefiles>
+			</structure>
+			<html destdir="${target.coverage.html.dir}"/>
+		</jacoco:report>
+
+	</target>
+
+</project>

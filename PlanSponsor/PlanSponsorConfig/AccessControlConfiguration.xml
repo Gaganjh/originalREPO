@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<availability>
+	<function>
+		<function_name>TransactionHistory</function_name>
+		<available_to>ALL</available_to>
+	</function>
+</availability>

@@ -1,0 +1,348 @@
+<submissionErrors>
+
+	<levels>
+		<level key="LEVEL_PREPROCESS" severity="50"/>
+		<level key="LEVEL_FATAL" severity="40"/>
+		<level key="LEVEL_ERRORS" severity="30"/>
+		<level key="LEVEL_PROBLEMS" severity="20"/>
+		<level key="LEVEL_WARNINGS" severity="10"/>
+		<level key="LEVEL_OK" severity="00"/>
+	</levels>
+
+	<fields>
+		<field key="FIELD_CONTRACT_ID" label="contractId" displayLabel="Contract"/>
+		<field key="FIELD_PARTICIPANT_ID" label="participantId" displayLabel=""/>
+		<field key="FIELD_SSN" label="ssn" displayLabel="SSN"/>
+		<field key="FIELD_EMPLOYEE_NUMBER" label="employeeNumber" displayLabel="Employee ID"/>
+		<field key="FIELD_BIRTH_DATE" label="birthDate" displayLabel="Birth date"/>
+		<field key="FIELD_HIRE_DATE" label="hireDate" displayLabel="Hire date"/>
+		<field key="FIELD_STATE_OF_RESIDENCE" label="stateOfResidence" displayLabel="State"/>
+		<field key="FIELD_NAME_PREFIX" label="namePrefix" displayLabel="Name prefix"/>
+		<field key="FIELD_MIDDLE_INITIAL" label="middleInit" displayLabel="Middle initial"/>
+		<field key="FIELD_EMAIL" label="employerProvidedEmail" displayLabel="Employer provided email address"/>
+		<field key="FIELD_EMPLOYEE_STATUS" label="employmentStatus" displayLabel="Employment status"/>
+		<field key="FIELD_EMPLOYEE_STATUS_DATE" label="employmentStatusDate" displayLabel="Employment status effective date"/>
+		<field key="FIELD_FULL_NAME" label="fullName" displayLabel="Name"/>
+		<field key="FIELD_FIRST_NAME" label="firstName" displayLabel="First name"/>
+		<field key="FIELD_LAST_NAME" label="lastName" displayLabel="Last name"/>
+		<field key="FIELD_ADDRESS_LINE_1" label="addressLine1" displayLabel="Address line 1"/>
+		<field key="FIELD_ADDRESS_LINE_2" label="addressLine2" displayLabel="Address line 2"/>
+		<field key="FIELD_CITY_NAME" label="cityName" displayLabel="City"/>
+		<field key="FIELD_STATE_CODE" label="stateCode" displayLabel="State"/>
+		<field key="FIELD_ZIP_CODE" label="zipCode" displayLabel="Zip Code"/>
+		<field key="FIELD_COUNTRY_NAME" label="countryName" displayLabel="Country"/>
+		<field key="FIELD_DIVISION" label="division" displayLabel="Division"/>
+		<field key="FIELD_YTD_HOURS_WORKED" label="planYTDHoursWorked" displayLabel="Plan YTD hours worked"/>
+		<field key="FIELD_YTD_HOURS_WORKED_EFFDATE" label="planYTDHoursWorkedEffectiveDate" displayLabel="Plan YTD hours worked/Eligible compensation effective date"/>
+		<field key="FIELD_ELIGIB_INDICATOR" label="eligibilityIndicator" displayLabel="Eligibility indicator"/>
+		<field key="FIELD_ELIGIB_DATE" label="eligibilityDate" displayLabel="Eligibility date"/>
+		<field key="FIELD_OPT_OUT_INDICATOR" label="optOutIndicator" displayLabel="Opt-out indicator"/>
+		<field key="FIELD_BEFORE_TAX_DEFER_PERCENTAGE" label="beforeTaxDeferralPercentage" displayLabel="Before Tax deferral percentage"/>
+		<field key="FIELD_DESIG_ROTH_DEFER_PERCENTAGE" label="designatedRothDeferralPct" displayLabel="Designated Roth deferral percentage"/>
+		<field key="FIELD_BEFORE_TAX_DEFER_AMOUNT" label="beforeTaxFlatDollarDeferral" displayLabel="Before Tax deferral amount"/>
+		<field key="FIELD_DESIG_ROTH_DEFER_AMOUNT" label="designatedRothDeferralAmt" displayLabel="Designated Roth deferral amount"/>
+		<field key="FIELD_ANNUAL_BASE_SALARY" label="annualBaseSalary" displayLabel="Annual salary"/>
+		<field key="FIELD_PLAN_YTD_COMPENSATION" label="planYTDCompensation" displayLabel="Plan YTD compensation"/>
+		<field key="FIELD_PROCESS_TS" label="processTS" displayLabel=""/>
+		<field key="FIELD_PROCESS_STATUS" label="processStatus" displayLabel="Status"/>
+		<field key="FIELD_PROCESSOR_USER_ID" label="processorUserId" displayLabel=""/>
+		<field key="FIELD_MONEY_SOURCE" label="moneySource" displayLabel="Submission type"/>
+		<field key="FIELD_CONTRIBUTION_AMOUNT" label="contributionAmount" displayLabel="Total contributions"/>
+		<field key="FIELD_CONTRIBUTION_APPLICABLE_DATE" label="contributionApplicableDate" displayLabel="Payroll date"/>
+		<field key="FIELD_TOTAL_ALLOCATION_AMOUNT" label="totalAllocationAmount" displayLabel="Total allocation"/>
+		<field key="FIELD_TOTAL_WITHDRAWAL_AMOUNT" label="totalWithdrawalAmount" displayLabel="Total withdrawal"/>
+		<field key="FIELD_TOTAL_LOAN_REPAYMENT_AMOUNT" label="totalLoanRepaymentAmount" displayLabel="Total loan repayment"/>
+		<field key="FIELD_TOTAL_NUMBER_OF_PARTICIPANTS" label="totalNumberOfParticipants" displayLabel="Number of participants"/>
+		<field key="FIELD_TOTAL_CONTRIBUTION_PAYMENT_AMOUNT" label="totalContributionPaymentAmount" displayLabel="Contribution payment amount"/>
+		<field key="FIELD_TOTAL_BILL_PAYMENT_AMOUNT" label="totalBillPaymentAmount" displayLabel="Bill payment amount"/>
+		<field key="FIELD_TOTAL_TEMPORARY_CREDIT_PAYMENT_AMOUNT" label="totalTemporaryCreditPaymentAmount" displayLabel="Temporary credit payment amount"/>
+		<field key="FIELD_GENERATE_STATEMENT_IND" label="generateStatementInd" displayLabel="Generate statements"/>
+		<field key="FIELD_TRANSACTION_CODE" label="transactionCode" displayLabel=""/>
+		<field key="FIELD_OVERRIDE_INVESTMENT_DATE" label="overrideInvestmentDate" displayLabel=""/>
+		<field key="FIELD_REQUEST_AMOUNT" label="requestAmount" displayLabel=""/>
+		<field key="FIELD_REQUESTED_PAYMENT_EFFECT_DATE" label="requestedPaymentEffectiveDate" displayLabel="Payment effective date"/>
+		<field key="FIELD_OVERRD_INVEST_DATE_REASON_CODE" label="requestedPaymentEffectiveDate" displayLabel="Payment effective date"/>
+		<field key="FIELD_REPAYMENT_AMOUNT" label="repaymentAmount" displayLabel=""/>
+		<field key="FIELD_PRIORITY_NO" label="priorityNo" displayLabel=""/>
+		<field key="FIELD_PROCESSOR_USER_ID" label="processorUserId" displayLabel=""/>
+		<field key="FIELD_MONEY_TYPE" label="moneyType" displayLabel="Money type"/>
+		<field key="FIELD_VESTING_DATE" label="vestingDate" displayLabel="Vesting date"/>
+		<field key="FIELD_VESTING_PERCENTAGE" label="vestingPercentage" displayLabel="Vesting percentage"/>
+		<field key="FIELD_VESTED_YEARS_OF_SERVICE" label="vyos" displayLabel="Vested years of service"/>
+		<field key="FIELD_VESTED_YEARS_OF_SERVICE_EFFDATE" label="vyosDate" displayLabel="Vesting date"/>
+		<field key="FIELD_MULTIPLE_VESTING_SCHEDULE" label="mvs" displayLabel=""/>
+		<field key="FIELD_LONG_TERM_PART_TIME_ASSESSMENT_YEAR" label="longTermPartTimeAssessmentYear" displayLabel="Long Term Part Time Assessment Year"/>
+		<field key="FIELD_APPLY_LTPT_CREDITING" label="applyLTPTCrediting" displayLabel="Apply LTPT Crediting"/>
+	</fields>
+
+	<errors>
+		<error code="JC" desc="ERROR_CODE_JOURNAL_DATABASE_CONTRACT_MISMATCH" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_FATAL" contentId="53826"/>
+		<error code="OT" desc="ERROR_CODE_CONTRACT_REJECTED_VOIDED" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_FATAL" contentId="53828"/>
+		<error code="JT" desc="ERROR_CODE_JOURNAL_DATABASE_TRACKING_NO" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_FATAL" contentId="53829"/>
+		<error code="KC" desc="ERROR_CODE_UNKNOWN_CONTRACT_ID" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_FATAL" contentId="53830"/>
+		<error code="NG" desc="ERROR_CODE_NEGATIVE_CONTRIBUTION" field="FIELD_CONTRIBUTION_AMOUNT" type="CN" level="LEVEL_ERRORS" contentId="53831"/>		
+		<error code="LF" desc="ERROR_CODE_LOAN_FEATURE_NOT_ENABLED" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_ERRORS" contentId="53832"/>
+		<error code="NE" desc="ERROR_CODE_NO_ENROLLMENT" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_ERRORS" contentId="53833"/>
+		<error code="SO" desc="ERROR_CODE_NO_EDT_SORT_OPTION" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_ERRORS" contentId="53834"/>
+		<error code="NC" desc="ERROR_CODE_CONTRACT_NEW" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_PROBLEMS" contentId="53835"/>
+		<error code="CF" desc="ERROR_CODE_CONTRACT_FROZEN" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_PROBLEMS" contentId="53836"/>
+		<error code="ZA" desc="ERROR_CODE_ZERO_CONTRIBUTION" field="FIELD_CONTRIBUTION_AMOUNT" type="CN" level="LEVEL_ERRORS" contentId="75246"/>		
+
+		<error code="LA" desc="ERROR_CODE_LARGE_CONTRIBUTION_AMT" field="FIELD_MONEY_SOURCE" type="TE" level="LEVEL_WARNINGS" contentId="53837"/>
+
+		<error code="ED" desc="ERROR_CODE_EARLY_PAYROLL_DATE" field="FIELD_CONTRIBUTION_APPLICABLE_DATE" type="PD" level="LEVEL_WARNINGS" contentId="53838"/>
+		<error code="FP" desc="ERROR_CODE_FUTURE_PAYROLL_DATE" field="FIELD_CONTRIBUTION_APPLICABLE_DATE" type="PD" level="LEVEL_WARNINGS" contentId="53839"/>
+		<error code="MD" desc="ERROR_CODE_MAX_PAYROLL_DATE" field="FIELD_CONTRIBUTION_APPLICABLE_DATE" type="PD" level="LEVEL_WARNINGS" contentId="53840"/>
+		<error code="PD" desc="ERROR_CODE_MIN_PAYROLL_DATE" field="FIELD_CONTRIBUTION_APPLICABLE_DATE" type="PD" level="LEVEL_WARNINGS" contentId="53841"/>
+		<error code="MP" desc="ERROR_CODE_MISSING_PAYROLL_DATE" field="FIELD_CONTRIBUTION_APPLICABLE_DATE" type="PD" level="LEVEL_WARNINGS" contentId="53842"/>
+		<error code="MU" desc="ERROR_CODE_MULTIPLE_PAYROLL_DATES" field="FIELD_CONTRIBUTION_APPLICABLE_DATE" type="PD" level="LEVEL_WARNINGS" contentId="53843"/>
+
+		<error code="AT" desc="ERROR_CODE_AFTER_TAX_MONEY" field="FIELD_CONTRIBUTION_AMOUNT" type="MS" level="LEVEL_ERRORS" contentId="53844"/>
+		<error code="MT" desc="ERROR_CODE_INVALID_MONEY_TYPE" field="FIELD_CONTRIBUTION_AMOUNT" type="MS" level="LEVEL_ERRORS" contentId="53845"/>
+		<error code="IM" desc="ERROR_CODE_MONEY_TYPE_INVALID" field="FIELD_CONTRIBUTION_AMOUNT" type="MS" level="LEVEL_ERRORS" contentId="53846"/>
+		<error code="MN" desc="ERROR_CODE_MONEY_TYPE_NOT_SELECTED" field="FIELD_CONTRIBUTION_AMOUNT" type="MS" level="LEVEL_ERRORS" contentId="53847"/>
+		<error code="MS" desc="ERROR_CODE_INVALID_MONEY_SOURCE" field="FIELD_MONEY_SOURCE" type="MS" level="LEVEL_ERRORS" contentId="53848"/>
+
+		<error code="ID" desc="ERROR_CODE_INVALID_CREDIT_EFFECTIVE_DATE" field="FIELD_REQUESTED_PAYMENT_EFFECT_DATE" type="PE" level="LEVEL_ERRORS" contentId="53849"/>
+
+		<error code="LD" desc="ERROR_CODE_LARGE_DIRECT_DEBIT_AMT" field="FIELD_REQUEST_AMOUNT" type="DD" level="LEVEL_WARNINGS" contentId="53850"/>
+		<error code="CA" desc="ERROR_CODE_LARGE_CASH_ACCOUNT_AMT" field="FIELD_REQUEST_AMOUNT" type="CA" level="LEVEL_WARNINGS" contentId="54290"/>
+
+		<error code="PI" desc="ERROR_CODE_INVALID_PARTICIPANT_ID" field="FIELD_PARTICIPANT_ID" type="PL" level="LEVEL_ERRORS" contentId="53851"/>
+		<error code="IF" desc="ERROR_CODE_INSUFFICIENT_FUNDS" field="FIELD_PARTICIPANT_ID" type="PL" level="LEVEL_PROBLEMS" contentId="53856"/>
+		<error code="IP" desc="ERROR_CODE_PARTICIPANT_CANCELLED" field="FIELD_PARTICIPANT_ID" type="PL" level="LEVEL_PROBLEMS" contentId="53857"/>
+		<error code="RE" desc="ERROR_CODE_LOAN_REPAYMENT_EXCEEDS_BALANCE" field="FIELD_REPAYMENT_AMOUNT" type="PL" level="LEVEL_WARNINGS" contentId="53858"/>
+		<error code="ME" desc="ERROR_CODE_MISSING_ENROLLMENT" field="FIELD_PARTICIPANT_ID" type="PL" level="LEVEL_WARNINGS" contentId="53859"/>
+		<error code="MI" desc="ERROR_CODE_MISSING_INVESTMENT_INSTRUCTIONS" field="FIELD_PARTICIPANT_ID" type="PL" level="LEVEL_WARNINGS" contentId="53860"/>
+		<error code="SR" desc="ERROR_CODE_TERMINATED" field="FIELD_PARTICIPANT_ID" type="PL" level="LEVEL_WARNINGS" contentId="53861"/>
+		<error code="LB" desc="ERROR_CODE_LOAN_REPAYMENT_AND_NO_LOAN_BALANCE" field="FIELD_REPAYMENT_AMOUNT" type="PL" level="LEVEL_WARNINGS" contentId="54156"/>
+		<error code="PN" desc="ERROR_CODE_PARTICIPANT_NAME_IS_ALPHA_NUMERIC" field="FIELD_PARTICIPANT_ID" type="PL" level="LEVEL_ERRORS" contentId="92437"/>
+		
+		<error code="KC" desc="ERROR_CODE_INVALID_CONTRACT_ID" field="FIELD_CONTRACT_ID" type="PL" level="LEVEL_ERRORS" contentId="56156"/>
+		<error code="DI" desc="ERROR_CODE_CONTRACT_DISCONTINUED" field="FIELD_CONTRACT_ID" type="PL" level="LEVEL_ERRORS" contentId="56156"/>
+		<error code="OT" desc="ERROR_CODE_CONTRACT_REJECTED_OR_VOIDED" field="FIELD_CONTRACT_ID" type="PL" level="LEVEL_ERRORS" contentId="56156"/>
+		<error code="P1" desc="ERROR_CODE_CANCELLED_PARTICIPANT" field="FIELD_PARTICIPANT_ID" type="PL" level="LEVEL_ERRORS" contentId="56156"/>
+		<error code="P3" desc="ERROR_CODE_CANCELLING_PARTICIPANT" field="FIELD_PARTICIPANT_ID" type="PL" level="LEVEL_ERRORS" contentId="56157"/>
+		
+		<error code="SM" desc="ERROR_CODE_MISSING_SSN" field="FIELD_SSN" type="PL" level="LEVEL_ERRORS" contentId="56132"/>
+		<error code="SZ" desc="ERROR_CODE_INVALID_SSN" field="FIELD_SSN" type="PL" level="LEVEL_ERRORS" contentId="56133"/>
+		<error code="SD" desc="ERROR_CODE_DUPLICATE_SUBMITTED_SSN" field="FIELD_SSN" type="PL" level="LEVEL_ERRORS" contentId="59874"/>
+		<error code="SN" desc="ERROR_CODE_SIMILAR_SSN" field="FIELD_SSN" type="PL" level="LEVEL_ERRORS" contentId="57101"/>
+		
+		<error code="DG" desc="ERROR_CODE_EMPLOYEE_ID_SSN_MISMATCH" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="57207"/>
+		<error code="EB" desc="ERROR_CODE_MISSING_EMPLOYEE_ID" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="56138"/>
+		<error code="E8" desc="ERROR_CODE_MISSING_SSN_NEW_EMPLOYEE_EE" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="56139"/>
+
+		<error code="DE" desc="ERROR_CODE_DUPLICATE_EMPLOYEE_ID_SORT_OPTION_EE" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="56140"/>
+		<error code="DJ" desc="ERROR_CODE_DUPLICATE_EMPLOYEE_ID_SORT_OPTION_SS" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="56140"/>
+		<error code="DL" desc="ERROR_CODE_DUPLICATE_EMPLOYEE_ID_ACCOUNT_HOLDER_SORT_OPTION_EE" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="56140"/>
+		<error code="DM" desc="ERROR_CODE_DUPLICATE_EMPLOYEE_ID_ACCOUNT_HOLDER_SORT_OPTION_SS" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="63609"/>
+		<error code="DV" desc="ERROR_CODE_DUPLICATE_EMPLOYEE_ID_NON_ACCOUNT_HOLDER_SORT_OPTION_EE" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="64029"/>
+		<error code="DK" desc="ERROR_CODE_DUPLICATE_EMPLOYEE_ID_NON_ACCOUNT_HOLDER_SORT_OPTION_SS" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="63606"/>
+		<error code="DN" desc="ERROR_CODE_MULTIPLE_DUPLICATE_EMPLOYEE_ID_SORT_OPTION_EE" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="63608"/>
+		<error code="DQ" desc="ERROR_CODE_MULTIPLE_DUPLICATE_EMPLOYEE_ID_SORT_OPTION_SS" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="63611"/>
+		
+		<error code="CV" desc="ERROR_CODE_INVALID_EMPLOYEE_ID_SORT_OPTION_EE" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" param="true" contentId="59795"/>
+		<error code="CW" desc="ERROR_CODE_INVALID_EMPLOYEE_ID_SORT_OPTION_SS" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" param="true" contentId="59795"/>
+		<error code="D2" desc="ERROR_CODE_DUPLICATE_SUBMITTED_EMPLOYEE_ID" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="59875"/>
+		
+		<error code="M4" desc="ERROR_CODE_CITY_SHORT" field="FIELD_CITY_NAME" type="PL" level="LEVEL_ERRORS" contentId="56550"/>
+		<error code="M5" desc="ERROR_CODE_ADDRESS_LINE2_SHORT" field="FIELD_ADDRESS_LINE_2" type="PL" level="LEVEL_ERRORS" contentId="56551"/>
+		<error code="M6" desc="ERROR_CODE_ADDRESS_LINE1_SHORT" field="FIELD_ADDRESS_LINE_1" type="PL" level="LEVEL_ERRORS" contentId="56552"/>
+		<error code="IN" desc="ERROR_CODE_INVALID_NAME_PREFIX" field="FIELD_NAME_PREFIX" type="PL" level="LEVEL_ERRORS" contentId="56136"/>
+		<error code="I2" desc="ERROR_CODE_INVALID_EMAIL" field="FIELD_EMAIL" type="PL" level="LEVEL_ERRORS" contentId="56187"/>
+		
+		<error code="EH" desc="ERROR_CODE_EMPLOYMENT_STATUS_EMPTY" field="FIELD_EMPLOYEE_STATUS" type="PL" level="LEVEL_ERRORS" contentId="56164"/>
+		<error code="ES" desc="ERROR_CODE_INVALID_EMPLOYMENT_STATUS" field="FIELD_EMPLOYEE_STATUS" type="PL" level="LEVEL_ERRORS" contentId="56153"/>
+		<error code="E2" desc="ERROR_CODE_EMPLOYMENT_STATUS_DATE_EMPTY" field="FIELD_EMPLOYEE_STATUS_DATE" type="PL" level="LEVEL_ERRORS" contentId="56161"/>
+		<error code="EE" desc="ERROR_CODE_MINIMUM_EMPLOYMENT_STATUS_DATE" field="FIELD_EMPLOYEE_STATUS_DATE" type="PL" level="LEVEL_ERRORS" contentId="59652"/>
+		<error code="E3" desc="ERROR_CODE_EMPLOYMENT_STATUS_DATE_BIRTH_DATE" field="FIELD_EMPLOYEE_STATUS_DATE" type="PL" level="LEVEL_ERRORS" contentId="56162"/>
+		<error code="E4" desc="ERROR_CODE_EMPLOYMENT_STATUS_DATE_HIRE_DATE" field="FIELD_EMPLOYEE_STATUS_DATE" type="PL" level="LEVEL_ERRORS" contentId="56163"/>
+		<error code="ET" desc="ERROR_CODE_FUTURE_EMPLOYMENT_STATUS_DATE" field="FIELD_EMPLOYEE_STATUS_DATE" type="PL" level="LEVEL_ERRORS" contentId="56553"/>
+		<error code="EE" desc="ERROR_CODE_MINIMUM_EMPLOYMENT_STATUS_DATE" field="FIELD_EMPLOYEE_STATUS_DATE" type="PL" level="LEVEL_ERRORS" contentId="59652"/>
+		<error code="EV" desc="ERROR_CODE_MISSING_EMPLOYMENT_STATUS" field="FIELD_EMPLOYEE_STATUS" type="PL" level="LEVEL_WARNINGS" contentId="58125"/>
+		<error code="P5" desc="ERROR_CODE_CANCELLED_EMPLOYEE" field="FIELD_PARTICIPANT_ID" type="PL" level="LEVEL_ERRORS" contentId="59860"/>
+		
+		<error code="NB" desc="ERROR_CODE_MISSING_BIRTH_DATE" field="FIELD_BIRTH_DATE" type="PL" level="LEVEL_WARNINGS" contentId="56141"/>
+		<error code="DT" desc="ERROR_CODE_INVALID_DATE" field="FIELD_BIRTH_DATE" type="PL" level="LEVEL_ERRORS" param="true" contentId="59773"/>
+		<error code="M1" desc="ERROR_CODE_MINIMUM_AGE" field="FIELD_BIRTH_DATE" type="PL" level="LEVEL_ERRORS" contentId="56142"/>
+		<error code="MB" desc="ERROR_CODE_MINIMUM_BIRTH_DATE" field="FIELD_BIRTH_DATE" type="PL" level="LEVEL_ERRORS" contentId="56143"/>
+		<error code="BF" desc="ERROR_CODE_FUTURE_BIRTH_DATE" field="FIELD_BIRTH_DATE" type="PL" level="LEVEL_ERRORS" contentId="59655"/>
+		<error code="HD" desc="ERROR_CODE_BIRTH_DATE_HIRE_DATE" field="FIELD_HIRE_DATE" type="PL" level="LEVEL_ERRORS" contentId="56144"/>
+		<error code="HA" desc="ERROR_CODE_MISSING_HIRE_DATE" field="FIELD_HIRE_DATE" type="PL" level="LEVEL_WARNINGS" contentId="58124"/>
+		<error code="HM" desc="ERROR_CODE_MINIMUM_HIRE_DATE" field="FIELD_HIRE_DATE" type="PL" level="LEVEL_ERRORS" contentId="59656"/>
+		<error code="HS" desc="ERROR_CODE_FUTURE_HIRE_DATE" field="FIELD_HIRE_DATE" type="PL" level="LEVEL_ERRORS" contentId="59650"/>
+		
+		<error code="A4" desc="ERROR_CODE_MISSING_STATE" field="FIELD_STATE_CODE" type="PL" level="LEVEL_ERRORS" contentId="56180"/>
+		<error code="A5" desc="ERROR_CODE_INVALID_STATE_CODE" field="FIELD_STATE_CODE" type="PL" level="LEVEL_ERRORS" contentId="54039"/>
+		<error code="A6" desc="ERROR_CODE_INVALID_STATE_ZIP_CODE" field="FIELD_STATE_CODE" type="PL" level="LEVEL_WARNINGS" contentId="55492"/>
+		<error code="A7" desc="ERROR_CODE_INVALID_US_ZIP_CODE" field="FIELD_ZIP_CODE" type="PL" level="LEVEL_ERRORS" contentId="54041"/>
+		<error code="A8" desc="ERROR_CODE_INVALID_ZIP_CODE" field="FIELD_ZIP_CODE" type="PL" level="LEVEL_ERRORS" contentId="59876"/>
+		<error code="IH" desc="ERROR_CODE_MISSING_ADDRESS_LINE1" field="FIELD_ADDRESS_LINE_1" type="PL" level="LEVEL_ERRORS" contentId="54037"/>
+		<error code="IA" desc="ERROR_CODE_INCOMPLETE_ADDRESS" field="FIELD_ADDRESS_LINE_1" type="PL" level="LEVEL_ERRORS" contentId="56178"/>
+		<error code="IB" desc="ERROR_CODE_MISSING_CITY_NAME" field="FIELD_CITY_NAME" type="PL" level="LEVEL_ERRORS" contentId="54038"/>
+		<error code="IJ" desc="ERROR_CODE_MISSING_COUNTRY" field="FIELD_COUNTRY_NAME" type="PL" level="LEVEL_ERRORS" contentId="56647"/>	
+		<error code="CT" desc="ERROR_CODE_INVALID_COUNTRY" field="FIELD_COUNTRY_NAME" type="PL" level="LEVEL_ERRORS" contentId="56182"/>	
+		<error code="IS" desc="ERROR_CODE_INVALID_STATE_OF_RESIDENCE" field="FIELD_STATE_OF_RESIDENCE" type="PL" level="LEVEL_ERRORS" contentId="56186"/>
+		
+		<error code="82" desc="OBSOLETE_ERROR_CODE_INVALID_STATE_CODE" field="FIELD_STATE_CODE" type="PL" level="LEVEL_ERRORS" contentId="53852"/>
+		<error code="83" desc="OBSOLETE_ERROR_CODE_INVALID_ZIP" field="FIELD_ZIP_CODE" type="PL" level="LEVEL_ERRORS" contentId="53853"/>
+		<error code="81" desc="OBSOLETE_ERROR_CODE_MISSING_ADDRESS_LINE1" field="FIELD_ADDRESS_LINE_1" type="PL" level="LEVEL_ERRORS" contentId="53854"/>
+		<error code="86" desc="OBSOLETE_ERROR_CODE_MISSING_CITY_NAME" field="FIELD_CITY_NAME" type="PL" level="LEVEL_ERRORS" contentId="53855"/>		
+		
+		<error code="HW" desc="ERROR_CODE_YTD_HOURS_WORKED_NOT_IN_RANGE" field="FIELD_YTD_HOURS_WORKED" type="PL" level="LEVEL_ERRORS" contentId="56618"/>
+		<error code="MH" desc="ERROR_CODE_MAX_YTD_HOURS_WORKED" field="FIELD_YTD_HOURS_WORKED" type="PL" level="LEVEL_WARNINGS" contentId="56176"/>
+		<error code="MY" desc="ERROR_CODE_MISSING_YTD_HOURS_EFFDATE_BOTH" field="FIELD_YTD_HOURS_WORKED_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="56168"/>
+		<error code="M7" desc="ERROR_CODE_MISSING_YTD_HOURS_EFFDATE_HOURS" field="FIELD_YTD_HOURS_WORKED_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="56619"/>
+		<error code="M8" desc="ERROR_CODE_MISSING_YTD_HOURS_EFFDATE_COMPENSATION" field="FIELD_YTD_HOURS_WORKED_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="56620"/>
+		<error code="P2" desc="ERROR_CODE_MAX_YTD_HOURS_WORKED_EFFDATE" field="FIELD_YTD_HOURS_WORKED_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="56169"/>
+		<error code="YD" desc="ERROR_CODE_MIN_YTD_HOURS_WORKED_EFFDATE" field="FIELD_YTD_HOURS_WORKED_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="56172"/>
+		<error code="PY" desc="ERROR_CODE_PRIOR_YTD_HOURS_WORKED_EFFDATE" field="FIELD_YTD_HOURS_WORKED_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="56170"/>
+		<error code="YW" desc="ERROR_CODE_YTD_EFFDATE_DISCREPANCY" field="FIELD_YTD_HOURS_WORKED_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="56174"/>
+		<error code="YB" desc="ERROR_CODE_BIRTH_DATE_YTD_HOURS_WORKED_EFFDATE" field="FIELD_YTD_HOURS_WORKED_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="56171"/>
+		<error code="YH" desc="ERROR_CODE_HIRE_DATE_YTD_HOURS_WORKED_EFFDATE" field="FIELD_YTD_HOURS_WORKED_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="56173"/>
+		<error code="AC" desc="ERROR_CODE_MISSING_YTD_HOURS_WORKED" field="FIELD_YTD_HOURS_WORKED" type="PL" level="LEVEL_WARNINGS" contentId="75083"/>
+		
+		<error code="EI" desc="ERROR_CODE_INVALID_ELIGIB_INDICATOR" field="FIELD_ELIGIB_INDICATOR" type="PL" level="LEVEL_ERRORS" contentId="56288"/>
+		<error code="EA" desc="ERROR_CODE_MISSING_ELIGIB_INDICATOR" field="FIELD_ELIGIB_INDICATOR" type="PL" level="LEVEL_ERRORS" contentId="56189"/>
+		<error code="M2" desc="ERROR_CODE_BLANK_ELIGIB_INDICATOR" field="FIELD_ELIGIB_INDICATOR" type="PL" level="LEVEL_WARNINGS" contentId="56188"/>
+		<error code="E5" desc="ERROR_CODE_ELIGIB_DATE_BIRTH_DATE" field="FIELD_ELIGIB_DATE" type="PL" level="LEVEL_ERRORS" contentId="56192"/>
+		<error code="E6" desc="ERROR_CODE_ELIGIB_DATE_HIRE_DATE" field="FIELD_ELIGIB_DATE" type="PL" level="LEVEL_ERRORS" contentId="56193"/>
+		<error code="EP" desc="ERROR_CODE_BEFORE_PLAN_EFFDATE" field="FIELD_ELIGIB_DATE" type="PL" level="LEVEL_WARNINGS" contentId="57246"/>
+		<error code="FE" desc="ERROR_CODE_FUTURE_ELIGIB_DATE" field="FIELD_ELIGIB_DATE" type="PL" level="LEVEL_WARNINGS" contentId="56197"/>
+		<error code="EW" desc="ERROR_CODE_MINIMUM_ELIGIB_DATE" field="FIELD_ELIGIB_DATE" type="PL" level="LEVEL_ERRORS" contentId="59651"/>
+		<error code="EC" desc="ERROR_CODE_MISSING_ELIGIB_DATE_FOR_NONPPT" field="FIELD_ELIGIB_DATE" type="PL" level="LEVEL_WARNINGS" contentId="57243"/>
+		<error code="E7" desc="ERROR_CODE_MISSING_ELIGIB_DATE_FOR_PPT" field="FIELD_ELIGIB_DATE" type="PL" level="LEVEL_WARNINGS" contentId="56287"/>
+		<error code="OO" desc="ERROR_CODE_INVALID_OPT_OUT_IND" field="FIELD_OPT_OUT_INDICATOR" type="PL" level="LEVEL_ERRORS" contentId="56198"/>
+		<error code="OA" desc="ERROR_CODE_OPT_OUT_NON_PARTICIPANT" field="FIELD_OPT_OUT_INDICATOR" type="PL" level="LEVEL_WARNINGS" contentId="56199"/>
+		<error code="O1" desc="ERROR_CODE_OPT_OUT_BEFORE_TAX_DEFER_PERC" field="FIELD_OPT_OUT_INDICATOR" type="PL" level="LEVEL_ERRORS" contentId="56200"/>
+		<error code="OE" desc="ERROR_CODE_OPT_OUT_DESIG_ROTH_DEFER_PERC" field="FIELD_OPT_OUT_INDICATOR" type="PL" level="LEVEL_ERRORS" contentId="56275"/>
+		<error code="OB" desc="ERROR_CODE_OPT_OUT_BEFORE_TAX_DEFER_AMT" field="FIELD_OPT_OUT_INDICATOR" type="PL" level="LEVEL_ERRORS" contentId="56275"/>
+		<error code="OC" desc="ERROR_CODE_OPT_OUT_DESIG_ROTH_DEFER_AMT" field="FIELD_OPT_OUT_INDICATOR" type="PL" level="LEVEL_ERRORS" contentId="56275"/>
+		<error code="O2" desc="ERROR_CODE_OPT_OUT_ACTIVE_PARTICIPANT" field="FIELD_OPT_OUT_INDICATOR" type="PL" level="LEVEL_ERRORS" contentId="60444"/>
+		
+		<error code="O3" desc="ERROR_CODE_AE90DAYS_BEFORE_TAX_DEFER_PER" field="FIELD_BEFORE_TAX_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="60723"/>
+		<error code="O4" desc="ERROR_CODE_AE90DAYS_DESIG_ROTH_DEFER_PER" field="FIELD_DESIG_ROTH_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="60724"/>
+		<error code="O5" desc="ERROR_CODE_AE90DAYS_BEFORE_TAX_DEFER_AMT" field="FIELD_BEFORE_TAX_DEFER_AMOUNT" type="PL" level="LEVEL_ERRORS" contentId="60726"/>
+		<error code="O6" desc="ERROR_CODE_AE90DAYS_DESIG_ROTH_DEFER_AMT" field="FIELD_DESIG_ROTH_DEFER_AMOUNT" type="PL" level="LEVEL_ERRORS" contentId="60725"/>
+				
+		<error code="EJ" desc="ERROR_CODE_ELIGIB_DESIG_ROTH_DEFER_PER" field="FIELD_DESIG_ROTH_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="56277"/>
+		<error code="EK" desc="ERROR_CODE_ELIGIB_DESIG_ROTH_DEFER_AMT" field="FIELD_DESIG_ROTH_DEFER_AMOUNT" type="PL" level="LEVEL_ERRORS" contentId="56277"/>
+		<error code="EL" desc="ERROR_CODE_ELIGIB_BEFORE_TAX_DEFER_PER" field="FIELD_BEFORE_TAX_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="56277"/>
+		<error code="EM" desc="ERROR_CODE_ELIGIB_BEFORE_TAX_DEFER_AMT" field="FIELD_BEFORE_TAX_DEFER_AMOUNT" type="PL" level="LEVEL_ERRORS" contentId="56277"/>
+		<error code="PA" desc="ERROR_CODE_BEFORE_TAX_DEFER_PER_FLAT_DOLLAR" field="FIELD_BEFORE_TAX_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="56547"/>
+		<error code="PB" desc="ERROR_CODE_DESIG_ROTH_DEFER_PER_FLAT_DOLLAR" field="FIELD_DESIG_ROTH_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="56548"/>
+		
+		<error code="D3" desc="ERROR_CODE_BEFORE_TAX_DEFER_PER_LESS_THAN_ZERO" field="FIELD_BEFORE_TAX_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="56204"/>
+		<error code="D5" desc="ERROR_CODE_DESIG_ROTH_DEFER_PER_LESS_THAN_ZERO" field="FIELD_DESIG_ROTH_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="56201"/>
+		<error code="D4" desc="ERROR_CODE_BEFORE_TAX_DEFER_PER_MORE_THAN_100" field="FIELD_BEFORE_TAX_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="56205"/>
+		<error code="D6" desc="ERROR_CODE_DESIG_ROTH_DEFER_PER_MORE_THAN_100" field="FIELD_DESIG_ROTH_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="56202"/>
+		<error code="DB" desc="ERROR_CODE_BEFORE_TAX_DEFER_PER_NOT_IN_RANGE" field="FIELD_BEFORE_TAX_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="59653"/>
+		<error code="DR" desc="ERROR_CODE_DESIG_ROTH_DEFER_PER_NOT_IN_RANGE" field="FIELD_DESIG_ROTH_DEFER_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="59654"/>
+		<error code="D8" desc="ERROR_CODE_BEFORE_TAX_DEFER_AMT_NOT_IN_RANGE" field="FIELD_BEFORE_TAX_DEFER_AMOUNT" type="PL" level="LEVEL_ERRORS" contentId="56207"/>
+		<error code="D7" desc="ERROR_CODE_DESIG_ROTH_DEFER_AMT_NOT_IN_RANGE" field="FIELD_DESIG_ROTH_DEFER_AMOUNT" type="PL" level="LEVEL_ERRORS" contentId="56203"/>
+		
+		<error code="R1" desc="ERROR_CODE_ANNUAL_SALARY_NOT_IN_RANGE" field="FIELD_ANNUAL_BASE_SALARY" type="PL" level="LEVEL_ERRORS" contentId="56571"/>
+		<error code="R2" desc="ERROR_CODE_PLAN_YTD_COMPENSATION_NOT_IN_RANGE" field="FIELD_PLAN_YTD_COMPENSATION" type="PL" level="LEVEL_ERRORS" contentId="57201"/>
+
+		<error code="PC" desc="ERROR_CODE_INVALID_VESTED_YEARS_OF_SERVICE" field="FIELD_VESTED_YEARS_OF_SERVICE" type="PL" level="LEVEL_ERRORS" contentId="56556"/>
+		<error code="PU" desc="ERROR_CODE_MISSING_VESTED_YEARS_OF_SERVICE" field="FIELD_VESTED_YEARS_OF_SERVICE" type="PL" level="LEVEL_ERRORS" contentId="58126"/>
+		<error code="PT" desc="ERROR_CODE_MISSING_VESTED_YEARS_OF_SERVICE_EFFDATE" field="FIELD_VESTED_YEARS_OF_SERVICE_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="58127"/>
+		<error code="PV" desc="ERROR_CODE_FUTURE_VESTED_YEARS_OF_SERVICE_EFFDATE" field="FIELD_VESTED_YEARS_OF_SERVICE_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="58128"/>
+		<error code="PQ" desc="ERROR_CODE_MINIMUM_VESTED_YEARS_OF_SERVICE" field="FIELD_VESTED_YEARS_OF_SERVICE" type="PL" level="LEVEL_WARNINGS" contentId="58122"/>
+		<error code="PW" desc="ERROR_CODE_INVALID_VESTED_YEARS_OF_SERVICE_EFFDATE" field="FIELD_VESTED_YEARS_OF_SERVICE_EFFDATE" type="PL" level="LEVEL_ERRORS" contentId="58129"/>
+		<error code="PR" desc="ERROR_CODE_MISSING_VYOS_AND_HOS" field="FIELD_VESTED_YEARS_OF_SERVICE_EFFDATE" type="PL" level="LEVEL_WARNINGS" contentId="58123"/>
+		<error code="PZ" desc="ERROR_CODE_MISSING_VYOS_AND_VYOS_DATE" field="FIELD_VESTED_YEARS_OF_SERVICE" type="PL" level="LEVEL_ERRORS" contentId="59560"/>
+		<error code="VU" desc="ERROR_CODE_VYOS_NOT_A_WHOLE_NUMBER" field="FIELD_VESTED_YEARS_OF_SERVICE" type="PL" level="LEVEL_ERRORS" contentId="59562"/>
+		<error code="VX" desc="ERROR_CODE_VYOS_NOT_SUBMITTED" field="FIELD_VESTED_YEARS_OF_SERVICE" type="PL" level="LEVEL_ERRORS" contentId="59564"/>
+		<error code="VH" desc="ERROR_VESTING_DATE_HIRE_DATE_DISCREPANCY" field="FIELD_VESTED_YEARS_OF_SERVICE_EFFDATE" type="PL" level="LEVEL_WARNINGS" contentId="59647"/>
+		<error code="VI" desc="ERROR_VESTING_DATE_BIRTH_DATE_DISCREPANCY" field="FIELD_VESTED_YEARS_OF_SERVICE_EFFDATE" type="PL" level="LEVEL_WARNINGS" contentId="59648"/>
+		<error code="VF" desc="ERROR_CODE_VYOS_SUBMITTED_WHEN_EMPLOYEE_FULLY_VESTED" field="FIELD_VESTED_YEARS_OF_SERVICE" type="PL" level="LEVEL_WARNINGS" contentId="60513"/>
+		
+		<error code="HA" desc="ERROR_CODE_MISSING_HIRE_DATE" field="FIELD_HIRE_DATE" type="PL" level="LEVEL_WARNINGS" contentId="58124"/>
+		<error code="EV" desc="ERROR_CODE_MISSING_EMPLOYMENT_STATUS" field="FIELD_EMPLOYEE_STATUS" type="PL" level="LEVEL_WARNINGS" contentId="58125"/>
+		
+<!--		<error code="E9" desc="ERROR_CODE_MISSING_EMPLOYMENT_STATUS_DATE_WITH_ACTIVE_STATUS_AND_NON_EMPTY_HIRE_DATE" field="FIELD_EMPLOYEE_STATUS" type="PL" level="LEVEL_WARNINGS" contentId="60805"/>
+-->		<error code="E9" desc="ERROR_CODE_MISSING_EMPLOYMENT_STATUS_DATE_WITH_ACTIVE_STATUS_AND_NON_EMPTY_HIRE_DATE" field="FIELD_EMPLOYEE_STATUS_DATE" type="PL" level="LEVEL_WARNINGS" contentId="60805"/>
+
+<!--		<error code="EU" desc="ERROR_CODE_MISSING_EMPLOYMENT_STATUS_DATE_WITH_ACTIVE_STATUS" field="FIELD_EMPLOYEE_STATUS" type="PL" level="LEVEL_ERRORS" contentId="60806"/>
+-->		<error code="EU" desc="ERROR_CODE_MISSING_EMPLOYMENT_STATUS_DATE_WITH_ACTIVE_STATUS" field="FIELD_EMPLOYEE_STATUS_DATE" type="PL" level="LEVEL_ERRORS" contentId="60806"/>
+
+<!--		<error code="EX" desc="ERROR_CODE_MISSING_EMPLOYMENT_STATUS_DATE_WITH_ACTIVE_STATUS_AND_EMPTY_HIRE_DATE" field="FIELD_EMPLOYEE_STATUS" type="PL" level="LEVEL_ERRORS" contentId="60807"/>
+-->		<error code="EX" desc="ERROR_CODE_MISSING_EMPLOYMENT_STATUS_DATE_WITH_ACTIVE_STATUS_AND_EMPTY_HIRE_DATE" field="FIELD_EMPLOYEE_STATUS_DATE" type="PL" level="LEVEL_ERRORS" contentId="60807"/>
+		
+		<error code="A2" desc="ERROR_CODE_NON_PRINTABLE_CHARACTER" field="FIELD_MIDDLE_INITIAL" type="PL" level="LEVEL_ERRORS" param="true" contentId="56124"/>
+		<error code="XX" desc="ERROR_CODE_NON_NUMERIC_CHARACTER" field="FIELD_MIDDLE_INITIAL" type="PL" level="LEVEL_ERRORS" param="true" contentId="56126"/>
+		
+		<error code="M9" desc="ERROR_CODE_INVALID_VESTING_MONEY_TYPE" field="FIELD_MONEY_TYPE" type="CN" level="LEVEL_ERRORS" contentId="58028"/>
+		<error code="MV" desc="ERROR_CODE_INVALID_CONTRACT_MONEY_TYPE" field="FIELD_MONEY_TYPE" type="CN" level="LEVEL_ERRORS" contentId="58029"/>
+		<error code="C7" desc="ERROR_CODE_DUPLICATE_MONEY_TYPES" field="FIELD_MONEY_TYPE" type="CN" level="LEVEL_ERRORS" contentId="58120"/>
+		<error code="C3" desc="ERROR_CODE_FIELD_TOO_LARGE" field="FIELD_VESTING_PERCENTAGE" type="PL" level="LEVEL_ERRORS" param="true" contentId="58134"/>
+		<error code="C4" desc="ERROR_CODE_FIELD_TOO_LARGE" field="FIELD_MONEY_TYPE" type="CN" level="LEVEL_ERRORS" param="true" contentId="58134"/>
+		<error code="VZ" desc="ERROR_CODE_MULTIPLE_VESTING_SCHEDULES" field="FIELD_MULTIPLE_VESTING_SCHEDULE" type="CN" level="LEVEL_ERRORS" contentId="59649"/>
+		
+		<error code="OS" desc="ERROR_CODE_CONTRACT_REJECTED_VOIDED" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_ERRORS" contentId="56131"/>
+		<error code="UP" desc="ERROR_CODE_MULTIPLE_CONTRACT_NUMBERS" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_ERRORS" contentId="56286"/>
+		<error code="NN" desc="ERROR_CODE_CONTRACT_NULL" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_ERRORS" contentId="58049"/>
+		<error code="UQ" desc="ERROR_CODE_UNEXPECTED_CONTRACT_NUMBER" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_ERRORS" contentId="58030"/>
+		<error code="D1" desc="ERROR_CODE_CONTRACT_DISCONTINUED" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_FATAL" contentId="56291"/>
+		
+		<error code="F1" desc="VESTING_ERROR_CODE_DUPLICATE_EMPLOYEE_ID" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="56289"/>
+		<error code="F2" desc="VESTING_ERROR_CODE_INVALID_EMPLOYEE_ID" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="58031"/>
+		<error code="F3" desc="VESTING_ERROR_CODE_MISSING_EMPLOYEE_ID" field="FIELD_SSN" type="PL" level="LEVEL_ERRORS" contentId="58032"/>
+		<error code="F4" desc="VESTING_ERROR_CODE_UNKNOWN_EMPLOYEE_ID" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="58033"/>
+		<error code="F5" desc="VESTING_ERROR_CODE_UNMATCHED_EMPLOYEE_ID" field="FIELD_EMPLOYEE_NUMBER" type="PL" level="LEVEL_ERRORS" contentId="58034"/>
+		<error code="F6" desc="VESTING_ERROR_CODE_EMPLOYMENT_STATUS_CANCELLED" field="FIELD_SSN" type="PL" level="LEVEL_ERRORS" contentId="58035"/>
+		<error code="P1" desc="VESTING_ERROR_CODE_PARTICIPANT_STATUS_CANCELED" field="FIELD_SSN" type="PL" level="LEVEL_ERRORS" contentId="56156"/>
+		
+		<error code="L1" desc="VESTING_ERROR_CODE_INVALID_LAST_NAME" field="FIELD_LAST_NAME" type="PL" level="LEVEL_ERRORS" contentId="58036"/>
+		<error code="L2" desc="VESTING_ERROR_CODE_INCORRECT_LAST_NAME" field="FIELD_LAST_NAME" type="PL" level="LEVEL_ERRORS" contentId="58037"/>
+		<error code="L3" desc="VESTING_ERROR_CODE_MISSING_LAST_NAME" field="FIELD_LAST_NAME" type="PL" level="LEVEL_ERRORS" contentId="56555"/>
+		<error code="N1" desc="ERROR_CODE_LAST_NAME_SHORT" field="FIELD_LAST_NAME" type="PL" level="LEVEL_ERRORS" contentId="56137"/>
+		<error code="M3" desc="ERROR_CODE_FIRST_NAME_SHORT" field="FIELD_FIRST_NAME" type="PL" level="LEVEL_ERRORS" contentId="56549"/>
+		<error code="N8" desc="ERROR_CODE_BLANK_LAST_NAME" field="FIELD_LAST_NAME" type="PL" level="LEVEL_ERRORS" contentId="56555"/>
+		<error code="N7" desc="ERROR_CODE_BLANK_FIRST_NAME" field="FIELD_FIRST_NAME" type="PL" level="LEVEL_ERRORS" contentId="56554"/>
+		<error code="N4" desc="ERROR_CODE_NAME_PARSING_ERROR" field="FIELD_LAST_NAME" type="PL" level="LEVEL_ERRORS" contentId="60060"/>
+		
+		<error code="S1" desc="VESTING_ERROR_CODE_DUPLICATE_SSN" field="FIELD_SSN" type="PL" level="LEVEL_ERRORS" contentId="56283"/>
+		<error code="S2" desc="VESTING_ERROR_CODE_MISSING_SSN" field="FIELD_SSN" type="PL" level="LEVEL_WARNINGS" contentId="56132"/>
+		<error code="SZ" desc="VESTING_ERROR_CODE_INVALID_SSN" field="FIELD_SSN" type="PL" level="LEVEL_ERRORS" contentId="56133"/>
+		<error code="S3" desc="VESTING_ERROR_CODE_UNKNOWN_SSN" field="FIELD_SSN" type="PL" level="LEVEL_WARNINGS" contentId="58047"/>
+		
+		<error code="VA" desc="VESTING_ERROR_CODE_BLANK_VESTING_DATE" field="FIELD_VESTING_DATE" type="PL" level="LEVEL_ERRORS" contentId="58043"/>
+		<error code="VB" desc="VESTING_ERROR_CODE_VESTING_DATE_AFTER_FUTURE_PLAN_YEAR_END" field="FIELD_VESTING_DATE" type="PL" level="LEVEL_ERRORS" contentId="58042"/>
+		<error code="VC" desc="VESTING_ERROR_CODE_INVALID_VESTING_DATE" field="FIELD_VESTING_DATE" type="PL" level="LEVEL_ERRORS" contentId="58041"/>
+		<error code="VD" desc="VESTING_ERROR_CODE_VESTING_DATE_MORE_THAN_24_MONTHS_IN_PAST" field="FIELD_VESTING_DATE" type="PL" level="LEVEL_ERRORS" contentId="58040"/>
+		
+		<error code="VP" desc="VESTING_ERROR_CODE_PECENTAGE_NOT_BETWEEN_1_AND_100" field="FIELD_VESTING_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="58039"/>
+		<error code="VR" desc="VESTING_ERROR_CODE_PECENTAGE_MORE_THAN_3_DECIMALS" field="FIELD_VESTING_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="58038"/>
+		<error code="C3" desc="ERROR_CODE_FIELD_TOO_LARGE" field="FIELD_VESTING_PERCENTAGE" type="PL" level="LEVEL_ERRORS" param="true" contentId="58134"/>
+		<error code="C4" desc="ERROR_CODE_FIELD_TOO_LARGE" field="FIELD_MONEY_TYPE" type="CN" level="LEVEL_ERRORS" param="true" contentId="58134"/>
+		<error code="VT" desc="VESTING_ERROR_CODE_INVALID_PERC_FOR_FULLY_VESTED_MT" field="FIELD_VESTING_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="59561"/>
+		<error code="VV" desc="VESTING_PERCENT_NOT_SUBMITTED" field="FIELD_VESTING_PERCENTAGE" type="PL" level="LEVEL_ERRORS" contentId="59563"/>
+		
+		<error code="FN" desc="ERROR_CODE_FIELD_HAS_NUMBERS" field="FIRST_NAME" type="PL" level="LEVEL_ERRORS" param="true" contentId="92141"/>
+		<error code="LN" desc="ERROR_CODE_FIELD_HAS_NUMBERS" field="LAST_NAME" type="PL" level="LEVEL_ERRORS" param="true" contentId="92142"/>
+		
+		<error code="BM" desc="VESTING_CSF_NOT_AVAILABLE" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_FATAL" contentId="59704"/>
+		<error code="YY" desc="ERROR_CODE_MORE_THAN_2_DECIMALS" field="FIELD_VESTING_PERCENTAGE" type="PL" level="LEVEL_ERRORS" param="true" contentId="59785"/>
+		<error code="ZZ" desc="ERROR_CODE_MORE_THAN_3_DECIMALS" field="FIELD_VESTING_PERCENTAGE" type="PL" level="LEVEL_ERRORS" param="true" contentId="59786"/>
+		<error code="A9" desc="ERROR_CODE_INVALID_EMAIL" field="FIELD_EMAIL" type="PL" level="LEVEL_ERRORS" contentId="71982"/>
+		<error code="AB" desc="ERROR_CODE_INVALID_EMAIL" field="FIELD_EMAIL" type="PL" level="LEVEL_ERRORS" contentId="71983"/>
+		<error code="A3" desc="ERROR_CODE_INVALID_EMAIL" field="FIELD_EMAIL" type="PL" level="LEVEL_ERRORS" contentId="71981"/>
+		
+		<error code="AA" desc="ERROR_CODE_EC_MISSING_HIRE_DATE" field="FIELD_HIRE_DATE" type="PL" level="LEVEL_WARNINGS" param="true" contentId="70837"/>
+		<error code="A1" desc="ERROR_CODE_EC_MISSING_BIRTH_DATE" field="FIELD_BIRTH_DATE" type="PL" level="LEVEL_WARNINGS" param="true" contentId="70479"/>
+		
+		<error code="IE" desc="ERROR_CODE_LTPT_INVALID_EMPLOYMENT_STATUS" field="FIELD_SSN" type="PL" level="LEVEL_ERRORS" param="true" contentId="98834"/>
+		<error code="US" desc="ERROR_CODE_LTPT_UNKNOWN_SSN" field="FIELD_SSN" type="PL" level="LEVEL_WARNINGS" param="true" contentId="98835"/>
+		<error code="LT" desc="ERROR_CODE_LTPT_INVALID_ASSESSMENT_YEAR_VALUE" field="FIELD_LONG_TERM_PART_TIME_ASSESSMENT_YEAR" type="PL" level="LEVEL_ERRORS" param="true" contentId="98836"/>
+		<error code="IY" desc="ERROR_CODE_LTPT_INVALID_ASSESSMENT_YEAR" field="FIELD_LONG_TERM_PART_TIME_ASSESSMENT_YEAR" type="PL" level="LEVEL_ERRORS" param="true" contentId="98837"/>
+		<error code="IR" desc="ERROR_CODE_LTPT_INVALID_PART_TIME_ELIGIBILITY_RULE" field="FIELD_SSN" type="PL" level="LEVEL_ERRORS" param="true" contentId="98838"/>
+		<error code="HR" desc="ERROR_CODE_LTPT_INVALID_HIRE_DATE_RULE" field="FIELD_LONG_TERM_PART_TIME_ASSESSMENT_YEAR" type="PL" level="LEVEL_ERRORS" param="true" contentId="98839"/>
+		<error code="EC" desc="ERROR_CODE_LTPT_INVALID_CONTRACT_ID_EC_CSF_VALUE" field="FIELD_CONTRACT_ID" type="CN" level="LEVEL_FATAL" param="true" contentId="56156"/>
+		
+		<error code="AL" desc="ERROR_CODE_VESTING_INVALID_APPLY_LTPT_CREDITING" field="FIELD_APPLY_LTPT_CREDITING" type="PL" level="LEVEL_ERRORS" param="true" contentId="98840"/>
+	</errors>
+	
+</submissionErrors>

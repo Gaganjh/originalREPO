@@ -1,0 +1,559 @@
+    #standardFlterSection {
+        background-color: #d8d8d8;
+        font-weight: bold;
+        padding:6px 10px 10px 10px;
+    }
+
+    #standardFlterSection td{
+        font-weight: bold;
+        text-align: left;
+        vertical-align: bottom;
+    }
+
+    .advanceFilterSection {
+        background-color: #F0F0F0;
+        vertical-align: top;
+    }
+
+    .left_advanceFilterSection {
+        float: left;
+        width:350px;
+        text-align:left;
+        vertical-align:top;
+        padding:0px;
+    }
+
+    .right_advanceFilterSection {
+        float: left;
+        width:350px;
+        text-align:left;
+        vertical-align:top;
+        padding:0px;
+    }
+
+    .text_align {
+        text-align: left;
+    }
+
+    div.query_panel {
+    text-align:left;
+    vertical-align:top;
+    width:100%;
+    padding-top: 0px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+    clear: left;
+    }
+
+    select.fundlist_multi_select {
+        width:350px;
+        height:230px;
+        padding:0px;
+        font-family:"Courier New", monospaced;
+        font-size:11px;
+    }
+
+    div.query_panel {
+    text-align:left;
+    vertical-align:top;
+    width:100%;
+    padding-top: 0px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+    clear: left;
+    }
+
+    #saveListSection {
+        background-color:#E0E0E0;
+        width:340px;
+        font-size:10px;
+        border:1px solid #606060;
+        padding:3px;
+        margin-left:1px;
+        z-index:80;
+    }
+
+    /*******************************************************
+     * Custom Query Stuffs 
+     ********************************************************/
+
+    .custom-query-criteria-table {    
+        width:700px;
+        padding:0px;
+        margin:0px;
+    }
+
+    .custom_query_row_button_column { 
+        font-size:9px!important;
+        width:10px!important;
+    }    
+
+    .custom_query_logic_column {
+        font-size:9px!important;
+        width:70px!important;
+    }    
+
+    .custom_query_bracket_column {
+        font-size:9px!important;
+        width:30px!important;
+        text-align:left;
+    }    
+
+    .custom_query_fieldname_column {
+        font-size:9px!important;
+        width:240px!important;
+    }    
+
+    .custom_query_operator_column {
+        font-size:9px!important;
+        width:90px;
+    }    
+
+    .custom_query_value_column {
+        font-size:9px!important;
+        width:260px!important;
+    }    
+
+    .custom_query_scroll {
+        overflow-y:scroll;
+        width:720px!important;
+        text-align:left;
+        height:90px;
+    }
+
+    #button_sort {
+        float:right;
+        margin-top:2px;
+        margin-bottom:0px;
+        margin-right:0px;
+    }
+
+    .button_newQuery {
+        width:90px;
+        padding:0px;
+    }
+
+    .button_addAll {
+        width:100px;
+        padding:0px;
+    }
+
+    .button_add {
+        width:70px;
+        padding:0px;
+    }
+    
+    /*******************************************************************************
+     * Popups... Fuzzy logics
+     ********************************************************************************/
+    div.modal_glass_panel {
+        z-index:5;
+        position:absolute;
+        top:1px;
+        left:1px;
+        width:1024px;
+        height:100%;
+        background-color:#C0C0C0;        
+        filter:alpha(opacity=50);
+        -moz-opacity:0.5;
+        opacity:0.5;
+     }        
+
+     div.modal_dialog {
+        z-index:10;
+        font-size:11px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        margin:auto;
+        padding:0px;
+        position:absolute;
+        background:#FFFFFF;
+        border:4px inset #005B80;
+              
+    }
+
+     div.change_sort_dialog {
+        width:350px;
+        height:220px;
+        top:500px;
+        left:400px;
+    }
+
+    div.dialog_title {
+        width:100%;
+        padding-top:4px;
+        padding-bottom:4px;        
+        background-color:#005B80;
+        color:white;
+        font-size:12px;
+    }
+    
+    div.dialog_content {
+        width:85%;
+        padding:8px;
+    }
+
+    .trademark{
+        font-size:0.688em;
+    }
+
+    
+
+    /***************************************
+        Navigation tabs
+    ************************************/
+    div.fandp_nav {
+        PADDING-LEFT: 0px;
+        MARGIN-BOTTOM: 0px;
+        BACKGROUND-REPEAT: no-repeat;
+    }
+    
+    div.fandp_nav UL {
+        PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+    }
+    
+    div.fandp_nav LI {
+        FLOAT: left;
+        background-image: url(/assets/unmanaged/images/1line_off_tab_long.gif);
+        height: 35px;
+        width: 78px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: #000000;
+        background-repeat: no-repeat;
+    }
+    
+    div.fandp_nav LI.large {
+        FLOAT: left;
+        background-image: url(/assets/unmanaged/images/1line_off_tab_long.gif);
+        height: 35px;
+        width: 110px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: #000000;
+        background-repeat: no-repeat;
+    }
+    
+    div.fandp_nav A {
+        PADDING-RIGHT: 2px;
+        DISPLAY: block;
+        PADDING-LEFT: 5px;
+        PADDING-BOTTOM: 0px;
+        COLOR: #000000;
+        PADDING-TOP: 2px;
+    }
+    
+    div.fandp_nav SPAN {
+        COLOR: #64707a;
+        display: block;
+        padding-top: 2px;
+        padding-right: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+    }
+    
+    div.fandp_nav LI.on {
+        background-repeat: no-repeat;
+        background-image: url(/assets/unmanaged/images/1line_on_tab_long.gif);
+        height: 35px;
+        width: 80px;
+        text-align: center;
+        font-weight: bold;
+        color: #000000;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+    }
+    
+    div.fandp_nav LI.on_large {
+        background-repeat: no-repeat;
+        background-image: url(/assets/unmanaged/images/1line_on_tab_long.gif);
+        height: 35px;
+        width: 110px;
+        text-align: center;
+        font-weight: bold;
+        color: #000000;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+    }
+    
+    div.fandp_nav LI.on SPAN {
+        COLOR: #000000;
+    }
+    
+    div.fandp_nav LI.off_over {
+        background-image: url(/assets/unmanaged/images/1line_on_tab_long.gif);
+        background-repeat: no-repeat;
+        height: 35px;
+        width: 80px;
+        margin: 0px;
+        text-align: center;
+        vertical-align: middle;
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+    }
+    
+    div.fandp_nav LI.large_off_over {
+        background-image: url(/assets/unmanaged/images/1line_on_tab_long.gif);
+        background-repeat: no-repeat;
+        height: 35px;
+        width: 110px;
+        margin: 0px;
+        text-align: center;
+        vertical-align: middle;
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+    }
+    
+    div.fandp_nav A:hover {
+        COLOR: #000099;
+    }
+    
+    
+    .groupHeaders {
+        PADDING-RIGHT: 2px; 
+        PADDING-LEFT: 2px; 
+        FONT-SIZE: 11px; 
+        BACKGROUND:#000000;
+        PADDING-BOTTOM: 2px; 
+        COLOR: white; 
+        PADDING-TOP: 2px; 
+        FONT-FAMILY: Arial, Helvetica, sans-serif
+        font-weight: bold;
+    }
+    
+    .shadedRow {
+        background-color: #b9b1a9;
+        color: #000000;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        padding-top: 5px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+    }
+    .shadedRow_additional {
+        background-color: #b9b1a9;
+        color: #000000;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        padding-top: 5px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        white-space: nowrap;
+    }
+    a.sort_descending {
+        background: transparent url('/assets/unmanaged/images/arrow_triangle_down.gif') no-repeat scroll left 2px;
+        color: #333333;
+        font-weight: bold;
+        padding: 0 0 0 10px ;
+        text-decoration: none;
+    }
+    
+    
+    a.sort_ascending {
+        background: transparent url('/assets/unmanaged/images/arrow_triangle_up.gif') no-repeat scroll left 2px;
+        color: #000;
+        font-weight: bold;
+        text-decoration: none;
+        padding-top: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+        padding-left: 8px;
+    }
+    
+    #tabImgNone {
+        background-color: #B9B1A9;
+        float: right;
+        text-align: center;
+        height: 20px;
+        width: 61px;
+        padding-top: 5px;
+        margin-top: 0px;
+    }
+    
+    #tabImg {
+        background-image: url(/assets/unmanaged/images/performance_tab.gif);
+        background-repeat: no-repeat;
+        text-align: center;
+        height: 20px;
+        padding-top: 5px;
+        float: right;
+        background-position: left;
+        width: 61px;
+        margin-top: 0px;
+    }
+    
+    .IRtitleLft {
+        float: left;
+        margin-top: 5px;
+        margin-left: 5px;
+        height: 20px;
+    }
+    
+    .cur {
+        text-align: right;
+    }
+	
+	.fcalign{
+    	text-align: center;
+		width:10%;
+	}
+	
+	.eralign{
+		text-align: center;
+		width:20%;
+	}
+	
+    .pct {
+        text-align: right;
+    }
+    
+    .name{
+    	text-align:left;
+    }
+    
+    .val_str {
+        text-align: left;
+    }
+    
+    .date {
+    	text-align: center;
+	}
+
+	th.date{
+		text-align:center;
+	}
+	
+	th.cur, th.pct{
+		text-align:center;
+	}
+	
+	td.name {
+		text-align:right;
+	}
+	
+	th.name {
+		text-align:center;
+	}
+	
+    /**************************
+     *Overrides manulife.css b
+     **************************/
+    #fapTabContainer b {
+        font-weight: bold;
+        font-family:Arial,Helvetica,sans-serif;
+        font-size:11px;
+    }
+    
+    /************************************
+    Closed Funds are displayed in gray color
+    *************************************/
+    #closed a:visited {
+        color : #767676;
+    }
+    
+    td .fwiIndicator   {
+        border: currentColor !important;
+        padding : 0 !important;
+	    border-image: none !important;
+    }  
+    
+table th.mornigstarLogo {
+	background-image: url(/assets/unmanaged/images/mstar_web.png);
+	background-size: auto 32px;
+	background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    border-left: 1px solid #cac8c4;
+    border-right: 1px solid #cac8c4;
+    height: 50px;
+    width: 600px;
+}
+
+table th.fi360Logo {
+	background-image: url(/assets/unmanaged/images/fi360_web.png);
+	background-size: auto 50px;
+	background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    border-left: 1px solid #cac8c4;
+    border-right: 1px solid #cac8c4;
+    height:50px;
+    width: 440px;
+}
+
+
+table th.rpagLogo {
+	background-image: url(/assets/unmanaged/images/rpag_web.png);
+	background-size: auto 50px;
+	background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    border-left: 1px solid #cac8c4;
+    border-right: 1px solid #cac8c4;
+    height:50px;
+    width: 440px;
+}
+
+table th.jh_scorecard_header_row {
+	background-color: white;
+	border: none;
+}
+
+table tr.jh_scorecard_header_row_small {
+	background-color: #b9b1a9;
+	border: none;
+	height: 8px
+}
+
+table th.score {
+    text-align: center;
+    font-size: 10px !important;
+}
+
+table td.score {
+    text-align: center;
+    font-size: 9.8px;
+}
+
+table td.val_str_font {
+    font-size: 10.5px !important;
+}
+
+table td.score_bold {
+    font-weight: bold;
+}
+
+table td.score_wrap {
+   white-space: normal;
+}
+
+table th.unshaded_mstar_header {
+  BACKGROUND:#cccccc;
+}
+
+.fi360firstQuartile  { background-color: #00FF00; }
+.fi360secondQuartile { background-color: #C8FF96; }
+.fi360thirdQuartile  { background-color: #FFFF00; }
+.fi360fourthQuartile { background-color: #FF0000; }
+
+.fi360Legend {
+	width: 280px;
+	border: 0 !important;
+}
+
+.fi360Legend  td, tr {
+	border: 0 !important;
+}
+
+.fi360Legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px;  }

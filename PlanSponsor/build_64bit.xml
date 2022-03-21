@@ -1,0 +1,210 @@
+<!--======================================================================================
+  Plan Sponsor WAS admin tasks fot 64 bit servers.
+=======================================================================================-->
+
+<project name="PlanSponsor" default="build_and_create_ear" basedir=".">
+
+  <import file="../common/ant/common.xml" />
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Properties
+  This section contains property settings and targets that affect property settings.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <property environment="env"/>    
+  <property name="root.dir" value="${env.HOMEDRIVE}"/>
+  <property name="hostname" value="${env.COMPUTERNAME}"/>
+  <property name="project.name" value="PlanSponsor"/>
+  
+  <property name="PSWServer.name" value="PSWServer"/>
+  <property name="PSWCluster.name" value="PSWLiveCluster"/>
+  <property name="project.dist.dir" value="${basedir}/dist"/>
+  <property name="websphere.home" value="${root.dir}/webSphere9/AppServer"/>  
+    
+  <property name="dmgr.profile.name" value="DeploymentManager"/>
+  <property name="node.name" value="localNode"/>   
+  <property name="was.username" value="admin"/>
+  <property name="was.password" value="admin"/>
+  
+  <property name="profile.logs.dir" value="${websphere.home}/Profiles/${node.name}/logs"/>
+  <available property="PSWLiveServer1.logdir.exist" file="${profile.logs.dir}\PSWLiveServer1" type="dir"/>
+  <available property="PSWLiveServer2.logdir.exist" file="${profile.logs.dir}\PSWLiveServer2" type="dir"/>
+  <available property="PSWPreviewServer.logdir.exist" file="${profile.logs.dir}\PSWPreviewServer" type="dir"/>
+  
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  WebSphere 6 Application Server Admin targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="stop_psw_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    	<arg value="jython" />
+	    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+	    <arg value="stop" />
+	    <arg value="${PSWServer.name}" />
+	    <arg value="localNode" />
+	    <arg value="-username" />
+		<arg value="${was.username}" />
+	    <arg value="-password" />
+		<arg value="${was.password}" />	
+      </exec>
+      <sleep seconds="20"/>
+   </target>
+  
+   <target name="stop_psw_cluster">
+  	<exec executable="${websphere.home}/bin/wsadmin.bat">
+  		<arg value="-lang" />
+  		<arg value="jython" />
+  		<arg value="-f" />
+  		<arg file="${basedir}/../ConfigurationScripts/adminAppServer.py" />
+  		<arg value="stopCluster" />
+  		<arg value="${PSWCluster.name}" />
+  		<arg value="localCell" />
+  		<arg value="-username" />
+		<arg value="${was.username}" />
+	    <arg value="-password" />
+		<arg value="${was.password}" />
+	</exec>
+	<sleep seconds="20" />
+  </target>
+	
+<target name="live_class_loader_setup">
+	  	<exec executable="${websphere.home}/bin/wsadmin.bat">
+	  		<arg value="-lang" />
+	  		<arg value="jython" />
+	  		<arg value="-f" />
+	  		<arg file="${basedir}/../ConfigurationScripts/classLoader.py" />
+	  		<arg value="PlanSponsorLive" />
+		</exec>
+		<sleep seconds="20" />
+</target>
+	
+<target name="preview_class_loader_setup">
+  	<exec executable="${websphere.home}/bin/wsadmin.bat">
+  		<arg value="-lang" />
+  		<arg value="jython" />
+  		<arg value="-f" />
+  		<arg file="${basedir}/../ConfigurationScripts/classLoader.py" />
+  		<arg value="PlanSponsorPreview" />
+	</exec>
+	<sleep seconds="20" />
+</target>
+	
+   <target name="start_psw_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+	    <arg value="jython" />
+	    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+	    <arg value="start" />
+	    <arg value="${PSWServer.name}" />
+        <arg value="localNode" />
+	    <arg value="-username" />
+		<arg value="${was.username}" />
+	    <arg value="-password" />
+		<arg value="${was.password}" />
+	  </exec>
+      <sleep seconds="25"/>
+   </target>
+   
+   <target name="start_psw_cluster">
+  	<exec executable="${websphere.home}/bin/wsadmin.bat">
+  		<arg value="-lang" />
+  		<arg value="jython" />
+  		<arg value="-f" />
+  		<arg file="${basedir}/../ConfigurationScripts/adminAppServer.py" />
+  		<arg value="startCluster" />
+  		<arg value="${PSWCluster.name}" />
+  		<arg value="localCell" />
+  		<arg value="-username" />
+		<arg value="${was.username}" />
+	    <arg value="-password" />
+		<arg value="${was.password}" />
+	</exec>
+	<sleep seconds="20" />
+  </target>
+ 
+  <target name="install_psw_ear">
+      <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+	    <arg value="jython" />
+	    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/deploy_64bit.py"/>
+	    <arg value="local" />
+	    <arg value="install" />
+	    <arg value="PlanSponsorPreview" /> 
+	    <arg value="${project.dist.dir}/${project.name}.ear" />
+	    <arg value="-username" />
+		<arg value="${was.username}" />
+	    <arg value="-password" />
+		<arg value="${was.password}" />
+      </exec>
+   </target>
+   
+   <target name="install_psw_live_ear">
+    <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+        <arg value="jython" />
+        <arg value="-f" />
+        <arg file="${basedir}/../ConfigurationScripts/deploy_64bit.py" />
+        <arg value="local" />
+        <arg value="installClusterApp" />
+        <arg value="PlanSponsorLive" />
+    	<arg value="${project.dist.dir}/${project.name}.ear" />
+    	<arg value="-username" />
+		<arg value="${was.username}" />
+	    <arg value="-password" />
+		<arg value="${was.password}" />
+     </exec>
+  </target>
+
+   <target name="uninstall_psw_ear">
+      <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    	<arg value="jython" />
+    	<arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/deploy_64bit.py"/>
+    	<arg value="local" />
+   	 	<arg value="uninstall" />
+    	<arg value="PlanSponsorPreview" /> 
+    	<arg value="${project.dist.dir}/${project.name}.ear" />
+    	<arg value="-username" />
+		<arg value="${was.username}" />
+	    <arg value="-password" />
+		<arg value="${was.password}" />
+      </exec>
+    	<sleep seconds="10"/>   
+   </target>
+ 
+   <target name="uninstall_psw_live_ear">
+    <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+      	<arg value="-lang" />
+      	<arg value="jython" />
+      	<arg value="-f" />
+      	<arg file="${basedir}/../ConfigurationScripts/deploy_64bit.py" />
+      	<arg value="local" />
+      	<arg value="uninstallClusterApp" />
+       	<arg value="PlanSponsorLive" />
+    	<arg value="-username" />
+		<arg value="${was.username}" />
+	    <arg value="-password" />
+		<arg value="${was.password}" />
+    </exec>
+  </target>
+  
+  <target name="archive_PSWLiveServer1_logs" if="PSWLiveServer1.logdir.exist">
+  		<tstamp description="Initialize the DSTAMP, TSTAMP and TODAY properties."/>
+  		<move file="${profile.logs.dir}\PSWLiveServer1" tofile="${profile.logs.dir}/Archive/PSWLiveServer1${DSTAMP}-${TSTAMP}"/>    
+  </target>
+  
+  <target name="archive_PSWLiveServer2_logs" if="PSWLiveServer2.logdir.exist">
+  		<tstamp description="Initialize the DSTAMP, TSTAMP and TODAY properties."/>
+  		<move file="${profile.logs.dir}\PSWLiveServer2" tofile="${profile.logs.dir}/Archive/PSWLiveServer2${DSTAMP}-${TSTAMP}"/>    
+  </target>
+  
+  <target name="archive_PSWPreviewServer_logs" if="PSWPreviewServer.logdir.exist">
+  		<tstamp description="Initialize the DSTAMP, TSTAMP and TODAY properties."/>
+  		<move file="${profile.logs.dir}\PSWPreviewServer" tofile="${profile.logs.dir}/Archive/PSWPreviewServer${DSTAMP}-${TSTAMP}"/>    
+  </target>
+  
+  <target name="archive_profile_logs" depends="archive_PSWLiveServer1_logs, archive_PSWLiveServer2_logs, archive_PSWPreviewServer_logs" />
+</project>

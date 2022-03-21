@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="NBDWRewrite_BrokerDealerWeb_ParticipantStatements_2009-02-10">
+  <ReviewIssue id="FR14VUVW">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:17:35:516 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:18:07:352 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="2">BaseWeb/source/com/manulife/pension/platform/web/util/ViewStatementsUtility.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Missing class level Javadoc</Summary>
+    <Description>Should have @author statement, or a statement indicating who moved this class here.&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR14WNYP">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:18:13:201 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:19:15:480 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="17">BaseWeb/source/com/manulife/pension/platform/web/util/ViewStatementsUtility.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Braces are not properly formatted to our standards</Summary>
+    <Description>method()&#13;
+{&#13;
+}&#13;
+&#13;
+should be replaced by:&#13;
+&#13;
+method() {&#13;
+&#13;
+}&#13;
+&#13;
+The code formatter should be run as per instructions, using the correct settings.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR14YHC2">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:19:37:922 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:20:03:669 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="35">BaseWeb/source/com/manulife/pension/platform/web/util/ViewStatementsUtility.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Why is this comment here?</Summary>
+    <Description>//LogUtility.logSystemException(Constants.PS_APPLICATION_ID,se);</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR14Z61Y">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:20:09:958 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:21:10:155 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="40">BaseWeb/source/com/manulife/pension/platform/web/util/ViewStatementsUtility.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>This should be acquired from CommonEnvironment</Summary>
+    <Description>This needs to be externalized to the namespace bindings just like the cookie domain.&#13;
+&#13;
+1200</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR150P8Z">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:21:21:491 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:21:53:828 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="43">BaseWeb/source/com/manulife/pension/platform/web/util/ViewStatementsUtility.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>All IF statements should always have braces.</Summary>
+    <Description>		if (domain == null) domain = "";&#13;
+		if (!domain.equals("")) cookie.setDomain(domain);</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR152GKN">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:22:43:559 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:23:02:537 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="51">BaseWeb/source/com/manulife/pension/platform/web/util/ViewStatementsUtility.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Comment is incorrect.  You're not doing anything with a cookie with this method</Summary>
+    <Description>/**&#13;
+	 * Getnerate an encrypted cookie for the Data Impact&#13;
+	 */</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR15327U">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:23:11:610 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:23:26:641 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="62">BaseWeb/source/com/manulife/pension/platform/web/util/ViewStatementsUtility.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Comment is incorrect.  You're not doing anything with a cookie with this method</Summary>
+    <Description>	/**&#13;
+	 * Getnerate an encrypted cookie for the Data Impact (for participants)&#13;
+	 */&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR153Q7A">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:23:42:694 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:23:59:719 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="23">BaseWeb/source/com/manulife/pension/platform/web/util/ViewStatementsUtility.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Javadoc not following standards.  Missing params.</Summary>
+    <Description>public static Cookie getCookie(int contractNumber, String ssn)</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR154R1X">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:24:30:453 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:24:53:546 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="32">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/participant/ParticipantStatementsAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Javadoc incorrect.  Marcos Rogovsky did not put this class here.</Summary>
+    <Description>@author Marcos Rogovsky</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR158N8C">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:27:32:124 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:27:45:313 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="65">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/participant/ParticipantStatementsAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Missing method level javadoc</Summary>
+    <Description>public ActionForward doExecute(ActionMapping mapping,</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR15L1YD">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:37:11:077 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:37:32:177 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="4">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/participant/ParticipantStatementsForm.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>No class or method level javadoc</Summary>
+    <Description>There should at least be class level javadoc.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR15MC3D">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:38:10:873 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-10 :: 17:43:32:986 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="7">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/participant/ParticipantStatementsForm.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Make "4" a static final constant like DEFAULT_VIEWING_PREFERENCE</Summary>
+    <Description>Make "4" a static final constant like DEFAULT_VIEWING_PREFERENCE&#13;
+&#13;
+That way each time the object is created it isn't creating a new String for "4" but instead sharing the constant.&#13;
+&#13;
+Also go to the JSP File and fix the "4" and "1" references so that they reference static constants also.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+</Review>

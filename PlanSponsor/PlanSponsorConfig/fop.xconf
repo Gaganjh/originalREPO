@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+
+<!--
+
+This is an example configuration file for FOP.
+This file contains the same settings as the default values
+and will have no effect if used unchanged.
+
+Relative config url's will be resolved relative to
+the location of this file.
+
+-->
+
+<!-- NOTE: This is the version of the configuration -->
+<fop version="1.0">
+
+  <!-- Base URL for resolving relative URLs -->
+  <base>.</base>
+  
+  <!-- Source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap images, default: 72dpi -->
+  <source-resolution>72</source-resolution>
+  <!-- Target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi -->
+  <target-resolution>72</target-resolution>
+  
+  <!-- Default page-height and page-width, in case
+       value is specified as auto -->
+  <default-page-settings height="11in" width="8.26in"/>
+  
+  <!-- Information for specific renderers -->
+  <!-- Uses renderer mime type for renderers -->
+  <renderers>
+    <renderer mime="application/pdf">
+      <filterList>
+        <!-- provides compression using zlib flate (default is on) -->
+        <value>flate</value>
+  
+        <!-- encodes binary data into printable ascii characters (default off)
+             This provides about a 4:5 expansion of data size -->
+        <!-- <value>ascii-85</value> -->
+  
+        <!-- encodes binary data with hex representation (default off)
+             This filter is not recommended as it doubles the data size -->
+        <!-- <value>ascii-hex</value> -->
+      </filterList>
+
+      <fonts>
+        <!-- embedded fonts -->
+        <!--
+        This information must exactly match the font specified
+        in the fo file. Otherwise it will use a default font.
+		
+        For example,
+        <fo:inline font-family="Arial" font-weight="bold" font-style="normal">
+            Arial-normal-normal font
+        </fo:inline>
+        for the font triplet specified by:
+        <font-triplet name="Arial" style="normal" weight="bold"/>
+
+        If you do not want to embed the font in the pdf document
+        then do not include the "embed-url" attribute.
+        The font will be needed where the document is viewed
+        for it to be displayed properly.
+
+        possible styles: normal | italic | oblique | backslant
+        possible weights: normal | bold | 100 | 200 | 300 | 400
+                          | 500 | 600 | 700 | 800 | 900
+        (normal = 400, bold = 700)
+        -->
+		<auto-detect />
+		
+        <font  metrics-url="assets/fonts/frutiger.xml" kerning="yes" embed-url="assets/fonts/Frutiger45Light.ttf">
+			<font-triplet name="Frutiger" style="normal" weight="normal"/>
+		</font>
+		
+		<font  metrics-url="assets/fonts/frutiger-bold.xml" kerning="yes" embed-url="assets/fonts/FrutigerBold.ttf">
+			<font-triplet name="Frutiger" style="normal" weight="bold"/>
+		</font>
+		
+		<font  metrics-url="assets/fonts/frutiger-italic.xml" kerning="yes" embed-url="assets/fonts/FrutigerItalic.ttf">
+			<font-triplet name="Frutiger" style="italic" weight="normal"/>
+		</font>
+	
+		<font  metrics-url="assets/fonts/frutiger-46-light-italic.xml" kerning="yes" embed-url="assets/fonts/frutiger-46-light-italic.ttf">
+			<font-triplet name="Frutiger46LightItalic" style="normal" weight="normal"/>
+			<font-triplet name="FrutigerSR" style="italic" weight="normal"/>
+			<font-triplet name="Frutiger47LightCn" style="italic" weight="normal"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-45-light.xml" kerning="yes" embed-url="assets/fonts/frutiger-45-light.ttf">
+			<font-triplet name="Frutiger45Light" style="normal" weight="normal"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-47-light-cn.xml" kerning="yes" embed-url="assets/fonts/frutiger-47-light-cn.ttf">
+			<font-triplet name="Frutiger47LightCn" style="normal" weight="normal"/>
+			<font-triplet name="FrutigerSR" style="normal" weight="normal"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-55-roman.xml" kerning="yes" embed-url="assets/fonts/frutiger-55-roman.ttf">
+			<font-triplet name="Frutiger55Roman" style="normal" weight="normal"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-56-italic.xml" kerning="yes" embed-url="assets/fonts/frutiger-56-italic.ttf">
+			<font-triplet name="Frutiger56Italic" style="normal" weight="normal"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-57-cn.xml" kerning="yes" embed-url="assets/fonts/frutiger-57-cn.ttf">
+			<font-triplet name="Frutiger57Cn" style="normal" weight="normal"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-65-bold.xml" kerning="yes" embed-url="assets/fonts/frutiger-65-bold.ttf">
+			<font-triplet name="Frutiger65Bold" style="normal" weight="normal"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-66-bold-italic.xml" kerning="yes" embed-url="assets/fonts/frutiger-66-bold-italic.ttf">
+			<font-triplet name="Frutiger66BoldItalic" style="normal" weight="normal"/>
+			<font-triplet name="FrutigerSR" style="italic" weight="bold"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-67-bold-cn.xml" kerning="yes" embed-url="assets/fonts/frutiger-67-bold-cn.ttf">
+			<font-triplet name="Frutiger67BoldCn" style="normal" weight="normal"/>
+			<font-triplet name="FrutigerSR" style="normal" weight="bold"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-75-black.xml" kerning="yes" embed-url="assets/fonts/frutiger-75-black.ttf">
+			<font-triplet name="Frutiger75Black" style="normal" weight="normal"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-76-black-italic.xml" kerning="yes" embed-url="assets/fonts/frutiger-76-black-italic.ttf">
+			<font-triplet name="Frutiger76BlackItalic" style="normal" weight="normal"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-77-black-cn.xml" kerning="yes" embed-url="assets/fonts/frutiger-77-black-cn.ttf">
+			<font-triplet name="Frutiger77BlackCn" style="normal" weight="normal"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-87-extrablack-cn.xml" kerning="yes" embed-url="assets/fonts/frutiger-87-extrablack-cn.ttf">
+			<font-triplet name="Frutiger87ExtraBlackCn" style="normal" weight="normal"/>
+		</font>
+
+		<font  metrics-url="assets/fonts/frutiger-95-ultrablack.xml" kerning="yes" embed-url="assets/fonts/frutiger-95-ultrablack.ttf">
+			<font-triplet name="Frutiger95UltraBlack" style="normal" weight="normal"/>
+		</font>
+		
+      </fonts>
+
+      <!-- This option lets you specify additional options on an XML handler -->
+      <!--xml-handler namespace="http://www.w3.org/2000/svg">
+        <stroke-text>false</stroke-text>
+      </xml-handler-->
+
+    </renderer>
+
+    <renderer mime="application/postscript">
+      <!-- This option forces the PS renderer to rotate landscape pages -->
+      <!--auto-rotate-landscape>true</auto-rotate-landscape-->
+      
+      <!-- This option lets you specify additional options on an XML handler -->
+      <!--xml-handler namespace="http://www.w3.org/2000/svg">
+        <stroke-text>false</stroke-text>
+      </xml-handler-->
+    </renderer>
+
+    <renderer mime="application/vnd.hp-PCL">
+    </renderer>
+
+    <!-- MIF does not have a renderer
+    <renderer mime="application/vnd.mif">
+    </renderer>
+    -->
+
+    <renderer mime="image/svg+xml">
+      <format type="paginated"/>
+      <link value="true"/>
+      <strokeText value="false"/>
+    </renderer>
+
+    <renderer mime="application/awt">
+    </renderer>
+
+    <renderer mime="image/png">
+      <!--transparent-page-background>true</transparent-page-background-->
+    </renderer>
+
+    <renderer mime="image/tiff">
+      <!--transparent-page-background>true</transparent-page-background-->
+      <!--compression>CCITT T.6</compression-->
+    </renderer>
+
+    <renderer mime="text/xml">
+    </renderer>
+
+    <!-- RTF does not have a renderer
+    <renderer mime="text/rtf">
+    </renderer>
+    -->
+
+    <renderer mime="text/plain">
+      <pageSize columns="80"/>
+    </renderer>
+
+  </renderers>
+
+</fop>
+

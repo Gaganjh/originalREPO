@@ -1,0 +1,13 @@
+# create application login JAASConfigurationEntry alias NTLogin first, then create JAASLoginModule
+
+set appLoginConfigId [lindex [$AdminConfig list JAASConfiguration] 0]
+
+set entryId [$AdminConfig create JAASConfigurationEntry $appLoginConfigId {{alias NTLogin}}]
+puts "entryid is $entryId"
+
+set className com.tagish.auth.win32.NTSystemLogin
+set module_attrib [list [list moduleClassName $className] [list authenticationStrategy REQUIRED]]
+
+$AdminConfig create JAASLoginModule $entryId $module_attrib
+
+$AdminConfig save

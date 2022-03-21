@@ -1,0 +1,29 @@
+# ==============================================================================
+# WAS script to set 2 DB2 JDBC variables using the parameters provided
+# $Id: configWASVars.jacl,v 1.1.2.1.2.1 2007/05/29 00:34:36 Andrew_Park Exp $
+# ==============================================================================
+
+set cellName [lindex $argv 0]
+set nodeName [lindex $argv 1]
+set db2JavaPath [lindex $argv 2]
+
+set db2UniversalJDBCDriverPath DB2UNIVERSAL_JDBC_DRIVER_PATH
+set db2JDBCDriverPath DB2_JDBC_DRIVER_PATH
+
+set node [$AdminConfig getid /Node:$nodeName/]
+
+puts "Setting values for $db2UniversalJDBCDriverPath and $db2JDBCDriverPath variables to $db2JavaPath"
+
+set varSubstitutions [$AdminConfig list VariableSubstitutionEntry $node]
+
+foreach varSubst $varSubstitutions {
+   set getVarName [$AdminConfig showAttribute $varSubst symbolicName]
+   if {[string compare $getVarName $db2JDBCDriverPath] == 0 || 
+   		[string compare $getVarName $db2UniversalJDBCDriverPath] == 0 } {
+      $AdminConfig modify $varSubst [list [list value $db2JavaPath]]
+   }
+}
+
+#$AdminTask setVariable {-variableName WAS_HOME -variableValue '${WAS_INSTALL_ROOT}' -scope Node}
+
+$AdminConfig save

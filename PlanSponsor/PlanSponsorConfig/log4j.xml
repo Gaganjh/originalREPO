@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+
+<log4j:configuration debug="false" xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+  <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
+    </layout>
+  </appender>
+
+  <appender name="MRL" class="com.manulife.pension.util.log.MrlDbAppender">
+    <param name="datasourceJndiName" value="jdbc/mrl" />
+    <param name="databaseSchemaName" value="MRL_EZK" />
+    <param name="applicationId" value="PS" />
+  </appender>
+
+  <appender name="fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="file" value="logs/server1/ps.log"/>
+    <param name="datePattern" value="'.'yyyy-MM" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d [%t] %-5p (%F:%L) - %m%n"/>
+    </layout>
+  </appender>
+  
+  <appender name="eligibilityPEDFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="file" value="c:/logs/EligibilityPEDCalculationPeriodicProcess.log"/>
+    <param name="datePattern" value="'.'yyyy-MM" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d [%-5p] (%F:%L) - %m%n"/>
+    </layout>
+  </appender>
+  
+  <category name="com.manulife.pension.service.eligibility.EligibilityPEDCalculationPeriodicProcess"    
+            additivity="false">
+    <priority value="info"/>
+	<appender-ref ref="eligibilityPEDFileAppender" />
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+
+  <category name="com.manulife.pension.service.account.AccountServiceBean" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+  
+  <category name="com.manulife.pension.service.security" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+  
+  <category name="com.manulife.pension.util.log.LogUtility" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+
+  <category name="com.manulife.pension.util.log.ServiceLogRecord" additivity="false">
+    <appender-ref ref="MRL" />
+  </category>
+  
+  <category name="com.manulife.pension.ps.web.util.FunctionalLogger" additivity="false">
+    <appender-ref ref="MRL" />
+  </category>
+
+  <category name="com.manulife.pension.ps.web.home.SessionBindingListener" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+  
+  <category name="com.manulife.pension.ps.web.home.PhoneCollectionController" additivity="false" >
+    <priority value="info"/>
+	<appender-ref ref="MRL" />
+  </category>
+  
+  <category name="com.manulife.pension.service.synchronization.handler.UpdateParticipantSynchronizationHandler" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+  
+  <category name="com.manulife.pension.ps.service.report.participant.reporthandler.ParticipantSummaryReportHandler" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+  
+  <category name="com.manulife.pension.ps.web.tools.EditContributionDetailsAction" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+  
+  <category name="com.manulife.pension.util.content.taglib.ContentBeanAttribute" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+
+  <category name="com.manulife.pension.service.employee.EmployeeServiceBean" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+
+  <category name="com.manulife.pension.ps.web.tools.CreateContributionDetailsAction" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+  
+  <category name="com.manulife.pension.ps.web.tools.SubmissionUploadAction" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+
+  <category name="com.manulife.pension.ps.web" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+
+ <category name="com.manulife.pension.bd.web" additivity="false">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+  <category name="com.manulife.pension.service" additivity="false">
+    <appender-ref ref="MRL" />
+  </category>
+
+  <category name="org.apache">
+    <priority value="error" />
+  </category>
+
+  <category name="com.manulife.pension.ps.web.withdrawal.BaseWithdrawalReportAction" additivity="false">
+    <priority value="info"/>
+     <appender-ref ref="MRL" />
+  </category>  
+
+  <category name="com.manulife.pension.ps.service.withdrawal.dao.LoanAndWithdrawalDAO" additivity="false">
+    <priority value="info"/>
+     <appender-ref ref="MRL" />
+  </category>  
+  
+  <root>
+    <priority value="error" />
+    <appender-ref ref="STDOUT" />
+<!--     <appender-ref ref="MRL" />  -->
+    <!-- appender-ref ref="fileAppender" / -->
+  </root>
+ 
+<category name="com.manulife.pension.service.awd.AwdServiceBean" additivity="false">
+    <priority value="info" />
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+
+  <category name="com.manulife.pension.service.awd.periodicprocess" additivity="false">
+    <priority value="info" />
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+
+  <category name="com.manulife.pension.service.contract.util.EnrollmentPeriodicProcess" additivity="false">
+    <priority value="info" />
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="MRL" />
+  </category>
+
+</log4j:configuration>

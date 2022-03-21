@@ -1,0 +1,72 @@
+/*******************************************************************************
+* MAIN CONTENT
+********************************************************************************/
+	#content3 .page_section_subheader, 
+	#content3 .page_section_subsubheader{
+	border-top:4px solid #febe10;
+	clear:left;
+	height:43px;
+	margin-bottom:2px;
+	}
+	
+	#content3 .page_section_subheader{
+		background-color:#717b80;
+	}
+	
+	#content3 .page_section_subsubheader{
+		background-color:#a8b8bf;
+	}
+	
+	#content3.controls h3, #page_content .controls h4{
+	padding-top:8px;
+	float:left;
+	}
+	#content3 ul{
+	font-size: 12px;
+
+	}
+	#content3 li{
+
+	}
+	#content3 ol{
+	font-size: 12px;
+
+	}
+	div#page_section_container_det{
+	margin-bottom:5px;
+	width:auto;
+	background-color: #fff;
+	background-image: url('/assets/unmanaged/images/backgrounds/blue_bg.gif');
+	background-repeat: repeat-y;
+	background-position: center top;
+	padding: 5px;
+}
+
+	div#page_section_container_det h4{
+		background: none;
+		color:#333333;
+		font: normal 1em georgia, times, serif;
+		height: 1em;
+		margin: 0;
+		padding: 10px 0 10px 15px;
+	}
+
+	
+	div#page_section_container_det td, 
+	div#page_section_container_det th, 
+	div#page_section_container_det p, 
+	div#page_section_container_det li{
+	font-size:.75em;
+	text-align: left;
+	}
+/*******************************************************************************
+* COLUMN CONTENT
+********************************************************************************/
+	#rightColumn1 ul{
+	font-size: 11px;
+	padding-left: 15px;
+	}
+
+	#rightColumn1 li{
+
+	}

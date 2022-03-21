@@ -1,0 +1,525 @@
+<project name="common" basedir=".">
+
+	<property file="${user.home}/.ant.properties" />
+	<property environment="env" />
+	<dirname property="common.dir" file="${ant.file.common}/.." />
+
+	<!-- START: Common Manifest Data -->
+	<property name="division_title"   value="John Hancock Retirement Plan Services"/>
+	<property name="build_number"     value="Not provided"/>
+	<!-- passed in using -Dbuild_number=###### -->
+	<property name="build_branch"     value="Not provided"/>
+	<!-- passed in using -Dbuild_branch=branch_name_or_HEAD -->
+	<property name="build_details"    value="${build_number}" />
+	<property name="build_author"     value="${user.name}"/>
+	<property name="java_vendor"      value="${java.vendor}"/>
+	<property name="java_version"     value="${java.version}"/>
+	<tstamp>
+		<format property="build_time" pattern="yyyy-MM-dd HH:mm:ss:sss a zzz" locale="en,CANADA"/>
+	</tstamp>
+	<!-- END: Common Manifest Data -->
+
+
+	<!-- Avoid spaces in any path -->
+	<property name="root.dir" value="${env.HOMEDRIVE}"/>
+	<property name="hostname" value="${env.COMPUTERNAME}"/>
+	<property name="deploy.root" value="${env.HOMEDRIVE}" />
+	<property name="websphere.deploy.root" value="${env.HOMEDRIVE}" />
+	<property name="common.lib.dir" value="${common.dir}/lib" />
+	<property name="common.weblib.dir" value="${common.dir}/weblib" />
+	<property name="common.devlib.dir" value="${common.dir}/devlib" />
+	<property name="common.assets.dir" value="${common.dir}/assets" />
+	<property name="mf.app.dir" value="${deploy.root}/apps" />
+	<property name="mf.repo.dir" value="${deploy.root}/db" />
+	<property name="debug" value="on" />
+	<property name="deprecation" value="off" />
+	<property name="buildVersion" value="1.0-SNAPSHOT" />
+	<property name="db2.home" value="${env.DB2PATH}" />
+  <property name="dmgr.profile.name" value="${hostname}Node"/>
+	<property name="node.profile.name" value="${hostname}Node"/>
+	<property name="cell.name" value="${node.profile.name}Cell"/>
+	<property name="dmgr.cell.name" value="${dmgr.profile.name}Cell"/>
+  <property name="websphere.home" value="${root.dir}/webSphere9/AppServer"/>
+
+	<property name="websphere.application.install.dir" value="${websphere.home}/profiles/${node.profile.name}/installedApps/${dmgr.cell.name}"/>
+	<property name="websphere.application.config.dir" value="${websphere.home}/profiles/${node.profile.name}/config/cells/${dmgr.cell.name}/applications"/>
+
+	<!-- Used by JUnit -->
+	<property name="junit.haltonfailure" value="off" />
+	<property name="junit.haltonerror" value="off" />
+
+	<!-- Begin: used for WAS ANT Tasks -->
+	<!--
+  <path id="websphere.ant.tasks.lib">
+    <pathelement path="${websphere.home}/lib/wsanttasks.jar" />
+    <pathelement path="${websphere.home}/lib/wsdeploytool.jar" />
+    <pathelement path="${websphere.home}/lib/wsprofile.jar" />
+    <pathelement path="${websphere.home}/lib/wsdeployenv.jar" />
+  </path>
+-->
+	<!-- This property is a workaround for an issue with the deploy task -->
+	<!--
+  <property name="user.install.root" value="${websphere.home}" />
+
+  <taskdef name="wsejbdeploy"
+           classname="com.ibm.websphere.ant.tasks.WsEjbDeploy"
+           classpathref="websphere.ant.tasks.lib"
+           onerror="ignore"
+  />
+-->
+	<!-- End: used for WAS ANT Tasks -->
+
+	<!-- Begin: General Path References -->
+
+	<path id="log4j">
+		<pathelement location="${common.weblib.dir}/log4j-1.2.14.jar" />
+	</path>
+
+	<path id="soap">
+		<pathelement location="${common.weblib.dir}/soap.jar" />
+	</path>
+
+	<fileset id="commons-lang.jars" dir="${common.lib.dir}">
+		<include name="commons-lang-2.3.jar" />
+		<include name="commons-lang3-3.3.2.jar" />
+	</fileset>
+
+	<path id="commons-lang">
+		<fileset refid="commons-lang.jars" />
+	</path>
+
+	<fileset id="useragent.jars" dir="${common.lib.dir}">
+		<include name="UserAgentUtils-1.1.1.jar" />
+	</fileset>
+
+	<path id="useragent">
+		<fileset refid="useragent.jars" />
+	</path>
+
+	<fileset id="commons-io.jars" dir="${common.lib.dir}">
+		<include name="commons-io-1.4.jar" />
+	</fileset>
+
+	<path id="commons-io">
+		<fileset refid="commons-io.jars" />
+	</path>
+
+	<fileset id="commons-logging.jars" dir="${common.lib.dir}">
+		<include name="commons-logging-1.1.jar" />
+	</fileset>
+
+	<path id="commons-logging">
+		<fileset refid="commons-logging.jars" />
+		<path refid="log4j" />
+	</path>
+
+	<fileset id="commons-collections.jars" dir="${common.lib.dir}">
+		<include name="commons-collections-3.2.jar" />
+	</fileset>
+
+	<path id="commons-collections">
+		<fileset refid="commons-collections.jars" />
+	</path>
+
+	<fileset id="commons-httpclient.jars" dir="${common.lib.dir}">
+		<include name="commons-httpclient-3.1.jar" />
+	</fileset>
+
+	<path id="commons-httpclient">
+		<fileset refid="commons-httpclient.jars" />
+	</path>
+
+	<fileset id="commons-codec.jars" dir="${common.lib.dir}">
+		<include name="commons-codec-1.3.jar" />
+	</fileset>
+
+	<path id="commons-codec">
+		<fileset refid="commons-codec.jars" />
+	</path>
+
+	<fileset id="commons-io.jars" dir="${common.lib.dir}">
+		<include name="commons-io-1.3.1.jar" />
+	</fileset>
+
+	<path id="commons-io">
+		<fileset refid="commons-io.jars" />
+	</path>
+
+	<fileset id="serializer.jars" dir="${common.lib.dir}">
+		<include name="serializer-2.7.0.jar" />
+	</fileset>
+
+	<path id="serializer">
+		<fileset refid="serializer.jars" />
+	</path>
+
+	<fileset id="batik.jars" dir="${common.lib.dir}">
+		<include name="batik-all-1.7.jar" />
+	</fileset>
+
+	<path id="batik">
+		<fileset refid="batik.jars" />
+	</path>
+
+	<fileset id="fop.jars" dir="${common.lib.dir}">
+		<include name="fop-0.95.jar" />
+	</fileset>
+
+	<fileset id="itext.jars" dir="${common.lib.dir}">
+		<include name="iText-2.1.2u.jar" />
+		<include name="itextpdf-5.5.6.jar" />
+	</fileset>
+
+	<fileset id="jdom.jars" dir="${common.lib.dir}">
+		<include name="jdom.jar" />
+	</fileset>
+
+	<fileset id="xmlgraphics-commons.jars" dir="${common.lib.dir}">
+		<include name="xmlgraphics-commons-1.3.1.jar" />
+	</fileset>
+
+	<path id="xmlgraphics-commons">
+		<fileset refid="xmlgraphics-commons.jars" />
+	</path>
+
+	<fileset id="avalon-framework.jars" dir="${common.lib.dir}">
+		<include name="avalon-framework-4.2.0.jar" />
+	</fileset>
+
+	<path id="avalon-framework">
+		<fileset refid="avalon-framework.jars" />
+	</path>
+
+	<path id="jdom">
+		<fileset refid="jdom.jars"/>
+	</path>
+
+	<path id="itext">
+		<fileset refid="itext.jars"/>
+	</path>
+
+	<path id="fop">
+		<fileset refid="fop.jars" />
+		<path refid="avalon-framework"/>
+		<path refid="commons-io" />
+		<path refid="batik" />
+		<path refid="xmlgraphics-commons" />
+		<path refid="serializer" />
+	</path>
+
+	<fileset id="commons-fileupload.jars" dir="${common.lib.dir}">
+		<include name="commons-fileupload-1.3.3.jar" />
+	</fileset>
+
+	<path id="commons-fileupload">
+		<fileset refid="commons-fileupload.jars" />
+	</path>
+
+	<fileset id="commons-beanutils.jars" dir="${common.lib.dir}">
+		<include name="commons-beanutils-1.7.0.jar" />
+	</fileset>
+
+	<path id="commons-beanutils">
+		<fileset refid="commons-beanutils.jars" />
+		<path refid="commons-logging" />
+	</path>
+
+	<fileset id="commons-digester.jars" dir="${common.lib.dir}">
+		<include name="commons-digester-1.8.jar" />
+	</fileset>
+
+	<fileset id="poi.jars" dir="${common.lib.dir}">
+		<include name="poi-3.0-rc4-20070503.jar" />
+	</fileset>
+
+	<path id="poi">
+		<fileset refid="poi.jars"/>
+	</path>
+
+	<path id="commons-digester">
+		<fileset refid="commons-digester.jars" />
+		<path refid="commons-logging" />
+		<path refid="commons-beanutils" />
+	</path>
+
+	<fileset id="commons-jxpath.jars" dir="${common.lib.dir}">
+		<include name="commons-jxpath-1.2.jar" />
+	</fileset>
+
+	<path id="commons-jxpath">
+		<fileset refid="commons-jxpath.jars" />
+	</path>
+
+	<fileset id="commons-configuration.jars" dir="${common.lib.dir}">
+		<include name="commons-configuration-1.6.jar" />
+	</fileset>
+
+	<path id="commons-configuration">
+		<fileset refid="commons-configuration.jars" />
+		<path refid="commons-collections" />
+		<path refid="commons-lang" />
+		<path refid="commons-logging" />
+		<path refid="commons-beanutils" />
+		<path refid="commons-digester" />
+		<path refid="commons-codec" />
+		<path refid="commons-jxpath" />
+	</path>
+
+	<fileset id="commons-dbcp.jars" dir="${common.lib.dir}">
+		<include name="commons-dbcp-1.2.1.jar" />
+	</fileset>
+
+	<path id="commons-dbcp">
+		<fileset refid="commons-dbcp.jars" />
+	</path>
+
+	<fileset id="commons-pool.jars" dir="${common.lib.dir}">
+		<include name="commons-pool-1.3.jar" />
+	</fileset>
+
+	<path id="commons-pool">
+		<fileset refid="commons-pool.jars" />
+	</path>
+
+	<path id="connection.pool">
+		<fileset dir="${common.lib.dir}">
+			<include name="commons-dbcp-1.2.1.jar"/>
+			<include name="commons-pool-1.3.jar"/>
+		</fileset>
+	</path>
+
+	<path id="junit.classpath">
+		<pathelement location="${common.devlib.dir}/junit-4.12.jar" />
+	</path>
+
+	<path id="junit.mockito.classpath">
+		<pathelement location="${common.devlib.dir}/mockito-all-1.10.19.jar" />
+	</path>
+
+	<path id="powermock.classpath">
+		<pathelement location="${common.devlib.dir}/cglib-nodep-2.2.2.jar" />
+		<pathelement location="${common.devlib.dir}/javassist-3.20.0-GA.jar" />
+		<pathelement location="${common.devlib.dir}/powermock-mockito-1.6.6-full.jar" />
+	</path>
+
+	<path id="jacoco.classpath">
+		<pathelement location="${common.devlib.dir}/jacocoant-0.7.7.jar" />
+	</path>
+
+	<path id="mockejb.classpath">
+		<pathelement location="${common.lib.dir}/mockejb-0.6-beta2.jar" />
+		<pathelement location="${common.lib.dir}/mockrunner-0.3.7.jar" />
+		<pathelement location="${common.lib.dir}/cglib-nodep-2.2.3.jar" />
+		<pathelement location="${common.lib.dir}/jakarta-oro-2.0.8.jar" />
+	</path>
+
+	<path id="db2jcc.classpath">
+		<pathelement location="${common.lib.dir}/db2jcc.jar" />
+		<pathelement location="${common.lib.dir}/db2jcc_license_cu.jar" />
+		<pathelement location="${common.lib.dir}/db2jcc_license_cisuz.jar" />
+	</path>
+
+	<path id="gson.classpath">
+		<pathelement location="${common.lib.dir}/gson-2.8.2.jar" />
+	</path>
+
+	<fileset id="struts.jars" dir="${common.lib.dir}">
+		<include name="struts-core-1.3.5.jar" />
+		<include name="struts-el-1.3.5.jar" />
+		<include name="struts-extras-1.3.5.jar" />
+		<include name="struts-faces-1.3.5.jar" />
+		<include name="struts-mailreader-dao-1.3.5.jar" />
+		<include name="struts-scripting-1.3.5.jar" />
+		<include name="struts-taglib-1.3.5.jar" />
+		<include name="struts-tiles-1.3.5.jar" />
+	</fileset>
+
+	<fileset id="springs.jars" dir="${common.lib.dir}">
+		<include name="spring-security-web-5.0.6.RELEASE.jar" />
+		<include name="spring-security-config-5.0.6.RELEASE.jar" />
+		<include name="spring-security-core-5.0.6.RELEASE.jar" />
+		<include name="spring-beans-5.0.7.RELEASE.jar" />
+		<include name="spring-context-5.0.7.RELEASE.jar" />
+		<include name="spring-core-5.0.7.RELEASE.jar" />
+		<include name="spring-webmvc-5.0.7.RELEASE.jar" />
+		<include name="spring-aop-5.0.7.RELEASE.jar" />
+		<include name="spring-web-5.0.7.RELEASE.jar" />
+		<include name="spring-expression-5.0.7.RELEASE.jar" />
+		<include name="spring-modules-validation-0.9.jar" />
+	</fileset>
+
+	<path id="spring.classpath">
+		<fileset refid="springs.jars" />
+	</path>
+	<path id="struts.classpath">
+		<fileset refid="struts.jars" />
+	</path>
+	
+  <fileset id="spring.jars" dir="${common.lib.dir}">
+    <include name="spring-aop-5.0.7.RELEASE.jar" />
+  	<include name="spring-beans-5.0.7.RELEASE.jar"/>
+  	<include name="spring-context-5.0.7.RELEASE.jar"/>
+  	<include name="spring-core-5.0.7.RELEASE.jar"/>
+  	<include name="spring-expression-5.0.7.RELEASE.jar" />
+    <include name="spring-modules-validation-0.9.jar" />
+    <include name="spring-orm-4.3.12.RELEASE.jar" />
+  	<include name="spring-security-config-5.0.6.RELEASE.jar" />
+  	<include name="spring-security-core-5.0.6.RELEASE.jar" />
+  	<include name="spring-security-web-5.0.6.RELEASE.jar"/>
+  	<include name="spring-web-5.0.7.RELEASE.jar"/>
+  	<include name="spring-webmvc-5.0.7.RELEASE.jar"/>
+  	<include name="jackson-core-2.9.5.jar"/>
+    <include name="jackson-databind-2.9.5.jar"/>
+    <include name="jackson-annotations-2.9.0.jar"/>	
+   </fileset>
+
+	<fileset id="struts2.jars" dir="${common.lib.dir}">
+		<include name="struts2-core-2.1.8.jar" />
+		<include name="struts2-convention-plugin-2.1.8.jar" />
+		<include name="struts2-json-plugin-2.1.8.jar" />
+		<include name="struts2-config-browser-plugin-2.1.8.jar" />
+		<include name="xwork-core-2.1.6.jar" />
+		<include name="ognl-2.7.3.jar" />
+		<include name="json-lib-2.1.jar" />
+		<include name="freemarker-2.3.15.jar" />
+		<include name="sitemesh-2.4.2.jar" />
+		<include name="velocity-1.5.jar"/>
+	</fileset>
+	
+  <path id="spring">
+    <fileset refid="spring.jars" />
+    <path refid="commons-logging" />
+    <path refid="commons-fileupload" />
+    <path refid="commons-io" />
+  </path>
+
+	<path id="struts2">
+		<fileset refid="struts2.jars" />
+		<path refid="commons-logging" />
+		<path refid="commons-fileupload" />
+		<path refid="commons-io" />
+	</path>
+
+	<path id="checkstyle-path">
+		<pathelement location="${common.devlib.dir}/checkstyle-4.3.jar" />
+	</path>
+
+	<path id="antlr-path">
+		<pathelement location="${common.lib.dir}/antlr-2.7.7.jar" />
+	</path>
+
+	<path id="commons-cli">
+		<pathelement location="${common.lib.dir}/commons-cli-1.0.jar" />
+	</path>
+
+	<!-- End: General Path References -->
+
+	<!-- Begin: used for Checkstyle ANT Tasks -->
+	<path id="checkstyle.ant.tasks.lib">
+		<path refid="checkstyle-path" />
+		<path refid="antlr-path" />
+		<path refid="commons-beanutils" />
+		<path refid="commons-cli" />
+		<path refid="commons-collections" />
+		<path refid="commons-logging" />
+	</path>
+	<taskdef uri="antlib:com.puppycrawl.tools.checkstyle"
+           resource="com/puppycrawl/tools/checkstyle/antlib.xml"
+           classpathref="checkstyle.ant.tasks.lib"
+           onerror="ignore"
+  />
+	<!-- End: used for Checkstyle ANT Tasks -->
+
+	<target name="sleep10sec">
+		<sleep seconds="10" />
+	</target>
+
+	<macrodef name="replaceWin32PathWithUnixPath">
+		<attribute name="dir" />
+		<sequential>
+			<replace dir="@{dir}">
+				<replacefilter token="\" value="/" />
+			</replace>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="replaceMfPaths">
+		<attribute name="dir" />
+		<sequential>
+			<replace dir="@{dir}">
+				<replacefilter token="C:/apps" value="${mf.app.dir}" />
+				<replacefilter token="C:/Db" value="${mf.repo.dir}" />
+				<replacefilter token="C:/db" value="${mf.repo.dir}" />
+				<replacefilter token="DB2_HOME=C:/PROGRA~1/IBM/SQLLIB"
+                       value="DB2_HOME=${db2.home}"
+        />
+				<replacefilter token="JAVA_HOME=C:/WebSphere/AppServer/java"
+                       value="JAVA_HOME=${env.JAVA_HOME}"
+        />
+			</replace>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="stopAISSystem">
+		<attribute name="name" />
+		<sequential>
+			<java classname="com.manulife.ais.AISShutdown" fork="false">
+				<arg line="@{name}" />
+				<classpath>
+					<pathelement location="${common.lib.dir}/mrl.jar" />
+				</classpath>
+			</java>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="generate-test-summary">
+		<attribute name="reportJunitDir"/>
+		<sequential>
+			<xslt style="${common.dir}/ant/test-summary.xslt"
+          force="true"
+          in="@{reportJunitDir}/TESTS-TestSuites.xml"
+            out="@{reportJunitDir}/TestSummary.txt"
+      />
+		</sequential>
+	</macrodef>
+
+	<target name="start-selenium-server">
+		<java jar="${common.lib.dir}/selenium-server.jar" fork="true" spawn="true" />
+	</target>
+
+	<target name="stop-selenium-server">
+		<get taskname="selenium-shutdown" src="http://localhost:4444/selenium-server/driver/?cmd=shutDown"
+         dest="result.txt" ignoreerrors="true" />
+		<echo taskname="selenium-shutdown" message="DGF Errors during shutdown are expected" />
+	</target>
+
+	<macrodef name="run-selenium-tests" description="Start Proxy ; Run Test ; stop Proxy">
+		<attribute name="seleniumTestTarget"/>
+		<sequential>
+			<parallel>
+				<antcall target="start-selenium-server">
+				</antcall>
+				<sequential>
+					<echo taskname="waitfor" message="Wait for proxy server launch" />
+					<waitfor maxwait="2" maxwaitunit="minute" checkevery="100">
+						<http url="http://localhost:4444/selenium-server/driver/?cmd=testComplete"/>
+					</waitfor>
+					<antcall target="@{seleniumTestTarget}">
+					</antcall>
+					<antcall target="stop-selenium-server">
+					</antcall>
+				</sequential>
+			</parallel>
+		</sequential>
+	</macrodef>
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Load the Ant Contrib Library - Contains lots of additional ANT features like for loops
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="${common.devlib.dir}/ant-contrib-0.6.jar" />
+		</classpath>
+	</taskdef>
+
+</project>

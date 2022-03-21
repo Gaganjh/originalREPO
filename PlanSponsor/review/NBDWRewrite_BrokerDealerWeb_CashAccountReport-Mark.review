@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="NBDWRewrite_BrokerDealerWeb_CashAccountReport">
+  <ReviewIssue id="FQQR6CO4">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-03 :: 10:56:08:740 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:11:44:031 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="8">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/CashAccountReportForm.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>This is not the author.  Whoever put this class here is the author and has responsibility for making sure it is coded correctly.</Summary>
+    <Description> * @author Charles Chan</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQQR7EMS">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-03 :: 10:56:57:940 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:11:40:006 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="12">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/CashAccountReportForm.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>See seperate JSP Code Review (Word document) </Summary>
+    <Description>This is regarding the issue with the dates on the JSP page being converted in the jsp instead of properly converted within the form.  Are they even being saved in a usable format?  Is "String" good?  We seem to require it as a "Date" on the page?  Please investigate and refactor as necessary, or provide getters that get the Date version of the string so we don't have to do it in the page.</Description>
+    <Annotation></Annotation>
+    <Revision>Added methods to return fromDate, toDate in Date format.</Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQS3G37Q">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 09:27:24:614 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:11:33:727 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="50">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/CashAccountReportAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>This is not the author of the class. </Summary>
+    <Description>This was the author of the class in Plan Sponsor.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQS3QRJH">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 09:35:42:701 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:11:29:451 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="183">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/CashAccountReportAction.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Line of code is never used.</Summary>
+    <Description>ContractDatesVO contractDates = getContractDatesVO(request);</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQS3V2VU">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 09:39:04:026 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:11:15:751 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="272">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/CashAccountReportAction.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>This ties in to one of the other issues regarding toDate / fromDate</Summary>
+    <Description>I don' t think Struts allows you to set dates directly into the form as Date objects.  However the getter and setter for the form can be String, and you can supply two other getters which return the date object rather than having to convert it in the JSP (as mentioned in a previous Jupiter problem) and here as well.</Description>
+    <Annotation></Annotation>
+    <Revision>Added methods to return fromDate, toDate in Date format.</Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQSHHXPV">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:00:45:427 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:11:09:973 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="425">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/CashAccountReportAction.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Could we have written this as a utility method so that all reports could use it?</Summary>
+    <Description>&#13;
+I would have thought that many of our CSVs probably get named similarly.&#13;
+Would it have made sense to code it as a utility method that all such reports could use?&#13;
+&#13;
+                     String csvFileName = getReportName()  &#13;
+							 + BDConstants.HYPHON_SYMBOL&#13;
+							 + currentContract.getContractNumber() &#13;
+							 + BDConstants.HYPHON_SYMBOL &#13;
+							 + DateRender.format(getContractDatesVO(request).&#13;
+											getAsOfDate(), RenderConstants.MEDIUM_MDY_SLASHED).&#13;
+											replace(BDConstants.SLASH_SYMBOL, BDConstants.SPACE_SYMBOL)&#13;
+							 + CSV_EXTENSION;</Description>
+    <Annotation></Annotation>
+    <Revision>All the reports have their own CSV Naming convention. There is no common name used by most of the CSV file names. Hence, the CSV file name cannot be made a common utility method. </Revision>
+    <Resolution>item.resolution.label.invalidWontfix</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQSHK8HO">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:02:32:700 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:02:47:280 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="376">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/CashAccountReportAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Missing generics</Summary>
+    <Description>Iterator</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQSHOR1U">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:06:03:378 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:06:17:348 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="260">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/CashAccountReportAction.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>This should go before all the rest of the code in this method.  It's used for debugging purposes.</Summary>
+    <Description>		if (logger.isDebugEnabled())&#13;
+			logger.debug("entry -&gt; populateDownloadData");</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQSJ1V2Z">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:44:14:747 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:46:00:567 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="482">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/CashAccountReportAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>This new method could use a few more inline comments.</Summary>
+    <Description>In looking at the method:  prepareXMLFromReport&#13;
+I noticed that as a person trying to read it for the first time, it wasn't immediately obvious what you were doing.&#13;
+Maybe a couple more inline comments just to explain little things&#13;
+&#13;
+Like this line.... &#13;
+       if (!data.getHasMultipleContracts()) {&#13;
+&#13;
+What does it matter if there are multiple contracts?&#13;
+&#13;
+So add a few more comments, as if somebody who is totally new to the team came in and had to fix a bug in this code and was seeing it for the first time.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQSJDP4A">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:53:26:890 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:56:41:677 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="666">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/CashAccountReportAction.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>You checked if report is null, but didn't care if the collection getDetails was null.</Summary>
+    <Description>public Integer getNumberOfRowsInReport(ReportData report) {&#13;
+        if (report != null) {&#13;
+            return report.getDetails().size();&#13;
+        }&#13;
+        return 0;&#13;
+    }&#13;
+&#13;
+How about this instead.  I use try and catch.  I also do a finally to return a properly formed Integer object - which is your return type.&#13;
+&#13;
+public Integer getNumberOfRowsInReport(ReportData report) {&#13;
+	int size=0;&#13;
+	try&#13;
+            size = report.getDetails().size();&#13;
+        } catch (Exception e) {&#13;
+		//  hmmm should we log this Exception to the MRL logger? &#13;
+	  } finally {&#13;
+	        return new Integer(size);&#13;
+	  }&#13;
+    }&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQSJIJYS">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:57:13:492 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:58:08:580 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="16">PlanSponsorEJB/ejbModule/com/manulife/pension/ps/service/report/transaction/valueobject/ContributionTransactionReportData.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Generate a serial ID for this Serializable class.</Summary>
+    <Description>ContributionTransactionReportData&#13;
+&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixingt</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQSJJW38">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:58:15:860 EST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 16:58:31:683 EST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="14">PlanSponsorEJB/ejbModule/com/manulife/pension/ps/service/report/transaction/valueobject/ContributionTransactionReportData.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Incorrect Javadoc</Summary>
+    <Description>* @author Charles Chan</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+</Review>

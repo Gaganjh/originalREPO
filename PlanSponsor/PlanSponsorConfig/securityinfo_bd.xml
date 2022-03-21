@@ -1,0 +1,1069 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plansponsor:controlflow xmlns:plansponsor="http://www.manulife.com/usgp/plansponsor">
+   <web-resource-collection>
+    <web-resource-name id="public" description="Public Service">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.PublicWebResourceAuthorizationHandler" />
+        <url-pattern>/login/loginServlet</url-pattern>
+        <url-pattern>/do/postLogin</url-pattern>
+        <url-pattern>/activation/activationServlet</url-pattern>
+        <url-pattern>/do/activation/</url-pattern>
+        <url-pattern>/do/home/</url-pattern>
+        <url-pattern>/do/activation/</url-pattern>
+        <url-pattern>/do/registerFirmRep/</url-pattern> 
+        <url-pattern>/do/registerRiaUser/</url-pattern>
+        <url-pattern>/do/registerBrokerAssistant/</url-pattern>
+        <url-pattern>/do/registerExternalBroker/</url-pattern>
+        <url-pattern>/do/migration/</url-pattern>
+        <url-pattern>/do/jhSignature</url-pattern>
+        <url-pattern>/do/db</url-pattern>
+        <url-pattern>/do/features</url-pattern>
+        <url-pattern>/do/services</url-pattern>
+        <url-pattern>/do/publicFP</url-pattern>                 
+        <url-pattern>/do/publicSalesTools</url-pattern>
+        <url-pattern>/do/forgetPassword/</url-pattern>
+        <url-pattern>/do/firmsearch</url-pattern>
+        <url-pattern>/do/salesTools/</url-pattern>
+        <url-pattern>/do/partneringWithUs/</url-pattern>
+        <url-pattern>/do/publicForms</url-pattern>
+        <url-pattern>/do/productsAndServices/</url-pattern>
+        <url-pattern>/do/legal/</url-pattern>
+        <url-pattern>/do/privacyAndSecurity/</url-pattern>   
+        <url-pattern>/do/recommendedSettings/</url-pattern>
+        <url-pattern>/PieChartServlet</url-pattern>
+        <url-pattern>/LineChartServlet</url-pattern>
+        <url-pattern>/ViewRIAStatements</url-pattern>
+
+        <!-- F&P URLs for AJAX calls  -->
+        <url-pattern>/do/fap/fapFilterAction/</url-pattern>      
+        <url-pattern>/do/fap/fapByFundInformation/</url-pattern>
+        <url-pattern>/do/fap/fapByPricesAndYTD/</url-pattern>
+        <url-pattern>/do/fap/fapByPerformanceAndFees/</url-pattern>
+        <url-pattern>/do/fap/fapByStandardDeviation/</url-pattern>
+        <url-pattern>/do/fap/fapByFundCharI/</url-pattern>
+        <url-pattern>/do/fap/fapByFundCharII/</url-pattern>
+        <url-pattern>/do/fap/fapByMorningstar/</url-pattern>
+        <url-pattern>/do/fap/fabByFundCheck/</url-pattern>
+        <url-pattern>/do/fap/fapByFundScorecard/</url-pattern>
+        <url-pattern>/do/iKit/getFundInfo/</url-pattern>
+		<url-pattern>/do/home/managesession</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="jhNavigatorProxy" description="JH Navigator Proxy for Find Literature">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="mimicAllowed" value="true"/>            
+        </authorizationHandler>
+        <url-pattern>/do/jhNavigator</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="securedHomePage" description="Secured Home Page">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="mimicAllowed" value="true"/>            
+        </authorizationHandler>
+        <url-pattern>/do/secured/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="secondStepTransit" description="Second authentication step transition">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.StepupPageAuthorizationHandler" >
+            <property name="mimicAllowed" value="false"/>            
+        </authorizationHandler>
+         <url-pattern>/do/stepupTransition/</url-pattern>
+    </web-resource-name>
+    
+     <web-resource-name id="secondStep" description="Second authentication step">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.StepupPageAuthorizationHandler" >
+            <property name="mimicAllowed" value="false"/>            
+        </authorizationHandler>
+         <url-pattern>/do/stepupPasscode/</url-pattern>
+    </web-resource-name>
+       
+    <web-resource-name id="securedDynamicContentPage" description="Secured Dynamic Content Page">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>            
+        </authorizationHandler>
+        <url-pattern>/do/content</url-pattern> 
+    </web-resource-name>
+
+    <web-resource-name id="securedLinks" description="Secured links for legal,privacy security and Recommended Settings">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>            
+        </authorizationHandler>
+        <url-pattern>/do/legal/</url-pattern>
+        <url-pattern>/do/privacyAndSecurity/</url-pattern>
+        <url-pattern>/do/recommendedSettings/</url-pattern> 
+    </web-resource-name>
+
+    <web-resource-name id="securedHelp" description="Help Page">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+       
+        <url-pattern>/do/howDoI/</url-pattern>
+        <url-pattern>/do/glossary/</url-pattern>
+        <url-pattern>/do/siteMap/</url-pattern>
+        <url-pattern>/do/contactUs/</url-pattern>           
+    </web-resource-name>
+
+    <web-resource-name id="changeTempPassword" description="Resources for changeTempPassword">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+            <property name="loginStatusCode" value="resetPassword"/>
+        </authorizationHandler>
+        <url-pattern>/do/changeTempPassword/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="updatePassword" description="Resources for updatePassword">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+            <property name="loginStatusCode" value="updatePassword"/>
+        </authorizationHandler>
+        <url-pattern>/do/updatePassword/</url-pattern>
+    </web-resource-name>
+    
+   
+
+    <web-resource-name id="commonExternal" description="Common external user resources">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/mimic/end</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="registered" description="Public Service">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/logout/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="myProfileEntry" description="my profile entry for external user">
+    <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/myprofileDispatch</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="myProfileInternal" description="my profile for internal user">
+    <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/myprofile/internal</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="myProfileFirmRep" description="my profile tabs for firm rep">
+        <authorizationHandler
+                class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+                <property name="licenseRequired" value="false"/>
+                <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/myprofile/security</url-pattern>
+        <url-pattern>/do/myprofile/personalInfo</url-pattern>
+        <url-pattern>/do/myprofile/license</url-pattern>
+        <url-pattern>/do/myprofile/preference</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="myProfileRIAUser" description="my profile tabs for RIA User">
+        <authorizationHandler
+                class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+                <property name="licenseRequired" value="false"/>
+                <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/myprofile/security</url-pattern>
+        <url-pattern>/do/myprofile/personalInfo</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="fundEvaluator" description="Fund Evaluator Page ">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="true"/>
+            <property name="mimicAllowed" value="true"/>
+            <property name="firmRestriction" value="64757"/>
+        </authorizationHandler>
+        <url-pattern>/do/fundEvaluator</url-pattern>
+    </web-resource-name>
+        
+    <web-resource-name id="myBrokerProfile" description="my broker profile">
+    <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/myprofile/security</url-pattern>
+        <url-pattern>/do/myprofile/license</url-pattern>
+        <url-pattern>/do/myprofile/preference</url-pattern>
+        <url-pattern>/do/myprofile/brokerPersonalInfo</url-pattern>
+        <url-pattern>/do/myprofile/license</url-pattern>
+        <url-pattern>/do/myprofile/preference</url-pattern>
+        <url-pattern>/do/myprofile/assistants</url-pattern>
+        <url-pattern>/do/myprofile/addAssistant</url-pattern>
+        <url-pattern>/do/myprofile/manageAssistant</url-pattern>
+        <url-pattern>/do/myprofile/addBOB</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="myProfileBrokerAssistant" description="my profile for broker assistant">
+    <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/myprofile/security</url-pattern>
+        <url-pattern>/do/myprofile/personalInfo</url-pattern>
+        <url-pattern>/do/myprofile/preference</url-pattern>
+        <url-pattern>/do/myprofile/license</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="myProfileBasicBroker" description="my level1 broker profile">
+    <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/myprofile/security</url-pattern>
+        <url-pattern>/do/myprofile/personalInfo</url-pattern>
+        <url-pattern>/do/myprofile/preference</url-pattern>
+        <url-pattern>/do/myprofile/createBOB</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="help" description="help information">
+    <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/help</url-pattern>
+        <url-pattern>/do/myprofileHelp</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="brokerListing" description="Financial Rep Listing Page">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/brokerListing/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="bob" description="Block Of Business">
+    <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+         <url-pattern>/do/bob/blockOfBusiness/</url-pattern>
+         <url-pattern>/do/bob/detailedAccountReport/Active/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="bobPlanReviewReports" description="BOB level Plan Review Reports">
+    <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+            <property name="firmRestriction" value="88459"/>
+        </authorizationHandler>
+         <url-pattern>/do/bob/planReview/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="individualPlanReviewReports" description="Individual Contract level Plan Review Reports">
+    <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDContractAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+            <property name="firmRestriction" value="88456"/>
+              <property name="allowedcontractStatuses" value="AC,CF,DI,IA" />
+                <property name="allowedcontractTypes" value="DB,DC" />
+        </authorizationHandler>
+         <url-pattern>/do/bob/contract/planReview/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="definedContributionReports" description="Defined Contribution Reports">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDContractAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+            <property name="allowedcontractStatuses" value="AC,CF,DI"/>
+            <property name="allowedcontractTypes" value="DC"/>
+        </authorizationHandler>
+        <url-pattern>/do/bob/investment/investmentAllocationReportLink/</url-pattern>
+        <url-pattern>/do/bob/investment/investmentAllocationDetailsReport/</url-pattern>
+        <url-pattern>/do/bob/investment/investmentAllocationReport/</url-pattern>
+        <url-pattern>/do/bob/fundAdministration/</url-pattern>
+        <url-pattern>/do/tools/fundChangePortal/</url-pattern>
+        <url-pattern>/do/bob/participant/participantSummary/</url-pattern>
+        <url-pattern>/do/bob/participant/participantStatementSearch/</url-pattern>
+        <url-pattern>/do/bob/participant/participantStatementResults/</url-pattern>
+        <url-pattern>/do/bob/participant/participantStatements/</url-pattern>
+        <url-pattern>/do/bob/transaction/contributionTransactionReport/</url-pattern>
+        <url-pattern>/do/bob/transaction/loanRepaymentTransactionReport/</url-pattern>
+        <url-pattern>/do/bob/transaction/participantTransactionHistory/</url-pattern>
+        <url-pattern>/do/bob/transaction/deferralChangeDetailsReport/</url-pattern>          
+          <url-pattern>/do/bob/transaction/systematicWithdrawalReport/</url-pattern> 
+        <url-pattern>/do/bob/transaction/eziReport/</url-pattern>
+        <url-pattern>/do/bob/transaction/loanRepaymentDetailsReport/</url-pattern>
+        <url-pattern>/do/bob/transaction/linkToLoanRepaymentDetailsHistoryReport/</url-pattern>
+        <url-pattern>/do/bob/participant/participantAccount/</url-pattern>
+        <url-pattern>/do/bob/participant/participantAccountMoneyTypeSummary/</url-pattern>
+        <url-pattern>/do/bob/participant/participantAccountMoneyTypeDetails/</url-pattern>
+        <url-pattern>/do/bob/participant/participantAccountNetContribEarnings/</url-pattern>
+        <url-pattern>/do/bob/participant/participantAccountNetDeferral/</url-pattern>
+        <url-pattern>/do/bob/transaction/classConversionTransactionReport/</url-pattern>
+        <url-pattern>/do/bob/participant/participantBenefitBaseInformation/</url-pattern>
+        <url-pattern>/do/bob/investment/ipsManager/</url-pattern>
+        <url-pattern>/do/bob/investment/editIPSManager/</url-pattern>
+        <url-pattern>/do/bob/investment/editIPSReviewResults/</url-pattern>
+        <url-pattern>/do/bob/investment/approveIPSReviewResults/</url-pattern>
+        <url-pattern>/do/bob/investment/cancelIPSReview/</url-pattern>
+        <url-pattern>/do/bob/investment/viewIPSReviewResults/</url-pattern>
+        <url-pattern>/do/bob/investment/viewParticipantNotification/</url-pattern>
+        <url-pattern>/do/bob/investment/cofidQtrlyReview/</url-pattern>
+        <url-pattern>/do/bob/investment/coFiduciary321QtrlyReviewPDFAction/</url-pattern>
+        <url-pattern>/do/bob/investment/coFiduciaryFundRecommendationReview/</url-pattern>
+        <url-pattern>/do/bob/investment/cofiduciaryReviewReportAction/</url-pattern>
+    </web-resource-name>    
+    
+    <web-resource-name id="definedBenefitReports" description="Defined Benefit Reports">
+       <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDContractAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+            <property name="allowedcontractStatuses" value="AC,CF,DI"/>
+            <property name="allowedcontractTypes" value="DB"/>
+        </authorizationHandler>
+          <url-pattern>/do/bob/db/definedBenefitAccount/</url-pattern>
+          <url-pattern>/do/bob/db/definedBenefitAccountMoneyTypeDetails/</url-pattern>
+          <url-pattern>/do/bob/db/definedBenefitAccountMoneyTypeSummary/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="contractReports" description="Contract Reports">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDContractAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+            <property name="allowedcontractStatuses" value="AC,CF,DI"/>
+            <property name="allowedcontractTypes" value="DB,DC"/>
+        </authorizationHandler>
+          <url-pattern>/do/bob/investment/performanceChartInput/</url-pattern>
+          <url-pattern>/do/bob/investment/performanceChartResult/</url-pattern>
+          <url-pattern>/do/bob/transaction/fundToFundTransactionReport/</url-pattern>
+          <url-pattern>/do/bob/transaction/withdrawalDetailsReport/</url-pattern>
+          <url-pattern>/do/bob/transaction/transactionDetailsRebalReport/</url-pattern>
+          <url-pattern>/do/bob/transaction/pptContributionDetailsReport/</url-pattern>
+          <url-pattern>/do/bob/transaction/pptContribAdjDetailsReport/</url-pattern>
+          <url-pattern>/do/bob/transaction/cashAccountReport/</url-pattern>
+         
+          
+          <url-pattern>/do/bob/contract/contractDocuments/</url-pattern>
+          <url-pattern>/do/bob/contract/contractStatements/</url-pattern>
+          <url-pattern>/do/bob/transaction/loanSummaryReport/</url-pattern>
+          <url-pattern>/do/bob/contract/contractDocumentsPDF/</url-pattern>
+          <url-pattern>/do/bob/contract/contractStatementsPDF/</url-pattern>
+          <url-pattern>/do/bob/contract/contractSnapshot/</url-pattern>
+          <url-pattern>/do/bob/transaction/transactionHistoryReport/</url-pattern>
+          <url-pattern>/do/bob/contractFandp/</url-pattern> 
+          <url-pattern>/do/bob/contract/regulatoryDisclosures/</url-pattern>
+          <url-pattern>/do/bob/contract/RORCalculator/</url-pattern>
+          <url-pattern>/do/bob/contract/RORCalculatorDb/</url-pattern>
+          
+    </web-resource-name>
+    
+    <web-resource-name id="contractInformationReports" description="Contract Reports">
+            <authorizationHandler
+                class="com.manulife.pension.bd.web.controller.BDContractAuthorizationHandler">
+                <property name="licenseRequired" value="false" />
+                <property name="mimicAllowed" value="true" />
+                <property name="allowedcontractStatuses" value="AC,CF,DI,IA" />
+                <property name="allowedcontractTypes" value="DB,DC" />
+            </authorizationHandler>
+            <url-pattern>/do/bob/contract/contractInformation/</url-pattern>
+            <url-pattern>/do/bob/ContractFDFAction.fdf</url-pattern>
+            <url-pattern>/do/bob/feeDiscolsure/feeDisclosurePdfReport/</url-pattern>
+            <url-pattern>/do/bob/contract/planHighlights/</url-pattern>    
+            <url-pattern>/do/bob/contract/warrantyNotMet/</url-pattern>
+            <url-pattern>/do/bob/investment/iccReport/</url-pattern>
+            <url-pattern>/do/bob/investment/planAndInvestmentNotice/</url-pattern>
+            <url-pattern>/do/bob/investment/ipiAddendum/</url-pattern>
+        </web-resource-name>
+
+ 	<web-resource-name id="secureDocumentUpload" description="Submit a Document">
+            <authorizationHandler
+                class="com.manulife.pension.bd.web.controller.BDContractAuthorizationHandler">
+                 <property name="licenseRequired" value="false" />
+                <property name="mimicAllowed" value="true" />
+                <property name="allowedcontractStatuses" value="PS,DC,PC,CA,AC,CF,DI,IA" />
+                <property name="allowedcontractTypes" value="DB,DC" />
+            </authorizationHandler>
+            <url-pattern>/do/bob/secureDocumentUpload/</url-pattern>
+        </web-resource-name>
+        	
+    <web-resource-name id="contentManagement" description="Content rule management">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>        
+        <url-pattern>/do/firmRestrictions/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="globalMessages" description="Manage global messages">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>        
+        <url-pattern>/do/globalMessages/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="prospectingTools" description="Prospecting Tools">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+            <property name="firmRestriction" value="10001"/>
+        </authorizationHandler>
+        <url-pattern>/do/ptools/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="licensedTools" description="Licensed Tools">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <!-- property name="licenseRequired" value="true"/-->
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        
+        <url-pattern>/do/tools/</url-pattern>
+        <url-pattern>/do/calculators/</url-pattern>     
+        <url-pattern>/do/forms/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="orderingMaterials" description="Ordering Materials">
+    <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/orderACR</url-pattern> 
+    </web-resource-name>
+
+    <web-resource-name id="fundsAndPerformance" description="Funds And Performance">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/fap/</url-pattern>
+        <url-pattern>/do/fap/US</url-pattern>
+        <url-pattern>/do/fap/NY</url-pattern>
+        <url-pattern>/do/fap/tabs/</url-pattern>
+   </web-resource-name>
+   
+    <web-resource-name id="performanceChartingAndHistoricalReturns" description="Funds And Performance">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+         </authorizationHandler>
+        <url-pattern>/do/fap/performanceChartInput/</url-pattern>
+        <url-pattern>/do/fap/performanceChartResult/</url-pattern>
+        <url-pattern>/do/fap/fapHistoricalPdf/</url-pattern>
+   </web-resource-name>   
+        
+    <web-resource-name id="userManagement" description="User Management">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/usermanagement/search</url-pattern>
+        <url-pattern>/do/usermanagement/dispatch</url-pattern>
+        <url-pattern>/do/mimic/start</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="eStatement" description="E Statement">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.EstatementAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/estatement/fetch</url-pattern>
+       <url-pattern>/do/ViewRIAStatements</url-pattern>
+       <url-pattern>/ViewRIAStatements</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="resetPassword" description="User Management ResetPassword">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/usermanagement/resetPassword</url-pattern>
+    </web-resource-name>
+     
+    <web-resource-name id="passcodeView" description="User Management Passcode View">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/usermanagement/passcodeView</url-pattern> 
+    </web-resource-name>
+    
+	<web-resource-name id="exemptPasscode" description="Passcode Exemption Management">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/usermanagement/passcodeExemption</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="userReports" description="User Reports">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/usermanagement/reports/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="updateUser" description="Update external user">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/manage/</url-pattern>
+    </web-resource-name>
+
+   <web-resource-name id="createFirmRep" description="Create FirmRep">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/createFirmRep/</url-pattern>
+   </web-resource-name>
+   
+   <web-resource-name id="createRiaUser" description="Create RiaUser">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="false"/>
+        </authorizationHandler>
+        <url-pattern>/do/createRiaUser/</url-pattern>
+   </web-resource-name>
+   
+   <web-resource-name id="messagecenter" description="Message Center">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/messagecenter/</url-pattern>
+   </web-resource-name>
+
+   <web-resource-name id="levelOneForms" description="Level One User Forms">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/levelOneForms/</url-pattern>
+   </web-resource-name>
+
+   <web-resource-name id="larkspurRedirection" description="Larkspur Redirection Action">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/LarkspurPortal/</url-pattern>
+   </web-resource-name>
+
+   <web-resource-name id="erisaRedirection" description="Erisa Redirection Action">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/Erisa/</url-pattern>
+   </web-resource-name>
+   
+   <web-resource-name id="targetDateFundCalcTool" description="targetDateFundCalcTool Redirection Action">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+            <property name="licenseRequired" value="false"/>
+            <property name="mimicAllowed" value="true"/>
+        </authorizationHandler>
+        <url-pattern>/do/TargetDateTool</url-pattern>
+   </web-resource-name>
+
+   <web-resource-name id="fundCheckLevel1" description="FundCheck Page Level 1 Version">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+             <property name="mimicAllowed" value="true"/>
+             <property name="allowedcontractStatuses" value="PS,DC,PC,CA,AC,CF,DI"/>
+             <property name="allowedcontractTypes" value="DC,DB"/>           
+        </authorizationHandler>
+        <url-pattern>/do/fundcheck/fundCheckL1/</url-pattern>
+   </web-resource-name>
+   
+   <web-resource-name id="fundCheckLevel2" description="FundCheck Page Level 2 Version">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+             <property name="mimicAllowed" value="true"/>
+             <property name="allowedcontractStatuses" value="PS,DC,PC,CA,AC,CF,DI"/>
+             <property name="allowedcontractTypes" value="DC,DB"/>             
+        </authorizationHandler>
+        <url-pattern>/do/fundcheck/fundCheckL2/</url-pattern>
+   </web-resource-name>
+   
+   <web-resource-name id="fundCheckInternal" description="FundCheck Page Internal Version">
+        <authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDAuthorizationHandler" >
+             <property name="allowedcontractStatuses" value="PS,DC,PC,CA,AC,CF,DI"/>
+             <property name="allowedcontractTypes" value="DC,DB,UAL"/>
+        </authorizationHandler>
+        <url-pattern>/do/fundcheck/fundCheckInternal/</url-pattern>
+   </web-resource-name>
+   
+   <web-resource-name id="bdUserRolesRestriction" description="BD User Roles Restriction">
+    	<authorizationHandler
+            class="com.manulife.pension.bd.web.controller.BDUserRolesAuthorizationHandler" >
+            <property name="restrictedRoles" value="RIAUser"/>
+        </authorizationHandler>
+         <url-pattern>/do/fundCheck</url-pattern>
+         <url-pattern>/do/news/</url-pattern>
+         <url-pattern>/do/helpfulLinks/</url-pattern>
+         <url-pattern>/do/contactUs/</url-pattern>
+    </web-resource-name>
+
+   </web-resource-collection>
+   <roles>
+      <role id="BasicFinRep" description="Basic Financial Rep" timeout="900">
+          <availableresource>securedHomePage</availableresource>      
+          <availableresource>jhNavigatorProxy</availableresource>      
+          <availableresource>registered</availableresource>
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>commonExternal</availableresource>          
+          <availableresource>myProfileEntry</availableresource>
+          <availableresource>myProfileBasicBroker</availableresource>
+          <availableresource>help</availableresource>
+          <availableresource>fundsAndPerformance</availableresource>
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource>          
+          <availableresource>securedLinks</availableresource>
+          <availableresource>securedHelp</availableresource>
+          <availableresource>securedDynamicContentPage</availableresource>
+          <availableresource>levelOneForms</availableresource>          
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource>  
+          <availableresource>fundCheckLevel1</availableresource>
+          <availableresource>eStatement</availableresource>
+          <availableresource>secondStep</availableresource>
+          <availableresource>secondStepTransit</availableresource>
+      </role>
+      <role id="FinRep" description="Financial Rep" timeout="900">
+          <availableresource>securedHomePage</availableresource>            
+          <availableresource>jhNavigatorProxy</availableresource>      
+          <availableresource>registered</availableresource>
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>commonExternal</availableresource>          
+          <availableresource>bob</availableresource>
+          <availableresource>bobPlanReviewReports</availableresource>
+          <availableresource>prospectingTools</availableresource>
+          <availableresource>licensedTools</availableresource>
+          <availableresource>myProfileEntry</availableresource>
+          <availableresource>myBrokerProfile</availableresource>
+          <availableresource>help</availableresource>
+          <availableresource>fundsAndPerformance</availableresource>
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource>          
+          <availableresource>contractReports</availableresource> 
+          <availableresource>contractInformationReports</availableresource>
+          <availableresource>secureDocumentUpload</availableresource>
+          <availableresource>individualPlanReviewReports</availableresource>
+          <availableresource>definedContributionReports</availableresource>
+          <availableresource>definedBenefitReports</availableresource>
+          <availableresource>orderingMaterials</availableresource>
+          <availableresource>fundEvaluator</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>messagecenter</availableresource>
+          <availableresource>securedHelp</availableresource>
+          <availableresource>securedDynamicContentPage</availableresource>                    
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource>  
+          <availableresource>fundCheckLevel2</availableresource>
+          <availableresource>eStatement</availableresource>
+          <availableresource>secondStep</availableresource>
+          <availableresource>secondStepTransit</availableresource>
+      </role>
+      <role id="FinRepAsst" description="Financial Rep Assisstant" timeout="900">
+          <availableresource>securedHomePage</availableresource>            
+          <availableresource>jhNavigatorProxy</availableresource>
+          <availableresource>registered</availableresource>
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>commonExternal</availableresource>          
+          <availableresource>bob</availableresource>
+          <availableresource>bobPlanReviewReports</availableresource>
+          <availableresource>prospectingTools</availableresource>
+          <availableresource>licensedTools</availableresource>
+          <availableresource>myProfileEntry</availableresource>
+          <availableresource>myProfileBrokerAssistant</availableresource>
+          <availableresource>help</availableresource>
+          <availableresource>fundsAndPerformance</availableresource>
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource>
+          <availableresource>contractReports</availableresource>
+          <availableresource>contractInformationReports</availableresource>
+          <availableresource>secureDocumentUpload</availableresource>
+          <availableresource>individualPlanReviewReports</availableresource>
+          <availableresource>definedContributionReports</availableresource>
+          <availableresource>definedBenefitReports</availableresource>
+          <availableresource>orderingMaterials</availableresource>
+          <availableresource>fundEvaluator</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>messagecenter</availableresource>
+          <availableresource>securedHelp</availableresource>
+          <availableresource>securedDynamicContentPage</availableresource>                         
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource> 
+          <availableresource>fundCheckLevel2</availableresource>
+          <availableresource>eStatement</availableresource>
+          <availableresource>secondStep</availableresource>
+          <availableresource>secondStepTransit</availableresource>
+      </role>
+      <role id="FirmRep" description="Broker Dealer Firm Rep" timeout="900">
+          <availableresource>securedHomePage</availableresource>            
+          <availableresource>jhNavigatorProxy</availableresource>                
+          <availableresource>registered</availableresource>
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>commonExternal</availableresource>
+          <availableresource>brokerListing</availableresource>                    
+          <availableresource>bob</availableresource>
+          <availableresource>prospectingTools</availableresource>
+          <availableresource>licensedTools</availableresource>
+          <availableresource>myProfileEntry</availableresource>
+          <availableresource>myProfileFirmRep</availableresource>
+          <availableresource>help</availableresource>
+          <availableresource>fundsAndPerformance</availableresource>
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource>
+          <availableresource>contractReports</availableresource>
+          <availableresource>contractInformationReports</availableresource>
+          <availableresource>secureDocumentUpload</availableresource>
+          <availableresource>definedContributionReports</availableresource>
+          <availableresource>definedBenefitReports</availableresource>
+          <availableresource>orderingMaterials</availableresource>
+          <availableresource>fundEvaluator</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>securedHelp</availableresource>
+          <availableresource>securedDynamicContentPage</availableresource>                         
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource> 
+          <availableresource>fundCheckLevel1</availableresource> 
+          <availableresource>eStatement</availableresource>
+          <availableresource>secondStep</availableresource>
+          <availableresource>secondStepTransit</availableresource>
+      </role>
+      <role id="RIAUser" description="Broker Dealer RIA User" timeout="900">
+          <availableresource>securedHomePage</availableresource>            
+          <availableresource>registered</availableresource>
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>commonExternal</availableresource>
+          <availableresource>prospectingTools</availableresource>
+          <availableresource>myProfileEntry</availableresource>
+          <availableresource>myProfileRIAUser</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>securedDynamicContentPage</availableresource>
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource>
+          <availableresource>eStatement</availableresource> 
+          <availableresource>secondStep</availableresource>
+          <availableresource>secondStepTransit</availableresource>
+      </role>
+      <role id="InternalBasic" description="Internal Basic" timeout="900">
+          <availableresource>securedHomePage</availableresource>            
+          <availableresource>jhNavigatorProxy</availableresource>      
+          <availableresource>registered</availableresource>
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>brokerListing</availableresource>                    
+          <availableresource>bob</availableresource>
+          <availableresource>prospectingTools</availableresource>
+          <availableresource>licensedTools</availableresource>
+          <availableresource>myProfileInternal</availableresource>
+          <availableresource>help</availableresource>          
+          <availableresource>userManagement</availableresource>
+          <availableresource>resetPassword</availableresource>
+          <availableresource>passcodeView</availableresource>
+		  <availableresource>exemptPasscode</availableresource>
+          <availableresource>userReports</availableresource>                    
+          <availableresource>updateUser</availableresource>
+          <availableresource>fundsAndPerformance</availableresource>
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource>
+          <availableresource>contractReports</availableresource>  
+          <availableresource>contractInformationReports</availableresource>
+          <availableresource>secureDocumentUpload</availableresource>
+          <availableresource>individualPlanReviewReports</availableresource>
+          <availableresource>definedContributionReports</availableresource>
+          <availableresource>definedBenefitReports</availableresource>
+          <availableresource>orderingMaterials</availableresource>
+          <availableresource>fundEvaluator</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>securedHelp</availableresource>
+          <availableresource>securedDynamicContentPage</availableresource>                         
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource> 
+          <availableresource>fundCheckInternal</availableresource>
+          <availableresource>eStatement</availableresource>
+      </role>
+      <role id="ContentManager" description="BD Content Manager" timeout="900">
+          <availableresource>securedHomePage</availableresource>            
+          <availableresource>jhNavigatorProxy</availableresource>      
+          <availableresource>registered</availableresource>
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>brokerListing</availableresource>                    
+          <availableresource>bob</availableresource>
+          <availableresource>prospectingTools</availableresource>
+          <availableresource>licensedTools</availableresource>
+          <availableresource>myProfileInternal</availableresource>
+          <availableresource>help</availableresource>          
+          <availableresource>userManagement</availableresource>
+          <availableresource>userReports</availableresource>                    
+          <availableresource>updateUser</availableresource>
+          <availableresource>contentManagement</availableresource>
+          <availableresource>fundsAndPerformance</availableresource>
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource>
+          <availableresource>contractReports</availableresource> 
+          <availableresource>contractInformationReports</availableresource>
+          <availableresource>secureDocumentUpload</availableresource>
+          <availableresource>individualPlanReviewReports</availableresource>
+          <availableresource>definedContributionReports</availableresource>    
+          <availableresource>definedBenefitReports</availableresource>
+          <availableresource>orderingMaterials</availableresource>
+          <availableresource>fundEvaluator</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>securedHelp</availableresource>             
+          <availableresource>globalMessages</availableresource>
+          <availableresource>securedDynamicContentPage</availableresource>               
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource>  
+          <availableresource>fundCheckInternal</availableresource>
+          <availableresource>eStatement</availableresource>
+      </role>
+      <role id="NationalAccounts" description="BD National Accounts" timeout="900">
+          <availableresource>securedHomePage</availableresource>            
+          <availableresource>jhNavigatorProxy</availableresource>      
+          <availableresource>registered</availableresource>
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>brokerListing</availableresource>                    
+          <availableresource>bob</availableresource>
+          <availableresource>prospectingTools</availableresource>     
+          <availableresource>licensedTools</availableresource>
+          <availableresource>myProfileInternal</availableresource>
+          <availableresource>help</availableresource>        
+          <availableresource>userManagement</availableresource>
+          <availableresource>resetPassword</availableresource>
+          <availableresource>passcodeView</availableresource>
+		  <availableresource>exemptPasscode</availableresource>
+          <availableresource>userReports</availableresource>                    
+          <availableresource>updateUser</availableresource>          
+     	  <availableresource>createFirmRep</availableresource> 
+          <availableresource>contentManagement</availableresource>
+          <availableresource>fundsAndPerformance</availableresource>
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource>          
+          <availableresource>contractReports</availableresource>
+          <availableresource>contractInformationReports</availableresource>
+          <availableresource>secureDocumentUpload</availableresource>
+          <availableresource>individualPlanReviewReports</availableresource>
+          <availableresource>definedContributionReports</availableresource>
+          <availableresource>definedBenefitReports</availableresource>
+          <availableresource>orderingMaterials</availableresource>
+          <availableresource>fundEvaluator</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>securedHelp</availableresource>
+          <availableresource>securedDynamicContentPage</availableresource>              
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource>   
+          <availableresource>fundCheckInternal</availableresource>
+          <availableresource>eStatement</availableresource>
+      </role>
+      <role id="Admin" description="BD Internal Administrator" timeout="900">
+          <availableresource>securedHomePage</availableresource>            
+          <availableresource>jhNavigatorProxy</availableresource>      
+          <availableresource>registered</availableresource>
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>brokerListing</availableresource>                    
+          <availableresource>bob</availableresource>
+          <availableresource>prospectingTools</availableresource>
+          <availableresource>licensedTools</availableresource>
+          <availableresource>myProfileInternal</availableresource>
+          <availableresource>help</availableresource>          
+          <availableresource>userManagement</availableresource>
+          <availableresource>resetPassword</availableresource>
+          <availableresource>passcodeView</availableresource>
+		  <availableresource>exemptPasscode</availableresource>
+          <availableresource>userReports</availableresource>                    
+          <availableresource>updateUser</availableresource>
+          <availableresource>fundsAndPerformance</availableresource>
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource>
+          <availableresource>contractReports</availableresource>    
+          <availableresource>contractInformationReports</availableresource>
+          <availableresource>secureDocumentUpload</availableresource>
+          <availableresource>individualPlanReviewReports</availableresource>
+          <availableresource>definedContributionReports</availableresource>
+          <availableresource>definedBenefitReports</availableresource>
+          <availableresource>orderingMaterials</availableresource>
+          <availableresource>fundEvaluator</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>securedHelp</availableresource>
+          <availableresource>securedDynamicContentPage</availableresource>                         
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource> 
+          <availableresource>fundCheckInternal</availableresource>
+          <availableresource>eStatement</availableresource>
+      </role>
+      <role id="RVP" description="RVP User" timeout="900">
+          <availableresource>securedHomePage</availableresource>            
+          <availableresource>jhNavigatorProxy</availableresource>      
+          <availableresource>registered</availableresource>
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>brokerListing</availableresource>                    
+          <availableresource>bob</availableresource>
+          <availableresource>prospectingTools</availableresource>
+          <availableresource>licensedTools</availableresource>
+          <availableresource>myProfileInternal</availableresource>
+          <availableresource>help</availableresource>          
+          <availableresource>userManagement</availableresource>
+          <availableresource>resetPassword</availableresource>
+          <availableresource>passcodeView</availableresource>
+		   <availableresource>exemptPasscode</availableresource>
+          <availableresource>userReports</availableresource>                    
+          <availableresource>updateUser</availableresource>
+          <availableresource>fundsAndPerformance</availableresource>
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource>
+          <availableresource>contractReports</availableresource> 
+          <availableresource>contractInformationReports</availableresource>
+          <availableresource>secureDocumentUpload</availableresource>
+          <availableresource>individualPlanReviewReports</availableresource>
+          <availableresource>definedContributionReports</availableresource> 
+          <availableresource>definedBenefitReports</availableresource>
+          <availableresource>orderingMaterials</availableresource>
+          <availableresource>fundEvaluator</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>securedHelp</availableresource> 
+          <availableresource>securedDynamicContentPage</availableresource>                       
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource>  
+          <availableresource>fundCheckInternal</availableresource>
+          <availableresource>bobPlanReviewReports</availableresource>
+      </role>
+      <role id="CAR" description="BD CAR" timeout="900">
+          <availableresource>registered</availableresource>
+          <availableresource>jhNavigatorProxy</availableresource>      
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>help</availableresource>                    
+          <availableresource>userManagement</availableresource>
+          <availableresource>updateUser</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource>
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource> 
+          <availableresource>fundCheckInternal</availableresource>
+          <availableresource>eStatement</availableresource>
+      </role>
+      <role id="SuperCAR" description="BD Super CAR" timeout="900">
+          <availableresource>registered</availableresource>
+          <availableresource>jhNavigatorProxy</availableresource>      
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>help</availableresource>          
+          <availableresource>userManagement</availableresource>
+          <availableresource>resetPassword</availableresource>
+          <availableresource>passcodeView</availableresource>
+		  <availableresource>exemptPasscode</availableresource>
+		  <availableresource>updateUser</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource>  
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource>
+          <availableresource>fundCheckInternal</availableresource>
+          <availableresource>eStatement</availableresource>
+      </role>
+      <role id="RIAUserManager" description="RPS RIA User Manager" timeout="900">
+          <availableresource>securedHomePage</availableresource>            
+          <availableresource>jhNavigatorProxy</availableresource>      
+          <availableresource>registered</availableresource>
+          <availableresource>changeTempPassword</availableresource>
+          <availableresource>updatePassword</availableresource> 
+          <availableresource>brokerListing</availableresource>                    
+          <availableresource>bob</availableresource>
+          <availableresource>prospectingTools</availableresource>     
+          <availableresource>licensedTools</availableresource>
+          <availableresource>myProfileInternal</availableresource>
+          <availableresource>help</availableresource>          
+          <availableresource>userManagement</availableresource>
+          <availableresource>resetPassword</availableresource>
+          <availableresource>passcodeView</availableresource>
+		  <availableresource>exemptPasscode</availableresource>
+          <availableresource>userReports</availableresource>                    
+          <availableresource>updateUser</availableresource>          
+          <availableresource>createRiaUser</availableresource>
+          <availableresource>eStatement</availableresource>
+          <availableresource>fundsAndPerformance</availableresource>
+          <availableresource>performanceChartingAndHistoricalReturns</availableresource>          
+          <availableresource>contractReports</availableresource>
+          <availableresource>contractInformationReports</availableresource>
+          <availableresource>secureDocumentUpload</availableresource>
+          <availableresource>individualPlanReviewReports</availableresource>
+          <availableresource>definedContributionReports</availableresource>
+          <availableresource>definedBenefitReports</availableresource>
+          <availableresource>orderingMaterials</availableresource>
+          <availableresource>fundEvaluator</availableresource>
+          <availableresource>securedLinks</availableresource>
+          <availableresource>securedHelp</availableresource>
+          <availableresource>securedDynamicContentPage</availableresource>              
+          <availableresource>erisaRedirection</availableresource>
+          <availableresource>targetDateFundCalcTool</availableresource>
+          <availableresource>larkspurRedirection</availableresource>   
+          <availableresource>fundCheckInternal</availableresource> 
+      </role>
+    </roles>
+</plansponsor:controlflow>    

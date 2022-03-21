@@ -1,0 +1,7 @@
+.footnoteText { font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #666666; text-decoration: none;}
+.tableText { font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #666666; text-decoration: none;}
+.tableTextBold{ font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: Black; text-decoration: none;  font-weight : bold;  }
+.columnHeading{ font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #0000FF; text-decoration: none;  font-weight : bold;}
+.fundLink{ font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #4e9eb8; text-decoration: none;  font-weight : bold;  }
+.selectedFund{ background-color : #FFFFCC;}
+td .fwiIndicator   { padding-left : 2px; } 

@@ -1,0 +1,96 @@
+DIV.id_nav_top {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 6px; BACKGROUND: #3b607e; PADDING-BOTTOM: 0px; PADDING-TOP: 6px
+}
+DIV.id_nav_top TABLE {
+	HEIGHT: 39px
+}
+DIV.id_nav_top TABLE TD {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 12px;
+	PADDING-BOTTOM: 5px;
+	WIDTH: 90px;
+	PADDING-TOP: 5px;
+	background-image: url(../John Hancock USA - Participant account_files/nav_top_separator.gif);
+	background-repeat: no-repeat;
+	background-position: right 50%;
+}
+DIV.id_nav_top A {
+	DISPLAY: block; FONT-SIZE: 1.1em; COLOR: #fff; HEIGHT: 100%
+}
+DIV.id_nav_top A:hover {
+	COLOR: #dcd087
+}
+DIV.id_nav_top TD.last {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+DIV.id_nav_top TD.on {
+	COLOR: #000;
+	background-image: url(../John Hancock USA - Participant account_files/nav_top_tab_on.jpg);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+}
+DIV.id_nav_top TD.on A {
+	COLOR: #333
+}
+DIV.id_nav_top TD.on A:hover {
+	COLOR: #333
+}
+DIV.nav_top_margin {
+	MARGIN-BOTTOM: 5px
+}
+DIV.id_nav_sub {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: #d0e0ee; MARGIN-BOTTOM: 4px; PADDING-BOTTOM: 2px; PADDING-TOP: 3px
+}
+DIV.id_nav_no_sub_gutter {
+	MARGIN-BOTTOM: 4px
+}
+DIV.id_nav_sub UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 4px; MARGIN: 0px; PADDING-TOP: 3px
+}
+DIV.id_nav_sub UL LI {
+	PADDING-RIGHT: 15px; DISPLAY: inline; PADDING-LEFT: 15px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+DIV.id_nav_sub UL LI A {
+	COLOR: #1f71a0
+}
+DIV.id_nav_sub UL LI A:hover {
+	COLOR: #000
+}
+DIV.id_nav_sub UL LI.on A {
+	COLOR: #000
+}
+DIV.nav_display {
+	PADDING-LEFT: 9px; MARGIN-BOTTOM: 6px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 39px; BACKGROUND-COLOR: #e6e7e8
+}
+DIV.nav_display_narrow {
+	BACKGROUND-IMAGE: url(../Images/Global/nav_display_top.gif)
+}
+DIV.nav_display_wide {
+	BACKGROUND-IMAGE: url(../John Hancock USA - Participant account_files/nav_display_top_lg.gif)}
+DIV.nav_display_wider {
+	BACKGROUND-IMAGE: url(../John Hancock USA - Participant account_files/nav_display_top_mutualfunds.gif)}
+DIV.nav_display UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+DIV.nav_display LI {
+	FLOAT: left; MARGIN: 8px 1px
+}
+DIV.nav_display A {
+	PADDING-RIGHT: 10px; DISPLAY: block; PADDING-LEFT: 10px; PADDING-BOTTOM: 5px; COLOR: #64707a; PADDING-TOP: 5px
+}
+DIV.nav_display SPAN {
+	PADDING-RIGHT: 10px; DISPLAY: block; PADDING-LEFT: 10px; PADDING-BOTTOM: 5px; COLOR: #64707a; PADDING-TOP: 5px
+}
+DIV.nav_display LI.on {
+	background-color: #a6b5ba;
+	background-repeat: no-repeat;
+}
+DIV.nav_display LI.on SPAN {
+	COLOR: #fff;
+}
+DIV.nav_display LI.off_over {
+	background-color: #f2f2f2;
+}
+DIV.nav_display LI.off_over A {
+}
+

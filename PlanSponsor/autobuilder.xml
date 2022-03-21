@@ -1,0 +1,144 @@
+<!-- ======================================================================= -->
+<!-- Autobuilder file for PlanSponsor                                        -->
+<!-- ======================================================================= -->
+<project name="Autobuilder" default="non_tagged_build" basedir=".">
+	
+	<property name="build_target" value="full_deploy" />
+	<property environment="env"/>
+	
+	<target name="init">
+		<tstamp/>
+	</target>
+
+	<target name="get_build_xml" depends="init">
+		<cvs command="update -C build.xml" />
+	</target>
+
+	<target name="new_tagged_build" depends="get_build_xml">
+		<exec executable="ant.bat" dir="${basedir}" taskname="AntRunner" failonerror="true">
+			<arg value="-Dcvs.tag=BUILD-${DSTAMP}-${TSTAMP}" />
+			<arg value="-Dcreate.new.tagged.build=true" />
+			<arg value="-f" />
+			<arg value="${basedir}\build.xml" />
+			<arg value="-logger" />
+			<arg value="com.intware.devtools.ant.AutobuildLogger" />
+			<arg value="${build_target}" />
+		</exec>
+	</target>
+
+	<target name="non_tagged_build" depends="get_build_xml">
+ 		<exec executable="ant.bat" dir="${basedir}" taskname="AntRunner" failonerror="true">
+			<arg value="-Dcvs.tag=BUILD-${DSTAMP}-${TSTAMP}" />
+			<arg value="-Dnon.tagged.build=true" />
+			<arg value="-f" />
+			<arg value="${basedir}\build.xml" />
+			<arg value="-logger" />
+			<arg value="com.intware.devtools.ant.AutobuildLogger" />
+			<arg value="${build_target}" />
+ 		</exec>
+	</target>
+
+	<target name="previous_tagged_build">
+		<cvs command="update -C -r${cvs.tag} build.xml" />
+ 		<exec executable="ant.bat" dir="${basedir}" taskname="AntRunner" failonerror="true">
+			<arg value="-Dcvs.tag=${cvs.tag}" />
+			<arg value="-Dprevious.tagged.build=true" />
+			<arg value="-f" />
+			<arg value="${basedir}\build.xml" />
+			<arg value="-logger" />
+			<arg value="com.intware.devtools.ant.AutobuildLogger" />
+			<arg value="${build_target}" />
+ 		</exec>
+	</target>
+
+	<target name="no_cvsupdate_build" depends="init">
+ 		<exec executable="ant.bat" dir="${basedir}" taskname="AntRunner" failonerror="true">
+			<arg value="-Dcvs.tag=BUILD-${DSTAMP}-${TSTAMP}" />
+			<arg value="-Dno.cvsupdate.build=true" />
+			<arg value="-f" />
+			<arg value="${basedir}\build.xml" />
+			<arg value="-logger" />
+			<arg value="com.intware.devtools.ant.AutobuildLogger" />
+			<arg value="${build_target}" />
+ 		</exec>
+	</target>
+
+	<!-- This target is specific to Presit4. Should be come under common build -->
+	<target name="usgppresit4_build" depends="init">
+		<exec executable="ant.bat" dir="${basedir}" taskname="AntRunner" failonerror="true">
+			<arg value="-Dcvs.tag=loansBuild-${DSTAMP}-${TSTAMP}" />
+			<arg value="-Dautobuilder.log.dir=${env.HOMEDRIVE}\inetpub\build reports\builds" />
+			<arg value="-f" />
+			<arg value="${env.HOMEDRIVE}\autobuilder.xml" />
+			<arg value="-logger" />
+			<arg value="com.intware.devtools.ant.AutobuildLogger" />
+			<arg value="usgppresit4_build_target" />
+		</exec>
+		
+		<!-- For Email Notification -->    
+	    <copy todir="${env.HOMEDRIVE}\Buildlogs">
+    	  <fileset dir="${env.HOMEDRIVE}\inetpub\build reports\builds" />
+    	</copy>
+	
+	</target>
+	
+	<target name="usgppresit4_build_target">
+		<property name="build.work.dir" value="${env.HOMEDRIVE}\${cvs.tag}" />
+		<mkdir dir="${build.work.dir}"/>
+		<exec executable="cmd.exe">
+			<arg value="/X /C
+			cd ${build.work.dir}
+			"/>
+		</exec>
+		<property name="basedir" value="."/>
+		<cvs command="co -P ConfigurationScripts" dest="${build.work.dir}"/>
+
+		<!--cvs_checkout -->
+		<cvs command="co -P -r Sept2008_Release_branch PlanSponsor common Databases/CustomerService SecurityService ezk DistributionService PlanSponsorTests " dest="${build.work.dir}"/>
+		<cvs command="co -P Databases\LDAP Databases/StraightThruProcessing ContractService AccountService EmployeeService EnvironmentService MessagingService MrlLoggerService NotesDocumentService NotificationService ReportService SearchService SynchronizationService Databases/mrl  Databases/PlanSponsorContent Databases/EzkContent CMA PlansponsorCMA EzkCMA" dest="${build.work.dir}"/>
+
+		<!--deploy_ps_and_ezk -->
+	  	<ant dir="${build.work.dir}/Plansponsor" inheritAll="false">
+	 		<target name="combined_deploy"/>
+	  	</ant>
+
+		<!--run_ps_tests -->
+		<ant dir="${build.work.dir}/PlansponsorTests" inheritAll="false">
+			<target name="emma_test"/>
+		</ant>	
+
+		<!--run_service_tests -->
+	  	<ant dir="${build.work.dir}/PlansponsorTests" inheritAll="false">
+		    	<target name="emma_test_service"/>
+	  	</ant>			
+
+		<!--copy_report_files -->
+		<copy todir="${env.HOMEDRIVE}/Inetpub/build reports/plansponsor">
+		  	<fileset dir="${build.work.dir}/PlansponsorTests/build/report" />
+		</copy>
+	    	<copy todir="${env.HOMEDRIVE}/Inetpub/build reports/service">
+		      	<fileset dir="${build.work.dir}/PlansponsorTests/build-service/report" />
+	    	</copy>
+
+	    	<!-- Delete the following once we are checked in the sendemail.exe & mail property files in Sep2008 branch...  start -->
+    		<copy todir="${build.work.dir}\PlanSponsor\scripts">
+			<fileset dir="${env.HOMEDRIVE}/Foremailtest" />
+		</copy>
+		<!-- Delete the following once we are checked in the sendemail.exe & mail property files in Sep2008 branch...  end -->
+	
+		<copy file="${build.work.dir}\PlanSponsor\scripts\sendemail.exe" todir="${env.HOMEDRIVE}\cvs\PlanSponsor\scripts"/>  
+		<copy file="${build.work.dir}\PlanSponsor\scripts\mail.pro perties" todir="${env.HOMEDRIVE}\cvs\PlanSponsor\scripts"/>
+	
+	</target>
+
+  <target name="fortify_scan" depends="get_build_xml">
+    <!-- Perform FORTIFY SCAN -->
+    <exec executable="ant.bat" dir="${basedir}" taskname="AntRunner" failonerror="true">
+      <arg value="-Dbuild.compiler=com.fortify.dev.ant.SCACompiler" />
+      <arg value="-f" />
+      <arg value="${basedir}\build.xml" />
+      <arg value="fortify" />
+    </exec>
+  </target>
+	
+</project>

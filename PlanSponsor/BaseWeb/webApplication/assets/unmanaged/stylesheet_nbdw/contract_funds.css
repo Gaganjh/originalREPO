@@ -1,0 +1,286 @@
+/*******************************************************************************
+*   contract_funds.css
+*   Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*   Contract Funds specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+@import url("screen.css");
+@import url("nbdw_buttons.css");
+
+#filter ul li#advanced_filter_btn{
+    float:right;
+}
+
+div#advanced_filters{
+    background: #fff url('/assets/unmanaged/images/backgrounds/adv_filter_bg.gif') repeat-y center center;
+    display:none;
+    height:1%;
+    margin:5px auto;
+}
+    
+    div#display_preferences_wrapper,
+    div#report_customization_wrapper{
+        border-top:4px solid #eceae3;
+        float:left;
+    }
+    
+    div#advanced_filters div#display_preferences_wrapper{
+        margin-right:9px;
+        width:304px;
+    }
+    
+    div#advanced_filters div#report_customization_wrapper{
+    width:604px;
+    }
+
+    div#advanced_filters h4{
+        background: none;
+        color:#333333;
+        font: normal 1em georgia, times, serif;
+        height: 1em;
+        margin: 0 0 0 0;
+        padding: 10px 0 10px 15px;
+    }
+
+
+fieldset a.option {
+    font-size: 0.6em;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset {
+    border: 1px solid #ECEAE3;
+    margin: 4px 10px 4px 10px;
+    padding: 10px;
+}
+
+    #page_content fieldset p {
+        margin: 0;
+        padding: 0 0 10px 0;
+    }
+
+    #page_content fieldset label {
+        font-size: 0.75em;
+    }
+
+    #filters_applied_message {
+        display: none;
+    }
+    
+    div.form_section{
+        clear:left;
+    }
+    
+    div#page_content div.form_section p{
+        font-size:1em;
+        padding-right:10px;
+        text-align:right;
+        width:45%;
+        
+    }
+    
+    div#display_preferences_wrapper div.form_section p, 
+    div#display_preferences_wrapper div.form_section select, 
+    div#display_preferences_wrapper div.form_section input{
+        float:left;
+    }
+    
+    input#closed_funds_selector, 
+    input#nml_selector{
+        margin-top:6px;
+    }
+    
+    div#report_customization_wrapper div.form_section{
+        clear:none;
+        float:left;
+    }
+    
+    div.selection_input{
+        clear:left;
+        padding-top:10px;
+    }
+    
+    div.selection_options {
+        float: left;
+        margin-left: 5px;
+    }
+    
+    div.selection_options a{
+        display:block;
+    }
+    
+#contract_funds #page_wrapper #page_content .report_table .report_table_content .spec td .border {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #A8B8BF;
+}
+#contract_funds #page_wrapper #page_content .report_table .report_table_content .shadedRow {
+    background-color: #b9b1a9;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+#contract_funds #page_wrapper #page_content .report_table .report_table_content #tabImg {
+    background-image: url(/assets/unmanaged/images/performance_tab.gif);
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 20px;
+    padding-top: 5px;
+    float: right;
+    background-position: left;
+    width: 61px;
+    margin-top: 0px;
+}
+#contract_funds #page_wrapper #page_content .report_table .report_table_content .shadedRow .shadedRow #tabImgNone {
+    background-color: #B9B1A9;
+    float: right;
+    text-align: center;
+    height: 20px;
+    width: 61px;
+    padding-top: 5px;
+    margin-top: 0px;
+}
+#contract_funds #page_wrapper #page_content .report_table .report_table_content #IRtitleLft {
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    height: 20px;
+}
+#contract_funds #page_wrapper #page_content .report_table .report_table_content .shadedRow #groupBySelect {
+    font-size: 10px;
+    margin: 0px;
+}
+#contract_funds #page_wrapper #page_content  #rightColumn1 {
+    background-color: #f5f6f1;
+    float: right;
+    font-family: Verdana, Geneva, sans-serif;
+    padding: 10px;
+    width: 230px;
+    margin-bottom: 10px;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #febe10;
+    clear: right;
+    margin-top: 0px;
+}
+#contract_funds #page_wrapper #page_content #rightColumn1 h1 {
+    color: #22485e;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.2em;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 0.9em;
+}
+#contract_funds #page_wrapper #page_content #rightColumn1 p {
+    color: #000;
+    font-size: 11px;
+
+}
+
+#contract_funds #page_wrapper #page_content #content {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin-top: 4px;
+    margin-right: 290px;
+    margin-bottom: 15px;
+    width: 590px;
+}
+#contract_funds #page_wrapper #page_content p {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #767676;
+}
+#contract_funds #page_wrapper #page_content #content h1 {
+    color: #000000;
+    line-height: 1.6em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.6em;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+}
+/*******************************************************************************
+* FOOTER
+********************************************************************************/
+
+#contract_funds #page_wrapper #page_content #page_footer {
+    clear:both;
+    border-top: 1px solid #c4cfd8;
+    margin-top: 30px;
+}
+
+#contract_funds #page_wrapper #page_content #page_footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 10px 0 10px 0 ;
+    }
+        
+#contract_funds #page_wrapper #page_content #page_footer ul li {
+            background: transparent url('/assets/unmanaged/images/footer_divider.gif') no-repeat center left;
+            float: left;
+            font-size: 0.6875em;
+            padding: 0 20px 0 20px;
+        }
+        
+#contract_funds #page_wrapper #page_content #page_footer ul li:first-child {
+            background: none;
+        }
+        
+#contract_funds #page_wrapper #page_content #page_footer ul li {
+            float: left;
+            font-size: 0.6875em;
+            padding: 0 20px 0 20px;
+        }
+        
+#contract_funds #page_wrapper #page_content #page_footer ul li a {
+       color: #2d4f55;
+       font-size: 11px;
+}
+
+#contract_funds #page_wrapper #page_content #page_footer_footer {
+        clear: both;
+    }
+    
+#contract_funds #page_wrapper #page_content #page_footer p {
+    color: #767690;
+    font-size: 0.6875em;
+    line-height: 1.5em;
+    padding: 10px 20px 0 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+.risks {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-small;
+}
+    a.transaction_history{
+    display:none;
+    height:16px;
+    margin-left:15px;
+    outline:none;
+    width:16px;
+    background-image: url(/assets/unmanaged/images/buttons/calendar_btn.gif);
+    background-repeat: no-repeat;
+    text-indent: -100000px;
+    }
+
+    
+td .fwiIndicator   {
+    border: currentColor !important;
+    padding : 0 !important;
+	border-image: none !important;
+}   
+
+.fwiColumn   {
+    padding-left : 0px !important;
+}    

@@ -1,0 +1,1579 @@
+<!--======================================================================================
+  WAS9ND Project Build File
+
+  Main targets are as follows ...
+
+=======================================================================================-->
+
+<project name="WAS9ND" default="build_WAS9_ND" basedir=".">
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Properties
+  This section contains property settings and targets that affect property settings.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ 
+  <property file="${user.home}/.ant.properties" />
+  <property environment="env"/>  
+  <property name="hostname" value="${env.COMPUTERNAME}"/>
+  <property name="server.alias" value="${hostname}" />
+  <property name="node" value="${hostname}"/>
+  <property name="environment.name" value="${hostname}"/>
+  <property name="root.dir" value="${env.HOMEDRIVE}"/>
+  <property name="CICS.name" value="D1CICS"/>
+  <property name="db2jcc.dir" value="${root.dir}/Program Files/IBM/SQLLIB/java" />
+  <property name="websphere.home" value="${root.dir}/WebSphere9/AppServer"/>
+
+  <property name="config.deploy.dir" value="${root.dir}/apps/PlanSponsor/Config"/>
+  <property name="assets.deploy.dir" value="${root.dir}/apps/PlanSponsor/assets"/>
+  <property name="iloans.deploy.dir" value="${root.dir}/apps/PlanSponsor"/>
+  <property name="JMS.bindings.dir" value="${root.dir}/apps/PlanSponsor/JMSBindings"/>
+  <property name="ps.docroot" value="${root.dir}/Inetpub/PlanSponsor"/>
+  <property name="bd.docroot" value="${root.dir}/Inetpub/BrokerDealer"/>
+  <property name="ezk.docroot" value="${root.dir}/Inetpub/ezk"/>
+  <property name="psw.dist.dir" value="${root.dir}/SVN/PlanSponsor/dist"/>
+  <property name="scw.dist.dir" value="${root.dir}/SVN/SupportCentral/dist"/>
+  <property name="ezk.dist.dir" value="${root.dir}/SVN/ezk/dist"/>
+  <property name="configurationScripts.dir" value="${root.dir}/SVN/ConfigurationScripts/" />
+
+  <property name="project.lib.dir" value="${basedir}/../common/lib"/>
+  <property name="project.weblib.dir" value="${basedir}/../common/weblib"/>
+  <property name="project.build.dir" value="${basedir}/build"/>
+  <property name="project.dist.dir" value="${basedir}/dist"/>    
+  
+  <property name="dmgr.profile.name" value="${hostname}Dmgr"/>
+  <property name="node1.profile.name" value="${hostname}Node"/>
+  <property name="node2.profile.name" value="${hostname}Node"/>
+  <property name="cell.name" value="${node1.profile.name}Cell"/>
+  <property name="dmgr.cell.name" value="${dmgr.profile.name}Cell"/>
+  <property name="profile.logs.dir" value="${websphere.home}/Profiles/${node1.profile.name}/logs"/>
+
+  <property name="EZKServer.name" value="EZkServer"/>
+  <property name="PSWServer.name" value="PSWServer"/>
+  <property name="EZKCMAServer.name" value="EZkCMAServer"/>
+  <property name="PSWCMAServer.name" value="PSWCMAServer"/>
+  <property name="OOServer.name" value="OnlineOrderServer"/>
+  <property name="EVENTServer.name" value="EventServer1"/>
+  <property name="EVENTCluster.name" value="EventCluster"/>
+  <property name="DURABLEEVENTServer.name" value="DurableEventServer1"/>
+  <property name="DURABLEEVENTCluster.name" value="DurableEventCluster"/>
+  <property name="SCWServer.name" value="SCWServer"/>
+  <property name="WebServicesServer.name" value="WebServices1"/>
+  
+  <property name="was.service.prefix" value="IBM WebSphere Application Server V9.0 - "/>
+  <property name="was.dmgr.service.name" value="${was.service.prefix}${dmgr.profile.name}"/>
+  <property name="was.node.service.name" value="${was.service.prefix}${node1.profile.name}"/>
+  <property name="autobuilder.log.dir" value="/BuildLogs"  />
+  <property name="autobuilder.log.url" value="/BuildLogs/" />
+  <property name="report.dir" value="${project.build.dir}/report"/>
+  <property name="report.javadoc.dir" value="${report.dir}/javadoc"/>
+  <property name="config.scripts.dir" value="../ConfigurationScripts"/>
+  <property name="security.environment.name" value="DEV2"/>
+  <property name="need.cluster.setup.for.eventapp" value="no" />
+
+  <target name="init">
+    <tstamp description="Initialize the DSTAMP, TSTAMP and TODAY properties."/>
+    <available file="/apps/StandaloneCMAFile/scripts/CMAFileManagerShutdown.bat" property="StandaloneCMAFile-exists"/>
+  </target>
+
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  WebSphere Application Server targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  WebSphere 6 Application Server Admin targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="stop_psw_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+    <arg value="stop" />
+    <arg value="${PSWServer.name}" />
+    <arg value="${node1.profile.name}" />
+      </exec>
+      <sleep seconds="15"/>
+   </target>
+  
+   <target name="start_psw_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+    <arg value="start" />
+    <arg value="${PSWServer.name}" />
+    <arg value="${node1.profile.name}" />
+      </exec>
+      <sleep seconds="20"/>
+   </target>
+
+  <target name="stop_ezk_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+    <arg value="stop" />
+    <arg value="${EZKServer.name}" />
+    <arg value="${node1.profile.name}" />
+      </exec>
+      <sleep seconds="15"/>
+   </target>
+  
+   <target name="start_ezk_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+    <arg value="start" />
+    <arg value="${EZKServer.name}" />
+    <arg value="${node1.profile.name}" />
+      </exec>
+      <sleep seconds="20"/>
+   </target>
+
+  <target name="stop_scw_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+    <arg value="stop" />
+    <arg value="${SCWServer.name}" />
+    <arg value="${node1.profile.name}" />
+      </exec>
+      <sleep seconds="15"/>
+   </target>
+  
+   <target name="start_scw_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+    <arg value="start" />
+    <arg value="${SCWServer.name}" />
+    <arg value="${node1.profile.name}" />
+      </exec>
+      <sleep seconds="20"/>
+   </target>
+
+  <target name="install_psw_ear">
+      <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/deploy.py"/>
+    <arg value="${server.alias}" />
+    <arg value="install" />
+    <arg value="psw" />
+    <arg value="${psw.dist.dir}/PlanSponsor.ear" />
+      </exec>
+   </target>
+
+   <target name="uninstall_psw_ear">
+      <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/deploy.py"/>
+    <arg value="${server.alias}" />
+    <arg value="uninstall" />
+    <arg value="psw" />
+    <arg value="${psw.dist.dir}/PlanSponsor.ear" />
+      </exec>
+   </target>
+
+  <target name="install_ezk_ear">
+      <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/deploy.py"/>
+    <arg value="${server.alias}" />
+    <arg value="install" />
+    <arg value="ezk" />
+    <arg value="${ezk.dist.dir}/ezk.ear" />
+      </exec>
+   </target>
+
+   <target name="uninstall_ezk_ear">
+      <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/deploy.py"/>
+    <arg value="${server.alias}" />
+    <arg value="uninstall" />
+    <arg value="ezk" />
+    <arg value="${ezk.dist.dir}/ezk.ear" />
+      </exec>
+   </target>
+
+  <target name="install_scw_ear">
+      <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/deploy.py"/>
+    <arg value="${server.alias}" />
+    <arg value="install" />
+    <arg value="scw" />
+    <arg value="${scw.dist.dir}/SupportCentral.ear" />
+      </exec>
+   </target>
+
+   <target name="uninstall_scw_ear">
+      <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+    <arg value="jython" />
+    <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/deploy.py"/>
+    <arg value="${server.alias}" />
+    <arg value="uninstall" />
+    <arg value="scw" />
+    <arg value="${scw.dist.dir}/SupportCentral.ear" />
+      </exec>
+   </target>
+
+   <target name="delete_WAS_logs">
+    <delete quiet="true">
+      <fileset dir="${websphere.home}/Profiles/${node1.profile.name}/logs" includes="*.log"/>
+      <fileset dir="${websphere.home}/Profiles/${node1.profile.name}/logs" includes="*.txt"/>
+      <fileset dir="${websphere.home}/Profiles/${node1.profile.name}/logs" includes="tracefile"/>
+    </delete>
+  </target>
+
+  <target name="delete_WAS_temp">
+    <delete dir="${websphere.home}/Profiles/${node1.profile.name}/temp" quiet="true"/>
+    <mkdir dir="${websphere.home}/Profiles/${node1.profile.name}/temp"/>
+  </target>
+
+  <target name="stop_node">
+    <echo message="Stopping all aplication servers and the node agent ..." />
+    <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+      <arg value="-lang"/>
+      <arg value="jython"/>
+      <arg value="-f" />
+      <arg file="${config.scripts.dir}/stopAllAppServers.py" />
+      <arg value="${node1.profile.name}" />
+    </exec>
+  </target>
+
+
+  <target name="archive_profile_logs">
+    <move todir="${profile.logs.dir}/Archive/${DSTAMP}-${TSTAMP}">
+      <fileset dir="${profile.logs.dir}">
+        <include name="**/*.log"/>
+        <include name="**/*.txt"/>
+        <include name="**/*.state"/>
+        <include name="**/*.pid"/>
+        <include name="**/*.traceout"/>
+        <include name="**/*.valout"/>
+        <exclude name="archive/**"/>
+        <exclude name="AboutThisProfile.txt"/>
+      </fileset>
+    </move>
+  </target>
+
+  <target name="delete_profile_temp">
+    <delete dir="${websphere.home}/Profiles/${node1.profile.name}/temp" quiet="true"/>
+    <mkdir dir="${websphere.home}/Profiles/${node1.profile.name}/temp"/>
+  </target>
+
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   WAS9 setup specific targets:
+    - create profiles
+    - delete profiles
+    - setup security
+    - setup JDBC providers
+    - setup Datasources
+    - setup JVM
+    - setup trust.p12
+    - setup JMSBindings
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <target name="show.was9.setup.targets">
+        <echo>
+            Following targets are for WAS9 setup:
+
+             - build_WAS9_ND:               build entire WAS9 environment, including create IIS website
+             - rebuild_WAS9_ND:             rebuild entire WAS9 environment
+             - was9.create.dmgr.profile:    creates dmgr profile [${dmgr.profile.name}]
+             - was9.delete.dmgr.profile:    deletes dmgr profile [${dmgr.profile.name}]
+             - was9.create.node.profile:    creates node profile [${node1.profile.name}]
+                - was9.start.node.service:  start Node Windows services
+             - was9.delete.node.profile:    delete node profile [${node1.profile.name}]
+             - was9.create.presit.profile:  creates dmgr and node profile
+             - was9.delete.all.profile:     delete dmgr and node profile
+             - was9.display.dmgr.info:      displays information about the dmgr profile [${dmgr.profile.name}]
+             - was9.display.profile.info:   displays information about the node profile [${node1.profile.name}]
+             - was9.stop.all.services:      stop dmgr and node Windows services
+             - was9.start.all.services:     start dmgr and node Windows services
+             
+             - was9.setup.all:   calls following was9 targets:
+               - was9.configure.env.vars:   configure WAS9 Environment variables
+               - was9.setup.security:       setup Authetication in WAS
+               - was9.setup.jdbc.providers: setup JDBC providers (XA and non-XA)
+               - was9.setup.datasources:    setup all the required Datasources
+               - was9.setup.create.serverName create all apps server name
+               - was9.setup.jvm.classpath:  setup JVM classpath
+               - was9.setup.jvm.property:   setup process definition custom property
+               - was9.setup.jvm.debug:      sets JVM debugMode to true
+                   set was.setup.jvm.debug.mode property to false to set debugMode to false
+               - was9.setup.jvm.log:        setup JVM log name 
+               - was9.setup.virtualhost     setup all vitual hosts
+               - was9.setup.jndi.naming:    set JNDI naming
+               - copy_p12:                  copy the customized trust.p12 to dmgr
+               - was9.setup.JMSBindings:    generate and copy the JMSBindings for EZK and PSW
+               - was9.setup.iis:             create all IIS websites
+            
+            Maintenance scripts
+                - was9.change.cics:         change all JVM custom properties to new cics, regenerate JMSBindings and put in apps folder,
+                    need to add change STP datachecker and fileprocessor properties
+                    can run as ant -f build_was9ND.xml -DCICS.name=LPDCICS was9.change.cics
+                - was9.delete.iis:          delete all IIS sites
+        </echo>
+    </target>
+
+    <target name="build_WAS9_ND" description="Run all WAS9 target to build completed environment, 
+        including create profile, create servers, set environment variables, create JDBC provider, 
+        datasource, JVM, Debug and so on" depends ="cvs.checkout">
+        <antcall target="was9.create.presit.profile" />
+        <antcall target="was9.setup.all" />
+    </target>
+
+    
+    <target name="rebuild_WAS9_ND" description="delete all profiles and rebuild WAS9 ND" depends= "cvs.checkout" >
+        <antcall target="was9.delete.all.profile" />
+        <antcall target="was9.create.presit.profile" />
+        <antcall target="was9.setup.all" />
+    </target>
+    
+    <target name="rebuild_WAS9_and_IIS_ND" description="delete all profiles and IIS Sites and rebuild WAS9 ND" depends= "cvs.checkout" >
+        <antcall target="was9.delete.all.profile" />
+        <antcall target="was9.create.presit.profile" />
+        <antcall target="was9.setup.all" />
+        <antcall target="was9.delete.iis"/>        
+        <antcall target="was9.setup.iis"/>
+    </target>
+    
+    <target name="was9.create.presit.profile" depends="was9.create.dmgr.profile,was9.create.node.profile"/>
+
+    <target name="was9.create.dmgr.profile"
+        description="Creates presit WAS9 Cell Profile using the value provided in creation params property">
+        <property name="was9.profile.creation.params"
+            value="-isDefault
+                -winserviceCheck true 
+                -winserviceAccountType localsystem
+                -winserviceStartupType automatic"/>
+        <property name="was9.create.dmgr.profile.args" value="-create 
+            -profileName ${dmgr.profile.name}
+            -profilePath ${websphere.home}/profiles/${dmgr.profile.name}
+            -templatePath ${websphere.home}/profileTemplates/management
+            -nodeName ${dmgr.profile.name}
+            -cellName ${dmgr.cell.name}
+            -hostname ${hostname}
+            ${was9.profile.creation.params}"/>
+        
+        <echo >
+         Creating WAS9 cell dmgr profile using following arguments: 
+            ${was9.create.dmgr.profile.args}
+
+         This process may take a while...
+        </echo>
+        
+        <exec executable="${websphere.home}/bin/manageprofiles.bat">
+            <arg line="${was9.create.dmgr.profile.args}"/>
+        </exec>
+
+        <antcall target="was9.display.dmgr.info"></antcall>
+        <antcall target="was9.start.dmgr"></antcall>        
+    </target>
+    
+    <target name="was9.start.dmgr" description="start deployment manager">
+            <exec executable="${websphere.home}/bin/startServer.bat">
+            <arg value="dmgr"/>
+        </exec>
+    </target>
+        
+    <target name="was9.create.node.profile"
+        description="Creates customized WAS9 node Profile using the value provided in creation params property">
+        <property name="was9.profile.creation.params"
+            value="-isDefault
+                -winserviceCheck true 
+                -winserviceAccountType localsystem
+                -winserviceStartupType automatic"/>
+        <property name="was9.create.node.profile.args" value="-create 
+            -templatePath ${websphere.home}/profileTemplates/managed    
+            -profilePath ${websphere.home}/profiles/${node1.profile.name}
+            -nodeName ${node1.profile.name}
+            -cellName ${cell.name}
+            -dmgrHost localhost
+            -dmgrPort 8879
+            -profileName ${node1.profile.name}
+            -hostName ${hostname}
+            -federateLater false 
+            ${was9.profile.creation.params}"/>
+        
+        <echo >
+         Creating WAS9 node profile using following arguments: 
+            ${was9.create.node.profile.args}
+
+         This process may take a while...
+        </echo>
+        <exec executable="${websphere.home}/bin/manageprofiles.bat">
+            <arg line="${was9.create.node.profile.args}"/>
+        </exec>
+        <antcall target="was9.display.profile.info"></antcall>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/stopNode.bat" />
+        <antcall target="was9.add.node.service" />
+        <antcall target="was9.start.node.service" />
+    </target>
+  
+  <target name="was9.start.node.service">
+    <echo> ${was.node.service.name} </echo>
+    <exec executable="net.exe">
+      <arg value="start"/>
+      <arg value="${was.node.service.name}"/>
+    </exec>
+  </target>
+  <target name="was9.stop.all.services">
+    <exec executable="net.exe">
+      <arg value="stop"/>
+      <arg value="${was.node.service.name}"/>
+    </exec>
+    <sleep seconds="60"/>
+     <exec executable="net.exe">
+      <arg value="stop"/>
+      <arg value="${was.dmgr.service.name}"/>
+    </exec>
+    <sleep seconds="60"/>   
+  </target>
+
+    <target name="was9.start.all.services">
+    <exec executable="net.exe">
+      <arg value="start"/>
+      <arg value="${was.node.service.name}"/>
+    </exec>
+    <sleep seconds="15"/>
+     <exec executable="net.exe">
+      <arg value="start"/>
+      <arg value="${was.dmgr.service.name}"/>
+    </exec>
+    <sleep seconds="15"/>   
+  </target>
+  
+    <target name="was9.display.dmgr.info" description="Displays the contents of file that is created on dmgr creation">
+        <concat>
+          <header filtering="no" trimleading="yes">
+              ====================================================
+               -->> Information about [${dmgr.name}] profile 
+              ====================================================
+          </header>
+          <path path="${websphere.home}/profiles/${dmgr.profile.name}/logs/AboutThisProfile.txt"/>
+        </concat>
+    </target>
+
+       <target name="was9.display.profile.info" description="Displays the contents of file that is created on profile creation">
+        <concat>
+          <header filtering="no" trimleading="yes">
+              ====================================================
+               -->> Information about [${node1.profile.name}] profile 
+              ====================================================
+          </header>
+          <path path="${websphere.home}/profiles/${node1.profile.name}/logs/AboutThisProfile.txt"/>
+        </concat>
+    </target>
+
+        <target name="was9.delete.all.profile" description="Deletes all WAS9 Profile">
+        <echo >
+         Deleting WAS9 all profiles
+
+         This process may take a while...
+        </echo>
+        
+        <exec executable="${websphere.home}/bin/manageprofiles.bat">
+            <arg value="-deleteAll"/>
+        </exec>
+        
+        <antcall target = "was9.delete.dmgr.service"/>
+        <antcall target = "was9.delete.node.service"/>
+        <delete includeemptydirs="true">
+            <fileset dir="${websphere.home}\profiles\" includes="**/*"/>
+            <fileset dir="${websphere.home}\logs\manageprofiles" />
+        </delete>       
+    </target>
+
+    <target name="was9.delete.node.profile" description="Deletes WAS9 node Profile">
+        <echo >
+         Deleting WAS9 default profile: [${node1.profile.name}]
+
+         This process may take a while...
+        </echo>
+        
+        <exec executable="${websphere.home}/bin/manageprofiles.bat">
+            <arg line="-delete -profileName ${node1.profile.name}"/>
+        </exec>
+        <antcall target="was9.delete.node.service" />
+        <delete includeemptydirs="true">
+
+            <fileset dir="${websphere.home}\profiles\${node1.profile.name}"/>
+            <fileset dir="${websphere.home}\logs\manageprofiles\${node1.profile.name}" />
+        </delete>           
+    </target>
+    
+    <target name="was9.delete.dmgr.profile" description="Deletes default WAS9 Profile" >
+        <echo >
+         Deleting WAS9 default profile: [${dmgr.profile.name}]
+
+         This process may take a while...
+        </echo>
+        
+        <exec executable="${websphere.home}/bin/manageprofiles.bat">
+            <arg line="-delete -profileName ${dmgr.profile.name}"/>
+        </exec>
+        <delete includeemptydirs="true">
+
+            <fileset dir="${websphere.home}\profiles\${dmgr.profile.name}"/>
+            <fileset dir="${websphere.home}\logs\manageprofiles\${dmgr.profile.name}" />
+        </delete>           
+    </target>
+
+    <target name="was9.delete.dmgr.service" description="Deletes WAS9 dmfr Windows service" >
+        <echo >
+         Deleting WAS9 dmgr services: [${dmgr.profile.name}]
+
+         This process may take a while...
+        </echo>
+        
+        <exec executable="${websphere.home}/bin/wasservice.exe">
+            <arg line="-remove ${dmgr.profile.name}"/>
+        </exec>
+    </target>   
+    
+    <target name="was9.delete.node.service" description="Deletes WAS9 node Windows service" >
+        <echo >
+         Deleting WAS9 node services: [${node1.profile.name}]
+
+         This process may take a while...
+        </echo>
+        
+        <exec executable="${websphere.home}/bin/wasservice.exe">
+            <arg line="-remove ${node1.profile.name}"/>
+        </exec>
+    </target>
+    
+    <target name="was9.add.node.service" description="add WAS9 node Windows service">
+        <echo >
+         Adding WAS9 node services: [${node1.profile.name}]
+
+         This process may take a while...
+        </echo>
+        
+        <exec executable="${websphere.home}/bin/wasservice.exe">
+            <arg line="-add ${node1.profile.name} -serverName nodeagent -profilePath ${websphere.home}/profiles/${node1.profile.name} -startType automatic -restart true"/>
+        </exec>
+    </target>   
+                
+    <!--    
+    WAS9 setup all environment targets
+    --> 
+    <condition property="isEventAppNeedsClusterSetup" >
+        <equals arg1="${need.cluster.setup.for.eventapp}" arg2="yes" casesensitive="false" /> 
+    </condition>
+    
+    <condition property="isEventAppNeedsServerSetup" >
+        <equals arg1="${need.cluster.setup.for.eventapp}" arg2="no" casesensitive="false" /> 
+    </condition>
+    
+    <condition property="isJNDINamingSetupRequired">
+        <contains string="${hostname}" substring="usgp" casesensitive="false" />
+    </condition>
+    
+    <condition property="isJNDINamingSetupRequired">
+        <contains string="${hostname}" substring="mliw" casesensitive="false" />
+    </condition>
+
+	<condition property="isJNDINamingSetupRequired">
+	        <contains string="${hostname}" substring="vmrp" casesensitive="false" />
+	</condition>
+    
+    <condition property="isEventAppDatasourceSetupRequired">
+        <contains string="${hostname}" substring="usgp" casesensitive="false" />
+    </condition>
+    
+    <condition property="isEventAppDatasourceSetupRequired">
+        <contains string="${hostname}" substring="mliw" casesensitive="false" />
+    </condition>
+
+	<condition property="isEventAppDatasourceSetupRequired">
+	        <contains string="${hostname}" substring="vmrp" casesensitive="false" />
+	</condition>
+    
+    <condition property="isConfigPathNeedInJVMClasspath">
+        <contains string="${hostname}" substring="usgp" casesensitive="false" />
+    </condition>
+    
+    <condition property="isConfigPathNeedInJVMClasspath">
+        <contains string="${hostname}" substring="mliw" casesensitive="false" />
+    </condition>
+
+	<condition property="isConfigPathNeedInJVMClasspath">
+	        <contains string="${hostname}" substring="vmrp" casesensitive="false" />
+	</condition>
+    
+    <target name="was9.setup.all" description="Setup WAS9 environment for variables, Security, JDBC Provider and Datasources">
+        <echo message="Start to setup WAS parameters......"/>
+        <antcall target="was9.configure.env.vars"/>
+        <antcall target="was9.setup.security"/>
+        <antcall target="was9.setup.jdbc.providers"/>
+        <antcall target="was9.setup.datasources"/>
+        <antcall target="was9.setup.create.serverName"/>
+        <antcall target="was9.setup.create.clusterName"/>
+        <antcall target="was9.configure.eventApp.server"/>
+        <antcall target="was9.configure.eventApp.cluster"/>
+        <antcall target="was9.setup.jvm.classpath"/>
+        <!-- <antcall target="was9.setup.jvm.debug"/> -->
+        <antcall target="was9.setup.jvm.log"/>
+        <antcall target="was9.setup.jvm.property"/>
+        <antcall target="was9.setup.virtualhost"/>
+        <antcall target="was9.setup.jndi.naming" />
+        <antcall target="copy_p12" />
+        <antcall target="was9.setup.JMSBindings" />
+    </target>
+    
+    <target name="was9.setup.eventapp" description="create and configure eventapp servers/clusters" >
+        <echo message="Start to setup EventApp......"/>
+        <antcall target="was9.setup.eventapp.datasource"/>
+        <antcall target="was9.create.eventapp.server"/>
+        <antcall target="was9.create.eventApp.cluster"/>
+        <antcall target="was9.configure.eventApp.server"/>
+        <antcall target="was9.configure.eventApp.cluster"/>
+        <antcall target="was9.setup.eventapp.jvm.log"/>
+        <antcall target="was9.setup.jndi.naming" />
+    </target>
+    
+    <target name="was9.setup.create.serverName" description="create all app servers" unless="isEventAppNeedsClusterSetup" >
+
+        <echo> creating servers...
+        </echo>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${PSWServer.name}" />
+                <arg line="${node1.profile.name}" />
+        </exec>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${EZKServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec>
+    
+
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${PSWCMAServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec>
+    
+
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${EZKCMAServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec>
+        
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${WebServicesServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec> 
+        
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${OOServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec> 
+        
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${EVENTServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec>                         
+        
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${DURABLEEVENTServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec>                         
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${SCWServer.name}" />
+                <arg line="${node1.profile.name}" />
+        </exec>
+    </target>
+
+    <target name="was9.create.eventapp.server" description="create eventapp servers" unless="isEventAppNeedsClusterSetup" >
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${EVENTServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec>                         
+        
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${DURABLEEVENTServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec> 
+    </target>
+    
+    <target name="was9.setup.create.clusterName" description="create clusters for EventApp and Servers for other Apps" if="isEventAppNeedsClusterSetup" >
+        <echo>creating servers for other Apps...
+        </echo>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${PSWServer.name}" />
+                <arg line="${node1.profile.name}" />
+        </exec>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${EZKServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec>
+    
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${PSWCMAServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec>
+    
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${EZKCMAServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec>
+        
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${WebServicesServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec> 
+        
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${OOServer.name}"/>
+                <arg line="${node1.profile.name}" />
+        </exec> 
+
+        <echo> creating clusters for EventApp...</echo>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createCluster" />
+                <arg line="${EVENTCluster.name}" />
+                <arg line="${dmgr.cell.name}"/>
+                <arg line="${node1.profile.name}" />
+                <arg line="${node2.profile.name}" />
+        </exec>
+
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createCluster" />
+                <arg line="${DURABLEEVENTCluster.name}" />
+                <arg line="${dmgr.cell.name}"/>
+                <arg line="${node1.profile.name}" />
+                <arg line="${node2.profile.name}" />
+        </exec>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createServer" />
+                <arg line="${SCWServer.name}" />
+                <arg line="${node1.profile.name}" />
+        </exec>
+    </target>
+
+    <target name="was9.create.eventApp.cluster" description="create EventApp Cluster and DurableEventApp Cluster" if="isEventAppNeedsClusterSetup" >
+        <echo> creating clusters for EventApp...</echo>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createCluster" />
+                <arg line="${EVENTCluster.name}" />
+                <arg line="${dmgr.cell.name}"/>
+                <arg line="${node1.profile.name}" />
+                <arg line="${node2.profile.name}" />
+        </exec>
+
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\createServer_ND.py" />
+                <arg line="createCluster" />
+                <arg line="${DURABLEEVENTCluster.name}" />
+                <arg line="${dmgr.cell.name}"/>
+                <arg line="${node1.profile.name}" />
+                <arg line="${node2.profile.name}" />
+        </exec>
+    </target>
+    
+    <target name="was9.configure.eventApp.server" unless="isEventAppNeedsClusterSetup">
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\eventAppSetup.py" />
+                <arg line="${hostname}" />
+                <arg line="APPSERVER"/>
+                <arg line="${CICS.name}" />
+        </exec>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\deploy_jms.py" />
+                <arg line="${node1.profile.name}" />
+        </exec>
+        <antcall target="was9.setup.eventserver.jvm.classpath"/>
+        
+        <antcall target="was9.remove.derby.datasource"/>
+                
+    </target>
+    
+    <target name="was9.configure.eventApp.cluster" if="isEventAppNeedsClusterSetup">
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\eventAppSetup.py" />
+                <arg line="${hostname}" />
+                <arg line="CLUSTER"/>
+                <arg line="${CICS.name}" />
+        </exec>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jython -f" />
+                <arg file="${basedir}\..\ConfigurationScripts\deploy_jms.py" />
+                <arg line="CLUSTER"/>
+        </exec>
+        <replace file="${config.scripts.dir}/properties/DurableEventServer1Policy.properties">
+          <replacefilter token='DurableEventServer1.NodeName' value='${node1.profile.name}'/>
+          <replacefilter token='DurableEventServer2.NodeName' value='${node2.profile.name}'/>
+        </replace>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+                <arg line="-lang jacl -f" />
+                <arg file="${websphere.home}\bin\CreateCoreGroupPolicy.jacl" />
+                <arg line="${config.scripts.dir}/properties/DurableEventServer1Policy.properties" />
+        </exec>
+        <antcall target="was9.setup.eventcluster.jvm.classpath"/>
+        
+        <antcall target="was9.remove.derby.datasource"/>        
+    </target>
+    
+    <target name="was9.remove.derby.datasource">
+        
+        <echo message="Deleting [_${node1.profile.name}.DurableEventServer1-EventBus] datasource..."/>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/deleteDataSource_ND.jacl" />
+            <arg value="_${node1.profile.name}.DurableEventServer1-EventBus" />
+        </exec>
+    
+    
+    </target>
+        
+    <target name="was9.setup.jndi.naming" description="create all JNDI naming space for all servers" if="isJNDINamingSetupRequired" >
+
+        <exec dir="${basedir}\..\ConfigurationScripts" executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">            
+			<arg line="-lang jython -usejython21 true -f" />
+            <arg file="${basedir}\..\ConfigurationScripts\namingSetup.py" />
+            <arg line="${hostname}" />
+            <arg line="${need.cluster.setup.for.eventapp}" />
+        </exec>
+    </target>
+        
+    <target name="was9.configure.env.vars" description="Configure WAS9 Environment variables">
+        <echo message="Configuring WAS Environment variables..." />
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/configWASVars_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />           
+            <arg value="${db2jcc.dir}"/>
+        </exec>
+    </target>
+
+    <target name="was9.setup.security" description="Setup WAS9 Security">
+        <echo message="Creating Security (JAAS - J2C authentication)..." />
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/createAuth_ND.jacl" />
+        </exec>
+    </target>
+
+    <target name="was9.setup.jdbc.providers" description="Setup WAS9 JDBC Providers">
+        <echo message="Creating JDBC providers (XA and non-XA)..." />
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/createJDBC_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />
+        </exec>
+    </target>
+
+    <target name="was9.setup.jvm.classpath" description="Setup WAS9 JVM Classpath">
+        <echo message="Setting JVM classpath" />
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/setWAS-jvm-classpath_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${node1.profile.name}" />
+            <arg value="${PSWServer.name}" />
+            <arg value="${root.dir}"/>
+        </exec>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/setWAS-jvm-classpath_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${node1.profile.name}" />
+            <arg value="${EZKServer.name}" />
+            <arg value="${root.dir}"/>
+        </exec>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/setWAS-jvm-classpath_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${node1.profile.name}" />
+            <arg value="${PSWCMAServer.name}" />
+            <arg value="${root.dir}"/>
+        </exec>
+
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/setWAS-jvm-classpath_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${node1.profile.name}" />
+            <arg value="${EZKCMAServer.name}" />
+            <arg value="${root.dir}"/>
+        </exec> 
+        
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/setWAS-jvm-classpath_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${node1.profile.name}" />
+            <arg value="${WebServicesServer.name}" />
+            <arg value="${root.dir}"/>
+        </exec>
+    	<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+    	            <arg value="-f" />
+    	            <arg file="${basedir}/scripts/setWAS-jvm-classpath_ND.jacl" />
+    	            <arg value="${dmgr.cell.name}" />
+    	            <arg value="${node1.profile.name}" />
+    	            <arg value="${OOServer.name}" />
+    	            <arg value="${root.dir}"/>
+    	 </exec>
+
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/setWAS-jvm-classpath_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${node1.profile.name}" />
+            <arg value="${SCWServer.name}" />
+            <arg value="${root.dir}"/>
+        </exec>
+    </target>
+    
+    <target name="was9.setup.eventserver.jvm.classpath" description="Setup WAS9 EventServer1 JVM Classpath" unless="isEventAppNeedsClusterSetup" if="isConfigPathNeedInJVMClasspath" >
+        <echo message="Setting EventServer1 JVM classpath" />
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/setWAS-jvm-classpath_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${node1.profile.name}" />
+            <arg value="${EVENTServer.name}" />
+            <arg value="${root.dir}"/>
+        </exec>
+    </target>
+    <target name="was9.setup.eventcluster.jvm.classpath" description="Setup WAS9 EventServer1 JVM Classpath" unless="isEventAppNeedsServerSetup" if="isConfigPathNeedInJVMClasspath" >
+        <echo message="Setting EventCluster JVM classpath" />
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/setWAS-jvm-classpath_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${node1.profile.name}" />
+            <arg value="${EVENTCluster.name}" />
+            <arg value="${root.dir}"/>
+        </exec>
+    </target>
+    <target name="was9.setup.jvm.property" description="Setup WAS9 JVM custom property">
+        <echo message="Setting JVM custom property" />
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/create_custom_prop_ND.jacl" />
+            <arg value="${EZKServer.name}" />
+            <arg value="${CICS.name}" />
+            <arg value="default" />
+            <arg value="${root.dir}"/>
+        </exec>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/create_custom_prop_ND.jacl" />
+            <arg value="${PSWServer.name}" />
+            <arg value="${CICS.name}" />
+            <arg value="default" />
+
+            <arg value="${root.dir}"/>
+        </exec>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/create_custom_prop_ND.jacl" />
+            <arg value="${WebServicesServer.name}" />
+            <arg value="${CICS.name}" />
+            <arg value="default" />
+            <arg value="${root.dir}"/>
+        </exec>
+    	<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/create_custom_prop_ND.jacl" />
+            <arg value="${OOServer.name}" />
+            <arg value="${CICS.name}" />
+            <arg value="default" />
+            <arg value="${root.dir}"/>
+        </exec>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/create_custom_prop_ND.jacl" />
+            <arg value="${SCWServer.name}" />
+            <arg value="${CICS.name}" />
+            <arg value="default" />
+
+            <arg value="${root.dir}"/>
+        </exec>
+    </target>   
+
+    <target name="was9.setup.virtualhost" description="Setup WAS9 Virtual host">
+        <echo message="Setting WAS9 Virtual host" />
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/create_virtualhost_ND.jacl" />
+            <arg value="${hostname}" />
+            <arg value="${dmgr.cell.name}" />
+        </exec>
+    </target>   
+    
+    <target name="was9.setup.jvm.log" description="modify all app servers JVM logs file name">
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+            <arg line="-f" />
+            <arg file="${basedir}/scripts/change_log_name_ND.jacl" />
+        </exec>
+    </target>
+    
+    <target name="was9.setup.eventapp.jvm.log" description="modify eventapp related servers JVM logs file name">
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+            <arg line="-f" />
+            <arg file="${basedir}/scripts/change_eventapp_log_name_ND.jacl" />
+        </exec>
+    </target>
+    
+    <target name="was9.setup.jvm.debug" description="Setup WAS9 JVM Debug mode to true">
+        <property name="was.setup.jvm.debug.mode" value="true"/>
+        <echo message="Setting JVM debug mode to ${was.setup.jvm.debug.mode}" />
+
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/setWAS-jvm-debug_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${node1.profile.name}" />
+            <arg value="${was.setup.jvm.debug.mode}"/>
+        </exec>
+    </target>
+
+    <target name="was.create.datasource" description="Setup WAS9 datasource using set params">
+        <echo message="Creating [${was.datasource.name}] datasource..."/>
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" failonerror="true">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/createDataSource_ND.jacl" />
+            <arg value="${was.datasource.name}" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${was.db2.jdbc.driver}" />
+            <arg value="${was.security.alias}" />
+            <arg value="${was.datasource.jndi}" />
+            <arg value="${was.database.name}" />
+        </exec>
+    </target>
+
+    <target name="was9.setup.datasources" description="Setup WAS9 DataSources">
+        <property name="was.security.alias.db2admin" value="jaas/db2admin"/>
+        <property name="was.security.alias.apollo" value="jaas/apollo"/>
+        <property name="was.db2.jdbc.driver.XA" value="DB2_JDBC_Driver_XA_UV"/>
+        <property name="was.db2.jdbc.driver.non.XA" value="DB2_JDBC_Driver_UV"/>
+
+        <!-- Database names -->
+        <property name="customerService.database.name" value="srzkd1d1" />
+        <property name="mrl.database.name" value="mrld1d1" />
+        <property name="ps.content.database.name" value="srpld1cm" />
+        <property name="ezk.content.database.name" value="vgncnt" />
+        <property name="apollo.database.name" value="HODB2GW" />	<!--old value: xx_ddb2c-->
+        <property name="session.database.name" value="session" />
+        <property name="acrmis.database.name" value="TACRMIS" />
+        <property name="oo.database.name" value="CATORD" />
+        <property name="mrldm.database.name" value="MRLDM" />
+        <property name="peoplesoft.database.name" value="srpsd1d1" />
+        <property name="pera.database.name" value="perad1d1" />
+        
+        <echo message="Creating DataSources..." />
+
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="Customer Service Database" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.db2admin}" />
+            <param name="was.datasource.jndi" value="jdbc/customerService" />
+            <param name="was.database.name" value="${customerService.database.name}" />
+        </antcall>
+        
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="MRL System Database" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.db2admin}" />
+            <param name="was.datasource.jndi" value="jdbc/mrl" />
+            <param name="was.database.name" value="${mrl.database.name}" />
+        </antcall>
+        
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="Plan Sponsor Content Database" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.db2admin}" />
+            <param name="was.datasource.jndi" value="jdbc/content" />
+            <param name="was.database.name" value="${ps.content.database.name}" />
+        </antcall>
+
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="EZK Content Database" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.db2admin}" />
+            <param name="was.datasource.jndi" value="jdbc/ezkcnt" />
+            <param name="was.database.name" value="${ezk.content.database.name}" />
+        </antcall>
+                
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="Apollo via DB2Connect" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.apollo}" />
+            <param name="was.datasource.jndi" value="jdbc/apollo" />
+            <param name="was.database.name" value="${apollo.database.name}" />
+        </antcall>
+        
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="Session Persistence Database (PSW)" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.non.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.db2admin}" />
+            <param name="was.datasource.jndi" value="jdbc/session" />
+            <param name="was.database.name" value="${session.database.name}" />
+        </antcall>
+        
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="ACRMIS" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.non.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.acr}" />
+            <param name="was.datasource.jndi" value="jdbc/acrmis" />
+            <param name="was.database.name" value="${acrmis.database.name}" />
+        </antcall>
+
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="OO Catalog Database" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.db2admin}" />
+            <param name="was.datasource.jndi" value="jdbc/order" />
+            <param name="was.database.name" value="${oo.database.name}" />
+        </antcall>  
+
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="MRL Datamart Database" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.db2admin}" />
+            <param name="was.datasource.jndi" value="jdbc/mrldatamart" />
+            <param name="was.database.name" value="${mrldm.database.name}" />
+        </antcall>
+        
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="Event Message Engine Data source" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.non.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.db2admin}" />
+            <param name="was.datasource.jndi" value="jdbc/event" />
+            <param name="was.database.name" value="${session.database.name}" />
+        </antcall>
+
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="PeopleSoft Data source" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.db2admin}" />
+            <param name="was.datasource.jndi" value="jdbc/peoplesoft" />
+            <param name="was.database.name" value="${peoplesoft.database.name}" />
+        </antcall>
+
+        <antcall target="was.create.datasource">
+            <param name="was.datasource.name" value="PERA Data source" />
+            <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+            <param name="was.security.alias" value="${was.security.alias.db2admin}" />
+            <param name="was.datasource.jndi" value="jdbc/pera" />
+            <param name="was.database.name" value="${pera.database.name}" />
+        </antcall>
+
+    </target>
+
+    <target name="was9.setup.eventapp.datasource" description="Setup WAS9 datasource using set params" if="isEventAppDatasourceSetupRequired" >
+        <echo message="Creating [${was.datasource.name}] datasource..."/>
+        <property name="was.datasource.name" value="Event Message Engine Data source" />
+        <property name="was.db2.jdbc.driver" value="DB2_JDBC_Driver_UV" />
+        <property name="was.security.alias" value="jaas/db2admin" />
+        <property name="was.database.name" value="session" />
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" failonerror="true">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/createDataSource_ND.jacl" />
+            <arg value="${was.datasource.name}" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${was.db2.jdbc.driver}" />
+            <arg value="${was.security.alias}" />
+            <arg value="jdbc/event" />
+            <arg value="${was.database.name}" />
+        </exec>
+    </target>
+
+    <target name="was9.setup.iis">
+         <exec dir="${basedir}\..\ConfigurationScripts\IIS_scripts"  executable="${basedir}\..\ConfigurationScripts\IIS_scripts\createIIS.bat"> 
+         </exec>
+    </target>
+
+    <target name="was9.delete.iis">
+         <exec dir="${basedir}\..\ConfigurationScripts\IIS_scripts"  executable="${basedir}\..\ConfigurationScripts\IIS_scripts\deleteIIS.bat"> 
+         </exec>
+    </target>
+    
+    <target name="copy_p12">
+      <copy file="${basedir}\..\ConfigurationScripts\certs\trust.p12" todir="${websphere.home}\profiles\${dmgr.profile.name}\config\cells\${dmgr.cell.name}" overwrite="yes"/>
+    </target>
+    
+    <target name="was9.setup.JMSBindings">
+       <exec dir="${basedir}\JMSBindings\generator"  executable="${basedir}\JMSBindings\generator\GenerateBindings.bat">
+          <arg line="${CICS.name} presit"/>
+        </exec>
+      <copy file="${basedir}\JMSBindings\generator\.bindings" todir="${root.dir}\Apps\ezk\JMSBindings"/>
+      <copy file="${basedir}\JMSBindings\generator\.bindings" todir="${root.dir}\Apps\PlanSponsor\JMSBindings"/>
+    </target>
+
+    <!--
+     To change cics, can do one of following ways.
+     1. change CICS.name to the proper CICS name in the build_was9_ND.xml, then run 
+        ant -f build_was9_ND.xml was9.chang.cics
+     2. run ant -f build_was9_ND.xml was9.chang.cics -DCICS.name=CICS-name
+    -->
+    <target name="was9.change.cics" >
+        <antcall target="was9.setup.JMSBindings" />
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+            <arg line="-f" />
+            <arg file="${basedir}/scripts/change_cics_ND.jacl" />
+            <arg line="${CICS.name}" />
+        </exec> 
+    </target>
+
+<target name="copy_assets_to_WAS" description="copy ezk and psw assets to local WAS directory"> 
+    <antcall target="copy_psw_assets_to_WAS"/>
+    <antcall target="copy_ezk_assets_to_WAS"/>
+</target>
+
+<target name="copy_psw_assets_to_WAS"> 
+  
+    <!-- ****** PSW WEB ****** Copy CMA Assets to /assets  then copy all unmanaged assets to /unmanaged/assets -->
+    
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/PlanSponsor.ear/PlanSponsorWeb.war/assets" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../PlanSponsorCMA/PlanSponsorCMAWeb/webApplication/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy> 
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/PlanSponsor.ear/PlanSponsorWeb.war/assets/unmanaged" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../common/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+      <fileset dir="${basedir}/BaseWeb/webApplication/assets/unmanaged">
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy>
+
+    <!-- ****** NBDW WEB ****** Copy CMA Assets to /assets  then copy all unmanaged assets to /unmanaged/assets -->
+    
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/PlanSponsor.ear/BrokerDealerWeb.war/assets" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../PlanSponsorCMA/PlanSponsorCMAWeb/webApplication/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy>    
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/PlanSponsor.ear/BrokerDealerWeb.war/assets/unmanaged" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../common/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+      <fileset dir="${basedir}/BaseWeb/webApplication/assets/unmanaged">
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy>
+
+    <!-- ****** PSW NY WEB ****** Copy CMA Assets to /assets  then copy all unmanaged assets to /unmanaged/assets -->
+    
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/PlanSponsor.ear/PlanSponsorWebNY.war/assets" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../PlanSponsorCMA/PlanSponsorCMAWeb/webApplication/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy> 
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/PlanSponsor.ear/PlanSponsorWebNY.war/assets/unmanaged" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../common/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+      <fileset dir="${basedir}/BaseWeb/webApplication/assets/unmanaged">        
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy>    
+</target>
+
+<target name="copy_ezk_assets_to_WAS"> 
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/ezk.ear/ezkWeb.war/assets" overwrite="yes"> 
+        <fileset dir="${basedir}/../ezkCMA/ezkCMAWeb/webApplication/assets"> 
+            <exclude name="**/svn/**"/> 
+        </fileset> 
+    </copy> 
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/ezk.ear/ezkWeb.war" overwrite="yes"> 
+        <fileset dir="${basedir}/../ezk/ezkWeb/webApplication/assets"> 
+            <exclude name="**/svn/**"/> 
+        </fileset> 
+    </copy> 
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/ezk.ear/ezkWeb.war" overwrite="yes"> 
+        <fileset dir="${basedir}/../common/assets"> 
+            <exclude name="**/svn/**"/> 
+        </fileset> 
+    </copy>     
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/ezk.ear/ezkWebNY.war/assets" overwrite="yes"> 
+        <fileset dir="${basedir}/../ezkCMA/ezkCMAWeb/webApplication/assets"> 
+            <exclude name="**/svn/**"/> 
+        </fileset> 
+    </copy> 
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/ezk.ear/ezkWebNY.war" overwrite="yes"> 
+        <fileset dir="${basedir}/../ezk/ezkWeb/webApplication/assets"> 
+            <exclude name="**/svn/**"/> 
+        </fileset> 
+    </copy>
+    <copy todir="${websphere.home}/profiles/${node1.profile.name}/installedApps/${dmgr.cell.name}/ezk.ear/ezkWebNY.war" overwrite="yes"> 
+        <fileset dir="${basedir}/../common/assets"> 
+            <exclude name="**/svn/**"/> 
+        </fileset> 
+    </copy>     
+  </target>
+
+<!-- CVS target -->
+  <property name="svn.root" value=":pserver:Automated_Build@jhrpscvs:/USGP_Repository" />
+  <property name="svn.local" value="/svn"/>
+    
+  <target name = "cvs.checkout" description = "update common and ConfigurationScripts module">
+    <available file="${svn.local}/common" property="common-exists"/>
+    <available file="${svn.local}/ConfigurationScripts" property="confgScript-exists"/>
+    <antcall target="checkout.common" />
+    <antcall target="checkout.confgScript" />
+  </target>
+
+  <target name = "checkout.common" unless = "common-exists">
+    <cvs command="-q checkout -P " cvsRoot="${cvs.root}" dest="${svn.local}" package="common"/>
+  </target>
+  
+  <target name = "checkout.confgScript" unless = "confgScript-exists">
+    <cvs command="-q checkout -P " cvsRoot="${cvs.root}" dest="${svn.local}" package="ConfigurationScripts"/>
+  </target>
+
+    <!-- To catalog all databases and to update the datasources for the input region & server -->
+    <!-- Execute.. ant -f build_was9ND.xml change.all.database.config -Ddb.region=region.name -Ddb.server=hostname -->
+        <!-- ant -f build_was9ND.xml change.all.database.config -Ddb.region=r4 -Ddb.server=sp1 -->  
+        <!-- ant -f build_was9ND.xml change.all.database.config -Ddb.region=localhost -Ddb.server=localhost ..for local databases -->       
+    
+    <!-- To catalog a database and to update the datasource for the input region & server -->
+    <!-- Execute.. ant -f build_was9ND.xml change.csdb.database.config -Ddb.region=region.name -Ddb.server=hostname -->
+        <!-- ant -f build_was9ND.xml change.mrl.database.config -Ddb.region=region.name -Ddb.server=hostname -->
+        <!-- ant -f build_was9ND.xml change.ezkcnt.database.config -Ddb.region=region.name -Ddb.server=hostname -->
+        <!-- ant -f build_was9ND.xml change.pswcnt.database.config -Ddb.region=region.name -Ddb.server=hostname -->
+    <!-- Optionally you can pass the database new name like the following -->
+        <!-- ant -f build_was9ND.xml change.csdb.database.config -Ddb.region=t5 -Ddb.server=epassdb -Ddb.newname=t5csdb46-->  
+     
+    <target name="change.all.database.config" depends="checkip,init" description="Cataloging all databases and updating DataSources">
+        <echo message="Cataloging databases and updating datasources based on '${db.server}' and region '${db.region}'...."/>
+        <fail message="****Don't provide -Ddb.newname option" if="db.newname"/>
+        <property name="stopserver.clearlogs" value="no"/>
+        <antcall target="change.csdb.database.config" />
+        <antcall target="change.mrl.database.config" />
+        <antcall target="change.pswcnt.database.config" />
+        <antcall target="change.ezkcnt.database.config" />
+        <!--antcall target="stopallservers.cleartranlog" /-->
+    </target>
+
+  <target name = "checkip">
+        <fail message="****Input the parameter -Ddb.server={server.name}" unless="db.server"/>
+        <fail message="****Input the parameter -Ddb.region={region.name}" unless="db.region"/>
+    <condition property="one.localhost" value="error">
+            <or>
+                <and>
+                    <equals arg1="${db.server}" arg2="localhost" casesensitive="false"  />
+                    <not>
+            <equals arg1="${db.region}" arg2="localhost" casesensitive="false" />
+                    </not>
+                </and>
+
+                <and>
+                    <equals arg1="${db.region}" arg2="localhost" casesensitive="false"  />
+                    <not>
+            <equals arg1="${db.server}" arg2="localhost" casesensitive="false" />
+                    </not>
+                </and>
+            </or>
+    </condition>
+    <fail message="****Region and Server both should be 'localhost' if one entered as localhost" if="one.localhost"/>
+    <condition property="localhostflag">
+                <and>
+                    <equals arg1="${db.region}" arg2="localhost" casesensitive="false" />
+            <equals arg1="${db.server}" arg2="localhost" casesensitive="false" />
+                </and>
+    </condition>
+  </target>
+
+    <target name="change.csdb.database.config" depends="checkip,init" description="Cataloging Customer Service database and updating DataSource">
+        <echo message="Cataloging Customer Service database and updating datasource based on '${db.server}' and region '${db.region}'...."/>
+        <condition property="db.newname" value="srzkd1d1"> <equals arg1="${localhostflag}" arg2="true"/>  </condition>
+    <condition property="db.newname" value="${db.region}csdb">  <not> <isset property="db.newname"/> </not>  </condition>
+    <condition property="jaas.auth" value="jaas/csdb"> <not>    <equals arg1="${localhostflag}" arg2="true"/> </not> </condition>
+    <condition property="jaas.auth" value="jaas/db2admin">  <equals arg1="${localhostflag}" arg2="true"/>  </condition>    
+        <property name="datasource.name" value="Customer Service Database"/>
+        <antcall target="catalog.update.datasource" />
+        <antcall target="stop.relatedservers.cleartranlog" />
+    </target>
+
+    <target name="change.mrl.database.config" depends="checkip,init" description="Cataloging MRL System Database and updating DataSource">
+        <echo message="Cataloging MRL System Database and updating datasource based on '${db.server}' and region '${db.region}'...."/>
+        <condition property="db.newname" value="mrld1d1"> <equals arg1="${localhostflag}" arg2="true"/>  </condition>
+    <condition property="db.newname" value="${db.region}mrl">   <not> <isset property="db.newname"/> </not>  </condition>
+    <condition property="jaas.auth" value="jaas/mrl"> <not> <equals arg1="${localhostflag}" arg2="true"/> </not> </condition>
+    <condition property="jaas.auth" value="jaas/db2admin">  <equals arg1="${localhostflag}" arg2="true"/>  </condition>
+        <property name="datasource.name" value="MRL System Database"/>
+        <antcall target="catalog.update.datasource" />
+        <antcall target="stop.relatedservers.cleartranlog" />
+    </target>
+
+    <target name="change.pswcnt.database.config" depends="checkip,init" description="Cataloging Plan Sponsor Content Database and updating DataSource">
+        <echo message="Cataloging Plan Sponsor Content Database and updating datasource based on '${db.server}' and region '${db.region}'...."/>
+        <condition property="db.newname" value="srpld1cm"> <equals arg1="${localhostflag}" arg2="true"/>  </condition>
+    <condition property="db.newname" value="${db.region}pswcnt">    <not> <isset property="db.newname"/> </not>  </condition>
+    <condition property="jaas.auth" value="jaas/pswcnt"> <not>  <equals arg1="${localhostflag}" arg2="true"/> </not> </condition>
+    <condition property="jaas.auth" value="jaas/db2admin">  <equals arg1="${localhostflag}" arg2="true"/>  </condition>
+        <property name="datasource.name" value="Plan Sponsor Content Database"/>
+        <antcall target="catalog.update.datasource" />
+        <antcall target="stop.relatedservers.cleartranlog" />
+    </target>
+
+    <target name="change.ezkcnt.database.config" depends="checkip,init" description="Cataloging EZK Content Database and updating DataSource">
+        <echo message="Cataloging EZK Content Database and updating datasource based on '${db.server}' and region '${db.region}'...."/>
+        <condition property="db.newname" value="vgncnt"> <equals arg1="${localhostflag}" arg2="true"/>  </condition>
+    <condition property="db.newname" value="${db.region}ezkcnt">    <not> <isset property="db.newname"/> </not>  </condition>
+    <condition property="jaas.auth" value="jaas/ezkcnt"> <not>  <equals arg1="${localhostflag}" arg2="true"/> </not> </condition>
+    <condition property="jaas.auth" value="jaas/db2admin">  <equals arg1="${localhostflag}" arg2="true"/>  </condition>
+        <property name="datasource.name" value="EZK Content Database"/>
+        <antcall target="catalog.update.datasource" />
+        <antcall target="stop.relatedservers.cleartranlog" />
+    </target>
+
+
+	<target name="stop.relatedservers.cleartranlog" description="Stop the related servers, Clear the transaction logs and start the servers" unless="stopserver.clearlogs">
+        <antcall target="do_start_stop_server_clear_log" />
+    </target>
+
+    <target name="stopallservers.cleartranlog" description="Stop the servers, Clear the transaction logs and start the servers">
+        <antcall target="do_start_stop_server_clear_log" />
+    </target>
+    
+    <target name="catalog.update.datasource">
+        <exec executable="cmd.exe" failonerror="true">
+            <arg value="/X /C "/>
+            <arg file="${basedir}/scripts/CatalogDatabases.bat" />
+            <arg value="${db.server}" />
+            <arg value="${db.region}" />
+            <arg value="${db.newname}" />
+            <arg value="${localhostflag}" />
+        </exec> 
+        <echo message="Updating datasources..."/> 
+        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" failonerror="true">
+            <arg value="-f" />
+            <arg file="${basedir}/scripts/UpdateDataSource_ND.jacl" />
+            <arg value="${dmgr.cell.name}" />
+            <arg value="${datasource.name}" />
+            <arg value="${db.newname}" />
+            <arg value="${jaas.auth}" />            
+        </exec>
+    </target>
+
+  <target name="start_stop_server">
+    <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+            <arg value="jython" />
+            <arg value="-f"/>
+      <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+            <arg value="${flag.start.stop}" />
+            <arg value="${Server.name}" />
+            <arg value="${node1.profile.name}" />
+    </exec>
+    <sleep seconds="20"/>
+  </target>
+  
+    <target name="do_start_stop_server_clear_log">
+        <echo message="Stop the servers, Clear the transaction logs and start the servers"/>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${EZKServer.name}"/>   <param name="flag.start.stop" value="stop"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${PSWServer.name}"/>   <param name="flag.start.stop" value="stop"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${WebServicesServer.name}"/>   <param name="flag.start.stop" value="stop"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${EZKCMAServer.name}"/>    <param name="flag.start.stop" value="stop"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${PSWCMAServer.name}"/>    <param name="flag.start.stop" value="stop"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${OOServer.name}"/>    <param name="flag.start.stop" value="stop"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${SCWServer.name}"/>   <param name="flag.start.stop" value="stop"/>  </antcall>
+      <property name="profile.tranlogs.dir" value="${websphere.home}/Profiles/${node1.profile.name}/tranlog"/>          
+    <move todir="${profile.tranlogs.dir}/Archive/Logs${DSTAMP}-${TSTAMP}">
+        <fileset dir="${profile.tranlogs.dir}">
+        <include name="**"/>
+        <exclude name="Archive/**"/>
+        </fileset>
+    </move>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${EZKServer.name}"/>   <param name="flag.start.stop" value="start"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${PSWServer.name}"/>   <param name="flag.start.stop" value="start"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${WebServicesServer.name}"/>   <param name="flag.start.stop" value="start"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${EZKCMAServer.name}"/>    <param name="flag.start.stop" value="start"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${PSWCMAServer.name}"/>    <param name="flag.start.stop" value="start"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${OOServer.name}"/>    <param name="flag.start.stop" value="start"/>  </antcall>
+    <antcall target="start_stop_server">    <param name="Server.name" value="${SCWServer.name}"/>   <param name="flag.start.stop" value="start"/>  </antcall>
+  </target>
+
+</project>

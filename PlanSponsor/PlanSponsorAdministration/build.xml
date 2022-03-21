@@ -1,0 +1,84 @@
+<project name="Manulife Charting" default="jar" basedir=".">
+
+  <!-- first, we read any properties in the file -->
+  <property file="${user.home}/.ant.properties" /> 
+   <import file="../../common/ant/common.xml" />
+  <property name="Name" value="Plan Sponsor administration"/>
+  <property name="source.dir" value="${basedir}\src\"/>
+  <property name="build.dir" value="${basedir}"/>
+  <property name="debug" value="on"/>
+  <property name="ibm.websphere" value="C:\Progra~1\IBM\APPLIC~1\plugins\com.ibm.etools.websphere.runtime\lib"/>
+  <property name="classes.dir" value="${build.dir}\bin\"/>
+  <property name="common.lib" value="${basedir}\..\..\common\lib\"/>
+  <property name="common.weblib" value="${basedir}\..\..\common\weblib\"/>
+  <property name="dist.dir" value="${build.dir}\lib\"/>
+  <property name="docs.dir" value="${build.dir}\docs\"/>
+  <property name="build.compiler" value="classic"/>
+  <property name="plansponsor.ejb" value="..\PlanSponsorEJB\classes\"/>
+  <property name="plansponsor.web" value="..\PlanSponsorWeb\classes\"/>
+  <property name="ezk.ejb" value="..\..\ezk\ezkEJB\classes\"/>
+ 
+  <!-- =================================================================== -->
+  <!-- Prepares the build directory                                        -->
+  <!-- =================================================================== -->
+  <target name="init">
+    <tstamp />
+    <mkdir dir="${build.dir}"/>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- Clean up all stuff                                                  -->
+  <!-- =================================================================== -->
+  <target name="clean">
+    <delete>
+      <fileset dir="${build.dir}">
+        <include name="**\*.class"/>
+      </fileset>
+    </delete>
+  </target>
+
+   <!-- =================================================================== -->
+  <!-- Compiles the source code                                            -->
+  <!-- =================================================================== -->
+  <target name="compile" depends="init">
+    <mkdir dir="${classes.dir}"/>
+    <javac srcdir="${source.dir}"
+           destdir="${classes.dir}"
+           debug="${debug}"
+           deprecation="off"
+           optimize="on" >
+      <include name="**\*.java"/>
+      <classpath>
+        <pathelement path="${common.lib}\j2ee.jar" />
+        <pathelement path="${common.lib}\USGPSUtilities.jar" />
+        <path refid="commons-lang" />
+        <pathelement path="${common.lib}\SecurityService.jar" />
+        <pathelement path="${common.lib}\AccountService.jar" />
+        <pathelement path="${common.lib}\ngec_model.jar" />
+        <pathelement path="${ibm.websphere}\websphere.jar" />
+        <pathelement path="${plansponsor.ejb}" />
+        <pathelement path="${plansponsor.web}" />
+        <!-- this should not be here, However the RevertPIN is using ezk code --> 
+        <pathelement path="${ezk.ejb}" />
+        <pathelement path="${common.lib}\mrl.jar" />
+      </classpath>
+    </javac>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- package the stuff into jar files                                    -->
+  <!-- =================================================================== -->
+  <target name="jar" depends="compile">
+    <mkdir dir="${dist.dir}"/>
+
+    <!-- Create PlanSponsorAdministration jar file -->
+    <jar jarfile="${dist.dir}\PlanSponsorAdministration.jar">
+      <fileset dir="${classes.dir}">
+        <include name="com\manulife\pension\ps\administration\*.class"/>
+      </fileset>
+    </jar>
+    <copy file="${dist.dir}/PlanSponsorAdministration.jar" todir="${common.lib}"/>
+  </target>
+
+
+</project>

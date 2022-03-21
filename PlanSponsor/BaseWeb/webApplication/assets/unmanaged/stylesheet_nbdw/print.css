@@ -1,0 +1,21 @@
+/*******************************************************************************
+*	print.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Global styles used throughout the John Hancock Broker Dealer website.
+********************************************************************************/
+
+/*******************************************************************************
+* HTML ELEMENTS
+********************************************************************************/
+
+#site_header h1 img {
+	display:block;
+	text-indent:-100000px;
+}
+
+#page_wrapper {
+	width:100%;
+	padding:0;
+	margin:.25in;
+}

@@ -1,0 +1,38 @@
+/*******************************************************************************
+*	tools.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Contract Funds specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+@import url("screen.css");
+
+/*******************************************************************************
+* PAGE SECTIONS
+********************************************************************************/
+
+table.tools_listing {
+	margin-bottom:15px;
+	border-collapse:collapse;
+}
+	table.tools_listing tr {
+		background-color:#fafbf5;
+	}
+
+	table.tools_listing tr.alt_row {
+		background-color:#fff;
+	}
+	
+	table.tools_listing td {
+		border-bottom:1px solid #f0f1e6;
+		padding:15px 15px 15px 25px;
+		vertical-align:top;
+	}
+		table.tools_listing td.description {
+			padding-left:0px;
+		}
+
+	#page_content table.tools_listing h4 {
+		margin-left:0px;
+		padding-left:0px;
+	}

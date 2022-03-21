@@ -1,0 +1,2300 @@
+/*******************************************************************************
+*   screen.css
+*   Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*   Global styles used throughout the John Hancock Broker Dealer website.
+********************************************************************************/
+
+/*******************************************************************************
+* HTML ELEMENTS
+********************************************************************************/
+@import url("summary.css");
+@import url("nbdw_buttons.css");
+@import url("MenuBar.css");
+
+
+body {
+    background-color: #eceae3;
+    font: normal 16px verdana, arial, helvetica, sans-serif;
+    margin: 0;
+    padding:0;
+}
+
+h1 {
+    color: #002c3d;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+a:link, a:visited, a:hover, a:active{
+    color: #002c3d;
+    outline:none;
+} 
+a:link, a:visited{
+    text-decoration: none;
+} 
+a:hover, a:active{
+    text-decoration: none;
+}
+
+dt {
+    font-size:0.75em;
+    font-weight:bold;
+}
+
+dd {
+    font-size:0.75em;
+    margin:0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 15px;
+    padding-left: 0;
+}
+
+
+.clear_footer {
+    clear: both;
+}
+
+div#contactus_link{
+    color: #FFFFFF;
+    font-size: 12px;
+    float: right;
+    margin-top: 15px;
+    margin-right: 15px;
+    text-decoration: none;
+}
+div#contactus_link a:link, a:visited, a:active{
+    text-decoration: none;
+}
+
+div#contactus_link a:hover{
+    color: #FEBE10;
+    text-decoration: none;
+}
+a.contactus {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+a.contactus:hover {
+    color: #FEBE10;
+    text-decoration: none;
+}
+
+a.underline {
+    text-decoration:underline;
+}
+
+/*******************************************************************************
+* GENERIC TABLE CONTENT
+********************************************************************************/
+
+td,
+th{
+    color:#767676;
+    font-size: 0.6875em;
+    padding-top: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    
+}
+td.cur,
+th.cur,
+th.pct,
+td.num {
+    text-align: right;
+}
+
+th.name{
+    text-align:left;
+}
+    
+th.date,
+td.val_num_cnt,
+th.val_num_cnt,
+th.val_str {
+    text-align: center;
+}
+
+
+/*******************************************************************************
+* COMMON PAGE ELEMENTS
+********************************************************************************/
+
+#page_wrapper {
+    background: #eceae3 url('/assets/unmanaged/images/backgrounds/background_tile.gif') repeat-y top center;
+    height:100%;
+    margin:0pt auto;
+    width:969px;
+    height: 100%;
+    min-height: 600px;
+    padding: 15px 0px 15px 0px;
+}
+
+#page_wrapper_footer {
+    background: #eceae3 url('/assets/unmanaged/images/backgrounds/background_footer.gif') no-repeat top left;
+    margin:0pt auto;
+    width:969px;
+}
+    
+    
+    
+/*******************************************************************************
+* SECURE HEADER
+********************************************************************************/
+
+#secure_header {
+    background: #fff url('/assets/unmanaged/images/backgrounds/background_secure_header.gif') repeat-x top left;
+    height: 47px;
+    margin: 0 25px 8px 25px;
+}
+
+    #secure_header h1 {
+        font-weight:normal;
+        padding: 0 0 0 25px;
+    }
+
+
+    #secure_header ul {
+        margin: 0 0 0 15px;
+        padding:0;
+        list-style: none;
+    }
+    
+        #secure_header ul li {
+            background: url('/assets/unmanaged/images/link_divider.gif') no-repeat center left;
+            float:left;
+            font-size: 11px;
+            line-height:1em;
+            margin: 5px 0 0 0;
+            padding:0px 10px 2px 10px;
+        }
+
+    #secure_header ul li a {
+            font-size: 11px;
+    }
+
+    #secure_header ul li:first-child {
+       background: none;
+    }
+            
+            
+    #secure_header ul li a {
+                color: #002c3d;
+            }
+
+    #secure_header_user {
+    padding: 0 10px 0 0;
+    float: right;
+    }   
+
+        #secure_header_user p {
+    float: left;
+    font-size:11px;
+    margin: 4px 10px 2px 0;
+    padding: 0;
+        }
+
+
+
+/*******************************************************************************
+* BUTTONS
+********************************************************************************/
+
+.button_regular{
+    background:transparent url('/assets/unmanaged/images/buttons/button_regular_both_left.gif') no-repeat scroll top left;
+}
+
+    .button_regular a{
+        background:transparent url('/assets/unmanaged/images/buttons/button_regular_both_right.gif') no-repeat scroll top right;
+    }
+    
+.button_header {
+    background:transparent url('/assets/unmanaged/images/buttons/button_header_both_left.gif') no-repeat scroll top left;
+}
+
+    .button_header input{
+        background:transparent url('/assets/unmanaged/images/buttons/button_header_both_right.gif') no-repeat scroll top right;
+    }
+    
+.button_login,
+.button_search, 
+.button_filter{
+    background:transparent url('/assets/unmanaged/images/buttons/button_search_both_left.gif') no-repeat scroll top left;
+}
+
+.button_disabled{
+    background:transparent url('/assets/unmanaged/images/buttons/button_dis_both_left.gif') no-repeat scroll top left;
+}
+
+.button_login input,
+.button_search input,
+.button_filter input{
+    background:transparent url('/assets/unmanaged/images/buttons/button_search_both_right.gif') no-repeat scroll top right;
+}
+
+.button_disabled input{
+    background:transparent url('/assets/unmanaged/images/buttons/button_dis_both_right.gif') no-repeat scroll top right;
+}
+
+.button_header,
+.button_login,
+.button_regular,
+.button_search,
+.button_filter,
+.button_disabled{
+    cursor: pointer;
+    float: left;
+    height: 19px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 4px;
+}
+
+.button_login,
+.button_regular,
+.button_search,
+.button_filter,
+.button_disabled{
+    margin:2px 10px 0 0;
+}
+
+.button_header{
+    margin-left:10px;
+    margin-top:0px;
+}
+    
+.button_login input,
+.button_regular a,
+.button_search input,
+.button_filter input{
+    color: #fff;        
+}
+
+.button_disabled input{
+    color: #999;
+}
+
+    .button_header input{
+        color:#000;
+    }
+    
+    .button_header input,
+    .button_login input,
+    .button_regular a,
+    .button_search input,
+    .button_filter input,
+    .button_disabled input{
+    border: none;
+    cursor:pointer;
+    display:block;
+    float:left;
+    font-size:0.6875em;
+    font-style:normal;
+    font-weight:bold;
+    text-decoration: none;
+        
+    }
+
+    .button_regular a{
+        padding: 2px 10px 4px 5px;
+    }
+    
+    .button_header input,
+    .button_login input,
+    .button_search input,
+    .button_filter input,
+    .button_disabled input{
+    height: 19px;
+    padding-top: 0px;
+    padding-right: 8px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    }
+
+    .button_regular:hover {
+        background-position: 0% -19px;
+    }
+
+        .button_regular a:visited, 
+        .button_regular a:link {
+            color:#fff; 
+        }
+
+    .button_regular:hover a {
+        background-position:100% -19px;
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    
+.button_header:hover,
+.button_login:hover,
+.button_search:hover,
+.button_filter:hover,
+.button_disabled:hover{
+    background-position: 0% -19px;
+}
+    .button_header:hover input,
+    .button_login:hover input,
+    .button_search:hover input,
+    .button_filter:hover input,
+    .button_disabled:hover input{
+        background-position: 100% -19px;
+    }
+
+    .button_disabled_no_hover:hover{
+        background-position: 0% 0px;
+    }
+
+    .button_disabled_no_hover:hover input{
+        background-position: 100% 0px;
+    }
+
+.pdf_icon, 
+.csv_icon {
+    float:right;
+    margin:10px 10px 0 0;   
+}   
+            
+.pdf_btn,
+.csv_btn,
+.print_btn,
+.print_all_btn {
+    display:block;
+    height:18px;
+    text-indent:-10000px;
+    width:18px; 
+}
+
+
+.subtract_btn,
+.add_btn,
+.calendar_btn {
+    display:block;
+    float:left;
+    height:18px;
+    margin-right:3px;
+    text-indent:-10000px;
+    width:18px; 
+}
+
+.pdf_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/pdf_btn.gif') no-repeat center center;
+}
+
+.csv_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/csv_btn.gif') no-repeat center center;
+}
+
+.print_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/print_btn.gif') no-repeat center center;
+}
+
+.print_all_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/print_all_btn.gif') no-repeat center center;
+}
+    
+.subtract_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/subtract_btn.gif') no-repeat center center;
+}
+
+.add_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/add_btn.gif') no-repeat center center;
+}
+
+.calendar_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/calendar_btn.gif') no-repeat center center;
+}
+/*******************************************************************************
+* SITE HEADER
+********************************************************************************/
+
+#site_header {
+    background-color: #004059;
+    height: 80px;
+    margin: 0 25px 0 25px;
+    padding: 0;
+}
+
+    #site_header h1 {
+        background: #004059 url('/assets/unmanaged/images/jh_logo.gif') no-repeat top left;
+        float: left;
+        height:62px;
+        left:25px;
+        position:relative;
+        text-indent: -99999px;
+        top:8px;
+        width:145px;
+    }
+        #logo {
+        background: #004059 url('/assets/unmanaged/images/jh_logo.gif') no-repeat top left;
+        float: left;
+        height:62px;
+        left:25px;
+        position:relative;
+        text-indent: -99999px;
+        top:8px;
+        width:145px;
+    }
+    
+    #site_header h1 img {
+        display:none;
+    }
+    
+    #site_search {
+    float: right;
+    padding: 0;
+    margin-top: 25px;
+    margin-right: 67px;
+    margin-bottom: 0;
+    margin-left: 0;
+    }
+        #site_search label {
+            display:none;
+        }
+        
+        #site_search_input {
+            border:1px solid #000;
+            float: left;
+            height:19px;            
+        }
+        
+        /*
+        * As the id "site_search_input" was giving some problems with the scrolling functionality.
+        * We had to replicate it with a different name
+        */
+        #site_search_input_text {
+            border:1px solid #000;
+            float: left;
+            height:19px;            
+        }
+
+        #site_search .button_search {
+            margin-left: 10px;
+            width: 0.1em;
+        }
+        
+        
+/*******************************************************************************
+* PRIMARY NAV
+********************************************************************************/
+
+#primary_nav {
+    background: #005b80;
+    height: 45px;
+    margin: 0 25px 0 25px;
+    padding: 0 0 0 25px;
+}
+
+    #primary_nav ul {
+        margin:0;
+        padding:0;
+        list-style: none;
+    }
+
+        #primary_nav ul li {
+            background: transparent url('/assets/unmanaged/images/primary_nav_divider.gif') no-repeat center left;
+            float: left;
+            font-size:0.75em;
+            height: 33px;
+            padding:3px 5px 0px 5px; 
+            margin: 6px 0 0 0;
+            width: 100px;
+            text-decoration: none;
+        }
+
+            #primary_nav ul li:first-child {
+                background: none;
+            }
+
+            #primary_nav ul li.active {
+                background:transparent url('/assets/unmanaged/images/buttons/button_primary_nav_left.gif') no-repeat scroll top left;
+                height: 39px;
+                margin: 6px -1px 0 0;
+                padding:0px 6px 0px 5px;    
+            }
+
+                #primary_nav ul li.active em {
+                    background:transparent url('/assets/unmanaged/images/buttons/button_primary_nav_right.gif') no-repeat scroll top right;
+                    color:#002c3d;
+                    display:block;
+                    height: 28px;
+                    font-style:normal;
+                    font-weight:normal;
+                    padding: 3px  6px 9px 6px;
+                }
+
+                    div#primary_nav ul li a:link, div#primary_nav ul li a:visited{
+                        color:#fff;
+                        text-decoration: none;                  
+                    }
+
+                    div#primary_nav ul li a:hover{
+                        color:#febe10;  
+                        text-decoration: none;              
+                    }
+
+#primary_nav_footer {
+    background-color: #bed5e6;
+    height: 4px;
+    margin: 0 25px 0 25px;
+    padding: 0;
+    
+}
+
+
+/*******************************************************************************
+* SECONDARY NAV
+********************************************************************************/
+
+/* Note: If there are no secondary nav items, then the secondary_nav div should not be shown */
+
+#secondary_nav {
+    background-color: #bed5e6;
+    clear: left;
+    height: 1.75em;
+    margin: 0 25px 0 25px;
+    min-height: 5px;
+    padding: 0 0 0 5px;
+}
+
+    #secondary_nav ul {
+        list-style: none;
+        margin:0;
+        padding:0;
+    }
+
+        #secondary_nav ul li {
+            float:left;
+            padding:0px 0 0 20px;
+        }
+
+        #secondary_nav ul li.disabled{
+            color:#a0a0a0;
+        }
+        
+            #secondary_nav ul li.active{
+                color: #000;
+            }
+            
+            #secondary_nav ul li.active strong{             
+                font-size:0.6875em;
+                font-style:normal;              
+            }
+            
+            #secondary_nav ul li a {
+    color: #002c3d;
+    font-size:0.6875em;
+    line-height:1em;
+    text-decoration: none;
+            }
+            
+        
+            
+            
+            
+/*******************************************************************************
+* PAGE CONTENT
+********************************************************************************/
+
+#page_content {
+    background: #fff url('/assets/unmanaged/images/backgrounds/background_page_contents.gif') repeat-x top left;
+    min-height: 300px;
+    padding: 0;
+    width: 918px;
+    margin-top: 4px;
+    margin-right: 25px;
+    margin-bottom: 0;
+    margin-left: 25px;
+}
+
+
+    #page_content p a{
+    color:#005b80;
+    text-decoration: none;
+    }
+    
+    #page_content .trademark{
+        font-size:.75em;
+    }
+    
+    /*Hari - Added to make sure the footnotes looks correct even when there is a <p> tag in it.*/
+    #page_content .footnotes dl dd p{
+    color:black;
+    font-size:1em;
+    padding-top: 0px;
+    padding-left: 0px; 
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: verdana, arial, helvetica, sans-serif;
+    }
+
+   #page_content .footer {
+       float: left;
+       font-size: 11px;
+       line-height: 1.25em;
+    }
+
+    #page_content p {
+    color:#767676;
+    font-size:0.75em;
+    padding-top: 0;
+    padding-left: 8px;
+    padding-bottom: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #page_content p.record_info {       
+        margin-top: 0.1em;
+    }
+    
+    #page_content h2 {
+    color:#000;
+    padding-top: 15px;
+    padding-right: 0;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    font-family: georgia, times, serif;
+    font-size: 1.5em;
+    font-style: normal;
+    line-height: 1.5em;
+    font-weight: normal;
+    font-variant: normal;
+    margin: 0;
+    }
+
+    #page_content h3
+    {
+    color:#fff;
+    margin: 0;
+    font-family: georgia, times, serif;
+    font-size: 1.25em;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    padding-top: 7px;
+    padding-right: 0;
+    padding-bottom: 3px;
+    padding-left: 25px;
+    }
+    
+    #page_content h4{
+    color:#fff;
+    margin: 0;
+    font-family: georgia, times, serif;
+    font-size: 1.5em;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    padding-top: 3px;
+    padding-right: 0;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    }
+
+    #page_content .page_section_subheader{
+    border-top:4px solid #febe10;
+    height:43px;
+    margin-bottom:2px;
+    clear: both;
+    }
+ 
+    #page_content .page_section_subsubheader{
+    border-top:4px solid #febe10;
+    clear:both;
+    height:35px;
+    margin-bottom:2px;
+    }
+    
+    #page_content .page_section_subheader p, 
+    #page_content .page_section_subsubheader p{
+    color:#FFFFFF;
+    padding-top: 0px;
+    padding-right: 3px;
+    }
+    #page_content .page_section_subheader .form p{
+    color:#FFFFFF;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0px;
+    }
+    
+    #page_content .page_section_subheader{
+        background-color:#717b80;
+    }
+    
+    #page_content .page_section_subsubheader{
+        background-color:#a8b8bf;
+    }
+    
+    #page_content .controls h3, #page_content .controls h4{
+        padding-top:8px;
+        float:left;
+    }
+    
+    /** Hari: Added yui-skin-sam*/
+    form.page_section_filter, 
+    form.page_section_filter p, 
+    form.page_section_filter select,
+    form.page_section_filter input,
+    form.page_section_filter #calendar_yui,
+    form.page_section_filter .yui-skin-sam{
+    float:left;
+    }
+    
+    form.page_section_filter p{
+    margin:0;
+    padding:0;
+    }
+    
+    form.page_section_filter select,
+    form.page_section_filter input,
+    form.page_section_filter .yui-skin-sam{
+    font-size:0.685em;
+    margin-top: 0px;
+    margin-right: 5px;
+    margin-bottom: 0;
+    margin-left: -2px;
+    }
+    
+    form.page_section_filter #calendar_yui .yui-skin-sam{
+    font-size:1em;
+    }
+
+    form.page_section_filter .yui-skin-sam input,
+    form.page_section_filter .yui-skin-sam button{
+    font-size:1em;
+    }
+
+    form.page_section_filter .yui-skin-sam #keeptyping span,
+    form.page_section_filter .yui-skin-sam #searchresult span{
+    font-size:1em;
+    }
+
+    .yui-skin-sam .padding_bottom {
+        padding-bottom:2em;
+    }
+    
+    form.page_section_filter{
+    margin-top: 15px;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0px;
+    }
+    
+    form.page_section_filter p{
+    color:#00FF00;
+    }
+    
+    .page_section_subheader .print_btn, 
+    .page_section_subheader .print_all_btn,
+    .page_section_subheader .csv_btn,
+    .page_section_subheader .pdf_btn{
+        float:right;
+        margin:10px 10px 0 0;
+        }   
+
+
+
+/*******************************************************************************
+* PAGE PRIMARY NAV
+********************************************************************************/
+
+.page_nav {
+    margin: 5px 0 0 25px;
+    padding:0;
+    height: 40px;
+}
+
+    .page_nav ul {
+        list-style: none;
+        margin:0;
+        padding:0;
+        height:1%;
+    }
+
+        .page_nav ul li {
+    color: #002c3d;
+    float: left;
+    font-size:0.685em;
+    margin: 0 0 0 10px;
+    padding:0;
+            
+        }
+        
+        .page_nav ul li:first-child{
+            margin-left:0;
+        }
+
+
+        #page_primary_nav ul li{
+    font-size:12px;
+        }    
+        
+        .page_nav ul li.active {
+            height: 18px;
+            margin: 0 0 0 10px;
+            float: left;
+        }
+        
+        .page_nav ul li.active:first-child {
+            margin: 0;
+        }
+
+            .page_nav li.active em {
+    background-color:#deded8;
+    color: #002c3d;
+    display:block;
+    font-style:normal;
+    font-weight:normal;
+    min-height: 18px;
+    padding: 10px 7px;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #FEBE10;
+            }
+                            
+            .page_nav a {
+                background-color:#f6f4f1;
+                border-top:4px solid #f6f4f1;
+                color: #002c3d;
+                display:block;  
+                font-style:normal;
+                font-weight:normal;
+                min-height: 18px;
+                text-decoration: none;
+            }
+
+            .page_nav ul li a{
+                padding: 10px 7px;              
+            }
+            
+            .page_nav ul a:hover {
+    background-color:#f2f2ed;
+    border-top:4px solid #febe10;
+    color:#002c3d;
+    text-decoration: none;
+            }
+
+
+#page_primary_nav_footer,
+.page_nav_footer {
+    background-color: #deded8;
+    clear: left;
+    font-size: 0;
+    height: 4px;
+    margin: 0;
+    padding: 0;
+    
+}
+
+/*******************************************************************************
+* CONTRACT FUNDS PAGE PRIMARY NAV
+********************************************************************************/
+
+.page_nav_contract {
+    margin: 5px 0 0 25px;
+    padding:0;
+}
+
+    .page_nav_contract ul {
+        list-style: none;
+        margin:0;
+        padding:0;
+        height:1%;
+    }
+
+        .page_nav_contract ul li {
+            color: #002c3d;
+            float: left;
+            font-size:0.6875em;
+            margin: 0 0 0 10px;
+            padding:0;
+            
+        }
+        
+        .page_nav_contract ul li:first-child{
+            margin-left:0;
+        }
+
+
+        #page_primary_nav_contract ul li{
+            font-size:.75em;
+        }    
+        
+        .page_nav_contract ul li.active {
+            height: 18px;
+            margin: 0 0 0 10px;
+            float: left;
+        }
+        
+        .page_nav_contract ul li.active:first-child {
+            margin: 0;
+        }
+
+            .page_nav_contract li.active em {
+    background-color:#deddd8;
+    color: #002c3d;
+    display:block;
+    font-style:normal;
+    font-weight:normal;
+    min-height: 18px;
+    padding: 10px 7px;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #f9c00f;
+            }
+                            
+            .page_nav_contract a {
+    background-color:#f5f4f0;
+    color: #002c3d;
+    display:block;
+    font-style:normal;
+    font-weight:normal;
+    min-height: 18px;
+    text-decoration: none;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #f5f4f0;
+            }
+
+            .page_nav_contract ul li a{
+                padding: 10px 7px;              
+            }
+            
+            .page_nav_contract ul a:hover {
+    background-color:#DEDDD8;
+    color:#002c3d;
+    text-decoration: none;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #F9C00F;
+            }
+
+
+#page_primary_nav_contract_footer,
+.page_nav_contract_footer {
+    background-color: #deded8;
+    clear: left;
+    font-size: 0;
+    height: 4px;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+/*******************************************************************************
+* PAGE SECONDARY NAV
+********************************************************************************/
+
+/* Note: If there are no page secondary nav items, then the page_secondary_nav div should not be shown */
+
+#page_secondary_nav {
+    background-color: #DEDED8;
+    clear:left;
+    height: 30px;
+    margin: 0 0 4px 0;
+    padding: 0px 25px 0 25px;
+}
+    #page_secondary_nav ul {
+        list-style: none;
+        margin:0;
+        padding:0;
+    }
+        #page_secondary_nav ul li {
+            float:left;
+            font-size:0.6875em;
+            padding:5px 20px 0 0;
+        }
+        
+        #page_secondary_nav ul li.disabled {
+            color:#a0a0a0;
+        }
+            #page_secondary_nav ul li a {
+                color: #005B80;
+                line-height:1em;
+                text-decoration: none;
+            }
+            
+            #page_secondary_nav ul li.active a {
+                color: #002c3d;
+                font-style:normal;
+                text-decoration: none;
+                
+            }
+                
+
+
+/*******************************************************************************
+* FILTER
+********************************************************************************/
+
+#filter_wrapper { /* need wrapper because of background with curved upper edges */
+    padding-left: 4px;
+    background-color: #E2E4E5;
+    background-image: url(/assets/unmanaged/images/backgrounds/tab_nav_background_left.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: scroll;
+    clear: left;
+    height: 45px;
+}
+
+    #filter {
+    margin-top: 0px;
+    margin-right: 0;
+    margin-bottom: 4px;
+    margin-left: 0;
+    padding-top: 5px;
+    padding-right: 15px;
+    padding-bottom: 0;
+    padding-left: 10px;
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: url(/assets/unmanaged/images/backgrounds/tab_nav_background_right.gif);
+    background-repeat: no-repeat;
+    background-position: right top;
+    
+    }
+
+
+        #filter ul {
+            list-style-image:none;
+            list-style-position:outside;
+            list-style-type: none;
+            margin:0;
+            padding:0;
+        }
+
+            #filter ul li.active {
+                background: transparent url('/assets/unmanaged/images/buttons/button_filter_selected_left.gif') no-repeat scroll top left;
+                cursor: auto;
+                float: left;
+            }
+
+            
+                #filter ul li.active em {
+                    background:transparent url('/assets/unmanaged/images/buttons/button_filter_selected_right.gif') no-repeat scroll top right;
+                    color: #fff;
+                    display:block;
+                    font-size:0.6875em;
+                    font-style:normal;
+                    font-weight:normal;
+                    padding: 5px 10px 5px 5px;
+                }
+
+            #filter ul li {
+                background:url('/assets/unmanaged/images/buttons/button_filter_left_both.gif') no-repeat top left;
+                cursor: pointer;
+                float:left; 
+                margin: 0 10px 0 0;
+                padding:0 0 0 4px; /*Hari: Changed the padding left from 5px to 4px. 
+                            Having it as 5px was causing a small white space to appear in the tabs in BOB page*/
+            }
+            
+                #filter ul li.inactive {
+                    background: transparent;
+                    cursor: auto;
+                    float: left;
+                }
+
+                #filter ul li.inactive em {
+                    background:transparent;
+                    display:block;
+                    font-size:0.6875em;
+                    font-style:normal;
+                    font-weight:normal;
+                    padding: 5px 10px 5px 5px;
+                }
+
+            
+            #filter ul li.util {
+                float:right;
+            }
+
+            #filter ul li:hover {
+                background-position:0% -23px;
+            }
+
+            #filter > ul a {
+                width:auto;
+            }
+
+            #filter a {
+                float:none;
+            }
+
+
+                #filter ul li a {
+                    background:transparent url('/assets/unmanaged/images/buttons/button_filter_right_both.gif') no-repeat scroll top right;
+                    color: #002c3d;
+                    display:block;
+                    float:left;
+                    font-size:0.6875em;
+                    font-style:normal;
+                    font-weight:normal;
+                    margin: 0;
+                    padding:5px 10px 5px 5px;
+                    text-decoration: none;
+                }
+
+
+                #filter ul a:visited, 
+                #filter a:link {
+                    color:#002c3d;  
+                }
+
+                #filter ul li:hover {
+                    background-position:0% -23px;
+                        
+                }
+                
+                /* to over-ride rollover applied above */
+                #filter ul li.active:hover {
+                    background:transparent url('/assets/unmanaged/images/buttons/button_filter_selected_left.gif') no-repeat scroll top left;
+                }
+
+                
+                
+                
+                #filter ul li:hover a {
+                    background-position:100% -23px;
+                    color:#fff;
+                    text-decoration: none;
+                    
+                }
+                #filter form{
+    font-size: 11px;
+    color: #717B80;
+    float: left;
+}
+
+#filter .print_btn, 
+    #filter .print_all_btn,
+    #filter .csv_btn,
+    #filter .pdf_btn
+    {
+    float:right;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-left: 0;
+        }   
+        
+        #filter select,
+    #filter input{
+
+    }
+    
+        #filter select,
+    #filter input{
+    font-size:1em;
+    margin-top: 0px;
+    margin-right: 0;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    }
+
+
+/*******************************************************************************
+* TABLE CONTROLS
+********************************************************************************/
+
+.table_controls {
+    background-color: #f6f4f1;
+    border: 1px solid #eceae3;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+    .table_action_buttons {
+    float: left;
+    padding: 0;
+    width: 30%;
+    margin-top: 4px;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 10px;
+    } 
+
+    .table_display_info {
+        float: left;
+        font-size:0.6875em;
+        line-height: 1em;
+        margin: 0;
+        padding: 8px 0 0 0;
+        position: relative;
+        text-align: center;
+        width: 30%;
+    }
+
+    /*Hari - This is the same as table_display_info, but this does not have the position:relative attribute.*/
+    .table_display_info_abs {
+        float: left;
+        font-size:0.6875em;
+        line-height: 1em;
+        margin: 0;
+        padding: 8px 0 0 0;
+        text-align: center;
+        width: 30%;
+    }
+
+    .table_pagination {
+    float: right;
+    font-size:0.6875em;
+    margin: 0;
+    padding: 8px 10px 0 0;
+    text-align: left;
+    }
+        
+        .table_pagination ul a{
+            float:left;
+        }
+
+        .table_pagination ul {
+            float:left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+    
+    
+            .table_pagination ul li {
+                background: url('/assets/unmanaged/images/link_divider.gif') no-repeat center left;
+                float: left;
+                padding: 0 5px 0 5px;
+            }
+            
+            .table_pagination ul li:first-child {
+                background: none;
+            }
+
+        .table_pagination a, 
+        .table_pagination a:link, 
+        .table_pagination a:visited, 
+        .table_pagination a:hover, 
+        .table_pagination a:active{
+            color: #2d4f55;
+            text-decoration: underline;
+        }
+
+        .table_pagination a.previous {
+            float: left;
+            margin-right: 10px;
+        }
+        
+
+        .table_pagination a.next {
+            float: left;
+            margin-left: 10px;
+        }
+
+.table_controls_footer {
+    clear:both;
+}
+
+
+
+/*******************************************************************************
+* REPORT TABLE CONTENT
+********************************************************************************/
+#page_content .report_table .page_section_subheader,
+#page_content .report_table .page_section_subsubheader{
+    margin-bottom:0px;
+}
+.report_table_content {
+    border-bottom:4px solid #cac8c4;
+    border-collapse:collapse;
+    width: 100%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 5px;
+    margin-left: 0;
+}
+
+    .report_table_content .hover{
+        background-color:#eceae3;
+    }
+    
+    .report_table_content .hovercell{
+        background-color:#fff;
+        cursor:pointer;
+    }
+    .report_table_content th {
+    background-color: #DEDED8;
+    border-left: 1px solid #cac8c4;
+    font-size:0.6875em;
+    font-weight: normal;
+    text-align: left;
+    margin: 0;
+    padding: 4px 8px 6px 8px;
+    }
+
+    .block_of_business th {
+        .report_table_content th;
+        padding: 4px 4px 4px 4px !important;
+    }
+        .report_table_content th:first-child {
+            border-left: none;
+        }
+
+        .report_table_content th.right_align {
+            text-align: right;
+        }
+        
+        .report_table_content th.left_align {
+            text-align: left;
+        }
+                
+            .report_table_content th.sub {
+                border-left: none;
+            }
+            
+            .report_table_content th.sub:first-child {
+                border-left: 1px solid #cac8c4;
+            }
+        
+            .report_table td.cur,
+            .report_table th.cur,
+            .report_table th.pct,
+            .report_table td.num{
+                text-align: right;
+            }
+            
+            .report_table th.name{
+                text-align:left;
+            }
+                
+            .report_table th.date,
+            .report_table td.val_num_cnt,
+            .report_table th.val_str {
+                text-align: left;
+            }
+
+    .report_table_content a,
+    .report_table_content a:link, 
+    .report_table_content a:visited, 
+    .report_table_content a:hover, 
+    .report_table_content a:active{
+        color: #000;
+        text-decoration: underline;
+        
+    }
+    
+    .report_table_content a:hover {
+        color: #000;
+        text-decoration: none;
+        
+    }
+    
+        .report_table_content a.sort_ascending {
+    background: transparent url('/assets/unmanaged/images/icons/icon_sort_ascending.gif') no-repeat scroll left 2px;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 8px;
+        }
+
+        .report_table_content a.sort_descending {
+    
+            background: transparent url('/assets/unmanaged/images/icons/icon_sort_descending.gif') no-repeat scroll left 2px;
+            color: #333333;
+            font-weight: bold;
+            padding: 0 0 0 10px ;
+            text-decoration: none;
+        }
+        
+        .report_table_content a.sort_ascending:hover,
+        .report_table_content a.sort_descending:hover {
+            text-decoration: underline;
+        }
+
+    .report_table tr {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #f0f1e6;
+    }
+
+    .report_table tr.spec {
+        background-color: #fafaf8;
+    }
+    .report_table td {
+    font-size: 11px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #DEDED8;
+    border-left-color: #DEDED8;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #DEDED8;
+    padding-top: 2px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    }
+    
+        report_table td.spec {
+            border-left: none;
+        }
+
+        .report_table tr td.sub {
+    border-left: 1px solid #cac8c4;
+        }
+        
+        .report_table tr td:first-child {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #DEDED8;
+        }
+        
+.align_left {
+    text-align: left !important;
+}
+    
+.align_right {
+    text-align: right !important;
+}
+    
+.align_center {
+    text-align: center !important;
+}
+    
+#common_elements #page_wrapper #page_content .salesToolsTable table p {
+    font-size: 12px;
+}
+.salesToolsTable .spec {
+    background-color: #fafaf8;
+}
+.salesToolsTable td.spec {
+            border-left: none;
+}
+
+.salesToolsTable td {
+    font-size: 11px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #DEDED8;
+    border-left-color: #DEDED8;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #DEDED8;
+    padding-top: 2px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    }
+
+.salesToolsTable tr td:first-child {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #DEDED8;
+    border-right-style: none;
+        }
+
+.salesToolsTable tr {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #f0f1e6;
+    }
+
+
+
+
+
+
+
+
+.salesToolsTable p {
+    font-size: 12px;
+}
+
+        .report_table td.zero {
+    padding: 0px;
+        }
+
+        .report_table td.pct,
+        .report_table td.cur,
+        .report_table td.num {
+            text-align: right;
+        }
+        
+        .report_table td.date,
+        .report_table td.name,
+        .report_table td.val_str {
+            text-align: left;
+        }
+
+        .report_table td.neg {
+            color: #e00000;
+        }
+
+        .report_table td.pos {
+            color: #159722;
+        }
+
+
+
+
+
+/*******************************************************************************
+* FOOTNOTES
+********************************************************************************/
+
+.footnotes {
+    margin: 20px 0 0 20px;
+    padding: 0;
+}
+
+    .footnotes h6 {
+        font-size: 0.6875em;
+        margin: 1em 0 0.5em 0;
+        padding: 0;
+    }
+
+    .footnotes dl {
+        margin: 0 0 0 0;
+        padding: 0;
+    }
+
+        .footnotes dl dt {
+            clear: left;
+            float: left;
+            font-size: 0.6875em;
+            font-weight:bold;
+            line-height: 1.25em;
+            margin: 0;
+            padding: 0;
+        }
+
+            .footnotes dl dt a {
+                color: #2d4f55;
+            }
+
+            .footnotes dl dd{
+                float: left;
+                font-size: 0.6875em;
+                line-height: 1.25em;
+                margin: 0 0 0.5em 1em;
+                padding: 0 0 0 0 ;
+                width: 90%;
+            }
+
+            .footnotesHeight .footnotes dl dd{
+                line-height: 1.75em;
+            }
+    .footnotes_footer {
+        clear: both;
+    }
+
+/* This isn't a part of the footnote DIV. this is for the footnote refs in the main content */
+sup.footnote a {
+    text-decoration: none;
+}
+
+
+
+/*******************************************************************************
+* MESSAGES
+********************************************************************************/
+
+.message {
+    margin: 20px auto 20px auto;
+    padding: 0px 10px 0px 10px;
+    width: 85%;
+    max-height:140px;
+    overflow:auto;
+    font-family: verdana, arial, helvetica, sans-serif;
+}
+
+.message dt {
+    font-size: 11px;
+    line-height: 19px;
+    margin: 0;
+    padding-top: 0px;
+    padding-right: 20px;
+    padding-bottom: 0;
+    padding-left: 26px;
+}
+
+    .message dd {
+        font-size: 11px;
+        line-height: 1.75em;
+        margin: 0;
+        padding: 0 20px 0 26px;
+    }
+
+.message_error {
+    background: #fed189 url('/assets/unmanaged/images/icons/icon_message_error.gif') no-repeat scroll 15px 18px;
+    border: 1px solid #fdab29;
+}
+
+.message_warning {
+    background: #fef8cf url('/assets/unmanaged/images/icons/icon_message_warning.gif') no-repeat scroll 15px 18px;
+    border: 1px solid #fbc94f;
+}
+
+.message_info {
+    background: #e4eaf6 url('/assets/unmanaged/images/icons/icon_message_info.gif') no-repeat scroll 15px 18px;
+    border: 1px solid #c6c6c7;
+}
+
+.message_info_no_icon {
+    background: #e4eaf6 no-repeat scroll 15px 18px;
+    border: 1px solid #c6c6c7;
+}
+
+.message_error .message_close a {
+    color: #c6c6c7;
+    font-weight: bold;
+}
+
+.message_warning .message_close a {
+    color: #fbc94f;
+}
+
+.message_info .message_close a {
+    color: #c6c6c7;
+}
+
+.message_error .message_close a:hover,
+.message_warning .message_close a:hover,
+.message_info .message_close a:hover{
+    color: #333;
+    text-decoration: none;
+}
+
+
+.message_close {
+    cursor: pointer;
+    float: right;
+    margin: 5px 0 0 0;
+    padding: 0;
+    font-weight:bold;
+}
+
+/*******************************************************************************
+* FOOTER
+********************************************************************************/
+
+#page_footer {
+    clear:both;
+    border-top: 1px solid #c4cfd8;
+    margin-top: 30px;
+}
+
+    #page_footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 10px 0 10px 0 ;
+    }
+        
+        #page_footer ul li {
+            background: transparent url('/assets/unmanaged/images/footer_divider.gif') no-repeat center left;
+            float: left;
+            font-size: 0.6875em;
+            padding: 0 20px 0 20px;
+        }
+        
+        #page_footer ul li:first-child {
+            background: none;
+        }
+        
+        #page_footer ul li {
+            float: left;
+            font-size: 0.6875em;
+            padding: 0 20px 0 20px;
+        }
+        
+            #page_footer ul li a {
+                color: #2d4f55;
+            }
+
+    #page_footer_footer {
+        clear: both;
+    }
+    
+    #page_footer p {
+        color: #767690;         
+        font-size: 0.6875em;
+        line-height: 1.5em;
+        padding: 10px 20px 0 20px ;
+    }
+/* This rule resets a core set of elements so that they will appear consistent across browsers. Without this rule, content styled with an h1 tag, for example, would appear in different places in Firefox and Internet Explorer because each browser has a different top margin default value. By resetting these values to 0, the elements will initially be rendered in an identical fashion and their properties can be easily defined by the designer in any subsequent rule. */
+html, body, div, span, applet, object, iframe,  h2, h3, h4, h5, h6 {
+    margin: 0px;
+    padding: 0px;
+    border: 0;
+    outline: 0;
+}
+/* The body is the outermost layout component and contains the visible page content. Setting properties for the body element will help to create consistent styling of the page content and more manageable CSS. Besides using the body element to set global properties, it is common to use the body element to set the background color of the page and create a centered container for the page content to display. */
+body {
+    border-style: none; /* Sets the border style properties for an element using shorthand notation */
+    margin: 0 0 0 0; /* Sets the margin properties for an element using shorthand notation (top, right, bottom, left) */
+    padding: 0 0 0 0; /* Centers the page content container in IE 5 browsers. */
+    background-color: #eceae3;
+}
+/* This is a container for the page content. It is common to use the container to constrain the width of the page content and allow for browser chrome to avoid the need for horizontal scrolling. For fixed layouts you may specify a container width and use auto for the left and right margin to center the container on the page. IE 5 browser require the use of text-align: center defined by the body element to center the container. For liquid layouts you may simply set the left and right margins to center the container on the page. */
+#contentOuterWrapper {
+    margin: 0pt auto 0pt auto; /* Sets the margin properties for an element using shorthand notation (top, right, bottom, left) */
+    padding: 0px 0px 0px 0px; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+    text-align: left; /* Redefines the text alignment defined by the body element. */
+    width: 919px;
+}
+#contentOuterWrapper   #contentWrapper   #leftColumn1  {
+    float: left; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+    width: 225px;
+    padding-top: 15px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+}
+#leftColumn1 h2 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+#leftColumn1 p {
+    padding: 0px;
+
+}
+#contentOuterWrapper #contentWrapper #rightColumn1 {
+    float: right;
+    padding: 10px; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+    width: 230px;
+    color: #FFFFFF;
+    background-color: #455560;
+    margin-top: 0px;
+}
+#rightColumn1 h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: normal;
+    padding: 0px;
+    color: #FFFFFF;
+
+}
+#rightColumn1 h2 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.4em;
+    font-weight: normal;
+    color: #dcd087;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    line-height: 1.2em;
+
+}
+#rightColumn1 p {
+    color: #FFFFFF;
+    font-size: 11px;
+    padding: 0px;
+}
+#rightColumn1 a:link, 
+#rightColumn1 a:visited, 
+#rightColumn1 a:hover, 
+#rightColumn1 a:active{
+    color: #204766;
+    outline:none;
+} 
+
+#rightColumn1 a:link, 
+#rightColumn1 a:visited{
+    text-decoration: underline;
+} 
+
+#rightColumn1 a:hover, 
+#rightColumn1 a:active{
+    text-decoration: underline;
+    color: #666;
+}
+ 
+/* Contains the main page content. When using a mutliple column layout the margins will be set to account for the floated columns' width, margins, and padding. */
+#contentOuterWrapper #contentWrapper #content {
+    margin-top: 0;
+    margin-right: 280px;
+    margin-bottom: 0;
+    margin-left: 250px;
+    padding-top: 15px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+#content p {
+    padding: 0px;
+    color: #767676;
+}
+#content h2 {
+    padding: 0px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: .75em;
+}
+/* Contains the main page content. When using a mutliple column layout the margins will be set to account for the floated columns' width, margins, and padding. */
+#contentOuterWrapper #contentWrapper #content2 {
+    padding: 5px; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+    margin-top: 0;
+    margin-right: 0px;
+    margin-bottom: 0;
+    margin-left: 260px;
+}
+#content2 p {
+    padding: 0px;
+}
+#content2 h2 {
+    padding: 0px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: .75em;
+}
+/* Contains the main page content. When using a mutliple column layout the margins will be set to account for the floated columns' width, margins, and padding. */
+#contentOuterWrapper #contentWrapper #content3 {
+    margin-top: 0;
+    margin-right: 280px;
+    margin-bottom: 0;
+    margin-left: 0px;
+    padding-top: 15px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+}
+#content3 p {
+    padding: 0px;
+    width: 580px;
+}
+#content3 h2 {
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+}
+
+#content3 a:link, 
+#content3 a:visited, 
+#content3 a:hover, 
+#content3 a:active{
+    color: #000;
+    outline:none;
+} 
+#content3 a:link, 
+#content3 a:visited{
+    text-decoration: none;
+} 
+#content3 a:hover, 
+#content3 a:active{
+    text-decoration: none;
+} 
+/* Using floated elements and a clear float class is a common method to accomplish multiple column tableless layouts. If floated elements are used without being cleared the elements following will wrap around the floated element. This class should be applied to an element after the last floated element and before the close of the container with floated elements. */
+#contentOuterWrapper #contentWrapper .clearFloat {
+  clear: both;
+  display: block;
+}
+
+/* div.form_link a:link, div.form_link a:visited */
+div.download 
+{
+    width: 191px;
+    padding: 13px;
+    background: #f5f6f1;
+    margin-bottom: 16px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+div.form_link a div.app {
+   font-size: 1.2em;
+   font-weight: bold;
+   color: #006990;
+   display: block;
+   margin-bottom: 3px;
+}
+
+div.downloadIndent, span.downloadIndent
+{
+   margin-left: 40px;
+}
+
+div.form_link div.sep{
+   border-bottom: 1px solid #e2e2df;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+div.id_content a {
+   color: #006990;
+   text-decoration: none;
+}
+
+p.link2 a {
+   margin: 0pt;
+   font-size: 1em;
+   font-weight: normal;
+   display: inline;
+   display: block;
+}
+
+
+#contentOuterWrapper #contentWrapper #contentTitle {
+    margin-top: 0px;
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    width: 610px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-left: 0px;
+}
+#content3 td {
+    font-size: 0.7em;
+    padding: 3px;
+}
+.imgBorder {
+    border: 1px solid #666666;
+    padding: 0px;
+}
+
+a.contactus {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+a.contactus:hover {
+    color: #FEBE10;
+    text-decoration: none;
+}
+
+.Thumbborder {
+    border: 1px solid #6f7130;
+}
+#materials
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    clear: left;
+    float: left;
+    width: auto;
+}
+
+/*******************************************************************************
+* FILTER FOR FUNDS & PERFORMANCE
+********************************************************************************/
+
+
+    #filter_wrapper2{ /* need wrapper because of background with curved upper edges */
+    clear: left;
+}
+
+    #filter2 {
+    height: 30px;
+    margin-top: 0px;
+    margin-right: 0;
+    margin-bottom: 4px;
+    margin-left: 0;
+    padding-top: 0px;
+    padding-right: 15px;
+    padding-bottom: 0;
+    padding-left: 25px;
+    
+    }
+
+#filter2 ul {
+            list-style-image:none;
+            list-style-position:outside;
+            list-style-type: none;
+            margin:0;
+            padding:0;
+        }
+
+            #filter2 ul li.active {
+    background: transparent url('/assets/unmanaged/images/buttons/button_filter2_selected_left.gif') no-repeat scroll top left;
+    cursor: auto;
+    float: left;
+            }
+
+            
+                #filter2 ul li.active em {
+    background:transparent url('/assets/unmanaged/images/buttons/button_filter2_selected_right.gif') no-repeat scroll top right;
+    color: #fff;
+    display:block;
+    font-size:0.6875em;
+    font-style:normal;
+    font-weight:normal;
+    padding: 5px 10px 5px 5px;
+                }
+
+            #filter2 ul li {
+    background:url('/assets/unmanaged/images/buttons/button_filter2_left_both.gif') no-repeat top left;
+    cursor: pointer;
+    float:left;
+    margin: 0 10px 0 0;
+    padding:0 0 0 5px;
+            }
+            
+            #filter2 ul li.util {
+                float:right;
+            }
+
+            #filter2 ul li:hover {
+                background-position:0% -23px;
+            }
+
+            #filter2 ul a {
+                width:auto;
+            }
+
+            #filter2 a {
+                float:none;
+            }
+
+
+                #filter2 ul li a {
+    background:transparent url('/assets/unmanaged/images/buttons/button_filter2_right_both.gif') no-repeat scroll top right;
+    color: #002c3d;
+    display:block;
+    float:left;
+    font-size:0.9875em;
+    font-style:normal;
+    font-weight:normal;
+    margin: 0;
+    text-decoration: none;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 7px;
+    padding-left: 5px;
+                }
+
+
+                #filter2 ul a:visited, 
+                #filter2 a:link {
+                    color:#002c3d;  
+                }
+
+                #filter2 ul li:hover {
+                    background-position:0% -23px;
+                        
+                }
+                
+                /* to over-ride rollover applied above */
+                #filter2 ul li.active:hover {
+                    background:transparent url('/assets/unmanaged/images/buttons/button_filter_selected_left.gif') no-repeat scroll top left;
+                }
+
+                
+                
+                
+                #filter2 ul li:hover a {
+                    background-position:100% -23px;
+                    color:#fff;
+                    text-decoration: none;
+                    
+                }
+                #filter2 form{
+    font-size: 11px;
+    color: #717B80;
+    float: left;
+}
+
+#filter2 .print_btn, 
+    #filter2 .print_all_btn,
+    #filter2 .csv_btn,
+    #filter2 .pdf_btn
+    {
+    float:right;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-left: 0;
+        }   
+        
+        #filter2 select,
+    #filter2 input{
+
+    }
+    
+        #filter2 select,
+    #filter2 input{
+    font-size:1em;
+    margin-top: 0px;
+    margin-right: 0;
+    margin-bottom: 0px;
+    margin-left: -2px;
+    }
+#common_elements #page_wrapper #page_content .report_table #label {
+    float: left;
+    font-size: 12px;
+    text-align: right;
+    width: 200px;
+    margin-top: 10px;
+    clear: left;
+}
+#common_elements #page_wrapper #page_content .report_table #text {
+    margin-left: 225px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+#contract_funds #page_wrapper #page_content .report_table .report_table_content a .spec td a:hover {
+    background-color: #090;
+}
+#common_elements #page_wrapper #page_content .salesToolsTable .report_table_content tbody tr .zero {
+    padding: 0px;
+}
+#common_elements #page_wrapper #page_content #contentOuterWrapper #contentWrapper #content3 h2 .date {
+    font-size: 12px;
+    font-weight: normal;
+}
+#rightColumn1 h5 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    font-variant: normal;
+    padding: 0px;
+}
+#common_elements #page_wrapper #page_content #contentOuterWrapper #contentWrapper #rightColumn1 h5 .date {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+#common_elements #page_wrapper #page_content #contentOuterWrapper #contentWrapper #rightColumn1 a {
+    font-size: 11px;
+    color: #FFF;
+    text-decoration: underline;
+}
+#common_elements #page_wrapper #page_content #contentOuterWrapper #contentWrapper #rightColumn1 a:hover {
+    font-size: 11px;
+    color: #dcd087;
+    text-decoration: underline;
+}
+#common_elements #page_wrapper #page_content #contentOuterWrapper #contentWrapper #rightColumn1 .selected {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+#contract_funds #page_wrapper #page_content p {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+}
+#contract_funds #page_wrapper #page_content .page_section_subheader p{
+    color:#FFFFFF;
+}
+
+#site_header #contactus_link .contactus {
+    color: #FFFFFF;
+}
+#secure_home #page_wrapper #page_content .page_section #fund_search input {
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #F5F6F1;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    background-image: url(/assets/unmanaged/images/buttons/button.jpg);
+    background-repeat: no-repeat;
+    height: 43px;
+    width: 235px;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+}
+#user_management #page_wrapper #page_content .report_table #bob_overview_report #report_customization_wrapper #report_customization table tr td {
+    border-bottom-style: none;
+    border-left-style: none;
+    border-top-style: none;
+    border-right-style: none;
+}
+#outerWrapper #page_content .report_table .report_table_content tbody  .button_search #filter_report2 {
+    font-size: 11px;
+}
+
+/*******************************************************************************
+* To show or hide for screen and print
+********************************************************************************/
+
+/* To show only on printer friendly window*/
+.showPrint { display:none }
+
+/* To show only on screen */
+.showScreen { display:block }
+
+
+#contentTitle img {
+    margin-left:-25px;
+    margin-top: -15px;
+}
+h2 img {
+    margin-left:-8px;
+    margin-top: -15px;
+}
+
+    
+a#logout
+{
+    border: none;
+    cursor:pointer;
+    display:block;
+    float:left;
+    font-size: 11px;
+    font-style:normal;
+    font-weight:bold;
+    text-decoration: none;
+        
+}
+
+#rightColumnWANT .downloadEXPERTarchive .form_link p {
+    color: #FFF;
+}
+
+.btn-change-contract {
+    background-image: url('/assets/unmanaged/images/buttons/nbdw_changeContractButton_off.gif');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-color: #FFF;
+    height: 15px;
+    width: 103px;
+    font-size: 11px!important;    
+    padding-bottom:2px;
+    color: #FFF;
+    text-decoration: none;
+    line-height:11px!important;
+    text-align: center!important;
+    font-size:11px;
+    vertical-align:middle!important;
+    cursor:pointer;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+}
+
+.btn-change-contract:hover {
+    background-image: url('/assets/unmanaged/images/buttons/nbdw_changeContractButton_on.gif');
+    height: 15px;
+    width: 103px;
+}
+.btn-change-contract-hover {
+    background-image: url('/assets/unmanaged/images/buttons/nbdw_changeContractButton_on.gif');
+    height: 15px;
+    width: 103px;
+}

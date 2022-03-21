@@ -1,0 +1,47 @@
+# ==============================================================================
+# WAS script to create a DataSource based on the parameters provided
+# $ID:$
+# ==============================================================================
+
+global AdminConfig
+
+set dsName [lindex $argv 0]
+set cellName [lindex $argv 1]
+set nodeName [lindex $argv 2]
+set providerName [lindex $argv 3]
+set authAlias [lindex $argv 4]
+set dsJndiName [lindex $argv 5]
+set dbName [lindex $argv 6]
+set providername DB2_JDBC_Driver_XA_UV
+
+puts "Setting up DataSource ... "
+puts "celName=$cellName nodeName=$nodeName providerName=$providerName authAlias=$authAlias dsName=$dsName dsJndiName=$dsJndiName dbName=$dbName"
+
+set JDBCProvider [$AdminConfig getid /Cell:$cellName/Node:$nodeName/JDBCProvider:$providerName/]   
+ 
+if {[llength $JDBCProvider] == 0} {   
+    puts "No DB2_JDBC_Driver_XA_UV JDBC Provider does not exist...returning "   
+    return    
+}   
+ 
+set p_name [list name $dsName]
+set p_description [list description $dsName]
+set p_authDataAlias [list authDataAlias $authAlias]
+#set p_xaRecoveryAuthAlias [list xaRecoveryAuthAlias $authAlias]
+set p_jndiName [list jndiName $dsJndiName]
+#set p_authMechanismPreference [list authMechanismPreference BASIC_PASSWORD]
+set p_datasourceHelperClassname [list datasourceHelperClassname com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper]
+
+set p_port [list [list description "The port number of the DB server."] [list name portNumber] [list required false] [list type java.lang.String] [list value "50000"]]
+set p_driverType [list [list description "The type of the DB2 Driver."] [list name driverType] [list required false] [list type java.lang.String] [list value "2"]]
+set p_serverName [list [list description "The name of the server, used with thin driver setup"] [list name serverName] [list required false] [list type java.lang.String] [list value "localhost"]]
+set p_databaseName [list [list description "The database name."] [list name databaseName] [list required false]  [list type java.lang.String] [list value $dbName]]
+
+set p_resourceProperties [list resourceProperties [list $p_port $p_driverType $p_serverName $p_databaseName] ]
+set p_propertySet [list propertySet [list $p_resourceProperties ] ]
+
+set parm [list $p_name $p_description $p_authDataAlias $p_jndiName $p_datasourceHelperClassname $p_propertySet ]
+
+$AdminConfig create DataSource $JDBCProvider $parm
+
+$AdminConfig save

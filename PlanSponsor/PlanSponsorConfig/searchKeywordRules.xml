@@ -1,0 +1,388 @@
+<!-- This file contains specific search results to be returned for a specific query -->
+<search>
+<!-- The root element <search> can have several <category> elements. Each represents the search exceptions for that category of content.
+
+     The <category> element has one <name> tag, which is the name of the category. This element needs to be the first one inside the
+     <category> tag. It can also have several <keys> tag, each representing one exception result.
+     
+     The <keys> tag has a "value" attribute, which is a string of all the keys returning that result, separated by a semi-colon.
+     The <keys> tag contains one of each of the following tags.
+     		- <enrollment>: Indicates wether this result is for enrolled users, non-enrolled users or both. Possible values are:
+     		  "enrolled", "non-enrolled", "both"
+     		- <title>: The title of the result that will be displayed on the search results page
+     		- <content>: The description of the result that will be displayed on the search results page
+     		- <url>: The url needed to establish a link to that result
+     		
+     The root element <search> must also have a <order> tag, which represent the order in which the content categories must be presented.
+     It should contain the names of the categories, in order, separated by semi-colons.
+     "MoneyLesson;MoneyArticle;MoneyCalculator;MoneyQuiz;MoneyGlossaryCategory;StandAloneTool;Glossary_Category;LayoutPage;Testimonial;NewsLetterArticle";
+-->
+	
+	<category>
+		<name>contract details</name>
+		<keys value="Contract Statements;eStatements;eReports;Schedule A Statements;Employer Statements;Plan Administrator Statements;Balance Sheets;Income Statements;Group Annuity">
+			<enrollment>both</enrollment>
+			<title>Contract Details</title>
+			<content>This page provides links to pages showing detailed Contract information</content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>contract snapshot</name>
+		<keys value="Contract Snapshot;Contract Assets;Asset Growth;Allocated Assets;Cash Account;Loans;PBA;Personal Brokerage;Accounts;Pending Assets;Graphs">
+			<enrollment>both</enrollment>
+			<title>Contract Snapshot</title>
+			<content>This page will provide you with a list of summary level reports to provide an overview of the contract.</content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>contract profile</name>
+		<keys value="Contract Profile;Contract Features;Contract Access Code;Access Channels;Primary Contact;Mailing Address;Legal Address;Courier Address;Trustee;Contract Effective Date;Plan Year End;Guaranteed Accounts;Transfer Dates;Contribution Types;Contribution Frequency;Frequency;Basis;Delivery Method;Statement Type">
+			<enrollment>both</enrollment>
+			<title>Contract Profile</title>
+			<content>This page provides an overview of the contract including:  contract information, key dates and features.</content>
+			<url></url>
+		</keys>
+	</category>
+	
+
+	<category>
+		<name>participant summary</name>
+		<keys value="Participant Summary;Participant List;Employee Summary;Employee List;Employee Assets;Total Participants;Employer Assets;Outstanding Loans;Total Assets;Status;Default Enrolment;Default Enrollment;Total Allocated Assets">
+			<enrollment>both</enrollment>
+			<title>Participant Summary</title>
+			<content>This page provides participant-level account information and statements including:  assets, loans and personal information.</content>
+			<url></url>
+		</keys>
+	</category>
+
+	<category>
+		<name>participant enrollments</name>
+		<keys value="Participant Enrollments Summary;Enrollments;ienrollments;retirement">
+			<enrollment>both</enrollment>
+			<title>Participant Enrollments</title>
+			<content>This page provides participant enrollment information including how they enrolled and when.</content>
+			<url></url>
+		</keys>
+	</category>
+
+
+	
+	<category>
+		<name>participant addresses</name>
+		<keys value="Addresses;Participants;Address Last Updated;Names;City;States;Zip;Country">
+			<enrollment>both</enrollment>
+			<title>Participant Addresses</title>
+			<content>This page provides a listing of all participant address information for your contract.</content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>investment allocation page</name>
+		<keys value="Investments;Funds;Investment Options;Manulife Series;John Hancock Series;John Hancock New York Series;Venture Series;Participants Invested;Future Invested;Employee Assets;Employer Assets;Total Assets;Category;Percentage Of Total">
+			<enrollment>both</enrollment>
+			<title>Investment Allocation Page</title>
+			<content>This page provides summary level information displaying which investment options the participant has invested in.</content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>contract funds</name>
+		<keys value="Investments;Investment Options;Redemption Fees;Funds;Performance;Returns;Unit Values;Managers;Daily Percentage Change;Percentages;Year To Date;YTD;Expense Ratios;ER;Morningstar Category;Morningstar;Average Expense Ratio;Risks">
+			<enrollment>both</enrollment>
+			<title>Contract Funds</title>
+			<content>This page provides a listing of all investment options that have been selected for the contract.</content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>performance charting</name>
+		<keys value="Performances;Charts;Portfolios;Select Funds;Select Index;Date Range;View Chart;Fund Performance">
+			<enrollment>both</enrollment>
+			<title>performance charting</title>
+			<content>This page provides the historical performance of the contract's available funds against their respective benchmarks.</content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>transaction history</name>
+		<keys value="Transactions;History;Activity;Contributions;Allocations;Loans;Repayments;Adjustments;Transfers;Transaction Date;Transaction Type;Transaction Number">
+			<enrollment>both</enrollment>
+			<title>Transaction History</title>
+			<content>This page provides a 24-month history under your contract. Additional information on contributions and loan repayments can be viewed by clicking on the transaction type.</content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>cash account</name>
+		<keys value="Cash;Account;Transactions;Activity;Transaction Date;Transaction Number;Contributions;Allocations;Loans;Repayments;Checks;Adjustments;Current Balance;Opening Balance;Running Balance;Total Credits;Total Debits;Closing Balance">
+			<enrollment>both</enrollment>
+			<title>Cash Account</title>
+			<content>This page provides details on transactions within the cash account including:  balances and transaction  types.</content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>contract messages</name>
+		<keys value="Notifications;Alerts;Warnings;Account Messages">
+			<enrollment>both</enrollment>
+			<title>Contract Messages</title>
+			<content></content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>tools</name>
+		<keys value="Submission;Contribution;Upload;Files;File Creation;Templates;Address Files">
+			<enrollment>both</enrollment>
+			<title>Tools</title>
+			<content></content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>forms page</name>
+		<keys value="Forms;PDF">
+			<enrollment>both</enrollment>
+			<title>Forms Page</title>
+			<content></content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>contact us</name>
+		<keys value="Contact Us;Help;Contacts;Customer Service Representatives;CARs;Reps;Telephone;E-mail;email">
+			<enrollment>both</enrollment>
+			<title>Contact Us</title>
+			<content></content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>manage profile landing page</name>
+		<keys value="Manage Profiles;Update Profiles;Add Contracts;Edit Profiles;Delete Users;View Users;Unlock Passwords;Old Passwords;Change Passwords;Add Users;Access Levels;Contract Status;User Summary;Primary Contacts;Secondary Contacts;Internal Contacts;Plan Sponsor Users;User Managers;Payroll Administrators;Relationship Managers;TPA;John Hancock Administrators;Permission Levels;Permissions;Last Updated">
+			<enrollment>both</enrollment>
+			<title>Manage Profile</title>
+			<content>This page provides the opportunity to manage your own profile or the profiles/access of others with access to your group annuity contract information.</content>
+			<url></url>
+		</keys>
+	</category>
+
+	<category>
+		<name>manulife updates</name>
+		<keys value="John Hancock USA Updates;John Hancock New York Updates">
+			<enrollment>both</enrollment>
+			<title>Manulife Updates Page</title>
+			<content></content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>legislative updates</name>
+		<keys value="Legislative Updates;Legislation Updates;Governance;ERISA;Sarbane-Oxley;Acts;Congress;Due Diligence;Corporate Governance;ESOP;Employee Stock Ownership Plans">
+			<enrollment>both</enrollment>
+			<title>Legislative Updates</title>
+			<content></content>
+			<url></url>
+		</keys>
+	</category>
+<!--	
+	<category>
+		<name>NewsLetterIssue</name>
+		<keys value="NewsLetters">
+			<enrollment>both</enrollment>
+			<title>News Letter Issue</title>
+			<content></content>
+			<url></url>
+		</keys>
+	</category>
+-->	
+	<category>
+		<name>admin guide</name>
+		<keys value="Admin Guides;Administration Guides;Forms;How To Forms;Privacy;Commitment;Information;Contact Us;Contacting;Access;Glossary;Glossaries;Terms;Who;Client Accounts Representatives;CARs;Third Party Administrators;TPAs;Customer Technology Services;CTS;Local John Hancock Office;Mail;Courier;Feedback;guaranteed income for life;guaranteed income feature;guaranteed retirement income;guaranteed minimum withdrawal benefits;optional rider;lifetime income benefit rider;benefit base;income enhancement;step-up;step up;minimum holding period;Lifetime Income Amount;GIFL;GIFLS;G.I.F.L.;G.I.F.L.S.">
+			<enrollment>both</enrollment>
+			<title>Admin Guide</title>
+			<content></content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>Consolidation Services</name>
+		<keys value="rolling in;rollover;consolidate;consolidation;roll in;roll-in;roll;transfer;move;RIRS;outside assets;external assets;combine;retirement accounts;IRA;prior employer;previous employer;former employer;portability;direct rollover;indirect rollover;specialist;consolidation specialist;rollins;account consolidation">
+			<enrollment>both</enrollment>
+			<title>Consolidating retirement accounts</title>
+			<content></content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>feduciary page</name>
+		<keys value="Fiduciaries;Fiduciary Responsibility;Fiduciary Responsibilities;Fiduciary Guides;Investment Selection;Monitoring;Due Diligence;File;Tips;Legal;Advice;IRS;Audit;Trends;Retirement;Checklists;Compliance;Prudent;Annual;Review;Roles;Allocating;Co-Fiduciary;Benefits;Breaches">
+			<enrollment>both</enrollment>
+			<title>Fiduciary Page</title>
+			<content></content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>Glossary_Category</name>
+		<keys value="Glossary;Glossaries;Definitions;Terms;Detailed;Words">
+			<enrollment>both</enrollment>
+			<title>Manulife Financial Terms</title>
+			<content>This page provides you with some terms that you will find on the Web site in your contract.</content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>message center</name>
+		<keys value="Message;Center;Message Center;Summary Email;Messages">
+			<enrollment>enrolled</enrollment>
+			<title>Message Center</title>
+			<content>This page summarizes your John Hancock system-generated messages. Click on any tab or hyperlink to view the corresponding action and FYI messages.</content>
+			<url></url>
+		</keys>
+	</category>
+
+	<category>
+		<name>message archive</name>
+		<keys value="Message History;Message Archive;Archive">
+			<enrollment>enrolled</enrollment>
+			<title>Message Archive</title>
+			<content>Messages move to this Message Archive once they have been acted on or removed (by clicking the X) from your active view. Use this page to search for and view up to 2 years of archived messages.</content>
+			<url></url>
+		</keys>
+	</category>
+	
+	<category>
+		<name>pending withdrawal summary</name>
+		<keys value="pending;pending withdrawal;pending withdrawals;additional contribution;additional contributions;withdrawal;outstanding;outstanding withdrawal;outstanding withdrawals">
+			<!-- Since Plan Sponsor can't enroll, both value is appropriate in this place -->
+			<enrollment>both</enrollment> 
+			<title>Pending Withdrawals Summary</title>
+			<content>This page provides a list of pending withdrawal of additional contributions under your contract. Additional information on the transaction can be viewed by clicking on the transaction type.</content>
+			<url></url>
+		</keys>
+	</category>	
+	
+	<category>
+		<name>fundcheck</name>
+		<keys value="Fundcheck;Fund check;Fundcheck®;Fund check®;Fund review;Fund changes;Fund change;Investment Platform Update;Platform Update;Investment Platform">
+			<enrollment>enrolled</enrollment>
+			<title>FundCheck®</title>
+			<content>This page provides access to your customized Investment Platform Update packages, which contain the details of our latest fund changes.</content>
+			<url></url>
+		</keys>
+	</category>	
+
+	<!-- this string is use for the content query in the content stored proc - select search results -->
+	<categoryString></categoryString>
+	<!-- This is for the order of each category for the frontend -->	
+	<order>contract reports;guides;other resources;glossary;news;funds;TpaForm</order>	
+	
+	<!-- This is the mapping for all category and the print name used for the frontend -->
+	<categoryMapping>
+		<category value="glossary">
+			<categoryPrintName>Glossary</categoryPrintName>
+		</category>
+		<category value="guides">
+			<categoryPrintName>Guides</categoryPrintName>
+		</category>
+		<category value="news">
+			<categoryPrintName>News</categoryPrintName>
+		</category>
+		<category value="other resources">
+			<categoryPrintName>Other Resources</categoryPrintName>
+		</category>
+		<category value="contract reports">
+			<categoryPrintName>Contract Reports</categoryPrintName>
+		</category>
+		<category value="funds">
+			<categoryPrintName>Investment Information</categoryPrintName>
+		</category>
+		<category value="TpaForm">
+			<categoryPrintName>TPA Forms</categoryPrintName>
+		</category>
+	</categoryMapping>
+	
+<!-- This is the mapping for admin guide gifl pages to include for each gifl version. We exclude any key that isn’t for the current version of gifl. Note version 1 and version 2 use the same admin guide page. -->
+	<giflMapping>
+		<giflVersion value="G01">
+			<giflAdminGuideKey>59817</giflAdminGuideKey>
+		</giflVersion>
+		<giflVersion value="G02">
+			<giflAdminGuideKey>59817</giflAdminGuideKey>
+		</giflVersion>
+		<giflVersion value="G03">
+			<giflAdminGuideKey>66718</giflAdminGuideKey>
+		</giflVersion>
+	</giflMapping>	
+	
+	<categoryGroups>
+		<categoryGroup name="glossary" category="Glossary_Category"/>
+		
+		<categoryGroup name="guides" category="feduciary page"/>
+		<categoryGroup name="guides" category="admin guide"/>
+		<categoryGroup name="guides" category="Consolidation Services"/>
+		<categoryGroup name="guides" category="LayoutPage"/>
+		<categoryGroup name="guides" category="UserGuide"/>
+		<categoryGroup name="guides" category="GuideArticle"/>
+		
+		<categoryGroup name="news" category="NewsLetterIssue"/>
+		<categoryGroup name="news" category="NewsLetterArticle"/>
+		<categoryGroup name="news" category="NewsLetterSection"/>
+		<categoryGroup name="news" category="legislative updates"/>
+		<categoryGroup name="news" category="manulife updates"/>
+		<categoryGroup name="news" category="Update"/>
+
+		
+		<categoryGroup name="other resources" category="manage profile landing page"/>
+		<categoryGroup name="other resources" category="contact us"/>
+		<categoryGroup name="other resources" category="forms page"/>
+		<categoryGroup name="other resources" category="Form"/>
+		<categoryGroup name="other resources" category="tools"/>
+		<categoryGroup name="other resources" category="contract messages"/>
+		<categoryGroup name="other resources" category="message center"/>
+		<categoryGroup name="other resources" category="message archive"/>
+
+		
+		<categoryGroup name="contract reports" category="contract details"/>
+		<categoryGroup name="contract reports" category="contract snapshot"/>
+		<categoryGroup name="contract reports" category="contract profile"/>
+		<categoryGroup name="contract reports" category="participant summary"/>
+		<categoryGroup name="contract reports" category="participant addresses"/>
+		<categoryGroup name="contract reports" category="investment allocation page"/>
+		<categoryGroup name="contract reports" category="contract funds"/>
+		<categoryGroup name="contract reports" category="performance charting"/>
+		<categoryGroup name="contract reports" category="transaction details"/>
+		<categoryGroup name="contract reports" category="transaction history"/>
+		<categoryGroup name="contract reports" category="cash account"/>
+		<categoryGroup name="contract reports" category="participant enrollments"/>
+		<categoryGroup name="contract reports" category="pending withdrawal summary"/>
+		
+		
+		
+		<categoryGroup name="funds" category="ViewFunds"/>
+		<categoryGroup name="funds" category="fundcheck"/>
+		
+	</categoryGroups>
+	
+</search>
+

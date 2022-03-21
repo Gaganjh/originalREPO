@@ -1,0 +1,17 @@
+<config>
+  <!-- 
+    This env-config.xml file is used to load the configuration settings at runtime by putting the
+    settings in this file and putting the file in the classpath. The first file found in the 
+    classpath matching the name will be loaded. See the config-factory.xml for the order of
+    configuration loading.
+  -->
+  <!-- 
+    Each node level is part of the 'dotted' notation in the key name.
+    i.e. The 'ldap.context.factory' value is 'com.sun.jndi.ldap.LdapCtxFactory' from:
+    <ldap>
+    <context>
+    <factory>com.sun.jndi.ldap.LdapCtxFactory</factory>
+    </context>
+    </ldap>
+  -->
+</config>

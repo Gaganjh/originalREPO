@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+    <classpathentry kind="var" path="SERVERJDK_PLUGINDIR/jre/lib/rt.jar" sourcepath="SERVERJDK_PLUGINDIR/src.jar"/>
+    <classpathentry kind="src" path="ejbModule"/>
+    <classpathentry kind="lib" path="/common/lib/mail.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/j2ee.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/csicpi.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/ejbcontainer.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/ivjejb35.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/vaprt.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/ras.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/utils.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/cm.jar"/>
+    <classpathentry kind="lib" path="/common/weblib/log4j.jar"/>
+    <classpathentry kind="lib" path="/common/lib/commons-lang-2.1.jar"/>
+    <classpathentry kind="lib" path="/common/lib/commons-collections-3.2.jar"/>
+    <classpathentry kind="lib" path="/common/lib/db2jcc.jar"/>
+    <classpathentry kind="lib" path="/common/lib/jakarta-regexp-1.2.jar"/>
+    <classpathentry kind="lib" path="/common/lib/USGPSUtilities.jar"/>
+    <classpathentry kind="lib" path="/common/lib/mrl.jar"/>
+    <classpathentry kind="lib" path="/common/lib/manulifeEncrypt.jar"/>
+    <classpathentry kind="lib" path="/common/lib/AccountService.jar"/>
+    <classpathentry kind="lib" path="/common/lib/MessagingService.jar"/>
+    <classpathentry kind="lib" path="/common/lib/ngec_model.jar"/>
+    <classpathentry kind="lib" path="/common/lib/ldap10.jar"/>
+    <classpathentry kind="lib" path="/common/lib/DSUtils.jar"/>
+    <classpathentry kind="lib" path="/common/lib/heartbeat.jar"/>
+    <classpathentry kind="lib" path="/common/lib/MrlLoggerService.jar"/>
+    <classpathentry kind="lib" path="/common/lib/activation.jar"/>
+    <classpathentry kind="lib" path="/common/lib/xstream-1.0.2.jar"/>
+    <classpathentry kind="lib" path="/common/weblib/CMAUtil.jar"/>
+    <classpathentry kind="lib" path="/common/lib/xerces.jar"/>
+    <classpathentry kind="lib" path="/common/lib/BrowseService.jar"/>
+    <classpathentry kind="lib" path="/common/lib/PSUtils.jar"/>
+    <classpathentry kind="output" path="bin"/>
+</classpath>

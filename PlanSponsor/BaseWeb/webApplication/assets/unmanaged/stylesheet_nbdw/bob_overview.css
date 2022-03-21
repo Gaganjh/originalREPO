@@ -1,0 +1,189 @@
+/*******************************************************************************
+*	bob_overview.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Contract Funds specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+@import url("screen.css");
+
+div#page_content h2{
+	margin-bottom:15px;
+}
+
+/** Commented by Hari.  This was making the message box not to appear.
+	.message{
+	display:none;
+}
+*/
+
+/* Increasing the Height of Quick Filter section for BOB page. */
+#page_content .page_section_subheader_increased_height {
+	height:50px;
+}
+
+/*
+The font_size_1em is used in Quick filter section of BOB page. 
+Changes were done in bobFilters.tag file so that the <select>, <input> elements 
+are embedded into <table> element. The <td> element inside the <table> element reduces the font-size significantly.  
+Hence, bringing back the font size to 1em. Also, removed the padding, vertical-aligned the elements to top. */
+
+#font_size_1em {
+	margin-left:8px;
+}
+	
+#font_size_1em .padding_left_zero p{
+	padding-left: 0px !important;
+}
+
+#font_size_1em td{
+	font-size:1em;
+	padding : 0px;
+	vertical-align:top;
+}
+
+#font_size_1em .yui-skin-sam{
+	float:none;
+}
+.small_top_margin {
+	margin-top:1px !important;
+}
+
+a#customize_report{
+	color:#fff;
+	float:left;
+	font-size:.75em;
+	padding:13px 0 0 33px;
+}		
+
+div#bob_overview_report{
+	background-color:#f6f4f1;
+	margin-top:5px;
+	padding-top: 2px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+	div#bob_overview_report h4{
+		background: none;
+		color:#333;
+		font: normal 1em georgia, times, serif;
+		margin: 0;
+		padding: 0 0 10px 15px;
+	}
+
+	div#bob_overview_report fieldset{
+		border:none;
+		margin:0;
+		padding:0;
+	}
+	
+		div#bob_overview_report div.form_section{
+			margin-left:15px;
+			padding-bottom:10px;
+		}
+	
+		div#bob_overview_report div.form_section select{
+			width:50px;
+		}
+		
+		div#bob_overview_report form p{
+			float:left;			
+			margin:0 5px 0 0;
+			padding:0;
+		}
+	
+		div#bob_overview_report select{
+			float:left;
+			margin-right:5px;
+		}
+	
+		div#bob_overview_report .select_group{
+			clear:left;
+			margin:0px 0px 5px 15px;
+		}
+		
+			div#bob_overview_report .select_group input{
+				float:left;
+				margin-right:5px;
+				width:95px;
+			}
+	
+		div#bob_overview_report .form_section select,
+		div#bob_overview_report .select_group select {
+			font-size: 0.75em;
+		}
+	
+	 	div.selection_input {
+			clear:left;
+			float:left;
+			margin-left: 15px;
+		}
+	
+
+#bob_overview_table{
+	margin-left: 15px;
+	margin-top: 0px;
+	width:500px;
+}
+
+	#bob_overview_table table th,
+	#bob_overview_table table tr.total td{
+		font-weight:bold;
+	}
+
+
+#report_customization_wrapper {
+	display:none;
+	margin-bottom: 30px;
+}
+
+#bob_overview #page_wrapper #page_content #summaryBox .text {
+	font-size: 13px;
+}
+
+/**The Information in <table> in Summary box had padding-left of 2 px which was making it look 
+unaligned with other information in Summary box. So, removed the padding-left*/
+#bob_overview #summaryBox td{
+	 padding-left:0px;
+}
+
+/** Hari : The Form had the ID advancedFilterForm instead of report_custimzation*/
+#bob_overview #page_wrapper #page_content .report_table #bob_overview_report #advancedFilterForm table tr td {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+/** Hari: In BOB page, in Internet explorer, the Form was having a top margin which was showing some gap */
+#bob_overview #page_wrapper #page_content .report_table form {
+margin: 0px 0px 0px 0px;
+}
+
+/** Hari: The below changes are Block Of Business Page Specific. The below changes make sure that 
+the Customize Report, PDF Button, CSV Button come in the next line to Quick Filters. This was done 
+because the Filter Expression can change its width according the Quick Filter chosen by the user. 
+This was making very less room for Customize Report, PDf, CSV Buttons in the same line as Quick Filter.*/
+#page_content .decrease_height
+{
+	height: 20px;
+	border-top-width: 0px;
+	margin-bottom: 0px;
+}
+
+#page_content .no_bottom_margin {
+	height: 40px;
+	margin-bottom: 0px;
+}
+
+#page_section_subheader_next_line a {
+	clear:left;
+	margin-top:0px;
+}
+
+#page_section_subheader_next_line #customize_report {
+	float:right;
+	padding-right:30px;
+	padding-top:3px;
+}

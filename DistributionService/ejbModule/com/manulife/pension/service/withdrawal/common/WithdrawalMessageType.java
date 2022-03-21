@@ -1,0 +1,221 @@
+package com.manulife.pension.service.withdrawal.common;
+
+import com.manulife.pension.common.MessageCategory;
+import com.manulife.pension.common.MessageType;
+
+/**
+ * WithdrawalMessageType contains all the withdrawal messages. Each message has a
+ * {@link MessageCategory} corresponding to error, warning, or alert.
+ * 
+ * @author Paul_Glenn
+ * @author glennpa
+ */
+public enum WithdrawalMessageType implements MessageType {
+
+    DATE_OF_BIRTH_INVALID(MessageCategory.ERROR),
+    REQUESTED_AMOUNT_EXCEEDS_AVAILABLE_AMOUNT(MessageCategory.WARNING),
+    REQUESTED_AMOUNT_INVALID(MessageCategory.ERROR),
+    REQUESTED_AMOUNT_NOT_GREATER_THAN_ZERO(MessageCategory.ERROR),
+    REQUESTED_PERCENTAGE_INVALID(MessageCategory.ERROR),
+    VESTED_PERCENTAGE_INVALID(MessageCategory.ERROR),
+    AMOUNT_TYPE_REQUIRED(MessageCategory.ERROR),
+    WITHDRAWAL_AMOUNT_INVALID(MessageCategory.ERROR),
+    TOTAL_REQUESTED_NOT_EQUAL_TO_SPECIFIC(MessageCategory.ERROR),
+    TOTAL_REQUESTED_NOT_GREATER_THAN_ZERO(MessageCategory.ERROR),
+    SPECIFIC_AMOUNT_WITHIN_THRESHOLD(MessageCategory.WARNING),
+    REQUESTED_AMOUNT_WITHIN_THRESHOLD(MessageCategory.WARNING),
+    REQUESTED_AMOUNT_WITHIN_THRESHOLD_FOR_HA(MessageCategory.WARNING),
+    WITHDRAWAL_REASON_INVALID(MessageCategory.ERROR),
+    PAYMENT_TO_INVALID(MessageCategory.ERROR),
+    TEMP_WARNING(MessageCategory.WARNING),
+    TEMP_ALERT(MessageCategory.ALERT),
+    FI_NAME_INVALID(MessageCategory.ERROR),
+    ADDRESS_FI_LINE_ONE_INVALID(MessageCategory.ERROR),
+    ADDRESS_FI_CITY_INVALID(MessageCategory.ERROR),
+    ADDRESS_FI_STATE_INVALID(MessageCategory.ERROR),
+    ADDRESS_FI_ZIP_ONE_INVALID(MessageCategory.ERROR),
+    ADDRESS_FI_ZIP_TWO_INVALID(MessageCategory.ERROR),
+    ADDRESS_FI_ZIP_CODE_INVALID_FOR_STATE(MessageCategory.WARNING),
+    ADDRESS_FI_COUNTRY_INVALID(MessageCategory.ERROR),
+    FI_BANK_NAME_INVALID(MessageCategory.ERROR),
+    FI_ACCOUNT_NUMBER_INVALID(MessageCategory.ERROR),
+    FI_CREDIT_PARTY_NAME_INVALID(MessageCategory.ERROR),
+    FI_ABA_NUMBER_INVALID(MessageCategory.ERROR),
+    FI_ABA_NUMBER_NOT_GREATER_THAN_ZERO(MessageCategory.ERROR),
+    CHECK_PAYEE_NAME_INVALID(MessageCategory.ERROR),
+    ADDRESS_CHECK_PAYEE_LINE_ONE_INVALID(MessageCategory.ERROR),
+    ADDRESS_CHECK_PAYEE_CITY_INVALID(MessageCategory.ERROR),
+    ADDRESS_CHECK_PAYEE_STATE_INVALID(MessageCategory.ERROR),
+    ADDRESS_CHECK_PAYEE_ZIP_ONE_INVALID(MessageCategory.ERROR),
+    ADDRESS_CHECK_PAYEE_ZIP_TWO_INVALID(MessageCategory.ERROR),
+    ADDRESS_CHECK_PAYEE_ZIP_CODE_INVALID_FOR_STATE(MessageCategory.WARNING),
+    ADDRESS_CHECK_PAYEE_COUNTRY_INVALID(MessageCategory.ERROR),
+    ADDRESS_1099R_LINE_ONE_INVALID(MessageCategory.ERROR),
+    ADDRESS_1099R_CITY_INVALID(MessageCategory.ERROR),
+    ADDRESS_1099R_STATE_INVALID(MessageCategory.ERROR),
+    ADDRESS_1099R_ZIP_ONE_INVALID(MessageCategory.ERROR),
+    ADDRESS_1099R_ZIP_TWO_INVALID(MessageCategory.ERROR),
+    ADDRESS_1099R_ZIP_CODE_INVALID_FOR_STATE(MessageCategory.WARNING),
+    ADDRESS_1099R_COUNTRY_INVALID(MessageCategory.ERROR),
+    REQUESTED_AMOUNT_EXCEEDS_ZERO(MessageCategory.ERROR),
+    SPECIFIC_AMOUNT_GREATER_THAN_TOTAL_BALANCE(MessageCategory.ERROR),
+    REQUESTED_AMOUNT_EXCEEDS_BALANCE(MessageCategory.ERROR),
+    WMSI_UNDER_THRESHHOLD(MessageCategory.ERROR),
+    TPA_FEE_AMOUNT_INVALID(MessageCategory.ERROR),
+    TAXES_OVER_ONE_HUNDRED_PERCENT(MessageCategory.ERROR),
+    STATE_TAX_NOT_ZERO_WHEN_FEDERAL_IS(MessageCategory.ERROR),
+    TPA_FEE_PERCENTAGE_INVALID(MessageCategory.ERROR),
+    TPA_FEE_TYPE_INVALID(MessageCategory.ERROR),
+    TPA_DOLLAR_THRESHOLD(MessageCategory.WARNING),
+    TPA_PERCENT_THRESHOLD(MessageCategory.WARNING),
+    TPA_DOLLAR_EXCEEDS_TOTAL_BALANCE(MessageCategory.ERROR),
+    OPTION_FOR_UNVESTED_AMOUNT_INVALID(MessageCategory.ERROR),
+    PAYMENT_METHOD_INVALID(MessageCategory.ERROR),
+    ACCOUNT_TYPE_INVALID(MessageCategory.ERROR),
+    PARTICIPANT_US_CITIZEN_INVALID_ERROR(MessageCategory.ERROR),
+    PARTICIPANT_US_CITIZEN_INVALID_WARNING(MessageCategory.WARNING),
+    PARTICIPANT_NOT_US_CITIZEN(MessageCategory.ERROR),
+    ACCOUNT_NUMBER_FOR_ROLLOVER_INVALID(MessageCategory.ERROR),
+    NAME_OF_PLAN_INVALID(MessageCategory.ERROR),
+    IRS_CODE_FOR_WITHDRAWAL_WARNING(MessageCategory.WARNING),
+    IRS_CODE_FOR_WITHDRAWAL_ERROR(MessageCategory.ERROR),
+    IRS_CODE_FOR_WITHDRAWAL_SHOULD_BE_NORMAL(MessageCategory.WARNING),
+    IRS_CODE_FOR_WITHDRAWAL_SHOULD_BE_EARLY_DISTRIBUTION(MessageCategory.WARNING),
+    IRS_CODE_FOR_WITHDRAWAL_SHOULD_BE_ROLLOVER(MessageCategory.WARNING),
+    NOTE_TO_PARTICIPANT_INVALID(MessageCategory.ERROR),
+    FEDERAL_TAX_INVALID(MessageCategory.ERROR),
+    DECLARATION_TAX_NOTICE_INVALID_ERROR(MessageCategory.ERROR),
+    DECLARATION_TAX_NOTICE_INVALID_WARNING(MessageCategory.WARNING),
+    DECLARATION_WAITING_PERIOD_INVALID_ERROR(MessageCategory.ERROR),
+    DECLARATION_WAITING_PERIOD_INVALID_WARNING(MessageCategory.WARNING),
+    DECLARATION_IRA_PROVIDER_INVALID_ERROR(MessageCategory.ERROR),
+    DECLARATION_IRA_PROVIDER_INVALID_WARNING(MessageCategory.WARNING),
+    DECLARATION_AT_RISK_INDICATOR_ERROR(MessageCategory.ERROR),
+    IRS_CODE_FOR_LOAN_ERROR(MessageCategory.ERROR),
+    IRS_CODE_FOR_LOAN_WARNING(MessageCategory.WARNING),
+    IRS_CODE_FOR_LOAN_SHOULD_BE_NORMAL(MessageCategory.WARNING),
+    IRS_CODE_FOR_LOAN_SHOULD_BE_EARLY_DISTRIBUTION(MessageCategory.WARNING),
+    IRS_CODE_FOR_LOAN_SHOULD_BE_ROLLOVER(MessageCategory.WARNING),
+    HARDSHIP_REASON_MISSING_WARNING(MessageCategory.WARNING),
+    HARDSHIP_REASON_EXPLANATION_MISSISNG_WARNING(MessageCategory.WARNING),
+    TERMINATION_DATE_MISSING_ERROR(MessageCategory.ERROR),
+    TERMINATION_DATE_BEFORE_CONTRACT_EFFECTIVE(MessageCategory.ERROR),
+    RETIREMENT_DATE_MISSING_ERROR(MessageCategory.ERROR),
+    IRS_DISTRIBUTION_CODE_FOR_LOANS_ERROR(MessageCategory.ERROR),
+    RETIREMENT_DATE_BEFORE_CONTRACT_EFFECTIVE(MessageCategory.ERROR),
+    DISABILITY_DATE_MISSING_ERROR(MessageCategory.ERROR),
+    FINAL_CONTRIBUTION_DATE_MISSING_ERROR(MessageCategory.ERROR),
+    FINAL_CONTRIBUTION_DATE_MISSING_WARNING(MessageCategory.WARNING),
+    FINAL_CONTRIBUTION_DATE_BEFORE_CONTRACT_EFFECTIVE_ERROR(MessageCategory.ERROR),
+    FINAL_CONTRIBUTION_DATE_OVER_SIX_MONTHS_IN_FUTURE_ERROR(MessageCategory.ERROR),
+    STATE_OF_RESIDENCE_INVALID(MessageCategory.ERROR),
+//    USER_MATCHES_THE_PARTICIPANT(MessageCategory.ERROR),
+    TOTAL_REQUESTED_AMOUNT_RESTRICTED_FOR_MANDATORY_DISTRIBUTION_TERMINATION(MessageCategory.ERROR),
+    WITHDRAWAL_REASON_DOES_NOT_MATCH_PARTICIPANT_STATUS(MessageCategory.WARNING),
+    STATE_TAX_INVALID(MessageCategory.ERROR),
+    STATE_TAX_EXCEEDS_MAXIMUM(MessageCategory.ERROR),
+    LOAN_REPAYMENT(MessageCategory.ERROR),
+    STEP_1_DRIVER_FIELDS_CHANGED_SINCE_SAVE(MessageCategory.ALERT),
+    STEP_1_DRIVER_FIELDS_CHANGED_SINCE_SAVE_POST_DRAFT(MessageCategory.WARNING),
+    VESTING_CREDITING_METHOD_IS_UNSPECIFIED(MessageCategory.ALERT),
+    VESTING_SCHEDULE_HAS_NOT_BEEN_SET_UP(MessageCategory.ALERT),
+    VESTING_MISSING_EMPLOYEE_DATA(MessageCategory.ALERT),
+    VESTING_MORE_RECENT_DATA_USED_FOR_CALCULATION_CODE(MessageCategory.ALERT),
+    VESTING_ROBUST_DATE_CHANGED_AFTER_VESTING_CALLED(MessageCategory.ALERT),
+    VESTING_GENERAL_MESSAGE_ALERT(MessageCategory.ALERT),
+    VESTING_GENERAL_MESSAGE_ERROR(MessageCategory.ERROR),
+    VESTING_ENGINE_ALLOWS_VALUE_UPDATES(MessageCategory.WARNING),
+    MISSING_IRA_PROVIDER_ERROR(MessageCategory.ERROR),
+    MISSING_IRA_PROVIDER_WARNING(MessageCategory.WARNING),
+    
+    // Security Enhancements - removed Credit party name, added organization name validation
+    ORGANIZATION_NAME_LENGTH_ACH(MessageCategory.ERROR),
+    ORGANIZATION_NAME_LENGTH_WIRE(MessageCategory.ERROR),
+    
+    // Initial messages.
+    PARTICIPANT_HAS_ZERO_ACCOUNT_BALANCE(MessageCategory.ALERT), PARTICIPANT_HAS_I_LOANS(
+            MessageCategory.ALERT), PARTICIPANT_HAS_ANOTHER_WITHDRAWAL(MessageCategory.ALERT),
+    REQUEST_CAN_NOT_BE_PROCESSED_ALERT(MessageCategory.ALERT), REQUEST_CAN_NOT_BE_PROCESSED_ERROR(
+            MessageCategory.ERROR), PARTICIPANT_HAS_PBA_MONEY(MessageCategory.ALERT),
+    PARTICIPANT_HAS_ROTH_MONEY(MessageCategory.ALERT),
+
+    DATE_OF_BIRTH_EMPTY_OR_BLANK(MessageCategory.ERROR),
+    DATE_OF_BIRTH_GREATER_THAN_ENROLLMENT_DATE(MessageCategory.ERROR), EXPIRATION_DATE_INVALID(
+            MessageCategory.ERROR),
+    WITHDRAWAL_REQUEST_HAS_EXPIRED_LIST_PAGE(MessageCategory.ERROR),
+    WITHDRAWAL_REQUEST_HAS_EXPIRED_VIEW_PAGE(MessageCategory.ERROR),
+    WITHDRAWAL_REQUEST_HAS_EXPIRED_INITIATE_REVIEW_PAGE(MessageCategory.ERROR),
+    EXPIRATION_DATE_BEFORE_SAVED(MessageCategory.ERROR), EXPIRATION_DATE_WITHIN_WARNING_THRESHOLD(
+            MessageCategory.ALERT), INVALID_PARTICIPANT_ADDRESS_COUNTRY(MessageCategory.ALERT),
+    INVALID_TRUSTEE_ADDRESS_COUNTRY(MessageCategory.ALERT), EXPIRATION_DATE_GREATER_THAN_MAXIMUM(
+            MessageCategory.ERROR), LOAN_OPTION_REPAY_SELECTED_ERROR(MessageCategory.ERROR),
+    PARTICIPANT_SEARCH_REQUIRES_A_CONTRACT(MessageCategory.ERROR), CONTRACT_STATUS_FROZEN(
+            MessageCategory.ERROR), INVALID_REASON_CODE_RETIREMENT(MessageCategory.WARNING),
+    STATE_TAX_CHANGED(MessageCategory.ALERT), VESTING_SERVICE_HAS_ALREADY_CALLED_INDICATOR_NO(
+            MessageCategory.ALERT), NOTE_PARTICIPANT_INVALID_FOR_POW(MessageCategory.ERROR),            
+            PARTICIPANT_HAS_ONLINE_LOANS(MessageCategory.ALERT),
+    TWO_STEP_REQUEST_APPROVAL(MessageCategory.ERROR),
+    
+    // LIA Error message
+    PARTICPANT_APPLICABLE_TO_LIA(MessageCategory.ERROR),
+    
+    //Future dated termination date in withdrawal(CL 123057)
+	TERMINATION_DATE_EXCEEDED(MessageCategory.ERROR),
+	
+	 //Future dated retirement date in withdrawal
+	RETIREMENT_DATE_EXCEEDED(MessageCategory.ERROR),
+
+	//Added new Withdrawal error messages as part of CL 131784
+	WD_STATE_TAX_INVALID_FOR_PR_STATE_ROLLOVER(MessageCategory.ERROR),
+	WD_STATE_TAX_INVALID_FOR_PR_STATE_NONROLLOVER(MessageCategory.ERROR),
+	LEGALLY_MARRIED_IND_NULL(MessageCategory.ERROR),
+	ROLLOVER_TYPE_NULL(MessageCategory.ERROR),
+	ROLLOVER_TYPE_MUST_BE_ROTH_IRA(MessageCategory.ERROR),
+	MISSING_ROLLOVER_TYPE(MessageCategory.ERROR),
+	
+	 // multiple destination keys
+		ROLLOVER_REMAINING_BALANCE_MANDATORY(MessageCategory.ERROR),
+		SELECTED_ONE_PAYEE(MessageCategory.ERROR),
+		MISSING_MULTIPLE_DESTINATION_SELECTION(MessageCategory.ERROR),
+		PAY_DIRECT_TO_ME_OPTIONLA_SEC_USER_INPUT(MessageCategory.ERROR),
+	
+	//hardship
+	INVALID_MONEY_TYPE(MessageCategory.ERROR),
+	MINIMUM_HARDSHIP_AMOUNT(MessageCategory.WARNING),
+	MAXIMUM_HARDSHIP_AMOUNT(MessageCategory.WARNING),
+	MAX_HARDSHIP_AMOUNT(MessageCategory.ERROR),
+	MIN_HARDSHIP_AMOUNT(MessageCategory.ERROR),
+	AVAILABLE_HARDSHIP_AMOUNT(MessageCategory.ERROR),
+	// Future dated Disability Date
+		DISABILITY_DATE_EXCEEDED(MessageCategory.ERROR);
+    private MessageCategory messageCategory;
+
+    /**
+     * Default Constructor.
+     * 
+     * @param messageCategory The {@link MessageCategory} for this message type.
+     */
+    private WithdrawalMessageType(final MessageCategory messageCategory) {
+        this.messageCategory = messageCategory;
+    }
+
+    /**
+     * @return the messageCategory
+     */
+    public MessageCategory getMessageCategory() {
+        return messageCategory;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        final StringBuffer stringBuffer = new StringBuffer(super.toString());
+        stringBuffer.append("[");
+        stringBuffer.append(this.getMessageCategory().toString());
+        stringBuffer.append("]");
+        return stringBuffer.toString();
+    }
+
+}

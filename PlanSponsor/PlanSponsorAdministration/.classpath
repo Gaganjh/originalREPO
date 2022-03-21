@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/IBM JRE"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="var" path="WAS_PLUGINDIR/lib/j2ee.jar"/>
+	<classpathentry exported="true" kind="lib" path="/common/lib/USGPSUtilities.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-lang-2.0.jar"/>
+	<classpathentry kind="lib" path="/common/lib/ngec_model.jar"/>
+	<classpathentry kind="lib" path="/common/lib/SecurityService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/AccountService.jar"/>
+	<classpathentry exported="true" kind="lib" path="/common/lib/db2jcc.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/PlanSponsor"/>
+	<classpathentry kind="lib" path="/common/lib/mrl.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/WebSphere9/AppServer/runtimes/com.ibm.ws.admin.client_9.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

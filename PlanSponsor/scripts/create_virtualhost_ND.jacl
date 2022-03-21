@@ -1,0 +1,150 @@
+####################################################################
+# Create Virtual Host.
+####################################################################
+
+set hostName [lindex $argv 0]
+set cellName [lindex $argv 1]
+
+set cellId   [ $AdminConfig getid /Cell:$cellName/]
+set portNumber 80
+
+puts "$hostName"
+
+
+
+#if {$hostName == "USGPEZK3"} {
+#   set hostNum 3
+#} else {
+#   if {$hostName == "USGPTR1"} {
+#       set hostNum tr
+#   }
+#   else {set hostNum [string range $hostName 10 [string length $hostName]]}
+#}
+
+#puts stdout "hostNum is $hostNum"
+
+proc setHostName {} {
+    global virtualhostName
+    set virtualhostName "EZkUSA_host EZkNY_host PlanSponsorUSA_host PlanSponsorNY_host BrokerDealer_host WebServices_host OnlineOrder_host EZkCMA_host PlanSponsorCMA_host SupportCentral_host "
+    #puts "$virtualhostName"
+}
+
+proc setDevAlias {x hName} {
+  global virtualHost
+  set virtualHost "
+    [append vhost1 ezuslocal.test-qa.net]
+    [append vhost2 eznylocal.test-qa02.net]
+    [append vhost3 psuslocal.test-qa.net]
+    [append vhost4 psnylocal.test-qa02.net]
+    [append vhost5 bdlocal.test-qa.net] 
+    $hName  
+    [append vhost6 ooslocal.manulife.com]
+    [append vhost7 ezcmalocal.manulife.com]
+    [append vhost8 pscmalocal.manulife.com]
+    [append vhost9 nslocal.test-qa.net]
+  "
+  puts "$virtualHost"
+}
+
+proc setPreSITAlias {y hName2} {
+  global virtualHost
+  set virtualHost "
+    [append vhost1 usgpezk $y us.test-qa.net]
+    [append vhost2 usgpezk $y ny.test-qa02.net]
+    [append vhost3 usgpps $y us.test-qa.net]
+    [append vhost4 usgpps $y ny.test-qa02.net]
+    [append vhost5 usgpbd $y .test-qa.net]
+    $hName2
+    [append vhost6 usgpoos $y .manulife.com]
+    [append vhost7 usgpezk $y cma.manulife.com]
+    [append vhost8 usgpps $y cma.manulife.com]
+    [append vhost9 usgpsc $y .test-qa.net]
+  "
+  puts "$virtualHost"
+}
+#puts "[string range $hostName 0 3]"
+set prefix [string range $hostName 0 3]
+puts "$prefix"
+if {$prefix == "MLIW"} {
+   set hostNum dev
+   setHostName
+   setDevAlias $hostNum $hostName
+} else {
+    switch -exact -- $hostName {
+        USGPEZK3   {set hostNum 3}
+        USGPTR1    {set hostNum tr}
+        default    {set hostNum [string range $hostName 10 [string length $hostName]]}  
+    }
+    setHostName 
+    setPreSITAlias $hostNum $hostName
+}
+
+set counter 0
+foreach varVHostName $virtualhostName {
+    puts "try hostname $varVHostName"
+    puts "try host [lindex $virtualHost $counter]"    
+    puts "portnumber is $portNumber"
+	set portNumber 80
+	#puts "portnumber is $portNumber"
+    set aliases [list aliases [list [list [list hostname [lindex $virtualHost $counter]] [list port $portNumber]]]]
+    set attrList [list [list name $varVHostName] $aliases]
+    puts "try aliases $aliases"
+    puts "try attrList $attrList"
+    $AdminConfig create VirtualHost $cellId $attrList
+
+    
+    if {[string range $varVHostName 0 2] == "EZk"} { if {$varVHostName == "EZkCMA_host"} {
+        set vhost [$AdminConfig getid /Cell:$cellName/VirtualHost:$varVHostName]
+        set portNumber 9083
+        set aliases1 [list aliases [list [list [list hostname [lindex $virtualHost $counter]] [list port $portNumber]]]]
+        set attrList [list [list name $varVHostName] $aliases1]
+        $AdminConfig modify $vhost $attrList
+    } else {
+        set vhost [$AdminConfig getid /Cell:$cellName/VirtualHost:$varVHostName]
+        set portNumber 9081
+        set aliases1 [list aliases [list [list [list hostname [lindex $virtualHost $counter]] [list port $portNumber]]]]
+        set attrList [list [list name $varVHostName] $aliases1]
+        $AdminConfig modify $vhost $attrList
+    }} elseif { [string range $varVHostName 0 10] == "PlanSponsor"} { if {$varVHostName == "PlanSponsorCMA_host"} {
+        set vhost [$AdminConfig getid /Cell:$cellName/VirtualHost:$varVHostName]
+        set portNumber 9082
+        set aliases1 [list aliases [list [list [list hostname [lindex $virtualHost $counter]] [list port $portNumber]]]]
+        set attrList [list [list name $varVHostName] $aliases1]
+        $AdminConfig modify $vhost $attrList
+    } else {
+        set vhost [$AdminConfig getid /Cell:$cellName/VirtualHost:$varVHostName]
+        set portNumber 9080
+        set aliases1 [list aliases [list [list [list hostname [lindex $virtualHost $counter]] [list port $portNumber]]]]
+        set attrList [list [list name $varVHostName] $aliases1]
+        $AdminConfig modify $vhost $attrList
+    }} elseif { $varVHostName == "WebServices_host"} {
+        set vhost [$AdminConfig getid /Cell:$cellName/VirtualHost:$varVHostName]
+        set portNumber 9084
+        set aliases1 [list aliases [list [list [list hostname [lindex $virtualHost $counter]] [list port $portNumber]]]]
+        set attrList [list [list name $varVHostName] $aliases1]
+        $AdminConfig modify $vhost $attrList
+    } elseif { [string range $varVHostName 0 11] == "BrokerDealer"} {
+        set vhost [$AdminConfig getid /Cell:$cellName/VirtualHost:$varVHostName]
+        set portNumber 9080
+        set aliases1 [list aliases [list [list [list hostname [lindex $virtualHost $counter]] [list port $portNumber]]]]
+        set attrList [list [list name $varVHostName] $aliases1]
+        $AdminConfig modify $vhost $attrList
+    } elseif { $varVHostName == "OnlineOrder_host"} {
+        set vhost [$AdminConfig getid /Cell:$cellName/VirtualHost:$varVHostName]
+        set portNumber 9085
+        set aliases1 [list aliases [list [list [list hostname [lindex $virtualHost $counter]] [list port $portNumber]]]]
+        set attrList [list [list name $varVHostName] $aliases1]
+        $AdminConfig modify $vhost $attrList
+    } elseif { $varVHostName == "SupportCentral_host"} {
+        set vhost [$AdminConfig getid /Cell:$cellName/VirtualHost:$varVHostName]
+        set portNumber 9088
+        set aliases1 [list aliases [list [list [list hostname [lindex $virtualHost $counter]] [list port $portNumber]]]]
+        set attrList [list [list name $varVHostName] $aliases1]
+        $AdminConfig modify $vhost $attrList
+    } 
+    
+    set counter [expr $counter + 1]
+    
+}
+
+$AdminConfig save

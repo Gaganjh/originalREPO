@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+
+<log4j:configuration debug="false" xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+  <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
+    </layout>
+  </appender>
+
+  <appender name="fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="file" value="ecr-conversion.log"/>
+    <param name="datePattern" value="'.'yyyy-MM" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d [%t] %-5p (%F:%L) - %m%n"/>
+    </layout>
+  </appender>
+  
+  <category name="com.manulife.pension.service.fee.util.RevenueToPlanCostsRoundingStrategy" additivity="false">
+    <priority value="warn" />
+    <appender-ref ref="fileAppender" />
+  </category>
+  
+  <category name="com.manulife.pension.ps.web.fee.EstimatedCostOfRecordKeepingConversion" additivity="false">
+    <priority value="info" />
+    <appender-ref ref="fileAppender" />
+  </category>
+  
+  <root>
+    <priority value="error" />
+    <appender-ref ref="fileAppender" />
+  </root>
+
+</log4j:configuration>

@@ -1,0 +1,57 @@
+# ==============================================================================
+# WAS script to set the classpath in WAS
+#
+# ==============================================================================
+
+set cellName [lindex $argv 0]
+set nodeName [lindex $argv 1]
+set serverName [lindex $argv 2]
+set rootDrive  [lindex $argv 3]
+
+# puts "cell config id is Cell:$cellName/Node:$nodeName/Server:$serverName"
+if {$serverName == "EventCluster"} {
+set serverName "EventServer1" 
+set server [$AdminConfig getid /Cell:$cellName/Node:$nodeName/Server:$serverName/]
+set jvm1 [$AdminConfig list JavaVirtualMachine $server]
+unset serverName
+set serverName "EventServer2" 
+set server [$AdminConfig getid /Cell:$cellName/Node:$nodeName/Server:$serverName/]
+set jvm2 [$AdminConfig list JavaVirtualMachine $server]
+unset serverName
+set serverName "EventCluster"
+} else {
+puts "cell config id is Cell:$cellName/Node:$nodeName/Server:$serverName"
+set server [$AdminConfig getid /Cell:$cellName/Node:$nodeName/Server:$serverName/]
+puts $server
+set jvm [$AdminConfig list JavaVirtualMachine $server]
+puts "JVM config id is $jvm"
+}
+
+if {$serverName == "PSWServer"} {
+	$AdminConfig modify $jvm [list [list classpath "$rootDrive/apps/plansponsor/config"]]
+}
+if {$serverName == "SCWServer"} {
+	$AdminConfig modify $jvm [list [list classpath "$rootDrive/apps/supportcentral/config"]]
+}
+
+if {$serverName == "EZkServer"} {
+	$AdminConfig modify $jvm [list [list classpath "$rootDrive/apps/ezk/config"]]
+}
+
+if {$serverName == "EZkCMAServer"} {
+	$AdminConfig modify $jvm [list [list classpath "$rootDrive/apps/EzkCMA/config"]]
+}
+if {$serverName == "PSWCMAServer"} {
+	$AdminConfig modify $jvm [list [list classpath "$rootDrive/apps/CMA/config"]]
+}
+if {$serverName == "OnlineOrderServer"} {
+	$AdminConfig modify $jvm [list [list classpath "$rootDrive/apps/onlineorder/config"]]
+}
+if {$serverName == "EventServer1"} {
+	$AdminConfig modify $jvm [list [list classpath "$rootDrive/apps/EventApp/config"]]
+}
+if {$serverName == "EventCluster"} {
+	$AdminConfig modify $jvm1 [list [list classpath "$rootDrive/apps/EventApp/config"]]
+	$AdminConfig modify $jvm2 [list [list classpath "$rootDrive/apps/EventApp/config"]]
+}
+$AdminConfig save

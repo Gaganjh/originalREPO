@@ -1,0 +1,329 @@
+/*******************************************************************************
+*   ie6.css
+*   Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*   Global styles used throughout the John Hancock Broker Dealer website.
+********************************************************************************/
+
+
+/*******************************************************************************
+* HTML 
+********************************************************************************/
+
+body {
+    behavior:url('/assets/unmanaged/stylesheet_nbdw/csshover.htc');
+    font-size:100%;
+}
+
+
+/*******************************************************************************
+* GENERAL LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+h2, 
+h5, 
+#page_content p,
+#bob_overview_report,
+#participant_summary_report { /*fixes for the peekaboo bug*/
+    height:1%;
+}
+
+#secure_header_user {
+    height: 1%;
+    padding: 0 10px 0 0;
+}
+
+
+
+#site_search {
+    margin: 25px 32px 0 0;
+    padding: 0;
+}
+
+    #site_search_input {
+        height:17px;
+        margin:2px 5px 0 0;
+        }
+
+
+    #site_search div.button_search {
+        margin: 2px 0 0 3px ;
+        padding: 0;
+        position: absolute; /* couldn't get the search button to align without this*/   
+    }
+
+.page_section_subheader .button_header input{
+    margin-left:-5px;
+}
+
+.table_action_buttons .button_search {
+    margin: 2px 4px 0 0px;
+}
+
+.button_login input{
+    padding-bottom:0px;
+}
+.button_header input,
+.button_search input {
+    padding: 1px 8px 2px 2px;
+}
+
+#primary_nav_footer {
+    font-size: 0; /* stupid ie was using font-size as the height */
+    height: 4px;
+    line-height: 0px;
+}
+
+#page_footer p {
+    padding-left: 20px;
+}
+
+.table_nav_wrapper {
+    
+}
+
+.table_action_buttons { 
+    margin: 3px 0 0 10px;
+    padding: 0;
+}
+
+.table_pagination { 
+    margin: 8px 10px 0 0;
+    padding: 0;
+    
+}
+
+.button_regular a {
+    color: #fff !important; 
+    text-decoration: none !important;
+}
+
+.page_nav ul li.active em,
+.page_nav ul li a {
+    display: inline-block;
+}
+
+.page_nav li.active em, 
+.page_nav a{
+    height: 22px;
+}   
+
+.page_nav {
+    height: 0.1em;
+}
+
+
+
+#filter ul li:hover a {
+    color: #FFFFFF !important;
+}
+
+.message dt {
+    padding: 16px 20px 0 26px;
+}
+
+
+/*******************************************************************************
+* CONTRACT FUNDS LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+input#closed_funds_selector, 
+input#nml_selector{
+        margin-top:2px;
+    }
+    
+
+/*******************************************************************************
+* PUBLIC HOME LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+#quick_search .button_search input {
+    margin-left:-8px;
+}
+
+#account_login p,
+#account_login input {
+    margin-bottom:5px;
+}
+
+#public_home div#user_access .button_login input{
+    padding-bottom:1px;
+}
+    
+/*******************************************************************************
+* SECURE HOME LAYOUT ADJUSTMENTS
+********************************************************************************/
+    
+div#fund_search #category_wrapper input{
+    margin-top:0px;
+}   
+
+body#secure_home .button_search input {
+    margin-left:0px;
+}
+
+body#secure_home div.button_search{
+
+}
+
+/*******************************************************************************
+* BOB OVERVIEW LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+div.selection_input {
+    margin-left: 7px;
+    margin-top: 0px;
+}
+
+
+
+/*******************************************************************************
+* SEARCH RESULTS LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+#site_search_results {
+    margin-left: 8px;
+}
+
+    #site_search_results .button_search input {
+        margin-left: -5px;
+    }
+
+/*******************************************************************************
+* DIVIDER & FIRST CHILD SELECTOR HACKS
+********************************************************************************/
+
+#secure_header ul li {
+    background-image: expression(this.previousSibling == null?"none":"url('/assets/unmanaged/images/link_divider.gif') no-repeat left center");         
+}
+
+#primary_nav ul li {
+    background-image: expression(this.previousSibling == null?"none":"url('/assets/unmanaged/images/primary_nav_divider.gif') no-repeat left center");          
+}
+
+
+.page_nav ul{
+        behavior:expression(this.firstChild.style.marginLeft = "0px");
+    }
+
+.table_pagination ul li {
+    background-image: expression(this.previousSibling == null?"none":"url('/assets/unmanaged/images/link_divider.gif') no-repeat left center");         
+}
+
+
+.report_table_content th {
+    border-left: expression(this.previousSibling == null?"none":"1px solid #cac8c4");
+}
+
+.report_table_content th.sub {
+    border-left: expression(this.previousSibling == null?"1px solid #cac8c4":"none" );
+    
+}
+
+.report_table tr td {
+    border-left: expression(this.previousSibling == null?"none":"1px solid #cac8c4" );
+}
+
+#page_footer ul li {
+    background-image: expression(this.previousSibling == null?"none":"url('/assets/unmanaged/images/footer_divider.gif') no-repeat left center");
+}
+
+body#contract_overview div#page_section_container{
+    behavior:expression(this.firstChild.style.marginRight = "5px");
+}
+    body#contract_overview div.page_section{
+        behavior:expression(this.firstChild.style.borderTop = "none");
+    }
+
+
+body#secure_home div.page_module ul,
+body#public_home div.page_module ul{
+    behavior:expression(this.firstChild.style.borderTop = "none");  
+}
+
+
+/*******************************************************************************
+* USER MANAGEMENT - EDIT USER LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+#user_management div.page_section form p {
+    width:150px;
+}
+#user_management div.page_section form select {
+    width:196px;
+}
+
+#user_management div.page_section form input {
+    width: 190px;
+
+}
+
+#user_management input#phone_input {
+    width: 105px;
+}
+
+#user_management .page_section input,
+#user_management .page_section select {
+    margin-bottom: 0.6em;
+}
+
+#user_management input#phone_ext_input {
+    margin: 0;
+    width: 30px;
+}
+
+#user_management div#phone_ext {
+    margin: 0;
+    padding: 0;
+    height: 0px;
+    width: 120px;
+}
+
+#user_management div#phone_ext label {
+    margin-left: 8px;
+}
+
+#user_management div#pref_contact_radio {
+    float: left;
+    width: 290px;
+}
+
+#user_management div#pref_contact_radio input {
+    margin-left: 0px;
+    padding: 0;
+    width: 20px;
+}
+#user_management div#pref_contact_radio label {
+    padding-top: 1px;
+}
+#secure_home #page_wrapper #page_content .page_section #user_portfolio .profile {
+    float: right;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10px;
+    margin-top: 0px;
+    padding-top: 0px;
+    position: inherit;
+    margin-right: 30px;
+    right: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+#secure_home #page_wrapper #page_content .page_section #user_portfolio h4 {
+    padding-bottom: 0px;
+}
+
+.btn-change-contract {
+    padding-bottom:0px;
+}
+
+/*
+Added the below entries so that the sort icon gets displayed for center-aligned / right-aligned columns.
+IE has a problem that it does not show the css background-image when the link wraps. 
+*/
+.report_table_content a.sort_descending {
+	display:inline-block;
+}
+
+.report_table_content a.sort_ascending {
+	display:inline-block;
+}

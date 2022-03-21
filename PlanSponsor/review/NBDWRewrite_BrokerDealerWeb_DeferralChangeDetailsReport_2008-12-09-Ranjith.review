@@ -1,0 +1,282 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="NBDWRewrite_BrokerDealerWeb_DeferralChangeDetailsReport_2008-12-09">
+  <ReviewIssue id="FOJWQ7DV">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 17:07:45:187 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 17:11:02:470 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+   <AssignedTo>Arulkumar</AssignedTo>
+    <File line="3">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use it when you require frequent access to static members from one or two classes. Since the constant is being used only once in the program it is better to use qualifier instead import static for readability.</Summary>
+    <Description>import static com.manulife.util.render.SSNRender.MASK;</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FOJWX60X">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 17:13:10:017 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 17:14:14:268 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Arulkumar</AssignedTo>
+    <File line="3">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Imports are not in the order. Reorder the imports by using command  Ctrl + Shift + O</Summary>
+    <Description>import static com.manulife.util.render.SSNRender.MASK;&#13;
+&#13;
+import java.io.IOException;&#13;
+import java.util.Iterator;&#13;
+&#13;
+import javax.servlet.ServletException;&#13;
+import javax.servlet.http.HttpServletRequest;&#13;
+import javax.servlet.http.HttpServletResponse;&#13;
+&#13;
+import org.apache.struts.action.Form;&#13;
+import org.apache.struts.action.ActionForward;&#13;
+&#13;
+&#13;
+import com.manulife.pension.exception.SystemException;&#13;
+import com.manulife.pension.platform.web.delegate.ParticipantServiceDelegate;&#13;
+import com.manulife.pension.platform.web.report.BaseReportForm;&#13;
+import com.manulife.pension.ps.service.participant.valueobject.ParticipantAccountDetailsVO;&#13;
+import com.manulife.pension.ps.service.participant.valueobject.ParticipantAccountVO;&#13;
+import com.manulife.pension.bd.web.BDConstants;&#13;
+import com.manulife.pension.bd.web.userprofile.BDUserProfile;&#13;
+import com.manulife.pension.bd.web.report.BDReportAction;&#13;
+import com.manulife.pension.bd.web.util.BDSessionHelper;&#13;
+import com.manulife.pension.bd.web.util.BDWebCommonUtils;&#13;
+import com.manulife.pension.service.report.participant.transaction.valueobject.TransactionDetailsDeferral;&#13;
+import com.manulife.pension.service.report.participant.transaction.valueobject.TransactionDetailsDeferralReportData;&#13;
+import com.manulife.pension.service.report.valueobject.ReportCriteria;&#13;
+import com.manulife.pension.service.report.valueobject.ReportData;&#13;
+import com.manulife.pension.service.report.valueobject.ReportSort;&#13;
+import com.manulife.pension.service.security.BDPrincipal;&#13;
+import com.manulife.pension.service.contract.valueobject.Contract;&#13;
+import com.manulife.util.render.SSNRender;</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FOK01MCB">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 18:40:36:635 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 18:42:20:224 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Arulkumar</AssignedTo>
+    <File line="106">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java</File>
+    <Type>item.type.label.missing</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Javadoc is incomplete - method description is missed</Summary>
+    <Description>/**&#13;
+	 * @param mapping&#13;
+	 * @param reportForm&#13;
+	 * @param request&#13;
+	 * @param response&#13;
+	 * @return ActionForward forward&#13;
+	 * @throws IOException&#13;
+	 * @throws ServletException&#13;
+	 * @throws SystemException&#13;
+	 */&#13;
+	public ActionForward doHistoryPrint(ActionMapping mapping,</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FOK046KZ">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 18:42:36:179 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 18:43:28:356 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Arulkumar</AssignedTo>
+    <File line="116">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Is this business requirement for this report?</Summary>
+    <Description>public ActionForward doHistoryPrint(ActionMapping mapping,&#13;
+			BaseReportForm reportForm, HttpServletRequest request,&#13;
+			HttpServletResponse response) throws IOException, ServletException,&#13;
+			SystemException {&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FOK0DT9U">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 18:50:05:490 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 18:52:29:224 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Arulkumar</AssignedTo>
+    <File line="176">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use parameterized Iterator</Summary>
+    <Description>Iterator it = deferralForm.getReport().getDetails().iterator();</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FOK0HF7F">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 18:52:53:883 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 18:53:51:310 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Arulkumar</AssignedTo>
+    <File line="222">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Define proper name for attribute name and remove the hardcoded value</Summary>
+    <Description>request.setAttribute("details", participantDetailsVO); // needed by jsp.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FOK0JXAS">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 18:54:50:644 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 19:44:00:228 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Arulkumar</AssignedTo>
+    <File line="226">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Incompleted JavaDoc. Method decription missed.</Summary>
+    <Description>/**&#13;
+	 * @param value&#13;
+	 * @return&#13;
+	 */&#13;
+	private String getNotNull(String value) {&#13;
+		if (value == null) return BDConstants.SPACE_SYMBOL;&#13;
+		return value;&#13;
+	}</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FOK0N7D8">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 18:57:23:660 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 19:01:03:042 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Arulkumar</AssignedTo>
+    <File line="226">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>1] Method description is not provided. 2] even single line statement in if condition, include it in block means use begin({) &amp;  end( }) for readability</Summary>
+    <Description>/**&#13;
+	 * @param value&#13;
+	 * @return&#13;
+	 */&#13;
+	private String getNotNull(String value) {&#13;
+		if (value == null) return BDConstants.SPACE_SYMBOL;&#13;
+		return value;&#13;
+	}</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FOK0X7MV">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 19:05:10:567 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 19:17:07:188 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Arulkumar</AssignedTo>
+    <File line="242">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Quotes constant is already defined in the report framework base classes (BaseReportAction.java). Remove constant from BDConstants and use the constant which is already available to this class through base class. Avoid using multiple return statements wherever possible and you could have done this with one return statement without else part.</Summary>
+    <Description>StringBuffer newField = new StringBuffer();&#13;
+			newField = newField.append(BDConstants.DOUBLE_QUOTES).append(field).append(BDConstants.DOUBLE_QUOTES); &#13;
+			return newField.toString();</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FOK1D79X">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 19:17:36:597 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 19:38:59:853 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Arulkumar</AssignedTo>
+    <File line="271">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Do we really need to keep the report data in request scope and form bean ?</Summary>
+    <Description>TransactionDetailsDeferralReportData report = (TransactionDetailsDeferralReportData)request.getAttribute(BDConstants.REPORT_BEAN);&#13;
+		form.setReport(report);</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FOK1G94B">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 19:19:58:955 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-10 :: 19:27:35:393 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Arulkumar</AssignedTo>
+    <File line="289">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Is execute method required to be overloaded? If yes &amp; I think this implementation is for few reports, and I suggest it could be implemented in a base class.</Summary>
+    <Description>public ActionForward execute(&#13;
+			ActionMapping mapping,&#13;
+			Form form,&#13;
+			HttpServletRequest request,&#13;
+			HttpServletResponse response)&#13;
+			throws IOException, ServletException {&#13;
+		&#13;
+		BDUserProfile userProfile = BDSessionHelper.getUserProfile(request);&#13;
+        &#13;
+       /* // check for selected access&#13;
+        if (userProfile.isSelectedAccess()) {&#13;
+            return mapping.findForward(BDConstants.HOMEPAGE_FINDER_FORWARD_REDIRECT);&#13;
+        }*/&#13;
+        &#13;
+       /* // check if contract is discontinued&#13;
+        if (getBobContext(request).getCurrentContract().isDiscontinued()) {&#13;
+            return mapping.findForward(BDConstants.HOMEPAGE_FINDER_FORWARD_REDIRECT);&#13;
+        }*/&#13;
+		&#13;
+		if ("POST".equalsIgnoreCase(request.getMethod()) ) {&#13;
+			// do a refresh so that there's no problem using the back button&#13;
+			ActionForward forward = new ActionForward("refresh", &#13;
+					"/do" + mapping.getPath() + "?task=" + getTask(request),&#13;
+					true);&#13;
+		    if(logger.isDebugEnabled()) {&#13;
+			    logger.debug("forward = " + forward);&#13;
+		    }&#13;
+			return forward;&#13;
+		}&#13;
+					&#13;
+		return super.execute(mapping, form, request, response);&#13;
+	}</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+</Review>

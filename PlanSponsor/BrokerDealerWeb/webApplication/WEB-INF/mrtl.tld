@@ -1,0 +1,21 @@
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" 
+	"http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>mrtl</shortname>
+	<uri></uri>
+	<info>
+		manulife Reusable Tag Library
+	</info>
+	<tag>
+  		<name>noCaching</name>
+ 		<tagclass>com.manulife.util.web.taglib.NoCachingTag</tagclass>
+ 
+ 		<bodycontent>empty</bodycontent>
+ 		<info>
+ 			Generates HTTP response headers to prohibit caching of the page.
+ 		</info>
+	</tag>	
+	
+</taglib>

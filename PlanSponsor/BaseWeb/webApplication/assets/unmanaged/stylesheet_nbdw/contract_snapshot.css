@@ -1,0 +1,161 @@
+/*******************************************************************************
+*	contract_overview.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Contract Funds specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+@import url("screen.css");
+/*******************************************************************************
+* PAGE SECTIONS
+********************************************************************************/
+
+#page_content .page_section_subheader{
+	margin-bottom:5px;
+}
+
+div#page_section_container{
+	width:919px;
+}
+
+	div#page_section_container h4{
+	color:#FFF;
+	font: normal 1em georgia, times, serif;
+	height: 1em;
+	margin: 0;
+	background-color: #a8b8bf;
+	background-image: none;
+	padding-top: 10px;
+	padding-right: 0;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	border-top: 4px solid #febe10;
+	}
+
+	table.overview_table td, 
+	table.overview_table th{
+		vertical-align:top;
+		width:0%;
+	}
+	
+	table#contact_info_table td,
+	table#contact_info_table th{
+		width:auto;
+	}
+		table#contact_info_table th.contact_no{
+			text-align:left;
+		}	
+	
+	table.overview_table{
+	width:450px;
+	margin:0 0 10px 0;
+	padding:0;
+	text-align: left;
+	}
+	
+		table.overview_table th{
+			text-align:right;
+		}
+	
+	table.overview_table_alt{
+	width:450px;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	}
+	
+		table.overview_table_alt th{
+			text-align:left;
+		}
+	
+	div#page_section_container td, 
+	div#page_section_container th, 
+	div#page_section_container p, 
+	div#page_section_container li{
+	color:#333;
+	font-size:.75em;
+		
+	}
+
+	table.overview_table_alt_td td{
+	padding-bottom: 0px;
+	padding-top: 0px;
+	}
+		
+	
+	div.page_section{
+	float:left;
+	width:457px;
+	}
+	
+	div.page_section:first-child{
+	margin-right:5px;
+	}
+	
+		div.page_module{
+	float:left;
+	border-top:5px solid #fff;
+	width:457px;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 10;
+	padding-left: 0px;
+		}
+		
+		div.page_module:first-child{
+	border-top:none;
+		}		
+		
+			div.page_module h5{
+				color:#333;
+				margin:0 0 0 15px;
+				padding:0;
+			}
+		
+			div.page_module ul{
+				margin:2px 10px 10px 30px;
+				padding:0;
+			}
+			
+			div#page_section_container div.page_module p{
+				margin:0 10px 0 15px;
+				padding:0;
+			}
+			
+			div#page_section_container p#access_code{
+				margin-top:10px;
+			}	
+		
+div.page_module_long {
+	float:left;
+	border-top:5px solid #fff;
+	width:919px;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 10;
+	padding-left: 0px;
+}
+div.page_module_long:first-child {
+	border-top:none;
+}
+div.page_module_long ul {
+	margin:2px 10px 10px 30px;
+	padding:0;
+}
+div.page_module_long h5 {
+	color:#333;
+	margin:0 0 0 15px;
+	padding:0;
+}
+
+.no_wrap {
+	white-space:nowrap;
+}
+
+.zero_padding  td{
+	padding:0px;
+}
+
+.arial_font td {
+	font-family:arial,helvetica,sans-serif !important;
+}

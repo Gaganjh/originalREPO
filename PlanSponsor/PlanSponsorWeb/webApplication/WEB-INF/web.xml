@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp"
+         xmlns="http://java.sun.com/xml/ns/j2ee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_3_0.xsd" 
+         version="3.0">
+
+         
+         
+    <display-name>PlanSponsorWeb</display-name>
+    <distributable></distributable>
+    
+       
+    <context-param>
+      <description>Site Name</description>
+      <param-name>siteName</param-name>
+      <param-value>PlanSponsor</param-value>
+    </context-param>
+  <!--  
+    <listener>
+      <description>Application Initializer</description>
+      <display-name>Application Initializer</display-name>                      
+      <listener-class>com.manulife.pension.ps.web.PsApplicationContextInitializer</listener-class>
+    </listener> -->  
+    
+	<listener>
+		<listener-class>
+		com.manulife.pension.heartbeat.monitor.SessionMonitorHttpSessionListener
+		</listener-class>
+	</listener>
+	
+	<servlet id="ControlServlet">
+        <display-name>ControlServlet</display-name>
+        <servlet-name>ControlServlet</servlet-name>
+        <servlet-class>com.manulife.pension.ps.web.controller.ControlServlet</servlet-class>
+    </servlet>
+    <servlet id="LoginServlet">
+        <display-name>LoginServlet</display-name>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.manulife.pension.ps.web.login.LoginServlet</servlet-class>
+    </servlet>
+    <servlet id="TedFileDownloadServlet">
+        <display-name>TedFileDownloadServlet</display-name>
+        <servlet-name>TedFileDownloadServlet</servlet-name>
+        <servlet-class>com.manulife.pension.ps.web.tpadownload.TedFileDownloadServlet</servlet-class>
+    </servlet>
+   <!--  <servlet id="ActionServlet">
+        <display-name>action</display-name>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+        <init-param>
+            <param-name>application</param-name>
+            <param-value>ApplicationResources</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>
+            /WEB-INF/struts-config.xml,
+            /WEB-INF/struts-configs/withdrawal-struts-config.xml,
+            /WEB-INF/struts-configs/loan-struts-config.xml,
+            /WEB-INF/struts-configs/census-struts-config.xml,
+            /WEB-INF/struts-configs/messagecenter-struts-config.xml,
+            /WEB-INF/struts-configs/tpaFandp-struts-config.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>detail</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>validate</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet> -->
+    <servlet id="PieChartServlet">
+        <display-name>PieChartServlet</display-name>
+        <servlet-name>PieChartServlet</servlet-name>
+        <servlet-class>com.manulife.util.piechart.servlet.PieChartServlet</servlet-class>
+        <init-param>
+            <param-name>beanName</param-name>
+            <param-value>pieChart</param-value>
+        </init-param>
+    </servlet>
+    <servlet id="BarChartServlet">
+        <display-name>BarChartServlet</display-name>
+        <servlet-name>BarChartServlet</servlet-name>
+        <servlet-class>com.manulife.util.barchart.servlet.BarChartServlet</servlet-class>
+    </servlet>
+    <servlet id="LineChartServlet">
+        <display-name>LineChartServlet</display-name>
+        <servlet-name>LineChartServlet</servlet-name>
+        <servlet-class>com.manulife.util.linechart.servlet.LineChartServlet</servlet-class>
+    </servlet>
+    <servlet id="ClearContentCacheServlet">
+        <display-name>ClearContentCacheServlet</display-name>
+        <servlet-name>ClearContentCacheServlet</servlet-name>
+        <servlet-class>com.manulife.pension.util.content.servlet.ClearContentCacheServlet</servlet-class>
+        <init-param>
+            <param-name>webCacheContentSource</param-name>
+            <param-value>pswcma</param-value>
+        </init-param>        
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet id="HeartBeatServlet">
+        <display-name>HeartBeatServlet</display-name>
+        <servlet-name>HeartBeatServlet</servlet-name>
+        <servlet-class>com.manulife.pension.heartbeat.servlet.HeartBeatServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet id="ContentInitServlet">
+        <display-name>ContentInitServlet</display-name>
+        <servlet-name>ContentInitServlet</servlet-name>
+        <servlet-class>com.manulife.pension.ps.web.content.ContentInitServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+	<servlet>
+    	 <display-name>Quartz Initializer Servlet</display-name>
+	     <servlet-name>QuartzInitializer</servlet-name>
+		 <servlet-class>org.quartz.ee.servlet.QuartzInitializerServlet</servlet-class>
+		 <init-param>
+		    <param-name>shutdown-on-unload</param-name>
+    		<param-value>true</param-value>
+		 </init-param>
+		 <init-param>
+    		<param-name>start-scheduler-on-load</param-name>
+    		<param-value>true</param-value>
+         </init-param>
+		<load-on-startup>1</load-on-startup>
+	 </servlet>
+    <servlet>
+        <!--
+        Periodic process schedules are now stored in the database table: 
+        PERIODIC_PROCESS and PERIODIC_PROCESS_SCHEDULE 
+        -->
+        <servlet-name>PeriodicProcessServlet</servlet-name>
+        <servlet-class>com.manulife.pension.servlet.DbPeriodicProcessServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    <servlet>
+        <display-name>ResetInternalPasswordServlet</display-name>
+        <servlet-name>ResetIUMPasswordServlet</servlet-name>
+        <servlet-class>com.manulife.pension.ps.web.admin.ResetIUMPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <display-name>AddIUMUserServlet</display-name>
+        <servlet-name>AddIUMUserServlet</servlet-name>
+        <servlet-class>com.manulife.pension.ps.web.admin.AddIUMUserServlet</servlet-class>
+    </servlet>
+    <!-- 
+     TODO
+    <servlet>
+        <display-name>UnallocatedContractLoginServlet</display-name>
+        <servlet-name>UnallocatedContractLoginServlet</servlet-name>
+        <servlet-class>com.manulife.pension.ps.web.login.UnallocatedContractLoginServlet</servlet-class>
+    </servlet> -->
+    <servlet>
+        <display-name>DeleteRMUserServlet</display-name>
+        <servlet-name>DeleteRMUserServlet</servlet-name>
+        <servlet-class>com.manulife.pension.ps.web.admin.DeleteRMUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <display-name>StartupServlet</display-name>
+        <servlet-name>StartupServlet</servlet-name>
+        <servlet-class>com.manulife.pension.ps.web.util.StartupServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="StoredProcInvoker">
+        <display-name>StoredProcInvocationServlet</display-name>
+        <servlet-name>StoredProcInvocationServlet</servlet-name>
+        <servlet-class>com.manulife.pension.ps.web.util.StoredProcInvocationServlet</servlet-class>
+    </servlet>
+    <servlet id="ClearCacheServlet">
+        <display-name>ClearCacheServlet</display-name>
+        <servlet-name>ClearCacheServlet</servlet-name>
+        <servlet-class>com.manulife.pension.servlet.ClearCacheServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClearCacheServlet</servlet-name>
+        <url-pattern>/ClearCacheServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClearContentCacheServlet</servlet-name>
+        <url-pattern>/ClearContentCacheServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/do/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/do/plan/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/do/report/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/do/participant/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/login/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/home/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/global/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/public/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/tpadownload/*</url-pattern>
+    </servlet-mapping>    
+   <!--  <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>/struts/do/*</url-pattern>
+    </servlet-mapping> -->
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/WEB-INF/login/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TedFileDownloadServlet</servlet-name>
+        <url-pattern>/WEB-INF/tpadownload/tedFileDownloadServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PieChartServlet</servlet-name>
+        <url-pattern>/PieChartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BarChartServlet</servlet-name>
+        <url-pattern>/BarChartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LineChartServlet</servlet-name>
+        <url-pattern>/LineChartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+         <servlet-name>PeriodicProcessServlet</servlet-name>
+         <url-pattern>/PeriodicProcessServlet</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping>
+         <servlet-name>HeartBeatServlet</servlet-name>
+         <url-pattern>/HeartBeatServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddIUMUserServlet</servlet-name>
+        <url-pattern>/servlet/AddIUMUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddIUMUserServlet</servlet-name>
+        <url-pattern>/servlet/AddRMUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddIUMUserServlet</servlet-name>
+        <url-pattern>/servlet/AddBIUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetIUMPasswordServlet</servlet-name>
+        <url-pattern>/servlet/ResetInternalUserPassword</url-pattern>
+    </servlet-mapping>
+    <!-- 
+    TODO
+    <servlet-mapping>
+        <servlet-name>UnallocatedContractLoginServlet</servlet-name>
+        <url-pattern>/WEB-INF/unallocated/unallocatedLoginServlet</url-pattern>
+    </servlet-mapping> -->
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/unallocated/*</url-pattern>
+    </servlet-mapping> 
+    
+    <servlet-mapping>
+        <servlet-name>DeleteRMUserServlet</servlet-name>
+        <url-pattern>/servlet/DeleteRMUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteRMUserServlet</servlet-name>
+        <url-pattern>/servlet/DeleteBIUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteRMUserServlet</servlet-name>
+        <url-pattern>/servlet/DeleteIUMUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StoredProcInvocationServlet</servlet-name>
+        <url-pattern>/StoredProcInvocationServlet</url-pattern>
+    </servlet-mapping>
+    
+    <mime-mapping>
+        <extension>pdf</extension>
+        <mime-type>application/pdf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>css</extension>
+        <mime-type>text/css</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xls</extension>
+        <mime-type>application/vnd.ms-excel</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>csv</extension>
+        <mime-type>application/vnd.ms-excel</mime-type>
+    </mime-mapping>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/do/home/homePageFinder/</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/do/home/homePageFinder/</location>
+    </error-page>
+    <error-page>
+        <error-code>400</error-code>
+        <location>/do/home/homePageFinder/</location>
+    </error-page>
+    <jsp-config>
+	    <taglib>
+	        <taglib-uri>/WEB-INF/content-taglib</taglib-uri>
+	        <taglib-location>/WEB-INF/content-taglib.tld</taglib-location>
+	    </taglib>
+	    <taglib>
+	        <taglib-uri>/WEB-INF/ps-report</taglib-uri>
+	        <taglib-location>/WEB-INF/ps-report.tld</taglib-location>
+	    </taglib>
+	    <taglib>
+	        <taglib-uri>/WEB-INF/psweb-taglib</taglib-uri>
+	        <taglib-location>/WEB-INF/psweb-taglib.tld</taglib-location>
+	    </taglib>
+	    <taglib>
+	        <taglib-uri>/WEB-INF/render</taglib-uri>
+	        <taglib-location>/WEB-INF/render.tld</taglib-location>
+	    </taglib>
+    </jsp-config>
+    <env-entry>
+        <env-entry-name>CMANewsLetterAvailable</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>true</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>siteMode</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>usa</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>defaultPageSize</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>35</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>FundSheetURL</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>http://www.viewjhfunds.com</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>notificationRecentDayCount</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>1</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>maximumRecentAlertCount</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>3</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>maximumRecentNotificationCount</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>1</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>maximumFileUploadSize</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>5120</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>companyName</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>John Hancock USA</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>UrlGeneratorFactory/com/manulife/pension/reference/ContentReference</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>com.manulife.pension.ps.web.taglib.search.ContentUrlGenerator</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>UrlGeneratorFactory/com/manulife/pension/reference/FundReference</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>com.manulife.pension.ps.web.taglib.search.FundUrlGenerator</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>UrlGeneratorFactory/com/manulife/pension/reference/CategoryReference</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>com.manulife.pension.ps.web.taglib.search.CategoryUrlGenerator</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>TPAOtherSiteMarketingURL</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>www.jhnypensions.com/tpaadmin</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>PSOtherSiteMarketingURL</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>www.jhnypensions.com/er</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>GeneralCARPhoneNumber</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>1-800-333-0963</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>eStatementsPageSize</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>500</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>ConfirmTPAeDownloads</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>true</env-entry-value>
+    </env-entry>
+		<resource-ref id="ContentDataSource">
+			<description>Datasource for the content database</description>
+			<res-ref-name>jdbc/content</res-ref-name>
+			<res-type>javax.sql.DataSource</res-type>
+			<res-auth>Container</res-auth>
+		</resource-ref>
+    <ejb-ref id="BrowseService">
+        <description></description>
+        <ejb-ref-name>ejb/BrowseServiceHome</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.content.service.BrowseServiceHome</home>
+        <remote>com.manulife.pension.content.service.BrowseService</remote>
+    </ejb-ref>
+    <ejb-ref id="ContractService">
+        <description></description>
+        <ejb-ref-name>ejb/ContractServiceHome</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.contract.ContractServiceHome</home>
+        <remote>com.manulife.pension.service.contract.ContractService</remote>
+    </ejb-ref>
+    <ejb-ref id="SecurityService">
+        <description></description>
+        <ejb-ref-name>ejb/SecurityServiceHome</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.security.SecurityServiceHome</home>
+        <remote>com.manulife.pension.service.security.SecurityService</remote>
+    </ejb-ref>
+    <ejb-ref id="ContractPinGenService">
+        <description></description>
+        <ejb-ref-name>ejb/ContractPinGenService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.pingen.PinGenProcessServiceHome</home>
+        <remote>com.manulife.pension.service.pingen.PinGenProcessService</remote>
+    </ejb-ref>
+    <ejb-ref id="BeneficiaryService">
+        <description></description>
+        <ejb-ref-name>ejb/BeneficiaryService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.beneficiary.BeneficiaryServiceHome</home>
+		<remote>com.manulife.pension.service.beneficiary.BeneficiaryService</remote>
+    </ejb-ref>
+    <ejb-ref id="DomainService">
+        <description></description>
+        <ejb-ref-name>ejb/DomainServiceHome</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.ps.service.domain.DomainServiceHome</home>
+        <remote>com.manulife.pension.ps.service.domain.DomainService</remote>
+    </ejb-ref>
+    <ejb-ref id="ParticipantService">
+        <description></description>
+        <ejb-ref-name>ejb/ParticipantServiceHome</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.ps.service.participant.ParticipantServiceHome</home>
+        <remote>com.manulife.pension.ps.service.participant.ParticipantService</remote>
+    </ejb-ref>
+    <ejb-ref id="SubmissionService">
+        <description></description>
+        <ejb-ref-name>ejb/SubmissionServiceHome</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.ps.service.submission.SubmissionServiceHome</home>
+        <remote>com.manulife.pension.ps.service.submission.SubmissionService</remote>
+    </ejb-ref>
+    <ejb-ref id="WithdrawalServiceRemote">
+        <description>Withdrawal Service Remote</description>
+        <ejb-ref-name>ejb/WithdrawalService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.withdrawal.WithdrawalServiceHome</home>
+        <remote>com.manulife.pension.service.withdrawal.WithdrawalServiceRemote</remote>
+    </ejb-ref>
+    <ejb-local-ref id="WithdrawalService">
+        <description>Withdrawal Service Local</description>
+        <ejb-ref-name>ejb/WithdrawalServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.withdrawal.WithdrawalServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.withdrawal.WithdrawalService</local>
+    </ejb-local-ref>
+    <ejb-ref id="LoanServiceRemote">
+        <description>Loan Service Remote</description>
+        <ejb-ref-name>ejb/LoanService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.loan.LoanServiceHome</home>
+        <remote>com.manulife.pension.service.loan.LoanServiceRemote</remote>
+    </ejb-ref>
+    <ejb-local-ref id="LoanService">
+        <description>Loan Service Local</description>
+        <ejb-ref-name>ejb/LoanServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.loan.LoanServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.loan.LoanService</local>
+    </ejb-local-ref>    
+    <ejb-ref id="LoanDocumentServiceRemote">
+        <description>Loan Document Service Remote</description>
+        <ejb-ref-name>ejb/LoanDocumentService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.loan.LoanDocumentServiceHome</home>
+        <remote>com.manulife.pension.service.loan.LoanDocumentServiceRemote</remote>
+    </ejb-ref>
+    <ejb-local-ref id="LoanDocumentService">
+        <description>Loan Document Service Local</description>
+        <ejb-ref-name>ejb/LoanDocumentServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.loan.LoanDocumentServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.loan.LoanDocumentService</local>
+    </ejb-local-ref>    
+    <ejb-ref id="SILService">
+        <description>SIL Service</description>
+        <ejb-ref-name>ejb/SILServiceHome</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.sil.SILServiceHome</home>
+        <remote>com.manulife.pension.service.sil.SILService</remote>
+    </ejb-ref>
+    <ejb-local-ref id="MessageServiceLocal">
+        <description>Message Service Local</description>
+        <ejb-ref-name>ejb/MessageServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.message.MessageServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.message.MessageService</local>
+    </ejb-local-ref>
+    <ejb-ref id="FundServiceRemote">
+        <description>Fund Service Remote</description>
+        <ejb-ref-name>ejb/FundService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.fund.FundServiceHome</home>
+        <remote>com.manulife.pension.service.fund.FundServiceRemote</remote>
+    </ejb-ref>
+    <ejb-local-ref id="FundService">
+        <description>Fund Service Local</description>
+        <ejb-ref-name>ejb/FundServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.fund.FundServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.fund.FundService</local>
+    </ejb-local-ref>
+    <ejb-ref id="OrderServiceRemote">
+        <description>Order Service Remote</description>
+        <ejb-ref-name>ejb/OrderService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.order.OrderServiceHome</home>
+        <remote>com.manulife.pension.service.order.OrderServiceRemote</remote>
+    </ejb-ref>
+    <ejb-local-ref id="OrderService">
+        <description>Order Service Local</description>
+        <ejb-ref-name>ejb/OrderServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.order.OrderServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.order.OrderService</local>
+    </ejb-local-ref>
+    <ejb-local-ref id="BrokerServiceLocal">
+        <description>Broker Service Local</description>
+        <ejb-ref-name>ejb/BrokerServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.broker.BrokerServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.broker.BrokerService</local>
+    </ejb-local-ref>
+   	<ejb-ref id="EmployeeService">
+        <description>Employee Service</description>
+        <ejb-ref-name>ejb/EmployeeServiceHome</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+		<home>com.manulife.pension.service.employee.EmployeeServiceHome</home>
+		<remote>com.manulife.pension.service.employee.EmployeeService</remote>
+    </ejb-ref>
+  	<ejb-ref id="EligibilityService">
+        <description>Eligibility Service</description>
+        <ejb-ref-name>ejb/EligibilityServiceHome</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+		<home>com.manulife.pension.service.eligibility.EligibilityServiceHome</home>
+		<remote>com.manulife.pension.service.eligibility.EligibilityService</remote>
+    </ejb-ref>   
+   	<ejb-ref id="AwdServiceRemote">
+        <description>AWD Service Remote</description>
+        <ejb-ref-name>ejb/AwdService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.awd.AwdServiceHome</home>
+        <remote>com.manulife.pension.service.awd.AwdServiceRemote</remote>
+    </ejb-ref>
+    <ejb-local-ref id="AwdService">
+        <description>AWD Service Local</description>
+        <ejb-ref-name>ejb/AwdServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.awd.AwdServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.awd.AwdService</local>
+    </ejb-local-ref>   
+         <ejb-local-ref id="FeeService">
+        <description>Fee Service Local</description>
+        <ejb-ref-name>ejb/FeeServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.fee.FeeServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.fee.FeeService</local>
+    </ejb-local-ref>  
+    <ejb-ref id="FeeServiceRemote">
+        <description>Fee Service Remote</description>
+        <ejb-ref-name>ejb/FeeService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.fee.FeeServiceHome</home>
+        <remote>com.manulife.pension.service.fee.FeeServiceRemote</remote>
+    </ejb-ref>
+     <ejb-local-ref id="NoticeRequestService">
+        <description>Notice Service Local</description>
+        <ejb-ref-name>ejb/NoticeRequestServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.request.NoticeRequestServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.request.NoticeRequestService</local>
+    </ejb-local-ref>
+       <ejb-ref id="NoticeRequestServiceRemote">
+        <description>Notice Service Remote</description>
+        <ejb-ref-name>ejb/NoticeRequestService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.request.NoticeRequestServiceHome</home>
+        <remote>com.manulife.pension.service.request.NoticeRequestServiceRemote</remote>
+    </ejb-ref>
+    <ejb-local-ref id="NoticeDocumentService">
+        <description>NoticeDocument Service Local</description>
+        <ejb-ref-name>ejb/NoticeDocumentServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.document.NoticeDocumentServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.document.NoticeDocumentService</local>
+    </ejb-local-ref>
+       <ejb-ref id="NoticeDocumentServiceRemote">
+        <description>NoticeDocument Service Remote</description>
+        <ejb-ref-name>ejb/NoticeDocumentService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.document.NoticeDocumentServiceHome</home>
+        <remote>com.manulife.pension.service.document.NoticeDocumentServiceRemote</remote>
+    </ejb-ref>
+     <ejb-local-ref id="NoticeDistributionService">
+        <description>Notice Service Local</description>
+        <ejb-ref-name>ejb/NoticeDistributionServiceLocal</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.manulife.pension.service.distribution.NoticeDistributionServiceLocalHome</local-home>
+        <local>com.manulife.pension.service.distribution.NoticeDistributionService</local>
+    </ejb-local-ref>
+       <ejb-ref id="NoticeDistributionServiceRemote">
+        <description>Notice Service Remote</description>
+        <ejb-ref-name>ejb/NoticeDistributionService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.manulife.pension.service.distribution.NoticeDistributionServiceHome</home>
+        <remote>com.manulife.pension.service.distribution.NoticeDistributionServiceRemote</remote>
+    </ejb-ref>
+</web-app>
+

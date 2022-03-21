@@ -1,0 +1,683 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Property>
+  <Review id="NBDWRewrite_BrokerDealerWeb_ContractLevelTxnDetails_2008-11-24">
+    <Description>NEW: Contract Level Transaction History Details:  Includes:  Rebalance, FTF, Class Conversion</Description>
+    <Author></Author>
+    <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-24 :: 16:57:31:141 EST</CreationDate>
+    <Directory>review</Directory>
+    <Reviewers>
+      <Entry id="Hari Kishan Rao Lomte" name="Hari Kishan Rao Lomte"/>
+      <Entry id="Mark Eldridge" name="Mark Eldridge"/>
+      <Entry id="Wei Gu" name="Wei Gu"/>
+    </Reviewers>
+    <Files>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsFTFAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsFTFForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsRebalAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsRebalForm.java"/>
+    </Files>
+    <FieldItems>
+      <FieldItem id="Type" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.type.label.codingStandards"/>
+        <Entry name="item.type.label.programLogic"/>
+        <Entry name="item.type.label.optimization"/>
+        <Entry name="item.type.label.usability"/>
+        <Entry name="item.type.label.clarity"/>
+        <Entry name="item.type.label.missing"/>
+        <Entry name="item.type.label.irrelevant"/>
+        <Entry name="item.type.label.suggestion"/>
+        <Entry name="item.type.label.other"/>
+      </FieldItem>
+      <FieldItem id="Severity" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.severity.label.critical"/>
+        <Entry name="item.severity.label.major"/>
+        <Entry name="item.severity.label.normal"/>
+        <Entry name="item.severity.label.minor"/>
+        <Entry name="item.severity.label.trivial"/>
+      </FieldItem>
+      <FieldItem id="Resolution" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.resolution.label.validNeedsfixing"/>
+        <Entry name="item.resolution.label.validFixlater"/>
+        <Entry name="item.resolution.label.validDuplicate"/>
+        <Entry name="item.resolution.label.validWontfix"/>
+        <Entry name="item.resolution.label.invalidWontfix"/>
+        <Entry name="item.resolution.label.unsureValidity"/>
+      </FieldItem>
+      <FieldItem id="Status" default="item.status.label.open">
+        <Entry name="item.status.label.open"/>
+        <Entry name="item.status.label.resolved"/>
+        <Entry name="item.status.label.closed"/>
+        <Entry name="item.status.label.reopened"/>
+      </FieldItem>
+    </FieldItems>
+    <Filters>
+      <Phase name="phase.individual" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.team" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="true"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.rework" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="true"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+    </Filters>
+  </Review>
+  <Review id="DEFAULT">
+    <Description>property.default.description</Description>
+    <Author></Author>
+    <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">1970-01-01 :: 05:00:00:000 EST</CreationDate>
+    <Directory>review</Directory>
+    <Reviewers>
+      <Entry id="Hari" name="Hari"/>
+      <Entry id="Mark" name="Mark"/>
+      <Entry id="Ranjith" name="Ranjith"/>
+      <Entry id="Wei" name="Wei"/>
+    </Reviewers>
+    <Files/>
+    <FieldItems>
+      <FieldItem id="Type" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.type.label.codingStandards"/>
+        <Entry name="item.type.label.programLogic"/>
+        <Entry name="item.type.label.optimization"/>
+        <Entry name="item.type.label.usability"/>
+        <Entry name="item.type.label.clarity"/>
+        <Entry name="item.type.label.missing"/>
+        <Entry name="item.type.label.irrelevant"/>
+        <Entry name="item.type.label.suggestion"/>
+        <Entry name="item.type.label.other"/>
+      </FieldItem>
+      <FieldItem id="Severity" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.severity.label.critical"/>
+        <Entry name="item.severity.label.major"/>
+        <Entry name="item.severity.label.normal"/>
+        <Entry name="item.severity.label.minor"/>
+        <Entry name="item.severity.label.trivial"/>
+      </FieldItem>
+      <FieldItem id="Resolution" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.resolution.label.validNeedsfixing"/>
+        <Entry name="item.resolution.label.validFixlater"/>
+        <Entry name="item.resolution.label.validDuplicate"/>
+        <Entry name="item.resolution.label.validWontfix"/>
+        <Entry name="item.resolution.label.invalidWontfix"/>
+        <Entry name="item.resolution.label.unsureValidity"/>
+      </FieldItem>
+      <FieldItem id="Status" default="item.status.label.open">
+        <Entry name="item.status.label.open"/>
+        <Entry name="item.status.label.resolved"/>
+        <Entry name="item.status.label.closed"/>
+        <Entry name="item.status.label.reopened"/>
+      </FieldItem>
+    </FieldItems>
+    <Filters>
+      <Phase name="phase.individual" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.team" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="true"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.rework" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="true"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+    </Filters>
+  </Review>
+  <Review id="NBDWRewrite_BrokerDealerWeb_DeferralChangeDetailsReport_2008-12-09">
+    <Description>Deferral Change Details Report Review</Description>
+    <Author></Author>
+    <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-09 :: 17:36:00:540 IST</CreationDate>
+    <Directory>review</Directory>
+    <Reviewers>
+      <Entry id="Hari" name="Hari"/>
+      <Entry id="Mark" name="Mark"/>
+      <Entry id="Ranjith" name="Ranjith"/>
+      <Entry id="Wei" name="Wei"/>
+    </Reviewers>
+    <Files>
+      <Entry name="BrokerDealerWeb/webApplication/WEB-INF/transaction/deferralChangeDetailsReport.jsp"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/DeferralChangeDetailsReportAction.java"/>
+    </Files>
+    <FieldItems>
+      <FieldItem id="Type" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.type.label.codingStandards"/>
+        <Entry name="item.type.label.programLogic"/>
+        <Entry name="item.type.label.optimization"/>
+        <Entry name="item.type.label.usability"/>
+        <Entry name="item.type.label.clarity"/>
+        <Entry name="item.type.label.missing"/>
+        <Entry name="item.type.label.irrelevant"/>
+        <Entry name="item.type.label.suggestion"/>
+        <Entry name="item.type.label.other"/>
+      </FieldItem>
+      <FieldItem id="Severity" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.severity.label.critical"/>
+        <Entry name="item.severity.label.major"/>
+        <Entry name="item.severity.label.normal"/>
+        <Entry name="item.severity.label.minor"/>
+        <Entry name="item.severity.label.trivial"/>
+      </FieldItem>
+      <FieldItem id="Resolution" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.resolution.label.validNeedsfixing"/>
+        <Entry name="item.resolution.label.validFixlater"/>
+        <Entry name="item.resolution.label.validDuplicate"/>
+        <Entry name="item.resolution.label.validWontfix"/>
+        <Entry name="item.resolution.label.invalidWontfix"/>
+        <Entry name="item.resolution.label.unsureValidity"/>
+      </FieldItem>
+      <FieldItem id="Status" default="item.status.label.open">
+        <Entry name="item.status.label.open"/>
+        <Entry name="item.status.label.resolved"/>
+        <Entry name="item.status.label.closed"/>
+        <Entry name="item.status.label.reopened"/>
+      </FieldItem>
+    </FieldItems>
+    <Filters>
+      <Phase name="phase.individual" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.team" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="true"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.rework" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="true"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+    </Filters>
+  </Review>
+  <Review id="NBDWRewrite_BrokerDealerWeb_ExtUserRegistration_2009-02-04">
+    <Description>Broker Dealer Exteranl User Registration Module</Description>
+    <Author>Hari</Author>
+    <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-04 :: 17:24:02:776 EST</CreationDate>
+    <Directory>review</Directory>
+    <Reviewers>
+      <Entry id="Hari" name="Hari"/>
+      <Entry id="Ranjith" name="Ranjith"/>
+      <Entry id="Wei" name="Wei"/>
+    </Reviewers>
+    <Files>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/CreateFirmRepAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/CreateFirmRepCompleteAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/CreateFirmRepForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/CreateFirmRepProcessContext.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBasicBrokerProcessContext.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBasicBrokerStep1Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBasicBrokerStep2Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBasicBrokerStep2Form.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBasicBrokerStep3Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBasicBrokerValidationForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerAssistantProcessContext.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerAssistantStartAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerAssistantStep1Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerAssistantStep2Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerAssistantStep2Form.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerAssistantStep3Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerAssistantValidationForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerProcessContext.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerStep1Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerStep2Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerStep2Form.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerStep3Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerValidationForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterExternalBrokerStartAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterExternalBrokerStartForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterFirmRepProcessContext.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterFirmRepStartAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterFirmRepStep1Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterFirmRepStep2Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterFirmRepStep2Form.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterFirmRepStep3Action.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterFirmRepValidationForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterStartForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegistrationCompleteForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/util/AddressUtil.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/util/AddressVO.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/util/ChallengeQuestionListUtil.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/util/PasswordChallengeInput.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/util/PhoneNumber.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/util/RegistrationUtils.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/util/Ssn.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/util/TaxId.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/util/UserCredential.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/AccessCodeRule.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/AddressRule.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/EmailAddressRule.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/MandatoryFieldRule.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/NoMatchRule.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/PasswordChallengeInputRule.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/PhoneNumberRule.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/SsnRule.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/TaxIdRule.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/UserProfileAddressRule.java"/>
+    </Files>
+    <FieldItems>
+      <FieldItem id="Type" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.type.label.codingStandards"/>
+        <Entry name="item.type.label.programLogic"/>
+        <Entry name="item.type.label.optimization"/>
+        <Entry name="item.type.label.usability"/>
+        <Entry name="item.type.label.clarity"/>
+        <Entry name="item.type.label.missing"/>
+        <Entry name="item.type.label.irrelevant"/>
+        <Entry name="item.type.label.suggestion"/>
+        <Entry name="item.type.label.other"/>
+      </FieldItem>
+      <FieldItem id="Severity" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.severity.label.critical"/>
+        <Entry name="item.severity.label.major"/>
+        <Entry name="item.severity.label.normal"/>
+        <Entry name="item.severity.label.minor"/>
+        <Entry name="item.severity.label.trivial"/>
+      </FieldItem>
+      <FieldItem id="Resolution" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.resolution.label.validNeedsfixing"/>
+        <Entry name="item.resolution.label.validFixlater"/>
+        <Entry name="item.resolution.label.validDuplicate"/>
+        <Entry name="item.resolution.label.validWontfix"/>
+        <Entry name="item.resolution.label.invalidWontfix"/>
+        <Entry name="item.resolution.label.unsureValidity"/>
+      </FieldItem>
+      <FieldItem id="Status" default="item.status.label.open">
+        <Entry name="item.status.label.open"/>
+        <Entry name="item.status.label.resolved"/>
+        <Entry name="item.status.label.closed"/>
+        <Entry name="item.status.label.reopened"/>
+      </FieldItem>
+    </FieldItems>
+    <Filters>
+      <Phase name="phase.individual" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.team" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="true"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.rework" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="true"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+    </Filters>
+  </Review>
+  <Review id="NBDW_BrokerDealerWeb_InvestmentAllocation_2009-02-07">
+    <Description>Contract(Investment) Allocation</Description>
+    <Author>Wei</Author>
+    <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-07 :: 12:26:09:390 EST</CreationDate>
+    <Directory>review</Directory>
+    <Reviewers>
+      <Entry id="Hari" name="Hari"/>
+      <Entry id="Ranjith" name="Ranjith"/>
+      <Entry id="Wei" name="Wei"/>
+    </Reviewers>
+    <Files>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/investment/InvestmentAllocationDetailsReportAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/investment/InvestmentAllocationPageForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/investment/InvestmentAllocationReportAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/investment/InvestmentAllocationReportLinkAction.java"/>
+      <Entry name="BrokerDealerWeb/webApplication/WEB-INF/investment/investmentAllocationDetailsReport.jsp"/>
+      <Entry name="BrokerDealerWeb/webApplication/WEB-INF/investment/investmentAllocationReport.jsp"/>
+      <Entry name="BrokerDealerWeb/webApplication/WEB-INF/investment/investmentAllocationReportLink.jsp"/>
+    </Files>
+    <FieldItems>
+      <FieldItem id="Type" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.type.label.codingStandards"/>
+        <Entry name="item.type.label.programLogic"/>
+        <Entry name="item.type.label.optimization"/>
+        <Entry name="item.type.label.usability"/>
+        <Entry name="item.type.label.clarity"/>
+        <Entry name="item.type.label.missing"/>
+        <Entry name="item.type.label.irrelevant"/>
+        <Entry name="item.type.label.suggestion"/>
+        <Entry name="item.type.label.other"/>
+      </FieldItem>
+      <FieldItem id="Severity" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.severity.label.critical"/>
+        <Entry name="item.severity.label.major"/>
+        <Entry name="item.severity.label.normal"/>
+        <Entry name="item.severity.label.minor"/>
+        <Entry name="item.severity.label.trivial"/>
+      </FieldItem>
+      <FieldItem id="Resolution" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.resolution.label.validNeedsfixing"/>
+        <Entry name="item.resolution.label.validFixlater"/>
+        <Entry name="item.resolution.label.validDuplicate"/>
+        <Entry name="item.resolution.label.validWontfix"/>
+        <Entry name="item.resolution.label.invalidWontfix"/>
+        <Entry name="item.resolution.label.unsureValidity"/>
+      </FieldItem>
+      <FieldItem id="Status" default="item.status.label.open">
+        <Entry name="item.status.label.open"/>
+        <Entry name="item.status.label.resolved"/>
+        <Entry name="item.status.label.closed"/>
+        <Entry name="item.status.label.reopened"/>
+      </FieldItem>
+    </FieldItems>
+    <Filters>
+      <Phase name="phase.individual" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.team" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="true"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.rework" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="true"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+    </Filters>
+  </Review>
+  <Review id="NBDW_BrokerDealerWeb_ParticipantContributionDetails_2009-02-12">
+    <Description>ContributionDetails</Description>
+    <Author>Wei</Author>
+    <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-12 :: 10:59:46:453 EST</CreationDate>
+    <Directory>review</Directory>
+    <Reviewers>
+      <Entry id="Hari" name="Hari"/>
+      <Entry id="Ranjith" name="Ranjith"/>
+      <Entry id="Wei" name="Wei"/>
+    </Reviewers>
+    <Files>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/ParticipantTransactionDetailsContribAdjAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/ParticipantTransactionDetailsContribAdjForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/ParticipantTransactionDetailsContributionAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/ParticipantTransactionDetailsContributionForm.java"/>
+      <Entry name="BrokerDealerWeb/webApplication/WEB-INF/transaction/participantContribAdjDetailsReport.jsp"/>
+      <Entry name="BrokerDealerWeb/webApplication/WEB-INF/transaction/participantContributionDetailsReport.jsp"/>
+    </Files>
+    <FieldItems>
+      <FieldItem id="Type" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.type.label.codingStandards"/>
+        <Entry name="item.type.label.programLogic"/>
+        <Entry name="item.type.label.optimization"/>
+        <Entry name="item.type.label.usability"/>
+        <Entry name="item.type.label.clarity"/>
+        <Entry name="item.type.label.missing"/>
+        <Entry name="item.type.label.irrelevant"/>
+        <Entry name="item.type.label.suggestion"/>
+        <Entry name="item.type.label.other"/>
+      </FieldItem>
+      <FieldItem id="Severity" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.severity.label.critical"/>
+        <Entry name="item.severity.label.major"/>
+        <Entry name="item.severity.label.normal"/>
+        <Entry name="item.severity.label.minor"/>
+        <Entry name="item.severity.label.trivial"/>
+      </FieldItem>
+      <FieldItem id="Resolution" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.resolution.label.validNeedsfixing"/>
+        <Entry name="item.resolution.label.validFixlater"/>
+        <Entry name="item.resolution.label.validDuplicate"/>
+        <Entry name="item.resolution.label.validWontfix"/>
+        <Entry name="item.resolution.label.invalidWontfix"/>
+        <Entry name="item.resolution.label.unsureValidity"/>
+      </FieldItem>
+      <FieldItem id="Status" default="item.status.label.open">
+        <Entry name="item.status.label.open"/>
+        <Entry name="item.status.label.resolved"/>
+        <Entry name="item.status.label.closed"/>
+        <Entry name="item.status.label.reopened"/>
+      </FieldItem>
+    </FieldItems>
+    <Filters>
+      <Phase name="phase.individual" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.team" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="true"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.rework" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="true"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+    </Filters>
+  </Review>
+  <Review id="NBDW_fundEvaluator">
+    <Description>fundEvaluator Code Review (Exl. JSPs)</Description>
+    <Author>Mark</Author>
+    <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-01 :: 15:09:55:625 EDT</CreationDate>
+    <Directory>review</Directory>
+    <Reviewers>
+      <Entry id="Hari" name="Hari"/>
+      <Entry id="Mark" name="Mark"/>
+      <Entry id="Naresh" name="Naresh"/>
+      <Entry id="Prashant" name="Prashant"/>
+      <Entry id="Ranjith P" name="Ranjith P"/>
+      <Entry id="Ranjith T" name="Ranjith T"/>
+    </Reviewers>
+    <Files>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/AssetClassDetails.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/AssetClassFundsSelectedResults.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/ClientVO.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/common/AssetClassForInvOption.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/common/CoreToolConstants.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/common/CoreToolGlobalData.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/common/FundEvaluatorProperties.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/common/FundForInvOption.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/CriteriaVO.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/Fund.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorActionForm.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorActionHelper.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorBaseAction.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorConstants.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorUtility.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorVO.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/processor/CoreToolHelper.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/processor/CoreToolProcessor.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/processor/CoreToolSessionData.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/report/AssetClassStyle.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/report/DecoratedFund.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/report/InvestmentCategory.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/report/ReportDataModel.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/report/ReportDataProcessor.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/report/ReportInputData.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/session/SessionContext.java"/>
+      <Entry name="BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/util/FootnoteLookupHelper.java"/>
+    </Files>
+    <FieldItems>
+      <FieldItem id="Type" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.type.label.codingStandards"/>
+        <Entry name="item.type.label.programLogic"/>
+        <Entry name="item.type.label.optimization"/>
+        <Entry name="item.type.label.usability"/>
+        <Entry name="item.type.label.clarity"/>
+        <Entry name="item.type.label.missing"/>
+        <Entry name="item.type.label.irrelevant"/>
+        <Entry name="item.type.label.suggestion"/>
+        <Entry name="item.type.label.other"/>
+      </FieldItem>
+      <FieldItem id="Severity" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.severity.label.critical"/>
+        <Entry name="item.severity.label.major"/>
+        <Entry name="item.severity.label.normal"/>
+        <Entry name="item.severity.label.minor"/>
+        <Entry name="item.severity.label.trivial"/>
+      </FieldItem>
+      <FieldItem id="Resolution" default="item.label.unset">
+        <Entry name="item.label.unset"/>
+        <Entry name="item.resolution.label.validNeedsfixing"/>
+        <Entry name="item.resolution.label.validFixlater"/>
+        <Entry name="item.resolution.label.validDuplicate"/>
+        <Entry name="item.resolution.label.validWontfix"/>
+        <Entry name="item.resolution.label.invalidWontfix"/>
+        <Entry name="item.resolution.label.unsureValidity"/>
+      </FieldItem>
+      <FieldItem id="Status" default="item.status.label.open">
+        <Entry name="item.status.label.open"/>
+        <Entry name="item.status.label.resolved"/>
+        <Entry name="item.status.label.closed"/>
+        <Entry name="item.status.label.reopened"/>
+      </FieldItem>
+    </FieldItems>
+    <Filters>
+      <Phase name="phase.individual" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.team" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="" enabled="false"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="true"/>
+        <Filter name="Status" value="item.status.label.open" enabled="false"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+      <Phase name="phase.rework" enabled="true">
+        <Filter name="Interval" value="7" enabled="false"/>
+        <Filter name="Reviewer" value="" enabled="false"/>
+        <Filter name="Type" value="item.label.unset" enabled="false"/>
+        <Filter name="Severity" value="item.label.unset" enabled="false"/>
+        <Filter name="AssignedTo" value="item.reviewer.label.automatic" enabled="true"/>
+        <Filter name="Resolution" value="item.label.unset" enabled="false"/>
+        <Filter name="Status" value="item.status.label.open" enabled="true"/>
+        <Filter name="File" value="" enabled="false"/>
+      </Phase>
+    </Filters>
+  </Review>
+</Property>

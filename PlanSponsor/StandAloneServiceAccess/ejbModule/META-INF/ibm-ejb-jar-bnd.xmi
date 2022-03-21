@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejbbnd="ejbbnd.xmi" xmlns:ejb="ejb.xmi" xmi:id="ejb-jar_ID_Bnd">
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+  <ejbBindings xmi:id="MrlLogger_Bnd" jndiName="com.manulife.pension.util.log.MrlLoggerHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#MrlLogger"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="MessagingService_Bnd" jndiName="com.manulife.pension.service.messaging.MessagingServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#MessagingService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="DocumentService_Bnd" jndiName="com.manulife.pension.service.document.DocumentServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#DocumentService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="SecurityService_Bnd" jndiName="com.manulife.pension.ezk.service.security.SecurityServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#SecurityService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="SecurityServiceTransaction_Bnd" jndiName="com.manulife.pension.ezk.service.security.transaction.SecurityServiceTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#SecurityServiceTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="CARSecurityService_Bnd" jndiName="com.manulife.pension.ezk.service.security.CARSecurityServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#CARSecurityService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="CARSecurityServiceTransactionBean_Bnd" jndiName="com.manulife.pension.ezk.service.security.transaction.CARSecurityServiceTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#CARSecurityServiceTransactionBean"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ParticipantPinEntity_Bnd" jndiName="com.manulife.pension.ezk.service.security.entity.ParticipantPinEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ParticipantPinEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="SecurityActivityEntity_Bnd" jndiName="com.manulife.pension.ezk.service.security.entity.SecurityActivityEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#SecurityActivityEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="PinTransactionEntity_Bnd" jndiName="com.manulife.pension.ezk.service.security.entity.PinTransactionEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#PinTransactionEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="BrowseService_Bnd" jndiName="com.manulife.pension.content.service.BrowseServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#BrowseService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="CmaBrowseService_Bnd" jndiName="com.manulife.pension.cma.service.BrowseServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#CmaBrowseService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EditService_Bnd" jndiName="com.manulife.pension.cma.service.EditServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#EditService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LockService_Bnd" jndiName="com.manulife.pension.cma.service.LockServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LockService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="WorkflowService_Bnd" jndiName="com.manulife.pension.cma.service.WorkflowServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#WorkflowService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="TestService_Bnd" jndiName="com.manulife.pension.service.harness.TestServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#TestService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ProductEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.ProductEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ProductEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="FundListTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.FundListTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#FundListTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ParticipantContractTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.ParticipantContractTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ParticipantContractTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ContractEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.ContractEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ContractEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AccountService_Bnd" jndiName="com.manulife.pension.service.account.AccountServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AccountService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanInquiryTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanInquiryTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanInquiryTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="InvestmentAdviceTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.InvestmentAdviceTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#InvestmentAdviceTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanHoldingsEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.LoanHoldingsEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#LoanHoldingsEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ParticipationEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.ParticipationEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ParticipationEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="InvestmentInstructionInquiryTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.InvestmentInstructionInquiryTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#InvestmentInstructionInquiryTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AvailableFundsTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.AvailableFundsTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AvailableFundsTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="PortfolioEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.PortfolioEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#PortfolioEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AccountUpdateTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.AccountUpdateTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AccountUpdateTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AutomatedRebalanceUpdateTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.AutomatedRebalanceUpdateTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AutomatedRebalanceUpdateTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AvailabilitySchedule_Bnd" jndiName="com.manulife.pension.service.account.entity.AvailabilityScheduleHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#AvailabilitySchedule"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AvailabilityScheduleEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.AvailabilityScheduleEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#AvailabilityScheduleEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AccountBalanceTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.AccountBalanceTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AccountBalanceTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AccessControlInformationTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.AccessControlInformationTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AccessControlInformationTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ViewFundsByAssetClassTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.ViewFundsByAssetClassTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ViewFundsByAssetClassTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ViewFundsByRiskCategoryTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.ViewFundsByRiskCategoryTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ViewFundsByRiskCategoryTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="SearchEngine_Bnd" jndiName="com.manulife.pension.service.searchengine.SearchFacadeHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#SearchEngine"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="FundUnitValueHistoryTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.FundUnitValueHistoryTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#FundUnitValueHistoryTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="FundListForUnitValueHistoryTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.FundListForUnitValueHistoryTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#FundListForUnitValueHistoryTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ContractEligibilityEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.ContractEligibilityEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ContractEligibilityEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnrollNewParticipantTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.EnrollNewParticipantTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#EnrollNewParticipantTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EmployeeEntity_Bnd" jndiName="com.manulife.pension.service.party.entity.EmployeeEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#EmployeeEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EmployeeParameterEntity_Bnd" jndiName="com.manulife.pension.service.party.entity.EmployeeParameterEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#EmployeeParameterEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EmployeeParameterEntityTransaction_Bnd" jndiName="com.manulife.pension.service.party.transaction.EmployeeParameterEntityTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#EmployeeParameterEntityTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EmployeeEntityTransaction_Bnd" jndiName="com.manulife.pension.service.party.transaction.EmployeeEntityTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#EmployeeEntityTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EmployeeContractEntity_Bnd" jndiName="com.manulife.pension.service.party.entity.EmployeeContractEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#EmployeeContractEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EmployeeContractEntityTransaction_Bnd" jndiName="com.manulife.pension.service.party.transaction.EmployeeContractEntityTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#EmployeeContractEntityTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="RetirementGoalEntity_Bnd" jndiName="com.manulife.pension.service.party.entity.RetirementGoalEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#RetirementGoalEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnrollmentEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.EnrollmentEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#EnrollmentEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="RetirementGoalEntityTransaction_Bnd" jndiName="com.manulife.pension.service.party.transaction.RetirementGoalEntityTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#RetirementGoalEntityTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="PartyService_Bnd" jndiName="com.manulife.pension.service.party.PartyServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#PartyService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EmployeeCategorizationEntity_Bnd" jndiName="com.manulife.pension.service.party.entity.EmployeeCategorizationEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#EmployeeCategorizationEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EmployeeWealthProjectionEntity_Bnd" jndiName="com.manulife.pension.service.party.entity.EmployeeWealthProjectionEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#EmployeeWealthProjectionEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="TaxRate_Bnd" jndiName="com.manulife.pension.service.account.entity.TaxRateEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#TaxRateEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="TaxRateTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.TaxRateTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#TaxRateTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AdviceEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.AdviceEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#AdviceEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="RiskToleranceEntity_Bnd" jndiName="com.manulife.pension.service.party.entity.RiskToleranceEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#RiskToleranceEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="StatementTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.StatementTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#StatementTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ApolloNotificationTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.ApolloNotificationTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ApolloNotificationTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="RiskToleranceEntityTransaction_Bnd" jndiName="com.manulife.pension.service.party.transaction.RiskToleranceEntityTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#RiskToleranceEntityTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="NotificationMessageTest_Bnd" jndiName="com.manulife.pension.service.integrationtests.util.NotificationMessageTestHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#NotificationMessageTest"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="StatesTransaction_Bnd" jndiName="com.manulife.pension.service.party.transaction.StatesTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#StatesTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="MPowerDataTransferTest_Bnd" jndiName="com.manulife.pension.service.integrationtests.util.MPowerDataTransferTestHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#MPowerDataTransferTest"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="RetirementLifestyleTransaction_Bnd" jndiName="com.manulife.pension.service.party.transaction.RetirementLifestyleTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#RetirementLifestyleTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AdviceDataTransferTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.AdviceDataTransferTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AdviceDataTransferTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EmployeeEntityTransaction_Bnd" jndiName="com.manulife.pension.service.party.transaction.EmployeeEntityTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#EmployeeEntityTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ValidateAdviceTokenTansaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.ValidateAdviceTokenTansactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ValidateAdviceTokenTansaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ParticipantRORHistoryEntity_Bnd" jndiName="com.manulife.pension.service.party.entity.ParticipantRORHistoryEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ParticipantRORHistoryEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ParticipantRORHistoryTransaction_Bnd" jndiName="com.manulife.pension.service.party.transaction.ParticipantRORHistoryTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ParticipantRORHistoryTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="BusinessParameterTransaction_Bnd" jndiName="com.manulife.pension.service.party.transaction.BusinessParameterTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#BusinessParameterTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="CacheService_Bnd" jndiName="com.manulife.pension.cma.service.CacheServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#CacheService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="DomainService_Bnd" jndiName="com.manulife.pension.service.domain.DomainService">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#DomainService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ValidateAdviceTokenTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.ValidateAdviceTokenTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ValidateAdviceTokenTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ContributionEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.ContributionEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ContributionEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ContributionTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.ContributionTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ContributionTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AllFundGroupsTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.AllFundGroupsTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AllFundGroupsTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="IsInterAccountTransferPendingTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.IsInterAccountTransferPendingTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#IsInterAccountTransferPendingTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="DummyContractScratchEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.DummyContractScratchEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#DummyContractScratchEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="InvestmentInstructionInquiryForUpdateTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.InvestmentInstructionInquiryForUpdateTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#InvestmentInstructionInquiryForUpdateTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AccountBalanceForUpdateTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.AccountBalanceForUpdateTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AccountBalanceForUpdateTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ProductRefreshTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.ProductRefreshTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ProductRefreshTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="RemoveAdviceTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.RemoveAdviceTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#RemoveAdviceTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ClearParticipantCacheTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.ClearParticipantCacheTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ClearParticipantCacheTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ClientEntity_Bnd" jndiName="com.manulife.pension.service.party.entity.ClientEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ClientEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ClientEntityTransaction_Bnd" jndiName="com.manulife.pension.service.party.transaction.ClientEntityTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ClientEntityTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ReportService_Bnd" jndiName="com.manulife.pension.admin.ReportServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ReportService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="RetirementEngineService_Bnd" jndiName="com.manulife.pension.retirementengine.RetirementEngineServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#RetirementEngineService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanRequestEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.LoanRequestEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#LoanRequestEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanScenarioEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.LoanScenarioEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#LoanScenarioEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanAmortizationTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanAmortizationTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanAmortizationTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanRequestPackageTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanRequestPackageTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanRequestPackageTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanRequestTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanRequestTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanRequestTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanRequestRetrievalTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanRequestRetrievalTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanRequestRetrievalTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanRequestRYLCalculateTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanRequestRYLCalculateTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanRequestRYLCalculateTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanRequestStatusTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanRequestStatusTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanRequestStatusTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanRequestTPAApprovalTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanRequestTPAApprovalTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanRequestTPAApprovalTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanRequestTPAInquiryTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanRequestTPAInquiryTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanRequestTPAInquiryTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanRequestTPARetrievalTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanRequestTPARetrievalTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanRequestTPARetrievalTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanScenarioTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanScenarioTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanScenarioTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanScenarioDeleteTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanScenarioDeleteTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanScenarioDeleteTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoanScenarioInquiryTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.LoanScenarioInquiryTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoanScenarioInquiryTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ParticipantLoanModelTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.ParticipantLoanModelTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ParticipantLoanModelTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="RetirementEngineTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.RetirementEngineTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#RetirementEngineTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="RetirementEngineLoanInquiryTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.RetirementEngineLoanInquiryTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#RetirementEngineLoanInquiryTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="TPALoanAmortizationSchedulePDFTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.TPALoanAmortizationSchedulePDFTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#TPALoanAmortizationSchedulePDFTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="InterestRateEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.InterestRateEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#InterestRateEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="PortfolioWithLoansEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.PortfolioWithLoansEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#PortfolioWithLoansEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AccountBalanceWithLoansTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.AccountBalanceWithLoansTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AccountBalanceWithLoansTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ParticipantLoanEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.ParticipantLoanEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ParticipantLoanEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AdhocRORTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.AdhocRORTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AdhocRORTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="AnnualReviewService_Bnd" jndiName="com.manulife.pension.annualreview.services.AnnualReviewServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AnnualReviewService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ParticipantStatementBalanceHistory_Bnd" jndiName="com.manulife.pension.service.party.entity.ParticipantStatementBalanceHistoryHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ParticipantStatementBalanceHistory"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ParticipantStatementHistoryTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.ParticipantStatementHistoryTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ParticipantStatementHistoryTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ParticipantStatementHistoryEntity_Bnd" jndiName="com.manulife.pension.service.account.entity.ParticipantStatementHistoryEntityHome">
+    <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ParticipantStatementHistoryEntity"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="FundToFundUpdateTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.FundToFundUpdateTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#FundToFundUpdateTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="FundToFundListTransaction_Bnd" jndiName="com.manulife.pension.service.account.transaction.FundToFundListTransactionHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#FundToFundListTransaction"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="SearchEngine_Bnd" jndiName="com.manulife.pension.service.searchengine.SearchFacadeHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#SearchEngine"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="WithdrawalService_Bnd" jndiName="com.manulife.pension.service.withdrawal.WithdrawalServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#WithdrawalService"/>
+  </ejbBindings>
+</ejbbnd:EJBJarBinding>

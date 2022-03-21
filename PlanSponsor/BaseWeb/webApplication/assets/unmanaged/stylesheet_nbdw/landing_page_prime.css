@@ -1,0 +1,887 @@
+#page_contentNoBG {
+    min-height: 300px;
+    padding: 0;
+    width: 918px;
+    margin-top: 4px;
+    margin-right: 25px;
+    margin-bottom: 0;
+    margin-left: 25px;
+    background-color: #fff;
+    background-image: none;
+}
+#contentOuterWrapper #contentWrapper #primeContentTitle {
+    margin-top: 0px;
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    width: 610px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-left: 0px;
+    height: 60px;
+}
+#primeContentTitle h6 a {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    text-decoration: underline;
+    color: #666;
+    float: right;
+}
+#primeContentTitle p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+#contentOuterWrapper #contentWrapper #primeContentIntro {
+    width: 610px;
+    padding-right: 5px;
+    padding-left: 25px;
+    padding-bottom: 10px;
+
+}
+#primeContentIntro p {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 0px;
+}
+
+/* Contains the main page content. When using a mutliple column layout the margins will be set to account for the floated columns' width, margins, and padding. */
+#contentOuterWrapper #contentWrapper #primeContent {
+    margin-top: 0;
+    margin-right: 279px;
+    margin-bottom: 0;
+    margin-left: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+}
+
+#contentOuterWrapper #contentWrapper #primeContentYellowTitle {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    line-height: 16px;
+    color: #FFF;
+    background-color: #717b80;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #febe10;
+    width: 610px;
+    padding-right: 5px;
+    padding-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+#contentOuterWrapper #contentWrapper #primeContent p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+#contentOuterWrapper #contentWrapper #primeContent h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+#contentOuterWrapper #contentWrapper #primeContent h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    color: #000;
+    padding-top: 0px;
+}
+
+#contentOuterWrapper #contentWrapper #primeContent #item h2 a   {
+    color: #006990;
+    font-size: 14px;
+    text-decoration: none;
+}
+#contentOuterWrapper #contentWrapper #primeContent #item h2 a:hover   {
+    color: #000;
+} 
+
+
+#contentOuterWrapper #contentWrapper #primeContent #item {
+    background-image: url(/assets/unmanaged/images/backgrounds/itemsBG1.png);
+    background-repeat: repeat-x;
+    height: 86px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: none;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-color: #f1f1ea;
+    border-bottom-color: #f1f1ea;
+    border-left-color: #f1f1ea;
+    padding-top: 10px;
+    padding-right: 25px;
+    padding-left: 25px;
+    background-color: #FEFEFD;
+}
+#contentOuterWrapper #contentWrapper #primeContent #item2 {
+    background-image: url(/assets/unmanaged/images/backgrounds/itemsBG2.png);
+    background-repeat: repeat-x;
+    height: 86px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: none;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-color: #e1e1e1;
+    border-bottom-color: #e1e1e1;
+    border-left-color: #e1e1e1;
+    padding-top: 10px;
+    padding-right: 25px;
+    padding-left: 25px;
+    background-color: #F4F4F4;
+}
+
+
+#primeContent img {
+    margin-right: 0px;
+}
+#primeContent td {
+    font-size: 0.7em;
+    padding: 3px;
+}
+
+#contentOuterWrapper #contentWrapper #overview {
+    margin-left: 0px;
+    margin-top: 10px;
+}
+#contentOuterWrapper #contentWrapper #overview img{
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+}
+#contentOuterWrapper #contentWrapper #overview p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+#contentOuterWrapper #contentWrapper #overview h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+#contentOuterWrapper #contentWrapper #overview h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    color: #000;
+    padding-top: 0px;
+}
+
+#contentOuterWrapper #contentWrapper #rightColumn1 ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+#contentOuterWrapper #contentWrapper #rightColumn1 ul li {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #CCC;
+}
+#contentOuterWrapper #contentWrapper #rightColumn1 ul li:first-child{
+                border-top:none;
+            }
+            
+
+
+
+
+#primeContent hr {
+    background-color: #FFF;
+    height: 1px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #CCC;
+}
+#primeContent h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 22px;
+    font-weight: normal;
+    color: #91822B;
+}
+#primeContent #footer {
+    font-family: Verdana, Geneva, sans-serif;
+    color: #767690;
+    font-size: 11px;
+    margin-top: 40px;
+}
+#primeContent #footer p {
+    font-family: Verdana, Geneva, sans-serif;
+    color: #a8b8da;
+    font-size: 11px;
+}
+
+
+
+
+/*******************************************************************************
+* PAGE CONTENT DETAILS
+********************************************************************************/
+
+
+
+#contentOuterWrapper #contentWrapper #primeContentDetails {
+    margin-top: 0;
+    margin-right: 280px;
+    margin-bottom: 0;
+    margin-left: 250px;
+    padding-top: 15px;
+    padding-right: 25px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+}
+#primeContentDetails p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+#primeContentDetails h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+#primeContentDetails h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    color: #000;
+    padding-top: 0px;
+}
+
+
+#primeContentDetails  img {
+    border: 1px solid #CCC;
+    margin-right: 8px;
+}
+#primeContentDetails  td {
+    font-size: 0.7em;
+    padding: 3px;
+}
+#primeContentDetails  ul {
+    font-size: 12px;
+    color: #666;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#primeContentDetails  ol li {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding-bottom: 5px;
+    color: #455560;
+}
+/*******************************************************************************
+* PAGE CONTENT CALCULATOR & TOOLS
+********************************************************************************/
+
+#contentOuterWrapper #contentWrapper #primeContentDetailsCalc {
+    margin-top: 15px;
+    margin-right: 280px;
+    margin-bottom: 0;
+    margin-left: 0px;
+    padding-top: 15px;
+    padding-right: 25px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+}
+#contentOuterWrapper #contentWrapper #primeContentDetailsCalc p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+#contentOuterWrapper #contentWrapper #primeContentDetailsCalc h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+#contentOuterWrapper #contentWrapper #rightColumn1img {
+    clear: right;
+    float: right;
+    width: 250px;
+    margin-top: 15px;
+}
+#rightColumn1img img {
+    border: 1px solid #ECEAE3;
+}
+
+#contentOuterWrapper #contentWrapper #rightColumnOverviewWant {
+    float: right;
+    padding: 10px; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+    width: 270px;
+    color: #FFF;
+    background-color: #8d8778;
+    margin-top: 10px;
+    margin-right: 0px;
+    clear: right;
+}
+#rightColumnOverviewWant h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: normal;
+    padding: 0px;
+    color: #000;
+}
+ #rightColumnOverviewWant h2 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.4em;
+    font-weight: normal;
+    color: #FFF;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    line-height: 1.2em;
+
+}
+#rightColumnOverviewWant p {
+    color: #FFF;
+    font-size: 11px;
+    padding: 0px;
+}
+
+#rightColumnOverviewWant a {
+    font-size: 11px;
+    color: #FFF;
+    text-decoration: none;
+}
+#rightColumnOverviewWant a:hover {
+    font-size: 11px;
+    color: #dcd087;
+    text-decoration: underline;
+}
+#rightColumnOverviewWant ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+#rightColumnOverviewWant ul li {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #CCC;
+}
+#rightColumnOverviewWant ul li:first-child{
+                border-top:none;
+            }
+            
+#rightColumnOverviewWant h5 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    font-variant: normal;
+    padding: 0px;
+}
+#rightColumnOverviewWant h5 .date {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+
+#rightColumnOverviewWant.selected {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.downloadAPEX .form_link h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #000;
+    margin-left: 5px;
+    margin-bottom: 7px;
+}
+.downloadEXPERT .form_link h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 22px;
+    font-weight: normal;
+    color: #000;
+    margin-bottom: 7px;
+}
+.downloadEXPERT .form_link h2 {
+    font-size: 12px;
+    font-weight: normal;
+    color: #1F2B38;
+    margin-bottom: 7px;
+    line-height: 12px;
+}
+.downloadLINK .form_link h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #000;
+    margin-left: 5px;
+    margin-bottom: 7px;
+}
+/*******************************************************************************
+* PAGE CONTENT PRIME....
+********************************************************************************/
+#contentOuterWrapper #contentWrapper #primeContentTitleWANT {
+    margin-top: 0px;
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    width: 609px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-left: 0px;
+    height: 175px;
+    background-image: url(../../products_services/prime_overview_img3.jpg);
+    background-repeat: no-repeat;
+    background-position: left 0px;
+}
+#contentOuterWrapper #contentWrapper #primeContentTitleWANTNoImg {
+    margin-top: 0px;
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    width: 609px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-left: 0px;
+    height: 45px;
+    background-color: #717b80;
+    color: #FFF;
+}
+#contentOuterWrapper #contentWrapper #primeContentTitleWANTImg2 {
+    margin-top: 0px;
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    width: 609px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-left: 0px;
+    height: 175px;
+    background-image: url(../../business_building/top_short_img2.jpg);
+    background-repeat: no-repeat;
+    background-position: left 0px;
+}
+ #primeContentTitleWANTImg2 h1
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}
+ #primeContentTitleWANT h1
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}
+#primeContentDetailsWANT h6 a {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    text-decoration: underline;
+    color: #666;
+    float: right;
+}
+#primeContentDetailsWANT p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+#contentOuterWrapper #contentWrapper #primeContentDetailsWANT {
+    margin-top: 0;
+    margin-right: 280px;
+    margin-bottom: 0;
+    margin-left: 0px;
+    padding-top: 15px;
+    padding-right: 25px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    background-color: #f5f6f1;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #1F2B38;
+    min-height: 200px;
+}
+#primeContentDetailsWANT p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+#primeContentDetailsWANT h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: normal;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+#primeContentDetailsWANT h2 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    font-style: normal;
+    font-variant: normal;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+#primeContentDetailsWANT h2 a {
+    font-size: 11px;
+    color: #006990;
+    text-decoration: none;
+
+}
+#primeContentDetailsWANT h2 a:hover {
+    font-size: 11px;
+    color: #006990;
+    text-decoration: underline;
+    font-family: Verdana, Geneva, sans-serif;
+
+}
+#primeContentDetailsWANT h4 a {
+    font-size: 15px;
+    color: #006990;
+    text-decoration: none;
+
+}
+#primeContentDetailsWANT h4 a:hover {
+    color: #000000;
+
+}
+
+#primeContentDetailsWANT h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    color: #000;
+    padding-top: 0px;
+}
+#primeContentDetailsWANT  h4
+ {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    font-style: normal;
+    font-variant: normal;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    color: #000;
+    padding-top: 0px;
+}
+
+
+#primeContentDetailsWANT h5 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: normal;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    color: #930;
+}
+
+
+#primeContentDetailsWANT  img {
+    margin-right: 8px;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+}
+#primeContentDetailsWANT  td {
+    font-size: 0.7em;
+    padding: 3px;
+}
+#primeContentDetailsWANT  ul {
+    font-size: 12px;
+    color: #666;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#primeContentDetailsWANT  ol li {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding-bottom: 5px;
+    color: #455560;
+}
+div.downloadWANT
+{
+    width: 200px;
+    padding: 13px;
+    margin-bottom: 16px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    background-color: #C4C4C4;
+}
+.downloadWANT .form_link a .app.downloadIndent {
+    font-size: 12px;
+    font-weight: bold;
+    color: #036;
+    display: block;
+    margin-bottom: 3px;
+}
+.downloadWANT .downloadIndent, span.downloadIndent
+{
+    margin-top: 10px;
+}
+
+div.downloadWANTarchive
+{
+    width: 230px;
+    padding: 10px;
+    margin-bottom: 16px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    background-color: #455560;
+}
+.downloadWANTarchive .form_link a .app.downloadIndent {
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFF;
+    display: block;
+    margin-bottom: 3px;
+}
+.downloadWANTarchive .downloadIndent, span.downloadIndent
+{
+    margin-left: 5px;
+    margin-top: 10px;
+}
+/*******************************************************************************
+* DOWNLOAD TOP FIVE RIGHT
+********************************************************************************/
+#contentOuterWrapper #contentWrapper #rightColumnPRIME {
+    float: right; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+    width: 250px;
+    color: #FFFFFF;
+    background-color: #FFF;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+}
+
+#rightColumnPRIME a {
+    font-size: 11px;
+    color: #FFF;
+    text-decoration: none;
+}
+#rightColumnPRIME a:hover {
+    font-size: 11px;
+    color: #dcd087;
+    text-decoration: underline;
+}
+
+div.downloadTopFive
+{
+    width: 230px;
+    padding: 10px;
+    margin-bottom: 16px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    background-color: #8d8778;
+}
+.downloadTopFive .form_link a .app.downloadIndent {
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFF;
+    display: block;
+    margin-bottom: 3px;
+}
+.downloadTopFive .downloadIndent, span.downloadIndent
+{
+    margin-left: 5px;
+    margin-top: 10px;
+}
+.downloadTopFive .form_link h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #FFF;
+    margin-bottom: 7px;
+}
+.downloadTopFive .form_link h2 {
+    font-size: 12px;
+    font-weight: normal;
+    color: #FC0;
+    margin-left: 5px;
+    margin-bottom: 7px;
+    line-height: 12px;
+}
+.downloadTopFive .form_link ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+.downloadTopFive .form_link ul li {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #CCC;
+}
+.downloadTopFive .form_link ul li:first-child{
+                border-top:none;
+            }
+            .downloadTopFive .form_link ul li a {
+    font-size: 11px;
+    color: #FFF;
+    text-decoration: none;
+}
+.downloadTopFive .form_link ul li a:hover {
+    font-size: 11px;
+    color: #dcd087;
+    text-decoration: underline;
+}
+
+div.downloadExtra
+{
+    width: 230px;
+    padding: 10px;
+    margin-bottom: 16px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    background-color: #455560;
+}
+.downloadExtra .form_link a .app.downloadIndent {
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFF;
+    display: block;
+    margin-bottom: 3px;
+}
+.downloadExtra .downloadIndent, span.downloadIndent
+{
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.downloadExtra .form_link h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #dcd087;
+    margin-bottom: 7px;
+}
+.downloadExtra .form_link h2 {
+    font-size: 12px;
+    font-weight: normal;
+    color: #FC0;
+    margin-left: 5px;
+    margin-bottom: 7px;
+    line-height: 12px;
+}
+.downloadExtra .form_link ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+.downloadExtra .form_link ul li {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #CCC;
+}
+.downloadExtra .form_link ul li:first-child{
+                border-top:none;
+            }
+            .downloadExtra .form_link ul li a {
+    font-size: 11px;
+    color: #FFF;
+    text-decoration: underline;
+}
+.downloadExtra .form_link ul li a:hover {
+    font-size: 11px;
+    color: #dcd087;
+    text-decoration: underline;
+}
+
+
+#page_contentNoBG #contentOuterWrapper #contentWrapper #footer {
+    font-family: Verdana, Geneva, sans-serif;
+    color: #767690;
+    font-size: 11px;
+    margin-top: 40px;
+    width: 590px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+#page_contentNoBG #contentOuterWrapper #contentWrapper #footer p {
+    font-family: Verdana, Geneva, sans-serif;
+    color: #a8b8da;
+    font-size: 11px;
+}

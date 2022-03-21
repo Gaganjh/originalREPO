@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<!DOCTYPE titleGeneratorConfig
+[
+<!ELEMENT titleGeneratorConfig (title*)>
+<!ELEMENT title (condition?, (searchResult|reference|content|text)*)>
+	<!ATTLIST title contentType CDATA #REQUIRED>
+	<!ATTLIST title referenceType CDATA #IMPLIED>
+<!ELEMENT condition EMPTY>
+	<!ATTLIST condition operator (equals|notEquals) #REQUIRED>
+	<!ATTLIST condition property CDATA #REQUIRED>
+	<!ATTLIST condition value CDATA #REQUIRED>
+<!ELEMENT searchResult EMPTY>
+	<!ATTLIST searchResult property CDATA #REQUIRED>
+<!ELEMENT reference EMPTY>
+	<!ATTLIST reference property CDATA #REQUIRED>
+<!ELEMENT content EMPTY>
+	<!ATTLIST content key CDATA #IMPLIED>
+	<!ATTLIST content type CDATA #REQUIRED>
+	<!ATTLIST content property CDATA #REQUIRED>
+	<!ATTLIST content method (key|findContent|mostRecent|parentKey) "key">
+<!ELEMENT text (#PCDATA)>
+]>
+<titleGeneratorConfig>	
+	
+	<title contentType="contract details" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_CONTRACT_DETAILS"/>
+	</title>
+	
+	<title contentType="contract snapshot" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_CONTRACT_SNAPSHOT"/>
+	</title>
+	
+	<title contentType="contract profile" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_CONTRACT_PROFILE"/>
+	</title>
+	
+	<title contentType="participant menu" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_PARTICIPANT_MENU"/>
+	</title>
+	
+	<title contentType="participant summary" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_PARTICIPANT_SUMMARY"/>
+	</title>
+
+	<title contentType="participant deferrals" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_PARTICIPANT_DEFERRALS"/>
+	</title>
+	
+	<title contentType="participant enrollments" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_PARTICIPANT_ENROLLMENTS"/>
+	</title>	
+	
+	<title contentType="participant addresses" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_PARTICIPANT_ADDRESSES"/>
+	</title>
+	
+	<title contentType="investment menu" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_INVESTMENT_MENU"/>
+	</title>
+	
+	<title contentType="investment allocation page" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_INVESTMENT_ALLOCATION"/>
+	</title>
+	
+	<title contentType="contract funds" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_CONTRACT_FUNDS"/>
+	</title>
+
+	<title contentType="defined benefit account" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_DEFINED_BENEFIT_ACCOUNT"/>
+	</title>
+	
+	<title contentType="rate of return calculator" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_RATE_OF_RETURN"/>
+	</title>
+	
+	<title contentType="performance charting" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_PERFORMANCE_CHART"/>
+	</title>
+	
+	<title contentType="transaction menu" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_TRANSACTION_MENU"/>
+	</title>
+
+	<title contentType="transaction details" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="TRANSACTION_CONTRIBUTIONS_LAYOUT_PAGE"/>
+	</title>
+	
+	<title contentType="transaction history" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_TRANSACTION_HISTORY"/>
+	</title>
+	
+	<title contentType="cash account" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_CASH_ACCOUNT"/>
+	</title>
+	
+	<title contentType="contract messages" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_CONTRACT_MESSAGES"/>
+	</title>
+	
+	<title contentType="tools" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_TOOLS_MENU"/>
+	</title>
+	
+	<title contentType="contact us" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_CONTACT_US"/>
+	</title>
+	
+	<title contentType="manage profile landing page" referenceType="com.manulife.pension.reference.CategoryReference">
+		<text>Manage users</text>
+		<!--<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_MANAGE_PROFILE"/> -->
+	</title>
+	<title contentType="Form" referenceType="com.manulife.pension.reference.ContentReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_FORMS_PAGE"/>
+	</title>
+	<title contentType="forms page" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_FORMS_PAGE"/>
+	</title>
+	
+	<title contentType="Update" referenceType="com.manulife.pension.reference.ContentReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_MANULIFE_UPDATES"/>
+	</title>
+	<title contentType="manulife updates" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_MANULIFE_UPDATES"/>
+	</title>
+	
+	<title contentType="legislative updates" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_LEGISLATIVE_UPDATES"/>
+	</title>
+	
+	<title contentType="NewsLetterIssue" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_NEWSLETTERISSUE"/>
+	</title>
+	<title contentType="NewsLetterIssue" referenceType="com.manulife.pension.ezk.reference.ContentReference">
+		<searchResult property="name"/>
+	</title>
+
+	<title contentType="LayoutPage" referenceType="com.manulife.pension.reference.ContentReference">
+		<content type="LayoutPage" property="browserTitle" method="findContent"/>
+	</title>
+
+	<title contentType="admin guide" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_ADMIN_GUIDE"/>
+	</title>
+	
+	<title contentType="Consolidation Services" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_CONSOLIDATION_SERVICES"/>
+	</title>
+	
+	<title contentType="feduciary page" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_FEDUCIARY_GUIDE"/>
+	</title>
+
+	<title contentType="Glossary_Category" referenceType="com.manulife.pension.reference.ContentReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_GLOSSARY"/>
+		<text> - Letter '</text>
+		<searchResult property="title"/>
+		<text>'</text>
+	</title>
+	<title contentType="Glossary_Category" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_GLOSSARY"/>
+		<text> - Letter 'A'</text>
+	</title>
+	
+	<title contentType="NewsLetterArticle" referenceType="com.manulife.pension.ezk.reference.ContentReference">
+        <content property="name" type="NewsLetterIssue" method="parentKey"/>
+        <text> - </text>
+		<searchResult property="title"/>
+	</title>
+	<title contentType="GuideArticle" referenceType="com.manulife.pension.reference.ContentReference">
+		<content type="LayoutPage" property="browserTitle" method="findContent"/>
+	</title>
+	<title contentType="ViewFunds">
+		<searchResult property="title"/>
+	</title>
+	<title contentType="TpaForm">
+	        <searchResult property="title"/>
+	</title>
+	<title contentType="message center" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_MESSAGE_CENTER_SUMMARY"/>
+	</title>
+	<title contentType="message archive" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_MESSAGE_CENTER_ARCHIVE"/>
+	</title>
+	<title contentType="pending withdrawal summary" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_PENDING_WITHDRAWAL"/>
+	</title>
+	<title contentType="fundcheck" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_FUNDCHECK"/>
+	</title>	
+
+</titleGeneratorConfig>
+

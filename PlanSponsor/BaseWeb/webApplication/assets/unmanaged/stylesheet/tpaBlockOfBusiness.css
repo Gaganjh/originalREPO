@@ -1,0 +1,36 @@
+	.grey_color{
+		background-color: #cccccc;
+	}
+
+	.dark_grey_color,
+	.dark_grey_color_with_padding{
+		background-color: #d8d8d8;
+	}
+
+	.light_grey_color,
+	.light_grey_color_with_padding{
+		background-color: #F0F0F0;
+	}
+
+	.white_color,
+	.white_color_with_padding{
+		background-color: #FFFFFF;
+	}
+
+	.golden_background{
+		background-color: #e9e2c3;
+	}
+	
+	.black_color {
+		color:black;
+	}
+	
+	.dark_grey_color_with_padding,
+	.light_grey_color_with_padding,
+	.white_color_with_padding{
+		padding-top:5px;
+	}
+
+	.top_padding {
+		padding-top:5px;
+	}

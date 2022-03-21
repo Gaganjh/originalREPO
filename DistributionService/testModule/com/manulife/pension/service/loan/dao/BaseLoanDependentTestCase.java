@@ -1,0 +1,90 @@
+package com.manulife.pension.service.loan.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+import org.apache.log4j.Logger;
+
+import com.manulife.pension.service.dao.BaseDatabaseDAO;
+import com.manulife.pension.service.distribution.dao.DistributionJUnitConstants;
+import com.manulife.pension.service.testutility.MockContainerEnvironmentTestCase;
+
+public class BaseLoanDependentTestCase extends MockContainerEnvironmentTestCase {
+
+    Logger logger = Logger.getLogger(BaseLoanDependentTestCase.class);
+
+    private Boolean referenceLoanInserted = false;
+    private Integer referenceLoanSubmissionId = null;
+
+    protected static final Integer TEST_RECIPIENT_NO = 1;
+
+    protected static final Integer TEST_PAYEE_NO = 1;
+
+    private static final String SUBMISSION_DATA_SOURCE_NAME = "jdbc/customerService";
+
+    protected DataSource datasource = null;
+
+    public BaseLoanDependentTestCase(final String arg0) {
+        super(arg0);
+    }
+
+    @Override
+    public void setUp() throws Exception {
+		super.setUp();
+		datasource = (DataSource) new InitialContext().lookup(SUBMISSION_DATA_SOURCE_NAME);
+
+		referenceLoanSubmissionId = new LoanDaoTestOld("setupreference").insertSubSubCaseSubLoan();
+		referenceLoanInserted = true;
+	}
+
+    @Override
+    public void tearDown() throws Exception {
+		try {
+			if (referenceLoanInserted) {
+				new LoanDao().delete(referenceLoanSubmissionId,DistributionJUnitConstants.TEST_CONTRACT_ID,
+						DistributionJUnitConstants.TEST_USER_PROFILE_ID);
+			}
+		} catch (final Exception e) {
+			logger.debug("couldn't delete withdrawal : ", e);
+		}
+		super.tearDown();
+
+	}
+
+    protected void verifyRecordCount(final String sql, final Integer expectedRecordCount)
+            throws Exception {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            if (datasource == null) {
+                datasource = (DataSource) new InitialContext().lookup(SUBMISSION_DATA_SOURCE_NAME);
+            }
+
+            conn = datasource.getConnection();
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            if (!rs.next()) {
+                assertTrue("no results came back for count", false);
+            }
+            assertEquals(expectedRecordCount, new Integer(rs.getInt(1)));
+        } catch (final Exception e) {
+            logger.debug(e);
+            fail("found an exception");
+        }
+
+        finally {
+            BaseDatabaseDAO.close(stmt, conn);
+        }
+
+    }
+    
+    public Integer getSubmissionId() {
+    	return referenceLoanSubmissionId;
+    }
+
+}

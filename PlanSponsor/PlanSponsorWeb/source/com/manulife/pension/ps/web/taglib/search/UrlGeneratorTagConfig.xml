@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE urlGeneratorTagConfig
+[
+<!ELEMENT urlGeneratorTagConfig (property*)>
+<!ELEMENT property (session|request)>
+	<!ATTLIST property name CDATA #REQUIRED>
+<!ELEMENT session EMPTY>
+	<!ATTLIST session attribute CDATA #REQUIRED>
+	<!ATTLIST session property CDATA #REQUIRED>
+<!ELEMENT request EMPTY>
+	<!ATTLIST request attribute CDATA #REQUIRED>
+	<!ATTLIST request property CDATA #REQUIRED>
+]>
+<urlGeneratorTagConfig>
+<!--
+	<property name="userprofile.goalSetFlag">
+		<session attribute="userprofile" property="goalSetFlag"/>
+	</property>
+	<property name="userprofile.enrollmentState">
+		<session attribute="userprofile" property="enrollmentState"/>
+	</property>
+	<property name="userprofile.webEnrolledFlag">
+		<session attribute="userprofile" property="webEnrolledFlag"/>
+	</property>
+-->
+</urlGeneratorTagConfig>
+

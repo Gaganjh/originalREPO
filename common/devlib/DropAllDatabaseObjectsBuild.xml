@@ -1,0 +1,35 @@
+<!-- ======================================================================= -->
+<!-- Build the DropAllDatabaseObjects.class file                             -->
+<!-- ======================================================================= -->
+
+<project name="DropAllDatabaseObjects" default="build_DADO" basedir=".">
+
+  <property file="${user.home}/.ant.properties" />
+  <property environment="env"/>
+  <property name="db2.home" value="${env.DB2PATH}" />
+  <property name="db2.javac" value="${db2.home}/java/jdk/bin/javac.exe"/>
+  <property name="debug" value="off"/>
+  <property name="deprecation" value="off"/>
+  <property name="fork" value="yes"/>
+  <property name="optimize" value="on"/>
+
+  <property name="sleep_int" value="20"/>
+  <property name="sleep_short" value="5"/>
+  <property name="jdbc.driver" value="COM.ibm.db2.jdbc.app.DB2Driver"/>
+
+  <target name="build_DADO">
+    <mkdir dir="${basedir}/java/class" />	
+    <copy file="DropAllDatabaseObjects.java" todir="${basedir}/java/class"/>
+      <javac srcdir="${basedir}/java/class"
+             destdir="${basedir}/java/class"
+             fork="${fork}"
+             executable="${db2.javac}"
+             debug="${debug}"
+             deprecation="${deprecation}"
+             optimize="${optimize}" >
+      </javac>
+    <move file="${basedir}/java/class/DropAllDatabaseObjects.class" todir="${basedir}"/>
+    <delete dir="${basedir}/java" />
+  </target>
+
+</project>

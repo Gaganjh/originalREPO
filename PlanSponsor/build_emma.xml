@@ -1,0 +1,65 @@
+<project name="EMMA Instrument" basedir=".">
+  
+  <import file="../common/ant/common-emma.xml" />   
+
+  <!-- Copies the jars to emma directory -->
+	<!-- Copies the jars to emma directory -->
+  <target name="emma_copy_jars" >
+    <echo>Copying service jars to emma directory</echo>
+	<copy todir="${instr.src.dir}" overwrite="yes">
+      <fileset dir="${basedir}/../common/lib">
+        <include name="USGPSUtilities.jar"/>
+		<include name="BrowseService.jar"/>
+		<include name="DistributionService.jar"/>
+		<include name="AccountService.jar"/>
+		<include name="ReportService.jar"/>
+		<include name="SecurityService.jar"/>
+		<include name="MessagingService.jar"/>
+		<include name="EnvironmentService.jar"/>		
+		<include name="EmployeeService.jar"/>
+		<include name="EligibilityService.jar"/>		
+		<include name="NotificationService.jar"/>
+		<include name="MessageService.jar"/>
+		<include name="EventUtil.jar"/>
+		<include name="MrlLoggerService.jar"/>
+		<include name="NotesDocumentService.jar"/>
+		<include name="ContractService.jar"/>
+		<include name="FeeService.jar"/>
+		<include name="BrokerService.jar"/>
+		<include name="FundService.jar"/>
+		<include name="OrderService.jar"/>
+		<include name="NotificationService.jar"/>
+		<include name="SynchronizationService.jar"/>
+		<include name="SILService.jar"/>
+		<include name="AWDService.jar"/>
+		<include name="SearchService.jar"/>
+      	<include name="DocumentService.jar"/>	
+      </fileset>
+  	</copy> 
+  	
+    <echo>Copying EJB.jar to emma directory</echo>  	
+	<copy todir="${instr.src.dir}" overwrite="yes">
+      <fileset dir="PlanSponsorEJB/build">
+      	<include name="PlanSponsorEJB.jar"/>
+      </fileset>
+  	</copy> 
+  </target>
+
+  <!-- Instrument tasks -->	
+  <target name="emma_instrument" depends="backup_emma_files, emma_init, emma_copy_jars">
+	<emma enabled="${emma.enabled}" >
+      <instr mode="fullcopy"
+             outdir="${instr.out.dir}"
+			 outfile="${coverage.dir}/psw.metadata.emma"
+             merge="no"
+			 filter="+com.manulife.*" >
+	    <instrpath>
+	      <fileset dir="${instr.src.dir}" includes="**/*.jar" />
+	    </instrpath>
+	    <filter excludes="Test*" />
+	    <filter excludes="*Test*" />
+	  </instr>
+    </emma>  
+  </target>
+
+</project>

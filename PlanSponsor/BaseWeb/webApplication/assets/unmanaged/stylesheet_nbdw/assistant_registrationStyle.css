@@ -1,0 +1,191 @@
+@charset "utf-8";
+/* CSS Document */
+
+.Left {
+    FLOAT: left
+}
+.Right {
+    FLOAT: right
+    
+}
+.Gold {
+    COLOR: #9b8a2a
+}
+.GrayLT {
+    COLOR: #757575;
+    font-size: 12px;
+}
+
+.SubTitle {
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 16px;
+    LINE-HEIGHT: normal;
+    FONT-FAMILY: Arial;
+    TEXT-ALIGN: left;
+}
+
+.BottomBorder {
+   	border-bottom: #e1e1e1 1px solid;
+    height: 20px;
+    margin-top: 15px;
+}
+.BottomBorderText {
+    BORDER-BOTTOM: #004059 4px solid;
+    height: 45px;
+    margin-top: 15px;
+}
+.label {
+    font-size: 12px;
+    width: 150px;
+    text-align: right;
+    float: left;
+    margin-top: 15px;
+    clear: left;
+}
+.inputText {
+    color: #9B8A76;
+    margin-left: 160px;
+    margin-top: 15px;
+    font-size: 12px;
+}
+.inputTextFull {
+    color: #9B8A76;
+    margin-left: 0px;
+    margin-top: 15px;
+}
+.inputTermsiframe {
+    color: #9B8A76;
+    margin-top: 15px;
+}
+.input {
+    padding: 0px;
+    margin-top: 0px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    font-size: 11px;
+}
+.nextButton {
+    color: #FFFFFF;
+    margin-top: 15px;
+    height: 50px;
+}
+#outerWrapper #contentWrapper #content .nextButton input {
+    font-size: 14px;
+    color: #FFFFFF;
+    background-image: url('/assets/unmanaged/images/buttons/button_wht_bg.jpg');
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 42px;
+    width: 236px;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    background-color: #FFFFFF;
+}
+
+#outerWrapper #contentWrapper #content .inputText label {
+    color: #000;
+}
+#regButtons {
+    background-color: #676767;
+    background-image: url('/assets/unmanaged/images/butLeft.gif');
+    background-repeat: no-repeat;
+    height: 30px;
+    font-size: 15px;
+    color: #FFF;
+    padding: 0px;
+    text-align: center;
+    width: 110px;
+    float: right;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+#regButtonsR {
+    background-image: url('/assets/unmanaged/images/butRight.gif');
+    background-repeat: no-repeat;
+    float: right;
+    height: 22px;
+    width: 100%;
+    background-position: right;
+    padding-top: 8px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    margin: 0px;
+}
+
+#bob_overview #page_wrapper #page_content .nextButton #regButtons #regButtonsR a {
+    color: #FFF;
+}
+#bob_overview #page_wrapper #page_content .nextButton #regButtons #regButtonsR a:hover {
+    color: #D3CEB8;
+    text-decoration: none;
+}
+.RegBox {
+    margin-top: 15px;
+    background-color: #E5EAEE;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 30px;
+    padding-left: 10px;
+
+
+    height: 250px;
+    height: 225px;
+}
+.BottomBorderCollapse {
+    BORDER-BOTTOM: #004059 4px solid;
+    height: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+td, th {
+ color:#000000; 
+}
+
+#actionButtons {
+    color: #FFFFFF;
+    margin-top: 15px;
+    height: 50px;
+}
+
+.btn-hover {
+  color:#CCCC99!important;
+}
+
+.formButton  .blue-btn {
+      border:none;
+      width:110px;
+      height:30px;
+      color:white;
+      background:url('/assets/unmanaged/images/buttons/enabled_blue_button_110px.gif');
+	  cursor : pointer;
+}
+.formButton  .grey-btn {
+      border:none;
+      width:110px;
+      height:30px;
+      color:white;
+      background:url('/assets/unmanaged/images/buttons/enabled_grey_button_110px.gif');
+	  cursor : pointer;
+}
+
+.formButton  .disabled-grey-btn {
+      border:none;
+      width:110px;
+      height:30px;
+      color:white;
+      background:url('/assets/unmanaged/images/buttons/disabled_grey_button_110px.gif');
+}
+
+
+.formButton input {
+    float:right;
+    margin-left:20px;
+}

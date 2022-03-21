@@ -1,0 +1,3 @@
+log4j - 1.2.2
+struts - 1.1b1
+xerces - 1.4.1

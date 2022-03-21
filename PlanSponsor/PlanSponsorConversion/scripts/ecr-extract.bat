@@ -1,0 +1,1 @@
+java -cp "D:\Program Files (x86)\IBM\SQLLIB\java\*;D:\Apps\PlanSponsor\conversion\*;D:\Apps\PlanSponsor\conversion" com.manulife.pension.ps.web.fee.EstimatedCostOfRecordKeepingConversion 20140531 20140831 >>conversion.log 2>>&1

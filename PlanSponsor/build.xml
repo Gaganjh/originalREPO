@@ -1,0 +1,3095 @@
+<!--======================================================================================
+  PlanSponsor Project Build File test
+  
+  Main targets are as follows ...
+  build  - compiles all classes into .jar or .war files in the project build directory
+  test   - builds everything and then runs all test cases
+  clean  - deletes all generated files and build directories
+  deploy -
+  =======================================================================================-->
+
+<project name="PlanSponsor" default="build_and_create_ear" basedir=".">
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Properties
+    This section contains property settings and targets that affect property settings.
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <import file="../common/ant/common.xml" />
+  <import file="build_emma.xml" />
+
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Properties
+  This section contains property settings and targets that affect property settings.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <property environment="env"/>  
+  <property name="project.name" value="PlanSponsor"/>  
+  <property name="hostname" value="${env.COMPUTERNAME}"/>
+  <property name="server.alias" value="${hostname}" />
+  <property name="node" value="${hostname}"/>
+  <property name="environment.name" value="${hostname}"/>
+  <property name="root.dir" value="${env.HOMEDRIVE}"/>
+  <property name="CICS.name" value="T1CICS"/>
+  <property name="db2jcc.dir" value="${root.dir}/Program Files/IBM/SQLLIB/java" />
+  <property name="websphere.home" value="${root.dir}/webSphere9/AppServer"/>
+
+  <!-- This section to support Fortify scanning, to turn fortify on for developpers uncomment next line and call target "fortify" -->
+  <!-- Set next line to have the FPR file uploaded to the Fortify server, fortify.release.name must match value in Fortify server -->
+  <property name="fortify.release.name" value="September2008" />
+  <!-- The property fortify.install.location assumes build is running from same drive as where Fortify is installed -->
+  <property name="fortify.install.location" value="\Program Files\Fortify Software\Fortify SCA 5.1\"/>
+  <property name="fortify.managerclient.location" value="${fortify.install.location}\bin\managerclient.bat"/>
+  <condition property="fortify.upload2ssm.exists">
+    <available file="${fortify.managerclient.location}" />
+  </condition>  
+  <property name="sourceanalyzer.buildid" value="${project.name}"/>  
+  <available classname="com.fortify.dev.ant.SourceanalyzerTask" property="fortify.present" />
+  <tstamp>
+    <format property="build.timestamp" pattern="dd-MMM-yy_HH-mm-ss" />
+  </tstamp>     
+  <property name="fortify.fpr.filename" value="${project.name}_${build.timestamp}.fpr"/>  
+  <!-- END of Fortify support -->
+
+  <property name="config.deploy.dir" value="${root.dir}/apps/PlanSponsor/Config"/>
+  <property name="scripts.deploy.dir" value="${root.dir}/apps/PlanSponsor/scripts"/>
+  <property name="assets.deploy.dir" value="${root.dir}/apps/PlanSponsor/assets"/>
+  <property name="iloans.deploy.dir" value="${root.dir}/apps/PlanSponsor"/>
+  <property name="JMS.bindings.dir" value="${root.dir}/apps/PlanSponsor/JMSBindings"/>
+  <property name="ps.docroot" value="${root.dir}/Inetpub/PlanSponsor"/>
+
+  <property name="ezk.docroot" value="${root.dir}/Inetpub/ezk"/>
+  <!--<property name="psw.dist.dir" value="${root.dir}/SVN/PlanSponsor/dist"/>
+  <property name="ezk.dist.dir" value="${root.dir}/SVN/ezk/dist"/>
+  <property name="psw.build.dir" value="${root.dir}/SVN/PlanSponsor/build"/>
+  <property name="ezk.build.dir" value="${root.dir}/SVN/ezk/build"/> -->
+
+  <property name="project.lib.dir" value="${basedir}/../common/lib"/>
+  <property name="project.weblib.dir" value="${basedir}/../common/weblib"/>
+  <property name="project.build.dir" value="${basedir}/build"/>
+  <property name="emma.build.dir" value="${root.dir}/emma/instrument-out/lib"/>
+
+  <property name="project.dist.dir" value="${basedir}/dist"/>  
+  <property name="assets.overwrite" value="yes"/>
+  <property name="distribution.service.dir" value="${basedir}/../DistributionService"/>
+  <property name="awd.service.dir" value="${basedir}/../AWDService"/>
+  <property name="fund.service.dir" value="${basedir}/../FundService"/>
+  <property name="notice.service.dir" value="${basedir}/../NoticeService"/>
+  <property name="planReview.service.dir" value="${basedir}/../PlanReviewService"/>
+  <property name="fee.service.dir" value="${basedir}/../FeeService"/>
+  <property name="order.service.dir" value="${basedir}/../OrderService"/>
+
+  <property name="dmgr.profile.name" value="${hostname}Dmgr"/>
+  <property name="node.profile.name" value="${hostname}Node"/>
+  <property name="cell.name" value="${node.profile.name}Cell"/>
+  <property name="dmgr.cell.name" value="${dmgr.profile.name}Cell"/>
+  <property name="webserver.name" value="webserver1"/>
+  <property name="profile.logs.dir" value="${websphere.home}/Profiles/${node.profile.name}/logs"/>
+
+  <property name="EZKServer.name" value="EZkServer"/>
+  <property name="PSWServer.name" value="PSWServer"/>
+  <available property="logdir.exist" file="${profile.logs.dir}/${PSWServer.name}" type="dir">
+  </available>
+  <property name="ACRServer.name" value="ACRServer"/>
+  <property name="EZKCMAServer.name" value="EZkCMAServer"/>
+  <property name="PSWCMAServer.name" value="PSWCMAServer"/>
+  <property name="OOServer.name" value="OnlineOrderServer"/>
+  <property name="BDServer.name" value="BrokerDealerServer"/>
+  <property name="was.service.prefix" value="IBM WebSphere Application Server V8.0 - "/>
+  <property name="was.dmgr.service.name" value="${was.service.prefix}${dmgr.profile.name}"/>
+  <property name="was.node.service.name" value="${was.service.prefix}${node.profile.name}"/>
+  <property name="autobuilder.log.dir" value="/BuildLogs"  />
+  <property name="autobuilder.log.url" value="/BuildLogs/" />
+  <property name="report.dir" value="${project.build.dir}/report"/>
+  <property name="report.javadoc.dir" value="${report.dir}/javadoc"/>
+  <property name="config.scripts.dir" value="../ConfigurationScripts"/>
+  <property name="security.environment.name" value="DEV2"/>
+
+  <property name="us.redirectpage" value="${env.psw_redirectpage}"/>
+  <property name="ny.redirectpage" value="${env.psw_ny_redirectpage}"/>  
+
+  <target name="dev_setup">
+    <property name="profile.name" value="${node.profile.name}"/>
+    <property name="appserver.name" value="PSWServer"/>
+    <property name="webserver.name"    value="webserver1"/>
+    <property name="environment.name" value="DEV"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="psuslocal.test-qa.net"/>
+    <property name="website.ny.host" value="psnylocal.test-qa02.net"/>
+    <property name="website.bd.host" value="bdlocal.test-qa.net"/>
+    <property name="websphere.home"    value="c:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://psuslocal.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://psnylocal.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://bdlocal.test-qa.net/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>    
+  </target>
+
+  <target name="presit1_setup">
+    <property name="node" value="usgpezk1"/>
+    <property name="environment.name" value="PRESIT1"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps1us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps1ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd1.test-qa.net"/>
+    <property name="websphere.home" value="c:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="https://usgpps1us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps1ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit2_setup">
+    <property name="node" value="usgpezk2"/>
+    <property name="environment.name" value="PRESIT2"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps2us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps2ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd2.test-qa.net"/>
+    <property name="websphere.home" value="c:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps2us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps2ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit3_setup">
+    <property name="node" value="usgpezk3"/>
+    <property name="environment.name" value="PRESIT3"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps3us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps3ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd3.test-qa.net"/>
+    <property name="websphere.home" value="c:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps3us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps3ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+
+  </target>
+
+  <target name="presit4_setup">
+    <property name="node" value="usgppresit4"/>
+    <property name="environment.name" value="PRESIT4"/>
+    <property name="security.environment.name" value="DEV1"/>
+    <property name="website.us.host" value="usgpps4us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps4ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd4.test-qa.net"/>
+    <property name="websphere.home" value="d:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps4us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps4ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+
+  </target>
+
+  <target name="presit5_setup">
+    <property name="server.alias" value="presit5" />
+    <property name="node" value="usgppresit5"/>
+    <property name="environment.name" value="PRESIT5"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="cell.name" value="USGPPRESIT5DmgrCell"/>
+    <property name="node.name" value="${node}Node"/>
+    <property name="profile.name" value="${node.name}"/>
+    <property name="appserver.name" value="PSWServer"/>
+    <property name="webserver.name" value="webserver1"/>
+    <property name="was.service.name" value="${was.service.prefix}${node.name}"/>
+    <property name="website.us.host" value="usgpps5us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps5ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd5.test-qa.net"/>
+    <property name="us.redirectpage" value="http://${website.us.host}/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://${website.ny.host}/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="websphere.home" value="d:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="profile.logs.dir" value="${websphere.home}/Profiles/${profile.name}/logs"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="ps.docroot" value="d:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit6_setup">
+    <property name="node" value="usgppresit6"/>
+    <property name="environment.name" value="PRESIT6"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps6us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps6ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd6.test-qa.net"/>
+    <property name="websphere.home" value="c:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps6us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps6ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit7_setup">
+    <property name="node" value="usgppresit7"/>
+    <property name="environment.name" value="PRESIT7"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps7us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps7ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd7.test-qa.net"/>
+    <property name="websphere.home" value="c:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps7us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps7ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit8_setup">
+    <property name="node" value="usgppresit8"/>
+    <property name="environment.name" value="PRESIT8"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="cell.name" value="${node}DmgrCell"/>
+    <property name="node.name" value="${node}Node"/>
+    <property name="profile.name" value="${node.name}"/>
+    <property name="website.us.host" value="usgpps8us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps8ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd8.test-qa.net"/>
+    <property name="websphere.home" value="d:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps8us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps8ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="d:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit9_setup">
+    <property name="node" value="usgppresit9"/>
+    <property name="environment.name" value="PRESIT9"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps9us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps9ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd9.test-qa.net"/>
+    <property name="websphere.home" value="d:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps9us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps9ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="d:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit10_setup">
+    <property name="cell.name" value="usgppresit10Node02Cell"/>
+    <property name="node.name" value="PlanSponsorNode"/>
+    <property name="appserver.name" value="server1"/>
+    <property name="webserver.name" value="webserver1"/>
+    <property name="node" value="usgppresit10"/>
+    <property name="profile.name" value="PlanSponsor"/>
+    <property name="environment.name" value="PRESIT10"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps10us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps10ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd10.test-qa.net"/>
+    <property name="websphere.home" value="C:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps10us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps10ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit11_setup">
+    <property name="server.alias" value="presit11" />
+    <property name="node" value="usgppresit11"/>
+    <property name="environment.name" value="PRESIT11"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps11us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps11ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd11.test-qa.net"/>
+    <property name="websphere.home" value="d:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="https://usgpps11us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps11ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="d:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit12_setup">
+    <property name="node" value="usgppresit12"/>
+    <property name="environment.name" value="PRESIT12"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps12us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps12ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd12.test-qa.net"/>
+    <property name="websphere.home" value="c:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps12us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps12ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit13_setup">
+    <property name="node" value="usgppresit13"/>
+    <property name="environment.name" value="PRESIT13"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps13us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps13ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd13.test-qa.net"/>
+    <property name="websphere.home" value="c:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps13us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps13ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit14_setup">
+    <property name="node" value="usgppresit14"/>
+    <property name="environment.name" value="PRESIT14"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps14us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps14ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd14.test-qa.net"/>
+    <property name="websphere.home" value="c:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps14us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps14ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit15_setup">
+    <property name="node" value="usgppresit15"/>
+    <property name="environment.name" value="PRESIT15"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps15us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps15ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd15.test-qa.net"/>
+    <property name="websphere.home" value="c:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps15us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps15ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit16_setup">
+    <property name="node" value="usgppresit16"/>
+    <property name="environment.name" value="PRESIT16"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps16us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps16ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd16.test-qa.net"/>
+    <property name="websphere.home" value="d:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps16us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps16ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="d:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit17_setup">
+    <property name="node" value="usgppresit17"/>
+    <property name="environment.name" value="PRESIT17"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="website.us.host" value="usgpps17us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps17ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd17.test-qa.net"/>
+    <property name="websphere.home" value="c:/WebSphere/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="us.redirectpage" value="http://usgpps17us.test-qa.net/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://usgpps17ny.test-qa02.net/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit18_setup">
+    <property name="server.alias" value="presit18" />
+    <property name="node" value="usgppresit18"/>
+    <property name="environment.name" value="PRESIT18"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="cell.name" value="jhrpsPresit18Cell"/>
+    <property name="node.name" value="${node}Node"/>
+    <property name="profile.name" value="${node.name}"/>
+    <property name="appserver.name" value="PSWServer"/>
+    <property name="webserver.name" value="WebServer"/>
+    <property name="was.service.name" value="${was.service.prefix}${node.name}"/>
+    <property name="website.us.host" value="usgpps18us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps18ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd18.test-qa.net"/>
+    <property name="us.redirectpage" value="http://${website.us.host}/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://${website.ny.host}/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="websphere.home" value="D:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="D:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="D:/apps/PlanSponsor/assets"/>
+    <property name="iloans.deploy.dir" value="D:\\apps\\PlanSponsor"/>
+    <property name="profile.logs.dir" value="${websphere.home}/Profiles/${profile.name}/logs"/>
+    <property name="JMS.bindings.dir" value="D:/apps/PlanSponsor/JMSBindings"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit20_setup">
+    <property name="server.alias" value="presit20" />
+    <property name="node" value="usgppresit20"/>
+    <property name="environment.name" value="PRESIT20"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="cell.name" value="jhrpsPresit20Cell"/>
+    <property name="node.name" value="usgppresit20Node"/>
+    <property name="profile.name" value="${node.name}"/>
+    <property name="appserver.name" value="PSWPreviewServer"/>
+    <property name="webserver.name" value="PlanSponsorWebServer"/>
+    <property name="was.service.name" value="${was.service.prefix}${node.name}"/>
+    <property name="website.us.host" value="usgpps20us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps20ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd20.test-qa.net"/>
+    <property name="us.redirectpage" value="http://${website.us.host}/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://${website.ny.host}/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="websphere.home" value="d:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="c:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="c:/apps/PlanSponsor/assets"/>
+    <property name="iloans.deploy.dir" value="c:\\apps\\PlanSponsor"/>
+    <property name="profile.logs.dir" value="${websphere.home}/Profiles/${profile.name}/logs"/>
+    <property name="JMS.bindings.dir" value="c:/apps/PlanSponsor/JMSBindings"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="presit23_setup">
+    <property name="server.alias" value="presit23" />
+    <property name="node" value="usgppresit23"/>
+    <property name="environment.name" value="PRESIT23"/>
+    <property name="security.environment.name" value="DEV2"/>
+    <property name="cell.name" value="jhrpsPresit23Cell"/>
+    <property name="node.name" value="${node}Node"/>
+    <property name="profile.name" value="${node.name}"/>
+    <property name="appserver.name" value="PSWServer"/>
+    <property name="webserver.name" value="WebServer"/>
+    <property name="was.service.name" value="${was.service.prefix}${node.name}"/>
+    <property name="website.us.host" value="usgpps23us.test-qa.net"/>
+    <property name="website.ny.host" value="usgpps23ny.test-qa02.net"/>
+    <property name="website.bd.host" value="bd23.test-qa.net"/>
+    <property name="us.redirectpage" value="http://${website.us.host}/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://${website.ny.host}/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="websphere.home" value="d:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="profile.logs.dir" value="${websphere.home}/Profiles/${profile.name}/logs"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="ps.docroot" value="d:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="SIT2_setup">
+    <property name="server.alias" value="sit2" />
+    <property name="node" value="mlisezkscals2"/>
+    <property name="environment.name" value="SIT2"/>
+    <property name="security.environment.name" value="SIT2"/>
+    <property name="cell.name" value="jhrps${environment.name}3Cell"/>
+    <property name="node.name" value="${node}Node"/>
+    <property name="profile.name" value="${node.name}"/>
+    <property name="appserver.name" value="PSWPreviewServer"/>
+    <property name="webserver.name" value="PreviewWebServer"/>
+    <property name="was.service.name" value="${was.service.prefix}${node.name}"/>
+    <property name="website.us.host" value="${node}.manulife.com"/>
+    <property name="website.ny.host" value="${website.us.host}:81"/>
+    <property name="website.bd.host" value="bdsit2.test-qa.net"/>
+    <property name="us.redirectpage" value="http://${website.us.host}/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://${website.ny.host}/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="websphere.home" value="d:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="profile.logs.dir" value="${websphere.home}/Profiles/${profile.name}/logs"/>
+    <property name="ps.docroot" value="d:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="SIT3_setup">
+    <property name="node" value="mlisezkscals3"/>
+    <property name="environment.name" value="SIT"/>
+    <property name="security.environment.name" value="SIT3"/>
+    <property name="website.us.host" value="psussit3preview.test-qa.net"/>
+    <property name="website.ny.host" value="psnysit3preview.test-qa02.net"/>
+    <property name="website.bd.host" value="bdsit3.test-qa.net"/>
+    <property name="us.redirectpage" value="http://${website.us.host}/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://${website.ny.host}/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="websphere.home" value="d:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="ps.docroot" value="d:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="UAT2_setup">
+    <property name="node" value="mlisezkucals2"/>
+    <property name="environment.name" value="UAT"/>
+    <property name="security.environment.name" value="UAT2"/>
+    <property name="website.us.host" value="psusuat2preview.test-qa.net"/>
+    <property name="website.ny.host" value="psnyuat2preview.test-qa02.net"/>
+    <property name="website.bd.host" value="bduat2.test-qa.net"/>
+    <property name="us.redirectpage" value="http://${website.us.host}/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://${website.ny.host}/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="websphere.home" value="d:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="ps.docroot" value="d:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="UAT3_setup">
+    <property name="node" value="mlisezkucals3"/>
+    <property name="environment.name" value="UAT3"/>
+    <property name="security.environment.name" value="UAT3"/>
+    <property name="cell.name" value="jhrps${environment.name}3Cell"/>
+    <property name="node.name" value="${node}Node"/>
+    <property name="profile.name" value="${node.name}"/>
+    <property name="appserver.name" value="PSWPreviewServer"/>
+    <property name="webserver.name" value="PreviewWebServer"/>
+    <property name="was.service.name" value="${was.service.prefix}${node.name}"/>
+    <property name="website.us.host" value="psusuat3preview.test-qa.net"/>
+    <property name="website.ny.host" value="psnyuat3preview.test-qa02.net"/>
+    <property name="website.bd.host" value="bduat3.test-qa.net"/>
+    <property name="us.redirectpage" value="http://${website.us.host}/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="http://${website.ny.host}/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="websphere.home" value="d:/webSphere9/AppServer"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="profile.logs.dir" value="${websphere.home}/Profiles/${profile.name}/logs"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="ps.docroot" value="d:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="PROD_setup">
+    <property name="node" value="mlisezkpiws1"/>
+    <property name="environment.name" value="PROD"/>
+    <property name="security.environment.name" value="PROD"/>
+    <property name="website.us.host" value="PlanSponsorUSPreview.test-qa.net"/>
+    <property name="website.ny.host" value="PlanSponsorNYPreview.test-qa02.net"/>
+    <property name="website.bd.host" value="BrokerPreview.test-qa.net"/>
+    <property name="websphere.home" value="d:/webSphere9/AppServer"/>
+    <property name="default.us.email.address" value="jhpensionsps@jhancock.com"/>
+    <property name="default.ny.email.address" value="jhnypensionsps@jhancockny.com"/>
+    <property name="config.deploy.dir" value="d:/apps/PlanSponsor/Config"/>
+    <property name="assets.deploy.dir" value="d:/apps/PlanSponsor/assets"/>
+    <property name="JMS.bindings.dir" value="d:/apps/PlanSponsor/JMSBindings"/>
+    <property name="iloans.deploy.dir" value="d:\\apps\\PlanSponsor"/>
+    <property name="TED.download.directory" value="\FTPEDT\TPAPROD\MANUMERG\CONTRACT\"/>
+    <property name="us.redirectpage" value="https://www.ps.jhancockpensions.com/do/home/homePageFinder/"/>
+    <property name="ny.redirectpage" value="https://www.ps.jhancocknypensions.com/do/home/homePageFinder/"/>
+    <property name="bd.redirectpage" value="http://${website.bd.host}/do/home/"/>
+    <property name="ps.docroot" value="c:/Inetpub/PlanSponsor"/>
+  </target>
+
+  <target name="init">
+    <tstamp description="Initialize the DSTAMP, TSTAMP and TODAY properties."/>
+    <!--<available file="/apps/StandaloneCMAFile/scripts/CMAFileManagerShutdown.bat" property="StandaloneCMAFile-exists"/>-->
+  </target>
+
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Build targets
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="stop_all" depends="dev_setup, init, stop_WAS_AppServers, delete_WAS_Applications, stop_WAS_AdminServer, stop_StandaloneFileManager, delete_WAS_logs, delete_WAS_temp"/>
+  <target name="get_and_customize_cvs_image" depends="clean, edit_messaging_properties, edit_security_properties, edit_dmekit_properties, edit_iloans_properties, edit_redirect_htmls, edit_web_ext"/>
+  <target name="prepare_to_build" depends="init, get_and_customize_cvs_image, delete_WAS_temp"/>
+
+  <target name="full_deploy"       depends="dev_setup, init, stop_WAS_AdminServer, stop_StandaloneFileManager, clean, edit_messaging_properties, edit_security_properties, edit_dmekit_properties, edit_iloans_properties, edit_redirect_htmls, delete_WAS_logs, delete_WAS_temp, createDatabases, build_and_create_ear, deploy_config_files, build_cma, start_WAS_AdminServer, stop_WAS_AppServers, delete_WAS_Applications, install_WAS_Applications, start_WAS_AppServers, copy_assets"/>
+  <target name="local_deploy"      depends="dev_setup, init, stop_WAS_AdminServer,                             clean, edit_messaging_properties, edit_security_properties, edit_dmekit_properties, edit_iloans_properties, edit_redirect_htmls, delete_WAS_logs, delete_WAS_temp,                  build_and_create_ear, deploy_config_files,            start_WAS_AdminServer, stop_WAS_AppServers, delete_WAS_Applications, install_WAS_Applications, start_WAS_AppServers, copy_assets"/>
+
+  <target name="full_emma_deploy"       depends="dev_setup, init, stop_WAS_AdminServer, stop_StandaloneFileManager, clean, edit_messaging_properties, edit_security_properties, edit_dmekit_properties, edit_iloans_properties, edit_redirect_htmls, delete_WAS_logs, delete_WAS_temp, createDatabases, build_and_create_emma_ear, deploy_config_files, build_cma, start_WAS_AdminServer, stop_WAS_AppServers, delete_WAS_Applications, install_WAS_Applications, start_WAS_AppServers, copy_assets"/>
+
+  <target name="no_database_deploy"
+      depends="init, stop_WAS_AdminServer, stop_StandaloneFileManager, clean, edit_web_bnd, edit_ejb_bnd, edit_messaging_properties, edit_security_properties, edit_dmekit_properties, edit_iloans_properties, edit_redirect_htmls, edit_web_ext, delete_WAS_logs, delete_WAS_temp,                  build_and_create_ear, deploy_config_files, start_WAS_AppServer, delete_WAS_Applications, install_WAS_Applications_withoutCMA, start_WAS_AppServers, copy_assets"/>
+
+  <!-- This target modifies PSW config files, deploys, copy assets to IIS and builds ear. -->
+  <!-- Remember to include setup target: i.e. ant presit23_setup no_database_build_and_deploy -->
+  <target name="no_database_build_and_deploy"
+      depends="init, edit_web_bnd, edit_ejb_bnd, edit_messaging_properties, edit_security_properties, edit_dmekit_properties, edit_iloans_properties, edit_redirect_htmls, edit_web_ext, clean, deploy_config_files, copy_assets, build_and_create_ear, uninstall_psw_ear, install_psw_ear"/>
+
+
+  <target name="no_database_deploy_to_localhost" depends="dev_setup,no_database_deploy"/>
+  <target name="no_database_deploy_to_presit10" depends="presit10_setup, no_database_deploy"/>
+  <target name="no_database_deploy_to_presit20" depends="presit20_setup, no_database_deploy"/>
+
+  <target name="quick_deploy"      depends="dev_setup, init, stop_PS_AppServer,                                                                                                                                                                                         delete_WAS_logs,                      build_and_create_ear, deploy_config_files,                                                         delete_WAS_Applications, install_WAS_Applications, start_PS_AppServer,   copy_assets"/>
+  <target name="quick_refresh_web" depends="dev_setup, init, dev_refresh_web_module"/>
+  <target name="quick_refresh_ejb" depends="dev_setup, init, dev_refresh_ejb_module, deploy_config_files, restart_WAS_Applications"/>
+  <target name="presit_deploy"     depends="dev_setup, init, stop_WAS_AdminServer, stop_StandaloneFileManager, clean, cvs_update, edit_messaging_properties, edit_security_properties, edit_dmekit_properties, edit_iloans_properties, edit_redirect_htmls, edit_web_ext, delete_WAS_logs, delete_WAS_temp,      build_and_create_ear, deploy_config_files, build_cma, start_WAS_AdminServer, stop_WAS_AppServers, delete_WAS_Applications, install_WAS_Applications, start_WAS_AppServers, copy_assets"/>
+
+  <target name="full_deploy_to_presit" depends="prepare_to_build, stop_RMI_services, createDatabases, build_and_create_ear, deploy_config_files, build_cma, start_WAS_AppServer, delete_WAS_Applications, install_WAS_Applications, start_WAS_AppServers, start_WAS_Applications, copy_assets"/>
+
+  <target name="combined_deploy" depends="cvs.checkout,cvs_update,combined_deploy_to_presit_before_ezk, build_ezk"/>
+  <target name ="restart_psw_server" depends = "stop_psw_server, archive_profile_logs, start_psw_server" />
+  <target name="combined_deploy_to_presit_before_ezk" depends="prepare_to_build, build_and_create_ear,stop_RMI_services,stop_psw_server, stop_ezk_server, createDatabases,archive_profile_logs, uninstall_psw_ear, install_psw_ear, deploy_config_files, start_RMI_services, copy_assets "/>
+  <target name="combined_deploy_to_presit_after_ezk" depends="start_WAS_AdminServer, stop_WAS_AppServers, delete_WAS_Applications, install_WAS_Applications, start_WAS_AppServers, copy_assets"/>
+  <target name="partial_deploy_to_presit" depends="prepare_to_build, build_and_create_ear, deploy_config_files, build_cma"/>
+  <target name="full_deploy_to_presit1" depends="presit1_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit1" depends="presit1_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit1, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit1" depends="presit1_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit2" depends="presit2_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit2" depends="presit2_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit2, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit2" depends="presit2_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit3" depends="presit3_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit3" depends="presit3_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit3, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit3" depends="presit3_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit4" depends="presit4_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit4" depends="presit4_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit4, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit4" depends="presit4_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit5" depends="presit5_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit5" depends="presit5_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit5, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit5" depends="presit5_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit6" depends="presit6_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit6" depends="presit6_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit6, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit6" depends="presit6_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit7" depends="presit7_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit7" depends="presit7_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit7, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit7" depends="presit7_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit8" depends="presit8_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit8" depends="combined_deploy_to_presit_before_ezk, build_ezk_presit8"/>
+  <target name="partial_deploy_to_presit8" depends="presit8_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit9" depends="presit9_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit9" depends="presit9_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit9, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit9" depends="presit9_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit10" depends="presit10_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit10" depends="presit10_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit10, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit10" depends="presit10_setup, partial_deploy_to_presit"/>
+  <target name="auto_deploy_to_presit10"  depends="presit10_setup, get_and_customize_cvs_image, build_and_create_ear, deploy_config_files, build_cma, start_WAS_AdminServer, install_WAS_Applications, start_WAS_AppServers, copy_assets"/>
+  <target name="full_deploy_to_presit11" depends="presit11_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit11" depends="presit11_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit11, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit11" depends="presit11_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit12" depends="presit12_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit12" depends="presit12_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit12, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit12" depends="presit12_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit13" depends="presit13_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit13" depends="presit13_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit13, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit13" depends="presit13_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit14" depends="presit14_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit14" depends="presit14_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit14, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit14" depends="presit14_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit15" depends="presit15_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit15" depends="presit15_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit15, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit15" depends="presit15_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit16" depends="presit16_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit16" depends="presit16_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit16, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit16" depends="presit16_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit17" depends="presit17_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit17" depends="presit17_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit17, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit17" depends="presit17_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit18" depends="presit18_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit18" depends="presit18_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit18, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit18" depends="presit18_setup, partial_deploy_to_presit"/>
+  <target name="full_deploy_to_presit20" depends="presit20_setup, full_deploy_to_presit"/>
+  <target name="combined_deploy_to_presit20" depends="presit20_setup, combined_deploy_to_presit_before_ezk, build_ezk_presit20, combined_deploy_to_presit_after_ezk"/>
+  <target name="partial_deploy_to_presit20" depends="presit20_setup, partial_deploy_to_presit"/>
+  <target name="auto_deploy_to_presit20"  depends="presit20_setup, get_and_customize_cvs_image, build_and_create_ear, deploy_config_files, build_cma, start_WAS_AdminServer, install_WAS_Applications, start_WAS_AppServers, copy_assets"/>
+
+  <target name="combined_deploy_to_SIT_before_ezk" depends="prepare_to_build, stop_RMI_services, createDatabases_SIT, build_and_create_ear, deploy_config_files, build_cma, cvs_update_ezk_build, refresh_LDAP"/>
+  <target name="combined_deploy_to_SIT_after_ezk" depends="start_WAS_AdminServer, stop_WAS_AppServers, delete_WAS_Applications, install_WAS_Applications, start_WAS_AppServers, copy_assets"/>
+  <target name="full_deploy_to_SIT2" depends="SIT2_setup, prepare_to_build, createDatabases_SIT, build_and_create_ear, deploy_config_files, build_cma, refresh_LDAP, start_WAS_AdminServer, stop_WAS_AppServers, delete_WAS_Applications"/>
+  <target name="combined_deploy_to_SIT2" depends="SIT2_setup, combined_deploy_to_SIT_before_ezk, build_ezk_SIT2, combined_deploy_to_SIT_after_ezk"/>
+  <target name="partial_deploy_to_SIT2" depends="SIT2_setup, prepare_to_build, build_and_create_ear, deploy_config_files, build_cma"/>
+  <target name="full_deploy_to_SIT3" depends="SIT3_setup, prepare_to_build, createDatabases_SIT, build_and_create_ear, deploy_config_files, build_cma, refresh_LDAP, start_WAS_AdminServer, stop_WAS_AppServers, delete_WAS_Applications"/>
+  <target name="combined_deploy_to_SIT3" depends="SIT3_setup, combined_deploy_to_SIT_before_ezk, build_ezk_SIT3, combined_deploy_to_SIT_after_ezk"/>
+  <target name="partial_deploy_to_SIT3" depends="SIT3_setup, prepare_to_build, build_and_create_ear, deploy_config_files, build_cma"/>
+  <target name="full_deploy_to_UAT2" depends="UAT2_setup, prepare_to_build, createDatabases_UAT, build_and_create_ear, deploy_config_files, build_cma, refresh_LDAP, start_WAS_AdminServer, stop_WAS_AppServers, delete_WAS_Applications"/>
+  <target name="partial_deploy_to_UAT2" depends="UAT2_setup, prepare_to_build, build_and_create_ear, deploy_config_files, build_cma"/>
+  <target name="UAT2_staged_build" depends="UAT2_setup, get_and_customize_cvs_image, build_cma_for_PROD"/>
+  <target name="full_deploy_to_UAT3" depends="UAT3_setup, prepare_to_build, createDatabases_UAT, build_and_create_ear, deploy_config_files, build_cma, refresh_LDAP, start_WAS_AdminServer, stop_WAS_AppServers, delete_WAS_Applications"/>
+  <target name="partial_deploy_to_UAT3" depends="UAT3_setup, prepare_to_build, build_and_create_ear, deploy_config_files, build_cma"/>
+  <target name="full_deploy_to_PROD" depends="PROD_setup, get_and_customize_cvs_image, copy_iloans_properties_for_production, build_and_create_ear, build_cma_for_PROD"/>
+
+
+  <target name="get_latest_code" depends="clean, cvs_update, edit_messaging_properties, edit_security_properties, edit_dmekit_properties, edit_iloans_properties, edit_redirect_htmls, edit_web_ext"/>
+  <target name="pre_build" depends="init, stop_node, stop_StandaloneFileManager, get_latest_code, archive_profile_logs, delete_profile_temp"/>
+  <target name="deploy" depends="pre_build, dist, deploy_config_files, build_cma, copy_assets"/>
+
+  <target name="combined_deploy_presit18" depends="presit18_setup, deploy, build_ezk_presit18, refreshDatabases_T6"/>
+  <target name="combined_deploy_presit20" depends="presit20_setup, deploy, build_ezk_presit20, refreshDatabases_U1"/>
+  <target name="combined_deploy_presit23" depends="presit23_setup, deploy, build_ezk_presit23, refreshDatabases_TB"/>
+  <target name="combined_deploy_to_UAT3"  depends="UAT3_setup,     deploy, build_ezk_uat3"/>
+
+  <target name="ezk_cma_presit23" depends="presit23_setup, build_ezk_cma"/>
+
+  <target name="combined_deploy_to_UAT_after_ezk" depends="cvs_update_ezk_build, start_node, stop_WAS_AppServers, delete_WAS_Applications, install_WAS_Applications, start_WAS_AppServers, copy_assets"/>
+
+  <target name="build" depends="init">
+    <mkdir description="Create the build directory" dir="${project.build.dir}"/>
+    <ant dir="PlanSponsorEJB" target="dist"/>
+    <ant dir="PlanSponsorWeb" target="dist"/>
+    <ant dir="BrokerDealerWeb" target="dist"/>
+  </target>
+
+  <target name="build_ejb" depends="">
+    <mkdir description="Create the build directory" dir="${project.build.dir}"/>
+    <ant dir="PlanSponsorEJB" target="dist"/>
+  </target>
+
+  <target name="buildDistributionDependents">
+    <ant dir="${distribution.service.dir}" target="dist"/>
+    <ant dir="${distribution.service.dir}" target="copy_to_common"/>
+  </target>
+
+  <target name="wd_ear" depends="buildDistributionDependents,build_and_create_ear" />
+
+  <path id="lib.path">
+    <path refid="commons-lang" />
+    <path refid="commons-beanutils" />
+    <path refid="commons-configuration" />
+    <path refid="commons-collections" />
+    <path refid="commons-logging" />
+    <path refid="commons-codec" />
+    <path refid="commons-digester" />
+    <path refid="fop" />
+    <path refid="jdom" />
+    <path refid="itext" />
+  <fileset dir="${common.lib.dir}">
+  	<include name="pdfbox-2.0.5.jar" />
+    <include name="USGPSUtilities.jar"/>
+    <include name="antlr-2.7.2.jar"/>
+    <include name="bsf-2.3.0.jar"/>
+    <include name="commons-httpclient-3.1.jar"/>	
+    <include name="commons-chain-1.1.jar"/>
+    <include name="commons-dbcp-1.2.1.jar"/>
+  	<include name="commons-exec-1.1.jar"/>
+    <include name="commons-fileupload-1.3.3.jar"/>
+    <include name="commons-io-1.4.jar"/>
+    <include name="commons-validator-1.3.0.jar"/>
+    <include name="commons-pool-1.3.jar"/>
+    <include name="jakarta-oro-2.0.8.jar"/>
+    <include name="BrowseService.jar"/>
+    <include name="jakarta-regexp-1.2.jar"/>
+    <include name="manulifeEncrypt.jar"/>
+    <include name="ngec_model.jar"/>
+    <include name="DistributionService.jar"/>
+    <!-- Account Service and dependencies -->
+    <include name="AccountService.jar"/>
+    <include name="ReportService.jar"/>
+    <include name="SecurityService.jar"/>
+    <include name="MessagingService.jar"/>
+    <!-- Added Services -->
+    <include name="EnvironmentService.jar"/>
+    <include name="EmployeeService.jar"/>
+  	<include name="EligibilityService.jar"/>
+    <include name="NotificationService.jar"/>
+    <include name="MessageService.jar" />
+    <include name="EventUtil.jar" />
+    <include name="MrlLoggerService.jar"/>
+    <include name="retirementengine.jar"/>
+    <include name="intware_devtools.jar"/>
+    <include name="NotesDocumentService.jar"/>
+    <include name="ContractService.jar"/>
+  	<include name="FeeService.jar"/>
+    <include name="BrokerService.jar"/>
+  	<include name="iReportUtility.jar"/>
+    <include name="FundService.jar"/>
+    <include name="OrderService.jar"/>
+    <include name="NotificationService.jar"/>
+    <include name="SynchronizationService.jar"/>
+    <include name="SILService.jar"/>
+    <include name="AWDService.jar"/>
+    <include name="mrl.jar"/>
+    <include name="xreport_pro_custom.jar"/>
+    <include name="fop-0.95.jar"/>
+    <include name="avalon-framework-4.2.0.jar"/>
+    <include name="batik-all-1.7.jar"/>
+  	<include name="batik-ext.jar"/>
+  	<include name="opencsv-2.2.jar"/>
+    <!-- Search Service and dependencies -->
+    <include name="SearchService.jar"/>
+    <!-- i:File Upload and Submission Journal Services -->
+    <include name="gft-client.jar"/>
+    <include name="SubJournal_Client.jar"/>
+    <include name="ereports_client_1.0.jar"/>
+    <!-- STP DataChecker Service -->
+    <include name="STPDataCheckerClient.jar"/>
+    <include name="xstream-1.0.2.jar"/>
+    <include name="ldap10.jar"/>
+    <include name="heartbeat.jar"/>
+    <include name="mockejb.jar"/>
+   <!-- <include name="PDFBox-0.7.3.jar"/> -->
+    <include name="commons-httpclient-3.1.jar" />
+  	<include name="commons-codec-1.3.jar"/>
+	<!--include name="commons-logging-1.0.4.jar"/-->
+	<include name="httpclient-4.0-alpha2.jar"/>
+	<include name="httpcore-4.0-alpha6.jar"/>  	    
+  	<include name="piechartservlet.jar" />
+  	<include name="FundEvaluationEngine.jar" />
+  	<include name="aspose-words-19.9-jdk17.jar"/>
+  	<include name="StatementService.jar"/>
+  	<include name="RemoteInvocationService.jar" />
+  	<include name="ePresWebServiceStubs_2_1.jar" />
+  	<include name="planReviewDocumentServiceStubs.jar" />
+  	<include name="RiaDocumentServiceStubs.jar" />
+ 	<include name="pdfbox-2.0.5.jar" />
+  	<include name="PlanReviewService.jar" />
+  	<include name="DocumentService.jar" />
+  	<include name="dozer-5.3.2.jar" />
+	<include name="zip4j_1.3.2.jar"/>
+  	<include name="slf4j-log4j12-1.0.jar" />
+  	<include name="bcprov-jdk15on-1.49.jar"/>
+	<include name="NoticeService.jar"/>
+  	<include name="WorkManagementServiceStubs.jar"/>
+  	<include name="AdaptiveAuthenticationClientStub.jar"/>
+  	<include name="gson-2.8.2.jar"/>
+  	<include name ="jackson-databind-2.4.2.jar"/>
+  	<include name ="jackson-core-2.4.2.jar"/>
+  	<include name ="jackson-annotations-2.4.2.jar"/>
+  	<include name="commons-net-3.6.jar" />
+  	<include name="guava-20.0.jar" />
+  	</fileset>
+  	<fileset dir="${websphere.home}/runtimes/">
+  	  	<include name="com.ibm.jaxrs2.0.thinclient_9.0.jar"/>
+  	</fileset> 
+  </path>
+  <!-- 
+    the fscontext and providerutil are needed at runtime by the 
+    jndi lookup for messaging. Please do not remove
+  -->
+
+  <path id="weblib.path">
+    <path refid="log4j" />
+  <fileset dir="${common.weblib.dir}">
+  	<include name="pdfbox-2.0.5.jar" />
+  	<include name="bcprov-jdk15-140.jar" />
+    <include name="fscontext.jar" />
+    <include name="providerutil.jar" />
+    <include name="gnu-regexp-1.1.3.jar" />
+    <include name="intware_xml.jar" />
+    <include name="sort.jar"/>
+    <include name="xtools.jar"/>
+    <include name="soap.jar"/>
+  </fileset>
+  </path>
+
+  <path id="emma.external.lib.path">
+    <path refid="commons-lang" />
+    <path refid="commons-beanutils" />
+    <path refid="commons-configuration" />
+    <path refid="commons-collections" />
+    <path refid="commons-logging" />
+    <path refid="commons-codec" />
+    <path refid="commons-digester" />
+    <path refid="fop" />
+    <path refid="jdom" />
+    <path refid="itext" />
+  <fileset dir="${common.lib.dir}">
+    <include name="antlr-2.7.2.jar"/>
+    <include name="bsf-2.3.0.jar"/>
+    <include name="commons-chain-1.1.jar"/>
+    <include name="commons-dbcp-1.2.1.jar"/>
+    <include name="commons-fileupload-1.3.3.jar"/>
+    <include name="commons-io-1.4.jar"/>
+    <include name="commons-validator-1.3.0.jar"/>
+    <include name="commons-pool-1.3.jar"/>
+    <include name="jakarta-oro-2.0.8.jar"/>
+    <include name="jakarta-regexp-1.2.jar"/>
+    <include name="manulifeEncrypt.jar"/>
+    <include name="retirementengine.jar"/>  
+    <include name="intware_devtools.jar"/>
+    <include name="mrl.jar"/>
+    <include name="xreport_pro_custom.jar"/>
+    <include name="fop-0.95.jar"/>
+    <include name="avalon-framework-4.2.0.jar"/>
+    <include name="batik-all-1.7.jar"/>
+  	<include name="batik-ext.jar"/>
+  	<include name="opencsv-2.2.jar"/>
+    <!-- i:File Upload and Submission Journal Services -->
+    <include name="gft-client.jar"/>
+    <include name="SubJournal_Client.jar"/>
+    <include name="ereports_client_1.0.jar"/>
+    <!-- STP DataChecker Service -->
+    <include name="STPDataCheckerClient.jar"/>
+    <include name="xstream-1.0.2.jar"/>
+    <include name="ldap10.jar"/>
+    <include name="heartbeat.jar"/>
+  	<include name="mockejb.jar"/>
+  <!--  <include name="PDFBox-0.7.3.jar"/> -->
+	<include name="commons-codec-1.3.jar"/>
+	<include name="commons-logging-1.0.4.jar"/>
+	<include name="httpclient-4.0-alpha2.jar"/>
+	<include name="httpcore-4.0-alpha6.jar"/>
+  	<include name="commons-net-3.6.jar" />
+    </fileset>
+  </path>
+
+  <path id="emma.lib.path">
+    <fileset dir="${emma.build.dir}" />
+  </path>
+
+  <target name="build_and_create_ear" depends="dist"/>
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Distribution targets
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="dist" depends="build">
+    <mkdir description="Create the dist directory" dir="${project.dist.dir}"/>
+    <ear appxml="${basedir}/PlanSponsor/META-INF/application.xml" compress="true" earfile="${project.dist.dir}/${project.name}.ear">
+      <fileset dir="${project.build.dir}">
+        <include name="BrokerDealerWeb.war" />
+        <include name="PlanSponsorWeb.war" />
+        <include name="PlanSponsorWebNY.war" />
+        <include name="PlanSponsorEJB.jar" />
+      </fileset>
+      <path>
+        <path refid="lib.path" />
+        <path refid="weblib.path" />
+      </path>
+      <manifest>
+        <attribute name="Implementation-title"   value="PlanSponsor"/>
+        <attribute name="Implementation-vendor"  value="${division_title}"/>
+        <attribute name="Implementation-version" value="${build_number}"/>
+        <attribute name="Build-Machine" value="${hostname}"/>
+        <attribute name="Build-Author"  value="${build_author}"/>
+        <attribute name="Build-Branch"  value="${build_branch}"/>
+        <attribute name="Build-Time"    value="${build_time}"/>
+        <attribute name="Build-Details" value="${build_details}"/>
+        <attribute name="Java-Vendor"   value="${java_vendor}"/>        
+        <attribute name="Java-Version"  value="${java_version}"/>        
+      </manifest>    
+    </ear>
+  </target>
+
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Distribution EMMA targets
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="build_and_create_emma_ear" depends="dist_emma"/>
+
+  <target name="dist_emma" depends="build, emma_instrument">
+    <mkdir description="Create the dist directory" dir="${project.dist.dir}"/>
+    <ear appxml="${basedir}/PlanSponsor/META-INF/application.xml" compress="true" earfile="${project.dist.dir}/${project.name}.ear">
+      <fileset dir="${project.build.dir}">
+        <include name="BrokerDealerWeb.war" />
+        <include name="PlanSponsorWeb.war" />
+        <include name="PlanSponsorWebNY.war" />
+      </fileset>
+      <path>
+        <path refid="emma.external.lib.path" />
+        <path refid="emma.lib.path" />
+        <path refid="weblib.path" />
+      </path>  
+    </ear>
+  </target>
+
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    End Distribution EMMA targets
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <target name="edit_web_ext">
+    <replace file="${basedir}/PlanSponsorWeb/webApplication/WEB-INF/ibm-web-ext.xml">
+      <replacefilter token='reloadInterval="10"' value='reloadInterval="600"'/>
+      <replacefilter token='reloadingEnabled="true"' value='reloadingEnabled="false"'/>
+      <replacefilter token='fileServingEnabled="true"' value='fileServingEnabled="false"'/>
+    </replace>
+    <replace file="${basedir}/BrokerDealerWeb/webApplication/WEB-INF/ibm-web-ext.xml">
+      <replacefilter token='reloadInterval="10"' value='reloadInterval="600"'/>
+      <replacefilter token='reloadingEnabled="true"' value='reloadingEnabled="false"'/>
+      <replacefilter token='fileServingEnabled="true"' value='fileServingEnabled="false"'/>
+    </replace>
+  </target>
+
+  <target name="edit_web_bnd" if="node.name">
+    <replace file="${basedir}/PlanSponsorWeb/webApplication/WEB-INF/ibm-web-bnd.xml">
+      <replacefilter token='PlanSponsorNode' value='${node.name}'/>
+    </replace>
+  </target>
+
+  <target name="edit_ejb_bnd" if="node.name">
+    <replace file="${basedir}/PlanSponsorEJB/ejbModule/META-INF/ibm-ejb-jar-bnd.xmi">
+      <replacefilter token='PlanSponsorNode' value='${node.name}'/>
+    </replace>
+  </target>
+
+  <target name="edit_messaging_properties">
+    <replace file="${basedir}/PlanSponsorConfig/messagingservice.properties">
+      <replacefilter token="c:/apps/PlanSponsor/JMSBindings" value="${JMS.bindings.dir}"/>
+    </replace>
+  </target>
+
+  <target name="edit_security_properties">
+    <replace file="${basedir}/PlanSponsorConfig/security.properties">
+      <replacefilter token="environment = DEV1" value="environment = ${security.environment.name}" />
+      <replacefilter token="environment = DEV2" value="environment = ${security.environment.name}" />
+      <replacefilter token="c:/apps/PlanSponsor/Config" value="${config.deploy.dir}" />
+    </replace>
+    <replace file="${basedir}/PlanSponsorConfig/DEV1security.ini">
+      <replacefilter token="c:/apps/PlanSponsor/Config" value="${config.deploy.dir}" />
+    </replace>
+    <replace file="${basedir}/PlanSponsorConfig/DEV2security.ini">
+      <replacefilter token="c:/apps/PlanSponsor/Config" value="${config.deploy.dir}" />
+    </replace>
+    <replace file="${basedir}/PlanSponsorConfig/UTIL1security.ini">
+      <replacefilter token="d:" value="${root.dir}" />
+    </replace>
+  </target>
+
+  <target name="edit_dmekit_properties">
+    <replace file="${basedir}/PlanSponsorConfig/EkitAcknowledgement.properties">
+      <replacefilter token="c:" value="${root.dir}" />
+    </replace>
+  </target>
+
+  <target name="edit_redirect_htmls">
+    <replace file="${basedir}/BaseWeb/webApplication/assets/unmanaged/html/PSWUSRedirect.html">
+      <replacefilter token="http://localhost/do/home/homePageFinder/" value="${us.redirectpage}"/>
+    </replace>
+    <replace file="${basedir}/BaseWeb/webApplication/assets/unmanaged/html/PSWNYRedirect.html">
+      <replacefilter token="http://localhost:81/do/home/homePageFinder/" value="${ny.redirectpage}"/>
+    </replace>
+    <replace file="${basedir}/BaseWeb/webApplication/assets/unmanaged/html/BrokerRedirect.html">
+      <replacefilter token="http://localhost/do/home/" value="${bd.redirectpage}"/>
+    </replace>
+  </target>
+
+  <target name="edit_iloans_properties">
+    <replace file="${basedir}/PlanSponsorConfig/iloans.properties">
+      <replacefilter token="@{iloans.deploy.dir}" value="${iloans.deploy.dir}" />
+      <replacefilter token="[test]" value="[test - ${environment.name}]" />
+    </replace>
+  </target>
+
+  <target name="copy_iloans_properties_for_production">
+    <copy file="${basedir}/PlanSponsorConfig/iloans.properties.prod" tofile="${basedir}/PlanSponsorConfig/iloans.properties" overwrite="yes" />
+  </target>
+
+  <target name="build_cma">
+    <ant antfile="buildCMA.xml" dir="${basedir}/../CMA" target="dist"/>
+    <ant antfile="buildCMA.xml" dir="${basedir}/../CMA" target="copy_to_iis"/>
+    <ant antfile="buildCMA.xml" dir="${basedir}/../CMA" target="deploy_StandaloneCMAFileManager"/>
+    <ant antfile="buildCMA.xml" dir="${basedir}/../CMA" target="deploy_config_files"/>
+    <ant antfile="buildCMA.xml" dir="${basedir}/../CMA" target="create_staticFileRepository"/>
+  </target>
+
+  <target name="build_ezk_cma">
+    <ant antfile="buildEzkCMA.xml" dir="${basedir}/../CMA" target="dist"/>
+    <ant antfile="buildEzkCMA.xml" dir="${basedir}/../CMA" target="copy_to_iis"/>
+    <ant antfile="buildEzkCMA.xml" dir="${basedir}/../CMA" target="deploy_StandaloneCMAFileManager"/>
+    <ant antfile="buildEzkCMA.xml" dir="${basedir}/../CMA" target="deploy_config_files"/>
+    <ant antfile="buildEzkCMA.xml" dir="${basedir}/../CMA" target="create_staticFileRepository"/>
+  </target>
+
+  <target name="build_cma_for_PROD">
+    <ant antfile="buildCMA.xml" dir="${basedir}/../CMA" target="dist"/>
+  </target>
+
+  <!-- <target name="build_ezk">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit1"/>
+  </target> -->
+
+  <target name="build_ezk">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit1">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit1" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit2">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit2" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit3">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit3" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit4">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit4" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit5">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit5" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit6">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit6" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit7">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit7" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit8">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit8" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit9">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit9" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit10">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit10" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit11">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit11" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit12">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit12" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit13">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit13" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit14">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit14" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit15">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit15" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit16">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit16" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit17">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_presit17" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit18">
+    <ant dir="${basedir}/../ezk" target="combined_deploy_to_presit18" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit20">
+    <ant dir="${basedir}/../ezk" target="combined_deploy_to_presit20" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_presit23">
+    <ant dir="${basedir}/../ezk" target="combined_deploy_to_presit23" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_SIT2">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_SIT2" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_SIT3">
+    <ant dir="${basedir}/../ezk" target="PS_combined_deploy_to_SIT3" inheritAll="false"/>
+  </target>
+
+  <target name="build_ezk_uat3">
+    <ant dir="${basedir}/../ezk" target="combined_deploy_to_uat3" inheritAll="false"/>
+  </target>
+
+  <!--======================================================================================
+    COPY ASSETS TO IIS
+    ======================================================================================-->        
+  <target name="copy_assets">
+    <!--======================================================================================
+            ONLY PlanSponsorCMA "CMA Managed assets" should be written to the /assets/ folder
+            ======================================================================================-->        
+    <copy todir="${ps.docroot}/assets" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../PlanSponsorCMA/PlanSponsorCMAWeb/webApplication/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy>
+    <!--======================================================================================
+            Assets that are NOT CMA Managed must come from the BaseWeb/assets/unmanaged folder or common/assets
+            ======================================================================================-->        
+    <copy todir="${ps.docroot}/assets/unmanaged" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/BaseWeb/webApplication/assets/unmanaged">
+        <exclude name="**/svn/**"/>
+      </fileset>
+      <fileset dir="${common.dir}/assets">
+        <!-- fonts are not deployed, they are installed manually by hand but exist in common/assets anyway -->
+        <exclude name="fonts/**"/>      
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!--======================================================================================
+    COPY ASSETS TO WAS
+    ********* ALL CMA MANAGED ASSETS are deployed to /assets/[cma-based-folder]  ***********
+    ********* NON CMA MANAGED ASSETS are deployed to /assets/unmanaged/          ***********
+    The order is PSW, NBDW, PSWNY in case user wants to start working without waiting for NY
+    ======================================================================================-->        
+  <target name="copy_assets_to_WAS">
+
+    <!-- ****** PSW WEB ****** Copy CMA Assets to /assets  then copy all unmanaged assets to /unmanaged/assets -->
+
+    <copy todir="${websphere.application.install.dir}/PlanSponsor.ear/PlanSponsorWeb.war/assets" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../PlanSponsorCMA/PlanSponsorCMAWeb/webApplication/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy> 
+    <copy todir="${websphere.application.install.dir}/PlanSponsor.ear/PlanSponsorWeb.war/assets/unmanaged" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../common/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+      <fileset dir="${basedir}/BaseWeb/webApplication/assets/unmanaged">
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy>
+
+    <!-- ****** NBDW WEB ****** Copy CMA Assets to /assets  then copy all unmanaged assets to /unmanaged/assets -->
+
+    <copy todir="${websphere.application.install.dir}/PlanSponsor.ear/BrokerDealerWeb.war/assets" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../PlanSponsorCMA/PlanSponsorCMAWeb/webApplication/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy>    
+    <copy todir="${websphere.application.install.dir}/PlanSponsor.ear/BrokerDealerWeb.war/assets/unmanaged" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../common/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+      <fileset dir="${basedir}/BaseWeb/webApplication/assets/unmanaged">
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy>
+
+    <!-- ****** PSW NY WEB ****** Copy CMA Assets to /assets  then copy all unmanaged assets to /unmanaged/assets -->
+
+    <copy todir="${websphere.application.install.dir}/PlanSponsor.ear/PlanSponsorWebNY.war/assets" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../PlanSponsorCMA/PlanSponsorCMAWeb/webApplication/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy> 
+    <copy todir="${websphere.application.install.dir}/PlanSponsor.ear/PlanSponsorWebNY.war/assets/unmanaged" overwrite="${assets.overwrite}">
+      <fileset dir="${basedir}/../common/assets">
+        <exclude name="**/svn/**"/>
+      </fileset>
+      <fileset dir="${basedir}/BaseWeb/webApplication/assets/unmanaged">        
+        <exclude name="**/svn/**"/>
+      </fileset>
+    </copy>    
+
+  </target>
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Fortify targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- CALL THIS TARGET EXTERNALLY -->
+  <target name="fortify" depends="init">
+    <antcall target="fortify-check"/>
+    <antcall target="fortify-build"/>   
+  </target>
+
+  <target name="fortify-build" if="fortify.present">
+    <antcall target="clean"/>   
+    <antcall target="fortify-clean"/>
+    <antcall target="build_and_create_ear" />
+    <antcall target="PlanSponsorScan" />
+  </target>
+
+  <target name="fortify-clean" if="fortify.present">
+    <exec executable="sourceanalyzer">
+      <arg value="-b" />
+      <arg value="${project.name}" />
+      <arg value="-clean" />
+    </exec>
+  </target>
+
+  <target name="fortify-check">
+    <!-- Get hostname and strips numbers at the end (0-9) -->
+    <exec executable="hostname" outputproperty="host.name"/>
+    <tempfile property="temp.file"/>
+    <echo message="${host.name}" file="${temp.file}"/>
+    <loadfile srcfile="${temp.file}" property="short.host.name">
+      <filterchain>
+        <replaceregex pattern="[1-9]{1,}" replace=""/>
+      </filterchain>
+    </loadfile>
+    <delete file="${temp.file}"/>       
+    <!-- Build will fail IF (fortify scanning is set to true) AND (we're on a PRESIT box) AND (Fortify is not present) -->
+    <!-- On a developer's box it will perform fortify analysis only IF (Fortify is present) -->             
+    <fail message="Please add Fortify to the CLASSPATH of ANT.  This is typically found as C:\Program Files\Fortify Software\SCAS-EE4.5.0\Core\lib\sourceanalyzer.jar. Is FORTIFY Team installed? If not check Wiki.">
+      <condition>
+        <and>
+          <equals arg1="${short.host.name}" arg2="usgppresit" />
+          <not>
+            <isset property="fortify.present"/>
+          </not>
+        </and>
+      </condition>
+    </fail>
+    <antcall target="fortify-compiler"/>
+  </target>
+
+  <target name="fortify-compiler">
+    <!-- FAIL IF (build.compiler=fortify) AND (fortify.present=false) -->
+    <fail message="Trying to compile using Fortify, but Fortify is not present. Either install FORTIFY (see Wiki) or comment out FORTIFY section at top of build.xml">
+      <condition>
+        <and>
+          <equals arg1="${build.compiler}" arg2="com.fortify.dev.ant.SCACompiler" />
+          <not>
+            <isset property="fortify.present"/>
+          </not>
+        </and>
+      </condition>
+    </fail>
+    <antcall target="fortify-analysis"/>
+  </target>
+
+  <!-- IF we perform FORTIFY analysis, we need to start from clean -->
+  <target name="fortify-analysis" if="fortify.present">
+    <echo message="Fortify Analysis to be performed"/>
+    <antcall target="clean"/>
+  </target>
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Main Fortify Scan target
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="PlanSponsorScan" depends="init" description="PlanSponsor Fortify build and scan" if="fortify.present">
+
+    <!--    The dependencies above builds & translates all services used.
+        The following adds PlanSponsor java components -->
+    <antcall target="compile_dependencies"/>
+
+    <!--    Add JSPs for PlanSponsor -->
+    <echo message="Expanding EAR for Fortify JSP analysis."/>
+    <property name="dist.ear.expanded" value="${project.dist.dir}/expanded/${project.name}.ear" />
+    <property name="dist.web-inf" value="${dist.ear.expanded}/${project.name}Web.war/WEB-INF" />
+    <exec executable="${websphere.home}/bin/EARExpander.bat">
+      <arg value="-ear"/>
+      <arg file="${project.dist.dir}/${project.name}.ear"/>
+      <arg value="-operationDir"/>
+      <arg path="${dist.ear.expanded}"/>
+      <arg value="-operation"/>
+      <arg value="expand"/>
+      <arg value="-expansionFlags"/>
+      <arg value="war"/>
+    </exec>
+    <echo message="Adding JSP files for Fortify analysis."/>
+    <exec executable="sourceanalyzer">
+      <arg value="-b" />
+      <arg value="${project.name}" />
+      <arg value="-logfile" />
+      <arg value="pswjsps.log" />
+      <arg value="-source" />
+      <arg value="1.5" />
+      <arg value="-cp" />
+      <arg value="${dist.web-inf}/lib/*.jar;${dist.ear.expanded}/*.jar;${dist.web-inf}/classes" />
+      <arg value="${dist.web-inf}/**/*.jsp"  />
+    </exec>
+
+    <!--    Add XML config files for PlanSponsor -->
+    <echo message="Adding XML files for Fortify analysis."/>
+    <exec executable="sourceanalyzer">
+      <arg value="-b" />
+      <arg value="${project.name}" />
+      <arg value="${dist.ear.expanded}/**/*.xml" />
+      <arg value="${basedir}/conf/**/*.xml"/>
+    </exec>
+
+    <!--    Add Properties files for PlanSponsor -->
+    <echo message="Adding properties files for Fortify analysis."/>
+    <exec executable="sourceanalyzer">
+      <arg value="-b" />
+      <arg value="${project.name}" />
+      <arg value="${dist.ear.expanded}/**/*.properties" />
+      <arg value="${basedir}/conf/**/*.properties" />
+    </exec>
+
+    <antcall target="fortify-project-analysis"/>    
+  </target>
+
+  <target name="fortify-project-analysis" if="fortify.present">
+    <!--    Analyze PlanSponsor -->
+    <tstamp>
+      <format property="scan.timestamp.start" pattern="dd-MMM-yy HH:mm:ss" />
+    </tstamp>       
+    <echo message="Starting Fortify analysis at ${scan.timestamp.start}"/>
+    <exec executable="sourceanalyzer">
+      <arg value="-Xmx1564M" />
+      <arg value="-b" />
+      <arg value="${project.name}" />
+      <arg value="-scan" />
+      <arg value="-f" />
+      <arg value="${fortify.fpr.filename}" />
+      <arg value="-logfile" />
+      <arg value="${basedir}\${project.name}_${build.timestamp}.log" />
+    </exec>
+    <tstamp>
+      <format property="scan.timestamp.end" pattern="dd-MMM-yy HH:mm:ss" />
+    </tstamp>       
+    <echo message="Completed Fortify analysis at ${scan.timestamp.end}"/>
+    <antcall target="fortify-upload-analysis"/>         
+  </target>
+
+  <target name="fortify-upload-analysis" if="fortify.release.name" >
+    <echo message="Preparing to upload analysis for ${project.name} Release: ${fortify.release.name}."/>
+    <fail message="Fortify does not seem to be installed, check Wiki.">
+      <condition>
+        <and>
+          <not>
+            <isset property="fortify.upload2ssm.exists"/>
+          </not>
+        </and>
+      </condition>
+    </fail>
+    <antcall target="fortify-perform-upload"/>
+  </target>
+
+  <target name="fortify-perform-upload" if="fortify.upload2ssm.exists" >
+    <!-- List current projects in Fortify -->
+    <property name="fortify.projects.list" value="fortify-projects.list" />
+    <echo message="Uploading Fortify analysis to Fortify server."/>
+    <exec executable="${fortify.managerclient.location}">
+      <arg value="listprojects" />
+      <arg value=">" />
+        <arg value="${basedir}\${fortify.projects.list}" />
+      </exec>
+      <!-- Extract our project ID -->
+      <loadfile srcfile="${basedir}\${fortify.projects.list}" property="fortify.project.id">
+        <filterchain>
+          <linecontainsregexp>
+            <regexp pattern="${project.name}_${fortify.release.name}"/>
+          </linecontainsregexp>
+          <replacestring from="${project.name}_${fortify.release.name}" to=""/>
+          <deletecharacters chars=",\t\r\n' "/>
+        </filterchain>
+      </loadfile>
+      <delete file="${fortify.projects.list}"/>
+      <echo message="Project Id: ${fortify.project.id}"/>
+      <tstamp>
+        <format property="upload.timestamp.start" pattern="dd-MMM-yy HH:mm:ss" />
+      </tstamp>       
+      <echo message="Upload  ${fortify.fpr.filename} into ${project.name}_${fortify.release.name}."/>
+      <echo message="Upload start: ${upload.timestamp.start}"/>
+      <!-- Get latest FPR file -->
+      <exec executable="${fortify.managerclient.location}"> 
+        <arg value="upload" />
+        <arg value="${fortify.project.id}" />
+        <arg value="${fortify.fpr.filename}" />
+      </exec>
+      <tstamp>
+        <format property="upload.timestamp.end" pattern="dd-MMM-yy HH:mm:ss" />
+      </tstamp>       
+      <echo message="Upload completed: ${upload.timestamp.end}"/>
+    </target>
+
+    <!--    compile PlanSponsor dependencies (note they are not deployed to common)  -->
+    <target name="compile_dependencies" >
+      <ant dir="../AccountService">
+        <target name="clean" />
+        <target name="build" />
+      </ant>
+      <ant dir="../ContractService">
+        <target name="clean" />
+        <target name="build" />
+      </ant>
+      <ant dir="../DistributionService">
+        <target name="clean" />
+        <target name="build" />
+      </ant>
+      <ant dir="../EmployeeService">
+        <target name="clean"/>
+        <target name="build"/>
+      </ant>
+      <ant dir="../EnvironmentService">
+        <target name="clean"/>
+        <target name="build"/>
+      </ant>
+      <ant dir="../FundService">
+        <target name="clean"/>
+        <target name="build"/>
+      </ant>
+      <ant dir="../OrderService">
+        <target name="clean"/>
+        <target name="build"/>
+      </ant>
+      <ant dir="../MessagingService">
+        <target name="clean"/>
+        <target name="build"/>
+      </ant>
+      <ant dir="../mrl">
+        <target name="clean"/>
+        <target name="build"/>
+      </ant>
+      <ant dir="../MrlLoggerService">
+        <target name="clean"/>
+        <target name="build"/>
+      </ant>
+      <ant dir="../NotesDocumentService">
+        <target name="clean" />
+        <target name="build" />
+      </ant>
+      <ant dir="../NotificationService">
+        <target name="clean" />
+        <target name="build" />
+      </ant>
+      <ant dir="../PINGenService">
+        <target name="clean" />
+        <target name="build" />
+      </ant>
+      <ant dir="../ReportService">
+        <target name="clean" />
+        <target name="build" />
+      </ant>
+      <!--        <ant dir="../RetirementEngine">
+            <target name="clean" />
+            <target name="build" />
+        </ant>  -->
+      <ant dir="../SearchService">
+        <target name="clean" />
+        <target name="build" />
+      </ant>
+      <ant dir="../SecurityService">
+        <target name="clean" />
+        <target name="build" />
+      </ant>
+      <!--        <ant dir="../SILService">
+            <target name="clean" />
+            <target name="build" />
+        </ant>      -->
+      <ant dir="../SynchronizationService">
+        <target name="clean" />
+        <target name="build" />
+      </ant>
+      <ant dir="../USGPSUtilities">
+        <target name="clean" />
+        <target name="build_lib" />
+      </ant>
+    </target>
+
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  CVS targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <property name="svn.root" value=":pserver:Automated_Build@jhrpscvs:/USGP_Repository" />
+    <property name="svn.local" value="/svn"/>
+
+    <target name="cvs_update" depends="cvs_update_non_tagged, cvs_update_from_tag"/>
+
+    <target name="cvs_update_non_tagged" if="non.tagged.build">
+      <antcall target="cvs_update_current"/>
+    </target>
+
+
+    <target name="cvs_update_current">
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="common"/>
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="ConfigurationScripts"/>
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="PlanSponsor"/>
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="ezk\assets"/>
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="CMA"/>
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="PlanSponsorCMA"/>
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="databases\mrlusgp"/>
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="Databases\PlanSponsorContent"/>
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="Databases\CustomerService"/>
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="Databases\StraightThruProcessing"/>
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="Databases\LDAP"/>
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="Databases\EReport"/>
+
+      <delete>
+        <fileset dir="${svn.local}" includes="**/.#*" defaultexcludes="no"/>
+      </delete>
+    </target>
+
+    <target name="cvs_update_from_tag" if="previous.tagged.build">
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="common"/>
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="ConfigurationScripts"/>
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="PlanSponsor"/>
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="ezk\assets"/>
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="CMA"/>
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="PlanSponsorCMA"/>
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="databases\mrlusgp"/>
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="Databases\PlanSponsorContent"/>
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="Databases\CustomerService"/>
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="Databases\StraightThruProcessing"/>
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="Databases\LDAP"/>
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="Databases\EReport"/>
+
+      <delete>
+        <fileset dir="${svn.local}" includes="**/.#*" defaultexcludes="no"/>
+      </delete>
+    </target>
+
+    <target name = "cvs.checkout" description = "checkout common,ConfigurationScripts,pswcma, ezkcma and cma module if not exist">
+      <available file="${svn.local}/common" property="common-exists"/>
+      <available file="${svn.local}/ConfigurationScripts" property="confgScript-exists"/>
+      <available file="${svn.local}/ezkCMA" property="ezkcma-exists"/>
+      <available file="${svn.local}/PlanSponsorCMA" property="pswcma-exists"/>
+      <available file="${svn.local}/cma" property="cma-exists"/>  
+      <antcall target="checkout.common" />
+      <antcall target="checkout.confgScript" />
+      <antcall target="checkout.pswcma" />
+      <antcall target="checkout.ezkcma" />
+      <antcall target="checkout.cma" />
+    </target>
+
+    <target name = "checkout.common" unless = "common-exists">
+      <cvs command="-q checkout -P " cvsRoot="${cvs.root}" dest="${svn.local}" package="common"/>
+    </target>
+
+    <target name = "checkout.confgScript" unless = "confgScript-exists">
+      <cvs command="-q checkout -P " cvsRoot="${cvs.root}" dest="${svn.local}" package="ConfigurationScripts"/>
+    </target>
+
+    <target name = "checkout.pswcma" unless = "pswcma-exists">
+      <cvs command="-q checkout -P " cvsRoot="${cvs.root}" dest="${svn.local}" package="PlanSponsorCMA"/>
+    </target>
+
+    <target name = "checkout.ezkcma" unless = "ezkcma-exists">
+      <cvs command="-q checkout -P " cvsRoot="${cvs.root}" dest="${svn.local}" package="ezkCMA"/>
+    </target>
+
+    <target name = "checkout.cma" unless = "cma-exists">
+      <cvs command="-q checkout -P " cvsRoot="${cvs.root}" dest="${svn.local}" package="CMA"/>
+    </target>
+
+
+    <target name="cvs_update_ezk_build" depends="cvs_update_ezk_non_tagged, cvs_update_ezk_from_tag"/>
+
+    <target name="cvs_update_ezk_non_tagged" if="non.tagged.build">
+      <cvs command="-q update -P -C -d" cvsRoot="${cvs.root}" dest="${svn.local}" package="ezk\build.xml"/>
+    </target>
+
+    <target name="cvs_update_ezk_from_tag" if="previous.tagged.build">
+      <cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="ezk\build.xml"/>
+    </target>
+
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Database targets
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <property name="mrldatabase.dir" value="${basedir}/../Databases/MRLUSGP" />
+    <property name="ezk.content.base.dir" value="${basedir}/../Databases/EZkContent" />
+    <property name="content.base.dir" value="${basedir}/../Databases/PlanSponsorContent" />
+    <property name="customer.service.base.dir" value="${basedir}/../Databases/CustomerService" />
+    <property name="stp.database.base.dir" value="${basedir}/../Databases/StraightThruProcessing" />
+    <property name="session.database.base.dir" value="${basedir}/../Databases/PersistentSessions" />
+
+    <target name="createDatabases" description="Create and populate all databases." depends="createDatabases_mrl, createDatabases_Content, createDatabases_CustomerService"/>
+
+    <target name="createDatabases_mrl" description="Create and populate the MRL database.">
+      <ant antfile="mrldatabase.xml" dir="${mrldatabase.dir}" target="local_rebuild"/>
+    </target>
+
+    <target name="createDatabases_Content" description="Create and populate the Content database.">
+      <ant antfile="ContentDatabase.xml" dir="${content.base.dir}" target="refresh_env"/>
+    </target>
+
+    <target name="createDatabases_Content_load" description="Create and populate the Content database.">
+      <ant antfile="ContentDatabase.xml" dir="${content.base.dir}" target="load_data"/>
+    </target>
+
+    <target name="createDatabases_CustomerService" description="Create and populate the CustomerService database.">
+      <ant antfile="CustomerServiceDatabase.xml" dir="${customer.service.base.dir}"/>
+    </target>
+
+    <target name="createDatabases_Session" description="Create and populate the Session database.">
+      <ant antfile="PersistentSessions.xml" dir="${session.database.base.dir}"/>
+    </target>
+
+
+    <target name="createDatabases_SIT" description="Create and populate all databases for SIT.">
+      <ant antfile="mrldatabase.xml" dir="${mrldatabase.dir}" target="remote_refresh">
+        <property name="database" value="e_mrl"/>
+        <property name="jdbc.userid" value="jhrpt9"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="ContentDatabase.xml" dir="${content.base.dir}" target="remote_refresh">
+        <property name="database" value="e_pswcnt"/>
+        <property name="jdbc.userid" value="jhrpt9"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase.xml" dir="${customer.service.base.dir}" target="remote_refresh">
+        <property name="database" value="e_csdb"/>
+        <property name="jdbc.userid" value="jhrpt9"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabaseWDs.xml" dir="${customer.service.base.dir}">
+        <property name="database" value="e_csdb"/>
+        <property name="jdbc.userid" value="jhrpt9"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase_PlanChanges.xml" dir="${customer.service.base.dir}">
+        <property name="database" value="e_csdb"/>
+        <property name="jdbc.userid" value="jhrpt9"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="SubmissionDatabase_PlanChanges.xml" dir="${stp.database.base.dir}">
+        <property name="database" value="e_stp"/>
+        <property name="jdbc.userid" value="jhrpt9"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+    </target>
+
+    <target name="createDatabases_UAT" description="Create and populate all databases for UAT.">
+      <ant antfile="mrldatabase.xml" dir="${mrldatabase.dir}" target="rebuildTables_uat"/>
+      <ant antfile="ContentDatabase.xml" dir="${content.base.dir}" target="psw_uat_refresh_data">
+        <property name="database" value="srplu2d1"/>
+        <property name="jdbc.userid" value="ezcsu2"/>
+        <property name="jdbc.password" value="new4u3day"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase.xml" dir="${customer.service.base.dir}" target="remote_refresh">
+        <property name="database" value="ezcsdb"/>
+        <property name="jdbc.userid" value="ezcsiu"/>
+        <property name="jdbc.password" value="ezcsiu12"/>
+      </ant>
+    </target>
+
+    <target name="refreshDatabases_T6" description="Refresh databases.">
+      <ant antfile="ContentDatabase.xml" dir="${ezk.content.base.dir}" target="remote_refresh">
+        <property name="database" value="T6EZKCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="ContentDatabase.xml" dir="${content.base.dir}" target="remote_refresh">
+        <property name="database" value="T6PSWCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase.xml" dir="${customer.service.base.dir}" target="refresh_sp">
+        <property name="database" value="T6CSDB"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+    </target>
+
+    <target name="refreshDatabases_S2" description="Refresh databases.">
+      <ant antfile="ContentDatabase.xml" dir="${ezk.content.base.dir}" target="remote_refresh">
+        <property name="database" value="S2EZKCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="ContentDatabase.xml" dir="${content.base.dir}" target="remote_refresh">
+        <property name="database" value="S2PSWCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase.xml" dir="${customer.service.base.dir}" target="refresh_sp">
+        <property name="database" value="S2CSDB"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+    </target>
+
+    <target name="refreshDatabases_T7" description="Refresh databases.">
+      <ant antfile="ContentDatabase.xml" dir="${ezk.content.base.dir}" target="remote_refresh">
+        <property name="database" value="T7EZKCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="ContentDatabase.xml" dir="${content.base.dir}" target="remote_refresh">
+        <property name="database" value="T7PSWCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase.xml" dir="${customer.service.base.dir}" target="refresh_sp">
+        <property name="database" value="T7CSDB"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+    </target>
+
+    <target name="refreshDatabases_TB" description="Refresh databases.">
+      <ant antfile="ContentDatabase.xml" dir="${ezk.content.base.dir}" target="remote_refresh">
+        <property name="database" value="TBEZKCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="ContentDatabase.xml" dir="${content.base.dir}" target="remote_refresh">
+        <property name="database" value="TBPSWCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase.xml" dir="${customer.service.base.dir}" target="refresh_sp">
+        <property name="database" value="TBCSDB"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+    </target>
+
+    <target name="refreshDatabases_U1" description="Refresh databases.">
+      <ant antfile="ContentDatabase.xml" dir="${ezk.content.base.dir}" target="remote_refresh">
+        <property name="database" value="U1EZKCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="ContentDatabase.xml" dir="${content.base.dir}" target="remote_refresh">
+        <property name="database" value="U1PSWCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase.xml" dir="${customer.service.base.dir}" target="refresh_sp">
+        <property name="database" value="U1CSDB"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+    </target>
+
+    <target name="createDatabases_UAT3" description="Create and populate all databases for UAT3.">
+      <ant antfile="mrldatabase.xml" dir="${mrldatabase.dir}" target="remote_refresh">
+        <property name="database" value="U1MRL"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="ContentDatabase.xml" dir="${content.base.dir}" target="remote_refresh">
+        <property name="database" value="U1PSWCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase.xml" dir="${customer.service.base.dir}" target="remote_refresh">
+        <property name="database" value="U1CSDB"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabaseWDs.xml" dir="${customer.service.base.dir}">
+        <property name="database" value="U1CSDB"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase_PlanChanges.xml" dir="${customer.service.base.dir}">
+        <property name="database" value="U1CSDB"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+    </target>
+
+    <target name="createDatabases_SIT2" description="Create and populate all databases for SIT2.">
+      <ant antfile="mrldatabase.xml" dir="${mrldatabase.dir}" target="remote_refresh">
+        <property name="database" value="S2MRL"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="ContentDatabase.xml" dir="${content.base.dir}" target="remote_refresh">
+        <property name="database" value="S2PSWCNT"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase.xml" dir="${customer.service.base.dir}" target="remote_refresh">
+        <property name="database" value="S2CSDB"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabaseWDs.xml" dir="${customer.service.base.dir}">
+        <property name="database" value="S2CSDB"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+      <ant antfile="CustomerServiceDatabase_PlanChanges.xml" dir="${customer.service.base.dir}">
+        <property name="database" value="S2CSDB"/>
+        <property name="jdbc.userid" value="jhrpu1"/>
+        <property name="jdbc.password" value="easy1234"/>
+      </ant>
+    </target>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Database Catalog targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <target name="recatalogDatabases_SIT" description="ReCatalog the remote databases for SIT.">
+      <antcall target="uncatalogDatabases_SIT"/>
+      <antcall target="catalogDatabases_SIT"/>
+      <antcall target="recatalog_DB2Connect"/>
+    </target>
+
+    <target name="uncatalogDatabases_SIT">
+      <exec executable="db2">
+        <arg line="uncatalog database srzkd1d4"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="uncatalog database srsfd1d4"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="uncatalog database srpld4cm"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="uncatalog database mrl_ezk4"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="uncatalog node epassdb"/>
+      </exec>
+    </target>
+
+    <target name="catalogDatabases_SIT">
+      <exec executable="db2">
+        <arg line="catalog tcpip node epassdb remote ibm-epassdb.manulife.com server 50200 remote_instance srzkd1"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="catalog database srzkd1d4 as srzkd1d4 at node epassdb"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="catalog database srsfd1d4 as srsfd1d4 at node epassdb"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="catalog database srpld4cm as srpld4cm at node epassdb"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="catalog database mrl_ezk4 as mrl_ezk4 at node epassdb"/>
+      </exec>
+    </target>
+
+    <target name="recatalogDatabases_UAT" description="ReCatalog the remote databases for UAT.">
+      <antcall target="uncatalogDatabases_UAT"/>
+      <antcall target="catalogDatabases_UAT"/>
+      <antcall target="recatalog_DB2Connect"/>
+    </target>
+
+    <target name="uncatalogDatabases_UAT">
+      <exec executable="db2">
+        <arg line="uncatalog database srzku2d1"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="uncatalog database srplu2d1"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="uncatalog database mrld1d1"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="uncatalog node ibmsp1"/>
+      </exec>
+    </target>
+
+    <target name="catalogDatabases_UAT">
+      <exec executable="db2">
+        <arg line="catalog tcpip node ibmsp1 remote ibm-sp1.manulife.com server 53112"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="catalog database srzku2d1 as srzku2d1 at node ibmsp1"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="catalog database srplu2d1 as srplu2d1 at node ibmsp1"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="catalog database mrld1d1 as mrld1d1 at node ibmsp1"/>
+      </exec>
+    </target>
+
+    <target name="recatalog_DB2Connect">
+      <antcall target="uncatalog_DB2Connect"/>
+      <antcall target="catalog_DB2Connect"/>
+    </target>
+
+    <target name="uncatalog_DB2Connect">
+      <exec executable="db2">
+        <arg line="uncatalog database xx_ddb2c"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="uncatalog node mlisdbdv"/>
+      </exec>
+    </target>
+
+    <target name="catalog_DB2Connect">
+      <!--	
+	  Commented for DB2 Apollo Gateway Project
+	  <exec executable="db2">
+        <arg line="catalog tcpip node mlisdbdv remote mlisdb2sysagw1.manulife.com server 3700"/>
+      </exec>
+      <exec executable="db2">
+        <arg line="catalog database tom00d0 as xx_ddb2c at node mlisdbdv authentication server"/>
+      </exec>	-->
+    </target>
+
+
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  LDAP targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <target name="refresh_LDAP">
+      <exec executable="${basedir}/../Databases/LDAP/DeletePlanSponsor.bat" dir="${basedir}/../Databases/LDAP">
+        <env key="PATH" path=".;${websphere.home}/java/bin" />
+      </exec>
+      <exec executable="${basedir}/../Databases/LDAP/InsertPlanSponsor.bat" dir="${basedir}/../Databases/LDAP">
+        <env key="PATH" path=".;${websphere.home}/java/bin" />
+      </exec>
+    </target>
+
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  WebSphere Application Server targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <target name="stop_WAS_AppServers">
+      <exec executable="net.exe">
+        <arg value="stop"/>
+        <arg value="${was.service.name}"/>
+      </exec>
+      <sleep seconds="60"/>
+    </target>
+
+    <target name="start_WAS_AppServers">
+      <exec executable="net.exe">
+        <arg value="start"/>
+        <arg value="${was.service.name}"/>
+      </exec>
+      <sleep seconds="60"/>
+    </target>
+
+    <target name="start_WAS_AppServer">
+      <exec executable="net.exe">
+        <arg value="start"/>
+        <arg value="${was.service.name}"/>
+      </exec>
+      <sleep seconds="60"/>
+    </target>
+
+    <target name="stop_PS_AppServer">
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+        <arg value="-lang"/>
+        <arg value="jacl"/>
+        <arg value="-f"/>
+        <arg file="${basedir}/scripts/stopPSAppServer.tcl"/>
+      </exec>
+      <sleep seconds="30"/>
+    </target>
+
+    <target name="stop_WAS_Applications">
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+        <arg value="-lang"/>
+        <arg value="jacl"/>
+        <arg value="-f"/>
+        <arg file="${basedir}/scripts/stopApplications.tcl"/>
+      </exec>
+      <sleep seconds="15"/>
+    </target>
+    <target name="start_WAS_Applications">
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+        <arg value="-lang"/>
+        <arg value="jacl"/>
+        <arg value="-f"/>
+        <arg file="${basedir}/scripts/startApplications.tcl"/>
+      </exec>
+      <sleep seconds="15"/>
+    </target>
+
+    <target name="delete_WAS_Applications" depends="stop_WAS_Applications">
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+        <arg value="-lang"/>
+        <arg value="jacl"/>
+        <arg value="-f"/>
+        <arg file="${basedir}/scripts/deleteApplications.tcl"/>
+      </exec>
+    </target>
+
+    <target name="install_WAS_Applications">
+      <antcall target="install_PlanSponsor"/>
+      <antcall target="install_PlanSponsorCMA"/>
+    </target>
+
+    <target name="install_WAS_Applications_withoutCMA">
+      <antcall target="install_PlanSponsor"/>
+    </target>
+
+    <target name="install_PlanSponsor">
+      <copy todir="${websphere.home}/profiles/${profile.name}/installableApps" overwrite="yes" file="${project.dist.dir}/${project.name}.ear"/>
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+        <arg value="-lang"/>
+        <arg value="jacl"/>
+        <arg value="-f"/>
+        <arg file="${basedir}/scripts/installPSApp.tcl"/>
+        <arg value="${websphere.home}/profiles/${profile.name}/installableApps/PlanSponsor.ear"/>
+        <arg value="${cell.name}"/>
+        <arg value="${node.name}"/>
+        <arg value="${appserver.name}"/>
+        <arg value="${webserver.name}"/>
+      </exec>
+      <!--
+  <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+    <arg value="-lang"/>
+    <arg value="jacl"/>
+    <arg value="-f"/>
+    <arg file="${basedir}/scripts/startPlanSponsor.jacl"/>
+    <arg value="${cell.name}"/>
+    <arg value="${node.name}"/>
+    <arg value="${appserver.name}"/>
+  </exec>
+-->
+    </target>
+
+    <target name="install_PlanSponsorCMA">
+      <copy todir="${websphere.home}/profiles/${profile.name}/installableApps" overwrite="yes" file="${basedir}/../CMA/dist/CMA.ear"/>
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang"/>
+        <arg value="jacl"/>
+        <arg value="-f"/>
+        <arg file="${basedir}/scripts/installCMAApp.tcl"/>
+        <arg value="${websphere.home}/profiles/${profile.name}/installableApps/CMA.ear"/>
+        <arg value="${cell.name}"/>
+        <arg value="${node.name}"/>
+        <arg value="${webserver.name}"/>
+      </exec>
+    </target>
+
+    <target name="restart_WAS_Applications">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang"/>
+        <arg value="jacl"/>
+        <arg value="-f"/>
+        <arg file="${basedir}/scripts/restartAllApps.tcl"/>
+      </exec>
+    </target>
+
+    <target name="stop_WAS_AdminServer" depends="stop_WAS_AppServers">
+      <exec executable="net.exe">
+        <arg value="stop"/>
+        <arg value="${was.service.name}"/>
+      </exec>
+      <sleep seconds="60"/>
+    </target>
+
+    <target name="start_WAS_AdminServer">
+      <exec executable="net.exe">
+        <arg value="start"/>
+        <arg value="${was.service.name}"/>
+      </exec>
+      <sleep seconds="60"/>
+    </target>
+
+    <target name="restart_WAS_AdminServer">
+      <antcall target="stop_WAS_AdminServer"/>
+      <antcall target="start_WAS_AdminServer"/>
+    </target>
+
+    <target name="delete_WAS_logs">
+      <delete quiet="true">
+        <fileset dir="${websphere.home}/Profiles/${node.profile.name}/logs" includes="*.log"/>
+        <fileset dir="${websphere.home}/Profiles/${node.profile.name}/logs" includes="*.txt"/>
+        <fileset dir="${websphere.home}/Profiles/${node.profile.name}/logs" includes="tracefile"/>
+      </delete>
+    </target>
+
+    <target name="delete_WAS_temp">
+      <delete dir="${websphere.home}/Profiles/${node.profile.name}/temp" quiet="true"/>
+      <mkdir dir="${websphere.home}/Profiles/${node.profile.name}/temp"/>
+    </target>
+
+    <target name="start_PS_AppServer">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang"/>
+        <arg value="jacl"/>
+        <arg value="-f"/>
+        <arg file="${basedir}/scripts/startPSAppServer.tcl"/>
+      </exec>
+    </target>
+
+    <target name="precompile_jsps">
+      <exec executable="cmd.exe">
+        <arg line="/c JspBatchCompiler -enterpriseApp PlanSponsor -webModule PlanSponsorWeb"/>
+        <env key="CLASSPATH" path="??"/>
+      </exec>
+    </target>
+
+    <target name="stop_node">
+      <echo message="Stopping all aplication servers and the node agent ..." />
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+        <arg value="-lang"/>
+        <arg value="jython"/>
+        <arg value="-f" />
+        <arg file="${config.scripts.dir}/stopAllAppServers.py" />
+        <arg value="${node.name}" />
+      </exec>
+    </target>
+
+    <target name="start_node">
+      <exec executable="net.exe">
+        <arg value="start"/>
+        <arg value="${was.service.name}"/>
+      </exec>
+      <sleep seconds="60"/>
+    </target>
+
+    <target name="archive_profile_logs" depends = "init" if="logdir.exist">
+      <move todir="${profile.logs.dir}/Archive/${PSWServer.name}${DSTAMP}-${TSTAMP}">
+        <fileset dir="${profile.logs.dir}\${PSWServer.name}">
+          <include name="**/*.log"/>
+          <include name="**/*.txt"/>
+          <include name="**/*.state"/>
+          <include name="**/*.pid"/>
+          <include name="**/*.traceout"/>
+          <include name="**/*.valout"/>
+          <exclude name="archive/**"/>
+          <exclude name="AboutThisProfile.txt"/>
+        </fileset>
+      </move>
+    </target>
+
+    <target name="delete_profile_temp">
+      <delete dir="${websphere.home}/Profiles/${profile.name}/temp" quiet="true"/>
+      <mkdir dir="${websphere.home}/Profiles/${profile.name}/temp"/>
+    </target>
+
+
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   WAS6 setup specific targets:
+    - create default profile
+    - delete default profile
+    - setup security
+    - setup JDBC providers
+    - setup Datasources
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <target name="show.was6.setup.targets">
+      <echo>
+        Following targets are for WAS6 setup:
+        - was6.create.default.profile: creates Default profile [${profile.name}]
+        - was6.delete.default.profile: deletes Default profile [${profile.name}]
+        - was6.display.profile.info:   displays information about the profile [${profile.name}]
+        - was6.setup.all:   calls following was6 targets:
+        - was6.configure.env.vars:    configure WAS6 Environment variables
+        - was6.setup.security:        setup Authetication in WAS
+        - was6.setup.jdbc.providers:  setup JDBC providers (XA and non-XA)
+        - was6.setup.datasources:     setup all the required Datasources
+        - was6.setup.jvm.classpath:   setup JVM classpath
+        - was6.setup.jvm.debug:       sets JVM debugMode to true
+        set was.setup.jvm.debug.mode property to false to set debugMode to false
+
+      </echo>
+    </target>
+
+    <!--
+       Setup property "was6.profile.creation.params" to blank if you don't want the default
+       profile to be installed (and started) as windows service
+    -->
+    <target name="was6.create.default.profile"
+        description="Creates default WAS6 Profile using the value provided in creation params property">
+      <property name="was6.profile.creation.params"
+          value="-isDefault
+          -winserviceCheck true 
+          -winserviceAccountType specifieduser
+          -winserviceUserName db2admin
+          -winservicePassword db2admin" />
+      <property name="was6.create.default.profile.args" value="-create 
+          -profileName ${profile.name}
+          -profilePath ${websphere.home}/profiles/${profile.name}
+          -templatePath ${websphere.home}/profileTemplates/default
+          -nodeName ${node.name}
+          -cellName ${cell.name}
+          ${was6.profile.creation.params}" />
+
+      <echo>
+        Creating WAS6 default profile using following arguments:
+        ${was6.create.default.profile.args}
+
+
+
+        This process may take a while...
+      </echo>
+
+      <exec executable="${websphere.home}/bin/manageprofiles.bat">
+        <arg line="${was6.create.default.profile.args}" />
+      </exec>
+
+      <antcall target="was6.display.profile.info"></antcall>
+    </target>
+
+
+    <target name="was6.display.profile.info" description="Displays the contents of file that is created on profile creation">
+
+      <concat>
+        <header filtering="no" trimleading="yes">
+          ====================================================
+          -->> Information about [${profile.name}] profile 
+          ====================================================
+        </header>
+        <path path="${websphere.home}/profiles/${profile.name}/logs/AboutThisProfile.txt"/>
+      </concat>
+    </target>
+
+
+
+
+
+    <target name="was6.delete.default.profile" description="Deletes default WAS6 Profile">
+      <echo >
+        Deleting WAS6 default profile: [${profile.name}]
+
+        This process may take a while...
+      </echo>
+
+      <exec executable="${websphere.home}/bin/manageprofiles.bat">
+        <arg line="-delete -profileName ${profile.name}"/>
+      </exec>
+    </target>
+
+    <target name="was6.configure.env.vars" description="Configure WAS6 Environment variables" if="db2.home">
+      <echo message="Configuring WAS Environment variables..." />
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+        <arg value="-f" />
+        <arg file="${basedir}/scripts/configWASVars.jacl" />
+        <arg value="${cell.name}" />
+        <arg value="${node.name}" />
+        <arg value="${db2.home}/java"/>
+      </exec>
+    </target>
+
+    <target name="was6.setup.security" description="Setup WAS6 Security">
+      <echo message="Creating Security (JAAS - J2C authentication)..." />
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+        <arg value="-f" />
+        <arg file="${basedir}/scripts/createAuth.jacl" />
+      </exec>
+    </target>
+
+    <target name="was6.setup.jdbc.providers" description="Setup WAS6 JDBC Providers">
+      <echo message="Creating JDBC providers (XA and non-XA)..." />
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+        <arg value="-f" />
+        <arg file="${basedir}/scripts/createJDBC.jacl" />
+        <arg value="${cell.name}" />
+        <arg value="${node.name}" />
+        <arg value="${appserver.name}" />
+      </exec>
+    </target>
+
+    <target name="was6.setup.jvm.classpath" description="Setup WAS6 JVM Classpath">
+      <echo message="Setting JVM classpath" />
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+        <arg value="-f" />
+        <arg file="${basedir}/scripts/setWAS-jvm-classpath.jacl" />
+        <arg value="${cell.name}" />
+        <arg value="${node.name}" />
+      </exec>
+
+    </target>
+
+
+    <target name="was6.setup.jvm.debug" description="Setup WAS6 JVM Debug mode to true">
+      <property name="was.setup.jvm.debug.mode" value="true"/>
+      <echo message="Setting JVM debug mode to ${was.setup.jvm.debug.mode}" />
+
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat">
+        <arg value="-f" />
+        <arg file="${basedir}/scripts/setWAS-jvm-debug.jacl" />
+        <arg value="${cell.name}" />
+        <arg value="${node.name}" />
+        <arg value="${was.setup.jvm.debug.mode}"/>
+      </exec>
+    </target>
+
+    <target name="was.create.datasource" description="Setup WAS6 datasource using set params">
+      <echo message="Creating [${was.datasource.name}] datasource..."/>
+      <exec executable="${websphere.home}/profiles/${profile.name}/bin/wsadmin.bat" failonerror="true">
+        <arg value="-f" />
+        <arg file="${basedir}/scripts/createDataSource.jacl" />
+        <arg value="${was.datasource.name}" />
+        <arg value="${cell.name}" />
+        <arg value="${node.name}" />
+        <arg value="${was.db2.jdbc.driver}" />
+        <arg value="${was.security.alias}" />
+        <arg value="${was.datasource.jndi}" />
+        <arg value="${was.database.name}" />
+      </exec>
+    </target>
+
+
+    <target name="was6.setup.datasources" description="Setup WAS6 DataSources">
+      <property name="was.security.alias.ps" value="PlanSponsorNode/db2admin"/>
+      <property name="was.security.alias.apollo" value="PlanSponsorNode/apollo"/>
+      <property name="was.db2.jdbc.driver.XA" value="DB2_JDBC_Driver_XA_UV"/>
+      <property name="was.db2.jdbc.driver.non.XA" value="DB2_JDBC_Driver_UV"/>
+
+      <echo message="Creating DataSources..." />
+
+      <antcall target="was.create.datasource">
+        <param name="was.datasource.name" value="Customer Service Database (PSW)" />
+        <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+        <param name="was.security.alias" value="${was.security.alias.ps}" />
+        <param name="was.datasource.jndi" value="jdbc/customerService" />
+        <param name="was.database.name" value="srzkd1d1" />
+      </antcall>
+
+      <antcall target="was.create.datasource">
+        <param name="was.datasource.name" value="MRL System Database" />
+        <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+        <param name="was.security.alias" value="${was.security.alias.ps}" />
+        <param name="was.datasource.jndi" value="jdbc/mrl" />
+        <param name="was.database.name" value="mrld1d1" />
+      </antcall>
+
+      <antcall target="was.create.datasource">
+        <param name="was.datasource.name" value="Plan Sponsor Content Database" />
+        <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+        <param name="was.security.alias" value="${was.security.alias.ps}" />
+        <param name="was.datasource.jndi" value="jdbc/content" />
+        <param name="was.database.name" value="srpld1cm" />
+      </antcall>
+
+      <antcall target="was.create.datasource">
+        <param name="was.datasource.name" value="Apollo via DB2Connect" />
+        <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.XA}" />
+        <param name="was.security.alias" value="${was.security.alias.apollo}" />
+        <param name="was.datasource.jndi" value="jdbc/apollo" />
+        <param name="was.database.name" value="xx_ddb2c" />
+      </antcall>
+
+      <antcall target="was.create.datasource">
+        <param name="was.datasource.name" value="Session Persistence Database (PSW)" />
+        <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.non.XA}" />
+        <param name="was.security.alias" value="${was.security.alias.ps}" />
+        <param name="was.datasource.jndi" value="jdbc/session" />
+        <param name="was.database.name" value="session" />
+      </antcall>
+
+      <antcall target="was.create.datasource">
+        <param name="was.datasource.name" value="Customer Service Database (Ezk)" />
+        <param name="was.db2.jdbc.driver" value="${was.db2.jdbc.driver.non.XA}" />
+        <param name="was.security.alias" value="${was.security.alias.ps}" />
+        <param name="was.datasource.jndi" value="jdbc/customerServiceEZk" />
+        <param name="was.database.name" value="srzkd1d1" />
+      </antcall>
+    </target>
+
+    <target name="was6.setup.all" description="Setup WAS6 environment for variables, Security, JDBC Provider and Datasources"
+        if="appserver.name">
+      <antcall target="was6.configure.env.vars"/>
+      <antcall target="was6.setup.security"/>
+      <antcall target="was6.setup.jdbc.providers"/>
+      <antcall target="was6.setup.datasources"/>
+      <antcall target="was6.setup.jvm.classpath"/>
+    </target>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  WebSphere 6 Application Server Admin targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <target name="stop_psw_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+        <arg value="jython" />
+        <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+        <arg value="stop" />
+        <arg value="${PSWServer.name}" />
+        <arg value="${node.profile.name}" />
+      </exec>
+      <sleep seconds="20"/>
+    </target>
+
+    <target name="start_psw_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+        <arg value="jython" />
+        <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+        <arg value="start" />
+        <arg value="${PSWServer.name}" />
+        <arg value="${node.profile.name}" />
+      </exec>
+      <sleep seconds="25"/>
+    </target>
+    <target name="bounce_psw_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+        <arg value="jython" />
+        <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+        <arg value="bounce" />
+        <arg value="${PSWServer.name}" />
+        <arg value="${node.profile.name}" />
+      </exec>
+    </target>
+
+    <target name="stop_ezk_server">
+      <exec executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+        <arg value="jython" />
+        <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/adminAppServer.py"/>
+        <arg value="stop" />
+        <arg value="${EZKServer.name}" />
+        <arg value="${node.profile.name}" />
+      </exec>
+      <sleep seconds="20"/>
+    </target>
+
+    <target name="install_psw_ear">
+      <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+        <arg value="jython" />
+        <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/deploy.py"/>
+        <arg value="${server.alias}" />
+        <arg value="install" />
+        <arg value="psw" />
+        <arg value="${project.dist.dir}/${project.name}.ear" />
+      </exec>
+    </target>
+
+    <target name="uninstall_psw_ear">
+      <exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+        <arg value="-lang" />
+        <arg value="jython" />
+        <arg value="-f"/>
+        <arg file="${basedir}/../ConfigurationScripts/deploy.py"/>
+        <arg value="${server.alias}" />
+        <arg value="uninstall" />
+        <arg value="psw" />
+        <arg value="${project.dist.dir}/${project.name}.ear" />
+      </exec>
+      <sleep seconds="10"/>   
+    </target>
+
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Miscellaneous targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <target name="clean">
+      <ant dir="PlanSponsorEJB" target="clean"/>
+      <ant dir="PlanSponsorWeb" target="clean"/>
+      <ant dir="BrokerDealerWeb" target="clean"/>
+      <delete dir="${project.build.dir}"/>
+      <delete dir="${project.dist.dir}"/>
+    </target>
+
+    <target name="deploy_config_files" depends="create_dir, copy_templates">
+      <mkdir dir="${config.deploy.dir}/images" description="Create images directory" />
+      <mkdir dir="${config.deploy.dir}/planreview_alarm" description="Create planreview alarm email directory" />
+      <copy todir="${config.deploy.dir}" overwrite="yes">
+        <fileset dir="${basedir}/PlanSponsorConfig" excludes="**/svn/**"/>
+        <fileset dir="${fund.service.dir}/properties">
+          <include name="AddendumProperties.properties"/>
+          <include name="IccContent.properties"/>
+          <include name="IpiContent.properties"/>
+        </fileset>
+        <fileset dir="${common.dir}/licenses">
+          <include name="Aspose.Total.Java.lic"/>
+        </fileset>
+        <fileset dir="${notice.service.dir}/properties">
+          <include name="NoticePrintProperties.properties"/>
+        </fileset>	
+        <fileset dir="${notice.service.dir}/resources">
+          <include name="NoticeDistributionPrintRequest.xsd"/>
+          <include name="NoticeMailingList.xsd"/>
+        </fileset>
+        <!--    <fileset dir="${fee.service.dir}/properties" excludes="**/svn/**"/>	-->
+      </copy>
+      <copy todir="${assets.deploy.dir}/fonts" overwrite="yes">
+        <fileset dir="${basedir}/../common/assets/fonts" excludes="**/svn/**"/>
+      </copy>
+      <copy todir="${scripts.deploy.dir}" overwrite="yes">
+        <fileset dir="${awd.service.dir}/scripts" excludes="**/svn/**"/>
+      </copy>
+      <copy todir="${scripts.deploy.dir}" overwrite="yes">
+        <fileset dir="${basedir}/scripts">
+          <include name="AsposeSharePath_map_drive.cmd"/>
+          <include name="TEDFileOpearation.cmd"/>
+        </fileset>
+      </copy>
+      <copy todir="${config.deploy.dir}/xslstylesheet" overwrite="yes">
+        <fileset dir="${fund.service.dir}/properties/xslstylesheet">
+          <include name="404a5/icc.xsl"/>
+          <include name="404a5/ipi.xsl"/>
+          <include name="404a5/ipiaddendum.xsl"/>
+        </fileset>
+
+        <!--  <fileset dir="${fee.service.dir}/properties/xslstylesheet" excludes="**/svn/**"/> -->
+        <fileset dir="${awd.service.dir}/xslstylesheet" excludes="**/svn/**"/>
+      </copy>
+      <copy todir="${config.deploy.dir}/xslstylesheet/IPSR" overwrite="yes">
+        <fileset dir="${common.assets.dir}/xsl/IPSM" excludes="**/svn/**" /> 
+      </copy>
+      <copy todir="${config.deploy.dir}/images" overwrite="yes">
+        <fileset dir="${common.assets.dir}/images" excludes="**/svn/**" />
+        <fileset dir="${basedir}/BaseWeb/webApplication/assets/unmanaged/images/StandardReports">
+          <include name="JH_SIG_PMS300_RGB-hi.jpg"/>
+          <include name="New_York_TAB.jpg"/>
+
+        </fileset>
+        <fileset dir="${basedir}/BaseWeb/webApplication/assets/unmanaged/images/StandardReports/InvestmentSelectionForm">
+          <include name="plaincheckboxSmall.gif"/>
+          <include name="checkedPlainCheckboxSmall.gif"/>
+          <include name="check.gif"/>
+        </fileset>
+      </copy>
+      <copy todir="${assets.deploy.dir}/images" overwrite="yes">
+        <fileset dir="${basedir}/../PlanSponsorCMA/PlanSponsorCMAWeb/webApplication/assets/generalimages">
+          <include name="BD-jhrps-logo.png"/>
+          <exclude name="**/svn/**"/>
+        </fileset>
+        <fileset dir="${basedir}/BaseWeb/webApplication/assets/unmanaged/images">
+          <include name="JH_SIG_black_300dpi.jpg"/>
+          <include name="JH_RPS_black.png"/> 
+
+          <exclude name="**/svn/**"/>
+        </fileset>    	
+      </copy>  	
+      <copy todir="${config.deploy.dir}/images" overwrite="yes">
+        <fileset dir="${basedir}/BaseWeb/webApplication/assets/unmanaged/images">
+          <include name="JH_404_LOGO_98X40.jpg"/>
+          <include name="JH_404_LOGO_121X40.jpg"/>
+          <exclude name="**/svn/**"/>
+        </fileset>    	
+      </copy>  
+
+      <!-- Plan Review Changes -->
+      <copy todir="${config.deploy.dir}" overwrite="yes">
+        <fileset dir="${planReview.service.dir}/properties">
+          <include name="PlanReviewRequestProperties.properties" />
+        </fileset>
+      </copy>
+      <copy todir="${config.deploy.dir}/planreview_alarm" overwrite="yes">
+        <fileset dir="${planReview.service.dir}/resources/planreview_alarm" excludes="**/svn/**" />
+      </copy>
+      <copy todir="${scripts.deploy.dir}" overwrite="yes">
+        <fileset dir="${planReview.service.dir}/scripts" excludes="**/svn/**"/>
+      </copy>
+
+    </target>
+
+    <target name="stop_StandaloneFileManager" if="StandaloneCMAFile-exists">
+      <exec executable="cmd.exe" dir="/apps/StandaloneCMAFile/scripts">
+        <arg line="/c CMAFileManagerShutdown"/>
+      </exec>
+    </target>
+
+    <target name="start_StandaloneFileManager">
+      <!-- with Windows XP and server 2003, there's a schtasks.exe process that can do this, but I don't know how to do it with Windows 2000 -->
+    </target>
+
+    <target name="stop_RMI_services">
+      <exec executable="schtasks">
+        <arg line = "/run /tn StopAllRMIServices"/>
+      </exec>
+      <sleep seconds="30"/>
+    </target>
+
+    <target name="start_RMI_services">
+      <!-- with Windows XP and server 2003, there's a schtasks.exe process that can do this, but I don't know how to do it with Windows 2000 -->
+      <exec executable="schtasks">
+        <arg line = "/run /tn StartAllRMIServices"/>
+      </exec>
+    </target>
+
+    <target name="reboot">
+      <exec executable="iisreset.exe">
+        <arg value="/reboot"/>
+      </exec>
+    </target>
+
+    <!-- update all the jsps, classes and other web content in the deployed dev app server -->
+    <target name="dev_refresh_web_module" depends="dev_setup, init">
+      <antcall target="copy_assets">
+        <param name="assets.overwrite" value="no" />
+      </antcall>
+      <copy todir="${websphere.application.install.dir}/PlanSponsor.ear/PlanSponsorWeb.war">
+        <fileset dir="PlanSponsorWeb/webApplication">
+          <include name="**/*.js"/>
+          <include name="**/*.css"/>
+          <include name="**/*.jsp"/>
+          <include name="**/*.tag"/>
+          <include name="**/*.xml"/>
+          <include name="**/*.xmi"/>
+          <include name="**/*.properties"/>
+          <include name="**/*.tld"/>
+          <include name="**/*.gif"/>
+          <include name="**/*.jpg"/>
+          <!--<date datetime="07/20/2004 10:00 PM" when="after"/>-->
+        </fileset>
+      </copy>
+      <copy todir="${websphere.application.install.dir}/PlanSponsor.ear/PlanSponsorWeb.war">
+        <fileset dir="BrokerDealerWeb/webApplication">
+          <include name="**/com/manulife/pension/platform/web/**/*.class"/>
+          <include name="**/com/manulife/pension/ps/web/**/*.class"/>
+          <!--<date datetime="07/20/2004 10:00 PM" when="after"/>-->
+        </fileset>
+      </copy>
+      <copy todir="${websphere.application.config.dir}/PlanSponsor.ear/deployments/PlanSponsor/PlanSponsorWeb.war/WEB-INF">
+        <fileset dir="PlanSponsorWeb/webApplication/WEB-INF">
+          <include name="**/*.xml"/>
+          <include name="**/*.xmi"/>
+          <include name="**/*.tld"/>
+          <include name="**/*.properties"/>
+        </fileset>
+      </copy>
+      <copy todir="${websphere.application.install.dir}/PlanSponsor.ear/BrokerDealerWeb.war">
+        <fileset dir="BrokerDealerWeb/webApplication">
+          <include name="**/*.js"/>
+          <include name="**/*.css"/>
+          <include name="**/*.jsp"/>
+          <include name="**/*.tag"/>
+          <include name="**/*.xml"/>
+          <include name="**/*.xmi"/>
+          <include name="**/*.properties"/>
+          <include name="**/*.tld"/>
+          <include name="**/com/manulife/pension/platform/**/*.class"/>
+          <include name="**/com/manulife/pension/bd/**/*.class"/>
+          <include name="**/com/manulife/pension/ps/web/taglib/**/*.class"/>
+          <include name="**/*.gif"/>
+          <include name="**/*.jpg"/>
+          <!--<date datetime="07/20/2004 10:00 PM" when="after"/>-->
+        </fileset>
+      </copy>
+    </target>
+
+    <!-- update all the ejb jar in the deployed dev app server -->
+    <target name="dev_refresh_ejb_module" depends="dev_setup, init">
+      <copy todir="${websphere.application.install.dir}/PlanSponsor.ear/" flatten="true">
+        <path refid="lib.path"/>
+        <path refid="weblib.path"/>
+        <fileset dir="build">
+          <include name="PlanSponsorEJB.jar"/>
+        </fileset>
+      </copy>
+      <copy todir="${websphere.application.config.dir}/PlanSponsor.ear/deployments/PlanSponsor/PlanSponsorEJB.jar/META-INF">
+        <fileset dir="PlanSponsorEJB/ejbModule/META-INF">
+          <include name="**/*.xml"/>
+          <include name="**/*.properties"/>
+          <include name="**/*.xmi"/>
+          <include name="**/*.MF"/>
+        </fileset>
+      </copy>
+    </target>
+
+    <target name="copy_artifacts" if="artifactsDir">
+      <copy todir="${artifactsDir}" >
+        <fileset dir="${project.dist.dir}"/>
+      </copy>
+    </target>
+
+    <!--
+<target name="javadocs" depends="build">
+  <javadoc 
+    destdir="${report.javadoc.dir}"
+    description="Generates javadoc for the project."
+    >
+    <sourcepath></sourcepath>
+  </javadoc>    
+</target>
+-->
+
+
+    <target name="build_libs">
+      <ant dir="../USGPSUtilities" inheritAll="false">
+        <target name="clean" />
+        <target name="build_lib" />
+      </ant>
+      <ant dir="../USGPSTestUtilities" inheritAll="false">
+        <target name="clean" />
+        <target name="build_lib" />
+      </ant>
+      <ant dir="../mrl" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+      </ant>
+      <ant dir="../EnvironmentService" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+      <ant dir="../CMA/CMAEJB" inheritAll="false">
+        <property name="app.name" value="plansponsor" />
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+      <ant dir="../CMA/CMAUtil" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+      <ant dir="../MessagingService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+      <ant dir="../MrlLoggerService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+      <ant dir="../FundService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+      <ant dir="../OrderService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+      <ant dir="../AccountService" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+      <ant dir="../PINGenService" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+      <ant dir="../ContractService" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+      <ant dir="../EmployeeService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+      <ant dir="../NotificationService" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+      <ant dir="../DistributionService" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+      <ant dir="../SecurityService" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+      <ant dir="../USGPSWebUtilities" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+      </ant>
+      <ant dir="../NotesDocumentService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+      <ant dir="../SearchService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+      <ant dir="../ReportService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+      <ant dir="../SynchronizationService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+      <!--
+    <ant dir="../SrsModel" inheritAll="false">
+      <target name="clean"/>
+      <target name="dist"/>
+    </ant>
+-->
+    </target>
+
+
+    <target name="build_account_service">
+      <ant dir="../AccountService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+    </target>  
+
+    <target name="build_distribution_service">
+      <ant dir="../DistributionService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+    </target> 
+
+    <target name="build_environment_service">
+      <ant dir="../EnvironmentService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+    </target>
+
+    <target name="build_notification_service">
+      <ant dir="../NotificationService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+    </target> 
+
+    <target name="build_contract_service">
+      <ant dir="../ContractService" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+    </target>
+    <target name="build_usgps_utilities">
+      <ant dir="../USGPSUtilities" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+    </target>
+    <target name="build_cma_service">
+      <ant dir="../CMA/CMAEJB" inheritAll="false">
+        <property name="app.name" value="plansponsor" />
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+      <ant dir="../CMA/CMAUtil" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+    </target>
+    <target name="build_cma_util">
+      <ant dir="../CMA/CMAUtil" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+    </target>
+    <target name="build_security_service">
+      <ant dir="../SecurityService" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+        <target name="copy_to_common" />
+      </ant>
+    </target>
+    <target name="build_mrl">
+      <ant dir="../mrl" inheritAll="false">
+        <target name="clean" />
+        <target name="dist" />
+      </ant>
+    </target>
+    <target name="build_fund_service">
+      <ant dir="../FundService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+    </target>
+    <target name="build_order_service">
+      <ant dir="../OrderService" inheritAll="false">
+        <target name="clean"/>
+        <target name="dist"/>
+        <target name="copy_to_common"/>
+      </ant>
+    </target>
+    <target name="init1">
+      <tstamp description="Initialize the DSTAMP, TSTAMP and TODAY properties."/>
+    </target>
+
+    <target name="archive_profile_logs1" depends = "init1" if="logdir.exist">
+      <move todir="${profile.logs.dir}/Archive/${PSWServer.name}${DSTAMP}-${TSTAMP}">
+        <fileset dir="${profile.logs.dir}\${PSWServer.name}">
+          <include name="**/*.log"/>
+          <include name="**/*.txt"/>
+          <include name="**/*.state"/>
+          <include name="**/*.pid"/>
+          <include name="**/*.traceout"/>
+          <include name="**/*.valout"/>
+          <exclude name="archive/**"/>
+          <exclude name="AboutThisProfile.txt"/>
+        </fileset>
+      </move>
+    </target>
+
+    <target name="edit_web_ext_iis">
+      <replace file="${basedir}/PlanSponsorWeb/webApplication/WEB-INF/ibm-web-ext.xml">
+        <replacefilter token='reloadInterval="10"' value='reloadInterval="600"'/>
+        <replacefilter token='reloadingEnabled="true"' value='reloadingEnabled="false"'/>
+        <replacefilter token='fileServingEnabled="true"' value='fileServingEnabled="false"'/>
+      </replace>
+      <replace file="${basedir}/BrokerDealerWeb/webApplication/WEB-INF/ibm-web-ext.xml">
+        <replacefilter token='reloadInterval="10"' value='reloadInterval="600"'/>
+        <replacefilter token='reloadingEnabled="true"' value='reloadingEnabled="false"'/>
+        <replacefilter token='fileServingEnabled="true"' value='fileServingEnabled="false"'/>
+      </replace>
+    </target>
+    <target name="edit_web_ext_noiis">
+      <replace file="${basedir}/PlanSponsorWeb/webApplication/WEB-INF/ibm-web-ext.xml">
+        <replacefilter token='fileServingEnabled="false"' value='fileServingEnabled="true"'/>
+      </replace>
+      <replace file="${basedir}/BrokerDealerWeb/webApplication/WEB-INF/ibm-web-ext.xml">
+        <replacefilter token='fileServingEnabled="false"' value='fileServingEnabled="true"'/>
+      </replace>
+    </target>  
+    <target name="get_and_customize_cvs_image1" depends="clean, edit_messaging_properties, edit_security_properties, edit_dmekit_properties, edit_iloans_properties, edit_redirect_htmls"/>
+    <target name="prepare_to_build1" depends="init1, get_and_customize_cvs_image1, delete_WAS_temp"/>
+
+    <target name="psw_iis_nodb_nosvnupdate" depends="prepare_to_build1, edit_web_ext_iis, build_and_create_ear,stop_psw_server, stop_ezk_server, archive_profile_logs1, uninstall_psw_ear, install_psw_ear, deploy_config_files, copy_assets"/>
+    <target name="psw_noiis_nodb_nosvnupdate" depends="prepare_to_build1, edit_web_ext_noiis, build_and_create_ear,stop_psw_server, stop_ezk_server, archive_profile_logs1, uninstall_psw_ear, install_psw_ear, deploy_config_files, copy_assets_to_WAS"/>
+
+    <target name="psw_deploy_to_test_env_from_staging" depends="prepare_to_build1, edit_web_ext_iis, stop_psw_server, stop_ezk_server, archive_profile_logs1, uninstall_psw_ear, install_psw_ear, deploy_config_files, copy_assets"/>
+
+
+    <target name="create_dir">
+      <!-- Create periodic process log directory -->
+      <mkdir dir="${root.dir}/db/PeriodicProcessMonitor"/>
+
+      <!-- Create IPI Tool directory -->
+      <mkdir dir="${root.dir}/db/IpiTool"/>
+
+      <!-- Create folder structure for AWD periodic process -->
+      <mkdir dir="${root.dir}/db/AWD"/>
+      <mkdir dir="${root.dir}/db/AWD/AWDRipServer"/>
+      <mkdir dir="${root.dir}/db/AWD/AWDRipServer/DocumentCapture"/>
+      <mkdir dir="${root.dir}/db/AWD/AWDRipServer/DocumentCaptureIMAGES"/>
+      <mkdir dir="${root.dir}/db/AWD/BI_Reports"/>
+      <mkdir dir="${root.dir}/db/AWD/BI_Reports/Archive"/>
+      <mkdir dir="${root.dir}/db/AWD/Import"/>
+      <mkdir dir="${root.dir}/db/AWD/Import/Archive"/>
+
+      <!-- Create plan review directory -->
+      <mkdir dir="${root.dir}/db/PlanReview"/>
+      <mkdir dir="${root.dir}/db/PlanReview/coverPageImages"/>
+      <mkdir dir="${root.dir}/db/PlanReview/logoImages"/>
+      <mkdir dir="${root.dir}/db/PlanReview/iReport"/>
+      <mkdir dir="${root.dir}/db/PlanReview/xmlData"/>
+      <mkdir dir="${root.dir}/db/PlanReview/zip"/>
+      <mkdir dir="${root.dir}/db/PlanReview/preview"/>
+    </target>
+
+    <target name="copy_templates">
+      <copy todir="${config.deploy.dir}" overwrite="yes">
+        <fileset dir="${awd.service.dir}/Config">
+          <include name="**/Awd*.xml"/>
+        </fileset>
+      </copy>  	
+    </target>	
+  </project>
+  

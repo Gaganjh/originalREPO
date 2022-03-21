@@ -1,0 +1,301 @@
+.inputPart {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: right;
+	padding: 1px;
+	width: 50px;
+	border: 1px solid #FFFFFF;
+	cursor: text;
+}
+.inputPartcell2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #E9E2C3;
+	text-align: right;
+	padding: 1px;
+	width: 50px;
+	border: 1px solid #E9E2C3;
+	cursor: text;
+}
+.inputdateSUB {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: right;
+	padding: 1px;
+	width: 30px;
+	cursor: text;
+}
+.inputamountUPLOAD {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: right;
+	padding: 1px;
+	width: 50px;
+	cursor: text;
+}
+.inputLoanID {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: right;
+	padding: 1px;
+	width: 25px;
+	border: 1px solid #FFFFFF;
+	cursor: text;
+	font-weight: bold;
+}
+.inputLoanIDcell2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color: #E9E2C3;
+	text-align: right;
+	padding: 1px;
+	width: 25px;
+	border: 1px solid #E9E2C3;
+	cursor: text;
+	font-weight: bold;
+}
+.MTdropdown {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #CCCCCC;
+	text-align: right;
+	padding: 0px;
+	width: 60px;
+	border: 1px solid #FFFFFF;
+	cursor: hand;
+}
+.inputPartError {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #002D62;
+	background-color: #FFFFFF;
+	text-align: right;
+	padding: 1px;
+	width: 50px;
+	border: 1px solid #FFFFFF;
+	cursor: text;
+	font-weight: bold;
+}
+.inputPartcell2Error {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #002D62;
+	background-color: #E9E2C3;
+	text-align: right;
+	padding: 1px;
+	width: 50px;
+	border: 1px solid #E9E2C3;
+	cursor: text;
+	font-weight: bold;
+}
+.inputAmount {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	text-align: right;
+	border: 1px solid #89A2B3;
+	width: 50px;
+}
+.inputPartReg {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: right;
+	padding: 1px;
+	border: 1px solid #FFFFFF;
+	cursor: text;
+	width: 150px;
+}
+.inputPartcell2Reg {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #E9E2C3;
+	text-align: right;
+	padding: 1px;
+	border: 1px solid #E9E2C3;
+	cursor: text;
+	width: 150px;
+}
+.inputPartRegSm {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: right;
+	padding: 1px;
+	border: 1px solid #FFFFFF;
+	cursor: text;
+}
+.inputPartcell2RegSm {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #E9E2C3;
+	text-align: right;
+	padding: 1px;
+	border: 1px solid #E9E2C3;
+	cursor: text;
+}
+.inputPartAddress {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: left;
+	padding: 1px;
+	width: 100px;
+	border: 1px solid #FFFFFF;
+	cursor: text;
+}
+.inputPart2Address {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #E9E2C3;
+	text-align: left;
+	padding: 1px;
+	width: 100px;
+	border: 1px solid #E9E2C3;
+	cursor: text;
+}
+.inputPartAddressSm {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: left;
+	padding: 1px;
+	width: 50px;
+	border: 1px solid #FFFFFF;
+	cursor: text;
+}
+.inputPart2AddressSm {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #E9E2C3;
+	text-align: left;
+	padding: 1px;
+	width: 50px;
+	border: 1px solid #E9E2C3;
+	cursor: text;
+}
+.inputCellSSN {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: left;
+	padding: 1px;
+	width: 60px;
+	border: 1px solid #FFFFFF;
+	cursor: text;
+}
+.inputCell2SSN {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #E9E2C3;
+	text-align: left;
+	padding: 1px;
+	width: 60px;
+	border: 1px solid #E9E2C3;
+	cursor: text;
+}
+.inputCellName {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: left;
+	padding: 1px;
+	width: 70px;
+	border: 1px solid #FFFFFF;
+	cursor: text;
+}
+.inputCell2Name {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #E9E2C3;
+	text-align: left;
+	padding: 1px;
+	width: 70px;
+	border: 1px solid #E9E2C3;
+	cursor: text;
+}
+.dropdownfields {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #89A2B3;
+}
+.upload {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #89A2B3;
+	cursor: hand;
+}
+.inputComments {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	height: 50px;
+	width: 300px;
+	border: 1px solid #89A2B3;
+}
+.inputCommentsSm {
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	height: 50px;
+	width: 150px;
+	border: 1px solid #89A2B3;
+}
+.inputPartCountry {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: left;
+	padding: 0px;
+	width: 60px;
+	border: 1px solid #FFFFFF;
+	cursor: text;
+}
+.inputPart2Country {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #E9E2C3;
+	text-align: left;
+	padding: 1px;
+	width: 60px;
+	border: 1px solid #E9E2C3;
+	cursor: text;
+}.inputField {
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #89A2B3;
+}

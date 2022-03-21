@@ -1,0 +1,28 @@
+/* This is a container for the page content. It is common to use the container to constrain the width of the page content and allow for browser chrome to avoid the need for horizontal scrolling. For fixed layouts you may specify a container width and use auto for the left and right margin to center the container on the page. IE 5 browser require the use of text-align: center defined by the body element to center the container. For liquid layouts you may simply set the left and right margins to center the container on the page. */
+#outerWrapper {
+    width: 100%;
+}
+#outerWrapper  #contentWrapper  #rightColumn1  {
+    float: right; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+    width: 241px;
+    clear: right;
+    margin-left: 9px;
+}
+#outerWrapper #contentWrapper #leftColumn1 {
+    float: left; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+    width: 418px;
+    margin-right: 9px;
+}
+/* Contains the main page content. When using a mutliple column layout the margins will be set to account for the floated columns' width, margins, and padding. */
+#outerWrapper #contentWrapper #middle {
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 425px;
+    margin-left: 425px;
+}
+/* Using floated elements and a clear float class is a common method to accomplish multiple column tableless layouts. If floated elements are used without being cleared the elements following will wrap around the floated element. This class should be applied to an element after the last floated element and before the close of the container with floated elements. */
+#outerWrapper #contentWrapper .clearFloat {
+  clear: both;
+  display: block;
+}

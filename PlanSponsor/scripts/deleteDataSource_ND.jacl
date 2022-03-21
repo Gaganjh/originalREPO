@@ -1,0 +1,12 @@
+# ==============================================================================
+# WAS script to delete a DataSource based on the parameters provided
+# $ID:$
+# ==============================================================================
+
+global AdminConfig
+
+set dsName [lindex $argv 0]
+
+set eventDataSourceId [$AdminConfig getid /DataSource:$dsName]
+$AdminConfig remove $eventDataSourceId
+$AdminConfig save

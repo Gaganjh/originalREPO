@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<reports>
+
+  <label>
+    <text>----------------Select-----------------</text>
+  </label>
+
+  <separator/>
+
+  <report id="DEFINED_BENEFIT_ACCOUNT">
+    <contentId>57203</contentId>
+    <url>/do/db/definedBenefitAccount/</url>
+    <title>Defined Benefit Account (no CMA)</title>
+  </report>
+  
+  <separator/>
+
+  <report id="CONTRACT_PROFILE">
+    <contentId>51039</contentId>
+    <url>/do/contract/contractProfile</url>
+    <title>Contract Profile (no CMA)</title>
+  </report>
+  
+  <report id="CONTRACT_SERVICE_FEATURE">
+     <contentId>55930</contentId>
+     <url>/do/contract/viewServiceFeatures/</url>
+     <title>Contract service features(no CMA)</title>
+  </report>
+
+  <report id="CONTRACT_SERVICE_FEATURE_DB">
+     <contentId>61091</contentId>
+     <url>/do/contract/viewServiceFeatures/</url>
+     <title>Contract service features(no CMA)</title>
+  </report>
+
+  <report id="CONTRACT_SNAPSHOT">
+    <contentId>51040</contentId>
+    <url>/do/contract/contractSnapshot/</url>
+    <title>Contract Snapshot (no CMA)</title>
+  </report>
+  	
+  <report id="CONTRACT_STATEMENTS_REPORTS">
+    <contentId>51041</contentId>
+    <url>/do/contract/contractStatements/</url>
+    <title>Contract Statements Reports (no CMA)</title>
+  </report>
+
+  <report id="CONTRACT_PLAN_INFORMATION">
+    <contentId>58260</contentId>
+    <url>/do/contract/planData/view/</url>
+    <title>Plan Information (no CMA)</title>
+  </report>
+
+  <separator/>
+  
+  <report id="SUMMARY">
+    <contentId>55553</contentId>
+    <url>/do/census/censusSummary/</url>
+    <title>Census Summary (no CMA)</title>
+  </report>
+  
+  <report id="ADDRESSES">
+    <contentId>51043</contentId>
+    <url>/do/participant/participantAddresses</url>
+    <title>Census Addresses (no CMA)</title>
+  </report>
+  
+  <report id="ADDRESS_HISTORY">
+  	<contentId>56563</contentId>
+    <url>/do/participant/addressHistory</url>
+    <title>Address History (no CMA)</title>
+  </report>
+  
+  <report id="ELIGIBILITY">
+  	<contentId>56564</contentId>
+    <url>/do/census/employeeEnrollmentSummary</url>
+    <title>Eligibility (no CMA)</title>
+  </report>
+  
+  <report id="VESTING">
+  	<contentId>58150</contentId>
+    <url>/do/census/censusVesting/</url>
+    <title>Vesting (no CMA)</title>
+  </report>
+
+  <report id="ACCOUNTS">
+    <contentId>51042</contentId>
+    <url>/do/participant/participantSummary</url>
+    <title>Account Summary (no CMA)</title>
+  </report>
+
+  <report id="DEFERRALS">
+    <contentId>53937</contentId>
+    <url>/do/census/deferral</url>
+    <title>Deferral Changes (no CMA)</title>
+  </report>
+   
+  <report id="TASKCENTER">
+      <contentId>58702</contentId>
+      <url>/do/participant/taskCenterTasks</url>
+      <title>Task Center (no CMA)</title>
+  </report>
+    
+   <report id="PAYROLL_SELF_SERVICE">
+    <contentId>97607</contentId>
+    <url>/do/participant/payrollSelfService</url>
+    <title>Payroll Self Service (no CMA)</title>
+  </report>
+  
+  <report id="STATEMENTS">
+    <contentId>51044</contentId>
+    <url>/do/participant/participantStatementSearch</url>
+    <title>Participant Statements (no CMA)</title>
+  </report>
+  
+ <report id="LOANANDWITHDRAWALS">
+        <contentId>61918</contentId>
+        <url>/do/withdrawal/loanAndWithdrawalRequestsInit/</url>
+        <title>Participant Statements (no CMA)</title>
+  </report>
+ <report id="LOANONLY">
+        <contentId>61919</contentId>
+        <url>/do/withdrawal/loanAndWithdrawalRequestsInit/</url>
+        <title>Participant Statements (no CMA)</title>
+  </report>
+        <report id="WITHDRAWALONLY">
+          <contentId>61920</contentId>
+          <url>/do/withdrawal/loanAndWithdrawalRequestsInit/</url>
+          <title>Participant Statements (no CMA)</title>
+  </report>
+	<report id="NOTICE_MANAGER">
+    <contentId>86193</contentId>
+    <url>/do/noticemanager/uploadandsharepages/</url>
+    <title>Notice Manager (no CMA)</title>
+  </report>
+  
+  <report id="SEND_SERVICE">
+    <contentId>91881</contentId>
+    <url>/do/sendservice/activeMail/</url>
+    <title>SEND Service (no CMA)</title>
+  </report>
+  <separator/>
+
+  <report id="TRANSACTION_HISTORY">
+    <contentId>51045</contentId>
+    <url>/do/transaction/transactionHistoryReport/</url>
+    <title>Transaction History (no CMA)</title>
+  </report>
+  
+   <report id="PENDING_TRANSACTION_HISTORY">
+    <contentId>73796</contentId>
+    <url>/do/transaction/pendingTransactionHistoryReport/</url>
+    <title>Pending Transaction History (no CMA)</title>
+  </report>
+
+
+ 
+  <report id="SYS_WITHDRAW_QL">
+    <contentId>91259</contentId>
+    <url>/do/transaction/systematicWithdrawalReport/</url>
+    <title>Systematic Withdrawal Summary</title>
+  </report> 
+  
+  <report id="CASH_ACCOUNT">
+    <contentId>51046</contentId>
+    <url>/do/transaction/cashAccountReport/</url>
+    <title>Cash Account (no CMA)</title>
+  </report>
+
+  <report id="CURRENT_LOAN_SUMMARY">
+    <contentId>51047</contentId>
+    <url>/do/transaction/loanSummaryReport/</url>
+    <title>Current Loan Summary (no CMA)</title>
+  </report>
+
+  <report id="UNCASHED_CHECKS">
+    <contentId>71187</contentId>
+    <url>/do/transaction/uncashedChecksReport/</url>
+    <title>Uncashed Checks Summary</title>
+  </report>
+  
+
+  <separator/>
+
+  <report id="CONTRACT_FUNDS">
+    <contentId>51048</contentId>
+    <url>/do/investment/contractFundsReport/</url>
+    <title>Contract Funds (no CMA)</title>
+  </report>
+
+  <report id="INVESTMENT_ALLOCATION">
+    <contentId>51049</contentId>
+    <url>/do/investment/investmentAllocationReport/</url>
+    <title>Investment Allocation (no CMA)</title>
+  </report>
+
+  <report id="FUNDCHECK">
+    <contentId>72118</contentId>
+    <url>/do/fundCheck</url>
+    <title>FundCheck® (no CMA)</title>
+  </report>
+  
+  <report id="IPSMANAGER">
+    <contentId>76390</contentId>
+    <url>/do/investment/ipsManager/</url>
+    <title>IPS Manager (no CMA)</title>
+  </report>
+  
+  <report id="WILSHIRE321_REVIEW_REPORTS">
+    <contentId>84511</contentId>
+    <url>/do/investment/cofidQtrlyReview/</url>
+    <title>Co-Fiduciary Reports(no CMA)</title>
+  </report>
+  
+  <report id="PERFORMANCE_CHARTING">
+    <contentId>51050</contentId>
+    <url>/do/investment/performanceChartInput/</url>
+    <title>Performance Charting (no CMA)</title>
+  </report>
+</reports>

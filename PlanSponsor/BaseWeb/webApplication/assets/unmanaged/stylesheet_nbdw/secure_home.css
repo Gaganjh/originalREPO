@@ -1,0 +1,355 @@
+/*******************************************************************************
+*	secure_home.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Contract Funds specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+@import url("screen.css");
+
+.message{
+	display:none;
+}	
+
+div#page_content{
+	background:none;
+}
+
+/*******************************************************************************
+* PAGE SECTIONS
+********************************************************************************/
+
+div.page_section{
+	float:left;
+}
+	
+		div#page_content div.page_section p, 
+		div#page_content div.page_section li{
+			font-size:.6875em;
+		}
+	
+	
+		div.page_module{
+	background-color:#f5f6f1;
+	border-top:4px solid #febe10;
+	margin-bottom:9px;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 10px;
+	padding-left: 0;
+		}
+			
+		
+			#page_content div.page_module h4{
+	color:#333;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.4em;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	background: none;
+	margin: 0;
+	padding-top: 10px;
+	padding-right: 0;
+	padding-bottom: 10px;
+	padding-left: 15px;
+				}
+		
+			div#page_content div.page_module li p{
+				font-size:1.0625em;
+				margin:0;
+				padding:0;
+			}
+				
+			div.page_module h5{
+				margin:0 0 0 15px;
+				padding:0;
+			}
+			
+			div.page_module ul{
+				list-style:none;
+				margin:2px 10px 10px 15px;
+				padding:0;
+			}
+						
+			div.page_module ul li{
+				border-top:1px solid #cac8c4;
+				padding:5px 0;
+			}
+	
+			div.page_module ul li:first-child{
+				border-top:none;
+			}
+			
+				div.page_module_message_center{
+	background-color:#f5f6f1;
+	margin-bottom:9px;
+	padding:0 0 10px 0;
+	border-top-width: 4px;
+	border-top-style: solid;
+	border-top-color: #005B80;
+		}
+			#page_content div.page_module_message_center h4{
+					background: none;
+					color:#333;
+					font: normal 1.4em georgia, times, serif;
+					margin: 0;
+					padding: 10px 0 10px 15px;
+				}
+		
+			div#page_content div.page_module_message_center li p{
+				font-size:1.0625em;
+				margin:0;
+				padding:0;
+			}
+				
+			div.page_module_message_center h5{
+				margin:0 0 0 15px;
+				padding:0;
+			}
+			
+			div.page_module_message_center ul{
+				list-style:none;
+				margin:2px 10px 10px 15px;
+				padding:0;
+			}
+						
+			div.page_module_message_center ul li{
+				border-top:1px solid #cac8c4;
+				padding:5px 0;
+			}
+	
+			div.page_module_message_center ul li:first-child{
+				border-top:none;
+			}
+			
+			
+			div#page_section_container div.page_module p{
+				margin:0 10px 0 15px;
+				padding:0;
+			}
+			
+			div#page_section_container p#access_code{
+				margin-top:10px;
+			}
+
+
+div#resources_dealernews{
+	width:241px;
+	margin-right:9px;
+}
+
+	div#key_resources{
+		width:241px;
+		background-color:#717b80;
+		border-top:none;
+	}
+
+		div#page_content div#key_resources a,
+		div#page_content div#key_resources h4{
+	color:#fff;
+	text-decoration: none;
+		}
+	
+
+	div#news_updates{
+		width:241px;
+	}
+	
+	a.news_more {
+		text-decoration:underline !important;
+	}
+	
+		div#page_content div#news_updates h4{
+			letter-spacing:.025em;
+		}
+		
+		
+	
+		
+div#message_noteworthy{
+	margin-right:9px;
+	width:418px;
+}
+div#news_noteworthy{
+	
+	width:418px;
+}
+
+	div#news_noteworthy img{
+		border:1px solid #cac8c4;
+		float:left;
+		margin:3px 10px 10px 0;
+		
+	}
+	
+	div#news_noteworthy ul li{
+		clear:left;
+	}
+	
+		div#news_noteworthy ul li.news_item p{
+			margin:0;
+			padding:0;
+		}
+
+			div#news_noteworthy ul li.news_item div.news_copy{
+				float:left;
+				width:230px;
+			}
+
+div#user_portfolio{
+	width:241px;
+}
+
+div#user_portfolio a.message_shortText{
+	text-decoration:underline;
+}
+
+	div#user_portfolio table{
+		margin:0 auto;
+		width:231px;
+	}
+
+
+div#fund_search{
+	width:241px;
+	overflow:hidden;
+}
+
+	div#fund_search form{
+		width:241px;
+		margin:0 auto;
+	}
+	div#fund_search fieldset{
+		border:none;
+		margin:0 0 0 10px;
+		padding:0;
+		width:241px;		
+	}
+	
+		div#fund_search p,
+		div#fund_search select{
+			float:left;
+		}
+		
+	
+		div#fund_search p{
+			clear:both;
+			margin:0 10px 0 0;
+			padding:0;
+			text-align:right;
+			width:80px;
+		}
+		
+		div#fund_search ul li a{
+			text-decoration:underline;
+		}
+		
+			div#fund_search p label{
+				font-weight:bold;
+			}
+		
+		div#fund_search select{
+			width:110px;
+			margin-bottom:5px;
+		}
+				
+				div#fund_search #state_wrapper{
+	float:left;
+	margin-bottom:0.6875em;
+	width:175px;
+	font-size: 11px;
+	font-weight: bold;
+	color: #767676;
+		}
+		div#fund_search #type_wrapper{
+	float:left;
+	margin-bottom:10px;
+	width:200px;
+	padding-left: 10px;
+		}
+			div#fund_search #type_wrapper p{
+	clear:none;
+	float:left;
+	text-align:left;
+	width:215px;
+	padding-top: 5px;
+			}
+		div#fund_search #category_wrapper{
+			float:left;
+			margin-bottom:10px;
+			width:150px;
+		}
+		
+			div#fund_search #category_wrapper p{
+				clear:none;
+				float:left;
+				margin:0 0 5px 0;
+				text-align:left;
+				width:110px;
+			}
+			
+			div#fund_search #category_wrapper input{
+				clear:left;
+				float:left;
+				margin:3px 5px 0 0;
+				padding:0;
+			}
+			
+		div#fund_search div.button_search{
+			float:right;
+			margin-right:10px;
+		}
+
+
+div#quick_search{
+	width:241px;
+
+}
+	
+div#quick_search form#fund_quick_search{
+		margin:5px 0 10px 0;
+	}
+	
+		div#quick_search p{
+			clear:left;	
+			margin:0;
+			padding:5px 15px;		
+		}
+		
+		div#quick_search form#fund_quick_search input#fund_name_input{
+			float:right;
+		}
+	
+		div#quick_search form#fund_quick_search p{
+			display:none;
+		}
+	
+		div#quick_search form#fund_quick_search input#fund_name_input{
+			margin:0 18px 0 0;
+			padding:0;
+			width:120px;
+		}
+		
+		div#quick_search form#fund_quick_search div.button_search{
+			clear:right;
+			float:right;
+			margin:5px 18px 0 0;
+		}		
+		
+		
+#secure_home #page_wrapper #page_content .page_section #user_portfolio .profile {
+	float: right;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	margin-top: 0px;
+	padding-top: 0px;
+	position: inherit;
+	margin-right: 30px;
+	right: 10px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+#secure_home #page_wrapper #page_content .page_section #user_portfolio h4 {
+	padding-bottom: 0px;
+}

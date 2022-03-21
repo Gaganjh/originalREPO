@@ -1,0 +1,1988 @@
+/*******************************************************************************
+*   evaluatorScreen.css
+*   Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*   Global styles used throughout the John Hancock Broker Dealer website.
+********************************************************************************/
+
+/*******************************************************************************
+* HTML ELEMENTS
+********************************************************************************/
+
+body {
+    background-color: #eceae3;
+    margin: 0;
+    padding:0;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+}
+h1 {
+    color: #002c3d;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+dt {
+    font-size:0.75em;
+    font-weight:bold;
+}
+
+dd {
+    font-size:0.75em;
+    margin:0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 15px;
+    padding-left: 0;
+}
+td,
+th{
+    color:#000;
+    font-size: 0.689em;
+    padding-top: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    font-weight: normal;
+    
+}
+
+.clear_footer {
+    clear: both;
+}
+.clearFloat {
+    clear: both;
+    float: none;
+}
+/*******************************************************************************
+* COMMON PAGE ELEMENTS
+********************************************************************************/
+
+#page_wrapper {
+    height:100%;
+    margin:0pt auto;
+    width:969px;
+    height: 100%;
+    min-height: 600px;
+    padding: 15px 0px 15px 0px;
+    background-color: #eceae3;
+    background-image: url(/assets/unmanaged/images/backgrounds/background_tile.gif);
+    background-repeat: repeat-y;
+    background-position: center top;
+}
+
+#page_wrapper_footer {
+    margin:0pt auto;
+    width:969px;
+    background-color: #eceae3;
+    background-image: url(/assets/unmanaged/images/backgrounds/background_footer.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+    
+/*******************************************************************************
+* SECURE HEADER
+********************************************************************************/
+
+#secure_header {
+    height: 47px;
+    margin: 0 25px 8px 25px;
+    background-color: #fff;
+    background-image: url(/assets/unmanaged/images/backgrounds/background_secure_header.gif);
+    background-repeat: repeat-x;
+    background-position: left top;
+}
+
+    #secure_header h1 {
+        font-weight:normal;
+        padding: 0 0 0 25px;
+    }
+
+
+    #secure_header ul {
+        margin: 0 0 0 15px;
+        padding:0;
+        list-style: none;
+    }
+    
+        #secure_header ul li {
+    float:left;
+    font-size:0.6875em;
+    line-height:1em;
+    margin: 5px 0 0 0;
+    padding:0px 10px 2px 10px;
+    background-image: url(/assets/unmanaged/images/link_divider.gif);
+    background-repeat: no-repeat;
+    background-position: left center;
+        }
+
+            #secure_header ul li:first-child {
+                background: none;
+            }
+            
+            
+            #secure_header ul li a {
+    color: #002c3d;
+    font-size: 11px;
+            }
+
+    #secure_header_user {
+    padding: 0 10px 0 0;
+    float: right;
+    }   
+
+        #secure_header_user p {
+    float: left;
+    font-size:0.6875em;
+    margin: 4px 10px 2px 0;
+    padding: 0;
+        }
+/*******************************************************************************
+* SITE HEADER
+********************************************************************************/
+
+#site_header {
+    background-color: #004059;
+    height: 80px;
+    margin: 0 25px 0 25px;
+    padding: 0;
+}
+
+    #site_header h1 {
+    float: left;
+    height:62px;
+    left:25px;
+    position:relative;
+    text-indent: -99999px;
+    top:8px;
+    width:145px;
+    background-color: #004059;
+    background-image: url(/assets/unmanaged/images/jh_logo.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+    }
+        #logo {
+    float: left;
+    height:62px;
+    left:25px;
+    position:relative;
+    text-indent: -99999px;
+    top:8px;
+    width:145px;
+    background-color: #004059;
+    background-image: url(/assets/unmanaged/images/jh_logo.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+    }
+    
+    #site_header h1 img {
+        display:none;
+    }
+    
+    #site_search {
+    float: right;
+    padding: 0;
+    margin-top: 25px;
+    margin-right: 67px;
+    margin-bottom: 0;
+    margin-left: 0;
+    }
+        #site_search label {
+            display:none;
+        }
+        
+        #site_search_input {
+            border:1px solid #000;
+            float: left;
+            height:19px;            
+        }
+
+        #site_search .button_search {
+            margin-left: 10px;
+            width: 0.1em;
+        }
+/*******************************************************************************
+* PRIMARY NAV
+********************************************************************************/
+
+#primary_nav {
+    background: #005b80;
+    height: 45px;
+    margin: 0 25px 0 25px;
+    padding: 0 0 0 25px;
+}
+
+    #primary_nav ul {
+        margin:0;
+        padding:0;
+        list-style: none;
+    }
+
+        #primary_nav ul li {
+    float: left;
+    font-size:0.75em;
+    height: 33px;
+    padding:3px 5px 0px 5px;
+    margin: 6px 0 0 0;
+    width: 100px;
+    text-decoration: none;
+    background-color: transparent;
+    background-image: url(/assets/unmanaged/images/primary_nav_divider.gif);
+    background-repeat: no-repeat;
+    background-position: left center;
+        }
+
+            #primary_nav ul li:first-child {
+                background: none;
+            }
+
+            #primary_nav ul li.active {
+    height: 39px;
+    margin: 6px -1px 0 0;
+    padding:0px 6px 0px 5px;
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: url(/assets/unmanaged/images/buttons/button_primary_nav_left.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+            }
+
+                #primary_nav ul li.active em {
+    color:#002c3d;
+    display:block;
+    height: 28px;
+    font-style:normal;
+    font-weight:normal;
+    padding: 3px  6px 9px 6px;
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: url(/assets/unmanaged/images/buttons/button_primary_nav_right.gif);
+    background-repeat: no-repeat;
+    background-position: right top;
+                }
+
+                    div#primary_nav ul li a:link, div#primary_nav ul li a:visited{
+                        color:#fff;
+                        text-decoration: none;                  
+                    }
+
+                    div#primary_nav ul li a:hover{
+                        color:#febe10;  
+                        text-decoration: none;              
+                    }
+
+#primary_nav_footer {
+    background-color: #bed5e6;
+    height: 4px;
+    margin: 0 25px 0 25px;
+    padding: 0;
+    
+}
+
+
+/*******************************************************************************
+* SECONDARY NAV
+********************************************************************************/
+
+/* Note: If there are no secondary nav items, then the secondary_nav div should not be shown */
+
+#secondary_nav {
+    background-color: #bed5e6;
+    clear: left;
+    height: 1.75em;
+    margin: 0 25px 0 25px;
+    min-height: 5px;
+    padding: 0 0 0 5px;
+}
+
+    #secondary_nav ul {
+        list-style: none;
+        margin:0;
+        padding:0;
+    }
+
+        #secondary_nav ul li {
+            float:left;
+            padding:0px 0 0 20px;
+        }
+
+        #secondary_nav ul li.disabled{
+            color:#a0a0a0;
+        }
+        
+            #secondary_nav ul li.active{
+                color: #000;
+            }
+            
+            #secondary_nav ul li.active strong{             
+                font-size:0.6875em;
+                font-style:normal;              
+            }
+            
+            #secondary_nav ul li a {
+    color: #002c3d;
+    font-size:0.6875em;
+    line-height:1em;
+    text-decoration: none;
+            }
+            
+/*******************************************************************************
+* PAGE CONTENT
+********************************************************************************/
+
+#page_content {
+    min-height: 300px;
+    padding: 0;
+    width: 918px;
+    margin-top: 4px;
+    margin-right: 25px;
+    margin-bottom: 0;
+    margin-left: 25px;
+    background-color: #fff;
+    background-image: url(/assets/unmanaged/images/backgrounds/background_page_contents.gif);
+    background-repeat: repeat-x;
+    background-position: left top;
+}
+
+    #page_content p a{
+    color:#005b80;
+    text-decoration: none;
+    }
+    
+    #page_content .trademark{
+        font-size:.75em;
+    }
+    
+/*  #page_content p {
+    color:#767676;
+    font-size:0.75em;
+    padding-top: 0;
+    padding-left: 8px;
+    padding-bottom: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    }*/
+
+    #page_content p.record_info {       
+        margin-top: 0.1em;
+    }
+    
+    #page_content h2 {
+    color:#000;
+    padding-top: 15px;
+    padding-right: 0;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    font-family: georgia, times, serif;
+    font-size: 1.5em;
+    font-style: normal;
+    line-height: 1.5em;
+    font-weight: normal;
+    font-variant: normal;
+    margin: 0;
+    }
+
+    #page_content h3
+    {
+    color:#fff;
+    margin: 0;
+    font-family: georgia, times, serif;
+    font-size: 1.25em;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    padding-top: 7px;
+    padding-right: 0;
+    padding-bottom: 3px;
+    padding-left: 25px;
+    }
+    
+    #page_content h4{
+    color:#fff;
+    margin: 0;
+    font-family: georgia, times, serif;
+    font-size: 1.5em;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    padding-top: 3px;
+    padding-right: 0;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    }
+
+    #page_content .page_section_subheader{
+    border-top:4px solid #febe10;
+    height:43px;
+    margin-bottom:2px;
+    clear: both;
+    }
+ 
+    #page_content .page_section_subsubheader{
+    border-top:4px solid #febe10;
+    clear:both;
+    height:25px;
+    margin-bottom:2px;
+    }
+    
+    #page_content .page_section_subheader p, 
+    #page_content .page_section_subsubheader p{
+    color:#FFFFFF;
+    padding-top: 0px;
+    padding-right: 3px;
+    }
+    #page_content .page_section_subheader .form p{
+    color:#FFFFFF;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0px;
+    }
+    
+    #page_content .page_section_subheader{
+        background-color:#717b80;
+    }
+    
+    #page_content .page_section_subsubheader{
+        background-color:#a8b8bf;
+    }
+    
+    #page_content .controls h3, #page_content .controls h4{
+        padding-top:8px;
+        float:left;
+    }
+    
+    form.page_section_filter, 
+    form.page_section_filter p, 
+    form.page_section_filter select,
+    form.page_section_filter input{
+    float:left;
+    }
+    
+    form.page_section_filter p{
+    margin:0;
+    padding:0;
+    }
+    
+    form.page_section_filter select,
+    form.page_section_filter input{
+    font-size:0.685em;
+    margin-top: 0px;
+    margin-right: 5px;
+    margin-bottom: 0;
+    margin-left: -2px;
+    }
+    
+    form.page_section_filter{
+    margin-top: 15px;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0px;
+    }
+    
+    form.page_section_filter p{
+    color:#00FF00;
+    }
+    
+    .page_section_subheader .print_btn, 
+    .page_section_subheader .print_all_btn,
+    .page_section_subheader .csv_btn,
+    .page_section_subheader .pdf_btn{
+        float:right;
+        margin:10px 10px 0 0;
+        }   
+
+
+
+/*******************************************************************************
+* PAGE PRIMARY NAV
+********************************************************************************/
+
+.page_nav {
+    padding:0;
+    margin-top: 5px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 25px;
+    height: 50px;
+}
+
+    .page_nav ul {
+        list-style: none;
+        margin:0;
+        padding:0;
+        height:1%;
+    }
+
+        .page_nav ul li {
+    color: #002c3d;
+    float: left;
+    font-size:0.685em;
+    margin: 0 0 0 10px;
+    padding:0;
+            
+        }
+        
+        .page_nav ul li:first-child{
+            margin-left:0;
+        }
+
+
+        #page_primary_nav ul li{
+    font-size:12px;
+        }    
+        
+        .page_nav ul li.active {
+    height: 26px;
+    margin: 0 0 0 10px;
+    float: left;
+        }
+        
+        .page_nav ul li.active:first-child {
+            margin: 0;
+        }
+
+            .page_nav li.active em {
+    background-color:#deded8;
+    color: #002c3d;
+    display:block;
+    font-style:normal;
+    font-weight:normal;
+    min-height: 26px;
+    padding: 10px 7px;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #FEBE10;
+            }
+                            
+            .page_nav a {
+                background-color:#f6f4f1;
+                border-top:4px solid #f6f4f1;
+                color: #002c3d;
+                display:block;  
+                font-style:normal;
+                font-weight:normal;
+                min-height: 26px;
+                text-decoration: none;
+            }
+
+            .page_nav ul li a{
+                padding: 10px 7px;              
+            }
+            
+            .page_nav ul a:hover {
+    background-color:#f2f2ed;
+    border-top:4px solid #febe10;
+    color:#002c3d;
+    text-decoration: none;
+            }
+
+
+#page_primary_nav_footer,
+.page_nav_footer {
+    background-color: #deded8;
+    clear: left;
+    font-size: 0;
+    height: 4px;
+    margin: 0;
+    padding: 0;
+    
+}
+/*******************************************************************************
+* FOOTNOTES
+********************************************************************************/
+
+.footnotes {
+    margin: 20px 0 0 20px;
+    padding: 0;
+}
+
+    .footnotes h6 {
+        font-size: 0.6875em;
+        margin: 1em 0 0.5em 0;
+        padding: 0;
+    }
+
+    .footnotes dl {
+        margin: 0 0 0 0;
+        padding: 0;
+    }
+
+        .footnotes dl dt {
+            clear: left;
+            float: left;
+            font-size: 0.6875em;
+            font-weight:bold;
+            line-height: 1.25em;
+            margin: 0;
+            padding: 0;
+        }
+
+            .footnotes dl dt a {
+                color: #2d4f55;
+            }
+
+            .footnotes dl dd {
+                float: left;
+                font-size: 0.6875em;
+                line-height: 1.25em;
+                margin: 0 0 0.5em 1em;
+                padding: 0 0 0 0 ;
+                width: 90%;
+            }
+
+    .footnotes_footer {
+        clear: both;
+    }
+
+/* This isn't a part of the footnote DIV. this is for the footnote refs in the main content */
+sup.footnote a {
+    text-decoration: none;
+}
+
+
+/*******************************************************************************
+* FOOTER
+********************************************************************************/
+
+#page_footer {
+    clear:both;
+    border-top: 1px solid #c4cfd8;
+    margin-top: 30px;
+}
+
+    #page_footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 10px 0 10px 0 ;
+    }
+        
+        #page_footer ul li {
+            background: transparent url('/assets/unmanaged/images/footer_divider.gif') no-repeat center left;
+            float: left;
+            font-size: 0.6875em;
+            padding: 0 20px 0 20px;
+        }
+        
+        #page_footer ul li:first-child {
+            background: none;
+        }
+        
+        #page_footer ul li {
+            float: left;
+            font-size: 0.6875em;
+            padding: 0 20px 0 20px;
+        }
+        
+            #page_footer ul li a {
+    color: #2d4f55;
+    font-size: 11px;
+            }
+
+    #page_footer_footer {
+        clear: both;
+    }
+    
+    #page_footer p {
+        color: #767690;
+        font-size: 0.6875em;
+        line-height: 1.5em;
+        padding: 10px 20px 0 20px ;
+    }
+
+/*******************************************************************************
+* BUTTONS
+********************************************************************************/
+
+.button_regular{
+    background:transparent url('/assets/unmanaged/images/buttons/button_regular_both_left.gif') no-repeat scroll top left;
+}
+
+    .button_regular a{
+        background:transparent url('/assets/unmanaged/images/buttons/button_regular_both_right.gif') no-repeat scroll top right;
+    }
+    
+.button_header {
+    background:transparent url('/assets/unmanaged/images/buttons/button_header_both_left.gif') no-repeat scroll top left;
+}
+
+    .button_header input{
+        background:transparent url('/assets/unmanaged/images/buttons/button_header_both_right.gif') no-repeat scroll top right;
+    }
+    
+.button_login,
+.button_search, 
+.button_filter{
+    background:transparent url('/assets/unmanaged/images/buttons/button_search_both_left.gif') no-repeat scroll top left;
+}
+
+    .button_login input,
+    .button_search input,
+    .button_filter input{
+        background:transparent url('/assets/unmanaged/images/buttons/button_search_both_right.gif') no-repeat scroll top right;
+    }
+
+.button_header,
+.button_login,
+.button_regular,
+.button_search,
+.button_filter{
+    cursor: pointer;
+    height: 19px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 5px;
+    float: left;
+}
+
+.button_login,
+.button_regular,
+.button_search,
+.button_filter{
+    margin:2px 10px 0 0;
+}
+
+.button_header{
+    margin-left:10px;
+    margin-top:0px;
+}
+    
+    .button_login input,
+    .button_regular a,
+    .button_search input,
+    .button_filter input{
+        color: #fff;        
+    }
+    
+    .button_header input{
+        color:#000;
+    }
+    
+    .button_header input,
+    .button_login input,
+    .button_regular a,
+    .button_search input,
+    .button_filter input{
+    border: none;
+    cursor:pointer;
+    display:block;
+    float:left;
+    font-size:0.6875em;
+    font-style:normal;
+    font-weight:bold;
+    text-decoration: none;
+        
+    }
+
+    .button_regular a{
+        padding: 2px 10px 4px 5px;
+    }
+    
+    .button_header input,
+    .button_login input,
+    .button_search input,
+    .button_filter input{
+    height: 19px;
+    padding-top: 0px;
+    padding-right: 8px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    }
+
+    .button_regular:hover {
+        background-position: 0% -19px;
+    }
+
+        .button_regular a:visited, 
+        .button_regular a:link {
+            color:#fff; 
+        }
+
+    .button_regular:hover a {
+        background-position:100% -19px;
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    
+.button_header:hover,
+.button_login:hover,
+.button_search:hover,
+.button_filter:hover{
+    background-position: 0% -19px;
+}
+    .button_header:hover input,
+    .button_login:hover input,
+    .button_search:hover input,
+    .button_filter:hover input{
+        background-position: 100% -19px;
+    }
+
+
+            
+
+
+.pdf_btn,
+.csv_btn,
+.print_btn,
+.print_all_btn {
+    display:block;
+    height:18px;
+    text-indent:-10000px;
+    width:18px; 
+}
+
+
+.subtract_btn,
+.add_btn,
+.calendar_btn {
+    display:block;
+    float:left;
+    height:18px;
+    margin-right:3px;
+    text-indent:-10000px;
+    width:18px; 
+}
+
+.pdf_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/pdf_btn.gif') no-repeat center center;
+}
+
+.csv_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/csv_btn.gif') no-repeat center center;
+}
+
+.print_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/print_btn.gif') no-repeat center center;
+}
+
+.print_all_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/print_all_btn.gif') no-repeat center center;
+}
+    
+.subtract_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/subtract_btn.gif') no-repeat center center;
+}
+
+.add_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/add_btn.gif') no-repeat center center;
+}
+
+.calendar_btn {
+    background: transparent url('/assets/unmanaged/images/buttons/calendar_btn.gif') no-repeat center center;
+}
+
+
+/*******************************************************************************
+* Intro Title, Intro Paragraph, Intro Image
+********************************************************************************/
+
+
+#page_content #contentOuterWrapper #contentTitle {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 15px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    width: 610px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-left: 0px;
+    color: #000;
+}
+
+#page_content #contentOuterWrapper #contentIMG {
+    width: 640px;
+}
+#page_content #contentOuterWrapper #contentIntro {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 15px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    width: 610px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.814em;
+    font-weight: normal;
+    margin-left: 0px;
+    color: #666;
+}
+
+/*******************************************************************************
+* Grey Right Column
+********************************************************************************/
+
+#page_content #contentOuterWrapper #rightColumn1 {
+    float: right;
+    padding: 10px;
+    width: 230px;
+    color: #FFFFFF;
+    background-color: #455560;
+    margin-top: 0px;
+}
+#rightColumn1 h2 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.375em;
+    font-weight: normal;
+    color: #dcd087;
+    margin: 0px;
+    padding: 0px;
+    line-height: 1.375em;
+}
+#rightColumn1 p {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 0.689em;
+    color: #FFF;
+}
+#rightColumn1 li {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 0.689em;
+    color: #FFF;
+    vertical-align: top; 
+}
+#rightColumn1 ul {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 0.689em;
+    color: #FFF;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    vertical-align: top; 
+}
+#rightColumn1 p {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+
+/*******************************************************************************
+* Content Full Width
+********************************************************************************/
+
+#contentOuterWrapper #contentWrapper #contentievalfull {
+    padding-top: 0px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    margin-top: 10px;
+}
+
+/*******************************************************************************
+* Fund Eval Buttons
+********************************************************************************/
+
+.nextButton {
+    margin-top: 15px;
+    height: 30px;
+    font-size: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#outerWrapper #contentWrapper #contentievalfull .nextButton input {
+    font-size: 14px;
+    color: #FFFFFF;
+    background-image: url(/assets/unmanaged/images/buttons/button_wht_bg.jpg);
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 42px;
+    width: 236px;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    background-color: #FFFFFF;
+}
+
+
+/* Short Buttons */
+#regButtons {
+    background-color: #676767;
+    background-image: url(/assets/unmanaged/images/butLeft.gif);
+    background-repeat: no-repeat;
+    height: 30px;
+    font-size: 0.750em;
+    color: #FFF;
+    padding: 0px;
+    text-align: center;
+    width: 110px;
+    float: right;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+#regButtonsR {
+    background-image: url(/assets/unmanaged/images/butRight.gif);
+    background-repeat: no-repeat;
+    float: right;
+    height: 22px;
+    width: 100%;
+    background-position: right;
+    padding-top: 8px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    margin: 0px;
+}
+#regButtonsNext {
+    background-color: #004059;
+    background-image: url(/assets/unmanaged/images/butLeftNext.jpg);
+    background-repeat: no-repeat;
+    height: 30px;
+    font-size: 0.75em;
+    color: #FFF;
+    padding: 0px;
+    text-align: center;
+    width: 110px;
+    float: right;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+#regButtonsNextR {
+    background-image: url(/assets/unmanaged/images/butRightNext.jpg);
+    background-repeat: no-repeat;
+    float: right;
+    height: 22px;
+    width: 100%;
+    background-position: right;
+    padding-top: 8px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    margin: 0px;
+}
+.nextButton #regButtonsNext #regButtonsNextR a {
+    color: #FFF;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.nextButton #regButtonsNext #regButtonsNextR a:hover {
+    color: #CC9;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor : pointer;
+}
+
+.nextButton #regButtons #regButtonsR a {
+    color: #FFF;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.nextButton #regButtons #regButtonsR a:hover {
+    color: #D3CEB8;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor:hand;
+}
+
+.btn-hover {
+  color:#CCCC99!important;
+}
+
+#fundEvaluatorButtons .blue-btn {
+      border:none;
+      width:110px;
+      height:30px;
+      color:white;
+      background:url('/assets/unmanaged/images/buttons/enabled_blue_button_110px.gif');
+      cursor : pointer;
+}
+#fundEvaluatorButtons .grey-btn {
+      border:none;
+      width:110px;
+      height:30px;
+      color:white;
+      background:url('/assets/unmanaged/images/buttons/enabled_grey_button_110px.gif');
+      cursor : pointer;
+}
+
+
+#fundEvaluatorButtons .disabled-grey-btn {
+      border:none;
+      width:110px;
+      height:30px;
+      color:white;
+      background:url('/assets/unmanaged/images/buttons/disabled_grey_button_110px.gif');
+}
+
+#fundEvaluatorButtons {
+    text-align:right;
+}
+
+#fundEvaluatorButtons input.next {
+    float:right;
+    margin-left:20px;
+}
+
+#fundEvaluatorButtons input:disabled {
+    color:#808080;
+}
+
+
+/*******************************************************************************
+* Fund Eval Nav
+********************************************************************************/
+ul.proposal_nav_menu {
+    list-style:none;
+    margin:0px;
+    padding:0px;
+    font-family:Georgia, "Times New Roman", Times, serif;
+    font-weight:normal;
+    font-size: 1.064em;
+    clear: both;
+    height: 37px;
+}
+ul.proposal_nav_menu li{
+    float:left;
+    margin-top: 0px;
+    margin-right: 4px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+ul.proposal_nav_menu li a{
+    display:block;
+    background-color:#9f9f9f;
+    color:#FFF;
+    background-image: url(/assets/unmanaged/images/nav_sub_sub_bg_on.gif);
+    background-repeat: repeat-x;
+    background-position: top;
+    padding-top: 9px;
+    padding-right: 10px;
+    padding-bottom: 9px;
+    padding-left: 10px;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    font-size: 0.875em;
+    text-decoration: none;
+}
+ul.proposal_nav_menu li a.selected_link
+{
+   position:relative;
+   top:9px;
+    padding:0px;
+    font-size:0.9em;
+}
+ul.proposal_nav_menu li span{
+    display:block;
+    padding:9px 10px 10px 10px;
+    color:#FFF;
+    background-color: #455660;
+    background-image: url(../imgs/nav_sub_sub_bg_on.gif);
+    background-repeat: repeat-x;
+    background-position: top;
+}
+ul.proposal_nav_menu li a span
+{
+   padding-left:0px;
+   display:inline;
+}
+ul.proposal_nav_menu li a span.step_number
+{
+    color:#bed5e6;
+    padding-left:10px;
+    padding-right:0px;
+}
+DIV.selection_mode {
+    BACKGROUND-COLOR: #455660;
+    position:relative;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    padding:10px;
+    height: 100%;
+}
+DIV.selection_mode_slider {
+    BACKGROUND-COLOR: #455660;
+    position:relative;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    padding:10px;
+    min-height:540px;
+    
+}
+#contentievalfull div.selection_mode h2 {
+    color: #FFF;
+}
+
+/*******************************************************************************
+* Fund Eval Step 1 Content
+********************************************************************************/
+
+#contentievalfull div .selection_mode .centerTitleStep1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.375em;
+    line-height: 1.375em;
+    font-weight: normal;
+    color: #FFF;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#newplaninput {
+    background-color: #e5eaee;
+    width: 400px;
+    border: 1px solid #CCC;
+}
+#existingplaninput {
+    background-color: #e5eaee;
+    width: 400px;
+    border: 1px solid #CCC;
+    float: right;
+    clear: right;
+    margin-right: 15px;
+}
+#newplaninputArrow {
+    width: 330px;
+    height: 50px;
+    background-image: url(/assets/unmanaged/images/arrow_slider.png);
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+#existingplaninputArrow {
+    width: 345px;
+    height: 50px;
+    background-image: url(/assets/unmanaged/images/arrow_slider.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    float: right;
+}
+
+/*******************************************************************************
+* Fund Eval Step 2 Content
+********************************************************************************/
+DIV.selection_mode_slider #measurementCriteria {
+    background-color: #e5eaee;
+    width: 430px;
+    height: 540px;
+    float: left;
+}
+DIV.selection_mode_slider #slidersPie {
+    background-color: #FFF;
+    width: 430px;
+    height: 540px;
+    float: right;
+    margin: 0px;
+    clear: right;
+}
+#measurementCriteria #measurement {
+    width: 204px;
+    float: left;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: #d7d7d7;
+    font-size: 0.689em;
+    height: 36px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #0069be;
+    clear: left;    
+}
+#measurementCriteria #measurement A{    
+    text-decoration:underline;  
+}
+#measurementCriteria #criteria {
+    width: 205px;
+    float: right;
+    font-size: 0.689em;
+    height: 37px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    clear: right;
+}
+#measurementCriteria #measurementHeader {
+    width: 202px;
+    float: left;    
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: #d7d7d7;
+    clear: left;
+    font-size: 1em;
+    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 25px;
+    width: 179px;
+    background-image: url(/assets/unmanaged/images/measurementCriteriaBG.png);
+    background-repeat: repeat-x;
+    background-color: #728090;
+    color: #FFF;
+    font-family: Georgia, "Times New Roman", Times, serif;
+
+}
+#measurementCriteria #criteriaHeader {
+    width: 205px;
+    float: right;
+    font-size: 1em;
+    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-image: url(/assets/unmanaged/images/measurementCriteriaBG.png);
+    background-repeat: repeat-x;
+    background-color: #728090;
+    color: #FFF;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    text-align: left;
+    clear: right;
+}
+ .ieval-sliderbtn-text {
+    position:absolute;
+    margin-top:5px;
+    margin-left:10px;
+    width:45px;
+    text-align:center;
+    color:white;
+    font-size:0.814em;
+    font-weight:bold;
+}
+#slidersPie table tr td {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #000;
+}
+/*******************************************************************************
+* Fund Eval Step 3 Content
+********************************************************************************/
+DIV.selection_mode_step3 {
+    BACKGROUND-COLOR: #455660;
+    position:relative;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    height: 333px;
+    padding-top: 30px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}div.selection_mode_step3 #choose1 {
+    width: 490px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1em;
+    color: #FFF;
+    background-image: url(/assets/unmanaged/images/1.png);
+    background-repeat: no-repeat;
+    background-position: left 25px;
+    background-color: #455660;
+    padding-left: 26px;
+}
+div.selection_mode_step3 #choose23 {
+    float: right;
+    width: 335px;
+    clear: right;
+}
+#choose1 #box1 {
+    background-color: #e5eaee;
+    width: 450px;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+    padding: 15px;
+}
+#choose1 #1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.875em;
+    color: #FFF;
+    float: left;
+    filter: Alpha(Opacity=50%);
+    padding-top: 30px;
+    clear: left;
+}
+#choose1 h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.125em;
+    color: #FFF;
+    font-weight: normal;
+    padding-left: 15px;
+}
+#choose1 #box1 blockquote p label {
+    margin-left: 50px;
+}
+#choose1 #box1 p .indent {
+    margin-left: 28px;
+    display: block;
+    margin-right: 28px;
+    font-size: 0.814em;
+}
+div.selection_mode_step3 #right {
+    float: right;
+    width: 330px;
+}
+div.selection_mode_step3 #choose2 {
+    width: 300px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: .75em;
+    color: #FFF;
+    background-image: url(/assets/unmanaged/images/2.png);
+    background-repeat: no-repeat;
+    background-position: left 25px;
+    background-color: #455660;
+    padding-left: 30px;
+    float: right;
+    clear: right;   
+	height:167px;
+}
+#choose2 #box1 {
+    background-color: #f5f6f1;
+    width: 250px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+    padding-left: 15px;
+	padding-right: 15px;
+}
+#choose2 #box1 #LCsuite{
+    padding-left: 22px;
+	display: none;
+}
+#choose2 #1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.875em;
+    color: #FFF;
+    float: left;
+    filter: Alpha(Opacity=50%);
+    padding-top: 30px;
+    clear: left;
+}
+#choose2 h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.125em;
+    color: #FFF;
+    font-weight: normal;
+    padding-left: 15px;
+}
+#choose2 #box1 blockquote p label {
+    margin-left: 50px;
+}
+#choose2 #box1 p .indent {
+    margin-left: 28px;
+    display: block;
+    margin-right: 28px;
+    font-size: 0.814em;
+}
+
+
+
+
+div.selection_mode_step3 #choose3 {
+    width: 300px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1em;
+    color: #FFF;
+    background-image: url(/assets/unmanaged/images/3.png);
+    background-repeat: no-repeat;
+    background-position: left 38px;
+    background-color: #455660;
+    padding-left: 30px;
+    float: right;
+    clear: right;
+}
+#choose3 #box1 {
+    background-color: #f5f6f1;
+    width: 250px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+    padding-left: 15px;
+	padding-right: 15px;
+}
+#choose3 #1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.875em;
+    color: #FFF;
+    float: left;
+    filter: Alpha(Opacity=50%);
+    padding-top: 30px;
+    clear: left;
+}
+#choose3 h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.125em;
+    color: #FFF;
+    font-weight: normal;
+    padding-left: 15px;
+	padding-top: 12px;
+}
+#choose3 #box1 blockquote p label {
+    margin-left: 50px;
+}
+#choose3 #box1 p .indent {
+    margin-left: 28px;
+    display: block;
+    margin-right: 28px;
+    font-size: 0.814em;
+}
+
+
+/*******************************************************************************
+* Fund Eval Step 4 Content
+********************************************************************************/
+    #assetHouse {
+    padding:0px;
+    width:860px;
+    }
+ 
+    #assetHouse th {
+    color:#FFFFFF;
+    font-size:16px;
+    height:10px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    }
+ 
+    #assetHouse .asset-box {
+		width: 130px;
+		height: 40px;
+		top: 6px;
+		border:3px solid #F4D28A;
+		background-color:#F4D28A;
+ 		border-right: 1px solid rgb(69, 86, 96);
+    text-align:center;
+    cursor:pointer;    
+    }
+ 
+    #assetHouse .asset-box:last-child {
+		border-right: none;
+    }
+    
+		#assetHouse .asset-box-wide {
+			width: 205px;
+			height: 40px;
+			top: 6px;
+			border:3px solid #F4D28A;
+			background-color:#F4D28A;
+			border-right: 1px solid rgb(69, 86, 96);
+			text-align: center;
+			cursor: pointer;
+		}
+		
+		#assetHouse .asset-box-wide:last-child {
+			border-right: none;
+		}
+		
+    #assetHouse .assetTable {
+    width:425px;
+    }
+ 
+    #assetHouse .structure td {
+    vertical-align:top;
+    }
+ 
+ 
+    #assetHouse .spacer-column {
+        width:10px!important;
+    }
+ 
+    #assetHouse .fund-count {
+        color:#FFFFFF;
+        font-size:20px;
+        position:relative;
+        left:auto;
+        top:8px;
+        height:36px;
+        vertical-alignment:top;
+        text-alignment:left;
+    }
+    
+     #assetHouse .fund-count-special {
+        color:#FFFFFF;
+        font-size:28px;
+        position:relative;
+        left:45px;
+        top:-10px;
+        height:20px;
+        vertical-alignment:top;
+        text-alignment:left;
+    }
+ 
+    #assetHouse .asset-box-label {
+    position:relative;
+    font-size:11px;
+    font-weight:normal;
+    top:6px;
+    display:none;
+    }
+    
+		.asset-group {
+			padding: 0;
+			border: 3px solid white;
+		}
+		
+    #assetHouse .small-break {
+        font-size:8px;
+    }
+
+		#assetHouse .asset-heading {
+			position: relative;
+			padding-bottom: 5px;
+			text-align: center;
+			font-size: 11px;
+			font-weight: normal;	
+			border:3px solid #F4D28A;
+			background-color:#F4D28A;
+			border-bottom: 1px solid rgb(69, 86, 96);															
+		}
+	
+.previewSelected {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+    background-color: #bed5e6;
+    font-size: 14px;
+    border: 2px solid #FFF;
+    text-align: center;
+    width: 175px;
+    font-weight: bold;
+}
+.previewFunds {
+    background-color: #f5f6f1;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: none;
+    border-top-color: #FFF;
+    border-right-color: #FFF;
+    border-bottom-color: #FFF;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+    text-align: center;
+    width: 75px;
+}
+.previewSelected .previewNum {
+    color: #296523;
+    font-weight: bold;
+}
+.previewFunds a {
+    color: #069;
+    font-weight: bold;
+}
+.headerLink {
+    CURSOR:hand;
+}
+
+/*******************************************************************************
+* Fund Eval Step 5 Content
+********************************************************************************/
+#coversheetInfo {
+    background-color: #e8eadd;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+#coversheetInfo h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.125em;
+    font-weight: normal;
+    line-height: 1.125em;
+    padding-bottom: 15px;
+}
+#itemsIncluded {
+    background-color: #e5eaee;
+    padding-bottom: 15px;
+    height: 100%;
+    width: 430px;
+    float: right;
+    position: relative;
+}
+#itemsIncluded h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.125em;
+    line-height: 1.125em;
+    font-weight: normal;
+    color: #FFF;
+    background-color: #a0a0a0;
+    height: 25px;
+    padding: 10px;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #febe10;
+}
+#itemsIncluded ul li {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 0.689em;
+    line-height: 0.814em;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #c4cfd8;
+    padding-bottom: 0px;
+    list-style-type: none;
+    display: block;
+    padding-left: 0px;
+    padding-top: 0px;
+    margin-right: 50px;
+    margin-top: 5px;
+}
+#itemsIncluded ul img {
+    display: block;
+    float: left;
+    padding-right: 10px;
+}
+#itemsIncluded ul li .list {
+    display: block;
+    height: 48px;
+}
+#itemsIncluded ul li .listMoreSpace {
+    display: block;
+    height: 56px;
+}
+#itemsIncluded ul li .ips {
+    display: block;
+    height: 104px;
+}
+
+#itemsIncluded ul li .ipsredtext {
+    font-size: 7pt;
+    font-weight: normal;
+    color: #ff0000;    
+    height: 98px;
+}
+#optionalItems {
+    background-color: #f5f6f1;
+    padding-bottom: 15px;
+    height: 100%;
+    width: 380px;
+    float: left;
+    position: relative;
+}
+#optionalItems h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.125em;
+    line-height: 1.125em;
+    font-weight: normal;
+    color: #FFF;
+    background-color: #a0a0a0;
+    height: 25px;
+    padding: 10px;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #febe10;
+}
+#optionalItems ul li {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 0.689em;
+    line-height: 0.814em;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #c4cfd8;
+    padding-bottom: 0px;
+    list-style-type: none;
+    display: block;
+    padding-left: 0px;
+    padding-top: 0px;
+    margin-right: 50px;
+    height: 100%;
+    margin-top: 5px;
+}
+#optionalItems ul img {
+    display: block;
+    float: left;
+    padding-right: 10px;
+}
+
+#optionalItems ul li .list {
+    display: block;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    height: 48px;
+}
+#optionalItems ul li .listMoreSpace {
+    display: block;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    height: 56px;
+}
+.generatePDF {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 25px;
+    background-color: #455660;
+    background-image: url(/assets/unmanaged/images/step5GenerateButton_off.png);
+    background-repeat: no-repeat;
+    margin-right: auto;
+    margin-left: auto;
+    height: 30px;
+    width: 254px;
+    padding-top: 13px;
+}
+.generatePDF:hover {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 25px;
+    background-color: #455660;
+    background-image: url(/assets/unmanaged/images/step5GenerateButton_on.png);
+    background-repeat: no-repeat;
+    margin-right: auto;
+    margin-left: auto;
+    height: 30px;
+    width: 254px;
+    padding-top: 13px;
+}
+.generatePDF a {
+    color: #FFF;
+    height: 43px;
+    width: 254px;
+    text-decoration: none;
+}
+.coversheetSelect {
+    font-size: 11px;
+}
+.coversheetSelectSM {
+    font-size: 10px;
+}
+#itemsArrow {
+    background-image: url(/assets/unmanaged/images/step5arrow.png);
+    background-repeat: no-repeat;
+    height: 41px;
+    width: 51px;
+    float: left;
+    margin-top: 155px;
+    margin-left: 8px;
+}
+.generateButton {
+    background-image: url(/assets/unmanaged/images/step5GenerateButton_off.png);
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 41px;
+    width: 249px;
+    color: #FFF;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #455660;
+    background-position: left top;
+    margin-left: 300px;
+    font-weight: bold;
+}
+.generateButton:hover{
+    background-image: url(/assets/unmanaged/images/step5GenerateButton_on.png);
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 41px;
+    width: 249px;
+    color: #FFF;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #455660;
+    background-position: left top;
+    margin-left: 300px;
+    cursor :hand;
+    cursor :pointer;
+}
+.remainingPercentageText{
+    font-size: 11px;
+    color: #ff0000;
+    margin-left:5px;
+}
+
+.remainingPercentageValue{
+    font-size: 14px;
+    color: #ff0000;    
+}
+.positivePercentageText{
+    font-size: 11px;    
+    margin-left:15px;
+}
+.coversheet{
+    font-size: 11px;
+    color: #000000;
+}
+
+.slider-table {
+    border-collapse:collapse;
+    padding:0px;
+    margin:0px;
+    border:0px;    
+}
+
+.slider-table td { 
+    border-collapse:collapse;
+    padding:3px;
+    margin:0px;
+    border:0px;        
+}
+
+div.slider-housing {
+    margin-bottom:22px;    
+}    
+
+.leftboxHead{
+    font-size: 1.4em;
+    color: #000000;
+}
+.leftBoxContent{
+    margin-left: 28px;
+    display: block;
+    margin-right: 28px;
+    font-size: 1.07em;
+    color: #000000;
+}
+
+.rightBox{
+    font-size: 1.290em;
+    color: #000000;
+}
+
+.rightBoxLabel{
+    font-size: 12px;
+    color: #000000;
+}
+.coversheetInformationHeadingLeft {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.125em;
+    font-weight: normal;
+    line-height: 1.125em;
+    padding-bottom: 15px;
+    float:left;
+}
+
+.coversheetInformationHeadingRight {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.125em;
+    font-weight: normal;
+    line-height: 1.125em;
+    padding-bottom: 15px;
+    margin-left:480px;
+}
+
+.asset-allocation-grouping {
+    padding:10px;
+}
+
+.ui-widget {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:1em;
+}
+.ui-multiselect-menu {
+    font-size:.75em;
+}

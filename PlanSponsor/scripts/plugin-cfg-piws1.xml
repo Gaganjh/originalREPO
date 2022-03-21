@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<Config RefreshInterval="3600">
+    <Log LogLevel="Error" Name="C:/WebSphere/AppServer/logs/native.log"/>
+    <VirtualHostGroup Name="EZk_host">
+        <VirtualHost Name="mlisezkpiws1.americas.manulife.net:9088"/>
+        <VirtualHost Name="*:9081"/>
+        <VirtualHost Name="*:9083"/>
+        <VirtualHost Name="*:9080"/>
+    </VirtualHostGroup>
+    <VirtualHostGroup Name="mfproposal_host">
+        <VirtualHost Name="mutualfundproposal.jhancock.com"/>
+        <VirtualHost Name="*:9085"/>
+    </VirtualHostGroup>
+    <VirtualHostGroup Name="mfp_host">
+        <VirtualHost Name="mfpcma.manulife.com"/>
+        <VirtualHost Name="*:9089"/>
+    </VirtualHostGroup>
+    <VirtualHostGroup Name="PlanSponsorUSA_host">
+        <VirtualHost Name="PlanSponsorUSPreview.test-qa.net"/>
+    </VirtualHostGroup>
+    <VirtualHostGroup Name="PlanSponsorNY_host">
+        <VirtualHost Name="PlanSponsorNYPreview.test-qa02.net"/>
+    </VirtualHostGroup>
+    <VirtualHostGroup Name="PlanSponsorCMA_host">
+        <VirtualHost Name="PlanSponsorCMA.manulife.com"/>
+    </VirtualHostGroup>
+    <VirtualHostGroup Name="acrHost">
+        <VirtualHost Name="jhrs.americas.manulife.net"/>
+        <VirtualHost Name="*:9094"/>
+    </VirtualHostGroup>
+    <ServerGroup Name="MLISEZKPIWS1/EZk Dev Server">
+        <Server Name="EZk Dev Server">
+            <Transport Hostname="localhost" Port="9083" Protocol="http"/>
+        </Server>
+    </ServerGroup>
+    <ServerGroup Name="MLISEZKPIWS1/mfproposal_server">
+        <Server Name="mfproposal_server">
+            <Transport Hostname="localhost" Port="9085" Protocol="http"/>
+        </Server>
+    </ServerGroup>
+    <ServerGroup Name="MLISEZKPIWS1/MFP Server">
+        <Server Name="MFP Server">
+            <Transport Hostname="localhost" Port="9089" Protocol="http"/>
+        </Server>
+    </ServerGroup>
+    <ServerGroup Name="MLISEZKPIWS1/PlanSponsor Server">
+        <Server Name="PlanSponsor Server">
+            <Transport Hostname="localhost" Port="9084" Protocol="http"/>
+        </Server>
+    </ServerGroup>
+    <ServerGroup Name="MLISEZKPIWS1/PlanSponsorCMA Server">
+        <Server Name="PlanSponsorCMA Server">
+            <Transport Hostname="localhost" Port="9086" Protocol="http"/>
+        </Server>
+    </ServerGroup>
+    <ServerGroup Name="MLISEZKPIWS1/acrServer">
+        <Server Name="acrServer">
+            <Transport Hostname="localhost" Port="9094" Protocol="http"/>
+        </Server>
+    </ServerGroup>
+    <UriGroup Name="ezk/ezkWeb_URIs">
+        <Uri AffinityCookie="JSESSIONID" Name="/ezkWeb/*"/>
+    </UriGroup>
+    <UriGroup Name="ezk/ezkWebNY_URIs">
+        <Uri AffinityCookie="JSESSIONID" Name="/ezkWebNY/*"/>
+    </UriGroup>
+    <UriGroup Name="mfproposal_app/proposalWeb.war_URIs">
+        <Uri AffinityCookie="JSESSIONID" Name="/*"/>
+    </UriGroup>
+    <UriGroup Name="MFP/mfpWeb_URIs">
+        <Uri AffinityCookie="JSESSIONID" Name="/mfpWeb/*"/>
+    </UriGroup>
+    <UriGroup Name="PlanSponsor/PlanSponsorWeb_URIs">
+        <Uri AffinityCookie="JSESSIONID" Name="/do/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="*/"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/admin/*.jsp"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/error.jsp"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/login/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/public/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/LineChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/PieChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/BarChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/ClearContentCacheServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/AddIUMUser"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/ResetInternalUserPassword"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/AddRMUser"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/DeleteRMUser"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/unallocated/*"/>
+    </UriGroup>
+    <UriGroup Name="PlanSponsor/PlanSponsorWebNY_URIs">
+        <Uri AffinityCookie="JSESSIONID" Name="/do/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="*/"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/error.jsp"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/login/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/public/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/LineChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/PieChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/BarChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/ClearContentCacheServlet"/>
+    </UriGroup>
+    <UriGroup Name="PlanSponsorCMA/PlanSponsorCMAWeb_URIs">
+        <Uri AffinityCookie="JSESSIONID" Name="/*.jsp"/>
+    </UriGroup>
+    <UriGroup Name="acr/acrWeb_URIs"> 
+        <Uri AffinityCookie="JSESSIONID" Name="/*.jsp"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/acr/servlet/BeanTableScrollServlet/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/acr/servlet/Gatekeeper/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/acr/servlet/WebAppAuthenticationServlet/*"/>
+    </UriGroup>
+    <Route ServerGroup="MLISEZKPIWS1/EZk Dev Server" UriGroup="ezk/ezkWeb_URIs" VirtualHostGroup="EZk_host"/>
+    <Route ServerGroup="MLISEZKPIWS1/EZk Dev Server" UriGroup="ezk/ezkWebNY_URIs" VirtualHostGroup="EZk_host"/>
+    <Route ServerGroup="MLISEZKPIWS1/mfproposal_server" UriGroup="mfproposal_app/proposalWeb.war_URIs" VirtualHostGroup="mfproposal_host"/>
+    <Route ServerGroup="MLISEZKPIWS1/MFP Server" UriGroup="MFP/mfpWeb_URIs" VirtualHostGroup="mfp_host"/>
+    <Route ServerGroup="MLISEZKPIWS1/PlanSponsor Server" UriGroup="PlanSponsor/PlanSponsorWeb_URIs" VirtualHostGroup="PlanSponsorUSA_host"/>
+    <Route ServerGroup="MLISEZKPIWS1/PlanSponsor Server" UriGroup="PlanSponsor/PlanSponsorWebNY_URIs" VirtualHostGroup="PlanSponsorNY_host"/>
+    <Route ServerGroup="MLISEZKPIWS1/PlanSponsorCMA Server" UriGroup="PlanSponsorCMA/PlanSponsorCMAWeb_URIs" VirtualHostGroup="PlanSponsorCMA_host"/>
+    <Route ServerGroup="MLISEZKPIWS1/acrServer" UriGroup="acr/acrWeb_URIs" VirtualHostGroup="acrHost"/>
+
+</Config>

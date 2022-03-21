@@ -1,0 +1,141 @@
+INPUT{
+	font-size: 11px;
+}
+TEXTAREA{
+	font-size: 11px;
+}
+SELECT{
+	font-size: 11px;
+}
+.box SELECT{
+	font-size: 11px;
+}
+.right SELECT{
+	width : 168px;
+	font-size: 11px;
+}
+
+.b11 { font-size: 12px }
+.highlightBold {
+	color : #002D62;
+	font-weight: bold;
+}
+
+.redText { 
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 12px; 
+	color: #990000; 
+	font-weight: bold;
+}
+.orangeText { 
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 12px; 
+	color: #FF8000; 
+	font-weight: bold;
+}
+.greyTextFund { font-family: Arial, Helvetica, sans-serif; font-size: 9px; color: #666666; text-decoration: none }
+.boldText { 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	text-decoration: none ;
+	font-weight: bold
+}
+UL.noindent {
+	list-style-type: square;
+	padding-left: 25px;
+	margin-left: 0px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+}
+.participantList {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #89A2B3;
+	width: 200px;
+	height: 225px;
+}
+.mandatory {
+	background-color: #ffcc99;
+}
+
+DIV.signOutLayer {
+	position:absolute;
+	width:107px;
+	height:18px;
+	z-index:3;
+	left: 351px;
+	top: 2px;
+	background-color: #002D62;
+	text-align:right;
+}
+
+
+SPAN.signOutLayerStyle1 {color: #FFFFFF}
+
+.signoutLayer A:active, .signoutLayer A:hover, .signoutLayer A:link, .signoutLayer A:visited {
+	color:#FFFFFF;
+	font-size: 11px;
+    text-decoration: none;
+ }	
+
+.redTextBold { 
+	color: #990000; 
+	font-weight: bold;
+}
+DIV.signOutLayerTPA {
+	position:absolute;
+/*	width:180px;*/
+	width:208px;
+	height:18px;
+	z-index:3;
+/*	left: 271px;*/
+	left: 250px;
+	top: 2px;
+	background-color: #002D62;
+	text-align:right;
+}
+SPAN.signOutLayerTPAStyle1 {color: #FFFFFF}
+
+.signOutLayerTPA A:active, .signOutLayerTPA A:hover, .signOutLayerTPA A:link, .signOutLayerTPA A:visited {
+	color:#FFFFFF;
+	font-size: 11px;
+    text-decoration: none;
+ }	
+
+DIV.signOutLayerInternal {
+	position:absolute;
+	width:147px;
+	height:18px;
+	z-index:3;
+	left: 311px;
+	top: 2px;
+	background-color:#002D62;
+	text-align:right;
+}
+.signOutLayerInternal A:active, .signOutLayerInternal A:hover, .signOutLayerInternal A:link, .signOutLayerInternal A:visited {
+	color:#FFFFFF;
+	font-size: 11px;
+    text-decoration: none;
+ }	
+DIV.signOutLayerExternal {
+	position:absolute;
+	width:147px;
+	height:18px;
+	z-index:3;
+	left: 311px;
+	top: 2px;
+	background-color: #002D62;
+	text-align:right;
+}
+.signOutLayerExternal A:active, .signOutLayerExternal A:hover, .signOutLayerExternal A:link, .signOutLayerExternal A:visited {
+	color:#FFFFFF;
+	font-size: 11px;
+    text-decoration: none;
+ }	
+ 
+.addEditInternalUser td {
+  padding:5px;
+}

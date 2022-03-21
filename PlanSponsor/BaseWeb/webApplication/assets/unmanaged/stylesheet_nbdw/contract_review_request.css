@@ -1,0 +1,432 @@
+/*******************************************************************************
+*	contract_review_request.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	PlanReviewReports specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+/*media all*/
+div#page_content h2 {
+    margin-bottom: 0px;
+}
+
+
+#contentOuterWrapper #contentWrapper #rightColumnOverview {
+    float: right;
+    padding: 10px; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+    width: 270px;
+    height: 200px;
+    color: #FFFFFF;
+    background-color: #455560;
+    margin-top: 0px;
+    margin-right: 0px;
+    clear: right;
+}
+#rightColumnOverview h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: normal;
+    padding: 0px;
+    color: #FFFFFF;
+
+}
+ #rightColumnOverview h2 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.4em;
+    font-weight: normal;
+    color: #dcd087;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    line-height: 1.2em;
+
+}
+#rightColumnOverview p {
+    color: #FFFFFF;
+    font-size: 11px;
+    padding: 0px;
+}
+#rightColumnOverview a:link, a:visited{
+    text-decoration: none;
+} 
+#rightColumnOverview a:hover, a:active{
+    color: #666;
+    text-decoration: underline;
+} 
+#rightColumnOverview ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+#rightColumnOverview ul li {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #CCC;
+}
+#rightColumnOverview ul li:first-child{
+                border-top:none;
+            }
+            
+#rightColumnOverview h5 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    font-variant: normal;
+    padding: 0px;
+}
+#rightColumnOverview h5 .date {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+#rightColumnOverview a {
+    font-size: 11px;
+    color: #FFF;
+    text-decoration: none;
+}
+#rightColumnOverview a:hover {
+    font-size: 11px;
+    color: #dcd087;
+    text-decoration: underline;
+}
+#rightColumnOverview.selected {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+#contentOuterWrapper #contentWrapper #overview #mod3 p a {
+    font-size: 12px;
+    font-weight: bold;
+}
+#contentOuterWrapper #contentWrapper #overview #mod2 p a {
+    font-size: 12px;
+    font-weight: bold;
+}
+#contentOuterWrapper #contentWrapper #overview #mod1 p a {
+    font-size: 12px;
+    font-weight: bold;
+}
+#rightColumnOverview ul li a {
+    text-decoration: none;
+}
+
+#contentOuterWrapper #contentWrapper #partnerOverviewImg {
+	margin-top: 0px;
+	width: 601px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.5em;
+	font-weight: normal;
+	height: 250px;
+	background-image: url(../../generalimages/overview_img.jpg);
+	background-repeat: no-repeat;
+	background-position: left 0px;
+}
+
+ul.proposal_nav_menu {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+	font-size: 1.064em;
+	clear: both;
+	height: 37px;
+}
+
+ul.proposal_nav_menu li {
+	float: left;
+	margin-top: 0px;
+	margin-right: 4px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+
+ul.proposal_nav_menu li a {
+	display: block;
+	background-color: #9f9f9f;
+	color: #FFF;
+	background-image: url(../images/nav_sub_sub_bg_on.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+	padding-top: 9px;
+	padding-right: 10px;
+	padding-bottom: 9px;
+	padding-left: 10px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	font-size: 0.875em;
+	text-decoration: none;
+}
+
+ul.proposal_nav_menu li a.selected_link {
+	position: relative;
+	top: 9px;
+	padding: 0px;
+	font-size: 0.9em;
+}
+
+ul.proposal_nav_menu li span {
+	display: block;
+	padding: 9px 10px 10px 10px;
+	color: #FFF;
+	background-color: #455660;
+	background-image: url(../imgs/nav_sub_sub_bg_on.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+}
+
+ul.proposal_nav_menu li a span {
+	padding-left: 0px;
+	display: inline;
+}
+
+ul.proposal_nav_menu li a span.step_number {
+	color: #bed5e6;
+	padding-left: 10px;
+	padding-right: 0px;
+}
+
+.blue-btn {
+	border: none;
+	width: 110px;
+	height: 30px;
+	color: white;
+	background: url('../images/buttons/enabled_blue_button_110px.gif');
+	cursor: pointer;
+}
+
+.blue-btn_big {
+	border: none;
+	width: 200px;
+	height: 30px;
+	color: white;
+	background: url('../images/buttons/enabled_blue_button_200px.gif');
+	cursor: pointer;
+}
+
+.grey-btn {
+	border: none;
+	width: 110px;
+	height: 30px;
+	color: #808080;
+	background: url('../images/buttons/enabled_grey_button_110px.gif');	
+	cursor: default;
+}
+
+.disabled-grey-btn {
+	border: none;
+	width: 110px;
+	height: 30px;
+	color: #808080;
+	background: url('../images/buttons/disabled_grey_button_110px.gif');
+	cursor: default;
+}
+.disabled-grey-btn #download_button {
+	border: none;
+	width: 110px;
+	height: 30px;
+	color: #808080;
+	background: url('../images/buttons/disabled_grey_button_110px.gif');
+	cursor: default;
+	background-size: 100% 100%;
+}
+
+.btn-hover {
+	color: #CCCC99 !important;
+}
+
+.generateButton {
+	background-image: url(../images/step5GenerateButton_off.png);
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 35px;
+	width: 200px;
+	color: #FFF;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	background-position: left top;
+	font-weight: bold;
+}
+
+#loadingContent {
+	z-index: 1002;
+	text-align: center;
+	padding: 0px;
+	position: absolute;
+	height: 520px;
+	width: 800px;
+}
+
+#loadingContent img {
+	width: 16px;
+	height: 16px;
+}
+
+#confirmationBox {
+	z-index: 1002;
+	text-align: center;
+	padding: 0px;
+	position: absolute;
+	height: 240px;
+	width: 800px;
+}
+
+.modalOverlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 1001;
+}
+
+.val_num_cnt {
+	color: #000000;
+	font-size: 12px;
+	text-align: left;
+}
+
+.address {
+	color: #000000;
+	font: normal 13px verdana, arial, helvetica, sans-serif;
+	text-align: left;
+}
+
+.addressLable {
+	color: #000000;
+	font: normal 13px verdana, arial, helvetica, sans-serif;
+	text-align: right;
+	padding-right: 3px;
+}
+
+.address1 {
+	color: #000000;
+	font: normal 13px verdana, arial, helvetica, sans-serif;
+	text-align: left;
+	padding-right: 10px;
+}
+
+.addressDisabled1 {
+	font: normal 13px verdana, arial, helvetica, sans-serif;
+	text-align: left;
+	padding-right: 10px;
+}
+
+.addressDisabled {
+	font: normal 13px verdana, arial, helvetica, sans-serif;
+	text-align: left;
+}
+
+td {
+	padding: 3px;
+}
+
+.selectClassFont {
+	font: 9px;
+}
+
+.generateButton:hover {
+	background-image: url(../images/step5GenerateButton_on.png);
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 35px;
+	width: 200px;
+	color: #FFF;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	background-position: left top;
+	cursor: hand;
+	cursor: pointer;
+}
+
+/*******************************************************************************
+* REPORT TABLE CONTENT
+********************************************************************************/
+#page_content .report_table .page_section_subheader,#page_content .report_table .page_section_subsubheader
+	{
+	margin-bottom: 0px;
+}
+
+
+
+.report_table td.cur,.report_table th.cur,.report_table th.pct,.report_table td.num
+	{
+	text-align: right;
+}
+
+
+.report_table th.date,.report_table td.val_num_cnt,.report_table th.val_str
+	{
+	text-align: left;
+}
+
+
+
+.coverImageDiv tr td {
+	color: #000;
+	font-size: 16px;
+}
+
+.coverImageDiv tbody {
+	font: 16px verdana, arial, helvetica, sans-serif !important;
+}
+
+/*added for history page Date  Calendar. */
+.yui-skin-sam .yui-calendar td.calcell {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #CCCCCC;
+	height: 16px;
+	line-height: 1.6em;
+	padding: 1px;
+	text-align: center;
+	white-space: nowrap;
+	width: 19px;
+	font-size: 10px;
+}
+
+.yui-skin-sam .yui-calendar .calweekdayrow th {
+	border: medium none;
+	font-size: 10px;
+	padding: 0;
+}
+
+#calendarcontainer {
+	padding: 10px;
+	width: 154px;
+}
+
+#calendarcontainer1 {
+	padding: 10px;
+	width: 154px;
+}
+
+.yui-calendar .calheader {
+	font-size: 11px;
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+yui-skin-sam .yui-calendar td.calcell {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #CCCCCC;
+	height: 15px;
+	line-height: 1.6em;
+	padding: 1px;
+	text-align: center;
+	white-space: nowrap;
+	width: 20px !important;
+}
+/*end of the  history page Date calendar Style. */

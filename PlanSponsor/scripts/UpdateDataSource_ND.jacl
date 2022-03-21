@@ -1,0 +1,33 @@
+# ==============================================================================
+# WAS script to update DataSource based on the parameters provided
+# $ID:$
+# ==============================================================================
+
+global AdminConfig
+
+set cellName [lindex $argv 0]
+set dsName [lindex $argv 1]
+set dbName [lindex $argv 2]
+set authAlias [lindex $argv 3]
+
+set providerName DB2_JDBC_Driver_XA_UV
+
+set JDBCProvider [$AdminConfig getid /Cell:$cellName/JDBCProvider:$providerName/] 
+set Dsource [$AdminConfig getid /Cell:$cellName/JDBCProvider:$providerName/DataSource:$dsName/] 
+puts "$Dsource"
+
+set p_name [list name $dsName]
+set p_authDataAlias [list authDataAlias $authAlias]
+set p_databaseName [list [list description "The database name."] [list name databaseName] [list required false]  [list type java.lang.String] [list value $dbName]]
+set p_port [list [list description "The port number of the DB server."] [list name portNumber] [list required false] [list type java.lang.String] [list value ""]]
+set p_serverName [list [list description "The name of the server, used with thin driver setup"] [list name serverName] [list required false] [list type java.lang.String] [list value ""]]
+set p_driverType [list [list description "The type of the DB2 Driver."] [list name driverType] [list required false] [list type java.lang.String] [list value "2"]]
+
+set p_resourceProperties [list resourceProperties [list $p_port $p_driverType $p_serverName $p_databaseName] ]
+set p_propertySet [list propertySet [list $p_resourceProperties ] ]
+
+set parm [list $p_name $p_authDataAlias $p_propertySet ]
+
+$AdminConfig modify $Dsource $parm
+
+$AdminConfig save

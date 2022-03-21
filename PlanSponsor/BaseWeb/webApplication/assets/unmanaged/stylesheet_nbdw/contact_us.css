@@ -1,0 +1,297 @@
+/*******************************************************************************
+*   screen.css
+*   Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*   Global styles used throughout the John Hancock Broker Dealer website.
+
+Change history:
+David A  created 1/30/08 - #page_content h2 SPAN.sm
+
+********************************************************************************/
+
+/*******************************************************************************
+* HTML ELEMENTS
+********************************************************************************/
+
+@import url("adviser_contacts.css");
+@import url("screen.css");
+@import url("two_column.css");
+
+H1 {
+    MARGIN-TOP: 0px
+}
+H2 {
+    MARGIN-TOP: 0px
+}
+H3 {
+    MARGIN-TOP: 0px
+}
+H4 {
+    MARGIN-TOP: 0px
+}
+H5 {
+    MARGIN-TOP: 0px
+}
+H6 {
+    MARGIN-TOP: 0px
+}
+P {
+    LINE-HEIGHT: 1.2em
+}
+H1 {
+    FONT-WEIGHT: normal;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+H2 {
+    FONT-WEIGHT: normal; FONT-FAMILY: georgia, times new roman
+}
+H3 {
+    FONT-WEIGHT: normal; FONT-FAMILY: georgia, times new roman
+}
+H4 {
+    FONT-WEIGHT: normal; MARGIN-BOTTOM: 3px; FONT-FAMILY: verdana
+}
+H5 {
+    FONT-WEIGHT: normal; MARGIN-BOTTOM: 3px; FONT-FAMILY: verdana
+}
+H6 {
+    FONT-WEIGHT: normal; MARGIN-BOTTOM: 3px; FONT-FAMILY: verdana
+}
+H5 {
+    FONT-SIZE: 1.2em
+}
+H6 {
+    FONT-SIZE: 1em
+}
+
+/*******************************************************************************
+* COLUMNS
+********************************************************************************/
+.id_left_column {
+    FLOAT: left; WIDTH: 250px
+}
+.id_mid_column {
+
+}
+.id_mid_column H4 {
+
+
+}
+.error {
+    FONT-WEIGHT: bold; COLOR: #a11927
+}
+/*******************************************************************************
+* FORM CONTENT
+********************************************************************************/
+.contact_form_content {
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #febe10 4px solid;
+    PADDING-LEFT: 10px;
+    PADDING-BOTTOM: 14px;
+    PADDING-TOP: 15px;
+}
+.contact_form_content H4 {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 1.4em;
+    COLOR: #333
+}
+.contact_form_content TD {
+    VERTICAL-ALIGN: middle;
+    font-size: 11px;
+}
+.contact_form_content .input_label {
+    TEXT-ALIGN: right;
+    font-size: 11px;
+    color: #000000;
+}
+.contact_form_content .input_box {
+    PADDING-RIGHT: 0px; PADDING-LEFT: 6px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.contact_form_content .input_box INPUT {
+    PADDING-LEFT: 1px
+}
+.contact_form_content .id_your_info {
+    PADDING-RIGHT: 15px; PADDING-LEFT: 15px; MARGIN-BOTTOM: 10px; PADDING-BOTTOM: 10px; COLOR: #fff; PADDING-TOP: 20px; BACKGROUND-COLOR: #83909a
+}
+.contact_form_content .confirmation {
+    WIDTH: 300px
+}
+.contact_form_content .error_cell {
+    PADDING-RIGHT: 20px; PADDING-LEFT: 20px; PADDING-BOTTOM: 0px; WIDTH: 260px; PADDING-TOP: 0px
+}
+.area_message {
+    WIDTH: 300px; HEIGHT: 200px
+}
+DIV.sep {
+    BORDER-TOP: #dbdcd5 1px solid; MARGIN: 10px 0px
+}
+
+/*******************************************************************************
+* PAGE WIDGETS
+********************************************************************************/
+DIV.id_widgets {
+    WIDTH: 250px;
+    float: right;
+    margin-bottom: 9px;
+    margin-top: 8px;
+}
+.content_widget {
+    PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 5px; PADDING-TOP: 15px
+}
+.content_widget H3 {
+    FONT-SIZE: 1.8em;
+    MARGIN: 0px;
+    COLOR: #22485e
+}
+.content_widget A {
+    COLOR: #006990
+}
+.content_widget A:hover {
+    COLOR: #000
+}
+.content_widget H3 SPAN.sm {
+    FONT-SIZE: 0.5em; COLOR: #52473d; FONT-FAMILY: verdana
+}
+.content_widget .bold_telnumbers {
+    FONT-WEIGHT: bold; FONT-SIZE: 1.4em; FONT-FAMILY: verdana
+}
+.content_widget HR {
+    MARGIN-BOTTOM: 0px
+}
+.content_widget P {
+    font-size: 1.2em;
+    
+}
+.widget {
+    PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 5px; PADDING-TOP: 15px
+}
+.widget_image {
+    PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.widget H3 {
+    FONT-SIZE: 2em; MARGIN: 0px 0px 12px; COLOR: #22485e
+}
+.widget UL {
+    PADDING-LEFT: 0px; MARGIN-BOTTOM: 15px; MARGIN-LEFT: 0px; LIST-STYLE-TYPE: none
+}
+.widget LI {
+    PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 7px; PADDING-TOP: 5px
+}
+.widget LI A {
+    PADDING-LEFT: 0px
+}
+.widget LI.last {
+    BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.widget A {
+    COLOR: #006990
+}
+.widget A:hover {
+    COLOR: #000
+}
+
+.stackable {
+    MARGIN-BOTTOM: 9px
+}
+
+/*******************************************************************************
+* COLOR BARS
+********************************************************************************/
+.gold_bar {
+    BORDER-TOP: #dcd087 4px solid
+}
+.gold_bar_grey {
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #febe10;
+}
+.gold_bar_blue {
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #FC0;
+}
+.gold_bar_grey {
+    BACKGROUND-COLOR: #f5f6f1
+}
+.gold_bar_blue {
+    BACKGROUND-COLOR: #717b80;
+}
+
+/*******************************************************************************
+* PAGE CONTENT
+********************************************************************************/
+
+#page_content_contact {
+    background: #fff url('/assets/unmanaged/images/backgrounds/background_page_contents.gif') repeat-x top left;
+    padding: 0;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 0.7em;
+    margin-top: 4px;
+    margin-right: 25px;
+    margin-bottom: 0;
+    margin-left: 25px;
+    min-height: 300px;
+}
+#page_content_contact h2 {
+    color:#000;
+    font: normal 2.8em georgia, times, serif;
+    margin: 0;
+    padding: 15px 0 0 25px;
+}
+#page_content_contact h4 {
+    color:#FFF;
+    font: normal 2.8em georgia, times, serif;
+    margin: 0;
+    padding: 15px 0 0 25px;
+}
+#page_content_contact h2 SPAN.sm {
+    FONT-SIZE: 0.5em
+}
+
+/*******************************************************************************
+* FOOTER
+********************************************************************************/
+
+#page_footer_contact {
+    border-top: 1px solid #c4cfd8;
+    margin-top: 30px;
+    font-size: 1.4em;
+}
+
+    #page_footer_contact ul {
+        list-style: none;
+        margin: 0;
+        padding: 10px 0 10px 0 ;
+    }
+        
+        #page_footer_contact ul li {
+    background: transparent url('/assets/unmanaged/images/footer_divider.gif') no-repeat center left;
+    float: left;
+    font-size: 0.6875em;
+    padding: 0 20px 0 20px;
+        }
+        
+        #page_footer_contact ul li:first-child {
+            background: none;
+        }
+        
+        #page_footer_contact ul li {
+    float: left;
+    font-size: 0.6875em;
+    padding: 0 20px 0 20px;
+        }
+        
+            #page_footer_contact ul li a {
+                color: #2d4f55;
+            }
+
+    #page_footer_footer_contact {
+        clear: both;
+    }
+    
+    #page_footer_contact p {
+    color: #767690;
+    font-size: 0.6875em;
+    line-height: 1.5em;
+    padding: 10px 20px 0 20px;
+    }

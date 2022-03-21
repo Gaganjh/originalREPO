@@ -1,0 +1,48 @@
+.TabbedPanels {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 100%; PADDING-TOP: 0px
+}
+.TabbedPanelsTabGroup {
+	PADDING-LEFT: 150px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.TabbedPanelsTab {
+	FONT-WEIGHT: bold; FONT-SIZE: 1.5em; FLOAT: left; BACKGROUND-IMAGE: url(../images/step1button_off.png); MARGIN: 0px 1px 0px 0px; WIDTH: 254px; CURSOR: pointer; COLOR: #fff; BORDER-TOP-STYLE: none; PADDING-TOP: 6px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial, Helvetica, sans-serif; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; LIST-STYLE-TYPE: none; POSITION: relative; TOP: 1px; HEIGHT: 37px; BACKGROUND-COLOR: #ddd; TEXT-ALIGN: center; BORDER-BOTTOM-STYLE: none; moz-user-select: none; khtml-user-select: none
+}
+.TabbedPanelsTabHover {
+	BACKGROUND-IMAGE: url(../images/step1button_on.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #bfd6e6
+}
+.TabbedPanelsTabHoverOr {
+	BACKGROUND-COLOR: #0c0
+}
+.TabbedPanelsTabSelected {
+	FONT-WEIGHT: bold; FONT-SIZE: 1.5em; BACKGROUND-IMAGE: url(../images/step1button_on.png); BORDER-TOP-STYLE: none; BACKGROUND-REPEAT: no-repeat; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: #fff; BORDER-BOTTOM-STYLE: none
+}
+.TabbedPanelsTabSelectedOr {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 1em; FLOAT: left; BACKGROUND-IMAGE: none; PADDING-BOTTOM: 10px; WIDTH: 20px; COLOR: #fff; BORDER-TOP-STYLE: none; PADDING-TOP: 10px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; LIST-STYLE-TYPE: none; BACKGROUND-COLOR: #455660; BORDER-BOTTOM-STYLE: none
+}
+.TabbedPanelsTab A {
+	COLOR: black; TEXT-DECORATION: none
+}
+.TabbedPanelsContentGroup {
+	CLEAR: both; BACKGROUND-COLOR: #455660
+}
+.TabbedPanelsContent {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 4px; PADDING-TOP: 4px
+}
+.TabbedPanelsContentVisible {
+	
+}
+.VTabbedPanels .TabbedPanelsTabGroup {
+	BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; FLOAT: left; BORDER-LEFT: #ccc 1px solid; WIDTH: 10em; BORDER-BOTTOM: #ccc 1px solid; POSITION: relative; HEIGHT: 20em; BACKGROUND-COLOR: #eee
+}
+.VTabbedPanels .TabbedPanelsTab {
+	FLOAT: none; MARGIN: 0px; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none
+}
+.VTabbedPanels .TabbedPanelsTabSelected {
+	BORDER-BOTTOM: #999 1px solid; BACKGROUND-COLOR: #eee
+}
+.VTabbedPanels .TabbedPanelsContentGroup {
+	CLEAR: none; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; WIDTH: 30em; PADDING-TOP: 0px; HEIGHT: 20em
+}
+.TabbedPanelsTabOr {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 10px; WIDTH: 20px; PADDING-TOP: 10px; LIST-STYLE-TYPE: none; BACKGROUND-COLOR: #455660
+}

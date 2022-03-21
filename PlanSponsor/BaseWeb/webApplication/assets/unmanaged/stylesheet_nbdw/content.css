@@ -1,0 +1,242 @@
+@import url("business_building_tools.css");
+
+/* This rule resets a core set of elements so that they will appear consistent across browsers. Without this rule, content styled with an h1 tag, for example, would appear in different places in Firefox and Internet Explorer because each browser has a different top margin default value. By resetting these values to 0, the elements will initially be rendered in an identical fashion and their properties can be easily defined by the designer in any subsequent rule. */
+html, body, div, span, applet, object, iframe,  h2, h3, h4, h5, h6 {
+	margin: 0px;
+	padding: 0px;
+	border: 0;
+	outline: 0;
+}
+/* The body is the outermost layout component and contains the visible page content. Setting properties for the body element will help to create consistent styling of the page content and more manageable CSS. Besides using the body element to set global properties, it is common to use the body element to set the background color of the page and create a centered container for the page content to display. */
+body {
+	border-style: none; /* Sets the border style properties for an element using shorthand notation */
+	margin: 0 0 0 0; /* Sets the margin properties for an element using shorthand notation (top, right, bottom, left) */
+	padding: 0 0 0 0; /* Centers the page content container in IE 5 browsers. */
+	background-color: #eceae3;
+}
+/* This is a container for the page content. It is common to use the container to constrain the width of the page content and allow for browser chrome to avoid the need for horizontal scrolling. For fixed layouts you may specify a container width and use auto for the left and right margin to center the container on the page. IE 5 browser require the use of text-align: center defined by the body element to center the container. For liquid layouts you may simply set the left and right margins to center the container on the page. */
+#contentOuterWrapper {
+	margin: 0pt auto 0pt auto; /* Sets the margin properties for an element using shorthand notation (top, right, bottom, left) */
+	padding: 0px 0px 0px 0px; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+	text-align: left; /* Redefines the text alignment defined by the body element. */
+	width: 919px;
+}
+#contentOuterWrapper   #contentWrapper   #leftColumn1  {
+	float: left; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+	width: 225px;
+	padding-top: 15px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 25px;
+}
+#leftColumn1 h2 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+#leftColumn1 p {
+	padding: 0px;
+
+}
+#contentOuterWrapper #contentWrapper #rightColumn1 {
+	float: right;
+	padding: 10px; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+	width: 230px;
+	color: #FFFFFF;
+	background-color: #455560;
+	margin-top: 74px;
+}
+#rightColumn1 h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	font-weight: normal;
+	padding: 0px;
+	color: #FFFFFF;
+
+}
+#rightColumn1 h2 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.4em;
+	font-weight: normal;
+	padding: 0px;
+	color: #dcd087;
+
+}
+#rightColumn1 p {
+	padding: 0px;
+	color: #FFFFFF;
+}
+#rightColumn1 a:link, a:visited, a:hover, a:active{
+	color: #FFFFFF;
+	outline:none;
+	font-size: 12px;
+} 
+#rightColumn1 a:link, a:visited{
+	text-decoration: underline;
+} 
+#rightColumn1 a:hover, a:active{
+	text-decoration: underline;
+	color: #dcd087;
+} 
+/* Contains the main page content. When using a mutliple column layout the margins will be set to account for the floated columns' width, margins, and padding. */
+#contentOuterWrapper #contentWrapper #content {
+	margin-top: 0;
+	margin-right: 280px;
+	margin-bottom: 0;
+	margin-left: 250px;
+	padding-top: 15px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+#content p {
+	padding: 0px;
+}
+#content h2 {
+	padding: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: .75em;
+}
+/* Contains the main page content. When using a mutliple column layout the margins will be set to account for the floated columns' width, margins, and padding. */
+#contentOuterWrapper #contentWrapper #content2 {
+	padding: 5px; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+	margin-top: 0;
+	margin-right: 0px;
+	margin-bottom: 0;
+	margin-left: 260px;
+}
+#content2 p {
+	padding: 0px;
+}
+#content2 h2 {
+	padding: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: .75em;
+}
+/* Contains the main page content. When using a mutliple column layout the margins will be set to account for the floated columns' width, margins, and padding. */
+#contentOuterWrapper #contentWrapper #content3 {
+	margin-top: 0;
+	margin-right: 280px;
+	margin-bottom: 0;
+	margin-left: 0px;
+	padding-top: 15px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 25px;
+}
+#content3 p {
+	padding: 0px;
+	width: 580px;
+}
+#content3 h2 {
+	padding: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: .75em;
+}
+
+#content3 a:link, a:visited, a:hover, a:active{
+	color: #006990;
+	outline:none;
+} 
+#content3 a:link, a:visited{
+	text-decoration: none;
+} 
+#content3 a:hover, a:active{
+	text-decoration: underline;
+} 
+/* Using floated elements and a clear float class is a common method to accomplish multiple column tableless layouts. If floated elements are used without being cleared the elements following will wrap around the floated element. This class should be applied to an element after the last floated element and before the close of the container with floated elements. */
+#contentOuterWrapper #contentWrapper .clearFloat {
+  clear: both;
+  display: block;
+}
+
+/* div.form_link a:link, div.form_link a:visited */
+div.download 
+{
+	width: 191px;
+	padding: 13px;
+	background: #f5f6f1;
+	margin-bottom: 16px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+div.form_link a div.app {
+   font-size: 1.2em;
+   font-weight: bold;
+   color: #006990;
+   display: block;
+   margin-bottom: 3px;
+}
+
+div.downloadIndent, span.downloadIndent
+{
+   margin-left: 40px;
+}
+
+div.form_link div.sep{
+   border-bottom: 1px solid #e2e2df;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+div.id_content a {
+   color: #006990;
+   text-decoration: none;
+}
+
+p.link2 a {
+   margin: 0pt;
+   font-size: 1em;
+   font-weight: normal;
+   display: inline;
+   display: block;
+}
+
+
+#contentOuterWrapper #contentWrapper #contentTitle {
+	margin-top: 0px;
+	margin-bottom: 0;
+	padding-top: 15px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 25px;
+	width: 610px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.5em;
+	font-weight: normal;
+	margin-left: 0px;
+}
+#content3 td {
+	font-size: 0.7em;
+	padding: 3px;
+}
+.imgBorder {
+	border: 1px solid #666666;
+	padding: 0px;
+}
+
+a.contactus {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a.contactus:hover {
+	Ccolor: #FEBE10;
+	text-decoration: none;
+}
+}
+.Thumbborder {
+	BORDER-RIGHT: #6f7130 1px solid; BORDER-TOP: #6f7130 1px solid; BORDER-LEFT: #6f7130 1px solid; BORDER-BOTTOM: #6f7130 1px solid
+}
+#materials
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	clear: left;
+	float: left;
+	width: auto;
+}

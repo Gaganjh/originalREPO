@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ParticipantStatementFees>
+	
+	<fee key="totalParticipantFees" shortText="PPT total" longText="Total charges for the participant" />
+<!-- total of all GACs -->
+	<fee key="totalGac" shortText="Total GAC" longText="Total General administrative charges" />
+
+<!-- GAC Summary totals -->
+	<fee key="jhGacSummaryTotal" shortText="JH GAC" longText="John Hancock General administrative charges" />
+	<fee key="trusteeGacSummaryTotal" shortText="TR GAC" longText="Trustee General administrative charges" />
+	<fee key="brokerGacSummaryTotal" shortText="BR GAC" longText="Broker General administrative charges" />
+	<fee key="tpaGacSummaryTotal" shortText="TPA GAC" longText="Plan consultant (TPA) General administrative charges" />
+	<fee key="riaGacSummaryTotal" shortText="RIA GAC" longText="Registered investment advisor (RIA) General administrative charges" />
+<!-- GAC Summary totals for party-->
+	<fee key="partyRecordkeepingGacSummaryTotal" shortText="Recordkeeping" longText="Recordkeeping" />
+	<fee key="partySalesServiceGacSummaryTotal" shortText="Sales and service" longText="Sales and service" />
+	<fee key="partyTrusteeGacSummaryTotal" shortText="Trustee" longText="Trustee" />
+
+<!-- fees for both summary and detailed -->
+	<fee key="tpaServiceFee" shortText="TPA Service Fee" longText="Plan consultant (TPA) service fee" />
+	<fee key="detailedStmtFee" shortText="Detailed Statement Fee" longText="Detailed statement fee" />
+	<fee key="giflFeatureFee" shortText="G.I.F.L. Feature Fee" longText="Guaranteed Income Feature (G.I.F.L.) fee" />
+	<fee key="giflFeatureFeeAdj" shortText="G.I.F.L. Feature Fee Adj." longText="Guaranteed Income Feature (G.I.F.L.) fee adjustment" />
+	<fee key="giaMva" shortText="Guar. Interest Acct MVA" longText="Guaranteed Interest Account – market value adjustment" />
+	<fee key="loanFee" shortText="Loan Fee" longText="Loan fee" />
+	<fee key="withdrawlFee" shortText="WD Processing Fee" longText="Withdrawal Processing Fee" />
+	<fee key="tpaLoanFee" shortText="TPA Loan Fee" longText="Plan consultant (TPA) loan fee " />
+	<fee key="tpaWithdrawalFee" shortText="TPA WD" longText="Plan consultant (TPA) withdrawal fee" />
+	<fee key="redemptionFee" shortText="Redemption Fee" longText="Redemption fee" />
+	<fee key="riaFee" shortText="RIA Fee" longText="Registered investment advisor (RIA) fee" />
+	<fee key="stableValueFundMva" shortText="Stable Value Fund MVA" longText="Stable Value Fund – market value adjustment" />
+	<fee key="withdrawalCharge" shortText="Withdrawal Charge" longText="Withdrawal charge" />
+	<fee key="credit" shortText="Credit" longText="Credit" />
+	<fee key="planCredit" shortText="Plan Credit" longText="Plan credit" />
+	<fee key="marketValueEqualizer" shortText="MVE" longText="Market value equalizer" />
+	<fee key="partyMarketValueEqualizer" shortText="Market value equalizer" longText="Market value equalizer" />
+
+<!-- John Hancock GAC details -->
+	<fee key="jhGacAssetCharges" shortText="JH GAC AC" longText="John Hancock General administrative charges - asset charge" />
+	<fee key="jhGacParticipantFees" shortText="JH GAC PF" longText="John Hancock General administrative charges - participant fee" />
+	<fee key="jhGacRecordKeepingFees" shortText="JH GAC RK" longText="John Hancock General administrative charges - record keeping fee" />
+	<fee key="jhGacAutoDedUnpaidCharges" shortText="JH GAC UB" longText="John Hancock General administrative charges - discontinuance - unpaid bills" />
+	<fee key="jhGacDiscontinuanceCharges" shortText="JH GAC DC" longText="John Hancock General administrative charges - discontinuance charge" />
+
+<!-- Trustee GAC details -->
+	<fee key="trusteeGac" shortText="TR GAC" longText="Trustee General administrative charges" />
+	
+<!-- Broker GAC details -->
+	<fee key="brokerGac" shortText="BR GAC" longText="Broker General administrative charges" />
+
+<!-- TPA GAC details -->
+	<fee key="tpaGacPlanAdminServiceFees" shortText="TPA GAC AC" longText="Plan consultant (TPA) General administrative charges - asset charge" />
+	<fee key="tpaGacAdminFees" shortText="TPA GAC SF" longText="Plan consultant (TPA) General administrative charges - service fee" />
+	<fee key="tpaGacParticipantFees" shortText="TPA GAC PF" longText="Plan consultant (TPA) General administrative charges - participant fee" />
+
+<!-- RIA GAC details -->
+	<fee key="riaGac" shortText="RIA GAC" longText="Registered investment advisor (RIA) General administrative charges" />
+	<fee key="riaFlatFeePerHead" shortText="RIA Flat Fee Per Head" longText="Registered investment advisor (RIA) – Flat Fee Per Head" />
+	<fee key="contractSummary" shortText="Summary information level" longText="Summary information level - The following information is provided at the contract level, and is therefore not intended for participant distribution; participants will be informed of the actual charges deducted from their account in their quarterly statements." />
+	<fee key="contractParty" shortText="Party information level" longText="The following information is provided at the contract level, and is therefore not intended for participant distribution; participants will be informed of the actual charges deducted from their account in their quarterly statements." />
+	<fee key="contractDetailed" shortText="Detailed information level" longText="Detailed information level - The following information is provided at the contract level, and is therefore not intended for participant distribution; participants will be informed of the actual charges deducted from their account in their quarterly statements." />
+
+</ParticipantStatementFees>

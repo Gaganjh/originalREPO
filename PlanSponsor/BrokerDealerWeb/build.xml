@@ -1,0 +1,304 @@
+<!--======================================================================================
+  PlanSponsor Web Components Build File
+=======================================================================================-->
+
+<project name="psWeb" default="dist" basedir=".">
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Properties
+  This section contains property settings and targets that affect property settings.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <import file="../../common/ant/common.xml" />
+  <property name="ps.build.dir" value="../build" />
+  <property name="target" value="target" />
+  <property name="src" value="source" />
+  <property name="build" value="build" />
+  <property name="classes" value="classes" />
+  <property name="report.dir" value="report" />
+  <property name="test.dir" value="**" />
+  <property name="temp" value="${target}/temp" />
+
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  build
+  Compile all java files in the 'src' directory into classes in the 'classes' directory.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="build"
+          description="Compile all java source for this component."
+  >
+    <mkdir dir="${classes}" />
+    <javac debug="${debug}"
+           deprecation="${deprecation}"
+           destdir="${classes}"
+    >
+        <src path="../BaseWeb/source"/>
+        <src path="source"/>
+      <classpath>
+        <path refid="commons-lang" />
+      	<path refid="spring.classpath" />
+        <path refid="commons-digester" />
+        <path refid="commons-configuration" />
+        <path refid="commons-beanutils" />
+        <path refid="commons-collections" />
+        <path refid="commons-logging" />
+        <path refid="log4j" />
+        <fileset dir="${common.lib.dir}">
+        	<include name="jackson-core-2.9.5.jar"/>
+        	<include name="jackson-databind-2.9.5.jar"/>
+        	<include name="jackson-annotations-2.9.0.jar"/>	
+          <include name="j2ee.jar" />
+          <include name="avalon-framework-4.2.0.jar" />
+          <include name="batik-all-1.7.jar" />
+          <include name="BrowseServiceClient.jar" />
+          <include name="BrowseService.jar" />
+          <include name="USGPSUtilities.jar" />
+          <include name="ereports_client_1.0.jar" />
+          <include name="commons-validator-1.3.0.jar"/>
+          <include name="jakarta-regexp-1.2.jar" />
+          <include name="mrl.jar" />
+          <include name="quartz-1.5.2.jar" />
+          <include name="barChartServlet.jar" />
+          <include name="piechartservlet.jar" />
+          <include name="lineChartServlet.jar" />
+          <include name="AcmeGIFRenderUtility.jar" />
+          <include name="AccountService.jar" />
+          <include name="gft-client.jar" />
+          <include name="STPDataCheckerClient.jar" />
+          <include name="ngec_model.jar" />
+          <include name="MessagingService.jar" />
+          <include name="SubJournal_Client.jar" />
+          <include name="SearchService.jar" />
+          <include name="xstream-1.0.2.jar" />
+          <include name="heartbeat.jar" />
+          <include name="SecurityService.jar" />
+          <include name="iReportUtility.jar"/>
+          <include name="FeeService.jar" />
+          <include name="FundService.jar" />
+          <include name="MrlLoggerService.jar" />
+          <include name="ReportService.jar" />
+          <include name="DistributionService.jar" />
+          <include name="NotificationService.jar" />
+          <include name="EmployeeService.jar" />
+          <include name="EligibilityService.jar"/>
+          <include name="EnvironmentService.jar" />
+          <include name="SynchronizationService.jar" />          
+          <include name="ContractService.jar" />
+          <include name="MessageService.jar" />
+          <include name="SILService.jar" />
+          <include name="fop-0.95.jar" />
+		<include name="jackson-core-2.9.6.jar"/>
+		<include name="jackson-databind-2.9.5.jar"/>
+		<include name="jackson-annotations-2.9.0.jar"/>	
+          <!-- spring related jars -->
+		<include name="spring-security-web-5.0.6.RELEASE.jar" />
+		<include name="spring-security-config-5.0.6.RELEASE.jar" />
+		<include name="spring-security-core-5.0.6.RELEASE.jar" />
+		<include name="spring-beans-5.0.7.RELEASE.jar" />
+		<include name="spring-context-5.0.7.RELEASE.jar" />
+		<include name="spring-core-5.0.7.RELEASE.jar" />
+		<include name="spring-webmvc-5.0.7.RELEASE.jar" />
+		<include name="spring-aop-5.0.7.RELEASE.jar" />
+		<include name="spring-web-5.0.7.RELEASE.jar" />
+		<include name="spring-expression-5.0.7.RELEASE.jar" />
+		<include name="spring-modules-validation-0.9.jar" />
+		<include name="spring-hateoas-0.4.0.RELEASE.jar"/>
+        <include name ="jackson-databind-2.4.2.jar"/>
+       	<include name ="jackson-core-2.4.2.jar"/>
+        <include name ="jackson-annotations-2.4.2.jar"/>
+          <include name="mockejb.jar"/>
+        <!--   <include name="PDFBox-0.7.3.jar"/> -->
+          <include name="commons-codec-1.3.jar"/>
+	  	  <include name="commons-logging-1.0.4.jar"/>
+	  	  <include name="httpclient-4.0-alpha2.jar"/>
+	  	  <include name="httpcore-4.0-alpha6.jar"/>
+          <include name="StatementService.jar" />
+       	  <include name="pdfbox-2.0.5.jar" /> 
+          <include name="gson-2.8.2.jar" />
+          <include name="PlanReviewService.jar" />
+          <include name="DocumentService.jar" />	
+        </fileset>
+        <fileset dir="${common.weblib.dir}">
+          <include name="CMAUtil.jar" />
+          <include name="gnu-regexp-1.1.4.jar" />
+          <include name="USGPSWebUtilities.jar" />
+          <include name="encoder-1.2.jar"/>
+          <include name="encoder-jsp-1.2.jar"/>
+          <include name="taglibs-unstandard-20060829.jar" />
+          <include name="sort.jar"/>
+          <include name="xtools.jar"/>
+          <include name="soap.jar"/>
+        </fileset>
+        <fileset dir="${ps.build.dir}">
+          <include name="PlanSponsorEJB.jar" />
+        </fileset>
+        <!--pathelement location="../PlanSponsorWeb/classes" /-->
+      </classpath>
+    </javac>
+  </target>
+
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  dist
+  Create the .war file(s) and copy it into the project build directory.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="dist"
+          depends="build"
+          description="Package this component into a war file. The war file will be copied to the ${ps.build.dir} if the property exists."
+  >
+    <mkdir dir="${build}" />
+    <property name="web.bindings.file"
+              value="${temp}/WEB-INF/ibm-web-bnd.xml"
+    />
+    <copy file="webApplication/WEB-INF/ibm-web-bnd.xml"
+          tofile="${web.bindings.file}"
+          overwrite="yes"
+    />
+    <antcall target="build_war_file">
+      <param name="warfile" value="${build}/BrokerDealerWeb.war" />
+      <param name="web.xml" value="webApplication/WEB-INF/web.xml" />
+    </antcall>
+    <copy file="${build}/BrokerDealerWeb.war"
+          todir="${ps.build.dir}"
+          overwrite="yes"
+    />
+  </target>
+
+  <target name="build_war_file">
+
+    <war warfile="${warfile}" webxml="${web.xml}">
+      <webinf dir="webApplication/WEB-INF">
+        <exclude name="web.xml" />
+        <exclude name="classes/**" />
+        <exclude name="lib/**" />
+        <exclude name="ibm-web-bnd.xml" />
+      </webinf>
+      <webinf dir="${temp}/WEB-INF" />
+      <lib refid="commons-configuration.jars" />
+      <lib refid="commons-collections.jars" />
+      <lib refid="commons-lang.jars" />
+      <lib refid="commons-io.jars" />
+      <lib refid="commons-logging.jars" />
+      <lib refid="commons-beanutils.jars" />
+      <lib refid="commons-digester.jars" />
+      <lib refid="commons-codec.jars" />
+      <lib refid="commons-jxpath.jars" />      
+      <lib dir="${common.lib.dir}">
+        <include name="avalon-framework-4.2.0.jar" />
+        <include name="batik-all-1.7.jar"/>
+        <include name="quartz-1.5.2.jar" />
+        <include name="commons-fileupload-1.3.3.jar" />
+        <include name="barChartServlet.jar" />
+        <include name="piechartservlet.jar" />
+        <include name="lineChartServlet.jar" />
+        <include name="AcmeGIFRenderUtility.jar" />
+        <include name="BrowseServiceClient.jar" />
+        <include name="fop-0.95.jar" />
+        <include name="xmlgraphics-commons-1.3.1.jar" />
+       <include name="pdfbox-2.0.5.jar" /> 
+        <include name="bcprov-jdk15-140.jar" />
+      	<include name="gson-2.8.2.jar" />
+		<include name="jackson-core-2.9.6.jar"/>
+		<include name="jackson-databind-2.9.5.jar"/>
+		<include name="jackson-annotations-2.9.0.jar"/>
+        <!-- spring related jars -->
+		<include name="spring-security-web-5.0.6.RELEASE.jar" />
+		<include name="spring-security-config-5.0.6.RELEASE.jar" />
+		<include name="spring-security-core-5.0.6.RELEASE.jar" />
+		<include name="spring-beans-5.0.7.RELEASE.jar" />
+		<include name="spring-context-5.0.7.RELEASE.jar" />
+		<include name="spring-core-5.0.7.RELEASE.jar" />
+		<include name="spring-webmvc-5.0.7.RELEASE.jar" />
+		<include name="spring-aop-5.0.7.RELEASE.jar" />
+		<include name="spring-web-5.0.7.RELEASE.jar" />
+		<include name="spring-expression-5.0.7.RELEASE.jar" />
+		<include name="spring-modules-validation-0.9.jar" />
+		<include name="spring-hateoas-0.4.0.RELEASE.jar"/>
+      </lib>
+      <lib dir="${common.weblib.dir}">
+        <include name="CMAUtil.jar" />
+        <include name="mrl-taglibs.jar" />
+        <include name="USGPSWebUtilities.jar" />
+      	<include name="encoder-1.2.jar"/>
+      	<include name="encoder-jsp-1.2.jar"/>
+        <include name="taglibs-unstandard-20060829.jar" />
+      </lib>
+      <classes dir="${classes}">
+      </classes>
+      <classes dir="${src}">
+        <exclude name="**/*.java" />
+        <exclude name="**/ps/web/**/*" />
+      </classes>
+      <fileset dir="webApplication">
+        <exclude name="WEB-INF/**" />
+        <exclude name="META-INF/**" />
+        <exclude name="assets/generalimages/**" />
+        <exclude name="assets/headerimages/**" />
+        <exclude name="assets/howtoimages/**" />
+        <exclude name="assets/loginimages/**" />
+        <exclude name="assets/pagetitleimages/**" />
+        <exclude name="assets/pdfs/**" />
+        <exclude name="assets/applets/**" />
+        <exclude name="assets/unmanaged/html/**" />
+        <exclude name="assets/unmanaged/javascript/**" />
+        <exclude name="assets/unmanaged/reports/**" />
+        <exclude name="assets/unmanaged/stylesheet/**" />
+        <exclude name="**/svn/**" />
+      </fileset>
+      <fileset dir="../BaseWeb/webApplication">
+        <exclude name="assets/generalimages/**" />
+        <exclude name="assets/headerimages/**" />
+        <exclude name="assets/howtoimages/**" />
+        <exclude name="assets/loginimages/**" />
+        <exclude name="assets/pagetitleimages/**" />
+        <exclude name="assets/pdfs/**" />
+        <exclude name="assets/applets/**" />
+        <exclude name="assets/unmanaged/html/**" />
+        <exclude name="assets/unmanaged/javascript/**" />
+        <exclude name="assets/unmanaged/reports/**" />
+        <exclude name="assets/unmanaged/stylesheet/**" />
+        <exclude name="assets/unmanaged/html/**" />
+        <exclude name="assets/unmanaged/reports/**" />
+        <exclude name="assets/unmanaged/stylesheet/**" />
+      	<exclude name="assets/unmanaged/images/planReviewCover/**" />
+        <exclude name="**/svn/**" />
+        <include name="assets/unmanaged/images/**" />
+      </fileset>
+    </war>
+  </target>
+
+  <target name="clean" description="Delete all generated files.">
+    <delete dir="${build}" />
+    <delete dir="${classes}" />
+    <delete dir="${temp}" failonerror="false" />
+    <delete dir="${target}" failonerror="false" />
+  </target>
+
+  <target name="junit" depends="build">
+    <mkdir dir="${report.dir}/html" />
+    <junit printsummary="yes" haltonfailure="no">
+      <classpath>
+        <fileset dir="${common.lib.dir}">
+          <include name="*.jar" />
+          <include name="*.zip" />
+        </fileset>
+        <fileset dir="${common.weblib.dir}">
+          <include name="*.jar" />
+        </fileset>
+        <pathelement location="${classes}" />
+      </classpath>
+      <formatter type="xml" />
+      <batchtest fork="yes" todir="${report.dir}">
+        <fileset dir="${src}">
+          <include name="${test.dir}/test/Test*.java" />
+          <exclude name="**/AllTests.java" />
+        </fileset>
+      </batchtest>
+    </junit>
+    <junitreport todir="${report.dir}">
+      <fileset dir="${report.dir}">
+        <include name="TEST-*.xml" />
+      </fileset>
+      <report format="frames" todir="${report.dir}/html" />
+    </junitreport>
+  </target>
+</project>

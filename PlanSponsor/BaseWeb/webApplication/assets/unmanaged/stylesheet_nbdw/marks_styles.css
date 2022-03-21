@@ -1,0 +1,155 @@
+    table.advanced_filters {
+	width:900px;
+	height:375px;
+	padding:0px;
+	border-collapse: collapse;
+	border-spacing:0px;
+	background-color: #f6f4f1;
+    }
+    table.advanced_filters th {
+	height:18px;
+	font-size:11px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	text-align: left;
+    }
+    table.advanced_filters td.right_panel {
+        width:400px;
+        height:100%;
+        text-align:center;
+        vertical-align:top;
+        padding:0px;
+    }
+
+    table.advanced_filters td.left_panel {
+        width:460px;
+        height:100%;
+        text-align:center;
+        vertical-align:top;
+        padding:0px;
+     }
+    .selected_funds_panel {
+	width:100%;
+	height:250px;
+	border-top-width: 3px;
+	border-top-style: solid;
+	border-top-color: #eceae3;
+	margin-top: 5px;
+    }
+    .query_results_panel {
+	width:100%;
+	height:250px;
+	border-top-width: 3px;
+	border-top-style: solid;
+	border-top-color: #eceae3;
+	margin-top: 5px;
+	border-right-width: 3px;
+	border-left-width: 3px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #F6F4F1;
+	border-left-color: #F6F4F1;
+	margin-left: 5px;
+    }
+    
+    .full_size {
+	border-collapse: collapse;
+	border-spacing:0px;
+	width:100%;
+	height:100%;
+    }
+
+    div.query_selection_panel {
+	text-align:left;
+	vertical-align:top;
+	width:100%;
+	border-top-width: 3px;
+	border-top-style: solid;
+	border-top-color: #eceae3;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	margin-left: 5px;
+	float: left;
+	clear: left;
+    }
+    div.query_panel {
+	text-align:left;
+	vertical-align:top;
+	width:100%;
+	padding-top: 0px;
+	margin-left: 5px;
+	margin-top: 0px;
+	float: left;
+	clear: left;
+    }
+    table.query_settings {
+    }
+    
+    select.fundlist_multi_select {
+        width:100%;
+        height:230px;
+        padding:0px;
+        font-family:"Courier New", monospaced;
+        font-size:12px;
+    }
+    
+    td.fundlist_multi_select {
+        height:230px;
+        padding:0px;
+    }
+    
+    select.custom_query {
+        font-size:11px;
+    }
+    option.heading {
+        background-color:#000000;
+        color:white;
+        font-weight:bold;
+    }
+    table.custom_query td {
+        padding:0px;
+        width:100%;
+    }
+    .left_align {
+	text-align:left;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 13px;
+     }
+     .right_align {
+        text-align:right;
+     }
+    .btn_add {
+        width:95px;
+    }
+    .btn_add_all {
+        width:95px;
+    }
+    .btn_remove {
+        width:95px;
+    }
+    .btn_remove_all {
+        width:95px;
+    }
+#funds_and_performance_filters div {
+	font-size:12px;
+	text-align:left;
+	vertical-align:top;
+}
+#funds_and_performance_filters td {
+	font-size:11px;
+	vertical-align:top;
+}
+#funds_and_performance_filters body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+#funds_and_performance_filters select {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+#funds_and_performance_filters input {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:11px;
+}

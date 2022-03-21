@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE urlGeneratorTagConfig
+[
+<!ELEMENT urlGeneratorTagConfig (property*)>
+<!ELEMENT property (session|request)>
+	<!ATTLIST property name CDATA #REQUIRED>
+<!ELEMENT session EMPTY>
+	<!ATTLIST session attribute CDATA #REQUIRED>
+	<!ATTLIST session property CDATA #REQUIRED>
+<!ELEMENT request EMPTY>
+	<!ATTLIST request attribute CDATA #REQUIRED>
+	<!ATTLIST request property CDATA #REQUIRED>
+]>
+<urlGeneratorTagConfig>
+
+	<property name="userProfile.contractProfile.contract.productId">
+		<session attribute="USER_KEY" property="contractProfile.contract.productId"/>
+	</property>
+	<property name="contractDefaultClassCD">
+		<session attribute="USER_KEY" property="currentContract.defaultClass"/>
+	</property>
+<!--
+	<property name="userprofile.enrollmentState">
+		<session attribute="userprofile" property="enrollmentState"/>
+	</property>
+	<property name="userprofile.webEnrolledFlag">
+		<session attribute="userprofile" property="webEnrolledFlag"/>
+	</property>
+-->
+</urlGeneratorTagConfig>
+

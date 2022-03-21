@@ -1,0 +1,284 @@
+﻿div.sales_table a{
+	font-weight:normal;
+	font-size:1.3em;
+}
+
+/* Checkboxes on overview page */
+div.sales_table td.col_check
+{
+	border-right:1px solid #d1d1ca;
+	text-align:center;
+	vertical-align:middle;
+	border-bottom: 1px solid #f0f1e6; 
+}
+
+.SalesToolChecked 
+{
+	background-image: url(../Images/Global/check_on.gif);
+	background-repeat: no-repeat;
+	background-position:center;
+}
+
+/* For sales tools overview headings */	
+div.sales_table_header {
+	padding: 10px;
+}
+
+div.sales_table_header h2 {
+	margin: 0pt 10px 0pt 5px;
+	display: inline;
+	color: rgb(255, 255, 255);
+	font-size: 2em;
+	vertical-align: middle;
+}
+
+div.sales_table table 
+{
+   width: 100%;
+}
+
+div.sales_table th.th_head {
+	text-align:center;
+	border-right: 1px solid #cecec5;
+	color:#333;
+	font-weight:bold;
+	background-color:#e8eadd;
+	font-size:10px;
+	padding:4px 0px 4px 0px;
+}
+
+div.sales_table th.th_checkbox_column {
+	width: 85px;
+}
+
+div.id_heading p {
+   margin: 0pt 240px 0pt 0pt;
+   padding-bottom: 0;
+   font-size: 1em;
+   color: rgb(102, 102, 102);
+}
+
+div.sales_table p{
+	margin-bottom:5px;
+}
+
+div.sales_table th.th_head_avail{
+	text-align:center;
+	color:#000;
+	font-weight:bold;
+	background-color:#e8eadd;
+	padding:6px;
+	font-size:10px;
+}
+	
+img.topic_pics{
+	padding:12px 14px 12px 14px;
+}
+
+td.img_container{
+	border-bottom: 1px solid #f0f1e6;
+}
+
+div.sales_table tr.id_row_color{
+	background-color:#fafbf5;
+}
+
+div.sales_table td.col_descript{
+	padding:14px 21px 18px 3px;
+	border-right:1px solid #d1d1ca;
+	text-align:left;
+	color:#000;
+	border-bottom: 1px solid #f0f1e6; 
+}
+
+div.sales_table{
+	margin-bottom:10px;
+}
+
+
+/* For ToolList pages: */
+h2.bar
+{
+   border-top: 4px solid #dcd087;
+   margin-bottom: 10px;
+   padding: 8px 15px;
+   background: #455560 none repeat scroll 0%;
+   font-size: 1.8em;
+   color: #ffffff;
+}
+
+div.items h4 
+{
+   font-size: 1em;
+   margin-top: 15px;
+   margin-bottom: 10px;
+}
+
+div.items h4 a {
+   font-size: 1.3em;
+}
+
+div.items p {
+   font-size: 1.2em;
+}
+
+div.salesToolListSection div.items
+{
+   padding-left: 15px;
+}
+
+div.salesToolListSection div.sep{
+	clear:left;
+	height:1px;
+	border-top:1px solid #d1d2c8;
+	margin: 10px 0px 10px -15px;
+}
+
+/* For individual SalesIdea page */
+div.id_heading {
+   padding: 18px 10px 23px 0px;
+}
+
+div.twocol_indent {
+   margin-left: 9px;
+}
+
+div.download 
+{
+   width: 191px;
+   padding: 13px;
+   background: #f5f6f1;
+   margin-bottom: 16px;
+}
+
+div.form_link img.app
+{
+   float:left;
+}
+
+/* div.form_link a:link, div.form_link a:visited */
+div.form_link a div.app {
+   font-size: 1.2em;
+   font-weight: bold;
+   color: #006990;
+   display: block;
+   margin-bottom: 3px;
+}
+
+div.downloadIndent, span.downloadIndent
+{
+   margin-left: 40px;
+}
+
+div.form_link div.sep{
+   border-bottom: 1px solid #e2e2df;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+div.id_content a {
+   color: #006990;
+   text-decoration: none;
+}
+
+p.link2 a {
+   margin: 0pt;
+   font-size: 1em;
+   font-weight: normal;
+   display: inline;
+   display: block;
+}
+
+td.sales_tool_body {
+   padding-left: 14px;
+   padding-right: 30px;
+}
+
+/* Begin styles explicitly available to authors in Teamsite through JHFStyles.css */
+td.sales_tool_body h2 {
+   font-family: verdana;
+   font-style: normal;
+   font-variant: normal;
+   font-weight: bold;
+   font-size: 1em;
+   line-height: normal;
+   /* font-size-adjust: none; */
+   /* font-stretch: normal; */
+   color: #000000;
+   margin-bottom: 13px;
+}
+td.sales_tool_body p{
+}
+td.sales_tool_body p.section_end
+{
+   margin: 10px 0px 27px 0px;
+   padding-bottom: 18px;
+}
+td.sales_tool_body .section_end
+{
+   border-bottom: #d1d2c8 1px solid;
+}
+td.sales_tool_body .separator, td.sales_tool_body hr
+{
+   margin-left: 0;
+   margin-right: 0;
+   border-bottom: #d1d2c8 1px solid;
+}
+td.sales_tool_body hr
+{
+   height: 0px !important;
+   padding: 0px;
+}
+td.sales_tool_body .subtitle
+{
+   padding: 7px 15px;
+   background: #e8eadd;
+   font-size: 13px;
+   font-weight: bolder;
+}
+td.sales_tool_body .footnote
+{
+   vertical-align: super;
+   font-size: .7em;
+}
+/* End styles explicitly available to authors in Teamsite through JHFStyles.css */
+
+/* Documents Included table */
+table.docsIncludedTable
+{
+   width: 100%;
+}
+
+tr.docsIncludedTableHeader th {
+   padding: 6px 13px;
+   background: #e8eadd none repeat scroll 0%;
+   font-weight: bold;
+   color: #000000;
+   text-align: left;
+}
+
+tr.docsIncludedTableRow td, tr.docsIncludedTableRowAlt td {
+   border-bottom: 1px solid #f0f1e6;
+   padding: 8px 13px;
+   vertical-align: top;
+}
+
+tr.docsIncludedTableRow td.FormatColumn
+{
+   width: 90px;
+}
+
+tr.docsIncludedTableRowAlt td
+{
+   background-color: #fafbf5;
+}
+
+table.docsIncludedTable {
+   margin-bottom: 20px;
+}
+
+/* This should probably be pulled up to a more global level */
+div.id_heading .id_btn_print {
+   top: 39px;
+   left: 555px;
+}

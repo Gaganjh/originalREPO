@@ -1,0 +1,71 @@
+.resources {
+	PADDING-RIGHT: 15px;
+	PADDING-LEFT: 15px;
+	PADDING-BOTTOM: 5px;
+	COLOR: #000000;
+	PADDING-TOP: 15px;
+	HEIGHT: 1%
+}
+.key_resources {
+	BACKGROUND: #4d687e
+}
+.rel_resources {
+	background-color: #E2E4E5;
+}
+.resources H3 {
+	FONT-SIZE: 2em;
+	MARGIN: 0px 0px 12px;
+	COLOR: #22485e
+}
+.resources H4 {
+	MARGIN-TOP: 20px; MARGIN-BOTTOM: 8px; FONT: bold 1.4em verdana
+}
+.resources UL {
+	LIST-STYLE: none none outside; PADDING-LEFT: 0pt; MARGIN-BOTTOM: 10px; MARGIN-LEFT: 0pt
+}
+.resources LI {
+	PADDING-RIGHT: 0pt; PADDING-LEFT: 5px; FONT-SIZE: 1.1em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.resources LI P {
+	MARGIN-BOTTOM: 0px
+}
+.resources DIV.sep {
+	CLEAR: left; BORDER-TOP: #a5adb3 1px solid; MARGIN: 5px 0px 5px -5px
+}
+.resources LI.on A {
+	FONT-WEIGHT: bold;
+	COLOR: #005B80
+}
+.resources LI A {
+	PADDING-LEFT: 0px
+}
+.resources A {
+	COLOR: #000000
+}
+.resources .sm {
+	FONT-WEIGHT: normal; FONT-SIZE: 0.8em
+}
+.resources A:hover {
+	COLOR: #005B80
+}
+.rel_resources LI.on A:hover {
+	COLOR: #dcd087
+}
+.rel_resources_wrapper {
+	BACKGROUND-COLOR: #83909a
+}
+
+@media Print    
+{
+.resources {
+	DISPLAY: none;
+	color: #333333;
+}
+.adviser_tools {
+	DISPLAY: none
+}
+.rel_resources_wrapper {
+	DISPLAY: none
+}
+
+}

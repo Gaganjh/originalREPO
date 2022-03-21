@@ -1,0 +1,109 @@
+/*******************************************************************************
+*	summary.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Global styles used throughout the John Hancock Broker Dealer website.
+********************************************************************************/
+
+/*******************************************************************************
+* HTML ELEMENTS
+********************************************************************************/
+#summaryBox {
+	background-color: #ECEAE3;
+	height: 100%;
+	width: 300px;
+	color: #005B80;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	min-height:100%;
+	text-align: left;
+	border-top-width: 4px;
+	border-top-style: solid;
+	border-top-color: #FEBE10;
+	margin-bottom: 15px;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	float: right;
+	margin-left: 15px;
+	clear: right;
+	font-size: .6875em;
+}
+	
+#summaryBox h1 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.6em;
+	margin-bottom: 10px;
+	font-weight: normal;
+	color: #22485e;
+}
+#summaryBox h2 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.8em;
+	margin-bottom: 10px;
+	font-weight: bold;
+	color: #000000;
+}
+#summaryBox TD {
+	font-size: 11px;
+	color: #005B80;
+	padding: 2px;
+}
+#summaryBox p {
+	font-size: 1em;
+	color: #005B80;
+	padding: 2px;
+}
+
+
+/*******************************************************************************
+* FUNDCHECK HTML ELEMENTS
+********************************************************************************/
+
+
+
+#legendBox {
+	background-color: #f5f6f1;
+	height: 100%;
+	width: 230px;
+	color: #005B80;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	min-height:100%;
+	text-align: left;
+	border-top-width: 4px;
+	border-top-style: solid;
+	border-top-color: #FEBE10;
+	margin-bottom: 15px;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	float: right;
+	margin-left: 15px;
+	clear: right;
+}
+	
+#legendBox h1 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.2em;
+	margin-bottom: 10px;
+	font-weight: normal;
+	color: #22485e;
+}
+#legendBox h2 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.8em;
+	margin-bottom: 10px;
+	font-weight: bold;
+	color: #000000;
+}
+#legendBox TD {
+	font-size: 11px;
+	color: #005B80;
+	padding: 2px;
+}
+#legendBox p {
+	font-size: 1em;
+	color: #005B80;
+	padding: 2px;
+}

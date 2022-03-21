@@ -1,0 +1,17 @@
+/* It is common to set printer friendly styles such as a white background with black text. */
+body {
+	background-image: none;
+	border-color: #000; /* Sets the border color properties for an element using shorthand notation */
+	color: #000;
+	background-color: #FFFFFF;
+}
+
+/*******************************************************************************
+* To show or hide for screen and print
+********************************************************************************/
+
+/* To display on Printer friendly window */
+.showPrint { display:block }
+
+/* To show only on screen */
+.showScreen { display:none }

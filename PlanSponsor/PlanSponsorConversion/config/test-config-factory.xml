@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  This config-factory.xml file is used to load different sets of configurations at runtime by 
+  putting the appropriate configuration file settings in this file and putting this file in the
+  classpath.
+  This specific file, found in /common/devlib/config-factory.xml is used to load the configuration
+  data for the MockContainerEnvironment (see that class).
+-->
+<configuration>
+  <!-- Loads any system properties first. -->
+  <system />
+  <!-- Configuration, to hold overridden database connection credentials (i.e. uid/password). -->
+  <properties fileName="test.properties"/>
+  <!-- Optional configuration, to hold overridden database names. -->
+  <!-- COMMENT NOTE: No file name found as "db_names.properties" so commented the below line -->
+  <!--  properties fileName="db_names.properties" optional="true"/-->
+</configuration>

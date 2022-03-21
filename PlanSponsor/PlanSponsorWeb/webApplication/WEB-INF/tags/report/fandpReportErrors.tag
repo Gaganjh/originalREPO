@@ -1,0 +1,1 @@
+<%@ tag body-content="scriptless" %><%@ tag import="org.apache.commons.lang.StringEscapeUtils" import="org.apache.commons.lang.StringUtils"%><jsp:doBody var="theBody"/><%String bodyContent = (String) getJspContext().getAttribute("theBody");%><%=StringUtils.strip(StringEscapeUtils.escapeJava(StringEscapeUtils.escapeHtml(bodyContent)))%>

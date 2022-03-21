@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+    <classpathentry kind="var" path="SERVERJDK_PLUGINDIR/jre/lib/rt.jar"
+        rootpath="src" sourcepath="SERVERJDK_PLUGINDIR/src.jar"/>
+    <classpathentry kind="src" path="ejbModule"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/j2ee.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/csicpi.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/ejbcontainer.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/ivjejb35.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/vaprt.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/ras.jar"/>
+    <classpathentry kind="var" path="WAS_PLUGINDIR/lib/utils.jar"/>
+    <classpathentry kind="lib" path="/common/lib/MrlLoggerService.jar"/>
+    <classpathentry kind="lib" path="/common/lib/MessagingService.jar"/>
+    <classpathentry kind="lib" path="/common/lib/NotesDocumentService.jar"/>
+    <classpathentry kind="lib" path="/common/lib/AccountService.jar"/>
+    <classpathentry kind="lib" path="/common/lib/SecurityService.jar"/>
+    <classpathentry kind="lib" path="/common/lib/USGPSUtilities.jar"/>
+    <classpathentry kind="lib" path="/common/lib/retirementengine.jar"/>
+    <classpathentry kind="lib" path="C:/cvs/common/lib/SearchService.jar"/>
+    <classpathentry kind="output" path="bin"/>
+</classpath>

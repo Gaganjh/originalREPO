@@ -1,0 +1,47 @@
+<!--
+
+USAGE example
+<contentUrlSpecification contentType="Update" url="">
+      <keyParam name="Update" type="CONTENT"/>
+      <classParam name="com.manulife.pension.ps.web.taglib.search.UpdateURLContext" type="CLASS"/>
+   </contentUrlSpecification>
+   
+if the classParam element is present then the url attribute is ignored, therefore, it can be set
+to "". If the classParam element is not present then the application behaves as normal.
+-->
+
+<contentUrlSpecifications>
+   
+   <contentUrlSpecification contentType="Update" url="">
+      <keyParam name="Update" type="CONTENT"/>
+      <classParam name="com.manulife.pension.ps.web.taglib.search.UpdateURLContext"/>
+   </contentUrlSpecification>
+ 
+   <contentUrlSpecification contentType="LayoutPage" url="">
+      <keyParam name="LayoutPage" type="CONTENT"/>
+      <classParam name="com.manulife.pension.ps.web.taglib.search.LayoutURLContext"/>
+   </contentUrlSpecification>
+   
+   <contentUrlSpecification contentType="Glossary_Category" url="">
+      <keyParam name="Glossary_Category" type="CONTENT"/>
+      <classParam name="com.manulife.pension.ps.web.taglib.search.GlossaryURLContext"/>
+   </contentUrlSpecification>
+   
+   <contentUrlSpecification contentType="NewsLetterIssue" url="/do/news/newsletterIssueIndex ">
+      <keyParam name="issueKey" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="NewsLetterArticle" url="/do/news/newsletterIssueArticle">
+      <keyParam name="issueArticleKey" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="GuideArticle" url="/do/contentpages/userguide/thirdlevel/">
+      <keyParam name="contentKey" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="Form" url="/do/resources/forms/">
+      <keyParam name="Form" type="CONTENT"/>
+   </contentUrlSpecification>
+   <contentUrlSpecification contentType="TpaForm" url="">
+      <keyParam name="TpaForm" type="CONTENT"/>
+      <classParam name="com.manulife.pension.ps.web.taglib.search.TPAFormURLContext"/>
+   </contentUrlSpecification>   
+</contentUrlSpecifications>
+

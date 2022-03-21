@@ -1,0 +1,227 @@
+<!-- ======================================================================= -->
+<!-- iCon2 build file                                        				 -->
+<!-- ======================================================================= -->
+<project name="i:Con2 build" default="icon2_build" basedir=".">
+	
+	<property name="tag.build" value="false"/>
+	<property name="non.tagged.build" value="true"/>
+	
+	<property name="common.lib.dev.dir" value="${basedir}/../common/devlib"/>
+
+	<property name="stp.base.dir" value="${basedir}/../STP"/>
+	<property name="gft.base.dir" value="${basedir}/../GFT"/>
+	<property name="sj.base.dir" value="${basedir}/../SubmissionJournal"/>
+	<property name="pswt.base.dir" value="${basedir}/../PlanSponsorTests"/>
+
+	<property name="mrl.db.base.dir" value="${basedir}/../Databases/mrl"/>
+	<property name="cs.db.base.dir" value="${basedir}/../Databases/CustomerService"/>
+	<property name="psc.db.base.dir" value="${basedir}/../Databases/PlanSponsorContent"/>
+	<property name="stp.db.base.dir" value="${basedir}/../Databases/StraightThruProcessing"/>
+
+	<property name="build.dir" value="/build" />
+	<property name="report.dir" value="${build.dir}/report" />
+
+	<property name="autobuilder.log.dir" value="${build.dir}/BuildLogs"/>
+	<property name="autobuilder.log.url" value="${build.dir}/BuildLogs"/>
+
+	<target name="timestamp">
+		<tstamp/>
+	</target>
+		
+	<target name="init" depends="timestamp">
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${report.dir}"/>
+		<mkdir dir="${autobuilder.log.dir}"/>
+		<delete verbose="false">
+			<fileset dir="${report.dir}" includes="TEST*.xml"/>
+  		</delete>
+	</target>
+
+	<target name="get_mrl_build_xml">
+		<ant antfile="mrldatabase.xml" dir="${mrl.db.base.dir}" target="cvs-update-build-xml"/>
+	</target>
+
+	<target name="get_cs_build_xml">
+		<ant antfile="CustomerServiceDatabase.xml" dir="${cs.db.base.dir}" target="cvs-update-build-xml"/>
+	</target>
+
+	<target name="get_psc_build_xml">
+		<ant antfile="ContentDatabase.xml" dir="${psc.db.base.dir}" target="cvs-update-build-xml"/>
+	</target>
+
+	<target name="get_ps_build_xml">
+		<ant antfile="CSDBDatabaseChanges.xml" dir="${ps.db.base.dir}" target="cvs-update-build-xml"/>
+	</target>
+
+	<target name="get_stp_db_build_xml">
+		<ant antfile="SubmissionDatabase.xml" dir="${stp.db.base.dir}" target="cvs-update-build-xml"/>
+	</target>
+
+	<target name="get_stp_build_xml">
+		<ant dir="${stp.base.dir}" target="cvs-update-build-xml"/>
+	</target>
+
+	<target name="get_gft_build_xml">
+		<ant dir="${gft.base.dir}" target="cvs-update-build-xml"/>
+	</target>
+
+	<target name="get_sj_build_xml">
+		<ant dir="${sj.base.dir}" target="cvs-update-build-xml"/>
+	</target>
+
+	<target name="get_pswt_build_xml">
+		<ant dir="${pswt.base.dir}" target="cvs-update-build-xml"/>
+	</target>
+
+	<target name="generate_test_report">
+	  	<junitreport todir="${report.dir}">
+	      <fileset dir="${report.dir}">
+	        <include name="TEST-*.xml"/>
+	      </fileset>
+	      <report format="frames" todir="${report.dir}/html"/>
+	    </junitreport>
+	</target>
+
+	<property name="emma.dir" value="${common.lib.dev.dir}"/>
+
+  	<path id="emma.lib">
+	    <fileset dir="${emma.dir}" includes="lib/*.jar"/>
+	</path>
+
+	<taskdef resource="emma_ant.properties" classpathref="emma.lib"/>
+
+  	<target name="coverage-report">
+	    <move file="${basedir}/coverage.ec" todir="${build.dir}"/>
+	    <emma enabled="true" >
+	      <report >
+	        <infileset dir="c:/build" includes="*.em, *.ec" />
+	        <html outfile="c:/build/coverage.html"
+	              depth="method" columns="name,class,method,block,line"/>
+	      </report>
+	    </emma>
+	</target>
+
+	<target name="mrl_database" depends="init, get_mrl_build_xml">
+		<echo message="**************************"/>
+		<echo message="* MRL Database           *"/>
+		<echo message="**************************"/>
+		<ant antfile="mrldatabase.xml" dir="${mrl.db.base.dir}" target="cvs-update"/>
+		<ant antfile="mrldatabase.xml" dir="${mrl.db.base.dir}"/>
+	</target>
+
+	<target name="content_database" depends="init, get_psc_build_xml">
+		<echo message="**************************"/>
+		<echo message="* Content Database       *"/>
+		<echo message="**************************"/>
+		<ant antfile="ContentDatabase.xml" dir="${psc.db.base.dir}" target="cvs-update"/>
+		<ant antfile="ContentDatabase.xml" dir="${psc.db.base.dir}"/>
+		<ant antfile="TPAChanges.xml" dir="${psc.db.base.dir}"/>
+	</target>
+
+	<target name="csdb_database" depends="init, get_cs_build_xml">
+		<echo message="**************************"/>
+		<echo message="* CSDB                   *"/>
+		<echo message="**************************"/>
+		<ant antfile="CustomerServiceDatabase.xml" dir="${cs.db.base.dir}" target="cvs-update"/>
+		<ant antfile="CustomerServiceDatabase.xml" dir="${cs.db.base.dir}" target="local_rebuild"/>
+		<ant antfile="CustomerServiceDatabaseRothChanges.xml" dir="${cs.db.base.dir}"/>
+	</target>
+
+	<target name="stp_database" depends="init, get_stp_db_build_xml">
+		<echo message="****************************"/>
+		<echo message="* STP Database             *"/>
+		<echo message="****************************"/>
+		<ant antfile="SubmissionDatabase.xml" dir="${stp.db.base.dir}" target="cvs-update"/>
+		<delete verbose="true">
+			<fileset dir="${stp.db.base.dir}" includes="**/.#*" defaultexcludes="no"/>
+  		</delete>
+		<ant antfile="SubmissionDatabase.xml" dir="${stp.db.base.dir}" target="presit_refresh"/>
+		<!-- The stored proce tests are dependent on the STP/util code. TODO: break dependency or something -->
+		<ant dir="${stp.base.dir}" target="cvs-update"/>
+		<ant dir="${stp.base.dir}" target="prepare-properties-presit"/>
+		<ant dir="${stp.base.dir}" target="compile-util"/>
+		<ant antfile="SubmissionDatabase.xml" dir="${stp.db.base.dir}" target="run-unit-tests-presit"/>
+	</target>
+
+	<target name="databases" depends="init, mrl_database, view_funds_database, content_database, csdb_database, stp_database"/>
+	<target name="databases_no_stp" depends="init, mrl_database, view_funds_database, content_database, csdb_database"/>
+
+	<target name="ifile" depends="init, get_gft_build_xml, get_sj_build_xml">
+		<echo message="*****************************"/>
+		<echo message="* i:File services           *"/>
+		<echo message="*****************************"/>
+		<!-- For an orderly shutdown sequence, since in order to stop GFT the RMI registry would have to be up -->
+		<ant dir="${stp.base.dir}" target="stop-stp"/>
+		<ant dir="${gft.base.dir}" target="stop-gft"/>
+		<ant dir="${sj.base.dir}" target="presit-deploy"/>
+		<ant dir="${gft.base.dir}" target="presit-deploy"/>
+	</target>
+
+	<target name="stp" depends="init, get_stp_build_xml">
+		<echo message="*****************************"/>
+		<echo message="* STP                       *"/>
+		<echo message="*****************************"/>
+		<ant dir="${stp.base.dir}" target="presit-deploy"/>
+	</target>
+
+	<target name="plan_sponsor" depends="init">
+		<echo message="*****************************"/>
+		<echo message="* Plan Sponsor              *"/>
+		<echo message="*****************************"/>
+		<ant dir="${basedir}" target="auto_deploy_to_presit10"/>
+	</target>
+
+	<target name="plan_sponsor_tests" depends="init, get_pswt_build_xml">
+		<echo message="*****************************"/>
+		<echo message="* Plan Sponsor Tests        *"/>
+		<echo message="*****************************"/>
+		<ant dir="${pswt.base.dir}" target="icon2_presit_deploy"/>
+	</target>
+
+	<property name="svn.root" value=":pserver:Adrian_Robitu@cads106mnli:/USGP_Repository"/>
+	<property name="svn.local" value="/svn"/>
+	
+	<target name="cvs_tag" depends="timestamp">
+		<property name="svn.tag" value="ICON2-BUILD-${DSTAMP}-${TSTAMP}"/>
+
+		<cvs command="-q tag -F ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" failonerror="true" 
+			package="common Databases\CustomerService Databases\mrl Databases\PlanSponsor Databases\PlanSponsorContent Databases\StraightThruProcessing PlanSponsor PlanSponsorTests STP"/>
+	</target>
+
+	<target name="cvs_untag">
+		<cvs command="-q tag -d ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" failonerror="true"
+			package="common Databases\CustomerService Databases\mrl Databases\PlanSponsor Databases\PlanSponsorContent Databases\StraightThruProcessing PlanSponsor PlanSponsorTests STP"/>
+	</target>
+
+	<target name="cvs_update">
+		<cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="common"/>
+		<cvs command="-q update -P -C -d -r ${cvs.tag}" cvsRoot="${cvs.root}" dest="${svn.local}" package="Databases"/>
+	</target>
+
+	<property name="pre-sit-13-drive" value="E:"/>
+	<property name="gft_app_folder" value="/apps/GFT"/>
+	<property name="sj_app_folder" value="/apps/SubJournal"/>
+	<property name="stp_app_folder" value="/apps/stp"/>
+
+	<target name="distribute">
+		<copy todir="${pre-sit-13-drive}${gft_app_folder}/lib">
+			<fileset dir="${gft_app_folder}/lib"/>
+		</copy>
+		<copy todir="${pre-sit-13-drive}${sj_app_folder}/lib">
+			<fileset dir="${sj_app_folder}/lib"/>
+		</copy>
+		<copy todir="${pre-sit-13-drive}${stp_app_folder}/lib">
+			<fileset dir="${stp_app_folder}/lib"/>
+		</copy>
+	</target>
+
+	<target name="stopAll">
+		<ant dir="${stp.base.dir}" target="stop-stp"/>
+		<ant dir="${gft.base.dir}" target="stop-gft"/>
+		<ant dir="${sj.base.dir}" target="stop-sj"/>
+		<ant dir="${basedir}" target="stop_all"/>
+	</target>
+
+	<target name="icon2_build" depends="init, stopAll, databases, ifile, stp, plan_sponsor, plan_sponsor_tests, generate_test_report, coverage-report"/>
+
+</project>

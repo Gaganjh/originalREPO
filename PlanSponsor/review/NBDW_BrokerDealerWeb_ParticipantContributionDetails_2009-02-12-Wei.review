@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="NBDW_BrokerDealerWeb_ParticipantContributionDetails_2009-02-12">
+  <ReviewIssue id="FR3MAPUD">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-12 :: 21:30:34:645 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-03-02 :: 12:39:58:528 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Wei</AssignedTo>
+    <File></File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>sortDirection/sortField already defined in BaseReportForm</Summary>
+    <Description>These two fields and getter/setter are defined in super class</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR3OWRO1">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-12 :: 22:43:42:673 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-03-02 :: 12:39:43:396 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Wei</AssignedTo>
+    <File></File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>The pptTransactionContributionReport URL is configured wrong in securityinfo_bd.xml</Summary>
+    <Description>The page is not accessible via the URL link</Description>
+    <Annotation></Annotation>
+    <Revision> - The Link to this page appears to be correct in securityinfo_bd.xml. - The Link to "Participant Contribution Transaction report" appears in the Participant transaction History page. The Participant Transaction History was not yet code reviewed. </Revision>
+    <Resolution>item.resolution.label.invalidWontfix</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR3P0EM9">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-12 :: 22:46:32:385 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-03-02 :: 12:38:00:130 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Wei</AssignedTo>
+    <File></File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>no java doc in the ParticipantTransactionDetailsContributioNForm</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR3P2TPR">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-12 :: 22:48:25:263 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-03-02 :: 12:37:46:342 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Wei</AssignedTo>
+    <File></File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>theForm.getProfileId() == null || theForm.getProfileId().length() == 0 in ParticipantTranasctionDetailContributAction</Summary>
+    <Description>Could use StringUtils.isEmpty(theform.getProfileId())</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR3P5B1O">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-12 :: 22:50:21:036 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-03-02 :: 12:37:30:570 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Wei</AssignedTo>
+    <File></File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>ParticipantTransactionDetailsContributionAction.populateReportForm</Summary>
+    <Description>		// Obtain the profileId or if not available the participantId</Description>
+    <Annotation></Annotation>
+    <Revision>They are already there in the Form, but depending on page, sometimes the profileID is sent and sometimes, the Participant ID is sent. There could be circumstances where the profileID is set for one user and the participantID is set of another user in the Form, if we take the profileID, participant ID from the form instead of from the request. To avoid these circumstances, it is always being taken from request.</Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR3P787R">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-12 :: 22:51:50:679 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-03-02 :: 12:36:22:923 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Wei</AssignedTo>
+    <File></File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>ParticipantTransactionDetailsContributionAction.populateReportForm</Summary>
+    <Description>SystemExcption is caught and just logged.&#13;
+&#13;
+Is it enough? </Description>
+    <Annotation></Annotation>
+    <Revision>In this case, just logging the SystemException would be ok, because, if both profileID, participantID are not set, a SystemException is being thrown in populateReportCriteria() method.</Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR3PAZIW">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-12 :: 22:54:46:040 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-03-02 :: 12:35:17:485 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Wei</AssignedTo>
+    <File></File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>ParticipantTransactionDetailsContribAdjForm</Summary>
+    <Description>similar issues as the ContributionForm, no java doc, sortDirection/sortField duplicate</Description>
+    <Annotation></Annotation>
+    <Revision>Added JavaDoc. sortField, sortDirection removed.</Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+</Review>

@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<!DOCTYPE categoryUrlSpecifications
+[
+<!ELEMENT categoryUrlSpecifications (categoryUrlSpecification*)>
+<!ELEMENT categoryUrlSpecification (url+)>
+	<!ATTLIST categoryUrlSpecification category CDATA #REQUIRED>
+<!ELEMENT url (condition?)>
+	<!ATTLIST url href CDATA #REQUIRED>
+<!ELEMENT condition EMPTY>
+	<!ATTLIST condition operator (equals|notEquals) #REQUIRED>
+	<!ATTLIST condition property CDATA #REQUIRED>
+	<!ATTLIST condition value CDATA #REQUIRED>
+]>
+<categoryUrlSpecifications>
+	<categoryUrlSpecification category="Glossary_Category">
+		<url href="/do/contentpages/glossary"/>
+	</categoryUrlSpecification>
+	
+	<categoryUrlSpecification category="contract details">
+		<url href="/do/contract/contractDetails/"/>
+	</categoryUrlSpecification>
+	
+	<categoryUrlSpecification category="contract snapshot">
+		<url href="/do/contract/contractSnapshot/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="contract profile">
+		<url href="/do/contract/contractProfile"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="participant menu">
+		<url href="/do/participant/participantMenu"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="participant summary">
+		<url href="/do/participant/participantSummary"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="payment pending">
+		<url href="/do/home/makeContribution"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="participant enrollments">
+		<url href="/do/participant/participantEnrollmentSummary"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="participant addresses">
+		<url href="/do/participant/participantAddresses"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="investment menu">
+		<url href="/do/investment/investments/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="investment allocation page">
+		<url href="/do/investment/investmentAllocationReport/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="contract funds">
+		<url href="/do/investment/contractFundsReport/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="performance charting">
+		<url href="/do/investment/performanceChartInput/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="transaction menu">
+		<url href="/do/transaction/transactionMenu/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="transaction details">
+		<url href="/do/transaction/transactionHistoryReport/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="transaction history">
+		<url href="/do/transaction/transactionHistoryReport/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="participant transaction details">
+		<url href="/do/transaction/participantTransactionHistory/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="participant transaction history">
+		<url href="/do/transaction/participantTransactionHistory/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="cash account">
+		<url href="/do/transaction/cashAccountReport/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="contract messages">
+		<url href="/do/contract/contractMessages"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="tools">
+		<url href="/do/tools/toolsMenu/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="forms page">
+		<url href="/do/resources/forms/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="contact us">
+		<url href="/do/resources/ContactUsAction"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="manage profile landing page">
+		<url href="/do/profiles/manageUsers/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="manulife updates">
+		<url href="/do/news/currentUpdates/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="legislative updates">
+		<url href="/do/news/currentLegislativeUpdates/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="NewsLetterIssue">
+		<url href="/do/news/newsletterIssueIndex"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="admin guide">
+		<url href="/do/contentpages/userguide/landingpage/?parentId=73"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="Consolidation Services">
+		<url href="/do/contentpages/userguide/secondlevel/?contentKey=75252"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="feduciary page">
+		<url href="/do/contentpages/userguide/landingpage/?parentId=75"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="defined benefit account">
+		<url href="/do/db/definedBenefitAccount/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="message center">
+		<url href="/do/messagecenter/summary"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="message archive">
+		<url href="/do/messagecenter/history"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="pending withdrawal summary">
+		<url href="/do/transaction/pendingTransactionHistoryReport/"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="fundcheck">
+		<url href="/do/fundCheck"/>
+	</categoryUrlSpecification>	
+
+</categoryUrlSpecifications>

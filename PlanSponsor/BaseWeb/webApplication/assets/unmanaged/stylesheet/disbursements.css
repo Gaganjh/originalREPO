@@ -1,0 +1,106 @@
+/* Stylesheets specific to Disbursements Applications */
+
+.errorIcon {
+	float: right;
+}
+
+/* Withdrawal Request presentation styles */
+
+.sectionNameColumn { 
+  padding-left:4px;
+  vertical-align:middle;
+  height:16px;
+  width:176px; 
+}
+.sectionCommentText {
+  padding-left:4px;
+}
+
+/* For use with long indented value column */
+.shortSectionNameColumn { 
+  padding-left:4px;
+  vertical-align:middle;
+  height:16px;
+  width:166px; 
+}
+
+/* For use with long indented value column */
+.longSectionNameColumn { 
+  padding-left:4px;
+  vertical-align:middle;
+  height:16px;
+  width:206px; 
+}
+
+/* Use for labels with no specific width */
+.sectionName { 
+  padding-left:4px;
+  vertical-align:middle;
+  height:16px;
+}
+
+/* Indented one level */
+.subsectionNameColumn { 
+  padding-left:12px;
+  vertical-align:middle;
+  height:16px;
+  width:168px; 
+}
+  
+.subsectionTitleColumn  { 
+  padding-left:4px;
+  padding-top:4px;
+  vertical-align:middle;
+  height:16px;
+  width:176px; 
+}
+
+.indentedValueColumn { 
+  padding-left:4px;
+  vertical-align:middle;
+  height:16px;
+  width:313px; 
+}
+
+.longIndentedValueColumn { 
+  padding-left:4px;
+  vertical-align:middle;
+  height:16px;
+  width:323px; 
+}
+.shortIndentedValueColumn { 
+  padding-left:4px;
+  vertical-align:middle;
+  height:16px;
+  width:283px; 
+}
+
+.indentedValue { 
+  padding-left:4px;
+  vertical-align:middle;
+  height:16px;
+}
+
+/* Use when the value column content starts with a checkbox or radio button */
+.valueColumn { 
+  vertical-align:middle;
+  height:16px;
+  width:317px; 
+}
+
+/* Use when the value column content starts with a checkbox or radio button */
+.shortValueColumn { 
+  vertical-align:middle;
+  height:16px;
+  width:287px; 
+}
+
+.inputRight {
+  text-align:right
+}
+
+.mandatoryInputRight {
+	background-color: #FFCC99;
+  text-align:right;
+  padding-right:3px;
+}

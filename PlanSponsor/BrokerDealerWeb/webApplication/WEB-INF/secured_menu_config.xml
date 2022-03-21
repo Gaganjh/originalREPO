@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+    <bean abstract="true" name="menuItem"
+        class="com.manulife.pension.bd.web.navigation.generation.SystemMenuItem" />
+
+    <bean name="defaultUrlGenerator"
+        class="com.manulife.pension.bd.web.navigation.generation.DefaultParentMenuItemUrlGenerator" />
+
+    <bean name="mainMenu" parent="menuItem">
+        <property name="subMenuItems">
+            <list>
+                <!--  Home  -->
+                <bean name="home" parent="menuItem" p:id="home" p:title="Home"
+                    p:actionURL="/do/home/" />
+                <!-- Fund & Performance -->
+                <bean name="fundPerformance" parent="menuItem" p:id="fp"
+                    p:title="Funds &amp; Performance">
+                    <property name="urlGenerator">
+                        <bean
+                            class="com.manulife.pension.bd.web.navigation.generation.FundPerformanceMenuItemUrlGenerator" />
+                    </property>
+                    <property name="subMenuItems">
+                        <list>
+                            <bean parent="menuItem" p:id="jhUSAFund" p:title="JH USA Funds"
+                                p:actionURL="/do/fap/US" />
+                            <bean parent="menuItem" p:id="jhNYFund" p:title="JH New York Funds"
+                                p:actionURL="/do/fap/NY" />
+                            <bean parent="menuItem" p:id="fundEvaluator" p:title="FundEvaluator"
+                                p:actionURL="/do/fundEvaluator/" />
+                            <bean parent="menuItem" p:id="charting" p:title="Charting"
+                                p:actionURL="/do/fap/performanceChartInput/" /> 
+                            <bean parent="menuItem" p:id="historicalReturns" p:title="Historical Returns"
+                                p:actionURL="/do/fap/fapHistoricalPdf/" />  
+ 		                    <bean parent="menuItem" p:id="fundCheck" p:title="Investment Platform Update"
+		                                p:actionURL="/do/fundCheck" />  
+                        </list>
+                    </property>
+                </bean>
+                <!--  Block of Business -->
+                <bean name="bob" parent="menuItem" p:id="bob" p:title="Block of Business">
+                    <property name="urlGenerator">
+                        <bean
+                            class="com.manulife.pension.bd.web.navigation.generation.BOBMenuItemUrlGenerator" />
+                    </property>
+                    <property name="subMenuItems">
+                        <list>
+                            <bean parent="menuItem" p:id="bobOverview" p:title="Overview"
+                                p:actionURL="/do/bob/blockOfBusiness/Active/" />
+                            <bean parent="menuItem" p:id="financialRepListing" p:title="Financial Representative Listing"
+                                p:actionURL="/do/brokerListing/" />
+                            <bean parent="menuItem" p:id="planReviewReports" p:title="Plan Review Reports"
+                                p:actionURL="/do/bob/planReview/" />
+                        </list>
+                    </property>
+                </bean>
+                <!--  Block of Business teaser-->
+                <bean name="bobPromption" parent="menuItem" p:id="promptionInfo"
+                    p:title="Block of Business" p:actionURL="/do/myprofile/createBOB" />
+                <!--  Partnering with us -->
+                <bean name="pwu" parent="menuItem" p:id="partnering"
+                    p:title="Partnering with Us" p:actionURL="/do/content?menuName=partnering" />                       
+                <!--  PRIME Elements -->
+                <bean name="prime" parent="menuItem" p:id="prime"
+                    p:title="Retirement Solutions" p:actionURL="/do/content?menuName=prime" />                        
+                <!-- News & Events -->
+                <bean name="newsEvents" parent="menuItem" p:id="news"
+                    p:title="News &amp; Events" p:actionURL="/do/news/" >
+                </bean>
+                <!--  Find Literature -->
+                <bean name="literature" parent="menuItem" p:id="findLiterature" p:title="Find Literature">
+                    <property name="urlGenerator" ref="defaultUrlGenerator" />
+                    <property name="subMenuItems">
+                        <list>
+                            <bean parent="menuItem" p:id="literature" p:title="Find Literature" p:actionURL="/do/content?menuName=literature"/>
+                            <bean parent="menuItem" p:id="orderACR"       p:title="Order ACR"       p:actionURL="/do/orderACR/" />
+                        </list>
+                    </property>
+                </bean>
+                <!--  Forms -->
+                <bean name="forms" parent="menuItem" p:id="forms"
+                    p:title="Forms" p:actionURL="/do/forms/" />                     
+                <!--  Secured Level One User Forms -->
+                <bean name="levelOneForms" parent="menuItem" p:id="levelOneForms"
+                    p:title="Forms" p:actionURL="/do/levelOneForms/" />                     
+                <!--  Help -->
+                <bean name="help" parent="menuItem" p:id="help"
+                    p:title="Help">
+                    <property name="urlGenerator" ref="defaultUrlGenerator" />
+                    <property name="subMenuItems">
+                        <list>
+                            
+                            <bean parent="menuItem" p:id="howDoI" p:title="How do I…"
+                                p:actionURL="/do/howDoI/" />
+                            <bean parent="menuItem" p:id="helpfulLinks" p:title="Helpful Links"
+                                p:actionURL="/do/helpfulLinks/" />
+                            <bean parent="menuItem" p:id="glossary" p:title="Glossary"
+                                p:actionURL="/do/glossary/" />
+                            <bean parent="menuItem" p:id="siteMap" p:title="Site Map"
+                                p:actionURL="/do/siteMap/" />
+                            <bean parent="menuItem" p:id="contactUs" p:title="Contact Us"
+                                p:actionURL="/do/contactUs/" />
+                        </list>
+                    </property>
+                </bean>                 
+            </list>
+        </property>
+    </bean>
+</beans>

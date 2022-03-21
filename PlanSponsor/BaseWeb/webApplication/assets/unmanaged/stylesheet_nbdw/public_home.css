@@ -1,0 +1,331 @@
+/*******************************************************************************
+*	public_home.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Contract Funds specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+@import url("screen.css");
+@import url("public_home_import.css");
+/*.message{
+	display:none;
+}*/	
+
+div#page_content{
+	background:none;
+}
+
+div#page_content.background-img{
+	background:url(/assets/unmanaged/images/backgrounds/background_page_contents.gif) #fff repeat-x left top;
+}
+
+
+/*******************************************************************************
+* PAGE SECTIONS
+********************************************************************************/
+
+div#news_events_search{
+	margin:9px 0;
+	padding:0;
+}
+
+div.page_section{
+	width:919px;
+	border-top:1px solid #fff;
+}
+	
+		div#page_content div.page_section p, 
+		div#page_content div.page_section li{
+			font-size:.6875em;
+		}
+	
+		div#flash_promo{
+	border-top:none;
+	height:213px;
+	overflow:hidden;
+	margin-right:9px;
+	padding:0;
+	width: 418px;
+		}
+	
+		div.page_module{
+	background-color:#f5f6f1;
+	border-top:4px solid #febe10;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 10px;
+	padding-left: 0;
+	overflow: hidden;
+	float: left;
+	width: 241px;
+		}
+			div.page_module_register{
+	width: 241px;
+	padding: 0px;
+	margin-top: 0px;
+	float: right;
+	clear: right;
+		}
+					div.page_module_commentary{
+	width: 233px;
+	overflow: hidden;
+	float: right;
+	margin: 0px;
+	padding: 0px;
+		}
+			#page_content div.page_module h2{
+				background: none;
+				color:#333;
+				font: normal 1.4em georgia, times, serif;
+				margin: 0;
+				padding: 10px 0 10px 15px;
+			}
+		
+				
+			div.page_module h5{
+				margin:0 0 0 15px;
+				padding:0;
+			}
+			
+			div.page_module ul{
+				list-style:none;
+				margin:2px 10px 10px 15px;
+				padding:0;
+			}
+						
+			div.page_module ul li{
+				border-top:1px solid #cac8c4;
+				padding:5px 0;
+			}
+	
+			div.page_module ul li:first-child{
+				border-top:none;
+			}
+			
+			div#page_section_container div.page_module p{
+				margin:0 10px 0 15px;
+				padding:0;
+			}
+			
+			div#page_section_container p#access_code{
+				margin-top:10px;
+			}
+
+a.news_more {
+		text-decoration:underline !important;
+	}
+	
+
+div#news_updates{
+	width:418px;
+}
+	
+	div#page_content div#news_updates li p{
+		font-size:1.0625em;
+		margin:0;
+		padding:0;
+	}
+	
+		
+div#user_actions{
+	margin-right:9px;
+	
+}
+
+div#user_actions,
+div#user_access{
+	height:200px;
+	overflow:hidden;
+	width:241px;
+}
+
+	div#user_access form{
+		margin:0;
+		padding:0;
+	}
+	
+	div#user_access fieldset{
+		border:none;
+		clear:left;
+		margin:0;
+		padding:0;
+	}
+
+	div#user_access form fieldset p{
+		clear:left;
+		float:left;
+		width:80px;
+		margin:0;
+		padding:0 0 10px 15px;
+	}
+	
+	div#user_access p{
+		clear:left;
+		float:none;
+		margin:0;
+		padding:0 0 10px 15px;
+	}
+	
+	div#user_access p.forgot_password_register{
+		padding-right:20px;
+		padding-bottom:5px;
+		text-align:right;
+	}
+	
+	div#user_access input#username_input,
+	div#user_access input#password_input{
+		float:left;
+		width:120px;
+	}
+	
+	div#user_access p label{
+		font-weight:bold;
+	}
+	
+	div#user_access div.button_login{
+		float:right;
+		clear:left;
+		padding-right:10px;
+	}
+div#fund_search{
+	width:241px;
+	margin-top: 10px;
+	clear: left;
+	float: left;
+}
+
+	div#fund_search form{
+		width:241px;
+		margin:0 auto;
+	}
+	div#fund_search fieldset{
+		border:none;
+		margin:0 0 0 10px;
+		padding:0;
+		width:241px;		
+	}
+	
+		div#fund_search p,
+		div#fund_search select{
+			float:left;
+		}
+		
+	
+		div#fund_search p{
+			clear:both;
+			margin:0 10px 0 0;
+			padding:0;
+			text-align:right;
+			width:80px;
+		}
+		
+			div#fund_search p label{
+				font-weight:bold;
+			}
+		
+		div#fund_search select{
+			width:110px;
+			margin-bottom:5px;
+		}
+		div#fund_search #state_wrapper{
+	float:left;
+	margin-bottom:10px;
+	width:185px;
+	font-size: 0.6875em;
+	font-weight: bold;
+	color: #767676;
+
+}
+
+
+		div#fund_search #type_wrapper{
+	float:left;
+	margin-bottom:10px;
+	width:200px;
+	padding-left: 10px;
+
+		}
+			div#fund_search #type_wrapper p{
+	clear:none;
+	float:left;
+	text-align:left;
+	width:215px;
+	padding-top: 5px;
+			}
+		
+		div#fund_search #category_wrapper{
+			float:left;
+			margin-bottom:10px;
+			width:150px;
+		}
+		
+			div#fund_search #category_wrapper p{
+				clear:none;
+				float:left;
+				margin:0 0 5px 0;
+				text-align:left;
+				width:110px;
+			}
+			
+			div#fund_search #category_wrapper input{
+				clear:left;
+				float:left;
+				margin:3px 5px 0 0;
+				padding:0;
+			}
+			
+		div#fund_search div.button_search{
+			float:right;
+			margin-right:10px;
+		}
+
+div#quick_search{
+	width:241px;
+	clear: left;
+	float: left;
+}
+div#market_commentary{
+	width:241px;
+	float: left;
+	margin-top: 0px;
+}
+	
+div#quick_search form#fund_quick_search{
+		margin:5px 0 5px 0;
+	}
+	
+		div#quick_search p{
+			clear:left;	
+			margin:0;
+			padding:15px;		
+		}
+		
+		div#quick_search form#fund_quick_search p,
+		div#quick_search form#fund_quick_search input#fund_name_input{
+			float:left;
+		}
+	
+		div#quick_search form#fund_quick_search p{
+			clear:none;
+			font-weight:bold;
+			margin:0;
+			padding:0 0 0 15px;
+			width:80px;
+		}
+	
+		div#quick_search form#fund_quick_search input#fund_name_input{
+			margin:0;
+			padding:0;
+			width:120px;
+		}
+		
+		div#quick_search form#fund_quick_search div.button_search{
+			clear:left;
+			float:none;
+			margin:5px 0 0 15px;
+		}		
+		
+		
+#public_home #page_wrapper #page_content #news_events_search #outerWrapper #contentWrapper #middle #fund_quick_search h2 label {
+	font-size: 10px;
+}

@@ -1,0 +1,17 @@
+# ==============================================================================
+# WAS script to create the JDBC providers based on the parameters provided
+# $ID:$
+# ==============================================================================
+
+set cellName [lindex $argv 0]
+
+
+set cellid [$AdminConfig getid /Cell:$cellName]
+
+puts "JDBCDriver [$AdminConfig list JDBCProvider]"
+
+$AdminConfig create JDBCProvider $cellid { {classpath "${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc.jar;${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cu.jar;${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cisuz.jar"} {description "Universal DB2 XA JDBC Provider"} {implementationClassName com.ibm.db2.jcc.DB2XADataSource} {name "DB2_JDBC_Driver_XA_UV"} {nativepath {${DB2UNIVERSAL_JDBC_DRIVER_NATIVEPATH}}} {xa true} } 
+$AdminConfig create JDBCProvider $cellid { {classpath "${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc.jar;${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cu.jar;${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cisuz.jar"} {description "Universal DB2 JDBC Provider"} {implementationClassName com.ibm.db2.jcc.DB2ConnectionPoolDataSource} {name "DB2_JDBC_Driver_UV"} {nativepath {${DB2UNIVERSAL_JDBC_DRIVER_NATIVEPATH}}} {xa false} } 
+$AdminConfig create JDBCProvider $cellid { {classpath "${DB2_JDBC_DRIVER_PATH}/db2jcc.jar"} {description "Legacy DB2 JDBC Provider BD only"} {implementationClassName com.ibm.db2.jcc.DB2ConnectionPoolDataSource} {name "DB2_JDBC_Legacy_Driver_UV"} {nativepath {${DB2UNIVERSAL_JDBC_DRIVER_NATIVEPATH}}}{providerType "DB2 Legacy CLI-based Type 2 JDBC Driver"} {xa false} } 
+
+$AdminConfig save

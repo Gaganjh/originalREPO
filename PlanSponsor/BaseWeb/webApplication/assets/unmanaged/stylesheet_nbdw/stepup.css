@@ -1,0 +1,206 @@
+/*******************************************************************************
+*	public_home.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Contract Funds specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+@import url("screen.css");
+@import url("public_home_import.css");
+/*.message{
+	display:none;
+}*/	
+
+div#page_content{
+	background:none;
+}
+
+div#page_content.background-img{
+	background:url(/assets/unmanaged/images/backgrounds/background_page_contents.gif) #fff repeat-x left top;
+}
+
+
+/*******************************************************************************
+* PAGE SECTIONS
+********************************************************************************/
+
+div#news_events_search{
+	margin:9px 0;
+	padding:0;
+}
+
+div.page_section{
+	width:919px;
+	border-top:1px solid #fff;
+}
+	
+		div#page_content div.page_section p, 
+		div#page_content div.page_section li{
+			font-size: 12px;
+			color: black;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+	
+		div#flash_promo{
+	border-top:none;
+	height:213px;
+	overflow:hidden;
+	margin-right:9px;
+	padding:0;
+	width: 418px;
+		}
+	
+		div.page_module{
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 10px;
+	padding-left: 0;
+	overflow: hidden;
+	float: left;
+	width: 241px;
+		}
+			div.page_module_register{
+	width: 241px;
+	padding: 0px;
+	margin-top: 0px;
+	float: right;
+	clear: right;
+		}
+		
+		div.page_module_passcode{
+	width: 660px;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 10px;
+	padding-left: 0;
+	overflow: hidden;
+	float: left;
+		}
+					div.page_module_commentary{
+	width: 233px;
+	overflow: hidden;
+	float: right;
+	margin: 0px;
+	padding: 0px;
+		}
+		
+		
+.labelPasscode {
+	font-size: 12px;
+	width: 114px;
+	text-align: right;
+	float: left;
+	margin-top: 17px;
+	clear: left;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.formButtonPasscode {
+	margin-top: 15px;
+	height: 45px;
+}
+
+.formButtonPasscode  .blue-btn {
+	border: none;
+	width: 110px;
+	height: 30px;
+	color: white;
+	margin-left: 16px;
+	background:
+		url('/assets/unmanaged/images/buttons/enabled_blue_button_110px.gif');
+	cursor: pointer;
+}
+
+.formButtonPasscode  .grey-btn {
+	border: none;
+	width: 110px;
+	height: 30px;
+	color: white;
+	margin-left: 330px;
+	background:
+		url('/assets/unmanaged/images/buttons/enabled_grey_button_110px.gif');
+	cursor: pointer;
+}
+
+.formButtonPasscode  .blue-transit-btn {
+	border: none;
+	width: 140px;
+	height: 30px;
+	color: white;
+	margin-left: 400px;
+	background:
+		url('/assets/unmanaged/images/buttons/enabled_blue_button_140px.gif');
+	cursor: pointer;
+}
+
+
+.formButtonPasscode input {
+	float: left;
+	margin-left: 16px;
+}
+
+.inputText {
+	color: #9B8A76;
+	margin-left: 130px;
+	margin-top: 15px;
+}
+
+.inputTimer {
+	padding: 0px;
+	margin-top: -18px;
+	margin-right: 5px;
+	margin-bottom: 0px;
+	margin-left: 335px;
+	font-size: 12px;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.SubTitle {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 16px;
+	LINE-HEIGHT: normal;
+	FONT-FAMILY: Arial;
+	TEXT-ALIGN: left;
+	COLOR: #9b8a2a
+}
+
+.BottomBorder {
+	border-bottom: #e1e1e1 1px solid;
+	height: 20px;
+	margin-top: 15px;
+	overflow: auto;
+}
+
+#stepup_Header h1 {
+	color: #000000;
+	line-height: 1.6em;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.6em;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+}
+
+#stepup_Header {
+	background: #fff
+		url('/assets/unmanaged/images/backgrounds/background_page_contents.gif')
+		repeat-x top left;
+	padding: 10px;
+}
+
+#passcode_page {
+	padding: 2px;
+}
+
+.message {
+    margin: 20px auto 20px auto;
+    padding: 0px 10px 0px 10px;
+    width: 90%;
+    max-height:140px;
+    overflow:auto;
+    font-family: verdana, arial, helvetica, sans-serif;
+}
+
+		

@@ -1,0 +1,86 @@
+<project name="FortifyDependencies" default="compile_dependencies" basedir=".">
+
+	<target name="compile_dependencies">
+		<!-- <ant dir="../AccountService">
+			<target name="clean" />
+			<target name="build" />
+		</ant>
+		<ant dir="../ContractService">
+			<target name="clean" />
+			<target name="build" />
+		</ant>
+		<ant dir="../DistributionService">
+			<target name="clean" />
+			<target name="build" />
+		</ant>
+		<ant dir="../EmployeeService">
+			<target name="clean"/>
+			<target name="build"/>
+		</ant> 
+		<ant dir="../EnvironmentService">
+			<target name="clean"/>
+			<target name="build"/>
+		</ant> -->
+		<ant dir="../EligibilityService">
+			<target name="clean"/>
+			<target name="build"/>
+		</ant>
+	<!--	<ant dir="../FundService">
+			<target name="clean"/>
+			<target name="build"/>
+		</ant>
+		<ant dir="../MessagingService">
+			<target name="clean"/>
+			<target name="build"/>
+		</ant> 
+		<ant dir="../mrl">
+			<target name="clean"/>
+			<target name="build"/>
+		</ant> -->
+	<!-- 	<ant dir="../MrlLoggerService">
+			<target name="clean"/>
+			<target name="build"/>
+		</ant> -->
+		<ant dir="../NotesDocumentService">
+			<target name="clean" />
+			<target name="build" />
+		</ant>
+	<!--	<ant dir="../NotificationService">
+			<target name="clean" />
+			<target name="build" />
+		</ant>
+		<ant dir="../PINGenService">
+			<target name="clean" />
+			<target name="build" />
+		</ant>
+		<ant dir="../ReportService">
+			<target name="clean" />
+			<target name="build" />
+		</ant> -->
+<!--    	<ant dir="../RetirementEngine">
+      		<target name="clean" />
+      		<target name="build" />
+    	</ant> -->
+		<ant dir="../SearchService">
+			<target name="clean" />
+			<target name="build" />
+		</ant>
+	<!-- 	<ant dir="../SecurityService">
+			<target name="clean" />
+			<target name="build" />
+		</ant> -->
+<!--    	<ant dir="../SILService">
+      		<target name="clean" />
+      		<target name="build" />
+    	</ant>	-->
+		<ant dir="../SynchronizationService">
+			<target name="clean" />
+			<target name="build" />
+		</ant>
+		<ant dir="../USGPSUtilities">
+			<target name="clean" />
+			<target name="build_lib" />
+		</ant>
+	</target>
+
+</project>

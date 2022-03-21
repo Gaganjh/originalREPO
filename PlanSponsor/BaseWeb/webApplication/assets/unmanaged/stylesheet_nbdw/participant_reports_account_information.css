@@ -1,0 +1,166 @@
+/*******************************************************************************
+*	participant_reports_account_information.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Contract Funds specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+@import url("screen.css");
+
+div.controls a.customize {
+	color:#fff;
+	float:left;
+	font-size:.75em;
+	line-height:1.5em;
+	padding:1em 0 0 1em;
+}
+
+div#page_section_container{
+	background: #fff url('/assets/unmanaged/images/backgrounds/overview_bg.gif') repeat-y top center;
+	margin-bottom:5px;
+	width:919px;
+}
+
+	div#page_section_container h4{
+		background: none;
+		color:#333333;
+		font: normal 1em georgia, times, serif;
+		height: 1em;
+		margin: 0;
+		padding: 10px 0 10px 15px;
+	}
+
+	
+	div#page_section_container td, 
+	div#page_section_container th, 
+	div#page_section_container p, 
+	div#page_section_container li{
+		font-size:.75em;
+	}
+		
+	
+	div.page_section{
+		float:left;
+		width:457px;		
+	}
+	
+	div.page_section:first-child{
+		margin-right:5px;
+	}
+	
+		div.page_section form{
+			margin:0;
+		}
+		
+		div.page_section form fieldset{
+			border:none;
+			margin:0 auto;
+			padding:10px 0;
+			width:450px;
+		}
+		
+		div.page_section form p, div.page_section form select{
+			float:left;
+			width:170px;
+		}
+		
+		
+		div.page_section form select{
+			margin:0 0 12px 0;
+			padding:0;
+		}
+		
+		div#page_content div.page_section p{
+			padding-top:15px;
+		}
+		
+		div#page_content div.page_section form p{
+			clear:left;
+			height:auto;			
+			margin:0;
+			padding:0 5px 12px 0;
+			text-align:right;			
+		}
+			div.page_section form p label{
+				font-weight:bold;
+			}
+
+			table.overview_table tr.overview_table_section td,
+			table.overview_table tr.overview_table_section th {
+				padding-top:20px;
+			}
+
+			table.overview_table td, 
+			table.overview_table th{
+				vertical-align:top;
+				width:50%;
+			}
+
+			table#contact_info_table td,
+			table#contact_info_table th{
+				width:auto;
+			}
+				table#contact_info_table th.contact_no{
+					text-align:left;
+				}	
+
+			table.overview_table{
+				width:450px;
+				margin:0 0 10px 0;
+				padding:0;
+			}
+
+				table.overview_table th{
+					text-align:right;
+				}
+
+			div#page_section_container td, 
+			div#page_section_container th, 
+			div#page_section_container p, 
+			div#page_section_container li{
+				color:#333;
+				font-size:.75em;
+			}
+
+	table.report_table_content td.employee_assets,
+	table.report_table_content td.employer_assets {
+		padding-left:20px;
+	}
+
+
+	div#display_preferences {
+		background:#fff url('/assets/unmanaged/images/backgrounds/overview_wide_bg.gif') repeat-y top center;
+		margin-bottom:15px;
+	}
+		div#display_preferences div.page_section {
+			float:none;
+			width:914px;
+		}
+
+		#page_content div#display_preferences h4 {
+			background: none;
+			color:#333333;
+			font: normal 1em georgia, times, serif;
+			height: 1em;
+			margin: 0;
+			padding: 10px 0 10px 15px;
+		}
+
+		#page_content div#display_preferences p {
+			width:auto;
+			padding-left:25px;
+		}
+
+	 	div#display_preferences div.page_section form {
+			float:none;
+			margin-top:0;
+			padding-top:0;
+		}
+
+		div#display_preferences {
+			height:75px;
+		}
+
+		div#display_preferences div.page_section_footer {
+			clear:both;
+		}

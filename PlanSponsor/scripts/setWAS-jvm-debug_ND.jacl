@@ -1,0 +1,22 @@
+# ==============================================================================
+# WAS script to set the classpath in WAS
+#
+# ==============================================================================
+
+set serverName [lindex $argv 0]
+set debugMode [lindex $argv 2]
+
+set server [$AdminConfig getid /Server:$serverName/]
+set jvm [$AdminConfig list JavaVirtualMachine $server]
+
+puts "Server=$server"
+puts "JVM=$jvm"
+puts "debugMode=$debugMode"
+
+if {$debugMode == "true"} {   
+    $AdminConfig modify $jvm {{debugMode true}}   
+} else {
+    $AdminConfig modify $jvm {{debugMode false}}
+}
+
+$AdminConfig save

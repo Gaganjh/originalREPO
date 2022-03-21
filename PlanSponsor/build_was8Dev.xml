@@ -1,0 +1,410 @@
+<!--======================================================================================
+  WAS8DEV Project Build File
+
+  Main targets are as follows ...
+
+=======================================================================================-->
+
+<project name="WAS8DEV" default="build_WAS8_DEV" basedir=".">
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Properties
+  This section contains property settings and targets that affect property settings.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<property environment="env"/>
+	<property name="machinename" value="${env.COMPUTERNAME}"/>
+	<property name="adminagent.profile.name" value="AdminAgent"/>
+	<!--<property name="node.profile.cell.name" value="${machinename}Node01Cell"/-->
+
+	<property name="dmgr.profile.name" value="${adminagent.profile.name}"/>
+	<property name="admin.node.name" value="${machinename}AANode"/>
+	<property name="admin.cell.name" value="${machinename}NodeCell01"/>
+	<property name="dmgr.cell.name" value="${machinename}NodeCell"/>
+	<property name="delete.server.name" value="server1"/>
+	<property name="psw.application.name" value="PlanSponsor"/>
+
+	<import file="./build_was6ND.xml" />
+
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  WebSphere Application Server targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  WebSphere 8 Application Server Admin targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<target name="build_WAS8_DEV">
+		<echo message="Start to setup WAS DEV parameters......"/>
+
+		<antcall target="was8.create.admin.profile"/>
+		<antcall target="was8.start.admin.agent"/>
+		<antcall target="was8.create.node.profile"/>
+		<antcall target="was8.register.node.profile"/>
+		<antcall target="was8.delete.serverName"/>
+		<antcall target="was6.setup.all"/>
+		<antcall target="was8.configure.planReview.jms.server" />
+	</target>
+
+	<target name="rebuild_WAS8_DEV" description="delete all profiles and rebuild WAS8 Dev" >
+		<antcall target="was8.stop.service" />
+		<antcall target="was6.display.dmgr.info" />
+		<antcall target="was8.delete.node.profile" />
+		<antcall target="was8.delete.admin.profile" />
+		<antcall target="build_WAS8_DEV" />
+	</target>
+
+	<target name="was8.delete.all.profile" description="Deletes all WAS6 Profile">
+		<echo>
+	         Deleting WAS8 all profiles
+
+	         This process may take a while...
+	        </echo>
+
+		<exec executable="${websphere.home}/bin/manageprofiles.bat">
+			<arg value="-deleteAll" />
+		</exec>
+
+		<delete includeemptydirs="true">
+			<fileset dir="${websphere.home}\profiles\" includes="**/*" />
+			<fileset dir="${websphere.home}\logs\manageprofiles" />
+		</delete>
+	</target>
+	
+	<target name="was8.stop.service" description="Deletes WAS8 Windows service">
+		<echo>
+	         Stopping WAS8 Admin Node services:  [${admin.node.name}]
+
+	         This process may take a while...
+	        </echo>
+
+		<exec executable="${websphere.home}/bin/wasservice.exe">
+			<arg line="-stop ${admin.node.name}" />
+		</exec>
+	</target>
+
+	<target name="was8.delete.service" description="Deletes WAS8 Windows service">
+		<echo>
+	         Deleting WAS8 services: 
+
+	         This process may take a while...
+	        </echo>
+
+		<exec executable="${websphere.home}/bin/wasservice.exe">
+			<arg line="-remove ${node1.profile.name}" />
+		</exec>
+	</target>
+
+	<target name="was8.delete.admin.profile" description="Deletes AdminAgent Profile">
+		<echo>
+		         Deleting WAS8 admin profile: [${adminagent.profile.name}]
+
+		         This process may take a while...
+		        </echo>
+
+		<exec executable="${websphere.home}/bin/manageprofiles.bat">
+			<arg line="-delete -profileName ${adminagent.profile.name}" />
+		</exec>
+		<delete includeemptydirs="true">
+
+			<fileset dir="${websphere.home}\profiles\${adminagent.profile.name}" />
+			<fileset dir="${websphere.home}\logs\manageprofiles\${adminagent.profile.name}" />
+		</delete>
+	</target>
+
+	<target name="was8.delete.node.profile" description="Deletes WAS8 node Profile">
+		<echo>
+	         Deleting WAS8 node profile: [${node1.profile.name}]
+
+	         This process may take a while...
+	        </echo>
+
+		<exec executable="${websphere.home}/bin/manageprofiles.bat">
+			<arg line="-delete -profileName ${node1.profile.name}" />
+		</exec>
+
+		<delete includeemptydirs="true">
+
+			<fileset dir="${websphere.home}\profiles\${node1.profile.name}" />
+			<fileset dir="${websphere.home}\logs\manageprofiles\${node1.profile.name}" />
+		</delete>
+	</target>
+
+	<target name="was8.create.admin.profile" description="Creates presit WAS8 Cell Profile using the value provided in creation params property">
+		<property name="was8.profile.creation.params"
+	            value="-isDefault
+	                -winserviceCheck true 
+	                -winserviceAccountType localsystem
+	                -winserviceStartupType automatic"/>
+		<property name="was8.create.admin.profile.args" value="-create 
+	            -profileName ${adminagent.profile.name}
+	            -profilePath ${websphere.home}/profiles/${adminagent.profile.name}
+	            -templatePath ${websphere.home}/profileTemplates/management
+	            -nodeName ${admin.node.name}	            
+	            -hostname ${hostname}
+	 			-serverType ADMIN_AGENT
+	            ${was8.profile.creation.params}"/>
+
+		<echo >
+	         Creating WAS8 cell AdminAgent profile using following arguments: 
+	            ${was8.create.admin.profile.args}
+
+	         This process may take a while...
+	        </echo>
+
+		<exec executable="${websphere.home}/bin/manageprofiles.bat">
+			<arg line="${was8.create.admin.profile.args}"/>
+		</exec>
+
+		<antcall target="was6.display.dmgr.info">
+		</antcall>
+	</target>
+
+	<target name="was8.start.admin.agent" description="start deployment manager">
+		<exec executable="${websphere.home}/bin/startServer.bat">
+			<arg value="adminagent"/>
+		</exec>
+	</target>
+
+	<target name="was8.create.node.profile"
+	        description="Creates customized WAS6 node Profile using the value provided in creation params property">
+		<property name="was6.profile.creation.params"
+	            value="-isDefault
+	                -winserviceCheck true 
+	                -winserviceAccountType localsystem
+	                -winserviceStartupType automatic"/>
+		<property name="was8.create.node.profile.args" value="-create 
+	            -templatePath ${websphere.home}/profileTemplates/default    
+	            -profilePath ${websphere.home}/profiles/${node1.profile.name}
+	            -nodeName ${node1.profile.name}
+	            -cellName ${cell.name}
+	            -profileName ${node1.profile.name}
+	            -hostName ${hostname}
+	            ${was6.profile.creation.params}"/>
+
+		<echo >
+	         Creating WAS8 DEV node Application Server profile using following arguments: 
+	            ${was8.create.node.profile.args}
+
+	         This process may take a while...
+	        </echo>
+		<exec executable="${websphere.home}/bin/manageprofiles.bat">
+			<arg line="${was8.create.node.profile.args}"/>
+		</exec>
+		<antcall target="was6.display.profile.info">
+		</antcall>
+	</target>
+
+
+	<target name="was8.register.node.profile"
+		        description="Registers WAS8 node Profile to Admin agent">
+		<property name="was8.profile.register.params"
+		            value="-profilePath ${websphere.home}/profiles/${node1.profile.name} 
+		        		-host localhost
+		                -conntype SOAP
+		        		-port 8877 
+		        		-name ${node1.profile.name}"/>
+
+		<echo >
+		        	Registers WAS8 node Profile to Admin agent
+
+		         This process may take a while...
+		        </echo>
+		<exec executable="${websphere.home}/profiles/${dmgr.profile.name}/bin/registerNode.bat">
+			<arg line="${was8.profile.register.params}"/>
+		</exec>
+
+	</target>
+
+	<target name="was6.setup.create.serverName" description="create all app servers" unless="isEventAppNeedsClusterSetup" >
+
+		<echo> creating servers for DEV...
+	        </echo>
+		<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+			<arg line="-lang jython -f" />
+			<arg file="${basedir}\..\ConfigurationScripts\createServer_DEV.py" />
+			<arg line="createServer" />
+			<arg line="${PSWServer.name}" />
+			<arg line="${node1.profile.name}" />
+		</exec>
+		<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+			<arg line="-lang jython -f" />
+			<arg file="${basedir}\..\ConfigurationScripts\createServer_DEV.py" />
+			<arg line="createServer" />
+			<arg line="${EZKServer.name}"/>
+			<arg line="${node1.profile.name}" />
+		</exec>
+
+
+		<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+			<arg line="-lang jython -f" />
+			<arg file="${basedir}\..\ConfigurationScripts\createServer_DEV.py" />
+			<arg line="createServer" />
+			<arg line="${PSWCMAServer.name}"/>
+			<arg line="${node1.profile.name}" />
+		</exec>
+
+
+		<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+			<arg line="-lang jython -f" />
+			<arg file="${basedir}\..\ConfigurationScripts\createServer_DEV.py" />
+			<arg line="createServer" />
+			<arg line="${EZKCMAServer.name}"/>
+			<arg line="${node1.profile.name}" />
+		</exec>
+
+		<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+			<arg line="-lang jython -f" />
+			<arg file="${basedir}\..\ConfigurationScripts\createServer_DEV.py" />
+			<arg line="createServer" />
+			<arg line="${ACRServer.name}"/>
+			<arg line="${node1.profile.name}" />
+		</exec>
+
+		<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+			<arg line="-lang jython -f" />
+			<arg file="${basedir}\..\ConfigurationScripts\createServer_DEV.py" />
+			<arg line="createServer" />
+			<arg line="${OOServer.name}"/>
+			<arg line="${node1.profile.name}" />
+		</exec>
+
+		<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+			<arg line="-lang jython -f" />
+			<arg file="${basedir}\..\ConfigurationScripts\createServer_DEV.py" />
+			<arg line="createServer" />
+			<arg line="${EVENTServer.name}"/>
+			<arg line="${node1.profile.name}" />
+		</exec>
+
+		<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat">
+			<arg line="-lang jython -f" />
+			<arg file="${basedir}\..\ConfigurationScripts\createServer_DEV.py" />
+			<arg line="createServer" />
+			<arg line="${DURABLEEVENTServer.name}"/>
+			<arg line="${node1.profile.name}" />
+		</exec>
+		<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+			<arg line="-lang jython -f" />
+			<arg file="${basedir}\..\ConfigurationScripts\createServer_DEV.py" />
+			<arg line="createServer" />
+			<arg line="${SCWServer.name}" />
+			<arg line="${node1.profile.name}" />
+		</exec>
+	</target>
+
+
+	<target name="install_psw_ear">
+		<exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+			<arg value="-lang" />
+			<arg value="jython" />
+			<arg value="-f"/>
+			<arg file="${basedir}/../ConfigurationScripts/deploy_DEV.py"/>
+			<arg value="${server.alias}" />
+			<arg value="install" />
+			<arg value="psw" />
+			<arg value="${basedir}/dist/PlanSponsor.ear" />
+		</exec>
+	</target>
+
+	<target name="uninstall_psw_ear">
+		<exec dir="${basedir}/../ConfigurationScripts" executable="${websphere.home}/bin/wsadmin.bat">
+			<arg value="-lang" />
+			<arg value="jython" />
+			<arg value="-f"/>
+			<arg file="${basedir}/../ConfigurationScripts/deploy_DEV.py"/>
+			<arg value="${server.alias}" />
+			<arg value="uninstall" />
+			<arg value="psw" />
+			<arg value="${psw.dist.dir}/PlanSponsor.ear" />
+		</exec>
+	</target>
+
+	<target name="was6.configure.eventApp.server" unless="isEventAppNeedsClusterSetup">
+		<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+			<arg line="-lang jython -f" />
+			<arg file="${basedir}\..\ConfigurationScripts\eventAppSetup.py" />
+			<arg line="${hostname}" />
+			<arg line="APPSERVER"/>
+			<arg line="${CICS.name}" />
+		</exec>
+		<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+			<arg line="-lang jython -f" />
+			<arg file="${basedir}\..\ConfigurationScripts\deploy_jms.py" />
+			<arg line="${node1.profile.name}" />
+			<arg line="DEV"/>
+			<arg line="7284" />
+		</exec>
+		<antcall target="was6.setup.eventserver.jvm.classpath"/>
+
+		<antcall target="was6.remove.derby.datasource"/>
+
+	</target>
+	
+	<target name="was8.configure.planReview.jms.server" >
+			<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+				<arg line="-lang jython -f" />
+				<arg file="${basedir}\..\ConfigurationScripts\setup_planReview_jms_configurations.py" />
+				<arg line="${hostname}" />
+				<arg line="${psw.application.name}"/>
+				<arg line="APPSERVER"/>
+			</exec> 
+			<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+				<arg line="-lang jython -f" />
+				<arg file="${basedir}\..\ConfigurationScripts\deploy_planReview_jms.py" />
+				<arg line="${node1.profile.name}" />
+			</exec>
+	</target>
+	
+	<target name="was8.configure.planReview.jms.cluster" >
+	        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+	                <arg line="-lang jython -f" />
+	                <arg file="${basedir}\..\ConfigurationScripts\setup_planReview_jms_configurations.py" />
+	                <arg line="${hostname}" />
+	        		<arg line="${psw.application.name}"/>
+	                <arg line="CLUSTER"/>
+	        </exec>
+	        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+	                <arg line="-lang jython -f" />
+	                <arg file="${basedir}\..\ConfigurationScripts\deploy_planReview_jms.py" />
+	        	 	<arg line="${hostname}" />
+	        </exec>
+	        <replace file="${config.scripts.dir}/properties/PSWLiveServer1Policy.properties">
+	          <replacefilter token='PSWLiveServer1.NodeName' value='${node1.profile.name}'/>
+	          <replacefilter token='PSWLiveServer2.NodeName' value='${node2.profile.name}'/>
+	        </replace>
+	        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+	                <arg line="-lang jacl -f" />
+	                <arg file="${websphere.home}\bin\CreateCoreGroupPolicy.jacl" />
+	                <arg line="${config.scripts.dir}/properties/PSWLiveServer1Policy.properties" />
+	        </exec>
+	 </target>
+
+	<target name="copy_p12">
+		<copy file="${basedir}\..\ConfigurationScripts\certs\trust.p12" todir="${websphere.home}\profiles\${dmgr.profile.name}\config\cells\${admin.cell.name}" overwrite="yes"/>
+	</target>
+	
+	 <target name="was8.delete.serverName" description="delete app server" >
+
+	        <echo> deleting server: [${delete.server.name}]
+	        </echo>
+	        <exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+	                <arg line="-lang jython -f" />
+	                <arg file="${basedir}\..\ConfigurationScripts\deleteServer_DEV.py" />
+	                <arg line="${delete.server.name}" />
+	                <arg line="${node1.profile.name}" />
+	        </exec>
+	</target>
+	
+	<target name="was8.setup.create.planreview.serverName" description="create all app servers" unless="isEventAppNeedsClusterSetup" >
+
+			<echo> creating servers for DEV...
+		        </echo>
+			<exec executable="${websphere.home}/profiles/${node1.profile.name}/bin/wsadmin.bat" >
+				<arg line="-lang jython -f" />
+				<arg file="${basedir}\..\ConfigurationScripts\createServer_DEV.py" />
+				<arg line="createServer" />
+				<arg line="PlanReviewEventServer" />
+				<arg line="${node1.profile.name}" />
+			</exec>
+	</target>
+
+</project>

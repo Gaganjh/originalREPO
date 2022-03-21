@@ -1,0 +1,52 @@
+<project name="EMMA common" basedir=".">
+
+  <!-- directory that contains emma.jar and emma_ant.jar: -->
+  <property name="emma.lib.dir" value="${basedir}/../common/devlib" />
+  <property name="emma.version" value="2.0.5312" />
+  
+  <property name="emma.enabled" value="true" />  
+  <property name="instr.src.dir" value="${root.dir}/emma/instrument-src" />
+  <property name="instr.out.dir" value="${root.dir}/emma/instrument-out" />
+  <property name="coverage.dir" value="${root.dir}/emma/coverage" /> 
+  <property name="emma.report.dir" value="${root.dir}/emma/report" />
+  <property name="archive.dir" value="${root.dir}/emma/archive" />
+
+  <!-- The path needed to run EMMA and create the EMMA tasks. -->
+  <path id="emma.lib.path">
+    <pathelement location="${emma.lib.dir}/emma-${emma.version}.jar" />
+    <pathelement location="${emma.lib.dir}/emma_ant-${emma.version}.jar" />
+  </path>
+
+  <!-- Loads the emma ANT tasks -->
+  <taskdef resource="emma_ant.properties" classpathref="emma.lib.path" />
+
+  <!-- Init task -->
+  <target name="emma_init">
+    <mkdir dir="${archive.dir}"/>   
+    <delete dir="${instr.src.dir}" failonerror="false" />
+    <delete dir="${instr.out.dir}" failonerror="false" />
+    <mkdir dir="${instr.src.dir}"/>
+    <mkdir dir="${instr.out.dir}"/>
+  </target>
+
+  <!-- backup task -->
+  <target name="backup_emma_files" >
+  <copy todir="${archive.dir}" overwrite="yes" failonerror="false">
+      <fileset dir="${coverage.dir}">
+        <include name="*.emma"/>
+      </fileset>
+    </copy>
+  </target>
+    
+  <!-- report task -->  
+  <target name="emma_report">
+  <emma enabled="${emma.enabled}" >
+      <report sort="+name">
+        <infileset dir="${archive.dir}" includes="*.emma" />
+        <html outfile="${emma.report.dir}/index.html"
+          metrics="method:70, block:80, line:80, class:100" />
+    </report>   
+    </emma>    
+  </target>  
+  
+</project>

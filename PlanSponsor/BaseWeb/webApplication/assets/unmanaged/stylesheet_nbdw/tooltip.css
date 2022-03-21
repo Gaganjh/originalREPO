@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* ----- Uncomment the global selector below to over-ride the default margin and padding added to all tags  ----- */
+
+*{padding: 0; margin: 0;}
+
+/* ----- add selectors here for font sizing ----- */
+p, table, ul, dl {font-size: 1.2em}
+caption {font-size: 1.4em}
+h2 {font-size: 1.6em}
+
+p {line-height:1.4em;margin:10px 0;}
+
+
+/* ----- base links ----- */
+a:link {color: #CC6633;}
+a:visited {color: #CC6633;}
+a:hover {color: #999966;}
+a:active {color: #CC6633;}
+a:focus{color: #CC6633;}
+
+/* ----- tool tip specific styles ----- */
+#theToolTip{
+	position: absolute;
+	left: -300px;
+	width: 200px;
+	border: 2px solid #FEBE10;
+	padding: 6px 0px 0px 10px;
+	background-color: #F5F6F1;
+	visibility: hidden;
+	z-index: 100;
+
+
+/*Remove below line to remove shadow. Below line should always appear last within this CSS*/
+filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135,strength=4);
+}
+
+#ToolTipPointer{
+position:absolute;
+left: -300px;
+z-index: 101;
+visibility: hidden;
+}
+
+#theToolTip p{
+	font-size: 11px;
+	color: #333333;
+	line-height:11px;
+	margin-right:10px;
+	margin-top:0;
+	text-align: left;
+}
+
+#ToolTipTextWrap {
+	font-weight:bold;
+	font-size: 11px;
+	color: #592C16;
+	margin-right:10px;
+	text-align: left;
+}

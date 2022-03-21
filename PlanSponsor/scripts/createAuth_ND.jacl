@@ -1,0 +1,42 @@
+# ==============================================================================
+# WAS script to create the JAAS Authtication, for PlanSponsor and Apollo
+# $ID:$
+# ==============================================================================
+
+set security [$AdminConfig getid /Security:/]
+puts "Security: $security"
+    
+$AdminConfig create JAASAuthData $security { \
+	{alias jaas/db2admin} {password db2admin} {userId db2admin} } 
+
+$AdminConfig create JAASAuthData $security { \
+	{alias jaas/apollo} {userId lpngdev} {password lptest01} } 
+	
+$AdminConfig create JAASAuthData $security { \
+	{alias jaas/csdb} {userId ezcs_rw} {password ezcs_rw11} } 
+
+$AdminConfig create JAASAuthData $security { \
+	{alias jaas/vf} {userId srvf_rw} {password srvf_rw11} } 
+	
+$AdminConfig create JAASAuthData $security { \
+	{alias jaas/acr} {userId db2admin} {password usgpsdba} } 				
+
+$AdminConfig create JAASAuthData $security { \
+	{alias jaas/stp} {userId srst_rw} {password srst_rw11} } 
+
+$AdminConfig create JAASAuthData $security { \
+	{alias jaas/ezkcnt} {userId ezcsdba} {password easy1234} }
+	 
+$AdminConfig create JAASAuthData $security { \
+	{alias jaas/pswcnt} {userId plcm_ro} {password fr1day13} }
+
+$AdminConfig create JAASAuthData $security { \
+	{alias jaas/mrl} {userId mrl_rw} {password mrl_rw11} }
+
+$AdminConfig create JAASAuthData $security { \
+	{alias jaas/mrldm} {userId db2admin} {password db2admin} }
+
+$AdminConfig create JAASAuthData $security { \
+	{alias jaas/oorder} {userId db2admin} {password db2admin} }
+
+$AdminConfig save

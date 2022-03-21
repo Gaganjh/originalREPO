@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib
+        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+	"http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<!-- a tag library descriptor -->
+
+<taglib>
+	<!-- after this the default space is
+		"http://java.sun.com/j2ee/dtds/jsptaglibrary_1_2.dtd"
+	-->
+
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>contenttags</shortname>
+	<uri></uri>
+	<info>
+		Content Custom Tag Library
+	</info>
+	<tag>
+		<name>alert</name>
+		<tagclass>com.manulife.pension.util.content.taglib.Alert</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			trigger alert
+		</info>
+
+		<attribute>
+			<name>className</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<name>title</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>method</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>contentId</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>attribute</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>textProperty</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>titleProperty</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>usePropertyForTitle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+	</tag>
+
+	
+	<tag>
+		<name>contentBean</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentBean</tagclass>
+ 	    <teiclass>com.manulife.pension.util.content.taglib.ContentBeanTei</teiclass>
+        <bodycontent>empty</bodycontent>
+		<info>
+			Retrieves content body from CMA database.
+		</info>
+
+		<!-- the name of the JSP variable in which to put the bean -->
+        <attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>contentId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>type</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>language</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>override</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+
+
+	<tag>
+		<name>contentList</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentList</tagclass>
+                <teiclass>com.manulife.pension.util.content.taglib.ContentListTei</teiclass>
+                <bodycontent>empty</bodycontent>
+		<info>
+			Retrieves content item list from CMA database.
+		</info>
+
+		<!-- the name of the JSP variable in which to put the bean -->
+            <attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>retrieveMethod</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>metaTags</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<name>optionalMetaTags</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>maxItems</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>language</name>
+			<required>false</required>
+		</attribute>
+		
+		<attribute>
+			<name>ignore</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+	</tag>
+
+	<tag>
+		<name>contentListByMetaTag</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentListByMetaTag</tagclass>
+        <teiclass>com.manulife.pension.util.content.taglib.ContentListByMetaTagTei</teiclass>
+        <bodycontent>empty</bodycontent>
+		<info>
+			Retrieves content item list from CMA database by meta tag and specific order by clause.
+		</info>
+
+		<!-- the name of the JSP variable in which to put the bean -->
+        <attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+
+		<attribute>
+			<name>metaTags</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>language</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>orderBy</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>contentChildren</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentBeanChildren</tagclass>
+        <teiclass>com.manulife.pension.util.content.taglib.ContentBeanChildrenTei</teiclass>
+        <bodycontent>empty</bodycontent>
+		<info>
+			Retrieves content item children from CMA database.
+		</info>
+
+		<!-- the name of the JSP variable in which to put the bean -->
+            <attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>collection</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+	</tag>
+
+	<tag>
+		<name>contentListByParent</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentListByParent</tagclass>
+        <bodycontent>empty</bodycontent>
+		<info>
+			Retrieves content items for a given parentId CMA database. The ContentType is optional.
+			If the content type is specified the search is narrowed to the ContentType.
+		</info>
+
+		<!-- the name of the JSP variable in which to put the bean -->
+        <attribute>
+			<name>parentId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>collectionName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>newsletterArticleList</name>
+		<tagclass>com.manulife.pension.util.content.taglib.NewsletterArticleList</tagclass>
+		<teiclass>com.manulife.pension.util.content.taglib.NewsletterArticleListTei</teiclass>
+		<bodycontent>empty</bodycontent>
+		<info>
+			Retrieves newletter articles from the cma.
+		</info>
+
+		<attribute>
+			<name>sectionId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>collection</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>pageDisclaimer</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageDisclaimer</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves page disclaimer (getDisclaimer().[0]).
+		</info>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>index</name>
+			<required>false</required>
+		</attribute>
+
+	</tag>
+
+	<tag>
+		<name>pageFootnotes</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageFootnotes</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves page footnotes (getDisclaimer().[index]) or all of them if index == -1
+		</info>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>index</name>
+			<required>false</required>
+		</attribute>
+
+	</tag>
+
+	<tag>
+		<name>getAttribute</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentBeanAttribute</tagclass>
+        <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves attribute/property value from CMA bean.
+		</info>
+
+		<!-- the name of the JSP variable in which to put the bean -->
+        <attribute>
+		    <name>id</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>attribute</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<!-- this is the attribute of the attribute if the attribute is a piece of content itself -->
+		<attribute>
+			<name>member</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>filter</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>getFlyout</name>
+		<tagclass>com.manulife.pension.util.content.taglib.FlyoutLinkTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves attribute/property value from CMA bean for flyouts.
+		</info>
+
+		<!-- the name of the JSP variable in which to put the bean -->
+        <attribute>
+		    <name>id</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<name>attribute</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>triggerName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>divName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+	</tag>
+
+	<tag>
+		<name>pageFooter</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageFooter</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves page footer (footer1).
+		</info>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+	</tag>
+
+
+	<tag>
+		<name>pageBody</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageBody</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves page body (body1).
+		</info>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+	</tag>
+
+	<tag>
+		<name>pageImage</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageImage</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves various page images paths (top|bottom|pagetitle).
+		</info>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>		
+
+		<!-- which image to retireve: "top"|"bottom"|"pagetitle" -->
+		<attribute>
+			<name>type</name>
+			<required>false</required>
+		</attribute>
+		
+		<attribute>
+			<name>path</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+
+	</tag>
+
+	<tag>
+		<name>pageHeader</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageBodyHeader</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves page body header (body1header)
+		</info>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+	</tag>
+
+	<tag>
+		<name>pageTitle</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageBrowserTitle</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves page browser title (browserTitle).
+		</info>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+	</tag>
+
+	<tag>
+		<name>pageIntro</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageIntroduction</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves page introduction (introduction1).
+		</info>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+	</tag>
+
+	<tag>
+		<name>pageSubHeader</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageSubHeader</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves page sub header (subHeader).
+		</info>
+
+		<attribute>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+	</tag>
+
+
+	<tag>
+	    <name>param</name>
+	    <tagclass>com.manulife.pension.util.content.taglib.ContentParam</tagclass>
+	    <bodycontent>JSP</bodycontent>
+	    <info>optional parameter for getContent... tags</info>
+	</tag>
+
+
+	<!-- end of content tags  -->
+
+	
+	<tag>
+		<name>parameter</name>
+		<tagclass>com.manulife.pension.util.content.taglib.AppletParameterTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>attribute</name>
+		<tagclass>com.manulife.pension.util.content.taglib.AppletAttributeTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	
+	<!-- image rotator tag -->
+	<tag>
+		<name>imageRotator</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ImageRotatorTag</tagclass>
+		<bodycontent>Empty</bodycontent>
+		<info>
+		retreives appropriate header images based on a session counter variable
+		</info>
+		<attribute>
+			<name>imageSetListName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>position</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>scope</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>path</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>getImageSets</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ImageSetTag</tagclass>
+        <teiclass>com.manulife.pension.util.content.taglib.ImageSetTagTei</teiclass>
+        <bodycontent>empty</bodycontent>
+		<info>
+			Retrieves image sets for the given layout page from the browse service.
+		</info>
+
+		<attribute>
+			<name>layoutPageName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>imageSetListName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+	</tag>
+	
+
+	<tag>
+ 		<name>previous</name>
+		<tagclass>com.manulife.pension.util.content.taglib.PreviousContentBean</tagclass>
+ 	      <teiclass>com.manulife.pension.util.content.taglib.PreviousContentBeanTei</teiclass>
+		<bodycontent>JSP</bodycontent>
+		<info>retrieves previous content bean from the collection</info>
+		<attribute>
+			<name>id</name>
+		</attribute>
+
+		<attribute>
+			<name>current</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>collection</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>lightWeight</name>
+		</attribute>	
+	</tag>
+
+	<tag>
+ 		<name>next</name>
+		<tagclass>com.manulife.pension.util.content.taglib.NextContentBean</tagclass>
+ 	      <teiclass>com.manulife.pension.util.content.taglib.NextContentBeanTei</teiclass>
+		<bodycontent>JSP</bodycontent>
+		<info>retrieves next content bean from the collection</info>
+		<attribute>
+			<name>id</name>
+		</attribute>
+
+		<attribute>
+			<name>current</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>collection</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>lightWeight</name>
+		</attribute>
+	</tag>
+
+   
+	<tag>
+		<name>contentUpdates</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentUpdates</tagclass>
+ 	      <teiclass>com.manulife.pension.util.content.taglib.ContentUpdatesTei</teiclass>
+            <bodycontent>empty</bodycontent>
+		<info><![CDATA[
+			Retrieves an array of updates (archived news items if isArchived attribute 
+			is set to true, current news items if set to false) from the CMA database, 
+			places them in a Collection which is placed in a request scope variable 
+			identified by the id attribute.
+			<ezk:contentUpdates id="[page variable name]" isArchived="[true(archived)/false(current)]"/>
+			]]>
+		</info>
+
+        <attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>isArchived</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<name>isHomePage</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+ 		<name>currentIssue</name>
+		<tagclass>com.manulife.pension.util.content.taglib.CurrentIssue</tagclass>
+ 	      <teiclass>com.manulife.pension.util.content.taglib.CurrentIssueTei</teiclass>
+		<bodycontent>JSP</bodycontent>
+		<info>retrieves the current issue from the collection of issues</info>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>collection</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+
+	<tag>
+ 		<name>quiz</name>
+		<tagclass>com.manulife.pension.util.content.taglib.Quiz</tagclass>
+ 	      <teiclass>com.manulife.pension.util.content.taglib.QuizTei</teiclass>
+		<bodycontent>JSP</bodycontent>
+		<info>retrieves a quiz for the lesson</info>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>lesson</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>lessonArticle</name>
+		<tagclass>com.manulife.pension.util.content.taglib.LessonArticle</tagclass>
+ 	      <teiclass>com.manulife.pension.util.content.taglib.LessonArticleTei</teiclass>
+            <bodycontent>empty</bodycontent>
+		<info> retrieves an article </info>
+
+         	<attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+
+         	<attribute>
+			<name>articles</name>
+			<required>true</required>
+		</attribute>
+
+         	<attribute>
+			<name>contentId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+
+	</tag>
+
+	<tag>
+		<name>topic</name>
+		<tagclass>com.manulife.pension.util.content.taglib.Topic</tagclass>
+ 	      <teiclass>com.manulife.pension.util.content.taglib.TopicTei</teiclass>
+            <bodycontent>empty</bodycontent>
+		<info> retrieves a topic</info>
+
+         	<attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+
+         	<attribute>
+			<name>content</name>
+			<required>false</required>
+		</attribute>
+
+         	<attribute>
+			<name>mode</name>
+			<required>false</required>
+		</attribute>
+
+
+         	<attribute>
+			<name>contentId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+	</tag>
+
+	<tag>
+ 		<name>section</name>
+		<tagclass>com.manulife.pension.util.content.taglib.Section</tagclass>
+ 	      <teiclass>com.manulife.pension.util.content.taglib.SectionTei</teiclass>
+		<bodycontent>JSP</bodycontent>
+		<info>retrieves a section</info>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+
+         	<attribute>
+			<name>contentId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>sections</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+
+	<tag>
+ 		<name>newsletter</name>
+		<tagclass>com.manulife.pension.util.content.taglib.Newsletter</tagclass>
+ 	      <teiclass>com.manulife.pension.util.content.taglib.NewsletterTei</teiclass>
+		<bodycontent>JSP</bodycontent>
+		<info>retrieves a newsletter</info>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+
+         	<attribute>
+			<name>contentId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+         	<attribute>
+			<name>section</name>
+			<required>false</required>
+		</attribute>
+
+
+	</tag>
+
+
+	<tag>
+ 		<name>image</name>
+		<tagclass>com.manulife.pension.util.content.taglib.Image</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>render an image from ContentFile object</info>
+
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>contentfile</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+         <attribute>
+			<name>width</name>
+			<required>false</required>
+		</attribute>
+
+         	<attribute>
+			<name>height</name>
+			<required>false</required>
+		</attribute>
+
+         	<attribute>
+			<name>border</name>
+			<required>false</required>
+		</attribute>
+
+	</tag>
+
+	<tag>
+ 		<name>contentFileImage</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentFileImageTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>render an image from ContentFile object</info>
+
+		<attribute>
+			<name>contentfile</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+         	<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+         	<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+         	<attribute>
+			<name>border</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+	</tag>
+	<tag>
+ 		<name>tools</name>
+		<tagclass>com.manulife.pension.util.content.taglib.Tools</tagclass>
+ 	      <teiclass>com.manulife.pension.util.content.taglib.ToolsTei</teiclass>
+
+		<bodycontent>JSP</bodycontent>
+		<info>retrieve manulife and cnn money tools</info>
+
+		<attribute>
+			<name>manTools</name>
+			<required>true</required>
+		</attribute>
+
+         	<attribute>
+			<name>cnnTools</name>
+			<required>true</required>
+		</attribute>
+
+	</tag>
+	
+	
+	<tag>
+		<name>topicsLPF</name>
+		<tagclass>com.manulife.pension.util.content.taglib.TopicsLPF</tagclass>
+		<teiclass>com.manulife.pension.util.content.taglib.TopicsLPFTei</teiclass>
+ 	     <bodycontent>empty</bodycontent>
+		<info> retrieves all topics</info>
+       	<attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>beanName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>content</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>contentId</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<!-- Error Tag -->
+	<tag>
+		<name>errors</name>
+		<tagclass>com.manulife.pension.util.content.taglib.Errors</tagclass>
+        <bodycontent>empty</bodycontent>
+		<info>
+			Show all the errors.
+		</info>
+		<attribute>
+			<name>isPageContextScopeRequest</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+ 		</attribute>		
+		<attribute>
+			<name>scope</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+ 		</attribute>		
+
+	</tag>
+
+	<tag>
+		<name>howToLinks</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageHowToLinks</tagclass>
+                <bodycontent>empty</bodycontent>
+		<info>
+			Retrieves the How To links from Layers 5 - 8.
+		</info>
+
+		<attribute>
+			<name>layoutBeanName</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>pageHowToSubject</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageHowToSubject</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves page how to subject (getHowToSubject().[0]).
+		</info>
+
+		<attribute>
+			<name>beanName</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+		<attribute>
+			<name>collection</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>contentByType</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentByTypeTag</tagclass>
+                <bodycontent>empty</bodycontent>
+		<info>
+			Retrieves the Content given a type
+		</info>
+
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>type</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>pageFixedModule</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentPageFixedModule</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves fixed module (getFixedModule()).
+		</info>
+
+		<attribute>
+			<name>beanName</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+		</attribute>
+
+	</tag>
+	
+	<tag>
+		<name>rightHandLayerDisplay</name>
+		<tagclass>com.manulife.pension.util.content.taglib.RightHandLayerDisplay</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Display the specified layer in a box (title and text).
+		</info>
+		<attribute>
+			<name>layerName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>beanName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+		<tag>
+		<description>
+			Display the specified text in a box (title and text).
+		</description>
+		<name>adminQuickGuide</name>
+		<tag-class>com.manulife.pension.util.content.taglib.AdminAndQuickServiceDisplay</tag-class>
+                <body-content>JSP</body-content>
+		<attribute>
+			<name>beanName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+
+	<tag>
+		<name>contentUpdatesByGroup</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentUpdatesByGroup</tagclass>
+        <bodycontent>empty</bodycontent>
+		<info><![CDATA[
+			Retrieves an array of updates based on the group id supplied
+			<content:contentUpdatesByGroup id="[updates collection name]" groupId="[id of legislative or manulife group]"/>
+			]]>
+		</info>
+
+        <attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+
+        <attribute>
+			<name>collection</name>
+			<required>true</required>
+		</attribute>
+
+		<attribute>
+			<name>groupId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>userGuideLinks</name>
+		<tagclass>com.manulife.pension.util.content.taglib.UserGuideLinks</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves links for the User Guide on the landing page.
+		</info>
+		<attribute>
+			<name>collectionName</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>category</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>url</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>secondLevelLHLinks</name>
+		<tagclass>com.manulife.pension.util.content.taglib.SecondLevelLHLinks</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves and outputs the links for the left side menu of the second level page of the Admin guides.
+		</info>
+
+		<attribute>
+			<name>contentKey</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>collectionName</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>category</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>url</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>secondLevelMainLinks</name>
+		<tagclass>com.manulife.pension.util.content.taglib.SecondLevelMainLinks</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves and outputs the links for the main part of the second level page of the Admin Guides.
+		</info>
+
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>contentUserGuideParent</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ContentUserGuideParent</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves the parent layout page of the Guide Article.
+		</info>
+
+		<attribute>
+			<name>articleName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>secondLevelBean</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>thirdLevelLHLinks</name>
+		<tagclass>com.manulife.pension.util.content.taglib.ThirdLevelLHLinks</tagclass>
+                <bodycontent>JSP</bodycontent>
+		<info>
+			Retrieves and outputs the links for the Left Hand part of the third level page of the Admin Guides.
+		</info>
+
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>secondLevelName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>newsletterOrder</name>
+		<tagclass>com.manulife.pension.util.content.taglib.NewsletterOrder</tagclass>
+                <bodycontent>empty</bodycontent>
+		<info>
+			Reorders articles based on the order of the issues
+		</info>
+
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>articles</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>issues</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+	</tag>	
+</taglib>
+

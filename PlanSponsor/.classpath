@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry exported="true" kind="lib" path="C:/WebSphere8/AppServer/lib/j2ee.jar"/>
+	<classpathentry exported="true" kind="lib" path="/common/lib/j2ee.jar"/>
+	<classpathentry kind="src" path="PlanSponsorEJB/ejbModule"/>
+	<classpathentry kind="src" path="iReportUtilities/source"/>
+	<classpathentry kind="src" path="BaseWeb/source"/>
+	<classpathentry kind="src" path="PlanSponsorWeb/source"/>
+	<classpathentry kind="src" path="BrokerDealerWeb/source"/>
+	<classpathentry kind="src" path="PlanSponsorAdministration/src"/>
+	<classpathentry kind="lib" path="/common/lib/commons-digester-1.8.jar"/>
+	<classpathentry kind="lib" path="PlanSponsorWeb/webApplication/WEB-INF/lib/struts_logicx.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-collections-3.2.jar" sourcepath="C:/Jakarta/Sources/commons-collections-3.2-src/src/java"/>
+	<classpathentry kind="lib" path="/common/lib/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="/common/lib/xstream-1.0.2.jar"/>
+	<classpathentry kind="lib" path="/common/lib/CMAService.jar" sourcepath="/CMA/CMAEJB/ejbModule"/>
+	<classpathentry kind="lib" path="/common/lib/manulifeEncrypt.jar"/>
+	<classpathentry kind="lib" path="/common/lib/ngec_model.jar" sourcepath="C:/cvs/srs/Source"/>
+	<classpathentry kind="lib" path="/common/lib/ldap10.jar"/>
+	<classpathentry kind="lib" path="/common/weblib/CMAUtil.jar" sourcepath="/CMA/CMAUtil"/>
+	<classpathentry kind="lib" path="/common/lib/barChartServlet.jar"/>
+	<classpathentry kind="lib" path="/common/lib/ereports_client_1.0.jar" sourcepath="/eReports"/>
+	<classpathentry kind="lib" path="/common/lib/SubJournal_Client.jar" sourcepath="C:/downloads/USSRS_SJ_1.6.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-beanutils-1.7.0.jar" sourcepath="C:/Jakarta/Sources/commons-beanutils-1.7.0-src/src/java"/>
+	<classpathentry kind="lib" path="/common/lib/commons-logging-1.1.jar" sourcepath="C:/Jakarta/Sources/commons-logging-1.1-src/src/java"/>
+	<classpathentry kind="lib" path="/common/lib/heartbeat.jar"/>
+	<classpathentry kind="lib" path="/common/lib/STPDataCheckerClient.jar"/>
+	<classpathentry kind="lib" path="/common/lib/pdfbox-2.0.5.jar"/>
+	<classpathentry kind="lib" path="/common/lib/gft-client.jar"/>
+	<classpathentry kind="lib" path="/common/lib/jakarta-regexp-1.2.jar"/>
+	<classpathentry kind="lib" path="/common/weblib/gnu-regexp-1.1.4.jar"/>
+	<classpathentry kind="lib" path="/common/lib/quartz-1.5.2.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-dbcp-1.2.1.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-pool-1.3.jar"/>
+	<classpathentry kind="lib" path="/common/lib/mrl.jar"/>
+	<classpathentry kind="lib" path="/common/lib/org.springframework.web.struts-3.1.2.release.jar"/>
+	<classpathentry kind="lib" path="/common/lib/MrlLoggerService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/SearchService.jar" sourcepath="/SearchService"/>
+	<classpathentry kind="lib" path="/common/lib/SynchronizationService.jar"/>
+	<classpathentry kind="lib" path="/common/weblib/USGPSWebUtilities.jar" sourcepath="/USGPSWebUtilities/src"/>
+	<classpathentry kind="lib" path="/common/lib/MessagingService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/struts-core-1.3.5.jar" sourcepath="C:/Downloads/Jakarta/struts-1.3.5-src.zip"/>
+	<classpathentry exported="true" kind="lib" path="/common/lib/struts-taglib-1.3.5.jar"/>
+	<classpathentry kind="lib" path="/common/lib/EmployeeService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/EligibilityService.jar"/>
+	<classpathentry exported="true" kind="lib" path="/common/weblib/taglibs-unstandard-20060829.jar"/>
+	<classpathentry exported="true" kind="lib" path="/common/weblib/standard-1.1.2.jar"/>
+	<classpathentry kind="lib" path="/common/weblib/jstl-1.1.2.jar"/>
+	<classpathentry kind="lib" path="/common/lib/SILService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/EnvironmentService.jar"/>
+	<classpathentry kind="lib" path="/common/weblib/log4j-1.2.14.jar"/>
+	<classpathentry exported="true" kind="lib" path="/common/weblib/mrl-taglibs.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-configuration-1.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://commons.apache.org/configuration/apidocs/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/common/lib/FundService.jar" sourcepath="/FundService"/>
+	<classpathentry kind="lib" path="/common/lib/NotificationService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/ReportService.jar" sourcepath="/ReportService/ejbModule"/>
+	<classpathentry kind="lib" path="/common/lib/USGPSUtilities.jar" sourcepath="/USGPSUtilities"/>
+	<classpathentry kind="lib" path="/common/lib/DistributionService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/BrowseService.jar" sourcepath="/CMA"/>
+	<classpathentry kind="lib" path="/common/lib/mockejb.jar"/>
+	<classpathentry kind="lib" path="/common/weblib/sort.jar"/>
+	<classpathentry kind="lib" path="/common/lib/xreport_pro_custom.jar"/>
+	<classpathentry kind="lib" path="/common/weblib/xtools.jar"/>
+	<classpathentry kind="lib" path="/common/weblib/soap.jar"/>
+	<classpathentry kind="lib" path="/common/lib/db2jcc.jar"/>
+	<classpathentry kind="lib" path="/common/lib/db2jcc_license_cu.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-validator-1.3.0.jar"/>
+	<classpathentry kind="lib" path="/common/lib/EventUtil.jar"/>
+	<classpathentry kind="lib" path="/common/lib/fop-0.95.jar"/>
+	<classpathentry kind="lib" path="/common/lib/MessageService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/SecurityService.jar" sourcepath="/SecurityService/ejbModule"/>
+	<classpathentry kind="lib" path="/common/lib/BrokerService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/AccountService.jar" sourcepath="/AccountService"/>
+	<classpathentry kind="lib" path="/common/lib/avalon-framework-4.2.0.jar"/>
+	<classpathentry kind="lib" path="/common/lib/ContractService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/piechartservlet.jar"/>
+	<classpathentry kind="lib" path="/common/lib/FeeService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/StatementService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/gson-1.4.jar"/>
+	<classpathentry kind="lib" path="/common/lib/PlanReviewService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/DocumentService.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="/common/lib/fluent-hc-4.3.5.jar"/>
+	<classpathentry kind="lib" path="/common/lib/httpclient-4.3.5.jar"/>
+	<classpathentry kind="lib" path="/common/lib/httpclient-cache-4.3.5.jar"/>
+	<classpathentry kind="lib" path="/common/lib/httpcore-4.3.2.jar"/>
+	<classpathentry kind="lib" path="/common/lib/httpmime-4.3.5.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-lang3-3.3.2.jar"/>
+	<classpathentry kind="lib" path="/common/lib/NoticeService.jar" sourcepath="/NoticeService"/>
+	<classpathentry kind="lib" path="/common/lib/spring-modules-validation-0.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="/common/lib/commons-fileupload-1.0.jar"/>
+	<classpathentry kind="lib" path="/common/lib/spring-aop-5.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/common/lib/spring-beans-5.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/common/lib/spring-context-5.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/common/lib/spring-core-5.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/common/lib/spring-expression-5.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/common/lib/spring-security-config-5.0.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/common/lib/spring-security-core-5.0.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/common/lib/spring-security-web-5.0.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/common/lib/spring-web-5.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/common/lib/spring-webmvc-5.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/common/lib/com.ibm.jaxrs2.0.thinclient_9.0.jar"/>
+	<classpathentry kind="output" path="BrokerDealerWeb/webApplication/WEB-INF/classes"/>
+	<referencedentry kind="lib" path="/common/lib/iReportUtility.jar" sourcepath="iReportUtilities/source"/>
+</classpath>

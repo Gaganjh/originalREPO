@@ -1,0 +1,337 @@
+.header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bolder;
+	width : 723px;
+	color: #FFFFFF;
+	padding: 3px 2px 3px 6px;
+	background : #002D62;
+	clear: both;
+	vertical-align: middle;
+	height: 1%;
+}
+.subhead {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bolder;
+	width : 729px;
+	color: #FFFFFF;
+	padding: 0px;
+	background : #7C97AB;
+	clear: both;
+	vertical-align: middle;
+}
+.subsubhead {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bolder;
+	width : 725px;
+	color: #000000;
+	padding: 2px;
+	background-color:#CCCCCC;
+	clear: both;
+	vertical-align: middle;
+}
+.vestingScheduleSubsubhead {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bolder;
+	width : 729px;
+	color: #000000;
+	padding: 2px;
+	background-color:#CCCCCC;
+	clear: both;
+	vertical-align: middle;
+}
+.boldLabel {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bolder;
+	color: #000000;
+	vertical-align: middle;
+	height: 1%;
+}
+.dataTable {
+	padding: 0px; border-collapse: collapse;
+}
+.labelColumn {
+  width: 300px;
+  padding-left: 4px;
+}
+.generalLabelColumn {
+  width: 190px;
+  padding-left: 4px;
+}
+.generalLabelExtendedColumn {
+  width: 443px;
+  padding-left: 4px;
+}
+.addressLabelColumn {
+  width: 60px;
+	border-left-width: 0;
+}
+.eligibilityAndParticipationLabelColumn {
+  width: 327px;
+  padding-left: 4px;
+}
+.eligibilityAndParticipationExtendedLabelColumn {
+  width: 443px;
+  padding-left: 4px;
+}
+.forfeituresLabelColumn {
+  width: 296px;
+  padding-left: 4px;
+}
+.contributionsLabelColumn {
+  width: 296px;
+  padding-left: 4px;
+}
+.withdrawalsLabelColumn {
+  width: 296px;
+  padding-left: 4px;
+}
+.withdrawalsExtendedLabelColumn {
+  width: 378px;
+  padding-left: 4px;
+}
+.loansLabelColumn {
+  width: 285px;
+  padding-left: 4px;
+}
+.vestingAndForfeituresLabelColumn {
+  width: 290px;
+  padding-left: 4px;
+}
+.otherPlanInformationLabelColumn {
+  width: 396px;
+  padding-left: 4px;
+}
+.dataColumn {
+	border-left-width: 1px; 
+  border-left-color: #DCECF1; 
+  border-left-style: solid;	
+  padding-left: 4px;
+  vertical-align: middle;
+}
+.leftColData {
+  width: 300px;
+  float: left;
+	height: 1%;
+}
+.rightColData {
+	height: 1%;
+}
+.secondaryLabel {
+  padding-left: 60px;
+}
+.secondaryData {
+  padding-left: 5px;
+}
+.borderedDataBox {
+	border: 1px solid #002D62;
+	margin-bottom: 0px;
+	width: 729px;
+}
+.expandCollapseIcons {
+	padding-left: 2px;
+  padding-right: 2px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	float: left;
+	vertical-align: middle;
+}
+.sectionHighlightIcon {
+	padding-left: 2px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	float: left;
+}
+.sectionTitle {
+	padding-left: 2px;
+	margin-top: 2px;
+	margin-bottom: 1px;
+	float: left;
+}
+.data {
+	padding: 2px;
+}
+.evenDataRow {
+	background: #FFFFFF;
+	font-size : 11px;
+}
+.oddDataRow {
+	background : #DCECF1;
+	font-size : 11px;
+}
+.endDataRowAndClearFloats {
+	clear: both;
+}
+.buttonContainerLeft {
+	float: left;
+}
+.buttonContainerRight {
+	float: right;
+}
+.buttonGroup {
+	padding-top: 10px;
+	width : 699px;
+}
+.icon {
+	vertical-align: middle;	
+}
+.icon img {
+	border : none;
+	width : 12px;
+	height : 12px;
+}
+.spaceLeftPadded {
+	padding-left: 5px;
+}
+.iconContainer {
+	padding-bottom: 10px;
+}
+.vestingSchedule {
+	width: 100%;
+	border-collapse: collapse;
+}
+.vestingSchedule th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bolder;
+	color: #000000;
+	border-width: 0px 1px; 
+	border-style: solid;
+	border-color: #DCECF1;
+}
+.vestingSchedule td {
+	border-width: 0px 1px; 
+	border-style: solid;
+	border-color: #DCECF1;
+	padding: 1px;
+}
+.textData {
+	text-align: left;
+}
+.numericData {
+	text-align: right;
+}
+.unvestedOptionsColumnOne {
+  width: 400px;
+  float: left;
+	height: 1%;
+}
+.unvestedOptionsColumnTwo {
+  width: 45px;
+  float: left;
+  height: 1%;
+  text-align: center;
+}
+.unvestedOptionsColumnThree {
+  width: 45px;
+	height: 1%;
+  float: left;
+	text-align: center;
+}
+.hidden {
+	visibility: hidden;	
+}
+.addressTable {
+	width: 100%;	
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: #002d62;
+    border-right-color: #002d62;
+    border-left-color: #002d62;
+    border-bottom-width: 0px;	
+}
+.addressTable th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bolder;
+	color: #000000;
+	border-width: 0px 1px;
+	border-left-width: 0px; 
+	border-style: solid;
+	border-right-color: #DCECF1;
+}
+
+.addressTable td {
+	border-width: 0px 1px;
+    border-left-width: 0px;
+    border-style: solid;
+	border-right-color: #DCECF1;
+	padding: 2px;
+}
+
+.addressTable1 {
+	width: 100%;	
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: #002d62;
+    border-right-color: #002d62;
+    border-left-color: #002d62;
+    border-bottom-width: 0px;
+    border-collapse: collapse;	
+}
+.addressTable1 td {
+	border-width: 0px 1px;
+    border-left-width: 0px;
+    border-style: solid;
+	border-right-color: #DCECF1;
+	padding: 2px;
+}
+
+.addressTable1 th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bolder;
+	color: #000000;
+	border-width: 0px 1px;
+	border-left-width: 0px; 
+	border-style: solid;
+	border-right-color: #DCECF1;
+}
+
+.errorIcon {
+	float: right;
+}
+.messagesBox {
+	padding-bottom: 10px;
+}
+.disclosureBox {
+	padding-top: 10px;
+}
+.amortizationLabelColumn {
+	width: 160px;
+	float: left;
+}
+.amortizationDataColumn {
+	float: left;
+}
+.amortizationSuffixColumn {
+}
+.hidden {
+	display: none;
+}
+.printHistoryContainer {
+	padding-left: 350px;
+}
+.numericInput {
+	text-align: right;
+}
+.footerContainer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	width: 735px;
+	padding-top: 10px;
+}

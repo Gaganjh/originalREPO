@@ -1,0 +1,644 @@
+# Property file for iloans specific properties
+
+#e-mail sent when participant clicks loan package on the loan request package page
+
+####email is deliverable
+##TPA plan indicator = no
+EMAIL_TPA_LOAN_PACKAGE_SUBJECT=Loan Package for ![contract_name]!, ![contract_number]!.
+EMAIL_TPA_LOAN_PACKAGE_TEMPLATE_19=This is to notify you that a participant from the above referenced contract with John Hancock USA has finalized an i:loans request. Attached is a PDF of the loan package. You will need Adobe Reader to view the forms. Note that each time the participant requests a loan package, you will receive a new copy of it.\n\nThis is an automatic notification e-mail, please do not reply to the sender.
+EMAIL_TPA_LOAN_PACKAGE_TEMPLATE_94=This is to notify you that a participant from the above referenced contract with John Hancock New York has finalized an i:loan request. Attached is a PDF of the loan package. You will need Adobe Reader to view the forms. Note that each time the participant requests a loan package, you will receive a new copy of it.\n\nThis is an automatic notification e-mail, please do not reply to the sender.
+
+##TPA plan indicator = yes
+EMAIL_RESTRICTED_LOAN_PACKAGE_CAR_SUBJECT=i:loans: Staff Plan Loan Package Redirection
+EMAIL_RESTRICTED_LOAN_PACKAGE_CAR_TEMPLATE=An email cannot be sent via the participant website to ![tpa_name]!, ![tpa_id]! with a Staff Plan loan request package for ![contract_name]!, ![contract_number]! because this TPA is not authorized to view the information. Please follow up with the TPA to redirect the following text and loan package attachment to the appropriate person.\n\n
+EMAIL_RESTRICTED_LOAN_PACKAGE_CAR_TEMPLATE_ADDENDUM_19=Subject: Loan Package for ![contract_name]!, ![contract_number]!.\n\nThis is to notify you that a participant from the above referenced contract with John Hancock USA has finalized a Staff Plan i:loan request. Attached is a PDF of the loan package. You will need Adobe Reader to view the forms. Note that each time the participant requests a loan package, you should receive a new copy of it.\n\nThis is an automatic notification e-mail, please do not reply to the sender.
+EMAIL_RESTRICTED_LOAN_PACKAGE_CAR_TEMPLATE_ADDENDUM_94=Subject: Loan Package for ![contract_name]!, ![contract_number]!.\n\nThis is to notify you that a participant from the above referenced contract with John Hancock New York has finalized a Staff Plan i:loan request. Attached is a PDF of the loan package. You will need Adobe Reader to view the forms. Note that each time the participant requests a loan package, you should receive a new copy of it.\n\nThis is an automatic notification e-mail, please do not reply to the sender.
+
+####email is un-deliverable
+EMAIL_UNDELIVERABLE_LOAN_PACKAGE_CAR_SUBJECT=i:loans: Loan Package notification undeliverable
+EMAIL_UNDELIVERABLE_LOAN_PACKAGE_CAR_TEMPLATE=An email cannot be sent to ![tpa_name]!, ![tpa_id]! with a loan request package for ![contract_name]!, ![contract_number]! via the participant website. It could not be sent for one of the following reasons:\n\n·	no i:loans contact selected on Apollo External User Screen (EU)\n·	i:loans contact has no email address on Apollo External Screen (EU)\n·	i:loans contact has an email address on Apollo External Screen (EU) but it is incorrect.\n\nPlease contact the TPA to confirm the correct address and forward the following text and loan package attachment to the TPA using the correct address.\n\n
+EMAIL_UNDELIVERABLE_LOAN_PACKAGE_CAR_TEMPLATE_ADDENDUM_19=Subject: Loan Package for ![contract_name]!, ![contract_number]!.\n\nThis is to notify you that a participant from the above referenced contract with John Hancock USA has finalized a Staff Plan i:loan request. Attached is a PDF of the loan package. You will need Adobe Reader to view the forms. Note that each time the participant requests a loan package, you should receive a new copy of it.\n\nThis is an automatic notification e-mail, please do not reply to the sender.
+EMAIL_UNDELIVERABLE_LOAN_PACKAGE_CAR_TEMPLATE_ADDENDUM_94=Subject: Loan Package for ![contract_name]!, ![contract_number]!.\n\nThis is to notify you that a participant from the above referenced contract with John Hancock New York has finalized a Staff Plan i:loan request. Attached is a PDF of the loan package. You will need Adobe Reader to view the forms. Note that each time the participant requests a loan package, you should receive a new copy of it.\n\nThis is an automatic notification e-mail, please do not reply to the sender.
+
+TPA_ACTION_EXPECTED_PERIOD_DAYS_TPA=3
+REQUEST_EXPIRY_DAYS_TPA=30
+
+#template for e-mail sent when tpa clicks submit to participant on the tpa site.
+EMAIL_PARTICIPANT_APPROVAL_SENDERUSA=my401k@jhancock.com
+EMAIL_PARTICIPANT_APPROVAL_SENDERNY=myny401k@jhancock.com
+
+
+# TPA to Participant
+EMAIL_PARTICIPANT_APPROVAL_SUBJECT=Plan loan information updated
+EMAIL_PARTICIPANT_APPROVAL_TEMPLATE=The status of your request for plan loan information has been updated.  Please sign into your account on our Web site at ![website_url]! and click on \"Manage your account\" from your Home page.  Click on the \"Taking a loan\" link on the left hand margin.  Your status will be highlighted in the \"Your status\" box on the right side of the page.\n\nIf you are proceeding with this request, please print and submit the enclosed forms to your Plan Administrator. Your loan will not be processed until you have completed the above steps. \n\nIf you have any questions, please speak to your company's Plan Administrator.\n
+
+#template for e-mail sent when participant clicks submit on the request plan info page
+# Participant to TPA
+EMAIL_TPA_SUBJECT=i:loans Request for ![participant_name]!, ![contract_name]!, ![contract_number]! sent on behalf of your John Hancock USA Client Account Representative
+EMAIL_TPA_SUBJECT_NY=i:loans Request for ![participant_name]!, ![contract_name]!, ![contract_number]! sent on behalf of your John Hancock New York Client Account Representative
+EMAIL_TPA_TEMPLATE=![tpa_name]!, ![tpa_id]!\n\nThis is to notify you of a new loan request for one of your ![manulife_company_name]! participants. The loan request has been sent to you through the i:loans application on the Participant Web site.\n\nPlease review this request by logging on to the ![manulife_company_name]! TPA website at ![manulife_website_url]!. The loan request can be accessed by clicking on the TPA Report View, and then by selecting i:loans.\n\nPlease note that we require you to verify the submitted information within 5 business days.\n
+
+#template for e-mail sent when participant clicks submit on the request plan info page, but tpa email fails
+# Participant to TPA (Not a Staff Plan), no TPAs found, send to CAR
+EMAIL_CAR_SUBJECT=New i:loans Request notification undeliverable
+EMAIL_CAR_TEMPLATE=An email was sent to ![tpa_name]!, ![tpa_id]! notifying them of a new loan request that was submitted by a participant for ![contract_name]!, ![contract_number]! through the i:loans application on the Participant Web site.  However, it could not be sent as there are no TPA users currently set up to receive i:loans emails.\n\nPlease contact the TPA to notify them of the loan request.  Please also verify and update which TPA user should be set up to receive i:loans e-mails. The information can be updated through Manage Users on the Plan Sponsor/TPA Web site.\n\nThis is an automatic notification e-mail, please do not reply to the sender.
+
+#template for e-mail sent when participant clicks submit on the request plan info page and the Contract is a TPA Staff Plan
+EMAIL_TPA_STAFF_PLAN_SUBJECT=i:loans Request for ![participant_name]!, ![contract_name]!, ![contract_number]! sent on behalf of your John Hancock USA Client Account Representative
+EMAIL_TPA_STAFF_PLAN_SUBJECT_NY=i:loans Request for ![participant_name]!, ![contract_name]!, ![contract_number]! sent on behalf of your John Hancock New York Client Account Representative
+EMAIL_TPA_STAFF_PLAN_TEMPLATE=![tpa_name]!, ![tpa_id]!\n\nThis is to notify you of a new loan request for one of your ![manulife_company_name]! participants. The loan request has been sent to you through the i:loans application on the Participant Web site.\n\nPlease review this request by logging on to the ![manulife_company_name]! TPA website at ![manulife_website_url]!. The loan request can be accessed by clicking on the TPA Report View, and then by selecting i:loans.\n\nPlease note that we require you to verify the submitted information within 5 business days.\n
+
+#template for e-mail sent when participant clicks submit on the request plan info page and the Contract is a TPA Staff Plan and there are not TPA's with TPA's with Staff Plan Access.
+# Participant to TPA (Staff Plan), no TPA's found, send to CAR
+EMAIL_CAR_STAFF_PLAN_SUBJECT=New i:loans Request notification undeliverable
+EMAIL_CAR_STAFF_PLAN_TEMPLATE=An email was sent to ![tpa_name]!, ![tpa_id]! notifying them of a new Staff Plan loan request that was submitted by a Participant for ![contract_name]!, ![contract_number]! through the i:loans application on the Participant Web site. However, it could not be sent as there are no TPA users currently set up to receive Staff Plan i:loans e-mails.\n\nPlease contact the TPA to notify them of the Staff Plan loan request.  Please also verify and update which TPA user should be set up to receive Staff Plan i:loan requests.  This information can be updated through Manage Users on the Plan Sponsor/TPA Web site. \n\nThis is an automatic notification e-mail, please do not reply to the sender.
+
+EMAIL_CAR_UNKNOWN_SENDER=iloans_request@jhancock.com
+
+#template for e-mail sent by periodic process
+# Overdue Loan Request to CAR
+EMAIL_CAR_OVERDUE_REQUEST_MAIN_TEMPLATE=![request_list]!\n
+EMAIL_CAR_OVERDUE_REQUEST_ITEM_TEMPLATE=A new loan request submitted to TPA ![tpa_name]! (![tpa_id]!) through the i:loans application has been outstanding for ![days_outstanding]! business days.\nPlease follow-up with the TPA for resolution.\nThe loan request details are as follows:\n     Contract Name: ![contract_name]!, Contract Number: ![contract_number]! \n     Participant Name: ![participant_name]! \n     Date Submitted to TPA: ![request_date]! \n     Due Date: ![due_date]! \n\n\nThis is an automatic notification e-mail, please do not reply to the sender.\n\n
+EMAIL_CAR_OVERDUE_REQUEST_ITEM_MAX_TEMPLATE=A new loan request submitted to TPA ![tpa_name]! (![tpa_id]!) through the i:loans application has been outstanding for more than ![days_outstanding]! business days.\nPlease follow-up with the TPA for resolution.\nThe loan request details are as follows:\n     Contract Name: ![contract_name]!, Contract Number: ![contract_number]! \n     Participant Name: ![participant_name]! \n     Date Submitted to TPA: ![request_date]!\n\n\nThis is an automatic notification e-mail, please do not reply to the sender.\n\n
+EMAIL_CAR_OVERDUE_REQUEST_SUBJECT=Overdue new i:loans Requests
+
+#template for e-mail sent by periodic process to TPA
+# Overdue Loan Request to TPA
+EMAIL_TPA_OVERDUE_REQUEST_ITEM_TEMPLATE=The following loan request(s) have been outstanding for 3 business days.  Please log on to review the(se) loan request(s).\n\n\n
+EMAIL_TPA_OVERDUE_REQUEST_SUBJECT=Outstanding i:loans Request
+EMAIL_TPA_OVERDUE_REQUEST_AUTO=\n\nThis is an automatic notification e-mail, please do not reply to the sender.\n\n
+
+	
+
+EMAIL_CAR_OVERDUE_REQUEST_SENDER=iloans_request@jhancock.com
+
+#EMAIL_MANULIFE_WEBSITE_URL_USA=http://www.jhpensions.com/tpa
+#EMAIL_MANULIFE_WEBSITE_URL_NY=http://www.jhnypensions.com/tpa
+EMAIL_MANULIFE_WEBSITE_URL_USA=http://www.jhpensions.com/tpaadmin
+EMAIL_MANULIFE_WEBSITE_URL_NY=http://www.jhnypensions.com/tpaadmin
+
+EMAIL_MANULIFE_COMPANY_NAME_USA=John Hancock USA
+EMAIL_MANULIFE_COMPANY_NAME_NY=John Hancock New York
+
+EMAIL_WEBSITE_URL_MAN_USA = http://www.jhpensions.com
+EMAIL_WEBSITE_URL_MAN_NY = http://www.jhnypensions.com
+
+#todo:iloans configuration
+# configure to manulife
+
+CALCULATION_PRECISION=20
+
+REQUEST_EXPIRY_DAYS=30
+REQUEST_HISTORY_EXPIRY_DAYS=46
+	
+TPA_ACTION_EXPECTED_PERIOD_DAYS=5
+DAYS_BETWEEN_OVERDUE_REQUEST_EMAIL=5
+
+LOAN_RATE_ADJUSTMENT = 0.000
+
+MAXIMUM_POSSIBLE_LOAN_AMOUNT=50000
+MINIMUM_LOAN_AMOUNT=500
+MAXIMUM_ALLOWABLE_PERCENTAGE_OF_VESTED_AMOUNT=0.50
+MAXIMUM_NON_PRIMARY_RESIDENCE_AMORTIZATION=5
+MAXIMUM_PRIMARY_RESIDENCE_AMORTIZATION=15
+	
+EMPLOYEE_MONEY_TYPE_CATEGORY_CODE=EE   
+
+MAXIMUM_CONTRACT_LOAN_SETUP_FEE_AMOUNT=9999999.99
+
+# used by retirement engine transaction
+DEFAULT_REQUIRED_RETIREMENT_INCOME=35000.00
+DEFAULT_RISK_TOLERANCE_CODE=03
+
+EMAIL_BOUNCEBACK_SUFFIX_MAN_USA=@jhancock.com
+EMAIL_BOUNCEBACK_SUFFIX_MAN_NY=@jhancock.com
+
+LOANPACKAGE_FONTDIR=d:\\apps\\PlanSponsor\\assets\\fonts
+
+
+#Report Alignment Properties
+LOANPACKAGE_REPORT_TOP_MAR = .50
+LOANPACKAGE_REPORT_LEFT_MAR= 1
+LOANPACKAGE_REPORT_BOTTOM_MAR = .50
+LOANPACKAGE_REPORT_RIGHT_MAR= 1
+
+LOANPACKAGE_GP1422_FORM_FOOTERUSA_ID=GP1422 (10/2005)
+#LOANPACKAGE_GP1422_FORM_FOOTERUSA_1=
+#LOANPACKAGE_GP1422_FORM_FOOTERUSA_2=
+#LOANPACKAGE_GP1422_FORM_FOOTERUSA_3=Group annuity contracts are issued by John Hancock Life Insurance Company (U.S.A.) ("John Hancock USA")
+LOANPACKAGE_GP1422_FORM_FOOTERUSA_4=©  2006 John Hancock Life Insurance Company (U.S.A.).  All rights reserved.
+
+LOANPACKAGE_GP1422_FORM_FOOTERNY_ID=GP1422NY (10/2005)
+#LOANPACKAGE_GP1422_FORM_FOOTERNY_1=
+#LOANPACKAGE_GP1422_FORM_FOOTERNY_2=
+#LOANPACKAGE_GP1422_FORM_FOOTERNY_3=Group annuity contract and any separate administrative services agreement are issued by John Hancock Life Insurance Company of New York ("John Hancock New York"), 100 Summit Lake Drive, Valhalla, New York 10595
+LOANPACKAGE_GP1422_FORM_FOOTERNY_4=©  2006 John Hancock Life Insurance Company of New York.  All rights reserved.
+
+LOANPACKAGE_GP1422_FORM_HEADERUSA_IMAGE=d:\\apps\\PlanSponsor\\assets\\images\\JH_SIG_black_300dpi.jpg
+LOANPACKAGE_GP1422_FORM_HEADERNY_IMAGE=d:\\apps\\PlanSponsor\\assets\\images\\JH_SIG_black_300dpi.jpg
+
+LOANPACKAGE_GP1422_FORM_HEADERUSA_TEXT_0=ARA Request for New Loan
+LOANPACKAGE_GP1422_FORM_HEADERUSA_TEXT_1=
+LOANPACKAGE_GP1422_FORM_HEADERUSA_TEXT_2=
+LOANPACKAGE_GP1422_FORM_HEADERUSA_TEXT_3=
+
+LOANPACKAGE_GP1422_FORM_HEADERNY_TEXT_0=Accumulated Retirement Account (ARA) Group Annuity
+LOANPACKAGE_GP1422_FORM_HEADERNY_TEXT_1=Request for New Loan
+LOANPACKAGE_GP1422_FORM_HEADERNY_TEXT_2=John Hancock Life Insurance Company of New York
+LOANPACKAGE_GP1422_FORM_HEADERNY_TEXT_3=(hereinafter referred to as John Hancock New York or The Company)
+
+LOANPACKAGE_GP1422_FORM_TITLE_HEADING=Section A - General Information
+LOANPACKAGE_GP1422_FORM_TITLE_CONTRACTHOLDER_NAME=Contractholder name
+LOANPACKAGE_GP1422_FORM_TITLE_CONTRACT_NUMBER=Contract number
+LOANPACKAGE_GP1422_FORM_TITLE_PARTICIPANT_NAME=Participant name (Last name, first name, initial)
+LOANPACKAGE_GP1422_FORM_TITLE_SSN=Social Security number
+LOANPACKAGE_GP1422_FORM_TITLE_LOAN_AMOUNT=Total amount of loan (if this is loan consolidation, complete Section C)
+LOANPACKAGE_GP1422_FORM_TITLE_LOAN_MATURITY=Loan
+LOANPACKAGE_GP1422_FORM_TITLE_DATE=maturity date	
+LOANPACKAGE_GP1422_FORM_TITLE_MONTH=Month	
+LOANPACKAGE_GP1422_FORM_TITLE_DAY=Day	
+LOANPACKAGE_GP1422_FORM_TITLE_YEAR=Year	
+LOANPACKAGE_GP1422_FORM_TITLE_LOAN_INTEREST_RATE=Loan interest rate	
+
+LOANPACKAGE_GP1422_FORM_NOTESUSA_HEADING=Section B - Notes
+LOANPACKAGE_GP1422_FORM_NOTESUSA_1=1.  It is the responsibility of the plan administrator to ensure that:\n        a. participant loan qualification requirements are met (according to the plan document);\n        b. each granted loan meets the tax law requirements and is not treated as a distribution;\n        c. if the participant named above has more than one outstanding loan or the loan requested on this form is used to refinance an outstanding loan, the\n            loans collectively, as well as each of the prior loan and the additional loan, meet the applicable tax law requirements and are not treated as\n            distributions under the participant's plan;\n        d. any restriction that the plan may have on the number of outstanding loans that a participant may have at any one time is complied with;\n        e. each plan loan is not a prohibited transaction;\n        f.  John Hancock Life Insurance Company (U.S.A.) ("John Hancock USA") will be notified if and when a loan is deemed to be a distribution for tax\n            purposes. John Hancock USA is not responsible for preparing and filing any tax reporting until and unless such notification has been provided by\n            the plan administrator, and if such service is available under your contract.
+LOANPACKAGE_GP1422_FORM_NOTESUSA_2=2.  When John Hancock USA receives a payment, we will reduce the Loan Account balance by the amount of the repayment.\n     Loan repayments will be applied first to interest owing on the loan, and then to the principal.  All loan repayments must be remitted through your plan\n     trustee.  Please do not send personal checks directly to John Hancock USA.
+LOANPACKAGE_GP1422_FORM_NOTESUSA_3=3.  This loan request does not constitute a promissory note or loan agreement.
+
+LOANPACKAGE_GP1422_FORM_NOTESNY_HEADING=Section B - Notes
+LOANPACKAGE_GP1422_FORM_NOTESNY_1=1.  It is the responsibility of the plan administrator to ensure that:\n        a. participant loan qualification requirements are met (according to the plan document);\n        b. each granted loan meets the tax law requirements and is not treated as a distribution;\n        c. if the participant named above has more than one outstanding loan or the loan requested on this form is used to refinance an outstanding loan, the\n            loans collectively, as well as each of the prior loan and the additional loan, meet the applicable tax law requirements and are not treated as\n            distributions under the participant's plan;\n        d. any restriction that the plan may have on the number of outstanding loans that a participant may have at any one time is complied with;\n        e. each plan loan is not a prohibited transaction;\n        f.  John Hancock Life Insurance Company New York ("John Hancock New York") will be notified if and when a loan is deemed to be a distribution for\n            tax purposes. John Hancock New York is not responsible for preparing and filing any tax reporting until and unless such notification has been\n            provided by the plan administrator, and if such service is available under your contract.
+LOANPACKAGE_GP1422_FORM_NOTESNY_2=2.  When John Hancock New York receives a payment, we will reduce the Loan Account balance by the amount of the repayment.\n     Loan repayments will be applied first to interest owing on the loan, and then to the principal.  All loan repayments must be remitted through your plan\n     trustee.  Please do not send personal checks directly to John Hancock New York.
+LOANPACKAGE_GP1422_FORM_NOTESNY_3=3.  This loan request does not consititute a promissory note or loan agreement.
+
+
+LOANPACKAGE_GP1422_FORM_LOANREFINANCING_HEADING=Section C - Loan Refinancing (if applicable)
+LOANPACKAGE_GP1422_FORM_LOANREFINANCING_AMOUNT_LABEL=Check/Wire Amount
+LOANPACKAGE_GP1422_FORM_LOANREFINANCING_EXISTING_LABEL1=Existing
+LOANPACKAGE_GP1422_FORM_LOANREFINANCING_EXISTING_LABEL2=Loan No.
+LOANPACKAGE_GP1422_FORM_LOANREFINANCING_OS_BALANCE_LABEL=Estimated Outstanding Loan Balance
+LOANPACKAGE_GP1422_FORM_LOANREFINANCING_TOTAL_LABEL=* Estimated Total Amount Of Loan
+LOANPACKAGE_GP1422_FORM_LOANREFINANCING_FOOTNOTE1=* Amount will fluctuate due to interest accumulation and
+LOANPACKAGE_GP1422_FORM_LOANREFINANCING_FOOTNOTE2=  the actual date of processing. The actual loan amount
+LOANPACKAGE_GP1422_FORM_LOANREFINANCING_FOOTNOTE3=  will be reported on the transaction confirmation.
+
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWAL_HEADING=Section D - Loan Withdrawal Order
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALUSA_1=Please indicate the type of money to be withdrawn and the amount.  It is
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALUSA_2=essential that you use the names that appear on the contract statements. 
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALUSA_3=Please note, some contracts may have the option of selecting the investment
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALUSA_4=account to be withdrawn.  Please check with your Plan Administrator for details.
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALUSA_5=If this section is not completed, John Hancock USA's Standard Loan Withdrawal Order
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALUSA_6=will be used.  (Please refer to your plan administrator for details).
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALUSA_1A =Please indicate the type of money to be withdrawn and the amount.  It is essential that you use the names that appear on the contract statements.  Please note, some contracts may have the option of selecting the investment account to be withdrawn.  Please check with your Plan Administrator for details.
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALUSA_2A =If this section is not completed, John Hancock USA's Standard Loan Withdrawal Order will be used.  (Please refer to your plan administrator for details).
+LOANPACKAGE_GP1422_FORM_EXCLUDEDMONEYTYPEUSA=Use John Hancock USA's Standard Loan Withdrawal Order or complete the following information.\nIf you have money types to be excluded from the loan, please indicate below. If money types have been excluded, please complete the section below to indicate which money types should be included and the correct amount for each.
+
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALNY_1=Please indicate the type of money to be withdrawn and the amount.  It is
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALNY_2=essential that you use the names that appear on the contract statements. 
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALNY_3=Please note, some contracts may have the option of selecting the investment
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALNY_4=account to be withdrawn.  Please check with your Plan Administrator for details.
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALNY_5=If this section is not completed, John Hancock New York's Standard Loan Withdrawal Order
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALNY_6=will be used.  (Please refer to your plan administrator for details).
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALNY_1A =Please indicate the type of money to be withdrawn and the amount.  It is essential that you use the names that appear on the contract statements.  Please note, some contracts may have the option of selecting the investment account to be withdrawn.  Please check with your Plan Administrator for details.
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWALNY_2A =If this section is not completed, John Hancock New York's Standard Loan Withdrawal Order will be used.  (Please refer to your plan administrator for details).
+LOANPACKAGE_GP1422_FORM_EXCLUDEDMONEYTYPENY=Use John Hancock New York's Standard Loan Withdrawal Order or complete the following information.\nIf you have money types to be excluded from the loan, please indicate below. If money types have been excluded, please complete the section below to indicate which money types should be included and the correct amount for each.
+
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWAL_TABLE_MONEY_TYPE_LABEL=Money Type
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWAL_TABLE_AMOUNT_LABEL=Amount
+LOANPACKAGE_GP1422_FORM_LOANWITHDRAWAL_TABLE_GROUP_ANNUITY_LABEL=Group Annuity Investment Account\nFor approved contract only
+LOANPACKAGE_GP1422_FORM_EXCLUDEDMONEYTYPE_TABLE_LABEL =Money Type to be excluded
+ 
+LOANPACKAGE_GP1422_FORM_PAYMENT_TITLE=Section E - Method of Payment
+
+LOANPACKAGE_GP1422_FORM_PAYMENT_INTRO_1=Please ensure that the appropriate information is completed for
+LOANPACKAGE_GP1422_FORM_PAYMENT_INTRO_2=Section 1 or 2.
+LOANPACKAGE_GP1422_FORM_PAYMENT_EFTS_LABEL_1=Electronic Fund Transfer
+LOANPACKAGE_GP1422_FORM_PAYMENT_EFTS_LABEL_2= - Complete Section 1. This option is recommended for ALL distributions for more timely access to your funds.
+LOANPACKAGE_GP1422_FORM_PAYMENT_CHECK_LABEL_1=Check
+LOANPACKAGE_GP1422_FORM_PAYMENT_CHECK_LABEL_2= - Complete Section 2. Allow 5-10 business days for mailing time. If address information is left blank in Section 2, the check will be issued with the
+LOANPACKAGE_GP1422_FORM_PAYMENT_CHECK_LABEL_3=Plan Sponsor's mailing address as it appears on our records.
+
+LOANPACKAGE_GP1422_FORM_PAYMENT_PAYABLE_TO=Check Payable to:
+LOANPACKAGE_GP1422_FORM_PAYMENT_PLAN_TRUSTEE=Plan Trustee	
+LOANPACKAGE_GP1422_FORM_PAYMENT_PARTICIPANT=Participant - please complete Section 2 below.
+
+LOANPACKAGE_GP1422_FORM_PAYMENT_CHECK_SECTION_HEADING=Section 2 - Check
+LOANPACKAGE_GP1422_FORM_PAYMENT_CHECK_TITLE=Participant Information
+LOANPACKAGE_GP1422_FORM_PAYMENT_PARTICIPANT_NAME_LABEL=Participant name (First name, initial, last name)	
+LOANPACKAGE_GP1422_FORM_PAYMENT_ADDRESS_1_LABEL=Address - Number, Street, City, State, Zip Code	
+
+LOANPACKAGE_GP1422_FORM_PAYMENTNY_PAYABLE_TO=Make check PAYABLE to:
+LOANPACKAGE_GP1422_FORM_PAYMENTNY_PLAN_TRUSTEE=Plan Trustee	
+LOANPACKAGE_GP1422_FORM_PAYMENTNY_PARTICIPANT=Participant - please provide full participant address	
+LOANPACKAGE_GP1422_FORM_PAYMENTNY_PARTICIPANT_NAME_LABEL=Participant name (First name, initial, last name)	
+LOANPACKAGE_GP1422_FORM_PAYMENTNY_ADDRESS_1_LABEL=Address (Number, Street, Apt.)	
+LOANPACKAGE_GP1422_FORM_PAYMENTNY_ADDRESS_2_LABEL=(City, State)
+LOANPACKAGE_GP1422_FORM_PAYMENTNY_ADDRESS_3_LABEL=(Zip Code)
+
+
+LOANPACKAGE_GP1422_FORM_EFTS_SECTION_HEADING=Section 1 - Electronic Fund Transfer
+LOANPACKAGE_GP1422_FORM_EFTS_TITLE=Electronic Fund Transfer Information	
+LOANPACKAGE_GP1422_FORM_EFTS_BANK_NAME_LABEL=Bank Name
+LOANPACKAGE_GP1422_FORM_EFTS_ADDRESS_1_LABEL=Bank Address - Number, Street, City, State, Zip Code
+LOANPACKAGE_GP1422_FORM_EFTS_CREDITPARTY_NAME_LABEL=Credit Party Name (must include participant name/alternative payee name)
+LOANPACKAGE_GP1422_FORM_EFTS_ABA_NUMBER_LABEL=Bank ABA Number
+LOANPACKAGE_GP1422_FORM_EFTS_ACCOUNT_NUMBER_LABEL=Account Number
+LOANPACKAGE_GP1422_FORM_EFTS_ATTENTION_LABEL=Attention/Re
+
+LOANPACKAGE_GP1422_FORM_LOANISSUEFEE_SECTION_HEADING=Section F - Third Party Administrator (TPA) Loan Issue Fee - This section should be completed by the TPA.
+LOANPACKAGE_GP1422_FORM_LOANISSUEFEE_BULLET_1= A standing fee established by the Trustee will apply may apply if this section is blank or the indicated amount equals the standing fee.
+LOANPACKAGE_GP1422_FORM_LOANISSUEFEE_BULLET_2= A specified amount indicated below will override any standing amount, if applicable, already established by the Trustee.
+LOANPACKAGE_GP1422_FORM_LOANISSUEFEE_BULLET_3= If the Waive Fee option is selected, no fees will be applied, including the standing fee established by the Trustee.
+LOANPACKAGE_GP1422_FORM_LOANISSUEFEE_LABEL_1=Waive Fee
+LOANPACKAGE_GP1422_FORM_LOANISSUEFEE_LABEL_2=Loan Issue Fee
+LOANPACKAGE_GP1422_FORM_LOANISSUEFEE_LABEL_3=will be applied
+
+LOANPACKAGE_GP1422_FORM_LOANISSUEFEEUSA_1=1.    John Hancock USA will use standard protocol order to deduct the fee.\n2.    TPA loan issue fee will be deducted from the account after the loan amount.\n3.    John Hancock USA is not responsible for any uncollected fee amounts as a result of insufficient funds. These shortfalls will be reported on transaction\n       and summary confirmations provided to the TPA and Plan Trustee.
+LOANPACKAGE_GP1422_FORM_LOANISSUEFEENY_1=1.    John Hancock New York will use standard protocol order to deduct the fee.\n2.    TPA loan issue fee will be deducted from the account after the loan amount.\n3.    John Hancock New York is not responsible for any uncollected fee amounts as a result of insufficient funds. These shortfalls will be reported on\n       transaction and summary confirmations provided to the TPA and Plan Trustee.
+
+
+LOANPACKAGE_GP1422_FORM_SIGNATURES_HEADING=Section G - Signatures
+LOANPACKAGE_GP1422_FORM_SIGNATURES_SIGNATURE_LABEL=Signature of participant
+LOANPACKAGE_GP1422_FORM_SIGNATURES_DATE_LABEL=Date
+LOANPACKAGE_GP1422_FORM_SIGNATURESUSA_1=I hereby certify that the requested loan is not a taxable or a deemed distribution under the Internal Revenue Code, and that the loan complies with the plan document and all pertinent laws.  I certify also that spousal consent (as required by Internal Revenue Code Section 417),
+LOANPACKAGE_GP1422_FORM_SIGNATURESUSA_2=if applicable, has been properly obtained and that the loan is not a prohibited transaction as defined in the Internal Revenue Code Section 4975 or under the Employee Retirement Income Security Act. I direct John Hancock USA to pay to the Third Party Administrator the above referenced fee, which will be deducted
+LOANPACKAGE_GP1422_FORM_SIGNATURESUSA_3=from the participant's account at the time of the distribution. I understand an agree that this fee will be deducted and held in John Hancock USA general business account until paid to the Third Party Administrator. I hereby represent that the fee is authorized under the terms of the plan and that, in my fiduciary capacity, I have
+LOANPACKAGE_GP1422_FORM_SIGNATURESUSA_4=determined that the requested fee is a reasonable expense. The undersigned, on behalf of the Plan sponsor, the Plan and its related trust, agrees to hold harmless and indemnify John Hancock USA, its employees, agents or affiliates for acting on the instructions provided herein.
+
+LOANPACKAGE_GP1422_FORM_SIGNATURES_SIGNED=Signed at
+LOANPACKAGE_GP1422_FORM_SIGNATURES_SIGNED_CITY= City
+LOANPACKAGE_GP1422_FORM_SIGNATURES_SIGNED_STATE = State
+
+LOANPACKAGE_GP1422_FORM_SIGNATURES_THIS=This
+LOANPACKAGE_GP1422_FORM_SIGNATURES_DAY=Day of
+LOANPACKAGE_GP1422_FORM_SIGNATURES_YEAR=Year
+LOANPACKAGE_GP1422_FORM_SIGNATURES_PLAN_REPRESENTATIVE=Signature of authorized plan representative
+LOANPACKAGE_GP1422_FORM_SIGNATURES_YOUR_NAME=Name - please print
+
+LOANPACKAGE_GP1422_FORM_SIGNATURES_SIGNATURENY_LABEL=Participant: 
+LOANPACKAGE_GP1422_FORM_SIGNATURES_DATENY_LABEL=Date: 
+LOANPACKAGE_GP1422_FORM_SIGNATURESNY_1=I hereby certify that the requested loan is not a taxable or a deemed distribution under the Internal Revenue Code, and that the loan complies with the plan document and all pertinent laws.  I certify also that spousal consent (as required by Internal Revenue Code Section 417),
+LOANPACKAGE_GP1422_FORM_SIGNATURESNY_2=if applicable, has been properly obtained and that the loan is not a prohibited transaction as defined in the Internal Revenue Code Section 4975 or under the Employee Retirement Income Security Act. I direct John Hancock New York to pay to the Third Party Administrator the above referenced fee, which will be deducted
+LOANPACKAGE_GP1422_FORM_SIGNATURESNY_3=from the participant's account at the time of the distribution. I understand an agree that this fee will be deducted and held in John Hancock New York general business account until paid to the Third Party Administrator. I hereby represent that the fee is authorized under the terms of the plan and that, in my fiduciary capacity, I have
+LOANPACKAGE_GP1422_FORM_SIGNATURESNY_4=determined that the requested fee is a reasonable expense. The undersigned, on behalf of the Plan sponsor, the Plan and its related trust, agrees to hold harmless and indemnify John Hancock New York, its employees, agents or affiliates for acting on the instructions provided herein.
+LOANPACKAGE_GP1422_FORM_SIGNATURES_PLAN_REPRESENTATIVENY=Authorized Plan Representative:
+
+LOANPACKAGE_GP1422_COVER_TITLEUSA_1=What you should know about your John Hancock USA Loan Record-Keeping
+LOANPACKAGE_GP1422_COVER_TITLENY_1=What you should know about your John Hancock New York Loan Record-Keeping
+LOANPACKAGE_GP1422_COVER_TEXTUSA_1A=Your John Hancock USA contract allows for loans to participants, provided loans are permitted under your plan.  If
+LOANPACKAGE_GP1422_COVER_TEXTNY_1A=Your John Hancock New York contract allows for loans to participants, provided loans are permitted under your plan.  If
+LOANPACKAGE_GP1422_COVER_TEXTUSA_1B=your plan allows for loans and you select this option, there are certain features of John Hancock USA loan record
+LOANPACKAGE_GP1422_COVER_TEXTNY_1B=your plan allows for loans and you select this option, there are certain features of John Hancock New York loan record
+LOANPACKAGE_GP1422_COVER_TEXTUSA_1C=keeping services which you should understand.
+LOANPACKAGE_GP1422_COVER_TEXTNY_1C=keeping services which you should understand.
+
+LOANPACKAGE_GP1422_COVER_TITLEUSA_2=It is important to note that......
+LOANPACKAGE_GP1422_COVER_TEXTUSA_2A=The plan administrator is responsible for the
+LOANPACKAGE_GP1422_COVER_TEXTUSA_2B=administration
+LOANPACKAGE_GP1422_COVER_TEXTUSA_2C=of plan loans, underwriting the loan, setting the interest 
+LOANPACKAGE_GP1422_COVER_TEXTUSA_2D=rates, for ensuring that the loans are repaid according to the amortization schedules and determining if and when the loan
+LOANPACKAGE_GP1422_COVER_TEXTUSA_2E=is a deemed distribution. There are usually fees associated with taking a loan. Your Third Party Administrator may
+LOANPACKAGE_GP1422_COVER_TEXTUSA_2F=charge a loan issue fee. Check with your Plan Administrator.
+LOANPACKAGE_GP1422_COVER_TEXTUSA_2G=John Hancock USA is responsible for the
+LOANPACKAGE_GP1422_COVER_TEXTUSA_2H=record-keeping
+LOANPACKAGE_GP1422_COVER_TEXTUSA_2I=of transfer loans, and any new loans issued under your
+LOANPACKAGE_GP1422_COVER_TEXTUSA_2J=ARA contract.  John Hancock USA charges a monthly record-keeping fee for any new loans issued under
+LOANPACKAGE_GP1422_COVER_TEXTUSA_2K=your ARA contract. John Hancock USA is not responsible for determining whether loans are allowed under the plan.
+	
+LOANPACKAGE_GP1422_COVER_TITLENY_2=It is important to note that......
+LOANPACKAGE_GP1422_COVER_TEXTNY_2A=The plan administrator is responsible for the
+LOANPACKAGE_GP1422_COVER_TEXTNY_2B=administration
+LOANPACKAGE_GP1422_COVER_TEXTNY_2C=of plan loans, underwriting the loan, setting the interest
+LOANPACKAGE_GP1422_COVER_TEXTNY_2D=rates, for ensuring that the loans are repaid according to the amortization schedules and determining if and when the loan
+LOANPACKAGE_GP1422_COVER_TEXTNY_2E=is a deemed distribution. There are usually fees associated with taking a loan. Your Third Party Administrator may
+LOANPACKAGE_GP1422_COVER_TEXTNY_2F=charge a loan issue fee. Check with your Plan Administrator.
+LOANPACKAGE_GP1422_COVER_TEXTNY_2G=John Hancock New York is responsible for the
+LOANPACKAGE_GP1422_COVER_TEXTNY_2H=record-keeping
+LOANPACKAGE_GP1422_COVER_TEXTNY_2I=of transfer loans, and any new loans issued under your
+LOANPACKAGE_GP1422_COVER_TEXTNY_2J=ARA contract.  John Hancock New York charges a monthly record-keeping fee for any new loans issued under
+LOANPACKAGE_GP1422_COVER_TEXTNY_2K=your ARA contract. John Hancock New York is not responsible for determining whether loans are allowed under the plan.
+
+
+LOANPACKAGE_GP1422_COVER_TITLEUSA_3=Please also be aware.....
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3A=Loan balances indicated on the amortization schedule will not agree exactly with the John Hancock USA loan balances.
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3B=Minor discrepancies appear because:
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3C=John Hancock USA begins to accrue interest on loans from the issue date of the check. The
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3D=amortization schedule may not commence the accrual of interest until the day the check is
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3E=received by the participant.
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3F=This will result in a small discrepancy in the interest figures.
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3G=John Hancock USA compounds interest daily, while most amortization schedules compound interest on
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3H=a monthly or semi-monthly basis.
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3I=This again can result in a small discrepancy between your
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3J=loan balance and ours.
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3K=John Hancock USA accrues interest until the date the loan payment is received, while you may cease	
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3L=to accrue interest on the date the actual payroll deduction occurs.  You may be able to eliminate
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3M=delays resulting in the accrual of additional interest by making your payments through direct debit
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3N=in conjunction with John Hancock USA's
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3N1=electronic file creation options.
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3O=If there is a minor discrepancy between your records and ours,
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3P=your amortization schedule will govern.
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3Q=That is, if your records indicate that a loan is paid in full, and John Hancock USA records indicate a small outstanding	
+LOANPACKAGE_GP1422_COVER_TEXTUSA_3R=balance, we will consider the loan to be paid in full.
+
+LOANPACKAGE_GP1422_COVER_TITLENY_3=Please also be aware.....
+LOANPACKAGE_GP1422_COVER_TEXTNY_3A=Loan balances indicated on the amortization schedule will not agree exactly with the John Hancock New York loan balances.
+LOANPACKAGE_GP1422_COVER_TEXTNY_3B=Minor discrepancies appear because:
+LOANPACKAGE_GP1422_COVER_TEXTNY_3C=John Hancock New York begins to accrue interest on loans from the issue date of the check. The
+LOANPACKAGE_GP1422_COVER_TEXTNY_3D=amortization schedule may not commence the accrual of interest until the day the check is
+LOANPACKAGE_GP1422_COVER_TEXTNY_3E=received by the participant.
+LOANPACKAGE_GP1422_COVER_TEXTNY_3F=This will result in a small discrepancy in the interest figures.
+LOANPACKAGE_GP1422_COVER_TEXTNY_3G=John Hancock New York compounds interest daily, while most amortization schedules compound interest on
+LOANPACKAGE_GP1422_COVER_TEXTNY_3H=a monthly or semi-monthly basis.
+LOANPACKAGE_GP1422_COVER_TEXTNY_3I=This again can result in a small discrepancy between your
+LOANPACKAGE_GP1422_COVER_TEXTNY_3J=loan balance and ours.
+LOANPACKAGE_GP1422_COVER_TEXTNY_3K=John Hancock New York accrues interest until the date the loan payment is received, while you may cease
+LOANPACKAGE_GP1422_COVER_TEXTNY_3L=to accrue interest on the date the actual payroll deduction occurs.  You may be able to eliminate
+LOANPACKAGE_GP1422_COVER_TEXTNY_3M=delays resulting in the accrual of additional interest by making your payments through direct debit
+LOANPACKAGE_GP1422_COVER_TEXTNY_3N=in conjunction with John Hancock New York's
+LOANPACKAGE_GP1422_COVER_TEXTNY_3N1=electronic file creation options.
+LOANPACKAGE_GP1422_COVER_TEXTNY_3O=If there is a minor discrepancy between your records and ours,
+LOANPACKAGE_GP1422_COVER_TEXTNY_3P=your amortization schedule will govern.
+LOANPACKAGE_GP1422_COVER_TEXTNY_3Q=That is, if your records indicate that a loan is paid in full, and John Hancock New York records indicate a small outstanding
+LOANPACKAGE_GP1422_COVER_TEXTNY_3R=balance, we will consider the loan to be paid in full.
+
+###############################################################
+# Participant Instructions
+
+LOANPACKAGE_PARTICIPANT_TITLE=INSTRUCTIONS FOR THE PARTICIPANT
+LOANPACKAGE_PARTICIPANT_NOTES_1=This loan package contains a number of forms. Please see below for instructions for each form.
+	
+LOANPACKAGE_PARTICIPANT_STEP1_1=TPA Loan Issue Fee: The Third Party Administrator for your plan charges a loan issue fee of
+LOANPACKAGE_PARTICIPANT_STEP1_2= for each loan issued.
+LOANPACKAGE_PARTICIPANT_STEP1USA_3A=John Hancock USA will automatically deduct the loan issue fee from your account after the loan has been issued. John Hancock USA will forward the loan issue fee directly to the Third Party Administrator.
+LOANPACKAGE_PARTICIPANT_STEP1NY_3A=John Hancock New York will automatically deduct the loan issue fee from your account after the loan has been issued. John Hancock New York will forward the loan issue fee directly to the Third Party Administrator.
+LOANPACKAGE_PARTICIPANT_STEP1_3=Please prepare a check in the amount of
+LOANPACKAGE_PARTICIPANT_STEP1_4= payable to
+LOANPACKAGE_PARTICIPANT_STEP1_5=. This check must be returned to the Plan Administrator along with all other documentation as outlined in this instruction sheet in order for your loan to be processed.
+
+LOANPACKAGE_PARTICIPANT_STEP2_0=Please review your
+LOANPACKAGE_PARTICIPANT_STEP2_1=Amortization Schedule:
+LOANPACKAGE_PARTICIPANT_STEP2_2=This shows the schedule of payments to be paid on your loan once approved.
+	
+
+LOANPACKAGE_PARTICIPANT_STEP3_1=Please review these forms carefully and complete any required information. All of these forms must be signed and dated by you. Note that the "Consent of Spouse" form may also require your spouse's signature as well as that of a Notary Public or Plan Administrator.
+LOANPACKAGE_PARTICIPANT_STEP3_1_B=Please review these forms carefully and complete any required information. All of these forms must be signed and dated by you. Note that the "Consent of Spouse" form does require your spouse's signature as well as that of a Notary Public or Plan Administrator.
+LOANPACKAGE_PARTICIPANT_STEP3_1_C=Please review these forms carefully and complete any required information. All of these forms must be signed and dated by you. 
+
+LOANPACKAGE_PARTICIPANT_STEP3_2=Truth in Lending Notice
+LOANPACKAGE_PARTICIPANT_STEP3_3=Promissory Note and Irrevocable Pledge and Assignment
+LOANPACKAGE_PARTICIPANT_STEP3_4=Consent of Spouse (if applicable) 
+LOANPACKAGE_PARTICIPANT_STEP3_4_B=Consent of Spouse 
+
+LOANPACKAGE_PARTICIPANT_STEP3_5=IMPORTANT NOTE:
+LOANPACKAGE_PARTICIPANT_STEP3_6= You have indicated that you are taking a loan to purchase a principal residence. You must include proof of purchase (i.e., a copy of the purchase offer) with the above documents in order for your loan to be processed.
+LOANPACKAGE_PARTICIPANT_STEP3_7= You have indicated that you are taking a loan as a hardship distribution. You must provide documentation (i.e., purchase offer, notice of eviction or foreclosure, medical bills, tuition bills) with the above documents to support this, in order for your loan to be processed.
+
+
+
+LOANPACKAGE_PARTICIPANT_STEP4_LABEL=ARA Request for New Loan:
+LOANPACKAGE_PARTICIPANT_STEP4_1=General Information: This section has been completed for you. Please verify that your name and Social Security number are correct. Please make any corrections needed.
+LOANPACKAGE_PARTICIPANT_STEP4_2=Notes: Please read the information contained in this section.
+LOANPACKAGE_PARTICIPANT_STEP4USA_3= Loan Withdrawal Order: If you would like the money for the loan withdrawn in a particular order by money type, please complete this section. Otherwise, the John Hancock USA standard withdrawal order will be used. Please see your Plan Sponsor if you require information on the John Hancock USA standard withdrawal order.
+LOANPACKAGE_PARTICIPANT_STEP4NY_3=Loan Withdrawal Order: If you would like the money for the loan withdrawn in a particular order by money type, please complete this section. Otherwise, the John Hancock New York standard withdrawal order will be used. Please see your Plan Administrator if you require information on the John Hancock New York standard withdrawal order.
+LOANPACKAGE_PARTICIPANT_STEP4_4=Money Types to be Excluded from Loan Withdrawal: if your plan specifies money types that must be excluded from the loan withdrawal, this section has been completed for you.
+LOANPACKAGE_PARTICIPANT_STEP4_5=Payment Instructions: Please complete this section.
+LOANPACKAGE_PARTICIPANT_STEP4_6=Signatures: You must sign and date as participant.
+LOANPACKAGE_PARTICIPANT_STEP4_7=Make a copy of these forms for your reference.
+
+LOANPACKAGE_PARTICIPANT_STEP5_LABEL=Return the following to your plan representative for review and authorization:
+
+LOANPACKAGE_PARTICIPANT_STEP5_1=Truth in Lending Notice 
+LOANPACKAGE_PARTICIPANT_STEP5_2=Promissory Note and Irrevocable Pledge and Assignment
+LOANPACKAGE_PARTICIPANT_STEP5_3=Consent of Spouse (if applicable)
+LOANPACKAGE_PARTICIPANT_STEP5_3_B=Consent of Spouse
+
+LOANPACKAGE_PARTICIPANT_STEP5_4=Amortization Schedule
+LOANPACKAGE_PARTICIPANT_STEP5_5=ARA Request for New Loan
+LOANPACKAGE_PARTICIPANT_STEP5_6A=Check payable to
+LOANPACKAGE_PARTICIPANT_STEP5_6B=in the amount of
+LOANPACKAGE_PARTICIPANT_STEP5_6C=.  
+LOANPACKAGE_PARTICIPANT_STEP5_7=Plan Administrator Instruction Form
+LOANPACKAGE_PARTICIPANT_STEP5_8=Proof of purchase of principal residence as described above.
+LOANPACKAGE_PARTICIPANT_STEP5_9=Documentation to support hardship distribution as described above.
+
+
+LOANPACKAGE_PARTICIPANT_STEP6USA_1=Your Plan Administrator will review and authorize these forms and forward the ARA Request for New Loan to John Hancock USA for loan processing and will provide you with a copy. 
+LOANPACKAGE_PARTICIPANT_STEP6NY_1=Your Plan Administrator will review and authorize these forms and forward the ARA Request for New Loan to John Hancock New York for loan processing and will provide you with a copy.  
+LOANPACKAGE_PARTICIPANT_STEP6_2=Your Plan Administrator will also forward the check in the amount of 
+LOANPACKAGE_PARTICIPANT_STEP6_3=payable to
+LOANPACKAGE_PARTICIPANT_STEP6_4=.
+LOANPACKAGE_PARTICIPANT_STEP6_NOTE_1=NOTE: The information contained in this instruction sheet and the accompanying forms is valid until
+LOANPACKAGE_PARTICIPANT_STEP6_NOTE_2=. Please ensure that all completed forms are forwarded to your plan representative prior to this date.  Failure to do so will require a new request for plan information and loan package.
+LOANPACKAGE_PARTICIPANT_PRINT_DATE_LABEL=Print Date: 
+
+###############################################################
+# Plan Administrator Instructions
+
+
+LOANPACKAGE_PLANADMINISTRATOR_TITLE=PLAN ADMINISTRATOR INSTRUCTION FORM
+LOANPACKAGE_PLANADMINISTRATOR_1=Enclosed are loan papers to be reviewed and signed with respect to the loan of
+LOANPACKAGE_PLANADMINISTRATOR_2=from the
+LOANPACKAGE_PLANADMINISTRATOR_3=for
+LOANPACKAGE_PLANADMINISTRATOR_4=.
+LOANPACKAGE_PLANADMINISTRATOR_STEP1=In addition to this sheet, you should have received one copy of each of the following forms from the participant:
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_1A=The Third Party Administrator for your plan charges a loan issue fee of
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_1B=for each loan issued.  A check from the participant in the amount of
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_1C=payable to
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_1D=must be enclosed with the above paperwork. You must have this check from the participant in order to finalize the loan request.
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_2=Truth in Lending Notice
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_3=Promissory Note and Irrevocable Pledge and Assignment
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_4=Consent of Spouse (if applicable)
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_4_B=Consent of Spouse
+
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_5=Amortization Schedule
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_6=ARA Request for New Loan
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_7=IMPORTANT NOTE: The participant has indicated that the reason for the loan is to purchase a principal residence. The participant must provide proof of purchase (i.e. a copy of the purchase offer) in order for the loan to be processed. This must be included with the above documents. Please review this to ensure that it complies with the provisions set forth in your Plan Document.
+LOANPACKAGE_PLANADMINISTRATOR_STEP1_8=IMPORTANT NOTE: The participant has indicated that the reason for the loan is for a hardship distribution. The participant must provide documentation to support this (i.e. purchase offer, notice of eviction or foreclosure, medical bills, tuition bills) in order for the loan to be processed. This must be included with the above documents. Please review this to ensure that it complies with the provisions set forth in your Plan Document.
+
+LOANPACKAGE_PLANADMINISTRATOR_STEP2=Please review each form for completeness and if they appear to be properly filled out, sign and date the ARA Request for New Loan Form.
+
+LOANPACKAGE_PLANADMINISTRATOR_STEP3=Make 2 copies of all forms. Retain the original copy of all paperwork for the plan records and return one set of copies to the participant. The second set of copies should be sent to your TPA - see Step 4.
+
+LOANPACKAGE_PLANADMINISTRATOR_STEP4_1=A copy of each form must be sent to
+LOANPACKAGE_PLANADMINISTRATOR_STEP4_2=.
+LOANPACKAGE_PLANADMINISTRATOR_STEP4_3=Please also enclose the participant check in the amount of
+LOANPACKAGE_PLANADMINISTRATOR_STEP4_4=payable to
+LOANPACKAGE_PLANADMINISTRATOR_STEP4USA_5=. Please note that this check should be mailed to the Third Party Administrator- do not send to John Hancock USA.
+LOANPACKAGE_PLANADMINISTRATOR_STEP4NY_5=. Please note that this check should be mailed to the Third Party Administrator - please do not send to John Hancock New York.
+	
+LOANPACKAGE_PLANADMINISTRATOR_STEP5USA=Send the completed ARA Request for New Loan form to your client account representative at John Hancock USA to have the requested loan amount distributed. The form may be faxed to 416-926-3337, or mailed to the following address:
+LOANPACKAGE_PLANADMINISTRATOR_STEP5USA_ADDRESS1=John Hancock USA
+LOANPACKAGE_PLANADMINISTRATOR_STEP5USA_ADDRESS2=P.O.Box 600
+LOANPACKAGE_PLANADMINISTRATOR_STEP5USA_ADDRESS3=Buffalo, NY 14210-0600
+
+LOANPACKAGE_PLANADMINISTRATOR_STEP5NY=Send the completed ARA Request for New Loan form to your client account representative at John Hancock New York to have the requested loan amount distributed. The form may be faxed to 416-926-3337, or mailed to the following address:
+LOANPACKAGE_PLANADMINISTRATOR_STEP5NY_ADDRESS1=John Hancock New York
+LOANPACKAGE_PLANADMINISTRATOR_STEP5NY_ADDRESS2=P.O.Box 600
+LOANPACKAGE_PLANADMINISTRATOR_STEP5NY_ADDRESS3=Buffalo, NY 14210-0600
+
+
+LOANPACKAGE_PLANADMINISTRATOR_STEP6=Please be sure to set up payroll deduction for the loan repayments.
+
+LOANPACKAGE_PLANADMINISTRATOR_NOTE_1=NOTE: The information contained in this instruction sheet and the accompanying forms is valid until
+LOANPACKAGE_PLANADMINISTRATOR_NOTE_2=. Please ensure that all completed forms are forwarded to you by the participant prior to this date. Failure to do so will require a new request for plan information and loan package by the participant.
+
+LOANPACKAGE_PLANADMINISTRATOR_PRINT_DATE_LABEL=Print Date:
+
+###############################################################
+#Promossory Note and Irrecoverable Pledge
+
+LOANPACKAGE_PLEDGE_TITLE=PROMISSORY NOTE AND IRREVOCABLE PLEDGE AND ASSIGNMENT
+LOANPACKAGE_PROMISSORY_P1_1=For value received, I,
+LOANPACKAGE_PROMISSORY_P1_2=, the undersigned borrower, promise to pay to the order of
+LOANPACKAGE_PROMISSORY_P1_3=(the "Plan"), the principal sum of
+LOANPACKAGE_PROMISSORY_P1_4=, together with interest at the rate of
+LOANPACKAGE_PROMISSORY_P1_5=per annum on the unpaid balance in
+LOANPACKAGE_PROMISSORY_P1_6=equal
+LOANPACKAGE_PROMISSORY_P1_7=payments of
+LOANPACKAGE_PROMISSORY_P1_8=each, including interest, plus a final payment in the amount of
+LOANPACKAGE_PROMISSORY_P1_9=.  The first repayment is due on
+LOANPACKAGE_PROMISSORY_P1_10=, with like payments due
+LOANPACKAGE_PROMISSORY_P1_11=thereafter, and continuing until the final payment is made on
+LOANPACKAGE_PROMISSORY_P1_12=, at which time the entire principal and interest thereon will have been paid in full.
+
+LOANPACKAGE_PROMISSORY_P2_1=The entire unpaid principal balance of this Promissory Note and Irrevocable Pledge and Assignment and all accrued interest shall become due and payable upon (a) my termination of employment with
+LOANPACKAGE_PROMISSORY_P2_1A = (the "Employer"), or (b) my failure to make a scheduled repayment. Default on the loan will occur if repayment is not made in full by
+LOANPACKAGE_PROMISSORY_P2_1B =.
+LOANPACKAGE_PROMISSORY_P2_2=Upon Default, the amount of the outstanding loan balance will be reported as a taxable deemed distribution to me from the Plan on IRS Form 1099-R and subject to such tax penalties and income tax as may be applicable.
+
+LOANPACKAGE_PROMISSORY_P3=I hereby assign and grant to the Trustees of the Plan a security interest of up to 50% of the vested amount of my account in the Plan to secure the repayment of all amounts due under this Promissory Note and Irrevocable Pledge and Assignment. No benefits of the Plan shall be distributed to me or to my designated beneficiary(ies) until this Promissory Note and Irrevocable Pledge and Assignment has been paid in full or otherwise fully satisfied. Should I fail to make full repayment on this Promissory Note and Irrevocable Pledge and Assignment upon my termination of employment with the Employer for any reason, I authorize the Trustees to reduce the amount otherwise distributable to me or to my designated beneficiary(ies) by the outstanding indebtedness, together with any accrued interest thereon.
+
+LOANPACKAGE_PROMISSORY_P4=I hereby authorize the Employer to deduct the installment payments required hereunder from my employment compensation and to transmit such installments to the Trustees of the Plan in payment of this Promissory Note and Irrevocable Pledge and Assignment, until the entire principal and interest thereon will have been paid in full. I understand that this Promissory Note and Irrevocable Pledge and Assignment may also be prepaid in full at any time without penalty.
+
+LOANPACKAGE_PLEDGE_ASSIGNMENT_1=Should my employment terminate with the Employer for any reason while this obligation is unpaid and under circumstances in which the Plan would ordinarily make a distribution to me or to my named beneficiary, I authorize the Plan to reduce the amount otherwise distributable to me or to my named beneficiary, by this outstanding indebtedness, together with any accrued interest due on the indebtedness.
+LOANPACKAGE_PLEDGE_STATEMENT_1=I acknowledge that the terms and conditions of this Promissory Note and Irrevocable Pledge and Assignment are expressly subject to the provisions of the Plan, the administrative procedures established by the Plan Administrator from time to time, and my completed loan request form.
+
+LOANPACKAGE_PLEDGE_LINE_LABEL=________________________________________________________________________
+LOANPACKAGE_PLEDGE_SIGNED_LABEL=Borrower                                                      	Date
+
+
+
+##############################################################
+#Lending Notice
+
+LOANPACKAGE_LENDING_NOTICE_TITLE=TRUTH IN LENDING NOTICE
+LOANPACKAGE_LENDING_NOTICE_BORROWER_LABEL=Borrower:
+LOANPACKAGE_LENDING_NOTICE_BORROWER_LABELA=("You") 
+LOANPACKAGE_LENDING_NOTICE_CREDITOR_LABEL=Name of Plan: 
+LOANPACKAGE_LENDING_NOTICE_CREDITOR_LABELA=(the "Plan") 
+LOANPACKAGE_LENDING_NOTICE_EMPLOYER_LABEL=Name of Employer: 
+LOANPACKAGE_LENDING_NOTICE_EMPLOYER_LABELA=(the "Employer") 
+LOANPACKAGE_LENDING_NOTICE_LOAN_DATE_LABEL=Date of Loan: 
+
+LOANPACKAGE_LENDING_NOTICE_DISCLOSURE_RATE_HEADING= ANNUAL\n PERCENTAGE RATE
+LOANPACKAGE_LENDING_NOTICE_DISCLOSURE_CHARGE_HEADING= FINANCE CHARGE
+LOANPACKAGE_LENDING_NOTICE_DISCLOSURE_AMOUNT_HEADING= AMOUNT FINANCED
+LOANPACKAGE_LENDING_NOTICE_DISCLOSURE_TOTAL_HEADING= TOTAL OF\n PAYMENTS
+LOANPACKAGE_LENDING_NOTICE_DISCLOSURE_RATE_TEXT= The interest cost as a\n yearly rate
+LOANPACKAGE_LENDING_NOTICE_DISCLOSURE_CHARGE_TEXT= The amount the loan\n will cost you
+LOANPACKAGE_LENDING_NOTICE_DISCLOSURE_AMOUNT_TEXT= The amount of credit\n provided to you or on\n your behalf
+LOANPACKAGE_LENDING_NOTICE_DISCLOSURE_TOTAL_TEXT= The amount you will\n have paid after all\n payments as scheduled
+	
+LOANPACKAGE_LENDING_NOTICE_PAYMENT_SCHED_MONTHS_TEXT= Number of Months
+LOANPACKAGE_LENDING_NOTICE_PAYMENT_SCHED_PAYMENTS_TEXT= Amount of Each Repayment
+LOANPACKAGE_LENDING_NOTICE_PAYMENT_SCHED_WHEN_DUE_TEXT= Frequency and Date of First Payment
+
+LOANPACKAGE_LENDING_NOTICE_PAYMENT_SCHED_HEADING=Your Repayment Schedule will be:
+LOANPACKAGE_LENDING_NOTICE_PREPAYMENT_LABEL=Prepayment
+LOANPACKAGE_LENDING_NOTICE_PREPAYMENT_TEXT=: You may, at any time, prepay the entire outstanding balance of the loan, plus accrued interest, without penalty.
+LOANPACKAGE_LENDING_NOTICE_METHOD_LABEL=Method of repayment
+LOANPACKAGE_LENDING_NOTICE_METHOD_TEXT=: Payroll deductions
+
+LOANPACKAGE_LENDING_NOTICE_SECUR_INTEREST_LABEL=Security
+LOANPACKAGE_LENDING_NOTICE_SECUR_INTEREST_TEXT=: You are required to grant a continuing security interest of up to no more than 50% of your vested account balance under the Plan to the Trustees to secure repayment of the loan principal and accrued interest, if at any time, this loan is found to be in default (as defined below).
+
+LOANPACKAGE_LENDING_NOTICE_DEFAULT_LABEL=Default
+LOANPACKAGE_LENDING_NOTICE_DEFAULT_TEXT1=: The entire unpaid principal and interest of your loan will become due and payable upon (a) your termination of employment with the Employer; or (b) your failure to make a scheduled repayment. Default on the loan will occur if repayment is not made in full by
+LOANPACKAGE_LENDING_NOTICE_DEFAULT_TEXT1A =.
+LOANPACKAGE_LENDING_NOTICE_DEFAULT_TEXT2=Upon default, your entire outstanding loan balance, including the accrued loan interest, will be deemed distributed to you. Such a deemed distribution is taxable to you, and if applicable, may be subject to certain tax penalties under tax law.
+
+LOANPACKAGE_LENDING_NOTICE_SEE_BELOW1=See your Promissory Note and Irrevocable Pledge and Assignment for additional information about non-payment, default, and required payment in full before the scheduled date. 
+LOANPACKAGE_LENDING_NOTICE_SEE_BELOW2=By signing below, you acknowledge having received a copy of this Truth in Lending notice.
+LOANPACKAGE_LENDING_NOTICE_LINE_LABEL=________________________________________________________________________
+LOANPACKAGE_LENDING_NOTICE_SIGNED_LABEL=Borrower                                                      Date
+
+
+###############################################################
+#Spousal Consent
+
+LOANPACKAGE_SPOUSAL_CONSENT_TITLE=CONSENT OF SPOUSE
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_0_TITLE=Please check with your plan administrator to determine whether spousal consent is required.
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_0_TITLE_B=This form must be completed and signed by the appropriate parties in order for your plan to be processed.
+
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_0_PARTICIPANT_LABEL=Participant name: 
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_0_SSN_LABEL=Social Security number: 
+
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_1_TITLE=Section 1- Marital Status
+LOANPACKAGE_SPOUSAL_CONSENT_NOTE_LABEL=Note: 
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_1_NOTE_TEXT=If you are in the process of divorce, you are still considered married.
+LOANPACKAGE_SPOUSAL_CONSENT_OPTION_BOX=[ ]
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_1_SINGLE=I am not married
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_1_SINGLE_SKIP=Skip to Section 5
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_1_MARRIED=I am married 
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_1_MARRIED_SKIP=Continue to Section 2
+	
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_2_TITLE=Section 2- Spousal Information
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_2_MISSING_SPOUSE=My spouse cannot be located. 
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_2_MISSING_SPOUSE_SKIP=Skip to Section 5
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_2_SEPARATED=My spouse and I are legally separated and I have a court order to that effect. 
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_2_SEPARATED_SKIP=Skip to Section 5
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_2_NOTE_TEXT=A qualified domestic relations order may require you to obtain your spouse's consent. 
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_2_ABANDONED=My spouse has abandoned me and I have a court order to that effect. 
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_2_ABANDONED_SKIP=Skip to Section 5
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_2_CONSENT=My spouse consents to this loan. 
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_2_CONSENT_NOTE_1=If checked, your spouse must complete Section 3 and a Notary Public or
+
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_2_CONSENT_NOTE_2=your plan administrator must complete Section 4.
+
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_3_TITLE=Section 3- Spousal Consent
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_3_STATEMENTA= I understand that my spouse,
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_3_STATEMENTB= has applied for a loan for
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_3_STATEMENTC = under 
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_3_STATEMENT1_USA = (the "Plan") and that this loan is secured by my spouse's vested accrued benefit under the Plan.  I further understand that a failure to repay the loan may reduce the benefits otherwise available to my spouse and me under the Plan upon my spouse's retirement or other termination of employment.  I voluntarily consent to spouse's loan application according to the terms of the attached loan documents and granting of the security interest in my spouse's vested benefit under the Plan as provided under the Promissory Note and Irrecoverable Pledge and Assignment. I agree to release the Trustee, Plan Administrator and John Hancock Life Insurance Company (U.S.A.) from all liability for acting pursuant to this consent.
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_3_STATEMENT1_NY = (the "Plan") and that this loan is secured by my spouse's vested accrued benefit under the Plan. I further understand that a failure to repay the loan may reduce the benefits otherwise available to my spouse and me under the Plan upon my spouse's retirement or other termination of employment. I voluntarily consent to my spouse's loan application according to the terms of the attached loan documents and the granting of the security interest in my spouse's vested benefit under the Plan as provided under the Promissory Note and Irrevocable Pledge and Assignment. I agree to release the Trustee, Plan Administrator and John Hancock Life Insurance Company of New York from all liability for acting pursuant to this consent.
+
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_3_LINE_LABEL=________________________________________________________________________
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_3_SIGNED_LABEL=Spouse's Signature                                    							Date
+
+
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_TITLE=Section 4- Witness of Spousal Consent- to be completed by Notary Public or Plan Administrator
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_SIGNED_TEXT_1=State of ______________
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_SIGNED_TEXT_2=County of ______________
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_SIGNED_TEXT_3=On ______________
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_SIGNED_TEXT_4=before me, __________________________
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_SIGNED_TEXT_5= personally appeared __________________________
+		
+
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_KNOWN=personally known to me OR
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_PROVED_1=proved to me on the basis of satisfactory evidence to be the person(s) whose name(s) are
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_PROVED_2=subscribed to the within instrument and acknowledged to me that they executed the same in their
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_PROVED_3=authorized capacities, and that by their signatures on the instrument the persons or entity upon
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_PROVED_4=behalf of which the person(s) acted executed the instrument.
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_PROVED_SEAL=WITNESS my hand and official seal
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_4_PROVED_LINE_LABEL=____________________________________________________________________
+
+
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_5_TITLE=Section 5- Participant Certification
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_5_PREAMBLE=By signing below, I hereby certify that the above is true and correct.
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_5_LINE_LABEL=________________________________________________________________________
+LOANPACKAGE_SPOUSAL_CONSENT_SECTION_5_SIGNED_LABEL=Signature                                                      					Date
+	
+
+
+###############################################################
+#Payroll Deduction
+
+LOANPACKAGE_PAYROLL_DEDUCTION_AUTH_TITLE=PAYROLL DEDUCTION AUTHORIZATION
+LOANPACKAGE_PAYROLL_DEDUCTION_AUTH_TEXT_1=I, 
+LOANPACKAGE_PAYROLL_DEDUCTION_AUTH_TEXT_2=, hereby authorize 
+LOANPACKAGE_PAYROLL_DEDUCTION_AUTH_TEXT_3= to deduct from my earned wages the amount of 
+LOANPACKAGE_PAYROLL_DEDUCTION_AUTH_TEXT_4= per pay period beginning with a pay date of 
+LOANPACKAGE_PAYROLL_DEDUCTION_AUTH_TEXT_5= and continuing until all principal and interest due is paid on my loan from 
+LOANPACKAGE_PAYROLL_DEDUCTION_AUTH_SIGNATURE_EMPLOYEE_LABEL=Signature of Employee
+LOANPACKAGE_PAYROLL_DEDUCTION_AUTH_SIGNATURE_DATE_LABEL=Date
+
+LOANPACKAGE_AMORT_SCHEDULE_DISCLAIMER_TEXT=This amortization schedule assumes that each time period between payments is equal. However, actual interest accrual may vary and values shown have been rounded to the nearest cent.

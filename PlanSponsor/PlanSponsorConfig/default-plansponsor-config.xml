@@ -1,0 +1,17 @@
+<!-- 
+  This default-plansponsor-config.xml file is used to load the configuration settings at
+  runtime by putting the settings in this file and putting the file in the classpath. The
+  first file found with a name matching the configuration (config-factory.xml) in the 
+  classpath will be loaded.
+-->
+<config>
+  <!-- 
+    Each node level is part of the 'dotted' notation in the key name.
+    i.e. The 'ldap.context.factory' value is 'com.sun.jndi.ldap.LdapCtxFactory' from:
+    <ldap>
+    <context>
+    <factory>com.sun.jndi.ldap.LdapCtxFactory</factory>
+    </context>
+    </ldap>
+  -->
+</config>

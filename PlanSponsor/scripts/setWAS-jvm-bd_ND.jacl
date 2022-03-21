@@ -1,0 +1,23 @@
+# ==============================================================================
+# WAS script to set the JVM argument for BD server in WAS
+#
+# ==============================================================================
+
+set serverName [lindex $argv 0]
+set hostName [lindex $argv 1]
+
+set server 		[$AdminConfig getid /Server:$serverName/]
+set jvm			[$AdminConfig list JavaVirtualMachine $server]
+#puts "jvm configure id is $jvm"
+
+set currentVal [$AdminConfig show $jvm]
+#puts $currentVal
+
+set bdPort 9086
+set pswBootPort 9810
+set newArg "-Djndi.name.viewFundsDataSource=jdbc/customerService -Dcom.ibm.ws.classloader.J2EEApplicationMode=true -Dlog4j.configuration=file:///apps/BrokerDealer/properties/log4j.properties -Dbrowse.service.host.name=$hostName -Dbrowse.service.port=$pswBootPort -Dstandardreports.hostlocation.server.name=localhost -Dstandardreports.hostlocation.server.port=$bdPort -Dstandardreports.hostlocation.context.path=/StandardReports -Dstandardreports.hostlocation.scheme=http"
+puts $newArg
+
+$AdminConfig modify $jvm [list [list genericJvmArguments $newArg]]
+
+$AdminConfig save

@@ -1,0 +1,52 @@
+.globehead1 {
+	font-family: verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	padding-bottom: 10px;
+	padding-top: 0px;
+	color: #999999;
+	font-weight: normal;
+} 
+.globehead2 {
+	font-family: verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight:normal
+} 
+.globecolor1 {
+	font-family: verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+} 
+.globecolor2 {
+	font-family: verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+} 
+.globeneg {
+	color:#900
+} 
+.globepos {
+	color:#390
+} 
+.globesmall {
+	font-size:8pt
+} 
+.globetable {
+	width:100%;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+} 
+.globesymbol_link:link {
+	color:#036
+} 
+.globesymbol_link:visited {
+	color:#036
+}
+body {
+	background-color: #f5f6f1;
+	font-weight: normal;
+}
+b {
+	font-weight: normal;
+}

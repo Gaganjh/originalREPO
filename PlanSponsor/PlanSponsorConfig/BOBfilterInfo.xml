@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<bean abstract="true" name="commonFilter" class="com.manulife.pension.platform.web.util.LabelInfoBean"/>
+	 
+	<bean name="allFilters" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBFilterStore">
+		<property name="filtersApplicableToTab">
+			<map>
+				<entry key="activeTab">
+ 					<bean name="filterList" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBFilterMap">
+						<property name="applicableAdvFilters">
+							<map>
+								<entry key="contractName">
+									<bean name="contractName" parent="commonFilter" p:id="contractName" p:title="Contract Name" p:enabled="true"/>																
+								</entry>
+								<entry key="contractNumber">
+									<bean name="contractNumber" parent="commonFilter" p:id="contractNumber" p:title="Contract Number" p:enabled="true"/>																
+								</entry>
+								<entry key="contractState">
+									<bean name="contractState" parent="commonFilter" p:id="contractState" p:title="Contract State" p:enabled="true"/>																
+								</entry>
+								<entry key="assetsRangeFrom">
+									<bean name="assetsRangeFrom" parent="commonFilter" p:id="assetsRangeFrom" p:title="Total Assets From" p:enabled="true"/>																
+								</entry>
+								<entry key="assetsRangeTo">
+									<bean name="assetsRangeTo" parent="commonFilter" p:id="assetsRangeTo" p:title="To" p:enabled="true"/>																
+								</entry>
+								<entry key="financialRepName">
+									<bean name="financialRepName" parent="commonFilter" p:id="financialRepName" p:title="Financial Rep Name" p:enabled="true"/>																
+								</entry>
+								<entry key="firmName">
+									<bean name="firmName" parent="commonFilter" p:id="firmName" p:title="Firm Name" p:enabled="true"/>																
+								</entry>
+								<entry key="productType">
+									<bean name="productType" parent="commonFilter" p:id="productType" p:title="Product Type" p:enabled="true"/>																
+								</entry>
+								<entry key="usOrNy">
+									<bean name="usOrNy" parent="commonFilter" p:id="usOrNy" p:title="US / NY" p:enabled="true"/>																
+								</entry>
+								<entry key="class">
+									<bean name="class" parent="commonFilter" p:id="class" p:title="Class" p:enabled="true"/>																
+								</entry>
+								<entry key="rvpName">
+									<bean name="rvpName" parent="commonFilter" p:id="rvpName" p:title="RVP Name" p:enabled="true"/>																
+								</entry>
+								<entry key="salesRegion">
+									<bean name="salesRegion" parent="commonFilter" p:id="salesRegion" p:title="Sales Region" p:enabled="false"/>																
+								</entry>
+								<entry key="salesDivision">
+									<bean name="salesDivision" parent="commonFilter" p:id="salesDivision" p:title="Sales Division" p:enabled="false"/>																
+								</entry>
+								<entry key="csf">
+									<bean name="csf" parent="commonFilter" p:id="csf" p:title="Contract Service Features" p:enabled="true"/>																
+								</entry>
+							</map>
+						</property>
+						<property name="applicableQuickFilters">
+							<map>
+								<entry key="blankCode">
+									<bean name="blank" parent="commonFilter" p:id="blankCode" p:title="" p:enabled="true"/>																
+								</entry>
+								<entry key="contractName">
+									<bean name="contractName" parent="commonFilter" p:id="contractName" p:title="Contract Name" p:enabled="true"/>																
+								</entry>
+								<entry key="contractNumber">
+									<bean name="contractNumber" parent="commonFilter" p:id="contractNumber" p:title="Contract Number" p:enabled="true"/>																
+								</entry>
+								<entry key="rvpName">
+									<bean name="rvpName" parent="commonFilter" p:id="rvpName" p:title="RVP Name" p:enabled="true"/>																
+								</entry>
+								<entry key="firmName">
+									<bean name="firmName" parent="commonFilter" p:id="firmName" p:title="Firm Name" p:enabled="true"/>																
+								</entry>
+								<entry key="productType">
+									<bean name="productType" parent="commonFilter" p:id="productType" p:title="Product Type" p:enabled="true"/>																
+								</entry>
+								<entry key="usOrNy">
+									<bean name="usOrNy" parent="commonFilter" p:id="usOrNy" p:title="US / NY" p:enabled="true"/>																
+								</entry>
+								<entry key="class">
+									<bean name="class" parent="commonFilter" p:id="class" p:title="Class" p:enabled="true"/>																
+								</entry>
+							</map>
+						</property>
+					</bean> 
+				</entry>
+				<entry key="outstandingProposalsTab">
+ 					<bean name="filterList" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBFilterMap">
+						<property name="applicableAdvFilters">
+							<map>
+								<entry key="contractName">
+									<bean name="contractName" parent="commonFilter" p:id="contractName" p:title="Contract Name" p:enabled="true"/>																
+								</entry>
+								<entry key="contractNumber">
+									<bean name="contractNumber" parent="commonFilter" p:id="contractNumber" p:title="Contract Number" p:enabled="false"/>																
+								</entry>
+								<entry key="contractState">
+									<bean name="contractState" parent="commonFilter" p:id="contractState" p:title="Contract State" p:enabled="false"/>																
+								</entry>
+								<entry key="assetsRangeFrom">
+									<bean name="assetsRangeFrom" parent="commonFilter" p:id="assetsRangeFrom" p:title="Total Assets From" p:enabled="false"/>																
+								</entry>
+								<entry key="assetsRangeTo">
+									<bean name="assetsRangeTo" parent="commonFilter" p:id="assetsRangeTo" p:title="To" p:enabled="false"/>																
+								</entry>
+								<entry key="financialRepName">
+									<bean name="financialRepName" parent="commonFilter" p:id="financialRepName" p:title="Financial Rep Name" p:enabled="true"/>																
+								</entry>
+								<entry key="firmName">
+									<bean name="firmName" parent="commonFilter" p:id="firmName" p:title="Firm Name" p:enabled="true"/>																
+								</entry>
+								<entry key="productType">
+									<bean name="productType" parent="commonFilter" p:id="productType" p:title="Product Type" p:enabled="true"/>																
+								</entry>
+								<entry key="usOrNy">
+									<bean name="usOrNy" parent="commonFilter" p:id="usOrNy" p:title="US / NY" p:enabled="true"/>																
+								</entry>
+								<entry key="class">
+									<bean name="class" parent="commonFilter" p:id="class" p:title="Class" p:enabled="false"/>																
+								</entry>
+								<entry key="rvpName">
+									<bean name="rvpName" parent="commonFilter" p:id="rvpName" p:title="RVP Name" p:enabled="true"/>																
+								</entry>
+								<entry key="salesRegion">
+									<bean name="salesRegion" parent="commonFilter" p:id="salesRegion" p:title="Sales Region" p:enabled="false"/>																
+								</entry>
+								<entry key="salesDivision">
+									<bean name="salesDivision" parent="commonFilter" p:id="salesDivision" p:title="Sales Division" p:enabled="false"/>																
+								</entry>
+								<entry key="csf">
+									<bean name="csf" parent="commonFilter" p:id="csf" p:title="Contract Service Features" p:enabled="false"/>																
+								</entry>
+							</map>
+						</property>
+						<property name="applicableQuickFilters">
+							<map>
+								<entry key="blankCode">
+									<bean name="blank" parent="commonFilter" p:id="blankCode" p:title="" p:enabled="true"/>																
+								</entry>
+								<entry key="contractName">
+									<bean name="contractName" parent="commonFilter" p:id="contractName" p:title="Contract Name" p:enabled="true"/>																
+								</entry>								
+								<entry key="rvpName">
+									<bean name="rvpName" parent="commonFilter" p:id="rvpName" p:title="RVP Name" p:enabled="true"/>																
+								</entry>
+								<entry key="firmName">
+									<bean name="firmName" parent="commonFilter" p:id="firmName" p:title="Firm Name" p:enabled="true"/>																
+								</entry>
+								<entry key="productType">
+									<bean name="productType" parent="commonFilter" p:id="productType" p:title="Product Type" p:enabled="true"/>																
+								</entry>
+								<entry key="usOrNy">
+									<bean name="usOrNy" parent="commonFilter" p:id="usOrNy" p:title="US / NY" p:enabled="true"/>																
+								</entry>
+								<entry key="class">
+									<bean name="class" parent="commonFilter" p:id="class" p:title="Class" p:enabled="false"/>																
+								</entry>
+							</map>
+						</property>
+					</bean> 
+				</entry>
+				<entry key="pendingTab">
+ 					<bean name="filterList" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBFilterMap">
+						<property name="applicableAdvFilters">
+							<map>
+								<entry key="contractName">
+									<bean name="contractName" parent="commonFilter" p:id="contractName" p:title="Contract Name" p:enabled="true"/>																
+								</entry>
+								<entry key="contractNumber">
+									<bean name="contractNumber" parent="commonFilter" p:id="contractNumber" p:title="Contract Number" p:enabled="true"/>																
+								</entry>
+								<entry key="contractState">
+									<bean name="contractState" parent="commonFilter" p:id="contractState" p:title="Contract State" p:enabled="true"/>																
+								</entry>
+								<entry key="assetsRangeFrom">
+									<bean name="assetsRangeFrom" parent="commonFilter" p:id="assetsRangeFrom" p:title="Total Assets From" p:enabled="true"/>																
+								</entry>
+								<entry key="assetsRangeTo">
+									<bean name="assetsRangeTo" parent="commonFilter" p:id="assetsRangeTo" p:title="To" p:enabled="true"/>																
+								</entry>
+								<entry key="financialRepName">
+									<bean name="financialRepName" parent="commonFilter" p:id="financialRepName" p:title="Financial Rep Name" p:enabled="true"/>																
+								</entry>
+								<entry key="firmName">
+									<bean name="firmName" parent="commonFilter" p:id="firmName" p:title="Firm Name" p:enabled="true"/>																
+								</entry>
+								<entry key="productType">
+									<bean name="productType" parent="commonFilter" p:id="productType" p:title="Product Type" p:enabled="true"/>																
+								</entry>
+								<entry key="usOrNy">
+									<bean name="usOrNy" parent="commonFilter" p:id="usOrNy" p:title="US / NY" p:enabled="true"/>																
+								</entry>
+								<entry key="class">
+									<bean name="class" parent="commonFilter" p:id="class" p:title="Class" p:enabled="true"/>																
+								</entry>
+								<entry key="rvpName">
+									<bean name="rvpName" parent="commonFilter" p:id="rvpName" p:title="RVP Name" p:enabled="true"/>																
+								</entry>
+								<entry key="salesRegion">
+									<bean name="salesRegion" parent="commonFilter" p:id="salesRegion" p:title="Sales Region" p:enabled="false"/>																
+								</entry>
+								<entry key="salesDivision">
+									<bean name="salesDivision" parent="commonFilter" p:id="salesDivision" p:title="Sales Division" p:enabled="false"/>																
+								</entry>
+								<entry key="csf">
+									<bean name="csf" parent="commonFilter" p:id="csf" p:title="Contract Service Features" p:enabled="false"/>																
+								</entry>
+							</map>
+						</property>
+						<property name="applicableQuickFilters">
+							<map>
+								<entry key="blankCode">
+									<bean name="blank" parent="commonFilter" p:id="blankCode" p:title="" p:enabled="true"/>																
+								</entry>
+								<entry key="contractName">
+									<bean name="contractName" parent="commonFilter" p:id="contractName" p:title="Contract Name" p:enabled="true"/>																
+								</entry>
+								<entry key="contractNumber">
+									<bean name="contractNumber" parent="commonFilter" p:id="contractNumber" p:title="Contract Number" p:enabled="true"/>																
+								</entry>
+								<entry key="rvpName">
+									<bean name="rvpName" parent="commonFilter" p:id="rvpName" p:title="RVP Name" p:enabled="true"/>																
+								</entry>
+								<entry key="firmName">
+									<bean name="firmName" parent="commonFilter" p:id="firmName" p:title="Firm Name" p:enabled="true"/>																
+								</entry>
+								<entry key="productType">
+									<bean name="productType" parent="commonFilter" p:id="productType" p:title="Product Type" p:enabled="true"/>																
+								</entry>
+								<entry key="usOrNy">
+									<bean name="usOrNy" parent="commonFilter" p:id="usOrNy" p:title="US / NY" p:enabled="true"/>																
+								</entry>
+								<entry key="class">
+									<bean name="class" parent="commonFilter" p:id="class" p:title="Class" p:enabled="true"/>																
+								</entry>
+							</map>
+						</property>
+					</bean> 
+				</entry>
+				<entry key="discontinuedTab">
+ 					<bean name="filterList" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBFilterMap">
+						<property name="applicableAdvFilters">
+							<map>
+								<entry key="contractName">
+									<bean name="contractName" parent="commonFilter" p:id="contractName" p:title="Contract Name" p:enabled="true"/>																
+								</entry>
+								<entry key="contractNumber">
+									<bean name="contractNumber" parent="commonFilter" p:id="contractNumber" p:title="Contract Number" p:enabled="true"/>																
+								</entry>
+								<entry key="contractState">
+									<bean name="contractState" parent="commonFilter" p:id="contractState" p:title="Contract State" p:enabled="true"/>																
+								</entry>
+								<entry key="assetsRangeFrom">
+									<bean name="assetsRangeFrom" parent="commonFilter" p:id="assetsRangeFrom" p:title="Total Assets From" p:enabled="false"/>																
+								</entry>
+								<entry key="assetsRangeTo">
+									<bean name="assetsRangeTo" parent="commonFilter" p:id="assetsRangeTo" p:title="To" p:enabled="false"/>																
+								</entry>
+								<entry key="financialRepName">
+									<bean name="financialRepName" parent="commonFilter" p:id="financialRepName" p:title="Financial Rep Name" p:enabled="true"/>																
+								</entry>
+								<entry key="firmName">
+									<bean name="firmName" parent="commonFilter" p:id="firmName" p:title="Firm Name" p:enabled="true"/>																
+								</entry>
+								<entry key="productType">
+									<bean name="productType" parent="commonFilter" p:id="productType" p:title="Product Type" p:enabled="true"/>																
+								</entry>
+								<entry key="usOrNy">
+									<bean name="usOrNy" parent="commonFilter" p:id="usOrNy" p:title="US / NY" p:enabled="true"/>																
+								</entry>
+								<entry key="class">
+									<bean name="class" parent="commonFilter" p:id="class" p:title="Class" p:enabled="true"/>																
+								</entry>
+								<entry key="rvpName">
+									<bean name="rvpName" parent="commonFilter" p:id="rvpName" p:title="RVP Name" p:enabled="true"/>																
+								</entry>
+								<entry key="salesRegion">
+									<bean name="salesRegion" parent="commonFilter" p:id="salesRegion" p:title="Sales Region" p:enabled="false"/>																
+								</entry>
+								<entry key="salesDivision">
+									<bean name="salesDivision" parent="commonFilter" p:id="salesDivision" p:title="Sales Division" p:enabled="false"/>																
+								</entry>
+								<entry key="csf">
+									<bean name="csf" parent="commonFilter" p:id="csf" p:title="Contract Service Features" p:enabled="false"/>																
+								</entry>
+							</map>
+						</property>
+						<property name="applicableQuickFilters">
+							<map>
+								<entry key="blankCode">
+									<bean name="blank" parent="commonFilter" p:id="blankCode" p:title="" p:enabled="true"/>																
+								</entry>
+								<entry key="contractName">
+									<bean name="contractName" parent="commonFilter" p:id="contractName" p:title="Contract Name" p:enabled="true"/>																
+								</entry>
+								<entry key="contractNumber">
+									<bean name="contractNumber" parent="commonFilter" p:id="contractNumber" p:title="Contract Number" p:enabled="true"/>																
+								</entry>
+								<entry key="rvpName">
+									<bean name="rvpName" parent="commonFilter" p:id="rvpName" p:title="RVP Name" p:enabled="true"/>																
+								</entry>
+								<entry key="firmName">
+									<bean name="firmName" parent="commonFilter" p:id="firmName" p:title="Firm Name" p:enabled="true"/>																
+								</entry>
+								<entry key="productType">
+									<bean name="productType" parent="commonFilter" p:id="productType" p:title="Product Type" p:enabled="true"/>																
+								</entry>
+								<entry key="usOrNy">
+									<bean name="usOrNy" parent="commonFilter" p:id="usOrNy" p:title="US / NY" p:enabled="true"/>																
+								</entry>
+								<entry key="class">
+									<bean name="class" parent="commonFilter" p:id="class" p:title="Class" p:enabled="true"/>																
+								</entry>
+							</map>
+						</property>
+					</bean> 
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

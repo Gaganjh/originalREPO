@@ -1,0 +1,115 @@
+<!-- ======================================================================= -->
+<!--                         Generic File Cleanup                            -->
+<!-- ======================================================================= -->
+
+<project name="GenericFileCleanup" basedir="./" default="GenericFileCleanup">
+
+	<property name="PATH" value="undefined"/>
+	<property name="ARCHIVE_DIR_PATH" value="undefined"/>
+
+	<!--Gets the 3 month old Timestamp  -->
+	<tstamp>
+		<format property="three-months-old" pattern="MM/dd/yyyy hh:mm a" offset="-3" unit="month"/>
+	</tstamp>
+	<!--Gets the 2 month old Timestamp  -->
+	<tstamp>
+		<format property="two-months-old" pattern="MM/dd/yyyy hh:mm a" offset="-2" unit="month"/>
+	</tstamp>
+
+	<!--Cleaning the files older than 'three-months-old' timestamp value -->
+	<!--This target expects the directory to be cleaned as a parameter while running this xml file-->
+	<target name="GenericFileCleanup">
+		<delete verbose="true" failonerror="false" includeemptydirs="true">
+			<fileset dir="${PATH}">
+				<date datetime="${three-months-old}" when="before"/>
+			</fileset>
+		</delete>
+	</target>
+
+	<!--Cleaning the files older than 'three-months-old' timestamp value in the server mlisusgperp2-->
+	<target name = "MLISUSGPERP2">
+		<delete verbose="true" failonerror="false" includeemptydirs="true">
+
+			<fileset dir="\\MLISUSGPERP2\appLogs\mrl\logs\archive">
+				<date datetime="${three-months-old}" when="before"/>
+			</fileset>
+
+			<fileset dir="${ARCHIVE_DIR_PATH}">
+				<date datetime="${three-months-old}" when="before"/>
+			</fileset>
+
+		</delete>
+	</target>
+
+	<!--Cleaning the files older than 'three-months-old' timestamp value in the server mlisusgpstp2-->
+	<target name = "MLISUSGPSTP2">
+		<delete verbose="true" failonerror="false" includeemptydirs="true">
+
+			<fileset dir="\\MLISUSGPSTP2\appLogs\mrl\logs\archive">
+				<date datetime="${three-months-old}" when="before"/>
+			</fileset>
+
+			<fileset dir="${ARCHIVE_DIR_PATH}">
+				<date datetime="${three-months-old}" when="before"/>
+			</fileset>
+
+		</delete>
+	</target>
+
+	<!--Cleaning the files older than 'three-months-old' timestamp value in the server mlisusgpprod1-->
+	<target name = "MLISUSGPPROD1">
+		<delete verbose="true" failonerror="false" includeemptydirs="true">
+
+			<fileset dir="\\MLISUSGPPROD1\EcommData\PeerSync\Logs\Admin">
+				<date datetime="${three-months-old}" when="before"/>
+			</fileset>
+
+			<fileset dir="${ARCHIVE_DIR_PATH}">
+				<date datetime="${three-months-old}" when="before"/>
+			</fileset>
+
+		</delete>
+	</target>
+
+	<!--File clean ups run from server mlisusgpprod2 -->
+	<target name = "MLISUSGPPROD2">
+		<delete verbose="true" failonerror="false" includeemptydirs="true">
+            <!--Empty folders will be deleted-->
+            
+            <!--Cleaning files older than 'three-months-old' timestamp value from the PeerSync folders -->
+			<fileset dir="\\MLISUSGPPROD2\EcommData\PeerSync\Logs\Admin">
+				<date datetime="${three-months-old}" when="before"/>
+			</fileset>
+
+		</delete>
+        
+       	<delete verbose="true" failonerror="false" includeemptydirs="false">
+            <!--Empty folders will not be deleted-->
+            
+            <!--Cleaning files older than 'two-months-old' timestamp value from the AWDSubmissions folders -->
+			<fileset dir="\\MLISUSGPPROD2\EcommData\AWDSubmissions\Web_EN_Import">
+				<date datetime="${two-months-old}" when="before"/>
+			</fileset>
+			<fileset dir="\\MLISUSGPPROD2\EcommData\AWDSubmissions\Web_EN_Import\Archive">
+				<date datetime="${two-months-old}" when="before"/>
+			</fileset>
+
+            <!--Cleaning files older than 'two-months-old' timestamp value from the AWDSubmissions folders on ENTSSERVER60 -->
+			<fileset dir="\\ENTSSERVER60\AWDSubmissions\Web_EN_Reports">
+				<date datetime="${two-months-old}" when="before"/>
+			</fileset>
+			<fileset dir="\\ENTSSERVER60\AWDSubmissions\Web_EN_Reports\Archive">
+				<date datetime="${two-months-old}" when="before"/>
+			</fileset>
+
+            <!--Cleaning files older than 'three-months-old' timestamp value from the log archive folder -->
+   			<fileset dir="${ARCHIVE_DIR_PATH}">
+				<date datetime="${three-months-old}" when="before"/>
+			</fileset>
+
+		</delete>
+
+	</target>
+
+
+</project>

@@ -1,0 +1,20 @@
+# ==============================================================================
+# WAS script to create the JDBC providers based on the parameters provided
+# $ID:$
+# ==============================================================================
+
+set cname [lindex $argv 0]
+set nname [lindex $argv 1]
+set sname [lindex $argv 2]
+
+puts "serverid [$AdminConfig getid /Cell:$cname/Node:$nname/Server:$sname/] "
+set serverid [$AdminConfig getid /Cell:$cname/Node:$nname/]
+
+puts "serverid $serverid"
+puts "cellname $cname, nodename $nname, sname $sname"
+puts "JDBCDriver [$AdminConfig list JDBCProvider]"
+
+$AdminConfig create JDBCProvider $serverid { {classpath "${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc.jar;${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cu.jar;${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cisuz.jar"} {description "Universal DB2 XA JDBC Provider"} {implementationClassName com.ibm.db2.jcc.DB2XADataSource} {name "DB2_JDBC_Driver_XA_UV"} {nativepath {${DB2UNIVERSAL_JDBC_DRIVER_NATIVEPATH}}} {xa true} } 
+$AdminConfig create JDBCProvider $serverid { {classpath "${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc.jar;${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cu.jar;${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cisuz.jar"} {description "Universal DB2 JDBC Provider"} {implementationClassName com.ibm.db2.jcc.DB2ConnectionPoolDataSource} {name "DB2_JDBC_Driver_UV"} {nativepath {${DB2UNIVERSAL_JDBC_DRIVER_NATIVEPATH}}} {xa false} } 
+
+$AdminConfig save

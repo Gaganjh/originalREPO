@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Config RefreshInterval="7200" ResponseChunkSize="256">
+   <Log LogLevel="Warn" Name="d:\webSphere9\Plugins\logs\LiveWebServer\http_plugin.log"/>
+   <Property Name="ESIEnable" Value="false"/>
+   <VirtualHostGroup Name="EZkLiveUSA_host">
+      <VirtualHost Name="ezusperf1.test-qa.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="EZkLiveNY_host">
+      <VirtualHost Name="eznyperf1.test-qa02.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWLiveUSA_host">
+      <VirtualHost Name="psusperf1.test-qa.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWLiveNY_host">
+      <VirtualHost Name="psnyperf1.test-qa02.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="BDLive_host">
+      <VirtualHost Name="bdperf1.test-qa.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="OnlineOrder_host">
+      <VirtualHost Name="oosperf1.manulife.com:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="SupportCentral_host">
+      <VirtualHost Name="scperf1.test-qa.net:443"/>
+   </VirtualHostGroup>
+   <ServerCluster Name="EZkLiveCluster" PostBufferSize="256">
+      <Server CloneID="1731oksta" LoadBalanceWeight="2" Name="EZkLiveServer1">
+         <Transport Hostname="JHRPSLPERF1" Port="9089" Protocol="http"/>
+      </Server>
+      <Server CloneID="1731okue2" LoadBalanceWeight="2" Name="EZkLiveServer2">
+         <Transport Hostname="JHRPSLPERF1" Port="9090" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="PSWLiveCluster" PostBufferSize="256">
+      <Server CloneID="1731oon0k" LoadBalanceWeight="2" Name="PSWLiveServer1">
+         <Transport Hostname="JHRPSLPERF1" Port="9092" Protocol="http"/>
+      </Server>
+      <Server CloneID="1731oool9" LoadBalanceWeight="2" Name="PSWLiveServer2">
+         <Transport Hostname="JHRPSLPERF1" Port="9093" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="OnlineOrderLiveServer" PostBufferSize="256">
+      <Server Name="OnlineOrderLiveServer">
+         <Transport Hostname="JHRPSLPERF1" Port="9087" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="SCLiveCluster" PostBufferSize="256">
+      <Server CloneID="1731opvic" LoadBalanceWeight="2" Name="SCLiveServer1">
+         <Transport Hostname="JHRPSLPERF1" Port="9094" Protocol="http"/>
+      </Server>
+      <Server CloneID="1731oq161" LoadBalanceWeight="2" Name="SCLiveServer2">
+         <Transport Hostname="JHRPSLPERF1" Port="9095" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <UriGroup Name="SCLiveCluster_URIs">
+      <Uri Name="/*.action"/>
+   </UriGroup>
+   <UriGroup Name="PSWLiveUSA_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="*.jsp"/>
+      <Uri Name="/unallocated/*"/>
+   </UriGroup>
+   <UriGroup Name="PSWLiveNY_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="BrokerDealer_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/activation/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="/PingServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="EZk_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/investments/*"/>
+      <Uri Name="/money101/*"/>
+      <Uri Name="/tools/*"/>
+      <Uri Name="/ServiceServlet"/>
+      <Uri Name="/webservice/RequestForwarder/*"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="OnlineOrder_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/error.jsp"/>
+   </UriGroup>
+   <Route ServerCluster="EZkLiveCluster" UriGroup="EZk_URIs" VirtualHostGroup="EZkLiveUSA_host"/>
+   <Route ServerCluster="EZkLiveCluster" UriGroup="EZk_URIs" VirtualHostGroup="EZkLiveNY_host"/>
+   <Route ServerCluster="PSWLiveCluster" UriGroup="PSWLiveUSA_URIs" VirtualHostGroup="PSWLiveUSA_host"/>
+   <Route ServerCluster="PSWLiveCluster" UriGroup="PSWLiveNY_URIs" VirtualHostGroup="PSWLiveNY_host"/>
+   <Route ServerCluster="PSWLiveCluster" UriGroup="BrokerDealer_URIs" VirtualHostGroup="BDLive_host"/>
+   <Route ServerCluster="OnlineOrderLiveServer" UriGroup="OnlineOrder_URIs" VirtualHostGroup="OnlineOrder_host"/>
+   <Route ServerCluster="SCLiveCluster" UriGroup="SCLiveCluster_URIs" VirtualHostGroup="SupportCentral_host"/>
+</Config>

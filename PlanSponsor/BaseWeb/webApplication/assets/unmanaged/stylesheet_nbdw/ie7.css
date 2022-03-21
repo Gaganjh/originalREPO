@@ -1,0 +1,166 @@
+/*******************************************************************************
+*   ie7.css
+*   Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*   Global styles used throughout the John Hancock Broker Dealer website.
+********************************************************************************/
+
+
+/*******************************************************************************
+* HTML 
+********************************************************************************/
+
+body{
+    font-size:100%;
+}
+
+/*******************************************************************************
+* GENERAL LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+#page_primary_nav ul,
+.page_tertiary_nav ul {
+    height:1%;
+}
+
+.page_section_subheader .button_header input,   
+#site_header .button_search input{
+    margin-left:-12px;
+}
+
+.button_login input{
+    padding-bottom:0px;
+}
+
+.button_header input,
+.button_search input {
+    padding: 1px 8px 2px 2px;
+}
+
+.message {
+    padding-top:10px;
+}
+    .message_error,
+    .message_warning,
+    .message_info{
+        background-position: 10px 12px;
+    }
+
+
+/*******************************************************************************
+* CONTRACT FUNDS LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+input#closed_funds_selector, 
+input#nml_selector{
+        margin-top:2px;
+    }
+    
+
+
+/*******************************************************************************
+* PUBLIC HOME LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+#quick_search .button_search input {
+    /*margin-left:-8px;*/
+}
+
+#account_login p,
+#account_login input {
+    margin-bottom:5px;
+}
+
+/*******************************************************************************
+* SECURE HOME LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+
+
+div#fund_search div.button_search{
+    margin-right:28px;
+}
+    
+div#fund_search #category_wrapper input{
+    margin-top:0px;
+}
+
+/*******************************************************************************
+* SEARCH RESULTS LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+#site_search_results {
+    margin-left: 12px;
+}
+
+    #site_search_results .button_search input {
+        margin-left: -9px;
+        padding-bottom:1px;
+        padding-top:1px;
+    
+    }   
+    
+    
+
+/*******************************************************************************
+* USER MANAGEMENT - EDIT USER LAYOUT ADJUSTMENTS
+********************************************************************************/
+
+#user_management div.page_section form p {
+    width:160px;
+}
+
+#user_management div.page_section form select {
+    width:186px;
+}
+
+#user_management div.page_section form input {
+    width:180px;
+}
+
+#user_management input#phone_input{
+    width: 95px;
+}
+
+#user_management div.page_section input,
+#user_management div.page_section select {
+    margin-bottom: 0.6em;
+}
+
+#user_management input#phone_ext_input {
+    width: 39px;
+}
+
+#user_management div#phone_ext {
+    height: 0px;
+    padding-left: 0px;
+}
+
+#user_management div#pref_contact_radio {
+    float: left;
+    width: 280px;
+}
+
+#user_management div#pref_contact_radio input {
+    padding: 0;
+    width: 20px;
+}
+#user_management div#pref_contact_radio label {
+    padding-top: 1px;
+}
+
+.btn-change-contract {
+    padding-bottom:0px;
+}
+
+/*
+Added the below entries so that the sort icon gets displayed for center-aligned / right-aligned columns.
+IE has a problem that it does not show the css background-image when the link wraps. 
+*/
+.report_table_content a.sort_descending {
+	display:inline-block;
+}
+
+.report_table_content a.sort_ascending {
+	display:inline-block;
+}

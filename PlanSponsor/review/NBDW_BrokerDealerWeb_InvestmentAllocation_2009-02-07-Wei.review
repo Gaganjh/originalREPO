@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="NBDW_BrokerDealerWeb_InvestmentAllocation_2009-02-07">
+  <ReviewIssue id="FQWK6KT1">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-07 :: 22:56:59:029 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-25 :: 12:31:53:453 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File></File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>InvestmentAllocationReportLinkAction and investmentAllocationReportLin.jsp should be removed?</Summary>
+    <Description>Are these files not used any more?  It looks to me they were used for testing but are not used any more&#13;
+&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision>As discussed in mail these two files are still used in testing for the class conversion details page.</Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQWKBIR8">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-07 :: 23:00:49:652 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-25 :: 12:29:28:846 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File></File>
+    <Type>item.label.unset</Type>
+    <Severity>item.severity.label.critical</Severity>
+    <Summary>InvestmentAllocationPageForm.getContractNumber</Summary>
+    <Description>return contractNumber == null ? "" : contractNumber.trim();&#13;
+&#13;
+use  StringUtils.trimToEmpty(contractNumber) instead&#13;
+&#13;
+Further, the trimToEmpty could be used in the setter and initialize the contractNum = ""</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQXQHBHL">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-08 :: 18:41:04:041 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-25 :: 12:34:29:703 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File></File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>REPORT_BEAN set in session attribute</Summary>
+    <Description>Why does report set to Session?  Does it get clear properly?</Description>
+    <Annotation></Annotation>
+    <Revision>For sorting, print and download action the report is taken from session(without going to DAO). Same implementation in PSW version also.</Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQXQPXK7">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-08 :: 18:47:45:895 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-25 :: 12:29:19:931 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File></File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>InvestmentAllocationReportAction.doValidate</Summary>
+    <Description>DEDUCT_THIRTEEN should be defined as static</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FR3LYJ41">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-12 :: 21:21:06:049 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-25 :: 12:29:55:358 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Wei</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File></File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>InvementAllocationPageForm</Summary>
+    <Description>remove commented out methods</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+</Review>

@@ -1,0 +1,65 @@
+<!-- 
+  The default-<service>-config.xml file allows the developer to put in any default
+  parameters that they need to set in the application. The application that uses this
+  service needs to configure the ConfigurationFactory to read this file (see the
+  config-factory.xml in PlanSponsorConfig for an example).
+-->
+<config>
+  <!-- 
+    Each node level is part of the 'dotted' notation in the key name.
+    i.e. The 'ldap.context.factory' value is 'com.sun.jndi.ldap.LdapCtxFactory' from:
+    <ldap>
+    <context>
+    <factory>com.sun.jndi.ldap.LdapCtxFactory</factory>
+    </context>
+    </ldap>
+  -->
+  <!-- Begin Withdrawal -->
+  <withdrawal>
+    <!-- Date Of Birth Limits -->
+    <dateOfBirth>
+      <minimumAge>15</minimumAge>
+      <maximumAge>150</maximumAge>
+    </dateOfBirth>
+    <!-- Withdrawal Statuses -->
+    <status>
+      <draft>14</draft>
+      <approved>W1</approved>
+      <deleted>W2</deleted>
+      <denied>W3</denied>
+      <expired>W4</expired>
+      <pending_approval>W5</pending_approval>
+      <pending_review>W6</pending_review>
+      <ready_for_entry>W7</ready_for_entry>
+    </status>
+    <expiry>
+      <defaultExpiryInterval>30</defaultExpiryInterval>
+      <maximumExpiryInterval>60</maximumExpiryInterval>
+    </expiry>
+    <activityHistory>
+      <enabled>true</enabled>
+    </activityHistory>
+  </withdrawal>
+  <!-- End Withdrawal -->
+  
+  <loan>
+    <aboutToExpireReminderDays>3</aboutToExpireReminderDays>
+    <requestedAmountOverAvailableAmountThreshold>1</requestedAmountOverAvailableAmountThreshold>
+    <pendingApolloLIThreshold>30</pendingApolloLIThreshold>
+    <completedApolloLIThreshold>4</completedApolloLIThreshold>
+    <expirationDateOffset>30</expirationDateOffset>
+    <expirationDateMinimumFutureDatedDays>0</expirationDateMinimumFutureDatedDays>
+    <expirationDateMaximumFutureDatedDays>60</expirationDateMaximumFutureDatedDays>
+    <payrollDateMinimumFutureDatedDays>5</payrollDateMinimumFutureDatedDays>
+    <estimatedLoanStartDateOffset>2</estimatedLoanStartDateOffset>
+    <estimatedLoanStartDateMaximumFutureDatedDays>60</estimatedLoanStartDateMaximumFutureDatedDays>
+    <loanPackageEstimatedLoanStartDateOffset>5</loanPackageEstimatedLoanStartDateOffset>
+    <loanPackageInavlidAfterThisManyDays>30</loanPackageInavlidAfterThisManyDays>
+    <loanCalculationScale>20</loanCalculationScale>
+    <loanInterestRateAdjustment>0.02</loanInterestRateAdjustment>
+    <numberOfLoansAllowed>3</numberOfLoansAllowed>
+    <calendarDaysForLoanProgressBox>30</calendarDaysForLoanProgressBox>
+    <giflDeselectedDate>9999-12-31</giflDeselectedDate>
+  </loan>
+  
+</config>

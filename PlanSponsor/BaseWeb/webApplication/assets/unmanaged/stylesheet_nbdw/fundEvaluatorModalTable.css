@@ -1,0 +1,265 @@
+BODY {
+    PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; FONT-STYLE: normal; FONT-VARIANT: normal
+}
+A.preiveFundsLink {
+    color:blue; TEXT-DECORATION: underline
+}
+
+A:hover {
+    TEXT-DECORATION: underline
+}
+A:active {
+    TEXT-DECORATION: underline
+}
+.clear_footer {
+    CLEAR: both
+}
+TD {
+    PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-WEIGHT: normal; FONT-SIZE: 0.68em; PADDING-BOTTOM: 0px; COLOR: #000; PADDING-TOP: 0px
+}
+TH {
+    PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-WEIGHT: normal; FONT-SIZE: 0.68em; PADDING-BOTTOM: 4px; COLOR: #000; PADDING-TOP: 4px; TEXT-ALIGN:center
+}
+TD.cur {
+    TEXT-ALIGN: right
+}
+TH.cur {
+    TEXT-ALIGN: right
+}
+TH.pct {
+    TEXT-ALIGN: right
+}
+TD.num {
+    TEXT-ALIGN: right
+}
+TH.name {
+    TEXT-ALIGN: left
+}
+TH.date {
+    TEXT-ALIGN: center
+}
+TD.val_num_cnt {
+    TEXT-ALIGN: center
+}
+TH.val_num_cnt {
+    TEXT-ALIGN: center
+}
+TH.val_str {
+    TEXT-ALIGN: center
+}
+#page_content .report_table .page_section_subheader {
+    MARGIN-BOTTOM: 0px
+}
+#page_content .report_table .page_section_subsubheader {
+    MARGIN-BOTTOM: 0px
+}
+.report_table {
+    WIDTH: 763px
+}
+.report_table_content {
+    FONT-SIZE: 16px; MARGIN: 0px; WIDTH: 763px; BORDER-BOTTOM: #cac8c4 1px solid; FONT-FAMILY: Verdana, Geneva, sans-serif; BORDER-COLLAPSE: collapse
+}
+.report_table_content .hover {
+    BACKGROUND-COLOR: #eceae3
+}
+.report_table_content .hovercell {
+    CURSOR: pointer; BACKGROUND-COLOR: #fff
+}
+.report_table_content TH {
+    PADDING-RIGHT: 8px; PADDING-LEFT: 8px; FONT-WEIGHT: normal; PADDING-BOTTOM: 6px; MARGIN: 0px; BORDER-LEFT: #cac8c4 1px solid; PADDING-TOP: 4px; BACKGROUND-COLOR: #fff; TEXT-ALIGN: left
+}
+.report_table_content TH:unknown {
+    BORDER-LEFT-STYLE: none
+}
+.report_table_content TH.right_align {
+    TEXT-ALIGN: right
+}
+.report_table_content TH.left_align {
+    TEXT-ALIGN: left
+}
+.report_table_content TH.sub {
+    BORDER-LEFT-STYLE: none
+}
+.report_table_content TH.sub:unknown {
+    BORDER-LEFT: #cac8c4 1px solid
+}
+.report_table TD.cur {
+    TEXT-ALIGN: right
+}
+.report_table TH.cur {
+    TEXT-ALIGN: right
+}
+.report_table TH.pct {
+    TEXT-ALIGN: right
+}
+.report_table TD.num {
+    TEXT-ALIGN: right
+}
+.report_table TH.name {
+    TEXT-ALIGN: left
+}
+.report_table TH.date {
+    TEXT-ALIGN: left
+}
+.report_table TD.val_num_cnt {
+    TEXT-ALIGN: left
+}
+.report_table TH.val_str {
+    TEXT-ALIGN: left
+}
+.report_table_content A {
+    COLOR: #000; TEXT-DECORATION: underline
+}
+.report_table_content A:hover {
+    COLOR: #000; TEXT-DECORATION: none; cursor: pointer
+}
+
+.report_table_content A.fundSheetLink{
+    COLOR: #0000EE; TEXT-DECORATION: none
+}
+.report_table_content A.fundSheetLink:hover {
+    COLOR: #0000EE; TEXT-DECORATION: none
+}
+
+.report_table_content A.sort_ascending {
+    PADDING-RIGHT: 0px; PADDING-LEFT: 8px; FONT-WEIGHT: bold; BACKGROUND: url(/assets/unmanaged/images/icons/icon_sort_ascending.gif) no-repeat left 2px; PADDING-BOTTOM: 0px; COLOR: #000; PADDING-TOP: 0px; TEXT-DECORATION: none
+}
+.report_table_content A.sort_descending {
+    PADDING-RIGHT: 0px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; BACKGROUND: url(/assets/unmanaged/images/icons/icon_sort_descending.gif) no-repeat left 2px; PADDING-BOTTOM: 0px; COLOR: #333333; PADDING-TOP: 0px; TEXT-DECORATION: none
+}
+.report_table_content A.sort_ascending:hover {
+    TEXT-DECORATION: underline
+}
+.report_table_content A.sort_descending:hover {
+    TEXT-DECORATION: underline
+}
+.report_table TR {
+    BORDER-TOP: #f0f1e6 1px solid
+}
+.report_table_content TD.noBorder {
+    BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none
+}
+.report_table TR.spec {
+    BACKGROUND-COLOR: #fafaf8
+}
+.report_table TD {
+    BORDER-RIGHT: #deded8 1px solid; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; BORDER-LEFT: #deded8 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM-STYLE: none
+}
+report_table TD.spec {
+    BORDER-LEFT-STYLE: none
+}
+.report_table TR TD.sub {
+    BORDER-LEFT: #cac8c4 1px solid
+}
+.report_table TR TD:unknown {
+    BORDER-LEFT: #deded8 1px solid
+}
+.report_table TD.zero {
+    PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.report_table TD.pct {
+    TEXT-ALIGN: right
+}
+.report_table TD.cur {
+    TEXT-ALIGN: right
+}
+.report_table TD.num {
+    TEXT-ALIGN: right
+}
+.report_table TD.date {
+    TEXT-ALIGN: left
+}
+.report_table TD.name {
+    TEXT-ALIGN: left
+}
+.report_table TD.val_str {
+    TEXT-ALIGN: left
+}
+.page_section_subsubheader {
+    BORDER-TOP: #fc0 4px solid; PADDING-LEFT: 15px; FONT-WEIGHT: normal; FONT-SIZE: 1.37em; COLOR: #fff; PADDING-TOP: 10px; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; HEIGHT: 35px; BACKGROUND-COLOR: #999
+}
+.yellow {
+    BACKGROUND-COLOR: #f4d28a
+}
+.yellow TD {
+    FONT-WEIGHT: bold; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.brown {
+    BACKGROUND-COLOR: #cec197
+}
+.brown TD {
+    FONT-WEIGHT: bold; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.report_table TH.header {
+    FONT-WEIGHT: bold; TEXT-ALIGN: center
+}
+.report_table TH.header_shaded {
+    FONT-WEIGHT: bold; BACKGROUND-COLOR: #e4e4e4; TEXT-ALIGN: center
+}
+TD.cur_shaded {
+    BACKGROUND-COLOR: #e4e4e4; TEXT-ALIGN: right
+}
+.report_tableWrapper {
+    WIDTH: 780px ; BACKGROUND-COLOR: white
+}
+.inputText {
+    FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #709221; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.legendText {
+    FONT-SIZE: 10px; FONT-FAMILY: Verdana, Geneva, sans-serif
+}
+.nextButton {
+    MARGIN-TOP: 5px; FONT-SIZE: 100%; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 30px
+}
+#outerWrapper #contentWrapper #contentievalfull .nextButton INPUT {
+    FONT-SIZE: 14px; BACKGROUND-IMAGE: url(/assets/unmanaged/images/buttons/button_wht_bg.jpg); WIDTH: 236px; COLOR: #ffffff; BORDER-TOP-STYLE: none; BACKGROUND-REPEAT: no-repeat; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; HEIGHT: 42px; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center; BORDER-BOTTOM-STYLE: none
+}
+#regButtons {
+    PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; FLOAT: right; BACKGROUND-IMAGE: url(../images/butLeft.gif); PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 110px; COLOR: #fff; PADDING-TOP: 0px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 30px; BACKGROUND-COLOR: #676767; TEXT-ALIGN: center
+}
+#regButtonsR {
+    PADDING-RIGHT: 0px; BACKGROUND-POSITION: right 50%; PADDING-LEFT: 0px; FLOAT: right; BACKGROUND-IMAGE: url(../images/butRight.gif); PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 100%; PADDING-TOP: 8px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 22px
+}
+#regButtonsNext {
+    PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; FLOAT: right; BACKGROUND-IMAGE: url(../images/butLeftNext.jpg); PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 20px; WIDTH: 110px; COLOR: #fff; PADDING-TOP: 0px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 30px; BACKGROUND-COLOR: #004059; TEXT-ALIGN: center
+}
+#regButtonsNextR {
+    PADDING-RIGHT: 0px; BACKGROUND-POSITION: right 50%; PADDING-LEFT: 0px; FLOAT: right; BACKGROUND-IMAGE: url(../images/butRightNext.jpg); PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 100%; PADDING-TOP: 8px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 22px
+}
+.nextButton #regButtonsNext #regButtonsNextR A {
+    COLOR: #fff; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.nextButton #regButtonsNext #regButtonsNextR A:hover {
+    COLOR: #cc9; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.nextButton #regButtons #regButtonsR A {
+    COLOR: #fff; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.nextButton #regButtons #regButtonsR A:hover {
+    COLOR: #d3ceb8; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.green {
+    BACKGROUND-COLOR: #c6b788
+}
+.green TD {
+    FONT-WEIGHT: bold; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+
+.grayText {
+    color: #767676; font-size: 0.85em; font-weight: normal
+}
+
+.footerLabelHeadings {
+    VERTICAL-ALIGN:top; TEXT-ALIGN: right; FONT-WEIGHT: bold; FONT-SIZE: 11px; FONT-FAMILY: Arial, Helvetica, sans-serif
+    }
+.footerLabelOptions {
+    COLOR:#388E8E; FONT-SIZE: 11px; FONT-FAMILY: Arial, Helvetica, sans-serif
+    }
+    
+.assetClassBox {
+    cursor: pointer
+}
+
+.scrollableTable {
+    OVERFLOW-Y: scroll; OVERFLOW-X: scroll; WIDTH: 780px; HEIGHT: 300px;
+}

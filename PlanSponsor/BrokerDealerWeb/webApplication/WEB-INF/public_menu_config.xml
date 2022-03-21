@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	<bean abstract="true" name="menuItem"
+		class="com.manulife.pension.bd.web.navigation.generation.SystemMenuItem" />
+
+	<bean name="defaultUrlGenerator"
+		class="com.manulife.pension.bd.web.navigation.generation.DefaultParentMenuItemUrlGenerator" />
+
+	<bean name="mainMenu" parent="menuItem">
+		<property name="subMenuItems">
+			<list>
+			    <!--  Home  -->
+				<bean name="home" parent="menuItem" p:id="home" p:title="Home"
+					p:actionURL="/do/home/" />
+				<!-- Public Fund and performance -->
+				<bean name="publicFP" parent="menuItem" p:id="fp"
+					p:title="Funds &amp; Performance" p:actionURL="/do/publicFP/" />
+				<!--  Partnering with us -->
+				<bean name="pwu" parent="menuItem" p:id="pwu"
+					p:title="Partnering with Us" p:actionURL="/do/partneringWithUs/" />					
+				<!--  Block of Business teaser-->
+				<bean name="bobPromption" parent="menuItem" p:id="promptionInfo"
+					p:title="Block of Business" p:actionURL="/do/myprofile/createBOB" />
+				<!--  Products and Services -->
+				<bean name="ps" parent="menuItem" p:id="ps"
+					p:title="Products &amp; Services" p:actionURL="/do/productsAndServices/"/>
+				<!-- News & Events -->
+				<bean name="newsEvents" parent="menuItem" p:id="newsEvents"
+					p:title="News &amp; Events">
+					<property name="urlGenerator" ref="defaultUrlGenerator" />
+					<property name="subMenuItems">
+						<list>
+							<bean parent="menuItem" p:id="news" p:title="News &amp; Events"
+								p:actionURL="/do/news/" />
+							<bean parent="menuItem" p:id="helpfulLinks" p:title="Helpful Links"
+								p:actionURL="/do/helpfulLinks/" />
+						</list>
+					</property>
+				</bean>
+				<!-- Forms -->
+				<bean name="publicForms" parent="menuItem" p:id="pf"
+					p:title="Forms" p:actionURL="/do/publicForms/" />					
+				<!-- Marketing Materials -->
+				<bean name="marketingMaterials" parent="menuItem" p:id="marketingMaterials"
+					p:title="Marketing Materials">
+					<property name="urlGenerator" ref="defaultUrlGenerator" />
+					<property name="subMenuItems">
+						<list>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

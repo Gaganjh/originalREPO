@@ -1,0 +1,13 @@
+<statusGroups>
+	<group code="FE" desc="Format Error" states="01" />
+	<group code="PR" desc="Processing" states="F2,96,98" />
+	<group code="VE" desc="Validation Error" states="04,05,07" />
+	<group code="DE" desc="Errors Outstanding" states="A6,F6,A3,F3,F4" />
+	<group code="SE" desc="Submission Error" states="09" />
+	<group code="SB" desc="Pending Investment" states="11" />
+	<group code="AL" desc="Awaiting Payment" states="95" />
+	<group code="RV" desc="Received" states="02,03,06,08,10,12,13,20,A1" />
+	<group code="CM" desc="Complete" states="16,17,A2,22" />
+	<group code="CN" desc="Cancelled" states="18,99" />
+	<group code="DR" desc="Work in Progress" states="14" />
+</statusGroups>

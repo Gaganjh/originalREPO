@@ -1,0 +1,68 @@
+<addressCaseStatus>
+	<state systemStatus="99" displayStatus="Cancelled">
+		<case records="99"/>
+	</state>
+	<state systemStatus="16" displayStatus="Complete">
+		<case records="16"/>
+	</state>
+	<state systemStatus="A1" displayStatus="Processing">
+		<case records="99,16,08"/>
+		<case records="16,08"/>
+		<case records="16,02"/>
+		<case records="16,08,02"/>
+		<case records="16,02,15"/>
+		<case records="16,08,02,15"/>
+		<case records="08"/>
+		<case records="08,15"/>
+		<case records="02"/>
+		<case records="08,02"/>
+		<case records="08,02,15"/>
+		<case records="02,15"/>
+		<case records="10,*"/>
+	</state>
+	<state systemStatus="A2" displayStatus="Complete*">
+		<case records="99,16"/>
+	</state>
+	<state systemStatus="A3" displayStatus="Complete* with Errors Outstanding">
+		<case records="99,16,08,15"/>
+		<case records="99,16,15"/>
+		<case records="99,08,15"/>
+		<case records="16,15"/>
+		<case records="16,08,15"/>
+	</state>
+	<state systemStatus="A6" displayStatus="Errors Outstanding">
+		<case records="99,15"/>
+		<case records="15"/>
+	</state>
+	<state systemStatus="01" displayStatus="Format Error" syntaxErrorIndicator="true">
+		<case records="01"/>
+		<case records="01,99"/>
+	</state>
+	<state systemStatus="F2" displayStatus="Processing" syntaxErrorIndicator="true">
+		<case records="01,08"/>
+		<case records="01,02"/>
+		<case records="01,16,08"/>
+		<case records="01,08,15"/>
+		<case records="01,16,02"/>
+		<case records="01,16,08,02"/>
+		<case records="01,08,02"/>
+		<case records="01,08,99"/>
+		<case records="01,02,15"/>
+		<case records="01,02,99"/>
+		<case records="01,10,*"/>
+	</state>
+	<state systemStatus="F3" displayStatus="Complete*" syntaxErrorIndicator="true">
+		<case records="01,16,15"/>
+		<case records="01,16,99"/>
+		<case records="01,16,08,15"/>
+		<case records="01,16,99,15"/>
+	</state>
+	<state systemStatus="F4" displayStatus="Complete" syntaxErrorIndicator="true">
+		<case records="01,16"/>
+	</state>
+	<state systemStatus="F6" displayStatus="Errors Outstanding" syntaxErrorIndicator="true">
+		<case records="01,15"/>
+		<case records="01,99,15"/>
+	</state>
+
+</addressCaseStatus>

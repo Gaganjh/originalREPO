@@ -1,0 +1,280 @@
+<project name="Fortify" default="fortify" basedir=".">
+
+
+  <property environment="env"/>  
+  <property name="root.dir" value="${env.HOMEDRIVE}"/>  
+  <property name="project.name" value="PlanSponsor"/>  
+  <property name="websphere.home" value="${root.dir}/webSphere9/AppServer"/>
+  
+  <!-- This section to support Fortify scanning, to turn fortify on for developpers uncomment next line and call target "fortify" -->
+  <!-- The property fortify.install.location assumes build is running from same drive as where Fortify is installed -->
+  <property name="fortify.release.name" value="PlanSponsor" />
+  <property name="fortify.install.location" value="\Program Files\HP_Fortify\HP_Fortify_SCA_and_Apps_4.21\"/>
+  <property name="fortifyclient.location" value="${fortify.install.location}\bin\fortifyclient.bat"/>
+  <property name="fortify.Build.Label" value="Unknown" />
+  <condition property="fortify.upload2f360.exists">
+    <available file="${fortifyclient.location}" />
+  </condition>  
+  <property name="sourceanalyzer.buildid" value="${project.name}"/>  
+  <available classname="com.fortify.dev.ant.SourceanalyzerTask" property="fortify.present" />
+  <property name="fortify.fpr.filename" value="${fortify.Build.Label}.fpr"/>
+  <property name ="masterproject.name" value="JHRPS"/>
+  <property name="fortify.ssctoken" value="c47f6c79-4649-4818-b7dd-83f101bd5560" />
+  <property name="build.compiler" value="com.fortify.dev.ant.SCACompiler"/>
+  <!-- END of Fortify support -->
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Fortify targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- CALL THIS TARGET EXTERNALLY -->
+	<target name="fortify">
+		<antcall target="fortify-check"/>
+		<antcall target="fortify-build"/>	
+	</target>
+	
+	<target name="fortify-check">
+		<!-- Build will fail IF  (Fortify is not present) -->
+		<!-- On a developer's box it will perform fortify analysis only IF (Fortify is present) -->				
+  		<fail message="Please add Fortify to the CLASSPATH of ANT.  This is typically found as D:\Program Files\Fortify Software\Fortify 360 v2.1.0\Core\lib\sourceanalyzer.jar. ">
+  			<condition>
+				<not>
+  					<isset property="fortify.present"/>
+  				</not>
+  			</condition>
+  		</fail>
+		<antcall target="fortify-compiler"/>
+	</target>
+	
+	<target name="fortify-compiler">
+		<!-- FAIL IF (build.compiler=fortify) AND (fortify.present=false) -->
+		<fail message="Trying to compile using Fortify, but Fortify is not present. Either install FORTIFY (see Wiki) or comment out FORTIFY section at top of build.xml">
+			<condition>
+				<and>
+					<equals arg1="${build.compiler}" arg2="com.fortify.dev.ant.SCACompiler" />
+  					<not>
+						<isset property="fortify.present"/>
+  					</not>
+				</and>
+			</condition>
+		</fail>
+		<antcall target="fortify-analysis"/>
+	</target>
+	
+	<!-- IF we perform FORTIFY analysis, we need to start from clean -->
+	<target name="fortify-analysis" if="fortify.present">
+		<echo message="Fortify Analysis to be performed"/>
+		<antcall target="fortify-clean"/>		  
+	</target>
+		
+	<target name="fortify-clean" if="fortify.present">
+		<exec executable="sourceanalyzer">
+			<arg value="-b" />
+			<arg value="${project.name}" />
+			<arg value="-build-label" />
+			<arg value="${fortify.Build.Label}" />
+			<arg value="-clean" />
+		</exec>
+	</target>
+	
+	
+	<target name="fortify-build"  if="fortify.present">
+	    <antcall target="project-clean"/>
+	    <antcall target="project-build" />
+	    <antcall target="fortify-scan" />
+	</target>
+
+	<target name="project-clean">
+	    <ant dir=".">
+    		<target name="clean" />
+	   </ant>
+	</target>
+
+	<target name="project-build">
+	    <ant dir=".">
+	   </ant>
+	</target>
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  		Main Fortify Scan target
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<target name="fortify-scan" description="PlanSponsor Fortify build and scan" if="fortify.present">
+		
+<!-- 	The dependencies above builds & translates all services used.
+		The following adds dependencies java components -->
+	    <ant antfile="fortifyDependencies.xml">
+	    </ant>
+
+<!-- 	Add JSPs for Plan Sponsor -->
+		<echo message="Expanding EAR for Fortify JSP analysis."/>
+	    <property name="dist.ear.expanded" value="${basedir}/dist/expanded/${project.name}.ear" />
+	    <property name="dist.web-inf" value="${dist.ear.expanded}/${project.name}Web.war/WEB-INF" />
+		<exec executable="${websphere.home}/bin/EARExpander.bat">
+	      <arg value="-ear"/>
+	      <arg file="${basedir}/dist/${project.name}.ear"/>
+	      <arg value="-operationDir"/>
+	      <arg path="${dist.ear.expanded}"/>
+	      <arg value="-operation"/>
+	      <arg value="expand"/>
+	      <arg value="-expansionFlags"/>
+	      <arg value="war"/>
+	    </exec>
+		<echo message="Adding JSP files for Fortify analysis."/>
+		<exec executable="sourceanalyzer">
+			<arg value="-b" />
+			<arg value="${project.name}" />
+			<arg value="-logfile" />
+			<arg value="PSWjsps4.log" />
+			<arg value="-source" />
+			<arg value="1.5" />
+			<arg value="-XX:MaxPermSize=128M" />
+			<arg value="-Dcom.fortify.sca.translator.java.Incremental=true" /> <!-- Here the translation takes place in chunks, it actually takes little bit of time but to make sure it doesn't run out of memory -->
+			<arg value="-debug" />
+			<arg value="-appserver" />
+			<arg value="websphere" />
+			<arg value="-appserver-version" />
+			<arg value="6" />
+			<arg value="-appserver-home" />
+			<arg value="D:\webSphere9\AppServer" />
+			<arg value="-cp" />
+			<arg value="${dist.ear.expanded}/**/*.jar;${dist.web-inf}/classes;${dist.ear.expanded}/BrokerDealerWeb.war/WEB-INF/classes" />
+			<arg value="${dist.web-inf}/**/*.jsp"  />
+			<arg value="-build-label" />
+			<arg value="${fortify.Build.Label}" />
+		</exec>
+	
+<!-- 	Add XML config files for PSW -->
+		<echo message="Adding XML files for Fortify analysis."/>
+		<exec executable="sourceanalyzer">
+			<arg value="-b" />
+			<arg value="${project.name}" />
+			<arg value="${dist.ear.expanded}/**/*.xml" />
+			<arg value="${basedir}/conf/**/*.xml"/>
+			<arg value="-build-label" />
+			<arg value="${fortify.Build.Label}" />
+		</exec>
+
+<!-- 	Add Properties files for PSW -->
+		<echo message="Adding properties files for Fortify analysis."/>
+		<exec executable="sourceanalyzer">
+			<arg value="-b" />
+			<arg value="${project.name}" />
+			<arg value="${dist.ear.expanded}/**/*.properties" />
+			<arg value="${basedir}/conf/**/*.properties" />
+			<arg value="-build-label" />
+			<arg value="${fortify.Build.Label}" />
+		</exec>
+		
+		
+		<antcall target="fortify-project-analysis"/>	
+		
+	</target>
+	
+	<target name="fortify-project-analysis" if="fortify.present">
+<!-- 	Analyze PSW -->
+		<tstamp>
+   			<format property="scan.timestamp.start" pattern="dd-MMM-yy_HH-mm-ss" />
+		</tstamp>		
+		<echo message="Starting Fortify analysis at ${scan.timestamp.start}"/>
+
+  <exec executable="${fortify.install.location}\bin\cloudscan.bat">
+                                <arg value="-url" />
+                                <arg value="http://andftyp02.prd.manulifeusa.com/cloud-ctrl" />
+                                <arg value="start" />
+                                <arg value="--upload-to-ssc" />
+                                <arg value="--project-name" />
+                                <arg value="${project.name}" />
+                                <arg value="--project-version-name" />
+                                <arg value="${fortify.release.name}" />
+                                <arg value="--ssc-upload-token" />
+                                <arg value="${fortify.ssctoken}" />
+                                <arg value="-b" />
+                                <arg value="${project.name}" />
+                                <arg value="-block" />
+                                <arg value="-o" />
+                                <arg value="-f" />
+                                <arg value="${fortify.fpr.filename}" />
+                                <arg value="-log" />
+                                <arg value="${project.name}-scan.log" />
+                                <arg value="-scan" />
+                                <arg value="-Xmx6G" />
+                    </exec>
+		
+		<tstamp>
+   			<format property="scan.timestamp.end" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>		
+		<echo message="Completed Fortify analysis at ${scan.timestamp.end}"/>
+		<antcall target="fortify-upload-analysis"/>
+	</target>
+
+
+	<!-- Going to generate token for upload FPR file into fortify Server -->
+	
+	<target name="fortify-generate-token" if="fortify.upload2f360.exists" >
+         <exec executable="${fortifyclient.location}" resultproperty="fortify.upload.token.rc" failonerror="false" output="AuthorizationToken.txt"> 
+                               <arg value="token" />
+                               <arg value="-gettoken" />
+                               <arg value="AnalysisUploadToken" />
+                               <arg value="-url" />
+                               <arg value="http://andftyp01.prd.manulifeusa.com/ssc/" />
+                               <arg value="-user" />
+                               <arg value="${fortify.user.name}" />
+                               <arg value="-password" />
+                               <arg value="${fortify.user.password}" />
+                                </exec>
+                                <echo message="Authtoken creation retun code : ${fortify.upload.token.rc}" />
+                                <loadfile srcfile="AuthorizationToken.txt" property="fortify.upload.token">
+                                <filterchain>
+                                <linecontains>
+                              <contains value="Authorization Token: "/>
+                                </linecontains>
+                                <tokenfilter>
+                              <replacestring from="Authorization Token: " to=""/>
+                                </tokenfilter>
+                                </filterchain>
+                                </loadfile>
+                                <echo message="Authtoken : ${fortify.upload.token}" />
+     </target>
+
+
+	<!-- <target name="fortify-upload-analysis" if="fortify.release.name" > -->
+	<target name="fortify-upload-analysis" if="fortify.release.name" >
+		<echo message="Preparing to upload analysis for ${project.name} Release: ${fortify.release.name}."/>
+  		<fail message="Fortify does not seem to be installed, check Wiki.">
+  			<condition>
+  				<and>
+  					<not>
+  						<isset property="fortify.upload2f360.exists"/>
+  					</not>
+  				</and>
+  			</condition>
+  		</fail>
+		<antcall target="fortify-perform-upload"/>
+	</target>
+
+	<target name="fortify-perform-upload" if="fortify.upload2f360.exists" depends="fortify-generate-token" >
+		<tstamp>
+   			<format property="upload.timestamp.start" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>		
+		<echo message="Upload  ${fortify.fpr.filename} into ${masterproject.name} ${fortify.release.name}."/>
+		<echo message="Upload start: ${upload.timestamp.start}"/>
+		<!-- Upload FPR file -->
+		<exec executable="${fortifyclient.location}"> 
+			<arg value="uploadFPR" />
+			<arg value="-file" />
+			<arg value="${fortify.fpr.filename}" />
+			<arg value="-project" />
+			<arg value="${masterproject.name}" />
+			<arg value="-version" />
+			<arg value="${fortify.release.name}" />
+			<arg value="-url" />
+			<arg value="http://andftyp01.prd.manulifeusa.com/ssc/" />
+			<arg value="-authtoken" />
+			<arg value="${fortify.upload.token}" />
+		</exec>
+		<tstamp>
+   			<format property="upload.timestamp.end" pattern="dd-MMM-yy HH:mm:ss" />
+		</tstamp>		
+		<echo message="Upload completed: ${upload.timestamp.end}"/>
+	</target>
+ 
+</project>

@@ -1,0 +1,576 @@
+<actionStates>
+	<type code="C" desc="Regular Contributions">
+		<status code="01" group="FE" desc="Syntactic Checks Failed" displayStatus="Format Error - Contact your client account representative" icon="error">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="02" group="PR" desc="Ready for Data Checking" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="03" group="PR" desc="Data Checking in Progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="04" group="VE" desc="Fatal Error Do Not Upload" displayStatus="Validation Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="yes" edit="PCR,PSC,PTL" delete="no"/>
+		</status>
+		<status code="05" group="VE" desc="Data Checker Complete - Errors Do Not Upload" displayStatus="Validation Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="yes" edit="PCR,PSC,PTL" delete="no"/>
+		</status>
+		<status code="06" group="RV" desc="Data Checker Complete - Errors, OK to Upload" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="07" group="DE" desc="Data Checker Complete - Warnings Do Not Upload" displayStatus="Validation Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="yes" edit="PCR,PSC,PTL" delete="no"/>
+		</status>
+		<status code="08" group="RV" desc="Data Checker Clean OK to upload" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="09" group="SE" desc="Upload to Apollo Failed" displayStatus="Submission Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="yes" edit="PCR,PSC,PTL" delete="no"/>
+		</status>
+		<status code="10" group="RV" desc="Upload in progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="11" group="SB" desc="Apollo Upload Complete" displayStatus="Pending Investment">
+			<actions view="yes" copy="yes" edit="no" delete="no"/>
+		</status>
+        <status code="95" group="AL" desc="Auto Loader" displayStatus="Awaiting Payment">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="12" group="RV" desc="Upload Pending" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="13" group="RV" desc="File Upload in progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="14" group="DR" desc="Draft" displayStatus="Work in Progress">
+			<actions view="yes" copy="yes" edit="yes" delete="yes"/>
+		</status>
+		<status code="15" group="FL" desc="File Upload Failed" displayStatus="Upload Error - Try again" icon="error">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="16" group="CM" desc="Complete" displayStatus="Complete">
+			<actions view="yes" copy="yes" edit="no" delete="no"/>
+		</status>
+		<status code="17" group="CM" desc="Partially Complete" displayStatus="Complete*" icon="warning">
+			<actions view="yes" copy="yes" edit="no" delete="no"/>
+		</status>
+		<status code="18" group="CN" desc="Cancelled Except for Payment Request" displayStatus="Transaction Cancelled After Bank Account Debited" icon="warning">
+			<actions view="yes" copy="yes" edit="no" delete="no"/>
+		</status>
+		<status code="96" group="PR" desc="File Processing in Progress" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="97" group="PR" desc="Draft Created from Copy but not Saved" displayStatus="Work in Progress">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="98" group="PR" desc="Syntactic Check in Progress" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="99" group="CN" desc="Cancelled" displayStatus="Cancelled">
+			<actions view="yes" copy="yes" edit="no" delete="no"/>
+		</status>
+		<status code="22" group="CM" desc="No Breakdown Provided" displayStatus="Complete with warnings">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<permission type="ViewSubmission">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</permission>
+		<permission type="Upload/Create">
+			<actions view="yes" copy="yes" edit="yes" delete="yes"/>
+		</permission>
+		<permission type="InternalUser">
+			<actions view="yes" copy="yes" edit="yes" delete="yes"/>
+		</permission>
+		<permission type="SubmitUpdateVesting">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+	</type>
+	<type code="X" desc="Regular Transfer">
+		<status code="01" group="FE" desc="Syntactic Checks Failed" displayStatus="Format Error - Contact your client account representative" icon="error">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="02" group="PR" desc="Ready for Data Checking" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="03" group="PR" desc="Data Checking in Progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="04" group="VE" desc="Fatal Error Do Not Upload" displayStatus="Validation Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="yes" edit="PCR,PSC,PTL" delete="no"/>
+		</status>
+		<status code="05" group="VE" desc="Data Checker Complete - Errors Do Not Upload" displayStatus="Validation Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="yes" edit="PCR,PSC,PTL" delete="no"/>
+		</status>
+		<status code="06" group="RV" desc="Data Checker Complete - Errors, OK to Upload" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="07" group="DE" desc="Data Checker Complete - Warnings Do Not Upload" displayStatus="Validation Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="yes" edit="PCR,PSC,PTL" delete="no"/>
+		</status>
+		<status code="08" group="RV" desc="Data Checker Clean OK to upload" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="09" group="SE" desc="Upload to Apollo Failed" displayStatus="Submission Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="yes" edit="PCR,PSC,PTL" delete="no"/>
+		</status>
+		<status code="10" group="RV" desc="Upload in progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="11" group="SB" desc="Apollo Upload Complete" displayStatus="Pending Investment">
+			<actions view="yes" copy="yes" edit="no" delete="no"/>
+		</status>
+		<status code="12" group="RV" desc="Upload Pending" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="13" group="RV" desc="File Upload in progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="14" group="DR" desc="Draft" displayStatus="Work in Progress">
+			<actions view="yes" copy="yes" edit="yes" delete="yes"/>
+		</status>
+		<status code="15" group="FL" desc="File Upload Failed" displayStatus="Upload Error - Try again" icon="error">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="16" group="CM" desc="Complete" displayStatus="Complete">
+			<actions view="yes" copy="yes" edit="no" delete="no"/>
+		</status>
+		<status code="17" group="CM" desc="Partially Complete" displayStatus="Complete*" icon="warning">
+			<actions view="yes" copy="yes" edit="no" delete="no"/>
+		</status>
+		<status code="18" group="CN" desc="Cancelled Except for Payment Request" displayStatus="Transaction Cancelled After Bank Account Debited" icon="warning">
+			<actions view="yes" copy="yes" edit="no" delete="no"/>
+		</status>
+		<status code="96" group="PR" desc="File Processing in Progress" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="97" group="PR" desc="Draft Created from Copy but not Saved" displayStatus="Work in Progress">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="98" group="PR" desc="Syntactic Check in Progress" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="99" group="CN" desc="Cancelled" displayStatus="Cancelled">
+			<actions view="yes" copy="yes" edit="no" delete="no"/>
+		</status>
+		<status code="22" group="CM" desc="No Breakdown Provided" displayStatus="Complete with warnings">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<permission type="ViewSubmission">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</permission>
+		<permission type="Upload/Create">
+			<actions view="yes" copy="yes" edit="yes" delete="yes"/>
+		</permission>
+		<permission type="InternalUser">
+			<actions view="yes" copy="yes" edit="yes" delete="yes"/>
+		</permission>
+		<permission type="SubmitUpdateVesting">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+	</type>
+	<type code="A" desc="Address File">
+		<status code="A1" group="PR" desc="Ready for processing" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="A2" group="CM" desc="Partially complete" displayStatus="Complete*" icon="warning">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="A3" group="CM" desc="Complete with Errors" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="16" group="CM" desc="Complete" displayStatus="Complete">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="99" group="CN" desc="Cancelled" displayStatus="Cancelled">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="A6" group="DE" desc="Errors outstanding" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="01" group="FE" desc="Syntactic Checks Failed" displayStatus="Formatting Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="F2" group="PR" desc="Ready for processing" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="F3" group="DE" desc="Complete* with errors" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="F4" group="DE" desc="Complete* with errors and invalid errors" displayStatus="Errors in submission - Please make corrections and discard invalid records or Contact your client account representative" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="F6" group="DE" desc="Errors outstanding" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="96" group="PR" desc="File Processing in progress" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="13" group="RV" desc="Not loaded by STP yet" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<permission type="ViewSubmission">
+			<actions view="yes" copy="no" edit="no" delete="na"/>
+		</permission>
+		<permission type="Upload/Create">
+			<actions view="yes" copy="no" edit="yes" delete="na"/>
+		</permission>
+		<permission type="InternalUser">
+			<actions view="yes" copy="no" edit="yes" delete="na"/>
+		</permission>
+		<permission type="SubmitUpdateVesting">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+	</type>
+	<type code="P" desc="Payment File">
+		<status code="01" group="FE" desc="Syntactic Checks Failed" displayStatus="Format Error - Contact your client account representative" icon="error">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="02" group="PR" desc="Ready for Data Checking" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="03" group="PR" desc="Data Checking in Progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="04" group="VE" desc="Fatal Error Do Not Upload" displayStatus="Validation Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="05" group="VE" desc="Data Checker Complete - Errors Do Not Upload" displayStatus="Validation Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="06" group="RV" desc="Data Checker Complete - Errors, OK to upload" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="07" group="DE" desc="Data Checker Complete - Warnings Do Not Upload" displayStatus="Validation Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="yes" edit="PCR,PSC,PTL" delete="no"/>
+		</status>
+		<status code="08" group="RV" desc="Data Checker Clean OK to upload" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="09" group="SE" desc="Upload to Apollo Failed" displayStatus="Submission Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="10" group="RV" desc="Upload in progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="12" group="RV" desc="Upload Pending" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="13" group="RV" desc="File Upload in progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="14" group="DR" desc="Draft" displayStatus="Draft">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="15" group="FL" desc="File Upload Failed" displayStatus="File Error">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="16" group="CM" desc="Complete" displayStatus="Complete">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="17" group="CM" desc="Partially Complete" displayStatus="Complete*" icon="warning">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="18" group="CN" desc="Transaction cancelled except for debit request" displayStatus="Transaction Cancelled After Bank Account Debited" icon="warning">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="20" group="RV" desc="Payment Uploaded to Apollo" displayStatus="Received">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="96" group="PR" desc="File Processing in Progress" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="99" group="CN" desc="Cancelled" displayStatus="Cancelled">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<permission type="ViewSubmission">
+			<actions view="yes" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="Upload/Create">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="InternalUser">
+			<actions view="yes" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="SubmitUpdateVesting">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+	</type>
+	<type code="E" desc="Census File">
+		<status code="A1" group="PR" desc="Ready for processing" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="A2" group="CM" desc="Partially complete" displayStatus="Complete*" icon="warning">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="A3" group="CM" desc="Complete with Errors" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="16" group="CM" desc="Complete" displayStatus="Complete">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="99" group="CN" desc="Cancelled" displayStatus="Cancelled">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="A6" group="DE" desc="Errors outstanding" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="01" group="FE" desc="Syntactic Checks Failed" displayStatus="Formatting Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="F2" group="PR" desc="Ready for processing" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="F3" group="DE" desc="Complete* with errors" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="F4" group="DE" desc="Complete* with errors" displayStatus="Errors in submission - Please make corrections and discard invalid records or Contact your client account representative" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="F6" group="DE" desc="Errors outstanding" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="96" group="PR" desc="File Processing in progress" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="13" group="RV" desc="Not loaded by STP yet" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<permission type="ViewSubmission">
+			<actions view="yes" copy="no" edit="no" delete="na"/>
+		</permission>
+		<permission type="Upload/Create">
+			<actions view="yes" copy="no" edit="yes" delete="na"/>
+		</permission>
+		<permission type="InternalUser">
+			<actions view="yes" copy="no" edit="yes" delete="na"/>
+		</permission>
+		<permission type="SubmitUpdateVesting">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+	</type>
+	<type code="Q" desc="LTPT File">
+		<status code="A1" group="PR" desc="Ready for processing" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="A2" group="CM" desc="Partially complete" displayStatus="Complete*" icon="warning">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="03" group="PR" desc="Data Checking in Progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="A3" group="CM" desc="Complete with Errors" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="16" group="CM" desc="Complete" displayStatus="Complete">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="99" group="CN" desc="Cancelled" displayStatus="Cancelled">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="A6" group="DE" desc="Errors outstanding" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="01" group="FE" desc="Syntactic Checks Failed" displayStatus="Formatting Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="F2" group="PR" desc="Ready for processing" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="F3" group="DE" desc="Complete* with errors" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="F4" group="DE" desc="Complete* with errors" displayStatus="Errors in submission - Please make corrections and discard invalid records or Contact your client account representative" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="F6" group="DE" desc="Errors outstanding" displayStatus="Errors in submission - Please make corrections" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="96" group="PR" desc="File Processing in progress" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="98" group="PR" desc="Syntactic Check in Progress" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="13" group="RV" desc="Not loaded by STP yet" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="19" group="CM" desc="Partially complete" displayStatus="Complete with warnings" icon="warning">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="21" group="CM" desc="Partially complete" displayStatus="Complete with warnings" icon="warning">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<permission type="ViewSubmission">
+			<actions view="yes" copy="no" edit="no" delete="na"/>
+		</permission>
+		<permission type="Upload/Create">
+			<actions view="yes" copy="no" edit="yes" delete="na"/>
+		</permission>
+		<permission type="InternalUser">
+			<actions view="yes" copy="no" edit="yes" delete="na"/>
+		</permission>
+		<permission type="SubmitUpdateVesting">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+	</type>
+	<type code="M" desc="Miscellaneous File">
+		<status code="13" group="RV" desc="File Upload in progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="15" group="FL" desc="File Upload Failed" displayStatus="File Error">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="20" group="RV" desc="Received" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<permission type="ViewSubmission">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="Upload/Create">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="InternalUser">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="SubmitUpdateVesting">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+	</type>	
+	<type code="T" desc="Test File">
+		<status code="13" group="RV" desc="File Upload in progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="15" group="FL" desc="File Upload Failed" displayStatus="File Error">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="20" group="RV" desc="Received" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<permission type="ViewSubmission">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="Upload/Create">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="InternalUser">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="SubmitUpdateVesting">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+	</type>
+	<type code="V" desc="Vesting File">
+		<status code="01" group="FE" desc="Syntactic Checks Failed" displayStatus="Errors in submission. Click ‘V’ for details" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="02" group="PR" desc="Ready for Data Checking" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="03" group="PR" desc="Data Checking in Progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="04" group="VE" desc="Fatal Error Do Not Upload" displayStatus="Errors in submission. Click ‘V’ for details" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="05" group="VE" desc="Data Checker Complete - Errors Do Not Upload" displayStatus="Errors in submission. Click ‘V’ for details" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="06" group="RV" desc="Data Checker Complete - Errors, OK to Upload" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="07" group="DE" desc="Data Checker Complete - Warnings Do Not Upload" displayStatus="Errors in submission. Click ‘V’ for details" icon="error">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="08" group="RV" desc="Data Checker Clean OK to upload" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="09" group="SE" desc="Upload to Apollo Failed" displayStatus="Submission Error - Contact your client account representative" icon="error">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="10" group="RV" desc="Upload in progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="11" group="SB" desc="Apollo Upload Complete" displayStatus="Pending Investment">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+        <status code="95" group="AL" desc="Auto Loader" displayStatus="Awaiting Payment">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="12" group="RV" desc="Upload Pending" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="13" group="RV" desc="File Upload in progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="14" group="DR" desc="Draft" displayStatus="Work in Progress">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</status>
+		<status code="15" group="FL" desc="File Upload Failed" displayStatus="Upload Error - Try again" icon="error">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="16" group="CM" desc="Complete" displayStatus="Complete">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="17" group="CM" desc="Partially Complete" displayStatus="Complete*" icon="warning">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="18" group="CN" desc="Cancelled Except for Payment Request" displayStatus="Transaction Cancelled After Bank Account Debited" icon="warning">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="19" group="CM" desc="Partially complete" displayStatus="Complete with warnings" icon="warning">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="21" group="CM" desc="Partially complete" displayStatus="Complete with warnings" icon="warning">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="96" group="PR" desc="File Processing in Progress" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="97" group="PR" desc="Draft Created from Copy but not Saved" displayStatus="Work in Progress">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="98" group="PR" desc="Syntactic Check in Progress" displayStatus="Processing">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="99" group="CN" desc="Cancelled" displayStatus="Cancelled">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</status>
+		<permission type="ViewSubmission">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</permission>
+		<permission type="Upload/Create">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="InternalUser">
+			<actions view="yes" copy="no" edit="no" delete="no"/>
+		</permission>
+		<permission type="SubmitUpdateVesting">
+			<actions view="yes" copy="no" edit="yes" delete="no"/>
+		</permission>
+	</type>	
+	<type code="Z" desc="Conversion File">
+		<status code="13" group="RV" desc="File Upload in progress" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="15" group="FL" desc="File Upload Failed" displayStatus="File Error">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<status code="20" group="RV" desc="Received" displayStatus="Received">
+			<actions view="no" copy="no" edit="no" delete="no"/>
+		</status>
+		<permission type="ViewSubmission">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="Upload/Create">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="InternalUser">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+		<permission type="SubmitUpdateVesting">
+			<actions view="na" copy="na" edit="na" delete="na"/>
+		</permission>
+
+	</type>	
+	
+</actionStates>

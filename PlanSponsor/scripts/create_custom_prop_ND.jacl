@@ -1,0 +1,117 @@
+####################################################################
+# Create JVM custom properties
+####################################################################
+
+set serverName 		[lindex $argv 0]
+set cics     	[lindex $argv 1]
+set portNumber		[lindex $argv 2]
+set rootDrive		[lindex $argv 3]
+
+set serverId 		[$AdminConfig getid /Server:$serverName/]
+
+set propId			[$AdminConfig list JavaVirtualMachine $serverId]
+puts "jvm configure id is $propId"
+
+set cicsNameArr(AXCICS) DB2LPAXB 
+set cicsNameArr(AYCICS) DB2LPAYB 
+set cicsNameArr(D1CICS) DB2LPD1B 
+set cicsNameArr(D2CICS) DB2LPD2B 
+set cicsNameArr(D3CICS) DB2LPD3B
+set cicsNameArr(D7CICS) DB2LPD7B 
+set cicsNameArr(D8CICS) DB2LPD8B  
+set cicsNameArr(FXCICS) DB2LPFXB 
+set cicsNameArr(I1CICS) DB2LPI1B 
+set cicsNameArr(I2CICS) DB2LPI2B 
+set cicsNameArr(I3CICS) DB2LPI3B 
+set cicsNameArr(I7CICS) DB2LPI7B 
+set cicsNameArr(I8CICS) DB2LPI8B 
+set cicsNameArr(T1CICS) DB2LPT1B 
+set cicsNameArr(T2CICS) DB2LPT2B 
+set cicsNameArr(T3CICS) DB2LPT3B 
+set cicsNameArr(DCICS) DB2LPDCB 
+set cicsNameArr(LPACICS) DB2LPAB 
+set cicsNameArr(LPDCICS) DB2LPDB 
+set cicsNameArr(LPICICS) DB2LPIB 
+set cicsNameArr(LPTCICS) DB2LPTB 
+set cicsNameArr(LPUCICS) DB2LPUB 
+set cicsNameArr(LPXCICS) DB2LPXB 
+set cicsNameArr(TRCICS) DB2TRB
+
+set cicsName $cicsNameArr($cics)
+
+if {$portNumber == "default"} {
+	set portNum 9080
+} else {set portNum $portNumber}
+
+if {$serverName == "EZkServer"} {
+	set ezkPropName1 	[list name "apollo.schema.name"]
+	set ezkPropValue1 	[list value $cicsName]
+	set ezkPropAttrs1 	[list $ezkPropName1 $ezkPropValue1]
+	$AdminConfig create Property $propId $ezkPropAttrs1
+	
+	set ezkPropName2 	[list name "com.manulife.pension.cloneName"]
+	set ezkPropValue2 	[list value $serverName]
+	set ezkPropAttrs2 	[list $ezkPropName2 $ezkPropValue2]
+	$AdminConfig create Property $propId $ezkPropAttrs2
+	
+	set ezkPropName3 	[list name "com.manulife.pension.ezk.cloneName"]
+	set ezkPropValue3 	[list value $serverName]
+	set ezkPropAttrs3 	[list $ezkPropName3 $ezkPropValue3]
+	$AdminConfig create Property $propId $ezkPropAttrs3
+
+	set ezkPropName4 	[list name "com.manulife.pension.ezk.config-dir"]
+	set ezkPropValue4 	[list value "$rootDrive/apps/ezk/Config"]
+	set ezkPropAttrs4 	[list $ezkPropName4 $ezkPropValue4]
+	$AdminConfig create Property $propId $ezkPropAttrs4
+
+	set ezkPropName5 	[list name "money.conf.fileroot"]
+	set ezkPropValue5 	[list value "$rootDrive/apps/ezk/standaloneToolData/"]
+	set ezkPropAttrs5 	[list $ezkPropName5 $ezkPropValue5]
+	$AdminConfig create Property $propId $ezkPropAttrs5
+}
+
+if {$serverName == "PSWServer"} {
+	set pswPropName1 	[list name "apollo.schema.name"]
+	set pswPropValue1 	[list value $cicsName]
+	set pswPropAttrs1 	[list $pswPropName1 $pswPropValue1]
+	$AdminConfig create Property $propId $pswPropAttrs1
+
+	set pswPropName2 	[list name "com.manulife.pension.cloneName"]
+	set pswPropValue2 	[list value $serverName]
+	set pswPropAttrs2 	[list $pswPropName2 $pswPropValue2]
+	$AdminConfig create Property $propId $pswPropAttrs2
+
+	set pswPropName3 	[list name "webcontainer.http.port"]
+	set pswPropValue3 	[list value $portNum]
+	set pswPropAttrs3 	[list $pswPropName3 $pswPropValue3]
+	$AdminConfig create Property $propId $pswPropAttrs3
+}
+
+if {$serverName == "SCWServer"} {
+	set scwPropName1 	[list name "apollo.schema.name"]
+	set scwPropValue1 	[list value $cicsName]
+	set scwPropAttrs1 	[list $scwPropName1 $scwPropValue1]
+	$AdminConfig create Property $propId $scwPropAttrs1
+
+	set scwPropName2 	[list name "com.manulife.pension.cloneName"]
+	set scwPropValue2 	[list value $serverName]
+	set scwPropAttrs2 	[list $scwPropName2 $scwPropValue2]
+	$AdminConfig create Property $propId $scwPropAttrs2
+
+	set scwPropName3 	[list name "webcontainer.http.port"]
+	set scwPropValue3 	[list value $portNum]
+	set scwPropAttrs3 	[list $scwPropName3 $scwPropValue3]
+	$AdminConfig create Property $propId $scwPropAttrs3
+}
+
+if {$serverName == "OnlineOrderServer"} {
+	set oosPropName1 	[list name "apollo.schema.name"]
+	set oosPropValue1 	[list value $cicsName]
+	set oosPropAttrs1 	[list $oosPropName1 $oosPropValue1]
+	$AdminConfig create Property $propId $oosPropAttrs1
+}
+
+#$AdminConfig create Property $propId $propAttrs
+
+$AdminConfig save
+

@@ -1,0 +1,45 @@
+#notification  {
+	background-color: #ffffe6;
+	padding: 3px;
+	border: 1px solid #cccccc;
+}
+.paymentAmount {
+	font-size: 18px;
+	color: #990000;
+	font-weight: bold;
+}
+
+#multiSubTitle {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #89a2b3;
+	font-size: 14px;
+	font-weight: normal;
+}
+#payment {
+	font-size: 16px;
+	color: #990000;
+	font-weight: bold;
+}
+
+.notice {
+	font-weight: bold;
+	color: #c67740;
+}
+
+.multipayeeSec {
+	PADDING-BOTTOM: 3px;
+	BACKGROUND-COLOR: #f1edda;
+	PADDING-LEFT: 3px;
+	PADDING-RIGHT: 3px;
+	PADDING-TOP: 3px
+}
+
+.redTextBoldLarge { 
+	color: #990000; 
+	font-weight: bold;
+	font-size: 18px;
+}
+.blueSubLarge { 
+	color: #8FD8D8; 
+	font-size: 18px;
+}

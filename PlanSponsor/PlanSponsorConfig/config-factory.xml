@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <system />
+  <xml fileName="env-config.xml" optional="true">
+    <reloadingStrategy refreshDelay="10"
+      config-class="org.apache.commons.configuration.reloading.FileChangedReloadingStrategy" />
+  </xml>
+  <xml fileName="default-plansponsor-config.xml">
+    <reloadingStrategy refreshDelay="10"
+      config-class="org.apache.commons.configuration.reloading.FileChangedReloadingStrategy" />
+  </xml>
+  <xml fileName="default-withdrawal-config.xml">
+    <reloadingStrategy refreshDelay="10"
+      config-class="org.apache.commons.configuration.reloading.FileChangedReloadingStrategy" />
+  </xml>
+</configuration>

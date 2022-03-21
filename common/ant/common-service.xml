@@ -1,0 +1,500 @@
+<project 
+  name="common-service" 
+  basedir="."
+  xmlns:cs="antlib:com.puppycrawl.tools.checkstyle"
+	xmlns:jacoco="antlib:org.jacoco.ant">
+
+  <import file="common.xml"/>   
+
+  <!-- Begin: Common Services Properties and Tasks -->
+  <property name="src" value="ejbModule" />
+  <property name="test.src" value="testModule" />
+  <property name="build" value="build" />
+  <property name="target" value="target" />
+  <property name="classes" value="${target}/classes" />	
+  <property name="test.classes" value="${build}/test-classes" />
+  <property name="temp" value="${target}/temp" />
+  <property name="deploy.failonerror" value="true" />
+  <property name="main.config.dir" value="src/main/config" />
+  <property name="test.config.dir" value="src/test/config" />
+  <property name="report.dir" value="${build}/report" />
+  <property name="report.junit.dir" value="${report.dir}/junit" />
+  <property name="report.junit.html.dir" value="${report.junit.dir}/html" />
+  <property name="report.checkstyle.dir" value="${report.dir}/checkstyle" />
+  <property name="report.checkstyle.html.dir" value="${report.checkstyle.dir}/html" />
+  <property name="report.checkstyle.xsl.dir" value="${common.devlib.dir}/xsl" />
+  <property name="websphere.home" value="C:/webSphere9/AppServer" />
+	
+		
+  <!-- directory that contains emma.jar and emma_ant.jar: -->
+  <property name="emma.lib.dir" value="${common.devlib.dir}" />
+  <property name="emma.version" value="2.0.5312" />
+  
+  <!-- The path needed to run EMMA and create the EMMA tasks. -->
+  <path id="emma.lib.path">
+    <pathelement location="${emma.lib.dir}/emma-${emma.version}.jar" />
+    <pathelement location="${emma.lib.dir}/emma_ant-${emma.version}.jar" />
+  </path>
+  
+  <target name="init">
+    <!-- Create the time stamp -->
+    <mkdir dir="${build}" />
+    <mkdir dir="${target}" />
+    <mkdir dir="${classes}" />
+    <mkdir dir="${temp}" />
+    <mkdir dir="${main.config.dir}" />
+    <mkdir dir="${test.config.dir}" />
+    <available property="was-deploycmd"
+               file="${websphere.home}/bin/ejbdeploy.bat"
+    />
+  </target>
+
+  <target name="init_tests" depends="init">
+    <mkdir dir="${test.classes}" />
+    <mkdir dir="${report.junit.dir}" />
+    <mkdir dir="${report.junit.html.dir}" />
+  </target>
+
+  <target name="init_checkstyle" depends="init">
+    <mkdir dir="${report.checkstyle.dir}" />
+    <mkdir dir="${report.checkstyle.html.dir}" />
+  </target>
+
+
+  <target name="build" depends="init" description="Compile the components">
+    <javac debug="${debug}"
+           deprecation="{deprecation}"
+           destdir="${classes}"
+           srcdir="${src}"
+    >
+      <classpath>
+        <path refid="compile.only.classpath" />
+        <path refid="deploy.classpath" />
+      </classpath>
+    </javac>
+
+    <copy todir="${classes}">
+      <fileset dir="${src}">
+        <include name="**/*.properties" />
+        <include name="**/*.xml" />
+      </fileset>
+      <fileset dir="${main.config.dir}">
+        <include name="**/*.properties" />
+        <include name="**/*.xml" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="build_tests"
+          depends="init_tests, build"
+          description="Compile the tests"
+  >
+    <javac debug="${debug}"
+           deprecation="{deprecation}"
+           destdir="${test.classes}"
+           srcdir="${test.src}"
+           classpathref="test.classpath"
+    >
+    </javac>
+
+    <copy todir="${test.classes}">
+      <fileset dir="${test.src}">
+        <include name="**/*.properties" />
+        <include name="**/*.xml" />
+        <include name="**/*.doc" />
+        <include name="**/*.docx" />
+        <!--need while testing DocumentService  -->
+     <!--    <include name="**/*.pdf" /> -->
+        <include name="**/*.JPG" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="package_tests" depends="build_tests">
+    <jar jarfile="${build}/${component.name}ServiceTests.jar" update="true">
+      	<fileset dir="${test.classes}">
+      		<include name="**/tests/*.class" />
+      	</fileset>
+      	<fileset dir="${classes}">
+		<include name="**/delegate/mock/**" />
+      	</fileset>
+    </jar>
+  </target>
+
+  <target name="instrument_tests"
+	      description="Instrument the tests for coverage">
+  </target>
+
+
+
+  <target name="do_test" depends="build_tests" description="Run the tests">
+    <junit printsummary="yes"
+      fork="yes" 
+      haltonerror="${junit.haltonerror}" 
+           haltonfailure="${junit.haltonfailure}"
+    >
+      <classpath>
+        <pathelement location="${service.out.instr.dir}" />
+        <path refid="test.classpath" />
+        <path refid="connection.pool" />
+        <path refid="emma.lib.path" />
+      </classpath> 
+      <jvmarg value="-Demma.coverage.out.file=${emma.coverage.out.file}"/>
+      <jvmarg value="-Demma.coverage.out.merge=true" />
+
+      <formatter type="xml"/>
+      <batchtest todir="${report.junit.dir}" fork="true">
+        <fileset dir="${test.src}">
+      	  <include name="com/**/*Test*.java"/>
+<!-- 
+	To fix No tests found in com.manulife.pension.service.employee.util.AbstractRuleTest
+-->
+    	  <exclude name="**/AbstractRuleTest.java"/>
+          <exclude name="**/*Suite*.java"/>
+          <exclude name="**/AllTests.java"/>
+          <exclude name="**/*Base.java"/>
+          <exclude name="**/Base*.java"/>
+          <exclude name="/*.java"/>
+          <exclude name="**/*UnitTests.java"/>
+          <exclude name="**/IKitTestHelper.java"/>
+          <exclude name="**/AbstractTestIPSR.java"/>
+          <exclude name="**/FeeServiceTestDao.java"/>
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+  
+  <target name="do_report">
+  	<junitreport todir="${report.junit.dir}">
+  	  <fileset dir="${report.junit.dir}">
+  	    <include name="TEST-*.xml"/>
+  	  </fileset>
+  	  <report format="noframes" todir="${report.junit.html.dir}"/>
+  	  <report format="frames" todir="${report.junit.html.dir}"/>
+  	</junitreport>
+  </target>
+
+  <target name="do_checkstyle" depends="init_checkstyle">
+    <cs:checkstyle 
+      config="../common/manulife-checkstyle.xml" 
+      failonviolation="false"
+      failureProperty="checkstyleFailure"
+    >
+      <fileset dir="${src}" includes="**/*.java" />
+      <classpath>
+        <path refid="compile.only.classpath" />
+        <path refid="deploy.classpath" />
+      </classpath>
+      <formatter type="plain" toFile="${report.checkstyle.dir}/checkstyle_errors.txt"   />
+      <formatter type="xml" toFile="${report.checkstyle.dir}/checkstyle_errors.xml" />
+    </cs:checkstyle>
+
+    <xslt 
+      in="${report.checkstyle.dir}/checkstyle_errors.xml" 
+      out="${report.checkstyle.html.dir}/checkstyle-simple.html" 
+      style="${report.checkstyle.xsl.dir}/checkstyle-simple.xsl"/>
+  
+    <xslt 
+      in="${report.checkstyle.dir}/checkstyle_errors.xml" 
+      out="${report.checkstyle.html.dir}/checkstyle-frames.html"
+      style="${report.checkstyle.xsl.dir}/checkstyle-frames.xsl"/>
+
+    <xslt 
+      in="${report.checkstyle.dir}/checkstyle_errors.xml" 
+      out="${report.checkstyle.html.dir}/checkstyle-text.txt" 
+      style="${report.checkstyle.xsl.dir}/checkstyle-text.xsl"/>
+
+    <xslt 
+      in="${report.checkstyle.dir}/checkstyle_errors.xml" 
+      out="${report.checkstyle.html.dir}/checkstyle-noframes.html" 
+      style="${report.checkstyle.xsl.dir}/checkstyle-noframes.xsl"/>
+
+    <xslt 
+      in="${report.checkstyle.dir}/checkstyle_errors.xml" 
+      out="${report.checkstyle.html.dir}/checkstyle-noframes-sorted.html" 
+      style="${report.checkstyle.xsl.dir}/checkstyle-noframes-sorted.xsl"/>
+
+  </target>
+
+
+  <target name="check-if-need-to-generate-deployment">
+    <dependset>
+      <srcfileset dir="ejbModule">
+        <include name="**/*.java" />
+        <include name="META-INF/ejb-jar.xml" />
+        <include name="META-INF/*.xmi" />
+        <exclude name="**/*Bean.java" />
+        <exclude name="**/*Exception.java" />
+        <exclude name="**/EJS*.java" />
+        <exclude name="**/_EJS*.java" />
+        <exclude name="**/*_Stub.java" />
+        <exclude name="**/dao/*.java" />
+        <exclude name="**/valueobject/*.java" />
+        <exclude name="**/storedproc/*.java" />
+        <exclude name="**/*Manager.java" />
+        <exclude name="**/*DAO.java" />
+      </srcfileset>
+      <targetfilelist dir="${build}" files="${component.name}Service.jar" />
+    </dependset>
+    <available property="dont.need.to.generate.deployment"
+               file="${build}/${component.name}Service.jar"
+    />
+  </target>
+
+
+  <target name="package" depends="build,check-if-need-to-generate-deployment">
+    <pathconvert property="lib.project.manifest.classpath" pathsep=" ">
+      <path refid="deploy.classpath"/>
+      <flattenmapper/>
+    </pathconvert>
+    <jar jarfile="${build}/${component.name}Service.jar" update="true">
+      <manifest>
+        <attribute name="Implementation-title"   value="${component.name}Service"/>
+        <attribute name="Implementation-vendor"  value="${division_title}"/>
+        <attribute name="Implementation-version" value="${build_number}"/>
+        <attribute name="Build-Machine" value="${hostname}"/>
+        <attribute name="Build-Author"  value="${build_author}"/>
+        <attribute name="Build-Branch"  value="${build_branch}"/>
+        <attribute name="Build-Time"    value="${build_time}"/>
+        <attribute name="Build-Details" value="${build_details}"/>
+        <attribute name="Java-Vendor"   value="${java_vendor}"/>        
+        <attribute name="Java-Version"  value="${java_version}"/>        
+        <attribute name="Class-Path"    value="${lib.project.manifest.classpath}"/>
+      </manifest>
+      
+      <fileset dir="${classes}">
+        <include name="**/*.class" />
+        <exclude name="**/_*.class" />
+      </fileset>
+      <fileset dir="${src}">
+        <exclude name="**/*.java" />
+        <exclude name="META-INF/MANIFEST.MF" />
+        <exclude name="META-INF/Manifest.prod" />
+      </fileset>
+      <fileset dir="${main.config.dir}">
+        <include name="**/*.properties" />
+        <include name="**/*.xml" />
+      </fileset>
+    </jar>
+  </target>
+
+
+  <target name="package_client">
+    <unjar src="${build}/${component.name}Service.jar" dest="${temp}" />
+    <jar jarfile="${build}/${component.name}Client.jar" update="true">
+      <manifest>
+        <attribute name="Built-By" value="${user.name}"/>
+        <attribute name="Implementation-Title"
+                   value="${component.name}Service"
+        />
+        <attribute name="Implementation-Vendor" value="John Hancock" />
+        <attribute name="Implementation-Version" value="${buildVersion}" />
+      </manifest>
+      <fileset dir="${temp}">
+        <include name="**/*_Stub.class" />
+        <include name="**/*Service.class" />
+        <include name="**/*ServiceHome.class" />
+        <include name="**/valueobject/*.class" />
+        <include name="**/view/*.class" />
+        <include name="**/content/exception/*Exception.class" />
+        <include name="**/content/*Exception.class" />
+        <include name="**/bizdelegates/*.class" />
+        <include name="**/exception/*Exception.class" />
+        <include name="**/delegate/*.class" />
+      </fileset>
+    </jar>
+    <delete dir="${temp}" />
+  </target>
+
+
+
+  <target name="generate-deployment"
+          depends="package"
+          unless="dont.need.to.generate.deployment"
+  >
+    <antcall target="generate-was-deployment" />
+  </target>
+
+  <target name="generate-was-deployment" depends="init" if="was-deploycmd">
+
+<!--
+    <wsejbdeploy inputJar="${build}/${component.name}Service.jar"
+                 wasHome="${websphere.home}"
+                 workingDirectory="${temp}/deploy"
+                 outputJar="${build}/${component.name}Service-deployed.jar"
+                 classpathref="deploy.classpath"
+                 keepGenerated="true"
+                 failonerror="${deploy.failonerror}"
+    />
+-->
+	<exec executable="${websphere.home}/bin/ejbdeploy.bat" dir="build">
+		<arg file="${build}/${component.name}Service.jar"/>
+		<arg path="${temp}/deploy"/>
+		<arg file="${build}/${component.name}Service-deployed.jar"/>
+		<arg value="-cp"/>
+		<arg value="&quot;${deploy.classpath}&quot;"/>
+		<arg value="-keep"/>
+	</exec>
+
+    <delete file="${build}/${component.name}Service.jar" />
+    <move file="${build}/${component.name}Service-deployed.jar"
+          tofile="${build}/${component.name}Service.jar"
+    />
+  </target>
+
+  <target name="copy_to_common">
+    <copy file="${build}/${component.name}Service.jar"
+          todir="${common.lib.dir}"
+    />
+    <copy file="${build}/${component.name}Client.jar"
+          todir="${common.lib.dir}"
+          failonerror="false"
+    />
+  </target>
+
+
+  <target name="dist" depends="build,package,generate-deployment">
+    <!--<target name="dist" depends="build,package" >-->
+
+  </target>
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  build_lib - create the library, and put it in the common repository
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <target name="build_lib"
+          depends="dist"
+          description="Put the build product in the common repository."
+  >
+    <mkdir dir="${common.lib.dir}" />
+    <copy file="${build}/${component.name}Service.jar"
+          todir="${common.lib.dir}"
+    />
+  </target>
+
+  <target name="clean"
+          description="Clean-up the directory used for the compilation and build. This ensure that the subsequent build will recompile everything."
+  >
+    <delete dir="${build}" failonerror="false"/>
+    <delete dir="${classes}" failonerror="false"/>
+    <delete dir="${temp}" failonerror="false"/>
+    <delete dir="${target}" failonerror="false"/>
+    <delete>
+      <fileset dir="." includes="**/junit*.properties" />
+    </delete>
+  </target>
+
+	
+	<!-- #All junit and cobertura files and reports are created in this directory -->
+	<property name="jacoco.datafile.path" value="${report.dir}/jacoco_unittests.exec"/>
+	<!-- # All reports go into this directory -->
+	<property name="target.reports.xml.dir" value="${report.dir}/junit-xml"/>	
+	<property name="target.reports.html.dir" value="${report.dir}/junit-html"/>
+			
+	<!-- # Coverage reports are deposited into these directories -->
+	<property name="target.coverage.html.dir" value="${report.dir}/jacoco-html"/>
+	<property name="target.coverage.instrument.dir" value="${report.dir}/classes-instr"/>
+
+	<!-- Junit specific property values  are defined in build.properties file-->
+	<property name="junit.haltonfailure" value="off" />
+	<property name="junit.haltonerror" value="off" />
+
+	<!-- directory that contains jacoco: -->
+	<taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml" classpathref="jacoco.classpath"/>	
+	
+	<!-- ============================================================ -->
+	<!-- Target: compiles & Runs all the junit Test classes							-->
+	<!-- ============================================================ -->
+	
+	<target name="build_unittests"
+	          depends="build, init_tests"
+	          description="Compile the tests">
+	
+	    <javac debug="${debug}"
+	           deprecation="{deprecation}"
+	           destdir="${test.classes}"
+	           srcdir="${test.src}"
+	    		includes = "**/*UnitTest.java"	    	
+	           classpathref="test.classpath"
+	    >
+	 </javac>
+		 <copy todir="${test.classes}">
+		      <fileset dir="${test.src}">
+		        <include name="**/*.properties" />
+		        <include name="**/*.xml" />
+		        <include name="**/*.doc" />
+		        <include name="**/*.docx" />
+		        <!--need while testing DocumentService  -->
+		     <!--    <include name="**/*.pdf" /> -->
+		        <include name="**/*.JPG" />
+		      </fileset>
+		    </copy>
+	</target>
+	
+	<!-- Init targets -->
+	<target name="jacoco_init" >
+				<!--  Junit & jacoco specific property values  -->
+				<mkdir dir="${target.reports.xml.dir}"/>
+				<mkdir dir="${target.coverage.instrument.dir}"/>
+				<mkdir dir="${target.reports.html.dir}"/>
+				<mkdir dir="${target.coverage.html.dir}"/>
+				<tstamp />
+	</target>
+	
+	<!--<target name="echo-path" description="Echo test path">
+	    <pathconvert targetos="windows" property="test.path.unix" refid="test.classpath"/>
+	    <echo message="Test classpath: ${test.path.unix}"/>
+	</target> -->
+	    	
+	<target name="run_unittests" depends="build_unittests, jacoco_init" description="Run the tests using jacoco">
+				<delete file="${jacoco.datafile.path}" />
+				<jacoco:coverage destfile="${jacoco.datafile.path}">
+				<junit fork="yes" dir="${target}/.."  haltonerror="${junit.haltonerror}" 
+			           haltonfailure="${junit.haltonfailure}" printsummary="yes" >
+					<classpath>
+							<pathelement location="${target.dir.classes}" />
+							<path refid="test.classpath" />
+					</classpath>
+					<formatter type="xml" />
+					<jvmarg value="-javaagent:${common.lib.dir}/jmockit.jar" />
+					<test name="${testcase}" todir="${target.reports.xml.dir}" if="testcase" />
+					<batchtest todir="${target.reports.xml.dir}" unless="testcase" fork="true" >
+						<fileset dir="${test.src}">
+							<include name="**/*UnitTest.java" />							
+							<!--<include name="tests/**/*Test*.java"/> this pattern will cover TestAll class too-->
+						</fileset>
+					</batchtest>
+				</junit>
+				</jacoco:coverage>
+				<junitreport todir="${target.reports.xml.dir}">
+					<fileset dir="${target.reports.xml.dir}">
+						<include name="TEST-*.xml" />
+					</fileset>
+					<report format="frames" todir="${target.reports.html.dir}" />
+				</junitreport>
+			</target>
+
+			<target name="report_unittests">
+				<touch file="${jacoco.datafile.path}"/>
+				<jacoco:report>
+				    <executiondata>
+				        <file file="${jacoco.datafile.path}"/>
+			
+				    </executiondata>
+				    <structure name="${component.name}">
+				        <classfiles>
+				        	<fileset dir="${classes}" />
+				        </classfiles>
+				        <sourcefiles encoding="UTF-8">
+				            <fileset dir="${src}"/>
+				        </sourcefiles>
+				    </structure>
+					<html destdir="${target.coverage.html.dir}"/>
+				</jacoco:report>
+
+			</target>	
+				
+			<target name="coverage_unittests" depends="run_unittests,report_unittests" description="Compile, instrument and run the tests and generate JUnit and coverage reports."/>
+
+
+  <!-- End: Common Services Properties and Tasks -->
+</project>

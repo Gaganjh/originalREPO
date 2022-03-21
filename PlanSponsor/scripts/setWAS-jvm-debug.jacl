@@ -1,0 +1,24 @@
+# ==============================================================================
+# WAS script to set the classpath in WAS
+#
+# $Id: setWAS-jvm-debug.jacl,v 1.1.2.1.2.1 2007/05/29 00:34:36 Andrew_Park Exp $:
+# ==============================================================================
+
+set cellName [lindex $argv 0]
+set nodeName [lindex $argv 1]
+set debugMode [lindex $argv 2]
+
+set server1 [$AdminConfig getid /Cell:$cellName/Node:$nodeName/Server:server1/]
+set jvm [$AdminConfig list JavaVirtualMachine $server1]
+
+puts "Server=$server1"
+puts "JVM=$jvm"
+puts "debugMode=$debugMode"
+
+if {$debugMode == "true"} {   
+    $AdminConfig modify $jvm {{debugMode true}}   
+} else {
+    $AdminConfig modify $jvm {{debugMode false}}
+}
+
+$AdminConfig save

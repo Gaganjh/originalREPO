@@ -1,0 +1,101 @@
+DIV.id_heading {
+	WIDTH: 608px
+}
+DIV.id_heading H1 {
+	MARGIN-BOTTOM: 12px
+}
+TABLE.contacts {
+	WIDTH: 608px
+}
+DIV.all_contacts_main {
+	MARGIN-RIGHT: -4px
+}
+TABLE.contacts H2 {
+	PADDING-RIGHT: 15px;
+	PADDING-LEFT: 0px;
+	FONT-SIZE: 1.8em;
+	MARGIN-BOTTOM: 0px;
+	PADDING-BOTTOM: 3px;
+	COLOR: #ffffff;
+	PADDING-TOP: 1px
+}
+TABLE.contacts TR TD {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; WIDTH: 21%; PADDING-TOP: 5px
+}
+TABLE.contacts TR TD.first {
+	PADDING-LEFT: 15px; WIDTH: 16%
+}
+TABLE.contacts .contacts_caption {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 14px;
+	FONT-FAMILY: verdana
+}
+TABLE.contacts TR.contacts_filler TD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 8px
+}
+TABLE.contacts TR.contacts_header TD {
+	VERTICAL-ALIGN: bottom;
+	BORDER-LEFT: #e7e7e3 1px solid;
+	BACKGROUND-COLOR: #caccc0;
+	font-size: 11px;
+}
+TABLE.contacts TR.contacts_header TD.first {
+	BORDER-LEFT-STYLE: none
+}
+TABLE.contacts TR.contacts_data TD {
+	FONT-SIZE: 12px; PADDING-BOTTOM: 10px; BORDER-LEFT: #d1d1ca 1px solid; PADDING-TOP: 10px; BORDER-BOTTOM: #d1d1ca 1px solid; FONT-FAMILY: verdana; BACKGROUND-COLOR: #fafbf5
+}
+TABLE.contacts TR.contacts_data TD.first {
+	BORDER-LEFT-STYLE: none
+}
+TABLE.contacts TR.contacts_data TD IMG {
+	MARGIN-BOTTOM: 5px
+}
+IMG.all_manager_image {
+	DISPLAY: block
+}
+DIV.contacts_mutual_funds_area {
+	MARGIN-BOTTOM: 19px
+}
+DIV.personal_contacts {
+	PADDING-RIGHT: 16px; PADDING-LEFT: 16px; PADDING-BOTTOM: 30px; PADDING-TOP: 0px
+}
+DIV.personal_contacts DIV {
+	BORDER-TOP: #dbdcd5 1px solid; CLEAR: left; PADDING-TOP: 10px
+}
+DIV.personal_contacts DIV.noborder {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+DIV.personal_contacts DIV IMG {
+	FLOAT: left; MARGIN: 0px 14px 12px 0px; WIDTH: 90px; HEIGHT: 90px
+}
+DIV.personal_contacts H3 {
+	MARGIN-TOP: 7px; FONT-SIZE: 2em; MARGIN-BOTTOM: 12px; COLOR: #22485e
+}
+DIV.personal_contacts P {
+	FONT-SIZE: 1.1em
+}
+DIV.personal_comments {
+	BACKGROUND: #f5f6f1; CLEAR: left
+}
+DIV.personal_comments H2 {
+	PADDING-RIGHT: 16px; PADDING-LEFT: 16px; FONT-WEIGHT: normal; FONT-SIZE: 1.3em; BACKGROUND: #e8eadd; PADDING-BOTTOM: 10px; COLOR: #000; PADDING-TOP: 10px; FONT-FAMILY: verdana
+}
+DIV.personal_comments_content {
+	PADDING-RIGHT: 16px; PADDING-LEFT: 16px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+DIV.personal_comments_content {
+	PADDING-RIGHT: 16px; PADDING-LEFT: 16px; PADDING-BOTTOM: 15px; PADDING-TOP: 0px
+}
+DIV.personal_comments TEXTAREA {
+	MARGIN-BOTTOM: 10px; WIDTH: 300px; HEIGHT: 132px
+}
+DIV.personal_comments P {
+	MARGIN-BOTTOM: 2px
+}
+DIV.personal_comments DIV.personal_text {
+	WIDTH: 300px; TEXT-ALIGN: right
+}
+DIV.comments SELECT {
+	MARGIN-BOTTOM: 15px
+}

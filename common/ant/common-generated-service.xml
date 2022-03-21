@@ -1,0 +1,169 @@
+<project name="common-generated-service" basedir=".">
+
+  <import file="common-service.xml"/>   
+
+  <!-- Begin: Common Services Properties and Tasks -->
+  <property name="generated.java.dir" value="${target}/generated" />
+
+  <target name="init_generate">
+    <mkdir dir="${target}" />
+    <mkdir dir="${generated.java.dir}" />
+  </target>
+
+  <target name="code_generation" 
+    depends="init, init_generate, generate_ejb" 
+          description="Generate code."
+  >
+  </target>
+
+  <target name="build"
+          depends="init, code_generation"
+          description="Compile the components"
+    >
+    <javac debug="${debug}" deprecation="{deprecation}" destdir="${classes}">
+      <src path="${src}"/>
+      <src path="${generated.java.dir}"/>
+      <classpath>
+        <path refid="compile.only.classpath" />
+        <path refid="deploy.classpath" />
+      </classpath>
+    </javac>
+
+    <copy todir="${classes}">
+      <fileset dir="${src}">
+        <include name="**/*.properties" />
+        <include name="**/*.xml" />
+      </fileset>
+      <fileset dir="${main.config.dir}">
+        <include name="**/*.properties" />
+        <include name="**/*.xml" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="build_tests"
+          depends="init_tests, build"
+          description="Compile the tests"
+  >
+    <javac debug="${debug}"
+           deprecation="{deprecation}"
+           destdir="${test.classes}"
+           srcdir="${test.src}"
+           classpathref="test.classpath"
+    >
+    </javac>
+
+    <copy todir="${test.classes}">
+      <fileset dir="${test.src}">
+        <include name="**/*.properties" />
+        <include name="**/*.xml" />
+      	<include name="**/*.txt" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="package" depends="build,check-if-need-to-generate-deployment">
+    <pathconvert property="lib.project.manifest.classpath" pathsep=" ">
+      <path refid="deploy.classpath"/>
+      <flattenmapper/>
+    </pathconvert>
+    <jar jarfile="${build}/${component.name}Service.jar" update="true">
+
+      <manifest>
+        <attribute name="Implementation-title"   value="${component.name}Service"/>
+        <attribute name="Implementation-vendor"  value="${division_title}"/>
+        <attribute name="Implementation-version" value="${build_number}"/>
+        <attribute name="Build-Machine" value="${hostname}"/>
+        <attribute name="Build-Author"  value="${build_author}"/>
+        <attribute name="Build-Branch"  value="${build_branch}"/>
+        <attribute name="Build-Time"    value="${build_time}"/>
+        <attribute name="Build-Details" value="${build_details}"/>
+        <attribute name="Java-Vendor"   value="${java_vendor}"/>        
+        <attribute name="Java-Version"  value="${java_version}"/>        
+        <attribute name="Class-Path"    value="${lib.project.manifest.classpath}" />
+      </manifest>      
+
+      <fileset dir="${classes}">
+        <include name="**/*.class" />
+        <exclude name="**/_*.class" />
+      </fileset>
+      <fileset dir="${src}">
+        <exclude name="**/*.java" />
+        <exclude name="META-INF/MANIFEST.MF" />
+        <exclude name="META-INF/Manifest.prod" />
+      </fileset>
+      <fileset dir="${main.config.dir}">
+        <include name="**/*.properties" />
+        <include name="**/*.xml" />
+      </fileset>
+      <fileset dir="${generated.java.dir}" >
+        <include name="**/*.xml" />
+        <include name="META-INF/**/*" />
+      </fileset>
+    </jar>
+  </target>
+
+  <path id="xdoclet.classpath">
+    <fileset dir="${common.devlib.dir}">
+      <include name="xdoclet-1.2.3.jar" />
+      <include name="xdoclet-ejb-module-1.2.3.jar" />
+      <include name="xdoclet-ibm-module-1.2.3.jar" />
+      <!--
+        Note: This was removed to add a xjavadoc library that supports generics
+        <include name="xjavadoc-1.1.jar" />
+      -->
+      <include name="xjavadoc-1.5-snapshot050611.jar" />
+      <include name="xdoclet-web-module-1.2.3.jar" />
+    </fileset>
+    <fileset dir="${common.lib.dir}">
+      <include name="commons-logging-1.1.jar" />
+      <include name="commons-collections-3.2.jar" />
+      <include name="j2ee.jar" />
+    </fileset>
+  </path>
+
+  <target name="generate_ejb">
+    <taskdef name="xdoclet"
+      classname="xdoclet.DocletTask"
+             classpathref="xdoclet.classpath"
+    />
+    <taskdef name="ejbdoclet"
+      classname="xdoclet.modules.ejb.EjbDocletTask"
+             classpathref="xdoclet.classpath"
+    />
+    <tstamp>
+      <format property="TODAY" pattern="yyyy-MM-dd"/>
+    </tstamp>
+  
+    <ejbdoclet destdir="${generated.java.dir}"
+      excludedtags="@version,@author"
+      addedtags="@xdoclet-generated at ${TODAY}"
+               ejbspec="2.1"
+    >
+  
+      <fileset dir="${src}">
+        <include name="**/*Bean.java"/>
+      </fileset>
+
+      <remoteinterface pattern="{0}Remote"/>
+      <homeinterface />
+
+      <localinterface pattern="{0}"/>
+      <localhomeinterface/>
+
+      <utilobject cacheHomes="true" />
+  
+      <deploymentdescriptor destdir="${generated.java.dir}/META-INF"
+        useIds="true"
+        displayname="${component.name}Service" 
+                            description="${component.name}Service"
+      />
+
+      <websphere destdir="${generated.java.dir}/META-INF" useIds="true" />
+
+    </ejbdoclet>
+  </target>
+
+  <!-- End: Common Services Properties and Tasks -->
+
+</project>

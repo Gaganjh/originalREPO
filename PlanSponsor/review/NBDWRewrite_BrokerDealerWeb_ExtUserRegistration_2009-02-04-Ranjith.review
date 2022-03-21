@@ -1,0 +1,544 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="NBDWRewrite_BrokerDealerWeb_ExtUserRegistration_2009-02-04">
+  <ReviewIssue id="FQTD43UW">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:15:47:912 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:18:17:253 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="24">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/AccessCodeRule.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Remove hard coded values by defining constants. Suggestion - Keep separate constant/property file for all validation rules regular expressions</Summary>
+    <Description>addRule(new RegularExpressionRule(BDErrorCodes.INVALID_ACCESS_CODE, "^[a-zA-Z]{5,25}$"),</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTD7OXB">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:18:35:183 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:19:37:141 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="27">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/AccessCodeRule.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Javadoc is missed</Summary>
+    <Description>&#13;
+    public static final AccessCodeRule getInstance() {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDA653">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:20:30:807 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:22:56:379 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="42">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/AddressRule.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Remove hard coded values by defining constants. Suggestion - Keep separate constant/property file for all validation rules regular expressions. Similarly for all other regular expression constants which are defined in the class.</Summary>
+    <Description>BDErrorCodes.ADDRESS_LINE1_INVALID, "[\40-\41\43-\45\47-\73\75-\176]+");</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDDOW4">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:23:15:076 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:23:40:939 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="65">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/AddressRule.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Javadoc is missing</Summary>
+    <Description> public static final AddressRule getInstance() {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDEQ5C">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:24:03:360 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:24:42:068 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="23">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/AddressRule.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Do we need to define this constant in the class level ? I think this can be shared from the common constant file</Summary>
+    <Description>public static final String USA_COUNTRY_CODE = "USA";</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDG4I4">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:25:08:620 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:25:34:529 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="28">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/EmailAddressRule.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Javadoc is missing</Summary>
+    <Description> public static final EmailAddressRule getInstance() {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDGUSP">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:25:42:697 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:26:08:341 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="24">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/EmailAddressRule.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Remove hard coded values by defining constants. Suggestion - Keep separate constant/property file for all validation rules regular expressions</Summary>
+    <Description>addRule(new RegularExpressionRule(BDErrorCodes.EMAIL_INVALID,</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDIMJ0">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:27:05:292 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:27:24:522 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="26">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/MandatoryFieldRule.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use generic type collection</Summary>
+    <Description>public boolean validate(String[] fieldIds, Collection validationErrors,</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDJLVK">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:27:51:104 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:28:31:941 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="55">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/PasswordChallengeInputRule.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Remove hard coded values by defining constants. Suggestion - Keep separate constant/property file for all validation rules regular expressions. Similarly for all other regular expression constants which are used in the class.</Summary>
+    <Description>BDErrorCodes.FIRST_CHALLENGE_QUESTION_ANSWER_INVALID, "^[\\ \\w]{1,32}$");</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDL769">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:29:05:361 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:29:21:163 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="75">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/PasswordChallengeInputRule.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Javadoc is missing.</Summary>
+    <Description> public PasswordChallengeInputRule() {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDLYDF">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:29:40:611 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:30:06:615 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="28">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/PhoneNumberRule.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Remove hard coded values by defining constants. Suggestion - Keep separate constant/property file for all validation rules regular expressions</Summary>
+    <Description>addRule(new RegularExpressionRule(BDErrorCodes.INVALID_PHONE_NUMBER, "^[0-9]{10}$"), true);</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDMX6V">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:30:25:735 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:30:51:770 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="52">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/PhoneNumberRule.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Javadoc is missing</Summary>
+    <Description> public static final PhoneNumberRule getInstance() {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDO86D">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:31:26:629 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:31:41:133 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="56">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/SsnRule.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Javadoc is missing</Summary>
+    <Description> public static final SsnRule getInstance() {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDOT6L">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:31:53:853 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:32:10:673 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="31">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/SsnRule.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Remove hard coded values by defining constants. Suggestion - Keep separate constant/property file for all validation rules regular expressions</Summary>
+    <Description>  addRule(new RegularExpressionRule(CommonErrorCodes.SSN_INVALID, "^[0-9]{9}$"), true);</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDQ2JW">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:32:52:652 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:33:13:336 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="17">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/SsnRule.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Do we really need another class for this, since it is already present in the baseweb.</Summary>
+    <Description>public class SsnRule extends ValidationRuleSet {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDQYR0">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:33:34:380 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:33:47:147 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="49">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/TaxIdRule.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Javadoc is missing</Summary>
+    <Description> public static final TaxIdRule getInstance() {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTDRI6A">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:33:59:554 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 17:34:14:230 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="26">BrokerDealerWeb/source/com/manulife/pension/bd/web/validation/rules/TaxIdRule.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Remove hard coded values by defining constants. Suggestion - Keep separate constant/property file for all validation rules regular expressions</Summary>
+    <Description>addRule(new RegularExpressionRule(BDErrorCodes.INVALID_TAX_ID, "^[0-9]{9}$"), true);</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTF6KJZ">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:13:42:095 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:13:59:087 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="46">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/CreateFirmRepAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Javadoc is missing class/method level</Summary>
+    <Description> private final RegularExpressionRule lastNameRErule = new RegularExpressionRule(&#13;
+            BDErrorCodes.INVALID_LAST_NAME, BDConstants.FIRST_NAME_LAST_NAME_RE_STRING);&#13;
+&#13;
+    public CreateFirmRepAction() {&#13;
+        super(CreateFirmRepAction.class, CreateFirmRepProcessContext.class,&#13;
+                CreateFirmRepProcessContext.ProcessName, CreateFirmRepProcessContext.InputState);&#13;
+    }</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTF7ZXP">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:14:48:685 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:15:37:392 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="71">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/CreateFirmRepAction.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>error code is hard coded</Summary>
+    <Description>// TODO: get the correct id&#13;
+                errors.add(new ValidationError("", 1207));</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTFAKHG">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:16:48:628 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:17:25:490 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="174">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBasicBrokerProcessContext.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Use isNotEmpty method.</Summary>
+    <Description> if (!StringUtils.isEmpty(userName) &amp;&amp; !StringUtils.isEmpty(password)) {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTFCPMN">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:18:28:607 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:18:57:145 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="71">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBasicBrokerStep1Action.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Use isEmpty()</Summary>
+    <Description>if (errors.size() == 0) {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTFFH61">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:20:37:609 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:20:58:293 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="68">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerAssistantStep1Action.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Use isEmpty()</Summary>
+    <Description> if (errors.size() == 0) {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTFI6CO">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:22:43:560 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:23:08:688 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="99">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerStep1Action.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Use errors.isEmpty()</Summary>
+    <Description>if (errors.size() == 0) {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTFP4HG">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:28:07:732 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:33:47:706 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="51">BrokerDealerWeb/webApplication/WEB-INF/registration/registerBrokerAssistantStep2.jsp</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>It looks like spelling mistake here - "Lean"</Summary>
+    <Description> &lt;div class="LearnMore Right"&gt;&lt;a href="#"&gt;Lean More&lt;/a&gt;&lt;/div&gt;</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTG4JR2">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:40:07:358 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:40:32:439 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="79">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBasicBrokerStep1Action.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Remove the TODO if not required.</Summary>
+    <Description>// TODO: Show warning message if the broker has a producer code (refer DFS)</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTG5NWL">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:40:59:397 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:41:26:528 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="26">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerProcessContext.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>if possible use a meaningful names</Summary>
+    <Description>  public final static SimpleProcessState Step0 = new SimpleProcessState("step0",&#13;
+            "/do/registerExternalBroker/start");&#13;
+&#13;
+    public final static SimpleProcessState Step1 = new SimpleProcessState("step1",&#13;
+            "/do/registerExternalBroker/broker/step1");&#13;
+&#13;
+    public final static SimpleProcessState Step2 = new SimpleProcessState("step2",&#13;
+            "/do/registerExternalBroker/broker/step2");&#13;
+&#13;
+    public final static SimpleProcessState Step3 = new SimpleProcessState("complete"</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTG89I5">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:43:00:701 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:43:38:987 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="80">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterBrokerStep1Action.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>still some TODO's are there.</Summary>
+    <Description>// TODO: validate the entered data with the data from Agency (SSN/Tax Id, email&#13;
+                // address and contract number). Show corresponding error message&#13;
+                // TODO: Validate whether BrokerEntity(SSN or Tax Id) already attached to another&#13;
+                // non deleted profile. Show corresponding error message&#13;
+                // TODO: Check for missing email and show message</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTGARJY">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:44:57:406 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:51:19:546 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="125">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterFirmRepProcessContext.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use proper names for variables</Summary>
+    <Description>RegistrationCompleteForm f = (RegistrationCompleteForm) form;</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTGJ4NN">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:51:27:635 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:51:51:026 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="126">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterFirmRepProcessContext.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use isNotEmpty()</Summary>
+    <Description>if (!StringUtils.isEmpty(userName) &amp;&amp; !StringUtils.isEmpty(password)) {</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FQTGM88S">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:53:52:252 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-02-05 :: 18:54:28:269 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ranjith</ReviewerId>
+    <AssignedTo>Hari</AssignedTo>
+    <File line="96">BrokerDealerWeb/source/com/manulife/pension/bd/web/registration/RegisterFirmRepStep2Action.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Use proper name for parameters, the same name will be reflected in the javadoc</Summary>
+    <Description> /**&#13;
+     * Helper method to create the FirmRepRegistrationValueObject from the form object&#13;
+     * &#13;
+     * @param form&#13;
+     * @return&#13;
+     */&#13;
+    private FirmRepRegistrationValueObject createRegistrationVO(&#13;
+            FirmRepCreationValueObject creationVO, RegisterFirmRepStep2Form form) {&#13;
+        if (logger.isDebugEnabled()) {&#13;
+            logger.debug("entry -&gt; createRegistrationVO");&#13;
+        }</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+</Review>

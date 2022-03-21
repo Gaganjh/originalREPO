@@ -1,0 +1,88 @@
+/*******************************************************************************
+*	contract_investment_allocation.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Contract Funds specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+
+div#page_section_container_cont_det{
+	margin-bottom:5px;
+	width:919px;
+	background-color: #fff;
+	background-image: url(/assets/unmanaged/images/backgrounds/blue_bg.gif);
+	background-repeat: repeat-y;
+	background-position: center top;
+}
+
+	div#page_section_container_cont_det h4{
+		background: none;
+		color:#333333;
+		font: normal 1em georgia, times, serif;
+		height: 1em;
+		margin: 0;
+		padding: 10px 0 10px 15px;
+	}
+
+	
+	div#page_section_container_cont_det td, 
+	div#page_section_container_cont_det th, 
+	div#page_section_container_cont_det p, 
+	div#page_section_container_cont_det li{
+	font-size:.75em;
+	text-align: left;
+	}
+		
+	
+	div.page_section_cont_det{
+		float:left;
+		width:457px;		
+	}
+	
+	
+	div.page_section_cont_det:first-child{
+		margin-right:5px;
+	}
+	
+		div.page_section_cont_det form{
+			margin:0;
+		}
+		
+		div.page_section_cont_det form fieldset{
+			border:none;
+			margin:0 auto;
+			padding:10px 0;
+			width:450px;
+		}
+		
+		div.page_section_cont_det form p, div.page_section form select{
+			float:left;
+			width:170px;
+		}
+		
+		
+		div.page_section_cont_det form select{
+			margin:0 0 12px 0;
+			padding:0;
+		}
+		
+		div#page_content_cont_det div.page_section p{
+			padding-top:15px;
+		}
+		
+		div#page_content_cont_det div.page_section form p{
+			clear:left;
+			height:auto;			
+			margin:0;
+			padding:0 5px 12px 0;
+			text-align:right;			
+		}
+			div.page_section_cont_det form p label{
+				font-weight:bold;
+			}
+
+
+
+			
+	
+		

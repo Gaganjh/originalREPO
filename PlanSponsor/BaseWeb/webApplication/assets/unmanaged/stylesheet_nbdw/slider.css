@@ -1,0 +1,22 @@
+.yui-h-slider {
+    POSITION: relative
+}
+.yui-v-slider {
+    POSITION: relative
+}
+.yui-h-slider .yui-slider-thumb {
+    CURSOR: default; POSITION: absolute
+}
+.yui-v-slider .yui-slider-thumb {
+    CURSOR: default; POSITION: absolute
+}
+.yui-skin-sam .yui-h-slider {
+    BACKGROUND: url("/assets/unmanaged/images/bg-fader.gif")  32px 0 no-repeat; WIDTH: 236px; HEIGHT: 28px
+}
+.yui-skin-sam .yui-h-slider .yui-slider-thumb {
+    TOP: 4px
+}
+.yui-skin-sam .yui-v-slider {
+    BACKGROUND: url(/assets/unmanaged/images/bg-v-e.gif) no-repeat 12px 0px; WIDTH: 48px; HEIGHT: 228px
+}
+

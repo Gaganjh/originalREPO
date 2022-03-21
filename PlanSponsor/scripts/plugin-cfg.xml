@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--HTTP server plugin config file for the webserver usgpps10usNode01Cell.webserver1_node.webserver1 generated on 2006.08.01 at 08:42:24 PM EDT-->
+<Config ASDisableNagle="false" AcceptAllContent="false" AppServerPortPreference="HostHeader" ChunkedResponse="false" FIPSEnable="false" IISDisableNagle="false" IISPluginPriority="High" IgnoreDNSFailures="false" RefreshInterval="60" ResponseChunkSize="64" VHostMatchingCompat="false">
+   <Log LogLevel="Trace" Name="C:\webSphere9\Plugins/logs/webserver1/http_plugin.log"/>
+   <Property Name="ESIEnable" Value="true"/>
+   <Property Name="ESIMaxCacheSize" Value="1024"/>
+   <Property Name="ESIInvalidationMonitor" Value="false"/>
+   <VirtualHostGroup Name="PlanSponsorUSA_host">
+      <VirtualHost Name="usgpps10us.test-qa.net:9081"/>
+      <VirtualHost Name="usgppsi10us:9081"/>
+      <VirtualHost Name="*:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PlanSponsorNY_host">
+      <VirtualHost Name="usgpps10ny.test-qa02.net:9081"/>
+      <VirtualHost Name="usgppresit10ny:9081"/>
+   </VirtualHostGroup>
+   <ServerCluster CloneSeparatorChange="false" LoadBalance="Round Robin" Name="server1_usgpps10usNode01_Cluster" PostBufferSize="64" PostSizeLimit="-1" RemoveSpecialHeaders="true" RetryInterval="60">
+      <Server ConnectTimeout="0" ExtendedHandshake="false" MaxConnections="-1" Name="usgpps10usNode01_server1" ServerIOTimeout="0" WaitForContinue="false">
+         <Transport Hostname="usgpps10us.test-qa.net" Port="9080" Protocol="http"/>
+         <Transport Hostname="usgpps10us.test-qa.net" Port="9443" Protocol="https">
+            <Property Name="keyring" Value="C:\webSphere9\Plugins\etc\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="C:\webSphere9\Plugins\etc\plugin-key.sth"/>
+         </Transport>
+      </Server>
+   </ServerCluster>
+   <UriGroup Name="PlanSponsorUSA_host_server1_usgpps10usNode01_Cluster_URIs">
+        <Uri AffinityCookie="JSESSIONID" Name="/do/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/admin/*.jsp"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/error.jsp"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/login/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/public/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/LineChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/PieChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/BarChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/ClearContentCacheServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/ResetInternalUserPassword"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/AddIUMUser"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/AddRMUser"/>        
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/AddBIUser"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/DeleteRMUser"/> 
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/DeleteBIUser"/> 
+        <Uri AffinityCookie="JSESSIONID" Name="/unallocated/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/ic/servlet/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/global/calendar.jsp"/>
+   </UriGroup>
+   <Route ServerCluster="server1_usgpps10usNode01_Cluster" UriGroup="PlanSponsorUSA_host_server1_usgpps10usNode01_Cluster_URIs" VirtualHostGroup="PlanSponsorUSA_host"/>
+   <UriGroup Name="PlanSponsorNY_host_server1_usgpps10usNode01_Cluster_URIs">
+        <Uri AffinityCookie="JSESSIONID" Name="/do/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/admin/*.jsp"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/error.jsp"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/login/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/public/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/LineChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/PieChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/BarChartServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/ClearContentCacheServlet"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/ResetInternalUserPassword"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/AddIUMUser"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/AddRMUser"/>        
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/AddBIUser"/>        
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/DeleteRMUser"/> 
+        <Uri AffinityCookie="JSESSIONID" Name="/servlet/DeleteBIUser"/> 
+        <Uri AffinityCookie="JSESSIONID" Name="/unallocated/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/ic/servlet/*"/>
+        <Uri AffinityCookie="JSESSIONID" Name="/global/calendar.jsp"/>
+   </UriGroup>
+   <Route ServerCluster="server1_usgpps10usNode01_Cluster" UriGroup="PlanSponsorNY_host_server1_usgpps10usNode01_Cluster_URIs" VirtualHostGroup="PlanSponsorNY_host"/>
+   <RequestMetrics armEnabled="false" loggingEnabled="false" rmEnabled="false" traceLevel="HOPS">
+      <filters enable="false" type="URI">
+         <filterValues enable="false" value="/snoop"/>
+         <filterValues enable="false" value="/hitcount"/>
+      </filters>
+      <filters enable="false" type="SOURCE_IP">
+         <filterValues enable="false" value="255.255.255.255"/>
+         <filterValues enable="false" value="254.254.254.254"/>
+      </filters>
+      <filters enable="false" type="JMS">
+         <filterValues enable="false" value="destination=aaa:topic=bbb"/>
+      </filters>
+      <filters enable="false" type="WEB_SERVICES">
+         <filterValues enable="false" value="wsdlPort=aaa:op=bbb:nameSpace=ccc"/>
+      </filters>
+   </RequestMetrics>
+</Config>

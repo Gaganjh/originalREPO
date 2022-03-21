@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Config RefreshInterval="7200" ResponseChunkSize="256">
+   <Log LogLevel="Warn" Name="d:\webSphere9\Plugins\logs\LiveWebServer\http_plugin.log"/>
+   <Property Name="ESIEnable" Value="false"/>
+   <VirtualHostGroup Name="EZkLiveUSA_host">
+      <VirtualHost Name="ezusuat2.test-qa.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="EZkLiveNY_host">
+      <VirtualHost Name="eznyuat2.test-qa02.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWLiveUSA_host">
+      <VirtualHost Name="psusuat2.test-qa.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWLiveNY_host">
+      <VirtualHost Name="psnyuat2.test-qa02.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="OnlineOrder_host">
+      <VirtualHost Name="mlisezkuws2:86"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="BrokerLiveUSA_host">
+      <VirtualHost Name="bdusuat2.my401ksales.com:*"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="BrokerLiveNY_host">
+      <VirtualHost Name="bdnyuat2.my401ksalesny.com:*"/>
+   </VirtualHostGroup>
+   <ServerCluster Name="EZkLiveCluster" PostBufferSize="256">
+      <Server CloneID="124mebeks" LoadBalanceWeight="2" Name="EZkLiveServer1">
+         <Transport Hostname="mlisezkuas2.americas.manulife.net" Port="9080" Protocol="http"/>
+      </Server>
+      <Server CloneID="124mebg47" LoadBalanceWeight="2" Name="EZkLiveServer2">
+         <Transport Hostname="mlisezkuas2.americas.manulife.net" Port="9081" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="PSWLiveCluster" PostBufferSize="256">
+      <Server CloneID="124med55h" LoadBalanceWeight="2" Name="PSWLiveServer1">
+         <Transport Hostname="mlisezkuas2.americas.manulife.net" Port="9082" Protocol="http"/>
+      </Server>
+      <Server CloneID="124med6sn" LoadBalanceWeight="2" Name="PSWLiveServer2">
+         <Transport Hostname="mlisezkuas2.americas.manulife.net" Port="9083" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="BrokerLiveServer" PostBufferSize="256">
+      <Server Name="BrokerLiveServer">
+         <Transport Hostname="mlisezkuas2.americas.manulife.net" Port="9084" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="OnlineOrderLiveServer" PostBufferSize="256">
+      <Server Name="OnlineOrderLiveServer">
+         <Transport Hostname="mlisezkuas2.americas.manulife.net" Port="9085" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <UriGroup Name="PSWLiveUSA_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="*.jsp"/>
+      <Uri Name="/unallocated/*"/>
+   </UriGroup>
+   <UriGroup Name="PSWLiveNY_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="EZk_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/investments/*"/>
+      <Uri Name="/money101/*"/>
+      <Uri Name="/tools/*"/>
+      <Uri Name="/ServiceServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="OnlineOrder_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/error.jsp"/>
+   </UriGroup>
+   <UriGroup Name="All_URIs">
+      <Uri Name="/*"/>
+   </UriGroup>
+   <Route ServerCluster="EZkLiveCluster" UriGroup="EZk_URIs" VirtualHostGroup="EZkLiveUSA_host"/>
+   <Route ServerCluster="EZkLiveCluster" UriGroup="EZk_URIs" VirtualHostGroup="EZkLiveNY_host"/>
+   <Route ServerCluster="PSWLiveCluster" UriGroup="PSWLiveUSA_URIs" VirtualHostGroup="PSWLiveUSA_host"/>
+   <Route ServerCluster="PSWLiveCluster" UriGroup="PSWLiveNY_URIs" VirtualHostGroup="PSWLiveNY_host"/>
+   <Route ServerCluster="BrokerLiveServer" UriGroup="All_URIs" VirtualHostGroup="BrokerLiveUSA_host"/>
+   <Route ServerCluster="BrokerLiveServer" UriGroup="All_URIs" VirtualHostGroup="BrokerLiveNY_host"/>
+   <Route ServerCluster="OnlineOrderLiveServer" UriGroup="OnlineOrder_URIs" VirtualHostGroup="OnlineOrder_host"/>
+</Config>

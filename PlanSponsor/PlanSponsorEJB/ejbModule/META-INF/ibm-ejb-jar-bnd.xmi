@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejbbnd="ejbbnd.xmi" xmlns:ejb="ejb.xmi" xmlns:common="common.xmi" xmi:id="ejb-jar_ID_Bnd">
+  <ejbJar href="META-INF/ejb-jar.xml#PlanSponsor_ejb-jar_ID"/>
+  <ejbBindings xmi:id="SubmissionService_Bnd" jndiName="com.manulife.pension.ps.service.submission.SubmissionServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#SubmissionService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="BrowseService_Bnd" jndiName="com.manulife.pension.content.service.BrowseServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#BrowseService"/>
+    <resRefBindings xmi:id="ResourceRefBinding_1159542205559" jndiName="jdbc/content" loginConfigurationName="DefaultPrincipalMapping">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ContentDataSource"/>
+      <properties xmi:id="Property_1159542205558" name="com.ibm.mapping.authDataAlias" value="PlanSponsorNode/db2admin" description="description"/>
+    </resRefBindings>
+  </ejbBindings>
+  <ejbBindings xmi:id="ContentBrowseService_Bnd" jndiName="com.manulife.pension.content.service.ContentBrowseServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ContentBrowseService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="HeartBeatService_Bnd" jndiName="com.manulife.pension.ps.service.heartbeat.HeartBeatServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#HeartBeatService"/>
+  </ejbBindings>
+    <ejbBindings xmi:id="IloansService_Bnd" jndiName="com.manulife.pension.ps.service.iloans.IloansServiceHome">
+      <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#IloansService"/>
+  </ejbBindings>
+    <ejbBindings xmi:id="FandpService_Bnd" jndiName="com.manulife.pension.ps.service.report.fandp.FandpServiceHome">
+      <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#FandpService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="TpaSearchService_Bnd" jndiName="com.manulife.pension.ps.service.report.tpabob.TpaSearchServiceHome">
+      <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#TpaSearchService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="DomainService_Bnd" jndiName="com.manulife.pension.ps.service.domain.DomainServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#DomainService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ParticipantService_Bnd" jndiName="com.manulife.pension.ps.service.participant.ParticipantServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ParticipantService"/>
+    <ejbRefBindings xmi:id="EjbRefBinding_ManagedAccountServiceLocalRef" jndiName="com.manulife.pension.service.managedaccount.ManagedAccountServiceLocalHome">
+	      <bindingEjbRef xmi:type="common:EJBLocalRef" href="META-INF/ejb-jar.xml#ManagedAccountServiceLocalRef0"/>
+	</ejbRefBindings>   
+  </ejbBindings>
+  <ejbBindings xmi:id="EmailGeneratorService_Bnd" jndiName="com.manulife.pension.ps.service.withdrawal.email.EmailGeneratorServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#EmailGeneratorService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LockService_Bnd" jndiName="com.manulife.pension.ps.service.lock.LockServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LockService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="ContractAssemblyService_Bnd" jndiName="com.manulife.pension.ps.service.contract.ContractAssemblyServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ContractAssemblyService"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="LoadTestService_Bnd" jndiName="com.manulife.pension.ps.service.loadtest.LoadTestServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LoadTestService"/>
+  </ejbBindings>
+   <ejbBindings xmi:id="PlanNoticeDocumentService_Bnd" jndiName="com.manulife.pension.ps.service.notice.PlanNoticeDocumentServiceHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#PlanNoticeDocumentService"/>
+  </ejbBindings>
+</ejbbnd:EJBJarBinding>

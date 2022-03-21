@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!DOCTYPE titleGeneratorConfig
+[
+<!ELEMENT titleGeneratorConfig (title*)>
+<!ELEMENT title (condition?, (searchResult|reference|content|text)*)>
+	<!ATTLIST title contentType CDATA #REQUIRED>
+	<!ATTLIST title referenceType CDATA #IMPLIED>
+<!ELEMENT condition EMPTY>
+	<!ATTLIST condition operator (equals|notEquals) #REQUIRED>
+	<!ATTLIST condition property CDATA #REQUIRED>
+	<!ATTLIST condition value CDATA #REQUIRED>
+<!ELEMENT searchResult EMPTY>
+	<!ATTLIST searchResult property CDATA #REQUIRED>
+<!ELEMENT reference EMPTY>
+	<!ATTLIST reference property CDATA #REQUIRED>
+<!ELEMENT content EMPTY>
+	<!ATTLIST content key CDATA #IMPLIED>
+	<!ATTLIST content type CDATA #REQUIRED>
+	<!ATTLIST content property CDATA #REQUIRED>
+	<!ATTLIST content method (key|findContent|mostRecent|parentKey) "key">
+<!ELEMENT text (#PCDATA)>
+]>
+<titleGeneratorConfig>
+	<title contentType="PersonalFinanceTopic" referenceType="com.manulife.pension.reference.ContentReference">
+		<searchResult property="name"/>
+	</title>
+	<title contentType="Testimonial" referenceType="com.manulife.pension.reference.ContentReference">
+		<searchResult property="title"/>
+	</title>
+	<title contentType="Testimonial" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_T1_4"/>
+		<text> - Personal finance</text>
+	</title>
+	<title contentType="NewsLetterIssue" referenceType="com.manulife.pension.reference.ContentReference">
+		<searchResult property="name"/>
+	</title>
+	<title contentType="NewsLetterSection" referenceType="com.manulife.pension.reference.ContentReference">
+		<searchResult property="name"/>
+	</title>
+	<title contentType="NewsLetterArticle" referenceType="com.manulife.pension.reference.ContentReference">
+        <content property="name" type="NewsLetterIssue" method="parentKey"/>
+        <text> - </text>
+		<searchResult property="title"/>
+	</title>
+	<title contentType="newsletter" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_T1_7"/>
+		<text> - </text>
+		<content property="displayName" type="NewsLetterIssue" method="mostRecent"/>
+	</title>
+	<title contentType="StandAloneArticle" referenceType="com.manulife.pension.reference.ContentReference">
+		<searchResult property="title"/>
+	</title>
+	<title contentType="StandAloneArticle" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_T1_3"/>
+		<text> - Personal Finance</text>
+	</title>
+	<title contentType="MoneyLesson" referenceType="com.manulife.pension.reference.ContentReference">
+		<searchResult property="title"/>
+	</title>
+	<title contentType="MoneyArticle" referenceType="com.manulife.pension.reference.ContentReference">
+        <content property="title" type="MoneyLesson" method="parentKey"/>
+        <text> - </text>
+		<searchResult property="title"/>
+	</title>
+	<title contentType="MoneyCalculator" referenceType="com.manulife.pension.reference.ContentReference">
+		<searchResult property="title"/>
+	</title>
+	<title contentType="money" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_T1_2"/>
+	</title>
+	<title contentType="StandAloneTool" referenceType="com.manulife.pension.reference.ContentReference">
+		<searchResult property="title"/>
+	</title>
+	<title contentType="StandAloneTool" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_T1_5"/>
+	</title>
+	<title contentType="WebSeminar" referenceType="com.manulife.pension.reference.ContentReference">
+		<searchResult property="title"/>
+	</title>
+	<title contentType="WebSeminar" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_T1_6"/>
+	</title>
+	<title contentType="MoneyGlossaryCategory" referenceType="com.manulife.pension.reference.ContentReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_T1_8"/>
+		<text> - Letter '</text>
+		<searchResult property="title"/>
+		<text>'</text>
+	</title>
+	<title contentType="MoneyGlossaryCategory" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_T1_8"/>
+        <text> - Letter 'A'</text>
+	</title>
+	<title contentType="Glossary_Category" referenceType="com.manulife.pension.reference.ContentReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_T1_9"/>
+		<text> - Letter '</text>
+		<searchResult property="title"/>
+		<text>'</text>
+	</title>
+	<title contentType="Glossary_Category" referenceType="com.manulife.pension.reference.CategoryReference">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_T1_9"/>
+        <text> - Letter 'A'</text>
+	</title>
+	<title contentType="personal finance topics - function">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_T1"/>
+	</title>
+	<title contentType="enrollment - function">
+        <condition operator="equals" property="userprofile.webEnrolledFlag" value="false"/>
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EN_0"/>
+	</title>
+	<title contentType="enrollment - function">
+        <condition operator="equals" property="userprofile.webEnrolledFlag" value="true"/>
+		<text>Enrollment summary</text>
+	</title>
+	<title contentType="account management - function">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_A1_ACCOUNT_SUMMARY"/>
+	</title>
+	<title contentType="ViewFunds">
+		<searchResult property="title"/>
+	</title>
+	<title contentType="investment - function">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_V1_FUND_PERFORMANCE"/>
+	</title>
+	<title contentType="retirement goal setter - function">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_RGS1"/>
+	</title>
+	<title contentType="action plan - function">
+		<condition operator="equals" property="userprofile.goalSetFlag" value="true"/>
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_RGS6_YOUR_RETIREMENT_ACTION_PLAN"/>
+	</title>
+	<title contentType="action plan - function">
+		<condition operator="equals" property="userprofile.goalSetFlag" value="false"/>
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_RGS1"/>
+	</title>
+	<title contentType="modify personal information - function">
+		<content type="LayoutPage" property="browserTitle" key="LAYOUT_PAGE_EP_P1"/>
+	</title>
+</titleGeneratorConfig>
+

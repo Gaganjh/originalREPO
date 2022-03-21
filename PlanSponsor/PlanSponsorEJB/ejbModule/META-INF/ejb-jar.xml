@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC
+	"-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN"
+	"http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+<ejb-jar id="PlanSponsor_ejb-jar_ID">
+	<display-name>PlanSponsorEJB</display-name>
+	<enterprise-beans>
+		<session id="SubmissionService">
+			<display-name>SubmissionService</display-name>
+			<ejb-name>SubmissionService</ejb-name>
+			<home>com.manulife.pension.ps.service.submission.SubmissionServiceHome</home>
+			<remote>com.manulife.pension.ps.service.submission.SubmissionService</remote>
+			<ejb-class>com.manulife.pension.ps.service.submission.SubmissionServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session id="IloansService">
+			<ejb-name>IloansService</ejb-name>
+			<home>com.manulife.pension.ps.service.iloans.IloansServiceHome</home>
+			<remote>com.manulife.pension.ps.service.iloans.IloansService</remote>
+			<ejb-class>com.manulife.pension.ps.service.iloans.IloansServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+					<transaction-type>Container</transaction-type>
+		</session>
+		<session id="FandpService">
+			<ejb-name>FandpService</ejb-name>
+			<home>com.manulife.pension.ps.service.report.fandp.FandpServiceHome</home>
+			<remote>com.manulife.pension.ps.service.report.fandp.FandpService</remote>
+			<ejb-class>com.manulife.pension.ps.service.report.fandp.FandpServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+					<transaction-type>Container</transaction-type>
+		</session>
+		<session id="TpaSearchService">
+			<ejb-name>TpaSearchService</ejb-name>
+			<home>com.manulife.pension.ps.service.report.tpabob.TpaSearchServiceHome</home>
+			<remote>com.manulife.pension.ps.service.report.tpabob.TpaSearchService</remote>
+			<ejb-class>com.manulife.pension.ps.service.report.tpabob.TpaSearchServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session id="BrowseService">
+			<ejb-name>BrowseService</ejb-name>
+			<home>com.manulife.pension.content.service.BrowseServiceHome</home>
+			<remote>com.manulife.pension.content.service.BrowseService</remote>
+			<ejb-class>com.manulife.pension.content.service.BrowseServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			<resource-ref id="ContentDataSource">
+				<res-ref-name>jdbc/content</res-ref-name>
+				<res-type>javax.sql.DataSource</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Shareable</res-sharing-scope>
+			</resource-ref>
+		</session>
+		<session id="ContentBrowseService">
+			<ejb-name>ContentBrowseService</ejb-name>
+			<home>com.manulife.pension.content.service.ContentBrowseServiceHome</home>
+			<remote>com.manulife.pension.content.service.ContentBrowseService</remote>
+			<ejb-class>com.manulife.pension.content.service.ContentBrowseServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session id="DomainService">
+			<ejb-name>DomainService</ejb-name>
+			<home>com.manulife.pension.ps.service.domain.DomainServiceHome</home>
+			<remote>com.manulife.pension.ps.service.domain.DomainService</remote>
+			<ejb-class>com.manulife.pension.ps.service.domain.DomainServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session id="ParticipantService">
+			<ejb-name>ParticipantService</ejb-name>
+			<home>com.manulife.pension.ps.service.participant.ParticipantServiceHome</home>
+			<remote>com.manulife.pension.ps.service.participant.ParticipantService</remote>
+			<ejb-class>com.manulife.pension.ps.service.participant.ParticipantServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			<ejb-local-ref id="ManagedAccountServiceLocalRef0">
+		        <description>Managed Account Service</description>
+		        <ejb-ref-name>ejb/ManagedAccountService</ejb-ref-name>
+		        <ejb-ref-type>Session</ejb-ref-type>
+		        <local-home>com.manulife.pension.service.managedaccount.ManagedAccountServiceLocalHome</local-home >
+		        <local>com.manulife.pension.service.managedaccount.ManagedAccountService</local>
+	       </ejb-local-ref>
+		</session>
+		<session id="EmailGeneratorService">
+			<ejb-name>EmailGeneratorService</ejb-name>
+			<home>com.manulife.pension.ps.service.withdrawal.email.EmailGeneratorServiceHome</home>
+			<remote>com.manulife.pension.ps.service.withdrawal.email.EmailGeneratorService</remote>
+			<ejb-class>com.manulife.pension.ps.service.withdrawal.email.EmailGeneratorServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>		
+		<session id="LockService">
+			<ejb-name>LockService</ejb-name>
+			<home>com.manulife.pension.ps.service.lock.LockServiceHome</home>
+			<remote>com.manulife.pension.ps.service.lock.LockService</remote>
+			<ejb-class>com.manulife.pension.ps.service.lock.LockServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session id="PlanNoticeDocumentService">
+			<ejb-name>PlanNoticeDocumentService</ejb-name>
+			<home>com.manulife.pension.ps.service.notice.PlanNoticeDocumentServiceHome</home>
+			<remote>com.manulife.pension.ps.service.notice.PlanNoticeDocumentService</remote>
+			<ejb-class>com.manulife.pension.ps.service.notice.PlanNoticeDocumentServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session id="ContractAssemblyService">
+			<ejb-name>ContractAssemblyService</ejb-name>
+			<home>com.manulife.pension.ps.service.contract.ContractAssemblyServiceHome</home>
+			<remote>com.manulife.pension.ps.service.contract.ContractAssemblyService</remote>
+			<ejb-class>com.manulife.pension.ps.service.contract.ContractAssemblyServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session id="LoadTestService">
+			<ejb-name>LoadTestService</ejb-name>
+			<home>com.manulife.pension.ps.service.loadtest.LoadTestServiceHome</home>
+			<remote>com.manulife.pension.ps.service.loadtest.LoadTestService</remote>
+			<ejb-class>com.manulife.pension.ps.service.loadtest.LoadTestServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+	</enterprise-beans>
+	<assembly-descriptor>
+		<container-transaction>
+			<method>
+				<ejb-name>SubmissionService</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+				<method>
+					<ejb-name>IloansService</ejb-name>
+					<method-intf>Remote</method-intf>
+					<method-name>*</method-name>
+				</method>
+				<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+				<method>
+					<ejb-name>FandpService</ejb-name>
+					<method-intf>Remote</method-intf>
+					<method-name>*</method-name>
+				</method>
+				<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+				<method>
+					<ejb-name>TpaSearchService</ejb-name>
+					<method-intf>Remote</method-intf>
+					<method-name>*</method-name>
+				</method>
+				<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>DomainService</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>ParticipantService</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>BrowseService</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>RequiresNew</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>LockService</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>PlanNoticeDocumentService</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>ContractAssemblyService</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>BrowseService</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>RequiresNew</trans-attribute>
+		</container-transaction>		
+		<container-transaction>
+			<method>
+				<ejb-name>LoadTestService</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>Required</trans-attribute>
+		</container-transaction>		
+	</assembly-descriptor>
+</ejb-jar>

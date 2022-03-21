@@ -1,0 +1,133 @@
+/*******************************************************************************
+*	search_results.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Search Results specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+@import url("screen.css");
+
+#page_content .page_section_subheader h2{
+	color:#fff;
+	font-size:1.25em;
+	margin: 0;
+	padding: 10px 0 3px 25px ;
+}
+
+.search_controls {
+	background-color: #f6f4f1;
+	border: 1px solid #eceae3;
+	height: 30px;
+	margin: 0;
+	padding: 0;
+}
+
+	.search_display_info {
+		float: left;
+		font-size:0.6875em;
+		line-height: 1em;
+		margin: 0;
+		padding: 8px 0 0 23px;
+		position: relative;
+		text-align: left;
+		width: 30%;
+	}
+
+
+	.search_pagination {
+			float: right;
+			font-size:0.6875em;
+			margin: 0;
+			padding: 8px 10px 0 0; 
+			text-align: right;
+		}
+			
+			.search_pagination ul a{
+				float:left;
+			}
+	
+			.search_pagination ul {
+				float:left;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+		
+		
+				.search_pagination ul li {
+					background: url('/assets/unmanaged/images/link_divider.gif') no-repeat center left;
+					float: left;
+					padding: 0 5px 0 5px;
+				}
+				
+				.search_pagination ul li:first-child {
+					background: none;
+				}
+	
+			.search_pagination a {
+				color: #2d4f55;
+			}
+	
+			.search_pagination a.previous {
+				float: left;
+				margin-right: 10px;
+			}
+	
+			.search_pagination a.next {
+				float: left;
+				margin-left: 10px;
+			}
+			
+ul#search_results_list{
+	margin: 10px 0;
+	padding: 0;
+}
+
+ul#search_results_list, #search_results_list li{
+	list-style: none;
+}
+
+
+	ul#search_results_list li{
+		border-bottom: 2px solid #efefef;
+	}
+
+	ul#search_results_list h3{
+		color: #767676;
+		font: bold .75em Verdana, Arial, Helvetica;
+	}
+	
+	ul#search_results_list h4{
+		font: normal .85em Verdana, Arial, Helvetica;
+	}
+
+		ul#search_results_list h4 a{
+			color:#005b80;
+		}
+		
+		ul#search_results_list h4 a.pdf_search_link{
+			padding-right: 25px;
+			background: transparent url('/assets/unmanaged/images/buttons/pdf_btn.gif') no-repeat center right;
+		}
+		
+		
+#site_search_results {
+		float: left;
+		margin: 3px 67px 0 22px;
+		padding: 0;
+	}
+		#site_search_results label {
+			display:none;
+		}
+		
+		#site_search_results_input {
+			border:1px solid #999;
+			float: left;
+			height:19px;
+			padding-left:2px;		
+		}
+
+		#site_search_results .button_search {
+			margin-left: 10px;
+			width: 0.1em;
+		}

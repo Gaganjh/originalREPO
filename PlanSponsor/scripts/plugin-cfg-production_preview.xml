@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Config RefreshInterval="7200" ResponseChunkSize="256" UseInsecure="true">
+   <Log LogLevel="Error" Name="d:\WebSphere9\Plugins\logs\PreviewWebServer\http_plugin.log"/>
+   <Property Name="ESIEnable" Value="false"/>
+   <VirtualHostGroup Name="EZkCMA_host">
+      <VirtualHost Name="EzkCMA.manulife.com:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWCMA_host">
+      <VirtualHost Name="PlanSponsorCMA.manulife.com:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="EZkPreviewUSA_host">
+      <VirtualHost Name="EzkUSPreview.test-qa.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="EZkPreviewNY_host">
+      <VirtualHost Name="EzkNYPreview.test-qa02.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWPreviewUSA_host">
+      <VirtualHost Name="PlanSponsorUSPreview.test-qa.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWPreviewNY_host">
+      <VirtualHost Name="PlanSponsorNYPreview.test-qa02.net:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="BDPreview_host">
+      <VirtualHost Name="BrokerDealerPreview.test-qa.net:443"/>
+   </VirtualHostGroup>
+   <ServerCluster Name="EZkCMAServer" PostBufferSize="256">
+      <Server Name="EZkCMAServer">
+         <Transport Hostname="localhost" Port="9086" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="PSWCMAServer" PostBufferSize="256">
+      <Server Name="PSWCMAServer">
+         <Transport Hostname="localhost" Port="9087" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="EZkPreviewServer" PostBufferSize="256">
+      <Server Name="EZkPreviewServer">
+         <Transport Hostname="localhost" Port="9088" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="PSWPreviewServer" PostBufferSize="256">
+      <Server Name="PSWPreviewServer">
+         <Transport Hostname="localhost" Port="9089" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <UriGroup Name="PSWPreviewUSA_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="*.jsp"/>
+      <Uri Name="/servlet/AddIUMUser"/>
+      <Uri Name="/servlet/AddRMUser"/>
+      <Uri Name="/servlet/ResetInternalUserPassword"/>
+      <Uri Name="/servlet/DeleteRMUser"/>
+      <Uri Name="/servlet/DeleteIUMUser"/>
+      <Uri Name="/unallocated/*"/>
+   </UriGroup>
+   <UriGroup Name="PSWPreviewNY_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="EZk_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/investments/*"/>
+      <Uri Name="/money101/*"/>
+      <Uri Name="/tools/*"/>
+      <Uri Name="/RestService/*"/>
+      <Uri Name="/ServiceServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="BrokerDealer_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/activation/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="/PingServlet"/>
+      <Uri Name="/ViewRIAStatements"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="All_JSPs_URIs">
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <Route ServerCluster="EZkCMAServer" UriGroup="All_JSPs_URIs" VirtualHostGroup="EZkCMA_host"/>
+   <Route ServerCluster="PSWCMAServer" UriGroup="All_JSPs_URIs" VirtualHostGroup="PSWCMA_host"/>
+   <Route ServerCluster="EZkPreviewServer" UriGroup="EZk_URIs" VirtualHostGroup="EZkPreviewUSA_host"/>
+   <Route ServerCluster="EZkPreviewServer" UriGroup="EZk_URIs" VirtualHostGroup="EZkPreviewNY_host"/>
+   <Route ServerCluster="PSWPreviewServer" UriGroup="PSWPreviewUSA_URIs" VirtualHostGroup="PSWPreviewUSA_host"/>
+   <Route ServerCluster="PSWPreviewServer" UriGroup="PSWPreviewNY_URIs" VirtualHostGroup="PSWPreviewNY_host"/>
+   <Route ServerCluster="PSWPreviewServer" UriGroup="BrokerDealer_URIs" VirtualHostGroup="BDPreview_host"/>
+</Config>

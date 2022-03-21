@@ -1,0 +1,27 @@
+.supplementalDisclosure {
+  margin-left:30px;
+}
+
+div.supplementalDisclosure {
+  margin-top:10px;
+}
+.supplementalDisclosure .label {
+  padding-right:10px;
+}
+
+.supplementalDisclosure .value {
+}
+
+.supplementalDisclosure .label.label-indent {
+  padding-left:20px!important;
+}
+
+.supplementalDisclosure .value.value-indent {
+  padding-left:80px;
+}
+.supplementalDisclosure .value.value-double-indent{
+  padding-left:160px;
+}
+.supplementalDisclosure .bold {
+  font-weight:bold;
+}

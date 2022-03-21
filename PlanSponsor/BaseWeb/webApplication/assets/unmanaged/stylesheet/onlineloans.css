@@ -1,0 +1,11 @@
+#PrintLoanDocumentsDialog_mask {
+    opacity: 0;
+}
+
+#BankLookupDialog_mask {
+    opacity: 0;
+}
+
+#ApprovalDialog_mask {
+    opacity: 0;
+}

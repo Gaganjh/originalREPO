@@ -1,0 +1,432 @@
+/*******************************************************************************
+*	contract_overview.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Contract Funds specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+ @import url("screen.css");
+
+/*******************************************************************************
+* PAGE SECTIONS
+********************************************************************************/
+
+#page_content .page_section_subheader{
+	margin-bottom:5px;
+}
+
+div#page_section_container{
+	background: #fff url('/assets/unmanaged/images/backgrounds/overview_bg2.gif') repeat-y top center;
+	width:919px;
+}
+
+	div#page_section_container h4{
+	color:#FFF;
+	font: normal 1em georgia, times, serif;
+	height: 1em;
+	margin: 0;
+	background-color: #a8b8bf;
+	background-image: none;
+	padding-top: 10px;
+	padding-right: 0;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	border-top: 4px solid #febe10;
+	}
+
+	table.overview_table td, 
+	table.overview_table th{
+		vertical-align:top;
+		width:51%;
+	}
+	
+	table#contact_info_table td,
+	table#contact_info_table th{
+		width:auto;
+	}
+		table#contact_info_table th.contact_no{
+			text-align:left;
+		}	
+	
+	table.overview_table{
+	width:450px;
+	margin:0 0 10px 0;
+	padding:0;
+	background-color: #f5f4f0;
+	text-align: left;
+	}
+	
+		table.overview_table th{
+			text-align:right;
+		}
+	
+	table.overview_table_alt{
+	width:450px;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	}
+	
+		table.overview_table_alt th{
+			text-align:left;
+		}
+	
+
+	
+	div.page_section{
+	float:left;
+	width:457px;
+	}
+	
+	div.page_section:first-child{
+	margin-right:5px;
+	}
+	
+		div.page_module{
+	float:left;
+	border-top:5px solid #fff;
+	width:457px;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 10;
+	padding-left: 0;
+		}
+		
+		div.page_module:first-child{
+	border-top:none;
+		}		
+		
+			div.page_module h5{
+				color:#333;
+				margin:0 0 0 15px;
+				padding:0;
+			}
+		
+			div.page_module ul{
+				margin:2px 10px 10px 30px;
+				padding:0;
+			}
+			
+			div#page_section_container div.page_module p{
+				margin:0 10px 0 15px;
+				padding:0;
+			}
+			
+			div#page_section_container p#access_code{
+				margin-top:10px;
+			}	
+			
+div#page_section_container td, 
+	div#page_section_container th, 
+	div#page_section_container p, 
+	div#page_section_container li 
+
+{
+
+color: #333333;
+
+font-size: 0.75em;
+
+}
+
+
+
+#contract_overview #page_wrapper #page_content #page_section_container .page_section .page_module p 
+{
+
+font-family: Verdana,Geneva,sans-serif;
+
+}
+
+#contract_overview #page_wrapper #page_content #page_section_container .page_section .page_module ul li h1 a 
+
+{
+
+text-decoration: underline;
+
+font-weight: normal;
+
+}
+.contact_names{
+		text-align:right;
+}		
+		
+div.footnoteText { 
+	font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #666666; text-decoration: none;
+	}
+	
+	
+	*******************************************************************************
+* REPORT TABLE CONTENT
+********************************************************************************/
+#page_content .summary_table .page_section_subheader,
+#page_content .summary_table .page_section_subsubheader{
+    margin-bottom:0px;
+}
+.summary_table_content {
+    border-bottom:1px solid #cac8c4;
+    border-collapse:collapse;
+    width: 100%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0px;
+    margin-left: 0;
+    border-left: 1px solid #cac8c4;
+    border-right: 1px solid #cac8c4;
+}
+
+    .summary_table_content .hover{
+        background-color:#eceae3;
+    }
+    
+    .summary_table_content .hovercell{
+        background-color:#fff;
+        cursor:pointer;
+    }
+    .summary_table_content th {
+    background-color: #DEDED8;
+    border-left: 1px solid #cac8c4;
+    font-size:0.6875em;
+    font-weight: normal;
+    text-align: left;
+    margin: 0;
+    padding: 4px 8px 6px 8px;
+    }
+    
+     .summary_table_content tr.spec {
+        background-color: #fafaf8;
+    }
+    
+    .summary_table_content tr.spec1 {
+        background-color: #ffffff;
+    }
+    .summary_table_content td.datadivider {
+	 border-right: 1px solid #cac8c4;
+	 text-align: right;
+	}
+	.summary_table_content td.datadivide {
+	 border-right: 1px solid #cac8c4;
+	 text-align: left;
+	}
+	
+.summary_table_content .spec.datadivider {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: #cac8c4; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.summary_table_content .spec1.datadivider {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: #cac8c4; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}          
+        .summary_table_content th:first-child {
+            border-left: none;
+        }
+
+        .summary_table_content th.right_align {
+            text-align: right;
+        }
+        
+        .summary_table_content th.left_align {
+            text-align: left;
+        }
+                
+            .summary_table_content th.sub {
+                border-left: none;
+            }
+            
+            .summary_table_content th.sub:first-child {
+                border-left: 1px solid #cac8c4;
+            }
+        
+            .summary_table td.cur,
+            .summary_table th.cur,
+            .summary_table th.pct,
+            .summary_table td.num{
+                text-align: right;
+            }
+            
+            .summary_table th.name{
+                text-align:left;
+            }
+                
+            .summary_table th.date,
+            .summary_table td.val_num_cnt,
+            .summary_table th.val_str {
+                text-align: left;
+            }
+            .summary_table th.date,
+            .summary_table td.val_num_cnt,
+            .summary_table th.val_str1 {
+                text-align: right;
+            }
+
+    .summary_table_content a,
+    .summary_table_content a:link, 
+    .summary_table_content a:visited, 
+    .summary_table_content a:hover, 
+    .summary_table_content a:active{
+        color: #000;
+        text-decoration: underline;
+        
+    }
+    
+    .summary_table_content a:hover {
+        color: #000;
+        text-decoration: none;
+        
+    }
+    
+        .summary_table_content a.sort_ascending {
+    background: transparent url('/assets/unmanaged/images/icons/icon_sort_ascending.gif') no-repeat scroll left 2px;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 8px;
+        }
+
+        .summary_table_content a.sort_descending {
+    
+            background: transparent url('/assets/unmanaged/images/icons/icon_sort_descending.gif') no-repeat scroll left 2px;
+            color: #333333;
+            font-weight: bold;
+            padding: 0 0 0 10px ;
+            text-decoration: none;
+        }
+        
+        .summary_table_content a.sort_ascending:hover,
+        .summary_table_content a.sort_descending:hover {
+            text-decoration: underline;
+        }
+
+    .summary_table tr {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #f0f1e6;
+    }
+
+    .summary_table tr.spec {
+        background-color: #fafaf8;
+    }
+    .summary_table td {
+    font-size: 11px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #DEDED8;
+    border-left-color: #DEDED8;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #DEDED8;
+    padding-top: 2px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    }
+    
+        summary_table td.spec {
+            border-left: none;
+        }
+
+        .summary_table tr td.sub {
+    border-left: 1px solid #cac8c4;
+        }
+        
+        .summary_table tr td:first-child {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #DEDED8;
+        }
+        
+.align_left {
+    text-align: left !important;
+}
+    
+.align_right {
+    text-align: right !important;
+}
+    
+.align_center {
+    text-align: center !important;
+}
+    
+#common_elements #page_wrapper #page_content .salesToolsTable table p {
+    font-size: 12px;
+}
+.salesToolsTable .spec {
+    background-color: #fafaf8;
+}
+.salesToolsTable td.spec {
+            border-left: none;
+}
+
+.salesToolsTable td {
+    font-size: 11px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #DEDED8;
+    border-left-color: #DEDED8;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #DEDED8;
+    padding-top: 2px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    }
+
+.salesToolsTable tr td:first-child {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #DEDED8;
+    border-right-style: none;
+        }
+
+.salesToolsTable tr {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #f0f1e6;
+    }
+
+
+
+
+
+
+
+
+.salesToolsTable p {
+    font-size: 12px;
+}
+
+        .summary_table td.zero {
+    padding: 0px;
+        }
+
+        .summary_table td.pct,
+        .summary_table td.cur,
+        .summary_table td.num {
+            text-align: right;
+        }
+        
+        .summary_table td.date,
+        .summary_table td.name,
+        .summary_table td.val_str {
+            text-align: left;
+        }
+
+        .summary_table td.neg {
+            color: #e00000;
+        }
+
+        .summary_table td.pos {
+            color: #159722;
+        }
+
+
+
+
+	

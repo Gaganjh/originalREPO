@@ -1,0 +1,2718 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+  From now on, we should try using Permission based authorization instead of role based (as possible).
+  To define permissions to a set of pages, add the permissions attribute with proper codes.
+  The codes are defined in com.manulife.pension.ps.service.security.role.PermissionType
+  
+  Note: The <availableresource> order is very important to the role definition here, as only the
+  first url-pattern found will be put in the list for the given role. Any subsequent URLs that
+  match will be discarded (The implementation uses a TreeSet to hold the url-patterns, and the 
+  comparator uses the URL String).
+-->
+<plansponsor:controlflow xmlns:plansponsor='http://www.manulife.com/usgp/plansponsor'>
+  <web-resource-collection>
+
+    <web-resource-name id="public" description="Public Service">
+      <url-pattern>/login/loginServlet</url-pattern>
+      <url-pattern>/do/login/</url-pattern>
+      <url-pattern>/security/CSRFerrorpage.jsp</url-pattern>
+      <url-pattern>/do/registration/authentication/</url-pattern>
+      <url-pattern>/do/registration/tpaauthentication/</url-pattern>
+      <url-pattern>/do/registration/terms/</url-pattern>
+      <url-pattern>/do/registration/register/</url-pattern>
+      <url-pattern>/do/registration/tparegister/</url-pattern>
+      <url-pattern>/do/registration/confirm/</url-pattern>
+      <url-pattern>/PieChartServlet</url-pattern>
+      <url-pattern>/secondaryWindowError.jsp</url-pattern>
+      <url-pattern>/do/login/passwordResetAuthentication/</url-pattern>
+      <url-pattern>/do/login/passwordResetChallenge/</url-pattern>
+      <url-pattern>/do/login/passwordReset/</url-pattern>
+      <url-pattern>/do/login/passwordResetConfirmation/</url-pattern>
+      <url-pattern>/do/login/forgotPasswordPasscodeTransition/</url-pattern>
+      <url-pattern>/do/login/forgotPasswordPasscodeValidation/</url-pattern>
+	  <url-pattern>/do/home/managesession</url-pattern>
+      <!-- 
+      TODO
+      <url-pattern>/unallocated/unallocatedLoginServlet</url-pattern> -->
+	  <url-pattern>/do/pin/changePin/</url-pattern>	  
+	  <url-pattern>/global/calendar.jsp</url-pattern>
+	  
+	  <!-- F&P URLs for AJAX calls  -->
+	  <url-pattern>/do/fap/fapFilterAction/</url-pattern>      
+      <url-pattern>/do/fap/fapByFundInformation/</url-pattern>
+      <url-pattern>/do/fap/fapByPricesAndYTD/</url-pattern>
+      <url-pattern>/do/fap/fapByPerformanceAndFees/</url-pattern>
+      <url-pattern>/do/fap/fapByStandardDeviation/</url-pattern>
+      <url-pattern>/do/fap/fapByFundCharI/</url-pattern>
+      <url-pattern>/do/fap/fapByFundCharII/</url-pattern>
+      <url-pattern>/do/fap/fapByMorningstar/</url-pattern>
+      <url-pattern>/do/fap/fabByFundCheck/</url-pattern>
+      <url-pattern>/do/fap/fapByFundScorecard/</url-pattern>
+      <url-pattern>/do/noticemanager/updatestatus/</url-pattern>
+       
+    </web-resource-name>
+		
+	<web-resource-name id="secondStep" description="Second authentication step">
+		<url-pattern>/do/passcodeValidation/</url-pattern>
+	</web-resource-name>
+	
+	<web-resource-name id="secondStepTransition" description="Second authentication Transition page step">
+		<url-pattern>/do/passcodeTransition/</url-pattern>
+	</web-resource-name>
+	
+	<web-resource-name id="phoneCollection" description="Phone collection">
+		<url-pattern>/do/phoneCollection/</url-pattern>
+	</web-resource-name>
+	<web-resource-name id="phoneCollectionEdit" description="Phone collection">
+		<url-pattern>/do/profiles/editMyProfile/</url-pattern>
+		<url-pattern>/do/contentpages/howTo</url-pattern>
+	</web-resource-name>
+	
+	<web-resource-name id="signOut" description="sign out from Phone collection pages">
+		<url-pattern>/do/home/Signout/</url-pattern>
+	</web-resource-name>
+	
+    <web-resource-name id="common" description="Common Services" contractrequired="false">
+      <url-pattern>/do/home/homePageFinder/</url-pattern>
+      <url-pattern>/do/home/Signout/</url-pattern>
+      <url-pattern>/do/home/ChangeContract/</url-pattern>
+      <url-pattern>/do/home/selectContract</url-pattern>
+      <url-pattern>/do/home/searchContract</url-pattern>
+      <url-pattern>/do/home/searchTPA</url-pattern>
+      <url-pattern>/do/home/searchCompanyName</url-pattern>
+      <url-pattern>/do/password/changePassword/</url-pattern>
+      <url-pattern>/do/password/changePasswordConfirmation/</url-pattern>      
+      <url-pattern>/do/password/changePasswordInternal/</url-pattern>
+      <url-pattern>/do/password/changePasswordConfirmationInternal/</url-pattern>
+      <url-pattern>/do/password/updatePassword/</url-pattern>
+      <url-pattern>/do/password/updatePasswordConfirmation/</url-pattern>
+      <url-pattern>/do/preferences/</url-pattern>
+      <url-pattern>/global/calendar.jsp</url-pattern>
+      <url-pattern>/do/mcdispatch/</url-pattern>
+   </web-resource-name> 
+	
+	<web-resource-name id="commonForJHTC" description="Common Services For JHTC" contractrequired="false">
+      <url-pattern>/do/home/homePageFinder/</url-pattern>
+      <url-pattern>/do/home/Signout/</url-pattern>
+      <url-pattern>/do/home/ChangeContract/</url-pattern>
+      <url-pattern>/do/home/selectContract</url-pattern>
+      <url-pattern>/do/home/searchContract</url-pattern>
+	  <url-pattern>/do/home/searchCompanyName</url-pattern>
+      <url-pattern>/do/password/changePassword/</url-pattern>
+      <url-pattern>/do/password/changePasswordConfirmation/</url-pattern>      
+      <url-pattern>/do/password/changePasswordInternal/</url-pattern>
+  	  <url-pattern>/do/password/updatePassword/</url-pattern>
+      <url-pattern>/do/password/updatePasswordConfirmation/</url-pattern>
+      <url-pattern>/do/password/changePasswordConfirmationInternal/</url-pattern>
+      <url-pattern>/do/preferences/</url-pattern>
+      <url-pattern>/global/calendar.jsp</url-pattern>
+      <url-pattern>/do/mcdispatch/</url-pattern>
+   </web-resource-name>
+	
+    <web-resource-name id="commonForUnallocated" description="Common Services For anonymous Unallocated Users" contractrequired="false">
+      <url-pattern>/do/home/homePageFinder/</url-pattern>
+      <url-pattern>/do/home/Signout/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="securehomepage" description="Secure Home Page" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL,DB" selectedaccesscheckrequired="true">
+      <url-pattern>/do/home/homePage/</url-pattern>
+    </web-resource-name>
+    
+      <web-resource-name id="welcomePage" description="PS-CA Home Page" contractrequired="true" contractstatuses="PS,DC,PC,CA" productypes="AL,UAL,DB" selectedaccesscheckrequired="true">
+      <url-pattern>/do/home/welcomePage/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="contacts" description="Contacts" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,DI,CA" productypes="AL,UAL,DB">
+      <url-pattern>/do/contacts/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="editcontractaddress" description="Edit Contract Address" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,DI,CA" productypes="AL,UAL,DB">
+      <url-pattern>/do/editContractAddress/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="manageprofiles" description="Manage Profiles" productypes="AL,UAL,DB">
+      <url-pattern>/do/profiles/manageUsers/</url-pattern>
+      <url-pattern>/do/profiles/tpaUserManagementSummary/</url-pattern>
+	  <url-pattern>/do/profiles/clientTpaFirmPermissions/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="managetpaprofiles" description="Manage TPA Profiles" productypes="AL,UAL">
+      <url-pattern>/do/profiles/manageUsers/</url-pattern>
+      <url-pattern>/do/profiles/editMyProfile/</url-pattern>
+	  <url-pattern>/do/profiles/tpaUserManagementSummary/</url-pattern>
+	  <url-pattern>/do/profiles/clientTpaFirmPermissions/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="editmyprofile" description="Edit My Profiles - Non-TPA" contractrequired="false" contractstatuses="PS,DC,PC,AC,CF,DI,CA" productypes="AL,UAL">
+      <url-pattern>/do/profiles/editMyProfile/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="managetpafirm" description="Manage TPA Firm" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,DI,CA" productypes="AL,UAL,DB" permissions="EXMN">
+      <url-pattern>/do/profiles/editTpaFirm/</url-pattern>
+    </web-resource-name>
+	
+    <web-resource-name id="investments" description="Investments" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL,DB">
+      <url-pattern productypes="AL,UAL,DB">/do/investment/investments/</url-pattern>
+      <url-pattern productypes="AL,UAL">/do/investment/investmentAllocationReport/</url-pattern>
+      <url-pattern productypes="AL,UAL">/do/investment/ipsManager/</url-pattern>
+      <url-pattern productypes="AL,UAL">/do/investment/viewIPSReviewResults/</url-pattern>
+      <url-pattern productypes="AL,UAL,DB">/do/investment/investmentAllocationDetailsReport/</url-pattern>
+      <url-pattern productypes="AL,UAL">/do/investment/cofidQtrlyReview/</url-pattern>
+      <url-pattern productypes="AL,UAL">/do/investment/coFiduciary321QtrlyReviewPDFAction/</url-pattern>
+      <url-pattern productypes="AL,UAL">/do/investment/viewParticipantNotification/</url-pattern>
+    </web-resource-name>
+
+	<web-resource-name id="investmentAllocation" description="Investments" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL,DB">
+      <url-pattern productypes="AL,UAL">/do/investment/investmentAllocationReport/</url-pattern>
+	</web-resource-name>
+	
+	<web-resource-name id="ipsrEdit" description="IPSR Edit page" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="AC" productypes="AL,DB">
+		<url-pattern productypes="AL,UAL">/do/investment/editIPSManager/</url-pattern>
+		<url-pattern productypes="AL,UAL">/do/investment/editIPSReviewResults/</url-pattern>
+		<url-pattern productypes="AL,UAL">/do/investment/approveIPSReviewResults/</url-pattern>
+		<url-pattern productypes="AL,UAL">/do/investment/cancelIPSReview/</url-pattern>
+	</web-resource-name>
+	
+    <web-resource-name id="generalinvestments" description="General Investment pages" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL,UAL,DB">
+      <url-pattern productypes="AL,UAL,DB">/do/investment/contractFundsReport/</url-pattern>
+      <url-pattern productypes="AL,UAL,DB">/do/investment/performanceChartInput/</url-pattern>
+      <url-pattern productypes="AL,UAL,DB">/do/investment/performanceChartResult/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="fundcheck" description="FundCheck page" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL,DB">
+      <url-pattern>/do/fundCheck</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="iccReport" description="ICC page" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL,DB">
+      <url-pattern>/do/iccReport</url-pattern>
+    </web-resource-name> 
+    
+    <web-resource-name id="planAndInvestmentNotice" description="Plan and Investment Notice page" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL,DB">
+      <url-pattern>/do/planAndInvestmentNotice</url-pattern>
+    </web-resource-name> 
+    
+     <web-resource-name id="planInfo" description="Plan Information page" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL,DB">
+      <url-pattern>/do/planInfo</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="contractmessages" description="Contract Messages"  contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="AC,CF,DI,CA" productypes="AL,UAL,DB">
+      <url-pattern>/do/contract/contractMessages</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="participantaddressdownload" description="Participant Addresses Download" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="AC,CF,DI,CA" productypes="AL" contractpermissionsrequired="allowedParticipantAddressesDownload">
+      <url-pattern>/do/participant/participantAddressDownload/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="participantAddressSummary" description="Participant Addresses Summary Download" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL">
+    	<url-pattern>/do/participant/participantAddressSummary</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="participantenrolldownload" description="Participant Enrollment Summary Download" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="AC,CF,DI,CA" productypes="AL" contractpermissionsrequired="reportDownloadAllowed">
+      <url-pattern>/do/participant/participantEnrollDownload/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="partenrolldetaildownload" description="Participant Enrollment Detail Download" contractrequired="true" contractstatuses="AC,CF,DI,CA" productypes="AL" contractpermissionsrequired="reportDownloadAllowed">
+      <url-pattern>/do/participant/partEnrollDetailDownload/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="censuspages" description="Census Pages" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL">
+      <url-pattern>/do/census/censusSummary</url-pattern>
+      <url-pattern>/do/participant/participantAddresses</url-pattern>
+      <url-pattern>/do/census/censusVesting</url-pattern>
+      <url-pattern>/do/census/employeeMenu</url-pattern>
+      <url-pattern>/do/census/viewEmployeeSnapshot</url-pattern>
+      <url-pattern>/do/census/beneficiary/viewBeneficiaryInformation</url-pattern>
+	  <url-pattern>/do/census/viewVestingInformation/</url-pattern>
+      <url-pattern>/do/census/addEmployee</url-pattern>
+      <url-pattern>/do/census/employeeEnrollmentSummary</url-pattern>
+      <url-pattern>/do/census/enrollmentStatsSnapshot</url-pattern> 
+      <url-pattern>/do/census/deferral</url-pattern>
+      <url-pattern>/do/census/enrollmentStatsSnapshot</url-pattern>
+      <url-pattern>/do/census/beneficiaryReport</url-pattern>
+    </web-resource-name>
+    
+ 	 <web-resource-name id="payrollSelfService" description="Payroll Self Service" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL">     
+      <url-pattern>/do/participant/payrollSelfService</url-pattern>      
+    </web-resource-name>
+    
+    <web-resource-name id="resetPasswordPage" description="Reset participant password" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="DI,CA,AC,CF,IA" productypes="AL" >
+      <url-pattern>/do/pwdemail/ResetPassword/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="resetPasswordConfirmation" description="Reset participant password confirmation" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="DI,CA,AC,CF,IA" productypes="AL" >
+      <url-pattern>/do/pwdemail/ResetPasswordConfirm/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="contractSearch"
+			description="Contract Saerch  Pages to be used by TPAs as well"
+			productypes="AL">
+			<url-pattern>/do/tpafee/contractSearch/</url-pattern>
+		</web-resource-name>
+		
+		<web-resource-name id="viewTpaFeeScheduleEdit"
+			description="Edit Pages to be used by TPAs as well"
+			productypes="AL">
+			<url-pattern>/do/tpafee/tpaFeeScheduleEdit/</url-pattern>
+		</web-resource-name>
+		
+	<web-resource-name id="tpaCustomizeContractChangeHistory" description="Standard Fee Schedule Change History Page" contractrequired="false"  contractstatuses="PS,DC,PC,CA,AC,CF,DI,IA" productypes="AL" >
+      <url-pattern>/do/tpafee/customizeContractChangeHistory/</url-pattern>
+    </web-resource-name>
+	
+	<web-resource-name id="contractPreview"
+			description="Contract Search  Pages to be used by TPAs as well"
+			productypes="AL">
+			<url-pattern>/do/tpafee/contractPreviw/</url-pattern>
+		</web-resource-name>
+    
+     <web-resource-name id="eligibilityInformationClientUsers" description="Eligibility Information Page - Client Access" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="CA,AC,CF,DI" productypes="AL">
+       	<url-pattern>/do/census/eligibilityInformation/</url-pattern>
+       	<url-pattern>/do/census/employeeEligibilityReports/</url-pattern>
+      	<url-pattern>/do/census/historicalEligibilityReport/</url-pattern>
+      	<url-pattern>/do/census/eligibilityChangeReport/</url-pattern>
+      	<url-pattern>/do/census/employeeEligibilityIssuesReports/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="eligibilityInformationInternalUsers" description="Eligibility Information Page - Internal User Access" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL">
+       <url-pattern>/do/census/eligibilityInformation/</url-pattern>
+       <url-pattern>/do/census/employeeEligibilityReports/</url-pattern>
+       <url-pattern>/do/census/historicalEligibilityReport/</url-pattern>
+       <url-pattern>/do/census/eligibilityChangeReport/</url-pattern>
+       <url-pattern>/do/census/employeeEligibilityIssuesReports/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="editemployeesnapshot" description="Census Page - Edit Employee Snapshot" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL" permissions="CDUP">
+      <url-pattern>/do/census/editEmployeeSnapshot</url-pattern>
+      <url-pattern>/do/census/beneficiary/editBeneficiaryInformation</url-pattern>
+    </web-resource-name>
+        <web-resource-name id="employeestatushistory" description="Census Page - Update Employee Status" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL" permissions="CDUP">
+          <url-pattern>/do/census/employeeStatusHistory</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="editvestinginformation" description="Census Page - Edit Vesting Information" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL" permissions="SUVI">
+      <url-pattern>/do/census/editVestingInformation</url-pattern>
+    </web-resource-name>
+    
+    
+    <web-resource-name id="definedbenefitpages" description="Defined Benefit Pages" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="AC,CF,DI" productypes="DB">    
+      <url-pattern>/do/db/definedBenefitAccount/</url-pattern>
+      <url-pattern>/do/db/definedBenefitAccountMoneyTypeDetails/</url-pattern>      
+      <url-pattern>/do/db/definedBenefitAccountMoneyTypeSummary/</url-pattern>
+      <url-pattern>/do/db/rateOfReturnCalculator/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="participantpagesLessRestricted" description="Participant Pages" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL">
+	  <url-pattern>/do/participant/addressHistory</url-pattern>
+      <url-pattern>/do/participant/taskCenterTasks</url-pattern>
+      <url-pattern>/do/participant/taskCenterHistory</url-pattern>
+	</web-resource-name>
+
+    <web-resource-name id="participantpages" description="Participant Pages" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL">
+      <url-pattern>/do/participant/participantSummary</url-pattern>
+      <url-pattern>/do/participant/participantStatementSearch</url-pattern>
+      <url-pattern>/do/participant/participantStatementResults</url-pattern>
+      <url-pattern>/do/participant/participantForfeiture</url-pattern>
+      <url-pattern>/do/participant/participantMenu</url-pattern>
+      <url-pattern>/do/participant/participantAccount/</url-pattern>
+      <url-pattern>/do/participant/participantAccountMoneyTypeDetails/</url-pattern>      
+      <url-pattern>/do/participant/participantAccountMoneyTypeSummary/</url-pattern>  
+      <url-pattern>/do/participant/participantAccountNetDeferral/</url-pattern>
+      <url-pattern>/do/participant/participantAccountNetContribEarnings/</url-pattern>                  
+      <url-pattern>/do/participant/participantStatements</url-pattern>
+      <url-pattern>/do/participant/editParticipantAddress</url-pattern>
+      <url-pattern>/do/participant/saveParticipantAddress</url-pattern>
+      <url-pattern>/do/participant/participantEnrollmentDetails</url-pattern>
+      <url-pattern>/do/participant/participantBenefitBaseInformation</url-pattern>      
+	  <url-pattern>/do/home/makeContribution</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="contractpages" description="Contract Pages" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="AC,CF,DI" productypes="AL,DB">
+      <url-pattern>/do/contract/contractDetails/</url-pattern>
+      <url-pattern>/do/contract/contractSnapshot/</url-pattern>
+      <url-pattern>/do/contract/contractProfile</url-pattern>
+      <url-pattern>/do/contract/statement</url-pattern>
+	  <url-pattern>/do/contract/contractDocumentsPDF/</url-pattern>
+	  <url-pattern>/do/contract/contractDocuments/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="planpages" description="Plan Pages" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI,IA" productypes="AL">
+      <url-pattern>/do/contract/planData/view/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="planhistorypages" description="Plan History Pages" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI,IA" productypes="AL" permissions="PHVW">
+      <url-pattern>/do/contract/planDataHistory/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="planeditpages" description="Plan Edit Pages" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI,IA" productypes="AL" permissions="PDUP">
+      <url-pattern>/do/contract/planData/edit/</url-pattern>
+      <url-pattern>/do/contract/planData/confirm/</url-pattern>
+    </web-resource-name>
+    
+    
+     <web-resource-name id="tpaStandardFeeSchedule" description="Standard Fee Schedule Pages" contractrequired="false"  contractstatuses="PS,DC,PC,CA,AC,CF,DI,IA" productypes="AL" >
+      <url-pattern>/do/feeSchedule/selectTpaFirm/</url-pattern>
+      <url-pattern>/do/viewTpaStandardFeeSchedule/</url-pattern>
+      <url-pattern>/do/editTpaStandardFeeSchedule/</url-pattern>
+      <url-pattern>/do/previewTpaStandardFeeSchedule/</url-pattern>
+      <url-pattern>/do/changeHistoryTpaStandardFeeSchedule/</url-pattern>
+      <url-pattern>/do/tpa/blockScheduleReport/</url-pattern>
+    </web-resource-name>
+	
+	<web-resource-name id="plandata" description="TPA Plan Data"
+			contractrequired="false"  contractstatuses="PS,DC,PC,CA,AC,CF" 
+			productypes="AL">
+			<url-pattern>/do/plandata/viewTpaPlanDataContractsView/</url-pattern>
+			<url-pattern>/do/plandata/contractSearch/</url-pattern>
+			<url-pattern>/do/viewNoticePlanData/</url-pattern>
+			
+	</web-resource-name>
+	<!--  <web-resource-name id="editPlanData" description="TPA Plan Data"
+			contractrequired="false"  contractstatuses="PS,DC,PC,CA,AC,CF,DI,IA" 
+			productypes="AL">
+			<url-pattern>/do/plandata/EditPlanData/</url-pattern>
+	</web-resource-name>-->
+	
+	<web-resource-name id="cofiduciaryRecommendationReview" selectedaccesscheckrequired="true" description="Co-Fid Review Page View"
+			contractrequired="false"  contractstatuses="AC,CF" 
+			productypes="AL">
+			 <url-pattern productypes="AL,UAL">/do/investment/coFiduciaryFundRecommendationReview/</url-pattern>
+			 <url-pattern productypes="AL,UAL">/do/investment/CofiduciaryReviewReportAction/</url-pattern>
+			
+	</web-resource-name>
+	
+	
+    
+    <web-resource-name id="tpaCustomizeContractFeeSchedule" description="TPA Customize Contract Fee Schedeule" contractrequired="false"  contractstatuses="PS,DC,PC,CA,AC,CF,DI,IA" productypes="AL" >
+      <url-pattern>/do/viewTpaCustomizedContractFee/</url-pattern>
+      <url-pattern>/do/editTpaCustomizedContractFee/</url-pattern>
+      <url-pattern>/do/confirmTpaCustomizedContractFee/</url-pattern>
+      <url-pattern>/do/viewTpaCustomizedContractFeeChangeHistory/</url-pattern>
+      <url-pattern>/do/resetToStandardFeeSchedule/</url-pattern>
+    </web-resource-name>	
+
+    <web-resource-name id="contractstatements" description="Contract Statement Page" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="AC,CF,DI" productypes="AL,DB" permissions="STAT">
+      <url-pattern>/do/contract/contractStatements/</url-pattern>
+    </web-resource-name>
+ 	
+ 	<web-resource-name id="contractdocuments" description="Contract Document Page" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="AC,CF,DI" productypes="AL,DB" permissions="CDOC">
+      <url-pattern>/do/contract/contractDocuments/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="contractservicefeatures" description="Contract Service Features" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL,DB,UAL">
+      <url-pattern>/do/contract/viewServiceFeatures/</url-pattern>
+      <url-pattern>/do/contract/editServiceFeatures/</url-pattern>
+      <url-pattern>/do/contract/confServiceFeatures/</url-pattern>
+    </web-resource-name>
+
+    
+    <web-resource-name id="summaryOfPlanCostsPage" description="Summary of Plan Costs Page" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="AC,CF" productypes="AL,DB">
+      <url-pattern>/do/contract/summaryOfPlanCosts</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="investmentRelatedCost" description="Investment Related Cost Page" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI,IA" productypes="AL,DB">
+      <url-pattern>/do/investments/investmentRelatedCosts/</url-pattern>
+      <url-pattern>/do/fee/disclosure/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="regulatoryDisclosure" description="Regulatory Disclosure" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI,IA" productypes="AL,DB">
+      <url-pattern>/do/investments/investmentRelatedCosts/</url-pattern>
+      <url-pattern>/do/fee/disclosure/</url-pattern>
+    </web-resource-name>
+    
+	<web-resource-name id="participantStatementFeeTool" description="Participant Statement Fee Tool" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="AC,CF,DI" productypes="AL">
+      <url-pattern>/do/fee/partStmtFeesTool/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="ipiHypotheticalTool" description="IPI Hypothetical Tool" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,IA" productypes="AL" permissions="IPHT">
+      <url-pattern>/do/fee/hypotheticalTool/</url-pattern>
+    </web-resource-name>
+    <web-resource-name id="404NoticeInfo" description="404 Notice Info" contractrequired="true" selectedaccesscheckrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF" productypes="AL" >
+      <url-pattern>/do/view404a5NoticeInfo/</url-pattern>
+      <url-pattern>/do/edit404a5NoticeInfo/</url-pattern>
+      <url-pattern>/do/confirm404a5NoticeInfo/</url-pattern>
+      <url-pattern>/do/view404a5NoticeInfoChangeHistory/</url-pattern>
+    </web-resource-name>
+     <web-resource-name id="tpaFeeSchedule" description="TPA Fee Schedule" contractrequired="false" selectedaccesscheckrequired="false" contractstatuses="PS,DC,PC,CA,AC,CF,IA" productypes="AL" >
+      <url-pattern>/do/feeSchedule/selectTpaFirm/</url-pattern>
+      <url-pattern>/do/viewTpaStandardFeeSchedule/</url-pattern>
+      <url-pattern>/do/tpa/blockScheduleReport/</url-pattern>
+      <url-pattern>/do/changeHistoryTpaStandardFeeSchedule/</url-pattern>
+    </web-resource-name>
+    
+    		
+    <web-resource-name id="transactionpages" description="Transaction Pages" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL,DB">
+      <url-pattern>/do/transaction/transactionMenu/</url-pattern>
+      <url-pattern>/do/transaction/transactionHistoryReport/</url-pattern>
+      <url-pattern>/do/transaction/pendingTransactionHistoryReport/</url-pattern>
+      <url-pattern>/do/transaction/transactionDetailsRebalReport/</url-pattern>
+      <url-pattern>/do/transaction/cashAccountReport/</url-pattern>
+      <url-pattern>/do/transaction/cashAccountBalanceDetailsReport/</url-pattern>
+      <url-pattern>/do/transaction/loanRepaymentDetailsReport/</url-pattern>
+      <url-pattern>/do/transaction/loanSummaryReport/</url-pattern>
+      <url-pattern>/do/transaction/uncashedChecksReport/</url-pattern>
+   
+  
+      <url-pattern productypes="AL,UAL">/do/transaction/systematicWithdrawalReport/</url-pattern>  
+      <url-pattern>/do/transaction/contributionTransactionReport/</url-pattern>
+      <url-pattern>/do/transaction/loanRepaymentTransactionReport/</url-pattern>
+      <url-pattern>/do/transaction/fundToFundTransactionReport/</url-pattern>
+      <!-- Completed Withdrawals Details path -->
+      <url-pattern>/do/transaction/withdrawalDetailsReport/</url-pattern>
+      <url-pattern>/do/transaction/pendingWithdrawalDetailsReport/</url-pattern>
+      <url-pattern>/do/transaction/rebalanceTransactionReport/</url-pattern>
+      <url-pattern>/do/transaction/linkToLoanRepaymentDetailsHistoryReport/</url-pattern>
+      <url-pattern>/do/transaction/participantTransactionHistory</url-pattern>
+      <url-pattern>/do/transaction/deferralChangeDetailsReport/</url-pattern>
+      <url-pattern>/do/transaction/aciReport/</url-pattern>
+      <url-pattern>/do/transaction/pptContributionDetailsReport/</url-pattern>
+      <url-pattern>/do/transaction/pptContribAdjDetailsReport/</url-pattern>
+      <url-pattern>/do/transaction/classConversionTransactionReport/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="forfeituresReport" description="Forfeitures Report Page" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL">
+    	 <url-pattern>/do/transaction/cashAccountForfeituresReport/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="transactionpagesTPA" description="Transaction Pages to be used by TPA's as well" contractrequired="false" contractstatuses="AC,CF,DI" productypes="AL">
+      <url-pattern>/do/transaction/tpaLoanRepaymentDetailsReport/</url-pattern>
+    </web-resource-name>    
+
+    <web-resource-name id="tpaBlockOfBusiness" description="TPA Block Of Business, viewed by TPA, Internal users." contractrequired="false">
+      <url-pattern>/do/tpabob/tpaBlockOfBusiness/</url-pattern>
+      <url-pattern>/do/tpabob/tpaBlockOfBusinessHome/</url-pattern>
+      <url-pattern>/do/tpabob/tpaBlockOfBusinessPending/</url-pattern>
+      <url-pattern>/do/tpabob/tpaBlockOfBusinessDiscontinued/</url-pattern>
+    </web-resource-name>   
+    
+    <web-resource-name id="tpaPlanInformation" description="TPA Plan Information, viewed by TPA, Internal users." contractrequired="false" 
+    	contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL">
+      <url-pattern>/do/contract/pic/plansubmission/</url-pattern>
+    </web-resource-name>   
+    <web-resource-name id="tpaPIFEditAndDeleteSubmission" description="TPA Plan Information Edit,Delete Submission, viewed by TPA, Internal users." contractrequired="false" 
+    	contractstatuses="PS,DC,PC,AC,CA" productypes="AL">
+	  <url-pattern>/do/contract/pic/edit/</url-pattern>
+      <url-pattern>/do/contract/pic/delete/</url-pattern>	  
+    </web-resource-name>  
+    <web-resource-name id="tpaPIFConfirmSubmission" description="TPA Plan Information Confirm Submission, viewed by TPA users." contractrequired="false" 
+    	contractstatuses="PS,DC,PC,AC,CA" productypes="AL">
+      <url-pattern>/do/contract/pic/confirm/</url-pattern>
+    </web-resource-name>     
+
+     <web-resource-name id="tpaFundsAndPerformance" description="TPA Funds and Performance, viewed by TPA, Internal users." contractrequired="false">
+     	<url-pattern>/do/fap/tpaFandp/</url-pattern>
+     	<url-pattern>/do/fap/tabs/</url-pattern>
+    </web-resource-name>   
+
+    <web-resource-name id="toolspages" description="Tools Pages" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL,DB">
+      <url-pattern>/do/tools/toolsMenu/</url-pattern>
+      <url-pattern>/do/home/makeContribution/</url-pattern>
+      <url-pattern>/do/participant/employeeLetterDownload/</url-pattern>
+      <url-pattern>/do/tpatoolkit/tpaVestingSubmissionReportRedirect/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="businessConversion" description="Security Role Conversion Page" contractrequired="false" permissions="BUSC">
+      <url-pattern>/do/tools/businessConversionNoNavHeader/</url-pattern>
+      <url-pattern>/do/tools/businessConversionStandardHeader/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="tpaVestingSubmissionReport" description="TPA Report of all vesting submissions" contractrequired="false">
+      <url-pattern>/do/tools/tpaVestingSubmissionReport/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="submissionHistory" description="Submission History Pages" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL,DB" permissions="SBAC">
+      <url-pattern>/do/tools/submissionHistory/</url-pattern>
+      <url-pattern>/tools/submissionHistory.jsp</url-pattern>
+    </web-resource-name>
+	 
+    <web-resource-name id="submissionDelete" description="Submission Delete Page" contractrequired="true" contractstatuses="AC,CF,CA,DI" productypes="AL,DB">
+      <url-pattern>/do/tools/submissionDelete/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="submissionUpload" description="Submission Upload Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL,DB">
+      <url-pattern>/do/tools/submissionUpload/</url-pattern>
+	  <url-pattern>/tools/submissionUploadConfirmation.jsp</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="submissionComboUpload" description="Submission Combo Upload Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL,DB">
+      <url-pattern>/do/tools/submissionComboUpload/</url-pattern>
+	  <url-pattern>/tools/submissionComboUploadConfirmation.jsp</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="censusUpload" description="Census Upload Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL">
+      <url-pattern>/do/tools/censusUpload/</url-pattern>
+	  <url-pattern>/tools/censusUploadConfirmation.jsp</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="uploadLongTermPartTimeInfo" description="Upload Long Term Part Time Information" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL">
+      <url-pattern>/do/tools/uploadLongTermPartTimeInfo/</url-pattern>
+    </web-resource-name>    
+    
+    <web-resource-name id="vestingUpload" description="Vesting Upload Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL">
+      <url-pattern>/do/tools/vestingUpload/</url-pattern>
+	  <url-pattern>/tools/vestingUploadConfirmation.jsp</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="makePayment" description="Payment Only Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL,DB">
+      <url-pattern>/do/tools/makePayment/</url-pattern>
+	  <url-pattern>/tools/submissionPaymentConfirmation.jsp</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="viewContribution" description="View Contribution Details Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL,DB" permissions="SBAC,VWAS">
+      <url-pattern>/do/tools/viewContribution/</url-pattern>
+      <url-pattern>/tools/copyContributionError.jsp</url-pattern>
+    </web-resource-name>
+
+   <web-resource-name id="viewContributionNew" description="View Contribution Details Page" contractrequired="true" contractstatuses="AC,CF,CA,DI" productypes="AL,DB" permissions="SBAC,VWAS">
+      <url-pattern>/do/tools/viewContributionNew/</url-pattern>
+      <url-pattern>/tools/copyContributionError.jsp</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="editContribution" description="Edit Contribution Details Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL,DB">
+      <url-pattern>/do/tools/editContribution/</url-pattern>
+	  <url-pattern>/tools/editContributionConfirmation.jsp</url-pattern>
+	  <url-pattern>/tools/copyContributionError.jsp</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="copyContribution" description="Copy Contribution Details Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL,DB">
+      <url-pattern>/do/tools/copyContribution/</url-pattern>
+      <url-pattern>/do/tools/copyLastContribution/</url-pattern>
+      <url-pattern>/tools/copyContributionError.jsp</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="createContribution" description="Create Contribution Details " contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL,DB">
+      <url-pattern>/do/tools/createContribution/</url-pattern>
+      <url-pattern>/tools/copyContributionError.jsp</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="viewVesting" description="View Vesting Details Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL" permissions="SBAC,VWAS">
+      <url-pattern>/do/tools/viewVesting/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="editVesting" description="Edit Vesting Details Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL">
+      <url-pattern>/do/tools/editVesting/</url-pattern>
+	  <url-pattern>/tools/editVestingConfirmation.jsp</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="viewLongTermPartTimeDetails" description="View Long Term Part Time Details Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL" permissions="SBAC,VWAS">
+      <url-pattern>/do/tools/viewLongTermPartTimeDetails/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="editLongTermPartTimeDetails" description="Edit Long Term Part Time Details Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL">
+      <url-pattern>/do/tools/editLongTermPartTimeDetails/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="addParticipant" description="Add Participant Page" contractrequired="true" contractstatuses="AC,CF,CA,DI" productypes="AL">
+      <url-pattern>/do/tools/addParticipant/</url-pattern>
+      <url-pattern>/tools/addParticipant.jsp</url-pattern>
+   </web-resource-name>
+
+    <web-resource-name id="viewPayment" description="View Payment Only Page" contractrequired="true" contractstatuses="AC,CF,CA,DI" productypes="AL,DB">
+      <url-pattern>/do/tools/viewPayment/</url-pattern>
+	  <url-pattern>/tools/viewPayment.jsp</url-pattern>
+    </web-resource-name>
+
+	<web-resource-name id="secureDocumentUpload" description="Send a Document" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL,DB">
+      <url-pattern>/do/tools/sendDocumentUpload/</url-pattern>
+      <url-pattern>/do/tools/secureDocumentUpload/token/</url-pattern>
+      <url-pattern>/do/tools/secureDocumentUpload/submit/</url-pattern>
+      <url-pattern>/do/tools/secureDocumentUpload/history/</url-pattern>
+      <url-pattern>/do/tools/secureDocumentUpload/view/</url-pattern>
+      <url-pattern>/do/tools/secureDocumentUpload/shareDocuments/</url-pattern>
+    </web-resource-name>
+	   
+	<web-resource-name id="uploadConversionFile" description="Upload Conversion Page" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL">
+       <url-pattern>/do/tools/uploadConversionFile/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="viewCensusDetails" description="View Census Submission Details" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,DI,CA" productypes="AL" permissions="SBAC">
+      <url-pattern>/do/tools/viewCensusDetails/</url-pattern>
+      <url-pattern>/do/tools/uploadCensusErrorCorrection/</url-pattern>
+      <url-pattern>/tools/viewCensusDetails.jsp</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="withdrawalPSWEntry" description="Withdrawal Pages for Entry" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL" selectedaccesscheckrequired="true">
+      <url-pattern>/do/withdrawal/searchSummary/</url-pattern>
+      <url-pattern>/do/loan/searchSummary/</url-pattern>
+      <url-pattern>/do/withdrawal/beforeProceedingGatewayInit/</url-pattern>
+      <url-pattern>/do/withdrawal/beforeProceedingGatewayReview/</url-pattern>
+      <url-pattern>/do/withdrawal/beforeProceedingInitiate/</url-pattern>
+      <url-pattern>/do/withdrawal/beforeProceedingReview/</url-pattern>      
+      <url-pattern>/do/withdrawal/entry/edit/</url-pattern>
+      <url-pattern>/do/withdrawal/entry/view/</url-pattern>
+      <url-pattern>/do/withdrawal/entryStep1/init/</url-pattern>
+      <url-pattern>/do/withdrawal/entryStep1/edit/</url-pattern>
+      <url-pattern>/do/withdrawal/entryStep1/</url-pattern>
+      <url-pattern>/do/withdrawal/entryStep2/</url-pattern>
+      <url-pattern>/do/withdrawal/review/</url-pattern>
+      <url-pattern>/do/withdrawal/confirmation/</url-pattern>
+      <url-pattern>/do/withdrawal/bankNamesList/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="onlineLoans" description="Loan Pages for Entry" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL" selectedaccesscheckrequired="true">
+      <url-pattern>/do/onlineloans/confirmation/</url-pattern>
+      <url-pattern>/do/onlineloans/approve/</url-pattern>
+      <url-pattern>/do/onlineloans/review/</url-pattern>
+      <url-pattern>/do/onlineloans/view/</url-pattern>
+      <url-pattern>/do/onlineloans/viewManagedContent/</url-pattern>
+      <url-pattern>/do/onlineloans/initiate/</url-pattern>
+      <url-pattern>/do/onlineloans/draft/</url-pattern>
+      <url-pattern>/do/onlineloans/bankLookup/</url-pattern>
+    </web-resource-name>    
+    
+    <web-resource-name id="loanFeatureAtAGlance" description="Loan Features at a glance pop up" contractrequired="true" contractstatuses="AC,CF,DI,DC,PC,PS,CA" productypes="AL" selectedaccesscheckrequired="true">
+      <url-pattern>/do/onlineloans/features/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="loanFeatureAtAGlanceTPA" description="Loan Features at a glance pop up" contractrequired="true" contractstatuses="AC,CF,DI,DC,PC,PS,CA" productypes="AL" selectedaccesscheckrequired="true">
+      <url-pattern>/do/onlineloans/features/</url-pattern>
+    </web-resource-name>
+	    
+    <web-resource-name id="onlineLoansTPA" description="Online Loans Pages to be used by TPAs as well" productypes="AL">
+      <url-pattern>/do/onlineloans/confirmation/</url-pattern>
+      <url-pattern>/do/onlineloans/approve/</url-pattern>
+      <url-pattern>/do/onlineloans/review/</url-pattern>
+      <url-pattern>/do/onlineloans/view/</url-pattern>
+      <url-pattern>/do/onlineloans/viewManagedContent/</url-pattern>
+      <url-pattern>/do/onlineloans/initiate/</url-pattern>
+      <url-pattern>/do/onlineloans/draft/</url-pattern>
+      <url-pattern>/do/onlineloans/bankLookup/</url-pattern>
+    </web-resource-name>
+	
+    <web-resource-name id="withdrawalPSWView" description="Withdrawal Pages for View" 
+      contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL" selectedaccesscheckrequired="true">
+      <url-pattern>/do/withdrawal/loanAndWithdrawalRequests/</url-pattern>
+      <url-pattern>/do/withdrawal/loanAndWithdrawalRequestsInit/</url-pattern> 	      
+      <url-pattern>/do/withdrawal/entry/view/</url-pattern>
+      <url-pattern>/do/withdrawal/viewRequest/</url-pattern>
+      <url-pattern>/do/withdrawal/activityHistory/</url-pattern>
+      <url-pattern>/do/withdrawal/viewParticipantLegalese/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="withdrawalTPA" description="Withdrawal Pages to be used by TPAs as well" productypes="AL">
+      <url-pattern>/do/withdrawal/loanAndWithdrawalRequests/</url-pattern>
+      <url-pattern>/do/withdrawal/loanAndWithdrawalRequestsInit/</url-pattern> 	  
+      <url-pattern>/do/withdrawal/searchSummary/</url-pattern>
+      <url-pattern>/do/loan/searchSummary/</url-pattern>
+      <url-pattern>/do/withdrawal/beforeProceedingGatewayInit/</url-pattern>
+      <url-pattern>/do/withdrawal/beforeProceedingGatewayReview/</url-pattern>
+      <url-pattern>/do/withdrawal/beforeProceedingInitiate/</url-pattern>
+      <url-pattern>/do/withdrawal/beforeProceedingReview/</url-pattern>      
+      <url-pattern>/do/withdrawal/entry/edit/</url-pattern>
+      <url-pattern>/do/withdrawal/entry/view/</url-pattern>
+      <url-pattern>/do/withdrawal/entryStep1/</url-pattern>
+      <url-pattern>/do/withdrawal/entryStep2/</url-pattern>
+      <url-pattern>/do/withdrawal/review/</url-pattern>
+      <url-pattern>/do/withdrawal/confirmation/</url-pattern>
+      <url-pattern>/do/withdrawal/viewRequest/</url-pattern>
+      <url-pattern>/do/withdrawal/activityHistory/</url-pattern>
+      <url-pattern>/do/withdrawal/viewParticipantLegalese/</url-pattern>
+      <url-pattern>/do/withdrawal/bankNamesList/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="tpaViewEmployeeSnaphsot" description="View employeesnapshot from tpa" productypes="AL">
+       <url-pattern>/do/census/tpaViewEmployeeSnapshot/</url-pattern>
+       <url-pattern>/do/census/beneficiary/viewBeneficiaryInformation</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="vestingInformation" description="generic vesting information page" productypes="AL">
+	  <url-pattern>/do/census/vestingInformation</url-pattern>      
+    </web-resource-name>
+        
+    <web-resource-name id="contractLevelPinGen" description="Contract Level PIN regeneration" contractrequired="true" contractstatuses="AC,CA" productypes="AL" selectedaccesscheckrequired="true">
+      <url-pattern>/do/tools/pinGen/</url-pattern>
+      <url-pattern>/tools/pinGenGroup.jsp</url-pattern>
+      <url-pattern>/do/tools/pinGenIndiv/</url-pattern>
+      <url-pattern>/tools/pinGenIndiv.jsp</url-pattern>
+      <url-pattern>/do/tools/pinGenGroupConfirm/</url-pattern>
+      <url-pattern>/do/tools/pinGenIndivConfirm/</url-pattern>
+      <url-pattern>/tools/pinGenGroupConfirm.jsp</url-pattern>      
+      <url-pattern>/tools/pinGenIndivConfirm.jsp</url-pattern>      
+      <url-pattern>/do/tools/pinGenView/</url-pattern>
+      <url-pattern>/tools/pinGenView.jsp/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="beneficiaryTransfer" description="Beneficiary Transfer" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA,DI" productypes="AL">
+      <url-pattern>/do/tools/beneficiaryTransfer/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="controlReports" description="Control Reports" contractrequired="false" permissions="CRAP" selectedaccesscheckrequired="true">
+	  <url-pattern>/do/tools/controlReports/</url-pattern>
+	  <url-pattern>/do/profiles/userManagementChangesExternal/</url-pattern>
+	  <url-pattern>/do/profiles/userManagementChangesInternal/</url-pattern>        
+	  <url-pattern>/do/profiles/tpafirmManagementReport/</url-pattern>
+	  <url-pattern>/do/profiles/addressChangesInternal/</url-pattern>
+	  <url-pattern>/do/profiles/securityRoleConversionReport/</url-pattern>
+	  <url-pattern>/do/pilot/pilotContractReport/</url-pattern>
+      <url-pattern>/do/giflDisclosurePdfReport/</url-pattern>
+	  <url-pattern>/do/noticereports/</url-pattern>
+    </web-resource-name>
+
+	<web-resource-name id="contributionTemplateDownload" description="Contribution template CSV download" contractrequired="true" contractstatuses="AC,CF,CA,DI" productypes="AL"
+        		contractpermissionsrequired="allowedUploadSubmissions" selectedaccesscheckrequired="false">
+      <url-pattern>/do/contract/contributionTemplate</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="censusTemplateDownload" description="Census template CSV download" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA" productypes="AL"
+        		contractpermissionsrequired="allowedUploadSubmissions" selectedaccesscheckrequired="false">
+      <url-pattern>/do/contract/censusTemplate</url-pattern>
+    </web-resource-name>
+    
+     <web-resource-name id="combinationTemplateDownload" description="Combination template CSV download" contractrequired="true" contractstatuses="AC,CF,CA,DI" productypes="AL"
+        		contractpermissionsrequired="allowedUploadSubmissions" selectedaccesscheckrequired="false">
+      <url-pattern>/do/contract/combinationTemplate</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="vestingTemplateDownload" description="Vesting template CSV download" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA" productypes="AL"
+        		selectedaccesscheckrequired="false">
+      <url-pattern>/do/contract/vestingTemplate</url-pattern>
+    </web-resource-name>
+
+	<web-resource-name id="longTermPartTimeInformationTemplateDownload" description="Long Term Part Time Information template CSV download" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,CA" productypes="AL"
+        		contractpermissionsrequired="allowedUploadSubmissions" selectedaccesscheckrequired="false">
+      <url-pattern>/do/contract/longTermPartTimeInformationTemplate</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="glossary" description="Glossary" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL,DB" selectedaccesscheckrequired="true">
+      <url-pattern>/do/contentpages/glossary</url-pattern>
+    </web-resource-name>
+	
+	<web-resource-name id="takeatour" description="Take a Tour" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL" selectedaccesscheckrequired="true">
+      <url-pattern>/do/takeatour/takeATour</url-pattern>
+    </web-resource-name>
+	
+    <web-resource-name id="userguide" description="User Guides" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,DI,CA" productypes="AL,UAL,DB">
+      <url-pattern>/do/contentpages/userguide/landingpage/</url-pattern>
+      <url-pattern>/do/contentpages/userguide/secondlevel/</url-pattern>
+      <url-pattern>/do/contentpages/userguide/thirdlevel/</url-pattern>
+      <url-pattern>/do/contentpages/userguide/thirdlevelpop/</url-pattern>
+     </web-resource-name>
+
+    <web-resource-name id="resourcepages" description="Resource Pages" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,DI,CA" productypes="AL,DB">
+      <url-pattern>/assets/pdfs/</url-pattern>
+      <url-pattern>/do/tools/fundChangePortal/</url-pattern>
+      <url-pattern>/do/resources/forms/</url-pattern>
+      <url-pattern>/do/resources/pdfpage/</url-pattern>
+      <url-pattern>/do/resources/FDFAction</url-pattern>
+       <url-pattern>/do/resources/searchLiterature/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="quarterlyinvestmentguide" description="Quarterly Investment Guide Page" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL,UAL,DB">
+      <url-pattern>/assets/pdfs/PS4572</url-pattern>
+      <url-pattern>/assets/pdfs/PS4573</url-pattern>
+      <url-pattern>/do/resources/quarterlyInvestmentGuide/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="lifestylespinoff" description="Lifestyle Spinoff Information Page" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL,UAL,DB" selectedaccesscheckrequired="true">
+      <url-pattern>/assets/pdfs/</url-pattern>
+      <url-pattern>/do/resources/lifestyleSpinoff/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="search" description="search Pages" contractrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL,DB" selectedaccesscheckrequired="true">
+      <url-pattern>/do/search/searchInputAction</url-pattern>
+      <url-pattern>/search/searchOutputForm.jsp</url-pattern>
+      <url-pattern>/search/searchResultsByCategory.jsp</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="searchforJHTC" description="search Pages" contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL,DB" selectedaccesscheckrequired="true">
+      <url-pattern>/do/search/searchInputAction</url-pattern>
+      <url-pattern>/search/searchOutputForm.jsp</url-pattern>
+      <url-pattern>/search/searchResultsByCategory.jsp</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="howTo" description="How To Read Report/Use Form" contractrequired="false">
+      <url-pattern>/do/contentpages/howTo</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="contactus" description="Contact us form" contractrequired="false">
+      <url-pattern>/do/resources/ContactUsAction</url-pattern>
+      <url-pattern>/public/recommendedSettings</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="news" description="News Section"  contractrequired="true" contractstatuses="AC,CF,DI" productypes="AL,UAL,DB" selectedaccesscheckrequired="true">
+      <url-pattern>/do/news/currentUpdates/</url-pattern>
+      <url-pattern>/do/news/archivedUpdates/</url-pattern>
+      <url-pattern>/do/news/currentLegislativeUpdates/</url-pattern>
+      <url-pattern>/do/news/archivedLegislativeUpdates/</url-pattern>
+      <url-pattern>/do/news/newsletterIssueIndex</url-pattern>
+      <url-pattern>/do/news/newsletterIssueArticle</url-pattern>
+      <url-pattern>/do/news/newsletterSectionIndex</url-pattern>
+      <url-pattern>/do/news/newsletterSectionArticle</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="tpaupdates" description="Updates Section"  contractrequired="false" selectedaccesscheckrequired="true">
+      <url-pattern>/do/news/currentTpaUpdates/</url-pattern>  
+	  <url-pattern>/do/news/archivedTpaUpdates/</url-pattern> 
+	  <url-pattern>/do/news/currentTpaLegislativeUpdates/</url-pattern>
+      <url-pattern>/do/news/currentTpaIndustryUpdates/</url-pattern>
+      <url-pattern>/do/news/archivedTpaIndustryUpdates/</url-pattern>
+      <url-pattern sites="USA">/do/news/tpaForumNewsletter/</url-pattern>
+    </web-resource-name>
+	
+    <web-resource-name id="tpatoolkit" description="Tpa Tool Kit Section"  contractrequired="false" selectedaccesscheckrequired="true">
+      <url-pattern>/do/tpatoolkit/test/</url-pattern>  
+      <url-pattern>/do/tpatoolkit/tpaAdministrationGuide/</url-pattern>  
+      <url-pattern>/do/tpatoolkit/tpaAuditPackage/</url-pattern>  
+      <url-pattern>/do/tpatoolkit/tpaOtherGuideTools/</url-pattern>  
+      <url-pattern>/do/LarkspurPortal/</url-pattern>
+      <url-pattern>/do/Erisa/</url-pattern>
+  </web-resource-name>
+  
+  <web-resource-name id="tpaforms" description="Tpa Forms Section"  contractrequired="false" selectedaccesscheckrequired="true">
+  	<url-pattern>/do/resources/tpaGaForms/</url-pattern>  
+  	<url-pattern>/do/resources/tpaDbForms/</url-pattern>
+  </web-resource-name>
+  
+    <web-resource-name id="manageexternalprofiles" description="Manage External Profile Pages" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,DI,CA" productypes="AL,UAL,DB" permissions="EXMN">
+      <url-pattern>/do/profiles/addUser/</url-pattern>
+      <url-pattern>/do/profiles/addUserConfirmation/</url-pattern>
+      <url-pattern>/do/profiles/editUser/</url-pattern>
+      <url-pattern>/do/profiles/editUserConfirmation/</url-pattern>
+      <url-pattern>/do/profiles/viewUser/</url-pattern>
+      <url-pattern>/do/profiles/deleteProfile/</url-pattern>
+      <url-pattern>/do/profiles/suspendProfile/</url-pattern>
+      <url-pattern>/do/profiles/unsuspendProfile/</url-pattern>
+      <url-pattern>/do/profiles/userPermissions/</url-pattern>
+      <url-pattern>/do/profiles/addContract/</url-pattern>
+      <url-pattern>/do/profiles/viewContractInfo/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="manageProfilesPilotCAR" description="Manages Profile Pages for PilotCAR" selectedaccesscheckrequired="true" contractrequired="true" contractstatuses="PS,DC,PC,AC,CF,DI,CA" productypes="AL,UAL,DB" >
+      <url-pattern>/do/profiles/viewUser/</url-pattern>
+       <url-pattern>/do/profiles/editUser/</url-pattern>
+      <url-pattern>/do/profiles/editUserConfirmation/</url-pattern>
+      
+    </web-resource-name>
+
+    <web-resource-name id="tpaprofilepages" description="Tpa Profile Pages" selectedaccesscheckrequired="true" productypes="AL,UAL,DB" permissions="TUMN">
+      <url-pattern>/do/profiles/manageTpaUsers/</url-pattern>
+      <url-pattern>/do/profiles/addTpaUser/</url-pattern>
+      <url-pattern>/do/profiles/addTpaUserConfirmation/</url-pattern>
+      <url-pattern>/do/profiles/editTpaUser/</url-pattern>
+      <url-pattern>/do/profiles/editMyTPAProfile/</url-pattern>
+      <url-pattern>/do/profiles/editTpaUserConfirmation/</url-pattern>
+      <url-pattern>/do/profiles/viewTpaUser/</url-pattern>
+      <url-pattern>/do/profiles/deleteTpaProfile/</url-pattern>
+      <url-pattern>/do/profiles/suspendTpaProfile/</url-pattern>
+      <url-pattern>/do/profiles/unsuspendTpaProfile/</url-pattern>
+      <url-pattern>/do/profiles/tpaFirmUserPermissions/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="tpaProfilePagesPilotCAR" description="Tpa Profile Pages for Pilot CAR" selectedaccesscheckrequired="true" productypes="AL,UAL,DB">
+      <url-pattern>/do/profiles/viewTpaUser/</url-pattern>
+      <url-pattern>/do/profiles/editTpaUser/</url-pattern>
+      <url-pattern>/do/profiles/editTpaUserConfirmation/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="managePassword" description="Manage Password Page" selectedaccesscheckrequired="true" productypes="AL,UAL" permissions="EXMN,TUMN,INMN">
+      <url-pattern>/do/password/managePassword/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="managePasscodeExempt" description="Manage Passcode Exempt Page" selectedaccesscheckrequired="true">
+      <url-pattern>/do/passcode/managePasscodeExempt/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="internalprofilepages" description="Profile Pages" contractrequired="false" selectedaccesscheckrequired="true" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL,UAL,DB" permissions="INMN">
+      <url-pattern>/do/profiles/manageInternalUsers/</url-pattern>
+      <url-pattern>/do/profiles/addInternalUser/</url-pattern>
+      <url-pattern>/do/profiles/addInternalUserConfirmation/</url-pattern>
+      <url-pattern>/do/profiles/editInternalUser/</url-pattern>
+      <url-pattern>/do/profiles/editInternalUserConfirmation/</url-pattern>
+      <url-pattern>/do/profiles/viewInternalUser/</url-pattern>
+      <url-pattern>/do/profiles/deleteInternalProfile/</url-pattern>
+      <url-pattern>/do/password/manageInternalPassword/</url-pattern>
+    </web-resource-name>
+       
+    <web-resource-name id="amortizationSchedule" description="Amortization Schedule" contractrequired="false"  selectedaccesscheckrequired="true">      
+	  <url-pattern>/do/resources/amortizationScheduleGenerator/</url-pattern>
+	  <url-pattern>/do/util/pdf/</url-pattern>	  
+    </web-resource-name>
+
+    <web-resource-name id="tpadownload" description="TED Dowload Pages and eStatements page" contractrequired="false" selectedaccesscheckrequired="true">
+      <url-pattern>/assets/pdfs/</url-pattern>
+	  <url-pattern>/tpadownload/tedFileDownloadServlet</url-pattern>
+      <url-pattern>/do/tpadownload/tedCurrentFilesReport/</url-pattern>
+      <url-pattern>/do/tpadownload/tedHistoryFilesReport/</url-pattern>
+      <url-pattern>/do/tpadownload/tedDownloadFiles/</url-pattern>
+      <url-pattern>/do/tpadownload/aboutTED/</url-pattern>
+      <url-pattern>/do/tpadownload/eStatements/</url-pattern>            
+    </web-resource-name>
+   
+    <web-resource-name id="pilotcontractpage" description="Pilot Contract page" contractrequired="false" permissions="PLMN" selectedaccesscheckrequired="true">
+		<url-pattern>/do/pilot/pilotContractNoNavHeader/</url-pattern>
+		<url-pattern>/do/pilot/pilotContractStandardHeader/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="messagecenter" description="Message Center" contractrequired="false"  contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL">
+        <url-pattern>/do/mcdispatch/</url-pattern>
+		<url-pattern>/do/messagecenter/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="messagecenterPersonalization" contractrequired="true" description="Message Center" contractstatuses="PS,DC,PC,CA,AC,CF,DI" productypes="AL,DB">
+        <url-pattern>/do/mcPersonalizeMessage</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="messagecenter4Car" description="Message Center for Car" contractrequired="false">
+		<url-pattern>/do/mcdispatch/</url-pattern>
+		<url-pattern>/do/mcCarView</url-pattern>
+		<url-pattern>/do/messagecenter/</url-pattern>
+    </web-resource-name>
+
+    <web-resource-name id="directMessage" description="Direct Message for Message Center">
+		<url-pattern>/do/mcdirect/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="viewTpaFeeShedule"
+			description="Withdrawal Pages to be used by TPAs as well"
+			productypes="AL">
+			<url-pattern>/do/tpafee/tpafeeSchedule/</url-pattern>
+		</web-resource-name>
+		
+	<web-resource-name id="searchLiterature" description="search Literature page" contractrequired="false">
+      <url-pattern>/do/resources/searchLiterature/</url-pattern>
+       <url-pattern>/resources/searchLiterature.jsp</url-pattern>
+    </web-resource-name>
+	
+	 <web-resource-name id="jhNavigatorProxy" description="JH Navigator Proxy for Find Literature">
+      <url-pattern>/do/jhNavigator</url-pattern>
+    </web-resource-name>
+    
+	<web-resource-name id="notificationaddeditpages" description="Notice Manager Add Edit And Terms Pages" 
+	contractstatuses="PS,DC,PC,CA,CF,DI,AC" permissions="ACNM" selectedaccesscheckrequired="true" productypes="AL" contractrequired="true">
+    <url-pattern>/do/noticemanager/editCustomPlanDocument/</url-pattern>
+     <url-pattern>/do/noticemanager/addcustomplandocument/</url-pattern>
+     <url-pattern>/do/noticemanager/termsandconditions/</url-pattern>
+     <url-pattern>/do/noticemanager/buildyourpackage/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="notificationuploadchangepages" description="Notice Manager Upload Order And Change History Pages"
+    contractstatuses="PS,DC,PC,CA,CF,DI,AC" selectedaccesscheckrequired="true" productypes="AL" contractrequired="true">
+    <url-pattern>/do/noticemanager/uploadandsharepages/</url-pattern>
+    <url-pattern>/do/noticemanager/orderstatus/</url-pattern>
+    <url-pattern>/do/noticemanager/contractnoticechangehistory/</url-pattern>
+    <url-pattern>/do/messagecenter/personalizeNotice/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="notificationbuildpackagepage" description="Notice Manager Build Your Package Page"
+    contractstatuses="PS,DC,PC,CA,CF,DI,AC" selectedaccesscheckrequired="true"  productypes="AL" contractrequired="true">
+    	<url-pattern>/do/noticemanager/buildyourpackage/</url-pattern>
+       </web-resource-name>
+    
+    
+    <web-resource-name id="sendService" description="SEND Service"
+    contractstatuses="PS,DC,PC,CA,CF,DI,AC" selectedaccesscheckrequired="true" productypes="AL" contractrequired="true">
+   	 <url-pattern>/do/sendservice/activeMail/</url-pattern>
+   	 <url-pattern>/do/sendservice/planData/</url-pattern>
+   	  	<url-pattern>/do/sendservice/completedMail/</url-pattern>
+    </web-resource-name>
+    
+    <web-resource-name id="inactive" description="Inactive Service">
+    <!--
+      <url-pattern>/do/registration/authentication/</url-pattern>
+      <url-pattern>/do/registration/tpaauthentication/</url-pattern>
+      <url-pattern>/do/registration/terms/</url-pattern>
+      <url-pattern>/do/registration/register/</url-pattern>
+      <url-pattern>/do/registration/tparegister/</url-pattern>
+      <url-pattern>/do/registration/confirm/</url-pattern>
+      <url-pattern>/do/login/passwordResetAuthentication/</url-pattern>
+      <url-pattern>/do/login/passwordResetChallenge/</url-pattern>
+      <url-pattern>/do/login/passwordReset/</url-pattern>
+      <url-pattern>/do/login/passwordResetConfirmation/</url-pattern>
+      <url-pattern>/do/profiles/editMyProfile/</url-pattern>
+      <url-pattern>/do/profiles/addUser/</url-pattern>
+      <url-pattern>/do/profiles/addTpaUser/</url-pattern>
+      <url-pattern>/do/profiles/addInternalUser/</url-pattern>
+      <url-pattern>/do/profiles/editUser/</url-pattern>
+      <url-pattern>/do/profiles/editTpaUser/</url-pattern>
+      <url-pattern>/do/profiles/editInternalUser/</url-pattern>
+      <url-pattern>/do/password/managePassword/</url-pattern>
+      <url-pattern>/do/password/changePassword/</url-pattern>
+      <url-pattern>/do/password/changePasswordConfirmation/</url-pattern>
+      <url-pattern>/do/profiles/deleteProfile/</url-pattern>
+    -->
+    </web-resource-name>
+    
+  </web-resource-collection>
+
+  <roles>
+    <role id="UAL" description="Unallocated User Role" timeout="900">
+      <availableresource>commonForUnallocated</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>news</availableresource> 
+      <availableresource>jhNavigatorProxy</availableresource>     
+    </role>    
+    <role id="ECU" description="External Client User" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>editmyprofile</availableresource>            
+      <availableresource>messagecenter</availableresource>
+      <availableresource>messagecenterPersonalization</availableresource>      
+      <availableresource>directMessage</availableresource>          
+      <availableresource>howTo</availableresource>
+      <availableresource>jhNavigatorProxy</availableresource>
+      <availableresource>secondStep</availableresource>
+	  <availableresource>secondStepTransition</availableresource>
+     </role>
+    <role id="SAD" description="System Administrator" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>tpaFeeSchedule</availableresource>
+      <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="PSU" description="General Plan Sponsor User" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>editmyprofile</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>transactionpagesTPA</availableresource>      
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+      <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>    
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>    
+      <availableresource>loanFeatureAtAGlance</availableresource>    
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>
+      <availableresource>messagecenter</availableresource>
+      <availableresource>messagecenterPersonalization</availableresource>      
+      <availableresource>directMessage</availableresource>
+      <availableresource>fundcheck</availableresource>
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource>
+      <availableresource>eligibilityInformationClientUsers</availableresource>
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>summaryOfPlanCostsPage</availableresource>
+      <availableresource>404NoticeInfo</availableresource>
+      
+      <availableresource>notificationaddeditpages</availableresource>
+      <availableresource>sendService</availableresource>
+      <availableresource>notificationuploadchangepages</availableresource>
+      <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="TRT" description="Trustee" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>editcontractaddress</availableresource> 
+      <availableresource>editmyprofile</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>ipsrEdit</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>transactionpagesTPA</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+      <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+	  <availableresource>censusTemplateDownload</availableresource>
+	  <availableresource>combinationTemplateDownload</availableresource>
+	  <availableresource>vestingTemplateDownload</availableresource>
+	  <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource> 
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>    
+      <availableresource>loanFeatureAtAGlance</availableresource>  
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+	  <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>editVesting</availableresource>
+	  <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>  
+      <availableresource>messagecenter</availableresource>
+      <availableresource>messagecenterPersonalization</availableresource>  
+      <availableresource>directMessage</availableresource>
+      <availableresource>fundcheck</availableresource>
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource>
+      <availableresource>eligibilityInformationClientUsers</availableresource>
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>summaryOfPlanCostsPage</availableresource>
+      <availableresource>404NoticeInfo</availableresource>
+      
+      <availableresource>notificationaddeditpages</availableresource>
+       <availableresource>sendService</availableresource>
+      <availableresource>notificationuploadchangepages</availableresource>
+      <availableresource>resetPasswordPage</availableresource>
+      <availableresource>resetPasswordConfirmation</availableresource>
+       <availableresource>cofiduciaryRecommendationReview</availableresource>
+       <availableresource>jhNavigatorProxy</availableresource>
+       <availableresource>secondStep</availableresource>
+	   <availableresource>secondStepTransition</availableresource>
+    </role>
+    <role id="AUS" description="Authorized Signer" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>editcontractaddress</availableresource>
+      <availableresource>editmyprofile</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+      <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>    
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>   
+      <availableresource>loanFeatureAtAGlance</availableresource>   
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>
+      <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>messagecenter</availableresource>
+      <availableresource>messagecenterPersonalization</availableresource>
+      <availableresource>directMessage</availableresource>
+      <availableresource>fundcheck</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>planInfo</availableresource>
+      <availableresource>eligibilityInformationClientUsers</availableresource>
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>summaryOfPlanCostsPage</availableresource>
+      <availableresource>404NoticeInfo</availableresource>
+      
+      <availableresource>notificationaddeditpages</availableresource>
+      <availableresource>sendService</availableresource>
+      <availableresource>notificationuploadchangepages</availableresource>
+      <availableresource>resetPasswordPage</availableresource>
+      <availableresource>resetPasswordConfirmation</availableresource>
+       <availableresource>cofiduciaryRecommendationReview</availableresource>
+       <availableresource>jhNavigatorProxy</availableresource>
+	   <availableresource>secondStep</availableresource>
+	   <availableresource>secondStepTransition</availableresource>
+      
+    </role>
+    <role id="ADC" description="Administrative Contact" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+	  <availableresource>contacts</availableresource>
+      <availableresource>editmyprofile</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+      <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>    
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>  
+      <availableresource>loanFeatureAtAGlance</availableresource>    
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>  
+      <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>messagecenter</availableresource>
+      <availableresource>messagecenterPersonalization</availableresource>
+      <availableresource>directMessage</availableresource>
+      <availableresource>fundcheck</availableresource>
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource>
+      <availableresource>eligibilityInformationClientUsers</availableresource>
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>summaryOfPlanCostsPage</availableresource>
+      <availableresource>404NoticeInfo</availableresource>
+      
+      <availableresource>notificationaddeditpages</availableresource>
+      <availableresource>sendService</availableresource>
+      <availableresource>notificationuploadchangepages</availableresource>
+      <availableresource>resetPasswordPage</availableresource>
+      <availableresource>resetPasswordConfirmation</availableresource>
+       <availableresource>cofiduciaryRecommendationReview</availableresource>
+       <availableresource>jhNavigatorProxy</availableresource>
+	   <availableresource>secondStep</availableresource>
+	   <availableresource>secondStepTransition</availableresource>
+    </role>
+    <role id="INC" description="Intermediary Contact" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+     <availableresource>contacts</availableresource>
+      <availableresource>editmyprofile</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+      <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>    
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>   
+      <availableresource>loanFeatureAtAGlance</availableresource>   
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>  
+      <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>messagecenter</availableresource>
+      <availableresource>messagecenterPersonalization</availableresource>
+      <availableresource>directMessage</availableresource>
+      <availableresource>fundcheck</availableresource>
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource>
+      <availableresource>eligibilityInformationClientUsers</availableresource>
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>summaryOfPlanCostsPage</availableresource>
+      <availableresource>404NoticeInfo</availableresource>
+       <availableresource>notificationaddeditpages</availableresource>
+       <availableresource>sendService</availableresource>
+      <availableresource>notificationuploadchangepages</availableresource>
+      <availableresource>jhNavigatorProxy</availableresource>
+      <availableresource>secondStep</availableresource>
+	  <availableresource>secondStepTransition</availableresource>
+    </role>
+    <role id="PPY" description="Payroll Administrator" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+	  <availableresource>contacts</availableresource>     
+      <availableresource>editmyprofile</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>      
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+      <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>  
+      <availableresource>loanFeatureAtAGlance</availableresource>    
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>   
+      <availableresource>tpaVestingSubmissionReport</availableresource>  
+      <availableresource>messagecenter</availableresource>
+      <availableresource>messagecenterPersonalization</availableresource>  
+      <availableresource>directMessage</availableresource>
+      <availableresource>jhNavigatorProxy</availableresource>
+      <availableresource>secondStep</availableresource>
+	  <availableresource>secondStepTransition</availableresource>
+    </role>
+    <role id="PIM" description="Internal User Manager" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>manageprofiles</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>ipsrEdit</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>     
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>transactionpagesTPA</availableresource>
+      <availableresource>tpaBlockOfBusiness</availableresource>
+      <availableresource>tpaFundsAndPerformance</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+	  <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>  
+      <availableresource>contractservicefeatures</availableresource>
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>    
+      <availableresource>loanFeatureAtAGlance</availableresource>  
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource> 
+      <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>messagecenter4Car</availableresource>	
+	  <availableresource>eligibilityInformationInternalUsers</availableresource>	           
+      <availableresource>fundcheck</availableresource>
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource>
+      <availableresource>investmentRelatedCost</availableresource>	
+      <availableresource>ipiHypotheticalTool</availableresource>
+      <availableresource>plandata</availableresource>
+      <availableresource>tpaPlanInformation</availableresource>
+      <availableresource>tpaPIFEditAndDeleteSubmission</availableresource>       
+      <availableresource>summaryOfPlanCostsPage</availableresource>
+	  <availableresource>participantStatementFeeTool</availableresource>
+	  <availableresource>404NoticeInfo</availableresource>
+	  <availableresource>tpaFeeSchedule</availableresource>
+	   <availableresource>cofiduciaryRecommendationReview</availableresource>
+	   <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="PCR" description="Manulife CAR" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>manageprofiles</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>editcontractaddress</availableresource>      
+      <availableresource>investments</availableresource>
+      <availableresource>ipsrEdit</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>     
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>transactionpagesTPA</availableresource>
+      <availableresource>tpaBlockOfBusiness</availableresource>
+      <availableresource>tpaFundsAndPerformance</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+	  <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>    
+      <availableresource>loanFeatureAtAGlance</availableresource>  
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>
+      <availableresource>tpaVestingSubmissionReport</availableresource> 
+      <availableresource>messagecenter4Car</availableresource>  
+      <availableresource>eligibilityInformationInternalUsers</availableresource>	      
+      <availableresource>fundcheck</availableresource> 
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource> 
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>ipiHypotheticalTool</availableresource>
+      <availableresource>plandata</availableresource>
+      <availableresource>tpaPlanInformation</availableresource> 
+      <availableresource>tpaPIFEditAndDeleteSubmission</availableresource>   
+      <availableresource>summaryOfPlanCostsPage</availableresource>     
+	  <availableresource>participantStatementFeeTool</availableresource>
+	  <availableresource>404NoticeInfo</availableresource>
+	  <availableresource>tpaFeeSchedule</availableresource>
+	  <availableresource>plandata</availableresource>
+	  <availableresource>notificationuploadchangepages</availableresource>
+      <availableresource>notificationbuildpackagepage</availableresource>
+       <availableresource>sendService</availableresource>
+        <availableresource>cofiduciaryRecommendationReview</availableresource>
+        <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="PSC" description="Manulife Super CAR" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>manageprofiles</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>editcontractaddress</availableresource>      
+      <availableresource>investments</availableresource>
+      <availableresource>ipsrEdit</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>     
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>transactionpagesTPA</availableresource>
+      <availableresource>tpaBlockOfBusiness</availableresource>
+      <availableresource>tpaFundsAndPerformance</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+	  <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractLevelPinGen</availableresource>
+      <availableresource>contractservicefeatures</availableresource>
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>  
+      <availableresource>loanFeatureAtAGlance</availableresource>    
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>
+      <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>messagecenter4Car</availableresource>
+      <availableresource>eligibilityInformationInternalUsers</availableresource>
+      <availableresource>fundcheck</availableresource>
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource>
+      <availableresource>beneficiaryTransfer</availableresource>
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>ipiHypotheticalTool</availableresource>
+      <availableresource>plandata</availableresource>
+      <availableresource>tpaPlanInformation</availableresource> 
+      <availableresource>tpaPIFEditAndDeleteSubmission</availableresource>       
+      <availableresource>summaryOfPlanCostsPage</availableresource>     
+	  <availableresource>participantStatementFeeTool</availableresource>
+	  <availableresource>404NoticeInfo</availableresource>
+	  <availableresource>tpaFeeSchedule</availableresource>
+	  
+	  
+	  <availableresource>notificationuploadchangepages</availableresource>
+	   <availableresource>sendService</availableresource>
+      <availableresource>notificationbuildpackagepage</availableresource>
+       <availableresource>cofiduciaryRecommendationReview</availableresource>
+       <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="PRM" description="Manulife Relationship Manager" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>manageprofiles</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>ipsrEdit</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>     
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>transactionpagesTPA</availableresource>
+      <availableresource>tpaBlockOfBusiness</availableresource>
+      <availableresource>tpaFundsAndPerformance</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+	  <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>  
+      <availableresource>loanFeatureAtAGlance</availableresource>    
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>    
+      <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>messagecenter4Car</availableresource>  
+      <availableresource>eligibilityInformationInternalUsers</availableresource>	
+      <availableresource>fundcheck</availableresource> 
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource> 
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>ipiHypotheticalTool</availableresource>
+   	  <availableresource>plandata</availableresource>
+      <availableresource>tpaPlanInformation</availableresource> 
+      <availableresource>tpaPIFEditAndDeleteSubmission</availableresource>   
+      <availableresource>summaryOfPlanCostsPage</availableresource>   
+      <availableresource>participantStatementFeeTool</availableresource>
+      <availableresource>404NoticeInfo</availableresource>
+      <availableresource>tpaFeeSchedule</availableresource>
+      
+      
+      <availableresource>notificationuploadchangepages</availableresource>
+       <availableresource>sendService</availableresource>
+      <availableresource>notificationbuildpackagepage</availableresource>
+       <availableresource>cofiduciaryRecommendationReview</availableresource>
+       <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="PFS" description="Manulife Relationship Manager" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>manageprofiles</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>ipsrEdit</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>     
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>transactionpagesTPA</availableresource>
+      <availableresource>tpaBlockOfBusiness</availableresource>
+      <availableresource>tpaFundsAndPerformance</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+	  <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>  
+      <availableresource>loanFeatureAtAGlance</availableresource>    
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>    
+      <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>messagecenter4Car</availableresource>  
+      <availableresource>eligibilityInformationInternalUsers</availableresource>	
+      <availableresource>fundcheck</availableresource> 
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource> 
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>ipiHypotheticalTool</availableresource>
+   	  <availableresource>plandata</availableresource>
+      <availableresource>tpaPlanInformation</availableresource> 
+      <availableresource>tpaPIFEditAndDeleteSubmission</availableresource>   
+      <availableresource>summaryOfPlanCostsPage</availableresource>   
+      <availableresource>participantStatementFeeTool</availableresource>
+      <availableresource>404NoticeInfo</availableresource>
+      <availableresource>tpaFeeSchedule</availableresource>
+      <availableresource>notificationuploadchangepages</availableresource>
+       <availableresource>sendService</availableresource>
+      <availableresource>notificationbuildpackagepage</availableresource>
+       <availableresource>cofiduciaryRecommendationReview</availableresource>
+       <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="BIU" description="Manulife Basic Internal User" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>manageprofiles</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>ipsrEdit</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>     
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>transactionpagesTPA</availableresource>
+      <availableresource>tpaBlockOfBusiness</availableresource>
+      <availableresource>tpaFundsAndPerformance</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+      <availableresource>copyContribution</availableresource>
+      <availableresource>createContribution</availableresource>
+      <availableresource>editContribution</availableresource>
+      <availableresource>makePayment</availableresource>
+      <availableresource>submissionUpload</availableresource>
+      <availableresource>submissionComboUpload</availableresource>
+      <availableresource>censusUpload</availableresource>
+      <availableresource>uploadLongTermPartTimeInfo</availableresource>
+      <availableresource>vestingUpload</availableresource>
+      <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+      <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+      <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+      <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>  
+      <availableresource>loanFeatureAtAGlance</availableresource>    
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>    
+      <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>messagecenter4Car</availableresource>  
+      <availableresource>eligibilityInformationInternalUsers</availableresource>	
+      <availableresource>fundcheck</availableresource> 
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource> 
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>ipiHypotheticalTool</availableresource>  
+      <availableresource>plandata</availableresource>  
+      <availableresource>tpaPlanInformation</availableresource> 
+      <availableresource>tpaPIFEditAndDeleteSubmission</availableresource>   
+      <availableresource>summaryOfPlanCostsPage</availableresource>   
+      <availableresource>participantStatementFeeTool</availableresource>
+      <availableresource>404NoticeInfo</availableresource>
+      <availableresource>tpaFeeSchedule</availableresource>
+       <availableresource>notificationuploadchangepages</availableresource>
+        <availableresource>sendService</availableresource>
+       <availableresource>notificationbuildpackagepage</availableresource>
+        <availableresource>cofiduciaryRecommendationReview</availableresource>
+        <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="BGC" description="Bundled GA CAR" timeout="900">
+	  <availableresource>common</availableresource>
+	  <availableresource>welcomePage</availableresource>
+	  <availableresource>manageprofiles</availableresource>
+	  <availableresource>contacts</availableresource>
+	  <availableresource>editcontractaddress</availableresource> - 
+	  <availableresource>investments</availableresource>
+	  <availableresource>ipsrEdit</availableresource>
+	  <availableresource>generalinvestments</availableresource>
+	  <availableresource>contractmessages</availableresource>
+	  <availableresource>censuspages</availableresource>
+	  <availableresource>payrollSelfService</availableresource>
+	  <availableresource>vestingInformation</availableresource>
+	  <availableresource>participantpages</availableresource>
+	  <availableresource>participantpagesLessRestricted</availableresource>
+	  <availableresource>definedbenefitpages</availableresource>
+	  <availableresource>participantaddressdownload</availableresource>
+	  <availableresource>participantAddressSummary</availableresource>
+	  <availableresource>participantenrolldownload</availableresource>
+	  <availableresource>partenrolldetaildownload</availableresource>
+	  <availableresource>contractpages</availableresource>
+	  <availableresource>planpages</availableresource>
+	  <availableresource>planhistorypages</availableresource>
+	  <availableresource>planeditpages</availableresource>
+	  <availableresource>securehomepage</availableresource>
+	  <availableresource>transactionpages</availableresource>
+	  <availableresource>forfeituresReport</availableresource>
+	  <availableresource>transactionpagesTPA</availableresource>
+	  <availableresource>tpaBlockOfBusiness</availableresource>
+	  <availableresource>tpaFundsAndPerformance</availableresource>
+	  <availableresource>toolspages</availableresource>
+	  <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+	  <availableresource>addParticipant</availableresource>
+	  <availableresource>viewPayment</availableresource>
+	  <availableresource>resourcepages</availableresource>
+	  <availableresource>search</availableresource>
+	  <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+	  <availableresource>howTo</availableresource>
+	  <availableresource>news</availableresource>
+	  <availableresource>contactus</availableresource>
+	  <availableresource>userguide</availableresource>
+	  <availableresource>contributionTemplateDownload</availableresource>
+	  <availableresource>censusTemplateDownload</availableresource>
+	  <availableresource>combinationTemplateDownload</availableresource>
+	  <availableresource>vestingTemplateDownload</availableresource>
+	  <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+	  <availableresource>quarterlyinvestmentguide</availableresource>
+	  <availableresource>lifestylespinoff</availableresource>
+	  <availableresource>contractLevelPinGen</availableresource>
+	  <availableresource>contractservicefeatures</availableresource>
+	  <availableresource>withdrawalPSWEntry</availableresource>
+	  <availableresource>onlineLoans</availableresource>
+	  <availableresource>loanFeatureAtAGlance</availableresource>
+	  <availableresource>withdrawalPSWView</availableresource>
+	  <availableresource>viewVesting</availableresource>
+	  <availableresource>editVesting</availableresource>
+	  <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>
+	  <availableresource>tpaVestingSubmissionReport</availableresource>
+	  <availableresource>messagecenter4Car</availableresource>
+	  <availableresource>messagecenterPersonalization</availableresource>
+	  <availableresource>eligibilityInformationInternalUsers</availableresource>
+	  <availableresource>fundcheck</availableresource>
+    <availableresource>planAndInvestmentNotice</availableresource>
+	  <availableresource>iccReport</availableresource>
+	  <availableresource>planInfo</availableresource>
+	  <availableresource>beneficiaryTransfer</availableresource>
+	  <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>ipiHypotheticalTool</availableresource>
+	  <availableresource>plandata</availableresource>
+	  <availableresource>tpaPlanInformation</availableresource> 
+	  <availableresource>tpaPIFEditAndDeleteSubmission</availableresource> 
+	  <availableresource>summaryOfPlanCostsPage</availableresource>     
+	  <availableresource>participantStatementFeeTool</availableresource>
+	  <availableresource>tpaforms</availableresource>
+	  <availableresource>amortizationSchedule</availableresource>
+	  <availableresource>404NoticeInfo</availableresource>
+	  <availableresource>tpaFeeSchedule</availableresource>
+	  <availableresource>plandata</availableresource>
+	  <availableresource>notificationuploadchangepages</availableresource>
+	   <availableresource>sendService</availableresource>
+      <availableresource>notificationbuildpackagepage</availableresource>
+       <availableresource>cofiduciaryRecommendationReview</availableresource>
+       <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="BGA" description="Bundled GA Approver" timeout="900">
+      	<availableresource>common</availableresource>
+		<availableresource>welcomePage</availableresource>
+		<availableresource>manageprofiles</availableresource>
+		<availableresource>contacts</availableresource>
+		<availableresource>investments</availableresource>
+		<availableresource>ipsrEdit</availableresource>
+		<availableresource>generalinvestments</availableresource>
+		<availableresource>contractmessages</availableresource>
+		<availableresource>censuspages</availableresource>
+		<availableresource>payrollSelfService</availableresource>
+		<availableresource>vestingInformation</availableresource>
+		<availableresource>participantpages</availableresource>
+		<availableresource>participantpagesLessRestricted</availableresource>
+		<availableresource>definedbenefitpages</availableresource>
+		<availableresource>participantaddressdownload</availableresource>
+		<availableresource>participantAddressSummary</availableresource>
+		<availableresource>participantenrolldownload</availableresource>     
+		<availableresource>partenrolldetaildownload</availableresource>
+		<availableresource>contractpages</availableresource>
+		<availableresource>planpages</availableresource>
+		<availableresource>planhistorypages</availableresource>
+		<availableresource>planeditpages</availableresource>
+		<availableresource>securehomepage</availableresource>
+		<availableresource>transactionpages</availableresource>
+		<availableresource>forfeituresReport</availableresource>
+		<availableresource>transactionpagesTPA</availableresource>
+		<availableresource>tpaBlockOfBusiness</availableresource>
+		<availableresource>tpaFundsAndPerformance</availableresource>
+		<availableresource>toolspages</availableresource>
+		<availableresource>submissionDelete</availableresource>
+		<availableresource>copyContribution</availableresource>
+		<availableresource>createContribution</availableresource>
+		<availableresource>editContribution</availableresource>
+		<availableresource>makePayment</availableresource>
+		<availableresource>submissionUpload</availableresource>
+		<availableresource>submissionComboUpload</availableresource>
+		<availableresource>censusUpload</availableresource>
+		<availableresource>uploadLongTermPartTimeInfo</availableresource>
+		<availableresource>vestingUpload</availableresource>
+		<availableresource>uploadMiscFile</availableresource>
+		<availableresource>secureDocumentUpload</availableresource>
+		<availableresource>uploadConversionFile</availableresource>
+		<availableresource>addParticipant</availableresource>
+		<availableresource>viewPayment</availableresource>
+		<availableresource>resourcepages</availableresource>
+		<availableresource>search</availableresource>
+		<availableresource>glossary</availableresource>
+		<availableresource>takeatour</availableresource>
+		<availableresource>howTo</availableresource>
+		<availableresource>news</availableresource>
+		<availableresource>contactus</availableresource>
+		<availableresource>userguide</availableresource>
+		<availableresource>contributionTemplateDownload</availableresource>
+		<availableresource>censusTemplateDownload</availableresource>
+		<availableresource>combinationTemplateDownload</availableresource>
+		<availableresource>vestingTemplateDownload</availableresource>
+		<availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+		<availableresource>quarterlyinvestmentguide</availableresource>
+		<availableresource>lifestylespinoff</availableresource>
+		<availableresource>contractservicefeatures</availableresource>
+		<availableresource>withdrawalPSWEntry</availableresource>    
+		<availableresource>onlineLoans</availableresource>  
+		<availableresource>loanFeatureAtAGlance</availableresource>    
+		<availableresource>withdrawalPSWView</availableresource>
+		<availableresource>viewVesting</availableresource>
+		<availableresource>editVesting</availableresource>
+		<availableresource>viewLongTermPartTimeDetails</availableresource>
+        <availableresource>editLongTermPartTimeDetails</availableresource>    
+		<availableresource>tpaVestingSubmissionReport</availableresource>
+		<availableresource>messagecenter4Car</availableresource>  
+		<availableresource>eligibilityInformationInternalUsers</availableresource>			
+		<availableresource>fundcheck</availableresource> 
+    	<availableresource>planAndInvestmentNotice</availableresource>
+		<availableresource>iccReport</availableresource>
+		<availableresource>planInfo</availableresource> 
+		<availableresource>investmentRelatedCost</availableresource>
+      	<availableresource>ipiHypotheticalTool</availableresource>
+		<availableresource>plandata</availableresource>
+		<availableresource>tpaPlanInformation</availableresource> 
+		<availableresource>tpaPIFEditAndDeleteSubmission</availableresource>   
+		<availableresource>summaryOfPlanCostsPage</availableresource>   
+		<availableresource>participantStatementFeeTool</availableresource>   
+		<availableresource>404NoticeInfo</availableresource>  
+		<availableresource>tpaFeeSchedule</availableresource>   
+		
+		<availableresource>notificationuploadchangepages</availableresource>
+		 <availableresource>sendService</availableresource>
+        <availableresource>notificationbuildpackagepage</availableresource>
+         <availableresource>cofiduciaryRecommendationReview</availableresource>
+         <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="TPA" description="Third Party Administrator" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>tpadownload</availableresource>
+      <availableresource>managetpaprofiles</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>     
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>transactionpagesTPA</availableresource>
+      <availableresource>tpaBlockOfBusiness</availableresource>
+      <availableresource>tpaFundsAndPerformance</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+      <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+      <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>      
+      <availableresource>tpaupdates</availableresource>
+      <availableresource>tpatoolkit</availableresource>
+      <availableresource>tpaforms</availableresource>
+	  <availableresource>amortizationSchedule</availableresource>	  
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>    
+      <availableresource>withdrawalTPA</availableresource>
+      <availableresource>tpaViewEmployeeSnaphsot</availableresource>
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoansTPA</availableresource>    
+      <availableresource>loanFeatureAtAGlanceTPA</availableresource>  
+      <availableresource>withdrawalPSWView</availableresource>    
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>    
+      <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>messagecenter</availableresource>
+      <availableresource>messagecenterPersonalization</availableresource>
+	  <availableresource>directMessage</availableresource>
+	  <availableresource>eligibilityInformationClientUsers</availableresource>
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>fundcheck</availableresource>
+      <availableresource>iccReport</availableresource> 
+      <availableresource>planInfo</availableresource>
+	  <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>tpaPlanInformation</availableresource>
+      <availableresource>tpaPIFEditAndDeleteSubmission</availableresource>
+      <availableresource>tpaPIFConfirmSubmission</availableresource>
+      <availableresource>summaryOfPlanCostsPage</availableresource>
+      <availableresource>tpaStandardFeeSchedule</availableresource>
+      <availableresource>tpaContractFeeScheduleContractSearch</availableresource>
+      <availableresource>viewTpaFeeShedule</availableresource>
+      <availableresource>contractSearch</availableresource>	
+	  <availableresource>plandata</availableresource>
+      <availableresource>viewTpaFeeScheduleEdit</availableresource>
+      <availableresource>contractPreview</availableresource>
+      <availableresource>404NoticeInfo</availableresource>
+      <availableresource>tpaCustomizeContractChangeHistory</availableresource>
+      <availableresource>tpaFeeSchedule</availableresource>  
+      <availableresource>tpaCustomizeContractFeeSchedule</availableresource>
+      
+      <availableresource>notificationaddeditpages</availableresource>
+      <availableresource>sendService</availableresource>
+      <availableresource>notificationuploadchangepages</availableresource>
+      <availableresource>notificationbuildpackagepage</availableresource> 
+      <availableresource>cofiduciaryRecommendationReview</availableresource>
+      <availableresource>jhNavigatorProxy</availableresource>
+	  <availableresource>secondStep</availableresource>
+	   <availableresource>secondStepTransition</availableresource>
+    </role>
+    <role id="PTL" description="Team Lead" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>manageprofiles</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>editcontractaddress</availableresource>      
+      <availableresource>investments</availableresource>
+      <availableresource>ipsrEdit</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>     
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>transactionpagesTPA</availableresource>
+      <availableresource>tpaBlockOfBusiness</availableresource>
+      <availableresource>tpaFundsAndPerformance</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+	  <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource> 
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>    
+      <availableresource>loanFeatureAtAGlance</availableresource>
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>   
+      <availableresource>tpaVestingSubmissionReport</availableresource> 
+      <availableresource>messagecenter4Car</availableresource>  
+      <availableresource>eligibilityInformationInternalUsers</availableresource>	      
+      <availableresource>fundcheck</availableresource>
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource>
+      <availableresource>beneficiaryTransfer</availableresource>
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>ipiHypotheticalTool</availableresource>
+      <availableresource>plandata</availableresource>
+      <availableresource>tpaPlanInformation</availableresource>
+      <availableresource>tpaPIFEditAndDeleteSubmission</availableresource>       
+      <availableresource>summaryOfPlanCostsPage</availableresource> 
+      <availableresource>participantStatementFeeTool</availableresource>
+      <availableresource>tpaFeeSchedule</availableresource>     
+      <availableresource>404NoticeInfo</availableresource> 
+      
+      <availableresource>notificationuploadchangepages</availableresource>
+       <availableresource>sendService</availableresource>
+      <availableresource>notificationbuildpackagepage</availableresource> 
+       <availableresource>cofiduciaryRecommendationReview</availableresource>
+       <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="PLC" description="Pilot CAR" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>manageprofiles</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>editcontractaddress</availableresource>      
+      <availableresource>investments</availableresource>
+      <availableresource>ipsrEdit</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>     
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+      <availableresource>forfeituresReport</availableresource>
+      <availableresource>tpaBlockOfBusiness</availableresource>
+      <availableresource>tpaFundsAndPerformance</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+	  <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>   
+      <availableresource>loanFeatureAtAGlance</availableresource> 
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource>    
+      <availableresource>tpaVestingSubmissionReport</availableresource> 
+      <availableresource>messagecenter4Car</availableresource>  
+      <availableresource>eligibilityInformationInternalUsers</availableresource>	     
+      <availableresource>fundcheck</availableresource>
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource>
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>ipiHypotheticalTool</availableresource> 
+      <availableresource>plandata</availableresource>
+      <availableresource>tpaPlanInformation</availableresource>
+      <availableresource>tpaPIFEditAndDeleteSubmission</availableresource>       
+      <availableresource>summaryOfPlanCostsPage</availableresource>
+      <availableresource>404NoticeInfo</availableresource>  
+      <availableresource>participantStatementFeeTool</availableresource>  
+      <availableresource>tpaFeeSchedule</availableresource>    
+      <availableresource>manageProfilesPilotCAR</availableresource> 
+      <availableresource>tpaProfilePagesPilotCAR</availableresource>  
+       <availableresource>cofiduciaryRecommendationReview</availableresource> 
+        <availableresource>managePasscodeExempt</availableresource>   
+        <availableresource>jhNavigatorProxy</availableresource> 
+    </role>
+    <role id="ICC" description="Internal Services CAR" timeout="900">
+      <availableresource>common</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>manageprofiles</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>editcontractaddress</availableresource>
+      <availableresource>investments</availableresource>
+      <availableresource>ipsrEdit</availableresource>
+      <availableresource>generalinvestments</availableresource>
+      <availableresource>contractmessages</availableresource>
+      <availableresource>censuspages</availableresource>
+      <availableresource>payrollSelfService</availableresource>
+      <availableresource>vestingInformation</availableresource>      
+      <availableresource>participantpages</availableresource>
+      <availableresource>participantpagesLessRestricted</availableresource>
+      <availableresource>definedbenefitpages</availableresource>
+      <availableresource>participantaddressdownload</availableresource>
+      <availableresource>participantAddressSummary</availableresource>
+      <availableresource>participantenrolldownload</availableresource>     
+      <availableresource>partenrolldetaildownload</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>plandata</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>planeditpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>transactionpages</availableresource>
+       <availableresource>forfeituresReport</availableresource>
+      <availableresource>transactionpagesTPA</availableresource>
+      <availableresource>tpaBlockOfBusiness</availableresource>
+      <availableresource>tpaFundsAndPerformance</availableresource>
+      <availableresource>toolspages</availableresource>
+      <availableresource>submissionDelete</availableresource>
+	  <availableresource>copyContribution</availableresource>
+	  <availableresource>createContribution</availableresource>
+	  <availableresource>editContribution</availableresource>
+	  <availableresource>makePayment</availableresource>
+	  <availableresource>submissionUpload</availableresource>
+	  <availableresource>submissionComboUpload</availableresource>
+	  <availableresource>censusUpload</availableresource>
+	  <availableresource>uploadLongTermPartTimeInfo</availableresource>
+	  <availableresource>vestingUpload</availableresource>
+	  <availableresource>uploadMiscFile</availableresource>
+	  <availableresource>secureDocumentUpload</availableresource>
+	  <availableresource>uploadConversionFile</availableresource>
+      <availableresource>addParticipant</availableresource>
+	  <availableresource>viewPayment</availableresource>
+      <availableresource>resourcepages</availableresource>
+      <availableresource>search</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>howTo</availableresource>
+      <availableresource>news</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>userguide</availableresource>
+      <availableresource>contributionTemplateDownload</availableresource>
+      <availableresource>censusTemplateDownload</availableresource>
+      <availableresource>combinationTemplateDownload</availableresource>
+      <availableresource>vestingTemplateDownload</availableresource>
+      <availableresource>longTermPartTimeInformationTemplateDownload</availableresource>
+      <availableresource>quarterlyinvestmentguide</availableresource>
+      <availableresource>lifestylespinoff</availableresource>
+      <availableresource>contractservicefeatures</availableresource>
+      <availableresource>withdrawalPSWEntry</availableresource>    
+      <availableresource>onlineLoans</availableresource>    
+      <availableresource>withdrawalPSWView</availableresource>
+      <availableresource>onlineLoans</availableresource>
+      <availableresource>loanFeatureAtAGlance</availableresource>
+      <availableresource>viewVesting</availableresource>
+      <availableresource>editVesting</availableresource>
+      <availableresource>viewLongTermPartTimeDetails</availableresource>
+      <availableresource>editLongTermPartTimeDetails</availableresource> 
+      <availableresource>tpaVestingSubmissionReport</availableresource>
+      <availableresource>messagecenter4Car</availableresource>
+      <availableresource>eligibilityInformationInternalUsers</availableresource>	            
+      <availableresource>fundcheck</availableresource>
+      <availableresource>planAndInvestmentNotice</availableresource>
+      <availableresource>iccReport</availableresource>
+      <availableresource>planInfo</availableresource>
+      <availableresource>investmentRelatedCost</availableresource>
+      <availableresource>ipiHypotheticalTool</availableresource>
+     
+      <availableresource>tpaPlanInformation</availableresource> 
+      <availableresource>tpaPIFEditAndDeleteSubmission</availableresource>       
+      <availableresource>summaryOfPlanCostsPage</availableresource>  
+      <availableresource>participantStatementFeeTool</availableresource>   
+      <availableresource>404NoticeInfo</availableresource>
+      <availableresource>tpaFeeSchedule</availableresource>
+      <availableresource>cofiduciaryRecommendationReview</availableresource>
+      <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+    <role id="PTC" description="JHTC Officer" timeout="900">
+      <availableresource>commonForJHTC</availableresource>
+      <availableresource>welcomePage</availableresource>
+      <availableresource>manageprofiles</availableresource>
+      <availableresource>contractpages</availableresource>
+      <availableresource>securehomepage</availableresource>
+      <availableresource>investmentAllocation</availableresource>
+      <availableresource>planpages</availableresource>
+      <availableresource>planhistorypages</availableresource>
+      <availableresource>regulatoryDisclosure</availableresource>
+      <availableresource>searchforJHTC</availableresource>
+      <availableresource>glossary</availableresource>
+	  <availableresource>takeatour</availableresource>
+      <availableresource>contactus</availableresource>
+      <availableresource>contacts</availableresource>
+      <availableresource>makePayment</availableresource>
+      <availableresource>jhNavigatorProxy</availableresource>
+    </role>
+  </roles>
+
+</plansponsor:controlflow>

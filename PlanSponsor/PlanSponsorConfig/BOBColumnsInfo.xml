@@ -1,0 +1,1529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<bean abstract="true" name="commonColumn" class="com.manulife.pension.platform.web.util.LabelInfoBean"/>
+	
+	<bean abstract="true" name="contractName" parent="commonColumn" p:id="contractName" p:title="Contract Name" p:PDFTitle="CN Name" p:enabled="true"/>				
+
+	<bean abstract="true" name="proposalName" parent="commonColumn" p:id="proposalName" p:title="Proposal Name" p:enabled="true"/>				
+
+	<bean abstract="true" name="contractNumber" parent="commonColumn" p:id="contractNumber" p:title="Contract Number" p:PDFTitle="CN #" p:enabled="true"/>				
+
+	<bean abstract="true" name="proposalNumber" parent="commonColumn" p:id="proposalNumber" p:title="Proposal Number" p:enabled="true"/>				
+
+	<bean abstract="true" name="contractEffDt" parent="commonColumn" p:id="contractEffDt" p:title="Contract Effective Date" p:PDFTitle="CN Effective Date" p:enabled="true"/>				
+
+	<bean abstract="true" name="proposalDt" parent="commonColumn" p:id="proposalDt" p:title="Proposal Date" p:enabled="true"/>				
+
+	<bean abstract="true" name="contractPlanYearEndMMDD" parent="commonColumn" p:id="contractPlanYearEndMMDD" p:title="Contract Plan Year End" p:enabled="true"/>				
+
+	<bean abstract="true" name="contractState" parent="commonColumn" p:id="contractState" p:title="Contract State" p:enabled="true"/>				
+
+	<bean abstract="true" name="numOfLives" parent="commonColumn" p:id="numOfLives" p:title="Number Of Lives" p:enabled="true"/>				
+
+	<bean abstract="true" name="totalAssets" parent="commonColumn" p:id="totalAssets" p:title="Total Assets**($)" p:enabled="true"/>				
+
+	<bean abstract="true" name="transferredOutAssetsPriorToCharges" parent="commonColumn" p:id="transferredOutAssetsPriorToCharges" p:title="Assets*" p:enabled="true"/>		
+
+	<bean abstract="true" name="assetCharge" parent="commonColumn" p:id="assetCharge" p:title="Asset Charge(%)" p:enabled="true"/>				
+
+	<bean abstract="true" name="expectedFirstYearAssets" parent="commonColumn" p:id="expectedFirstYearAssets" p:title="Expected 1st Year Assets($)" p:enabled="true"/>
+	
+	<bean abstract="true" name="commissionDepositTr1yr" parent="commonColumn" p:id="commissionDepositTr1yr" p:title="DB TR 1st" p:enabled="true"/>				
+
+	<bean abstract="true" name="commissionDepositReg1Yr" parent="commonColumn" p:id="commissionDepositReg1Yr" p:title="DB RG 1st " p:enabled="true"/>				
+
+	<bean abstract="true" name="commissionDepositRegRen" parent="commonColumn" p:id="commissionDepositRegRen" p:title="DB RG Ren" p:enabled="true"/>	
+	
+	<bean abstract="true" name="commissionAsset1Year" parent="commonColumn" p:id="commissionAsset1Year" p:title="AB 1st " p:enabled="true"/>				
+
+	<bean abstract="true" name="commissionAssetRen" parent="commonColumn" p:id="commissionAssetRen" p:title="AB Ren  " p:enabled="true"/>
+	
+	<bean abstract="true" name="riaFlatFeeProrata" parent="commonColumn" p:id="riaFlatFeeProrata" p:title="Flat Fee Prorata ($)" p:enabled="true"/>				
+
+	<bean abstract="true" name="riaFlatFeePerHead" parent="commonColumn" p:id="riaFlatFeePerHead" p:title="Flat Fee Per Head ($) " p:enabled="true"/>				
+
+	<bean abstract="true" name="riaBps" parent="commonColumn" p:id="riaBps" p:title="BPS (%)" p:enabled="true"/>	
+	
+	<bean abstract="true" name="riaBpsMax" parent="commonColumn" p:id="riaBpsMax" p:title="BPS Maximum (%)"  p:PDFTitle="BPS Max (%)"  p:enabled="true"/>	
+	
+	<bean abstract="true" name="riaBpsMin" parent="commonColumn" p:id="riaBpsMin" p:title="BPS Minimum (%)"  p:PDFTitle="BPS Min (%)" p:enabled="true"/>				
+
+	<bean abstract="true" name="riaAcBlend" parent="commonColumn" p:id="riaAcBlend" p:title="AC Blend (%)" p:enabled="true"/>
+	
+	<bean abstract="true" name="riaAcTiered" parent="commonColumn" p:id="riaAcTiered" p:title="AC Tiered (%)" p:enabled="true"/>
+	
+	<bean abstract="true" name="des338Ind" parent="commonColumn" p:id="des338Ind" p:title="3(38)" p:enabled="true"/>				
+
+	<bean abstract="true" name="commissionAssetAllYrs" parent="commonColumn" p:id="commissionAssetAllYrs" p:title="AB" p:enabled="true"/>	
+	
+	<bean abstract="true" name="commissionsRIAFees" parent="commonColumn" p:id="commissionsRIAFees" p:title="RIA Fees – RIA Total " p:enabled="false"/>		
+				
+	<bean abstract="true" name="producerCodesOfBrokers" parent="commonColumn" p:id="producerCodesOfBrokers" p:title="Producer code(s)" p:enabled="true"/>				
+
+	<bean abstract="true" name="namesOfTheBrokers" parent="commonColumn" p:id="namesOfTheBrokers" p:title="Financial Representative" p:enabled="true"/>				
+
+	<bean abstract="true" name="firmName" parent="commonColumn" p:id="firmName" p:title="Broker Dealer Firm Name" p:enabled="false"/>				
+
+	<bean abstract="true" name="rvpName" parent="commonColumn" p:id="rvpName" p:title="RVP Name" p:enabled="true"/>				
+
+	<bean abstract="true" name="productType" parent="commonColumn" p:id="productType" p:title="Product Type" p:enabled="true"/>				
+
+	<bean abstract="true" name="usOrNy" parent="commonColumn" p:id="usOrNy" p:title="US / NY" p:enabled="true"/>				
+
+	<bean abstract="true" name="class" parent="commonColumn" p:id="class" p:title="Class" p:enabled="true"/>				
+
+	<bean abstract="true" name="discontinuedDate" parent="commonColumn" p:id="discontinuedDate" p:title="Discontinuance Date" p:enabled="true"/>	
+	
+	<bean abstract="true" name="cofid321ABFee" parent="commonColumn" p:id="cofid321ABFee" p:title="3(21) BPS (%)" p:enabled="true"/>				
+
+	<bean abstract="true" name="cofid321DBFee" parent="commonColumn" p:id="cofid321DBFee" p:title="3(21) ($)" p:enabled="true"/>				
+
+	<bean abstract="true" name="cofid338ABFee" parent="commonColumn" p:id="cofid338ABFee" p:title="3(38) BPS (%)" p:enabled="true"/>	
+	
+	<bean abstract="true" name="cofid338DBFee" parent="commonColumn" p:id="cofid338DBFee" p:title="3(38) ($)" p:enabled="true"/>				
+	 
+	<bean name="allColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnStore">
+		<property name="applicableColumns">
+			<map>
+				<entry key="version1">
+					<bean name="roleApplicableColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToRole">
+						<property name="applicableColumnsForAUserRole">
+							<map>
+								<entry key="activeTab">
+				 					<bean name="activeTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="true"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="false"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="true"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="true"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="false"/>																
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeeProrata">
+													<bean parent="riaFlatFeeProrata" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeePerHead">
+													<bean parent="riaFlatFeePerHead" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBps">
+													<bean parent="riaBps" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMin">
+													<bean parent="riaBpsMin" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMax">
+													<bean parent="riaBpsMax" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcBlend">
+													<bean parent="riaAcBlend" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcTiered">
+													<bean parent="riaAcTiered" p:enabled="true"/>																
+												</entry>
+												<entry key="des338Ind">
+													<bean parent="des338Ind" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false"/>																
+												</entry>
+												<entry key="rvpName">
+													<bean parent="rvpName" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="false"/>																
+												</entry>
+												<entry key="cofid321ABFee">
+													<bean parent="cofid321ABFee" p:enabled="true"/>
+												</entry>
+												<entry key="cofid321DBFee">
+													<bean parent="cofid321DBFee" p:enabled="true"/>
+												</entry>
+												<entry key="cofid338ABFee">
+													<bean parent="cofid338ABFee" p:enabled="true"/>
+												</entry>
+												<entry key="cofid338DBFee">
+													<bean parent="cofid338DBFee" p:enabled="true"/>
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+								<entry key="outstandingProposalsTab">
+				 					<bean name="outstandingProposalsTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="false"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="true"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false"/>																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="true"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="false"/>	
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeeProrata">
+													<bean parent="riaFlatFeeProrata" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeePerHead">
+													<bean parent="riaFlatFeePerHead" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBps">
+													<bean parent="riaBps" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMin">
+													<bean parent="riaBpsMin" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMax">
+													<bean parent="riaBpsMax" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcBlend">
+													<bean parent="riaAcBlend" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcTiered">
+													<bean parent="riaAcTiered" p:enabled="true"/>																
+												</entry>
+												<entry key="des338Ind">
+													<bean parent="des338Ind" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false"/>																
+												</entry>
+												<entry key="rvpName">
+													<bean parent="rvpName" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="false"/>																
+												</entry>
+												<entry key="cofid321ABFee">
+													<bean parent="cofid321ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid321DBFee">
+													<bean parent="cofid321DBFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338ABFee">
+													<bean parent="cofid338ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338DBFee">
+													<bean parent="cofid338DBFee" p:enabled="true"/>																
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+								<entry key="pendingTab">
+				 					<bean name="pendingTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="true"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="false"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="true"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="true"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="false"/>																
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeeProrata">
+													<bean parent="riaFlatFeeProrata" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeePerHead">
+													<bean parent="riaFlatFeePerHead" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBps">
+													<bean parent="riaBps" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMin">
+													<bean parent="riaBpsMin" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMax">
+													<bean parent="riaBpsMax" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcBlend">
+													<bean parent="riaAcBlend" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcTiered">
+													<bean parent="riaAcTiered" p:enabled="true"/>																
+												</entry>
+												<entry key="des338Ind">
+													<bean parent="des338Ind" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false"/>																
+												</entry>
+												<entry key="rvpName">
+													<bean parent="rvpName" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="false"/>																
+												</entry>
+												<entry key="cofid321ABFee">
+													<bean parent="cofid321ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid321DBFee">
+													<bean parent="cofid321DBFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338ABFee">
+													<bean parent="cofid338ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338DBFee">
+													<bean parent="cofid338DBFee" p:enabled="true"/>																
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+								<entry key="discontinuedTab">
+				 					<bean name="discontinuedTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="true"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="false"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="false"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="true"/>																
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false"/>																
+												</entry>
+												<entry key="rvpName">
+													<bean parent="rvpName" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="true"/>																
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+							</map>
+						</property>
+					</bean>
+				</entry>
+				<entry key="version2">
+					<bean name="roleApplicableColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToRole">
+						<property name="applicableColumnsForAUserRole">
+							<map>
+								<entry key="activeTab">
+				 					<bean name="activeTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="true"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="false"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="true"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="true"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="false"/>																
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeeProrata">
+													<bean parent="riaFlatFeeProrata" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeePerHead">
+													<bean parent="riaFlatFeePerHead" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBps">
+													<bean parent="riaBps" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMin">
+													<bean parent="riaBpsMin" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMax">
+													<bean parent="riaBpsMax" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcBlend">
+													<bean parent="riaAcBlend" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcTiered">
+													<bean parent="riaAcTiered" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="true"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false" />																
+												</entry>
+												<entry key="rvpName">
+													<bean parent="rvpName" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="false"/>																
+												</entry>
+												<entry key="cofid321ABFee">
+													<bean parent="cofid321ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid321DBFee">
+													<bean parent="cofid321DBFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338ABFee">
+													<bean parent="cofid338ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338DBFee">
+													<bean parent="cofid338DBFee" p:enabled="true"/>																
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+								<entry key="outstandingProposalsTab">
+				 					<bean name="outstandingProposalsTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="false"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="true"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false" />																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="true"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="false"/>																
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeeProrata">
+													<bean parent="riaFlatFeeProrata" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeePerHead">
+													<bean parent="riaFlatFeePerHead" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBps">
+													<bean parent="riaBps" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMin">
+													<bean parent="riaBpsMin" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMax">
+													<bean parent="riaBpsMax" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcBlend">
+													<bean parent="riaAcBlend" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcTiered">
+													<bean parent="riaAcTiered" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="true"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false"/>																
+												</entry>
+												<entry key="rvpName">
+													<bean parent="rvpName" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="false"/>																
+												</entry>
+												<entry key="cofid321ABFee">
+													<bean parent="cofid321ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid321DBFee">
+													<bean parent="cofid321DBFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338ABFee">
+													<bean parent="cofid338ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338DBFee">
+													<bean parent="cofid338DBFee" p:enabled="true"/>																
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+								<entry key="pendingTab">
+				 					<bean name="pendingTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="true"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="false"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="true"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="true"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="false"/>																
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeeProrata">
+													<bean parent="riaFlatFeeProrata" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeePerHead">
+													<bean parent="riaFlatFeePerHead" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBps">
+													<bean parent="riaBps" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMin">
+													<bean parent="riaBpsMin" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMax">
+													<bean parent="riaBpsMax" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcBlend">
+													<bean parent="riaAcBlend" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcTiered">
+													<bean parent="riaAcTiered" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="true"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false"/>																
+												</entry>
+												<entry key="rvpName">
+													<bean parent="rvpName" p:enabled="false"  p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false"  p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="false"/>																
+												</entry>
+												<entry key="cofid321ABFee">
+													<bean parent="cofid321ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid321DBFee">
+													<bean parent="cofid321DBFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338ABFee">
+													<bean parent="cofid338ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338DBFee">
+													<bean parent="cofid338DBFee" p:enabled="true"/>																
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+								<entry key="discontinuedTab">
+				 					<bean name="discontinuedTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="true"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="false"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="false"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="true"/>																
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="true"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false"/>																
+												</entry>
+												<entry key="rvpName">
+													<bean parent="rvpName" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="true"/>																
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+							</map>
+						</property>
+					</bean>
+				</entry>
+				<entry key="version3">
+					<bean name="roleApplicableColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToRole">
+						<property name="applicableColumnsForAUserRole">
+							<map>
+								<entry key="activeTab">
+				 					<bean name="activeTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="true"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="false"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="true"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="true"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="false"/>																
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeeProrata">
+													<bean parent="riaFlatFeeProrata" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeePerHead">
+													<bean parent="riaFlatFeePerHead" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBps">
+													<bean parent="riaBps" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMin">
+													<bean parent="riaBpsMin" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMax">
+													<bean parent="riaBpsMax" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcBlend">
+													<bean parent="riaAcBlend" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcTiered">
+													<bean parent="riaAcTiered" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="true"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false"/>																
+												</entry>
+												<entry key="rvpName">
+													<bean parent="rvpName" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="false"/>																
+												</entry>
+												<entry key="cofid321ABFee">
+													<bean parent="cofid321ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid321DBFee">
+													<bean parent="cofid321DBFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338ABFee">
+													<bean parent="cofid338ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338DBFee">
+													<bean parent="cofid338DBFee" p:enabled="true"/>																
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+								<entry key="outstandingProposalsTab">
+				 					<bean name="outstandingProposalsTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="false"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="true"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false" />																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="true"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="false"/>																
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeeProrata">
+													<bean parent="riaFlatFeeProrata" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeePerHead">
+													<bean parent="riaFlatFeePerHead" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBps">
+													<bean parent="riaBps" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMin">
+													<bean parent="riaBpsMin" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMax">
+													<bean parent="riaBpsMax" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcBlend">
+													<bean parent="riaAcBlend" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcTiered">
+													<bean parent="riaAcTiered" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="true"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false"/>																
+												</entry>
+												<entry key="rvpName" >
+													<bean parent="rvpName" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="false"/>																
+												</entry>
+												<entry key="cofid321ABFee">
+													<bean parent="cofid321ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid321DBFee">
+													<bean parent="cofid321DBFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338ABFee">
+													<bean parent="cofid338ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338DBFee">
+													<bean parent="cofid338DBFee" p:enabled="true"/>																
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+								<entry key="pendingTab">
+				 					<bean name="pendingTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="true"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="false"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="true"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="true"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="false"/>																
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeeProrata">
+													<bean parent="riaFlatFeeProrata" p:enabled="true"/>																
+												</entry>
+												<entry key="riaFlatFeePerHead">
+													<bean parent="riaFlatFeePerHead" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBps">
+													<bean parent="riaBps" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMin">
+													<bean parent="riaBpsMin" p:enabled="true"/>																
+												</entry>
+												<entry key="riaBpsMax">
+													<bean parent="riaBpsMax" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcBlend">
+													<bean parent="riaAcBlend" p:enabled="true"/>																
+												</entry>
+												<entry key="riaAcTiered">
+													<bean parent="riaAcTiered" p:enabled="true"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="true"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false"/>																
+												</entry>
+												<entry key="rvpName" >
+													<bean parent="rvpName" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="false"/>																
+												</entry>
+												<entry key="cofid321ABFee">
+													<bean parent="cofid321ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid321DBFee">
+													<bean parent="cofid321DBFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338ABFee">
+													<bean parent="cofid338ABFee" p:enabled="true"/>																
+												</entry>
+												<entry key="cofid338DBFee">
+													<bean parent="cofid338DBFee" p:enabled="true"/>																
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+								<entry key="discontinuedTab">
+				 					<bean name="discontinuedTabColumns" class="com.manulife.pension.bd.web.bob.blockOfBusiness.util.BOBColumnsApplicableToTab">
+										<property name="applicableColumnsForTab">
+											<map>
+												<entry key="contractName">
+													<bean parent="contractName" p:enabled="true"/>																
+												</entry>
+												<entry key="contractNumber">
+													<bean parent="contractNumber" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalName">
+													<bean parent="proposalName" p:enabled="false"/>																
+												</entry>
+												<entry key="proposalNumber">
+													<bean parent="proposalNumber" p:enabled="false"/>																
+												</entry>
+												<entry key="contractEffDt">
+													<bean parent="contractEffDt" p:enabled="true"/>																
+												</entry>
+												<entry key="proposalDt">
+													<bean parent="proposalDt" p:enabled="false"/>																
+												</entry>
+												<entry key="contractPlanYearEndMMDD">
+													<bean parent="contractPlanYearEndMMDD" p:enabled="false"/>																
+												</entry>
+												<entry key="contractState">
+													<bean parent="contractState" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="numOfLives">
+													<bean parent="numOfLives" p:enabled="false"/>																
+												</entry>
+												<entry key="totalAssets">
+													<bean parent="totalAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="transferredOutAssetsPriorToCharges">
+													<bean parent="transferredOutAssetsPriorToCharges" p:enabled="true"/>																
+												</entry>
+												<entry key="assetCharge">
+													<bean parent="assetCharge" p:enabled="false"/>																
+												</entry>
+												<entry key="expectedFirstYearAssets">
+													<bean parent="expectedFirstYearAssets" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositTr1yr">
+													<bean parent="commissionDepositTr1yr" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositReg1Yr">
+													<bean parent="commissionDepositReg1Yr" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionDepositRegRen">
+													<bean parent="commissionDepositRegRen" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionAsset1Year">
+													<bean parent="commissionAsset1Year" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionAssetRen">
+													<bean parent="commissionAssetRen" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionAssetAllYrs">
+													<bean parent="commissionAssetAllYrs" p:enabled="false"/>																
+												</entry>
+												<entry key="commissionsRIAFees">
+													<bean parent="commissionsRIAFees" p:enabled="false"/>																
+												</entry>
+												<entry key="producerCodesOfBrokers">
+													<bean parent="producerCodesOfBrokers" p:enabled="false"/>																
+												</entry>
+												<entry key="namesOfTheBrokers">
+													<bean parent="namesOfTheBrokers" p:enabled="true"/>																
+												</entry>
+												<entry key="firmName">
+													<bean parent="firmName" p:enabled="false"/>																
+												</entry>
+												<entry key="rvpName">
+													<bean parent="rvpName" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="productType">
+													<bean parent="productType" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="usOrNy">
+													<bean parent="usOrNy" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="class">
+													<bean parent="class" p:enabled="false" p:displayInPdfAndCsv ="true"/>																
+												</entry>
+												<entry key="discontinuedDate">
+													<bean parent="discontinuedDate" p:enabled="true"/>																
+												</entry>
+											</map>
+										</property>
+									</bean> 
+								</entry>
+							</map>
+						</property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

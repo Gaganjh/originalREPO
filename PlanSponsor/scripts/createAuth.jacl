@@ -1,0 +1,15 @@
+# ==============================================================================
+# WAS script to create the JAAS Authtication, for PlanSponsor and Apollo
+# $ID:$
+# ==============================================================================
+
+set security [$AdminConfig getid /Security:/]
+puts "Security: $security"
+    
+$AdminConfig create JAASAuthData $security { \
+	{alias PlanSponsorNode/db2admin} {password db2admin} {userId db2admin} } 
+
+$AdminConfig create JAASAuthData $security { \
+	{alias PlanSponsorNode/apollo} {password lptest01} {userId lpngdev} } 
+
+$AdminConfig save

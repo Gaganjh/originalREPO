@@ -1,0 +1,59 @@
+
+<project name="psw_deploy" default="psw_deploy" basedir=".">
+	<!--Common environemnt properties -->
+	<property file="${user.home}/.ant.properties" />
+	<property environment="env" />
+	<tstamp/>
+	<property name="db2.home" value="${env.DB2PATH}" />
+	<property name="hostname" value="${env.COMPUTERNAME}"/>
+	<property name="root.dir" value="${env.HOMEDRIVE}"/>
+	<property name="working.dir" value="${root.dir}\svn\PlanSponsor"/>
+	<property name="WAS.username" value="jhrpsadmin"/>
+	<property name="WAS.password" value="jhrps@dmin"/>
+	<property name="PSWCluster.name" value="PSWLiveCluster"/>
+	<property name="sqllib.path" value="${root.dir}\Progra~2\IBM\SQLLIB" />
+	<property name="psw_build_deploy" value="psw_iis_nodb_nosvnupdate" />
+	<property name="websphere.home" value="${root.dir}/WebSphere9/AppServer"/>
+
+<target name="install_ear" if="psw_build_deploy">
+		<!-- <ant antfile="build.xml" dir="${working.dir}\PlanSponsor" target="${psw_build_deploy}"/>-->
+		<ant antfile="build_64bit.xml" dir="${working.dir}\PlanSponsor"> 
+		<property name="PSWCluster.name" value="PSWLiveCluster"/>
+			<property name="was.username" value="${WAS.username}" />
+  			<property name="was.password" value="${WAS.password}" />
+			<target name="stop_psw_cluster"/>
+  			<target name="uninstall_psw_live_ear"/>
+			<target name="install_psw_live_ear"/>
+			
+  			
+  		</ant>
+		
+</target>
+<target name="psw_deploy" >
+	<antcall target ="install_ear"/>
+	<antcall target ="synchronize_Node"/>
+	<ant antfile="build_64bit.xml" dir="${working.dir}\PlanSponsor">
+		<property name="PSWCluster.name" value="PSWLiveCluster"/>
+		<property name="was.username" value="${WAS.username}" />
+		<property name="was.password" value="${WAS.password}" />
+		<target name="start_psw_cluster"/>
+	</ant>
+</target>
+
+
+	<target name="synchronize_Node" description="synchronizes node with master repository">
+		<exec executable="${websphere.home}/bin/wsadmin.bat">
+			<arg value="-lang"/>
+			<arg value="jython"/>
+			<arg value="-f"/>
+			<arg value="${working.dir}/ConfigurationScripts/syncNode.py"/>
+			<arg value="localNode"/>
+			<arg value="-username"/>
+			<arg value="${WAS.username}"/>
+    		<arg value="-password"/>
+			<arg value="${WAS.password}"/>
+		</exec>
+		<sleep seconds="20"/>
+	</target>
+
+</project>

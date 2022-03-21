@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <system />
+  <!-- 
+    The test-<service>-config.xml file allows the developer to put in any test
+    parameters that they would like to use for the unit tests. If the value isn't
+    found in that file, the file below it is searched (default-<service-config.xml).
+  -->
+  <xml fileName="test-withdrawal-config.xml" optional="true">
+    <reloadingStrategy refreshDelay="10"
+      config-class="org.apache.commons.configuration.reloading.FileChangedReloadingStrategy" />
+  </xml>
+  <xml fileName="default-withdrawal-config.xml">
+    <reloadingStrategy refreshDelay="10"
+      config-class="org.apache.commons.configuration.reloading.FileChangedReloadingStrategy" />
+  </xml>
+</configuration>

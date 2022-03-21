@@ -1,0 +1,60 @@
+package com.manulife.pension.ps.service.submission.util;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.manulife.pension.ps.service.report.transaction.handler.MoneySourceDescription;
+import com.manulife.pension.ps.service.submission.valueobject.MoneySource;
+
+/**
+ * @author parkand
+ */
+public class MoneySourceHelper {
+
+	public static final String CONTRIBUTION_USER_FILE_TYPE_CODE = "C";
+	public static final String TRANSFER_USER_FILE_TYPE_CODE = "X";
+	
+	private static Map moneySourceMap = new HashMap(17);
+	static {
+		moneySourceMap.put(MoneySourceDescription.REGULAR_CODE,new MoneySource(MoneySourceDescription.REGULAR_CODE,MoneySourceDescription.REGULAR_DESC,MoneySourceDescription.REGULAR_TRANSACTION_CODE,CONTRIBUTION_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.STEP_RATE_CODE,new MoneySource(MoneySourceDescription.STEP_RATE_CODE,MoneySourceDescription.STEP_RATE_DESC,MoneySourceDescription.STEP_RATE_TRANSACTION_CODE,CONTRIBUTION_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.PRE_PURCHASE_EARNINGS_REGULAR_CODE,new MoneySource(MoneySourceDescription.PRE_PURCHASE_EARNINGS_REGULAR_CODE,MoneySourceDescription.PRE_PURCHASE_EARNINGS_REGULAR_DESC,MoneySourceDescription.PRE_PURCHASE_EARNINGS_REGULAR_TRANSACTION_CODE,CONTRIBUTION_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.PRE_PURCHASE_REALLOCATION_RG_CODE,new MoneySource(MoneySourceDescription.PRE_PURCHASE_REALLOCATION_RG_CODE,MoneySourceDescription.PRE_PURCHASE_REALLOCATION_RG_DESC,MoneySourceDescription.PRE_PURCHASE_EARNINGS_REGULAR_TRANSACTION_CODE,CONTRIBUTION_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.QUALIFIED_DOMESTIC_RELATION_ORDER_CODE,new MoneySource(MoneySourceDescription.QUALIFIED_DOMESTIC_RELATION_ORDER_CODE,MoneySourceDescription.QUALIFIED_DOMESTIC_RELATION_ORDER_DESC,MoneySourceDescription.QUALIFIED_DOMESTIC_RELATION_ORDER_TRANSACTION_CODE,CONTRIBUTION_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.INTERNAL_FORFEITURE_CODE,new MoneySource(MoneySourceDescription.INTERNAL_FORFEITURE_CODE,MoneySourceDescription.INTERNAL_FORFEITURE_DESC,MoneySourceDescription.INTERNAL_FORFEITURE_TRANSACTION_CODE,CONTRIBUTION_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.EARNINGS_DUE_TO_UNVESTED_MONEY_CODE,new MoneySource(MoneySourceDescription.EARNINGS_DUE_TO_UNVESTED_MONEY_CODE,MoneySourceDescription.EARNINGS_DUE_TO_UNVESTED_MONEY_DESC,MoneySourceDescription.EARNINGS_DUE_TO_UNVESTED_MONEY_TRANSACTION_CODE,CONTRIBUTION_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.EXTERNAL_FORFEITURE_CODE,new MoneySource(MoneySourceDescription.EXTERNAL_FORFEITURE_CODE,MoneySourceDescription.EXTERNAL_FORFEITURE_DESC,MoneySourceDescription.EXTERNAL_FORFEITURE_TRANSACTION_CODE,CONTRIBUTION_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.INTERNAL_REINSTATEMENT_CODE,new MoneySource(MoneySourceDescription.INTERNAL_REINSTATEMENT_CODE,MoneySourceDescription.INTERNAL_REINSTATEMENT_DESC,MoneySourceDescription.INTERNAL_REINSTATEMENT_TRANSACTION_CODE,CONTRIBUTION_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.INTERNAL_LOAN_REPAYMENT_CODE,new MoneySource(MoneySourceDescription.INTERNAL_LOAN_REPAYMENT_CODE,MoneySourceDescription.INTERNAL_LOAN_REPAYMENT_DESC,MoneySourceDescription.INTERNAL_LOAN_REPAYMENT_TRANSACTION_CODE,TRANSFER_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.INTERNAL_TRANSFER_REGULAR_CODE,new MoneySource(MoneySourceDescription.INTERNAL_TRANSFER_REGULAR_CODE,MoneySourceDescription.INTERNAL_TRANSFER_REGULAR_DESC,MoneySourceDescription.INTERNAL_TRANSFER_REGULAR_TRANSACTION_CODE,TRANSFER_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.INTERNAL_TRANSFER_EXTERNAL_CODE,new MoneySource(MoneySourceDescription.INTERNAL_TRANSFER_EXTERNAL_CODE,MoneySourceDescription.INTERNAL_TRANSFER_EXTERNAL_DESC,MoneySourceDescription.INTERNAL_TRANSFER_EXTERNAL_TRANSACTION_CODE,TRANSFER_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.PRE_PURCHASE_EARNINGS_TRANSFER_CODE,new MoneySource(MoneySourceDescription.PRE_PURCHASE_EARNINGS_TRANSFER_CODE,MoneySourceDescription.PRE_PURCHASE_EARNINGS_TRANSFER_DESC,MoneySourceDescription.PRE_PURCHASE_EARNINGS_REGULAR_TRANSACTION_CODE,TRANSFER_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.PRE_PURCHASE_REALLOCATION_XT_CODE,new MoneySource(MoneySourceDescription.PRE_PURCHASE_REALLOCATION_XT_CODE,MoneySourceDescription.PRE_PURCHASE_REALLOCATION_XT_DESC,MoneySourceDescription.PRE_PURCHASE_REALLOCATION_XT_TRANSACTION_CODE,TRANSFER_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.EXTERNAL_LOAN_REPAYMENT_CODE,new MoneySource(MoneySourceDescription.EXTERNAL_LOAN_REPAYMENT_CODE,MoneySourceDescription.EXTERNAL_LOAN_REPAYMENT_DESC,MoneySourceDescription.EXTERNAL_LOAN_REPAYMENT_TRANSACTION_CODE,TRANSFER_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.EXTERNAL_TRANSFER_CODE,new MoneySource(MoneySourceDescription.EXTERNAL_TRANSFER_CODE,MoneySourceDescription.EXTERNAL_TRANSFER_DESC,MoneySourceDescription.EXTERNAL_TRANSFER_TRANSACTION_CODE,TRANSFER_USER_FILE_TYPE_CODE));
+		moneySourceMap.put(MoneySourceDescription.EXTERNAL_TRANSFER_2_CODE,new MoneySource(MoneySourceDescription.EXTERNAL_TRANSFER_2_CODE,MoneySourceDescription.EXTERNAL_TRANSFER_2_DESC,MoneySourceDescription.EXTERNAL_TRANSFER_2_TRANSACTION_CODE,TRANSFER_USER_FILE_TYPE_CODE));
+	}
+	public static final MoneySource DEFAULT_MONEYSOURCE = new MoneySource("",MoneySourceDescription.DEFAULT_DESC,"",CONTRIBUTION_USER_FILE_TYPE_CODE);
+
+	public static MoneySource getMoneySource(String sourceCode) {
+		MoneySource ms = (MoneySource)moneySourceMap.get(sourceCode);
+		if ( ms == null ) {
+			return DEFAULT_MONEYSOURCE;
+		}
+		return ms;
+	}
+	
+	/**
+	 * Returns the submission type code ('C' or 'X') based on the money source code
+	 * 
+	 * @param sourceCode
+	 * @return
+	 */
+	public static String getSubmissionTypeCode(String sourceCode) {
+		MoneySource ms = (MoneySource)moneySourceMap.get(sourceCode);
+		if ( ms == null ) {
+			return ""; // money source not recognized, return an empty string
+		}
+		return ms.getUserFileTypeCode();
+	}
+}

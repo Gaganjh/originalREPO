@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<digester-rules>
+
+    <!-- Create an ArrayList when we encounter the top level reports -->
+    <pattern value="reports">
+           <object-create-rule classname="java.util.ArrayList" />
+    </pattern>
+
+    <pattern value="reports/label">
+        <!-- Creates a QuickReportLabel object when we see a label  -->
+        <object-create-rule classname="com.manulife.pension.ps.web.taglib.util.QuickReportLabel" />
+        <!-- Sets the contentId attribute -->
+        <call-method-rule pattern="text" methodname="setText"
+                         paramcount="0" />
+        <!-- Add the created QuickReportLabel into the ArrayList at the top
+             of the stack -->
+        <set-next-rule methodname="add" paramtype="java.lang.Object"/>
+    </pattern>
+
+    <pattern value="reports/separator">
+        <!-- Creates a QuickReportSeparator object when we see a separator  -->
+        <object-create-rule classname="com.manulife.pension.ps.web.taglib.util.QuickReportSeparator" />
+        <!-- Add the created QuickReportSeparator into the ArrayList at the top
+             of the stack -->
+        <set-next-rule methodname="add" paramtype="java.lang.Object"/>
+    </pattern>
+
+    <pattern value="reports/report">
+
+        <!-- Creates a QuickReportItem object when we see the individual report -->
+        <object-create-rule classname="com.manulife.pension.ps.web.taglib.util.QuickReportItem" />
+
+        <!-- Sets the ID attribute -->
+        <set-properties-rule>
+            <alias attr-name="id" prop-name="id" />
+        </set-properties-rule>
+
+        <!-- Sets the contentId attribute -->
+        <call-method-rule pattern="contentId" methodname="setContentId"
+                         paramcount="0" />
+        <!-- Sets the url attribute -->
+        <call-method-rule pattern="url" methodname="setUrl"
+                         paramcount="0" />
+        <!-- Sets the title attribute -->
+        <call-method-rule pattern="title" methodname="setTitle"
+                         paramcount="0" />
+
+        <!-- Add the created QuickReportItem into the ArrayList at the top
+             of the stack -->
+        <set-next-rule methodname="add" paramtype="java.lang.Object"/>
+    </pattern>
+
+</digester-rules>

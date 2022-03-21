@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="NBDWRewrite_BrokerDealerWeb_ContractLevelTxnDetails_2008-11-24">
+  <ReviewIssue id="FNXOLZUM">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-25 :: 03:49:35:998 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 13:22:18:546 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo>Hari Kishan Rao Lomte</AssignedTo>
+    <File line="39">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Private constants declared that do not appear to be used anywhere.</Summary>
+    <Description>What are these for?  Are they being used anywhere?</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FNXP81J8">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-25 :: 04:06:44:612 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 13:22:11:359 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="37">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java</File>
+    <Type>item.type.label.missing</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>JAVADOC Missing for entire class.</Summary>
+    <Description>TransactionDetailsClassConversionAction is missing all java doc.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FNXPJ91F">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-25 :: 04:15:27:555 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 13:22:38:937 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="290">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Add parameters</Summary>
+    <Description>Collection should be parameterized.  Try to insure that our code produces no warnings where possible.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0E5MU2">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 01:20:15:002 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 03:04:42:763 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="71">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Was this copied and pasted, or did we introduce something odd with pptId vs participantId?</Summary>
+    <Description>participantId = (String)request.getParameter("participantId"); // do legacy check incase a link was missed </Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0HAGE9">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 02:47:58:785 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 13:22:48:906 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="221">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Please parameterize List and Iterators.</Summary>
+    <Description>List and Iterator.  Please parameterize</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0HBX3D">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 02:49:07:081 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 13:25:53:640 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="210">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Please check with BSA regarding correct wording.</Summary>
+    <Description>I'm not 100% sure, but I think Risk Category is not the correct label anymore.  Please check with BSA and in DFS to see if "Risk category" should be "Risk/Return category"</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0HEKL1">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 02:51:10:837 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 03:02:44:045 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="208">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Please check with DFS and BSA to see if Titles should be all caps, or a mix of capitals and small letters.  </Summary>
+    <Description>There seems to be a mix of some titles being upper and lower case,   "Such as this" and some titles are upper case for each word: "Such As This".   We should be consistent and I think there is a standard for the broker site, which may be different than Plan Sponsor.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0HNS18">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 02:58:20:396 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 12:07:10:496 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="149">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>What happens here when the report is null? </Summary>
+    <Description>Do we exit gracefully with a proper error page when the nullpointer is encountered?</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0HQQNL">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 03:00:38:577 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 12:00:37:250 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="257">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Parameterize Collection object.</Summary>
+    <Description>Collection</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0HSB7J">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 03:01:51:871 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 11:58:13:120 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="257">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Variable names should be informative.</Summary>
+    <Description>Variables  "it" and "o"  are not very useful.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0HYW86">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 03:06:59:046 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 11:56:25:595 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="3">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Import statements not optimized</Summary>
+    <Description>Run a CTRL-SHIFT-O to fix the import statements.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0I3F05">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 03:10:30:005 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 11:55:49:629 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="48">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionForm.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Variables *should* match the getter and setter.</Summary>
+    <Description>Please change participantId to pptId to match the setter.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0I64WL">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 03:12:36:885 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 11:53:58:252 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="13">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionForm.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Javadoc Required.</Summary>
+    <Description>New class is missing Javadoc.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0I8BTA">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 03:14:19:150 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 11:52:42:025 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="12">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsClassConversionForm.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Add a Serialization ID</Summary>
+    <Description>"extends BaseReportForm" </Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0I9HK9">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 03:15:13:257 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 12:12:42:767 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="1">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsFTFAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>JavaDoc Required</Summary>
+    <Description>Please JavaDoc and comment this class and methods.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0JD600">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 03:46:04:512 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 12:12:27:319 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="45">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsFTFAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Move these to a constants class.</Summary>
+    <Description>I keep seeing these constants repeated over and over again in several classes.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO0JK0K7">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-27 :: 03:51:24:055 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 15:09:05:516 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="73">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsFTFAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>What happens here...</Summary>
+    <Description>What happens when thte if the bobContext returned from the request is null?</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FO3CNBNT">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-11-29 :: 03:01:19:625 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2008-12-12 :: 15:31:17:718 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark Eldridge</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="161">BrokerDealerWeb/source/com/manulife/pension/bd/web/bob/transaction/TransactionDetailsFTFAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Code could throw a null pointer.</Summary>
+    <Description>&#13;
+What happens if report is null? </Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.closed</Status>
+  </ReviewIssue>
+</Review>

@@ -1,0 +1,517 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="NBDW_fundEvaluator">
+  <ReviewIssue id="FVK1E4Y2">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 18:26:16:586 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:45:43:925 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="342">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorForm.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Still have a TO DO listed in the form object.</Summary>
+    <Description>// TODO - to be moved from here.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK1H6R7">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 18:28:38:899 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:41:09:748 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="27">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorForm.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Needs a little better commenting</Summary>
+    <Description>private String page&#13;
+&#13;
+You could add an inline comment for some of these variables. &#13;
+What is page used for, for example.  &#13;
+Obviously comments are not top priority but they would help me understand how you're doing things.&#13;
+Also a lot of the Javadoc is not very useful at all.  I'm hoping they are just placeholders and that this will be updated. &#13;
+i.e., Since you guys put everything in one big form, you should indicate what pages are using which values, and what they are used for for at least the javadoc of the getters.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK1M1HC">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 18:32:25:344 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:45:31:638 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="94">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorAction.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Referring to pages</Summary>
+    <Description>"step1 page "&#13;
+&#13;
+This isn't very useful for somebody who doesn't know what page step 1 page is.  &#13;
+Comments need to be more descriptive in this page.&#13;
+&#13;
+Remember:  You are writting comments for somebody who has never seen this stuff before.&#13;
+The idea is that we don't lose hours of productivity in the future to somebody who has to read and decipher every line of code.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK1OINT">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 18:34:20:921 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:45:25:430 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="145">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Methods should ideally only ever have a single point of exit.</Summary>
+    <Description>This comment is just regarding the style of coding.&#13;
+&#13;
+When writing a method it is typically considered better coding if you only have ONE return statement at the end of your method.&#13;
+&#13;
+This is just an example:&#13;
+&#13;
+String forward = ERROR_PAGE;  // if for some reason we hit an exception we can forward to the error page.&#13;
+try {&#13;
+      ...logic...&#13;
+	forward = FORWARD_SELECT_YOUR_CLIENT;&#13;
+      ....more logic...&#13;
+      forward = FORWARD_SELECT_CRITERIA;&#13;
+} catch (Exception e) {&#13;
+      log it&#13;
+} finally {&#13;
+	return mapping.findForward(forward);&#13;
+}&#13;
+&#13;
+You don't need to change this though.  Just something to think about when writing methods.&#13;
+Avoids having bad errors show up on pages, and has a single point of exit from the page.  Also gives you a chance to log an exception.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK1ZEYR">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 18:42:49:347 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:45:19:022 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="256">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Trick to shorten code....</Summary>
+    <Description>Logic like this:&#13;
+&#13;
+if (pageAction != null &amp;&amp; !pageAction.equalsIgnoreCase(NAVIGATE_TO_PREVIOUS_PAGE)) {&#13;
+&#13;
+can be written shorter, by simply reversing the logic:&#13;
+&#13;
+if ( !NAVIGATE_TO_PREVIOUS_PAGE.equalsIgnoreCase(pageAction) ) {&#13;
+&#13;
+Doing it this way, you never have to worry about adding the check for null, because your static constant is always not null !</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK2MNBH">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 19:00:53:261 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:45:09:949 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="233">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorAction.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>could refactor to generic form name</Summary>
+    <Description>these could just be refactored to a generic aForm if you like.&#13;
+Or maybe feForm 	&#13;
+&#13;
+"ievaluatorForm"</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK2QINB">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 19:03:53:831 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:44:57:693 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="336">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorAction.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>This is deprecated.  Can we use the non deprecated method instead?</Summary>
+    <Description>throw new SystemException(e, this.getClass().getName(),&#13;
+"resetForm", "exception in resetting the form");</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK2RDMT">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 19:04:33:989 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:44:52:386 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="402">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorAction.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>This could be removed now...</Summary>
+    <Description>//return mapping.findForward(FORWARD_CUSTOMIZE_REPORT);</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK33OE4">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 19:14:07:804 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:44:46:939 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="561">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorAction.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>You could reduce this to a single loop with a hashmap lookup for status I think.</Summary>
+    <Description>Rather than looping through a list of statuses in the verification list, it would have been better in this section of code, to instead&#13;
+add all the statuses in a hashmap, with the key=theStatus and the value=null.  Then all you need to do is see if the hasmap.containsKey(status)&#13;
+&#13;
+When looking up a key using   map.containsKey(value)  you can expect it to return as fast as a "get" operation, which is O(1) operations.&#13;
+Whereas with a loop, you will run  O(n)  operations to get the value you need (worst case scenario).&#13;
+So you would reduce the operations from this loop from O(n-squared) to O(n)&#13;
+&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK3KPAC">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 19:27:22:116 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:44:39:559 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="752">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Be sure to switch these at some point</Summary>
+    <Description>Be sure to switch all of your System.out's to logger.debug statements.  These will help us in the future if something strange starts happening.&#13;
+&#13;
+ System.out.println&#13;
+&#13;
+You could do it now, and just set the log4j.xml file to log at the debug level for this package.&#13;
+&#13;
+Be sure to include the if(logger.isDebugEnabled) around each of those for loops and all your debug related code.&#13;
+&#13;
+Also move all the FOR debug loops to after all the processor.gets  just to make it more readable.&#13;
+&#13;
+Could use some more comments in here too for new people who aren't familiar as it is a big method.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK6550B">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:39:14:843 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:46:26:612 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="54">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorActionHelper.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Optimization potential:  Could have avoided the .toArray method....</Summary>
+    <Description>assetClassIds = selectedAssetClsFunds.keySet().toArray(assetClassIds);&#13;
+&#13;
+&#13;
+Consider the following alternate code to what you have.  I do not have to convert to an array, which makes this a little faster. (not a lot, but every little bit helps in the long run)   In general, you only get a performance gain with .toArray if you plan to access the data in a non-sequential fashion.&#13;
+The code could have been written using just an iterator on the key set.&#13;
+         &#13;
+            if (selectedAssetClsFunds != null) {&#13;
+                Iterator&lt;String&gt; assetClassIdIterator = selectedAssetClsFunds.keySet().iterator();&#13;
+                while (assetClassIdIterator.hasNext()) {&#13;
+                    String assetClassId = (String)assetClassIdIterator.next();&#13;
+                    if (selectedAssetClsFunds.get(assetClassId) != null) {&#13;
+                        int totalAssetClassFundsSelected = selectedAssetClsFunds.get(assetClassId).size();&#13;
+                        totalFundsSelected += totalAssetClassFundsSelected;&#13;
+                        ievaluatorForm.getAssetClassDetails().get(&#13;
+                                assetClassId).setTotalFundsSelected(&#13;
+                                totalAssetClassFundsSelected);&#13;
+                    }                        &#13;
+                }&#13;
+            }&#13;
+        </Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK6EY57">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:46:52:507 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:47:51:926 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="84">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorActionHelper.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Similar to the other "optimization potential" suggestion</Summary>
+    <Description>You shouldn't need to convert to an array.  See if you can rewrite it just using the keyset iterator.&#13;
+&#13;
+assetClassIds = selectedAssetClsFunds.keySet().toArray(assetClassIds);</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK6MAPK">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:52:35:384 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:53:59:745 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="159">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorActionHelper.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Better comments</Summary>
+    <Description>For these big loops involving long named objects, it would help other developers (like me) to read an english description of what you are trying to do.&#13;
+Takes a little while to see exactly what the lop is doing.  Helps to have an english inline comment.  Applies to all big loops in this class.&#13;
+&#13;
+ for(AssetClassForInvOption assetClsInvOption:assetClassForInvOptionList) </Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK6SYVL">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 20:57:46:641 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:09:17:865 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="118">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorActionHelper.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Are we making sure we clean up the session</Summary>
+    <Description>I am just logging this now because I will probably forget to check later... &#13;
+&#13;
+Are we cleaning up the session when the user is finished creating their report?  Or is this stuff floating around?&#13;
+Is the stuff we are putting into the session very large ?&#13;
+&#13;
+HttpSession session = request.getSession();&#13;
+&#13;
+Could we have kept selected fund information somewhere in the form?</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK794VE">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:10:20:906 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:11:49:964 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="225">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorActionHelper.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Optimization again....</Summary>
+    <Description>Similar to the other optimization issues regarding .toArray.&#13;
+&#13;
+For some reason the iterator was created, but you switched to using a .toArray&#13;
+&#13;
+updatedAssetClassIterator&#13;
+&#13;
+See other "Optimization potential" similar suggestions.   One has an example of how to do this.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK7CCF9">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:12:50:661 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:13:27:044 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="371">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorActionHelper.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Wow...this needs comments !!!!</Summary>
+    <Description>This method really could use some inline comments.&#13;
+&#13;
+getSelectedAssetClsFundsInvOptionList</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK7HT16">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:17:05:466 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:17:32:542 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="646">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorActionHelper.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>May be better as a Hashmap, rather than looping through each time, just do a containsKey</Summary>
+    <Description>public static List&lt;String&gt; getContractStatusVerificationList(){</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK7J6BI">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:18:09:342 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:18:53:271 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="686">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorActionHelper.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Creates a new string with each call.</Summary>
+    <Description>"us"&#13;
+&#13;
+These should be static final constants in order to take advantage of not having to instantiate constant String object over and over.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK7OMDG">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:22:23:428 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:23:01:523 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="25">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/FundEvaluatorUtility.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Class level comments needed.  What is FundEvaluatorUtility...is it different from FundEvaluatorActionHelper?  Why the split?</Summary>
+    <Description>public class FundEvaluatorUtility {&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK7T6II">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:25:56:154 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:27:15:758 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="22">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/CriteriaVO.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Make a constant to avoid re-initialization of String class.</Summary>
+    <Description>"0"</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK7U9N7">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:26:46:867 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:27:11:442 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="16">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/ClientVO.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Make static final constant to avoid re-initialization.</Summary>
+    <Description> "no"</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVK7VMXZ">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:27:50:759 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 21:28:15:184 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="4">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/AssetClassFundsSelectedResults.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>What is this?  If not needed get rid of it please.  And from CVS.</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVKA1BLG">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 22:28:15:220 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 22:29:29:222 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="17">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/session/SessionContext.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Just curious</Summary>
+    <Description>SessionContext&#13;
+&#13;
+I just want you to explain to me how this is managed.  We can talk when I'm available.  Just wondering about how we manage cleaning up after ourselves when a user is done with iEvaluator.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="FVKA7WWF">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 22:33:22:767 EDT</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2009-06-04 :: 22:33:58:301 EDT</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Mark</ReviewerId>
+    <AssignedTo>Mark</AssignedTo>
+    <File line="62">BrokerDealerWeb/source/com/manulife/pension/bd/web/fundEvaluator/common/CoreToolConstants.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Explain...</Summary>
+    <Description>What does the comment "faked out" imply?  As somebody never seeing this before I am confused and don't know what this is for.&#13;
+&#13;
+ASSET_CLASS_ID_MEDIUM_QUALITY_SHORT_TERM = "MQS";</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+</Review>

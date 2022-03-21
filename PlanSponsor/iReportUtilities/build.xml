@@ -1,0 +1,185 @@
+<!--======================================================================================
+  PSWBASEWEB Build File
+
+  Main targets are as follows ...
+    dist  - create iReportsBase.jar in the build subdirectory
+    build - compile all java source into the classes subdirectory
+    clean - delete all generated files and build directories
+=======================================================================================-->
+
+<project name="baseweb" default="dist" basedir=".">
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Properties
+
+  This section contains property settings and targets that affect property settings.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<import file="../../common/ant/common.xml" />
+	<property name="src" value="source" />
+	<property name="build" value="build" />
+	<property name="classes" value="classes" />
+	<property name="ps.build.dir" value="../build" />
+	
+	
+
+	<!--Newly ADDED BEGIN -->
+	<path id="deploy.classpath">
+		<path refid="commons-lang" />
+
+		<path refid="commons-beanutils" />
+		<path refid="commons-collections" />
+		<path refid="commons-logging" />
+		<path refid="log4j" />
+		<path refid="soap" />
+		<path refid="fop" />
+		<path refid="commons-configuration" />
+		<fileset dir="${common.weblib.dir}">
+			<include name="CMAUtil.jar" />
+		</fileset>
+		<fileset dir="${common.lib.dir}">
+			<include name="USGPSUtilities.jar" />
+			<include name="mrl.jar" />
+			<include name="MrlLoggerService.jar" />
+			<include name="EmployeeService.jar" />
+			<include name="AccountService.jar" />
+			<include name="EnvironmentService.jar" />
+			<include name="NotificationService.jar" />
+			<include name="BrowseService.jar" />
+			<include name="ContractService.jar" />
+			<include name="SecurityService.jar" />
+			<include name="CMAService.jar" />
+			<include name="xstream-1.0.2.jar" />
+			<include name="ereports_client_1.0.jar" />
+			<include name="Aspose.Words.jdk15.jar" />
+			<include name="batik-ext.jar" />
+			<include name="j2ee.jar" />
+			<include name="intware_devtools.jar" />
+			<include name="xstream-1.0.2.jar" />
+			<include name="db2jcc.jar" />
+			<include name="xerces.jar" />
+			<include name="jdom.jar" />
+			<include name="commons-validator-1.3.0.jar"/>
+			 <include name="pdfbox-2.0.5.jar" /> 
+			<include name="jakarta-regexp-1.2.jar" />
+		    <include name="bcprov-jdk15-140.jar"/>
+			<include name="BrowseServiceClient.jar" />
+			<include name="spring-beans-4.3.12.RELEASE.jar" />
+			<include name="spring-context-4.3.12.RELEASE.jar" />
+
+		</fileset>
+	</path>
+	<!--Newly ADDED END -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  build - compile all java source into the ${classes} subdirectory
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<target name="build"
+          description="Compile all java source into the ${classes} subdirectory.">
+
+		<mkdir dir="${build}" />
+		<pathconvert property="lib.project.manifest.classpath" pathsep=" ">
+			<path refid="deploy.classpath"/>
+			<flattenmapper/>
+		</pathconvert>
+
+		<mkdir dir="${classes}" />
+		<javac destdir="${classes}"
+           debug="${debug}"
+           deprecation="${deprecation}">
+			<src>
+				<path location="${src}"/>
+			</src>
+			<classpath>
+				<path refid="commons-lang" />
+				<path refid="commons-beanutils" />
+				<path refid="commons-collections" />
+				<path refid="commons-configuration" />
+				<path refid="commons-digester" />
+				<path refid="commons-logging" />
+				<path refid="commons-codec"/>
+				<path refid="log4j" />
+				<path refid="fop" />
+				<fileset dir="${common.lib.dir}">
+					<include name="j2ee.jar" />
+					<include name="intware_devtools.jar" />
+					<include name="xstream-1.0.2.jar" />
+					<include name="db2jcc.jar" />
+					<include name="xerces.jar" />
+					<include name="jdom.jar" />
+					<include name="ereports_client_1.0.jar" />
+					<include name="commons-validator-1.3.0.jar"/>
+				<include name="pdfbox-2.0.5.jar" /> 
+					<include name="jakarta-regexp-1.2.jar" />
+					<include name="AccountService.jar" />
+					
+					<include name="BrowseService.jar"/>
+					<include name="BrowseServiceClient.jar" />
+					<include name="spring-beans-4.3.12.RELEASE.jar" />
+					<include name="spring-context-4.3.12.RELEASE.jar" />
+
+				</fileset>
+
+				<fileset dir="${common.weblib.dir}">
+					<include name="CMAUtil.jar" />
+					<include name="USGPSWebUtilities.jar" />
+				</fileset>
+
+				<fileset dir="${ps.build.dir}">
+					<include name="PlanSponsorEJB.jar" />
+				</fileset>
+
+				<fileset dir="${common.weblib.dir}">
+					<include name="gnu-regexp-1.1.4.jar" />
+				</fileset>
+
+				<fileset refid="itext.jars"/>
+			</classpath>
+		</javac>
+	</target>
+
+
+
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  dist - create the iReportsBase.jar file in the ${build} subdirectory
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<target name="dist"
+          depends="clean, build "
+          description="Package everything into the ${build}/iReportUtility.jar. "
+  >
+		<mkdir dir="${build}" />
+		<jar jarfile="${build}/iReportUtility.jar">
+
+			<fileset dir="${classes}">
+				<include name="**/com/manulife/pension/**" />
+				
+			</fileset>
+			
+
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Class-Path"
+    			                   value="${lib.project.manifest.classpath}"
+    			        />
+				<attribute name="Implementation-Title" value="BaseWeb" />
+				<attribute name="Implementation-Vendor" value="John Hancock" />
+				<attribute name="Implementation-Version" value="${buildVersion}" />
+			</manifest>
+			
+
+		</jar>
+
+	</target>
+
+
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  clean - delete all generated files and build directories
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<target name="clean"
+          description="Delete all generated files and build subdirectories."
+  	>
+		<delete dir="${build}" />
+		<delete dir="${classes}" />
+	</target>
+
+</project>

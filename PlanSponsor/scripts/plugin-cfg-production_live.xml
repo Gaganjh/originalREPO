@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Config RefreshInterval="7200" ResponseChunkSize="256" UseInsecure="true">
+   <Log LogLevel="Error" Name="d:\WebSphere9\Plugins\logs\LiveWebServer\http_plugin.log"/>
+   <Property Name="ESIEnable" Value="false"/>
+   <Property Name="PluginInstallRoot" Value="D:\Websphere9\Plugins\"/>
+   <VirtualHostGroup Name="EZkLiveUSA_host">
+      <VirtualHost Name="www.jhancockpensions.com:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="EZkLiveNY_host">
+      <VirtualHost Name="www.jhancocknypensions.com:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWLiveUSA_host">
+      <VirtualHost Name="www.ps.jhancockpensions.com:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWLiveNY_host">
+      <VirtualHost Name="www.ps.jhancocknypensions.com:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="BDLive_host">
+      <VirtualHost Name="www.jh401kadvisor.com:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="OnlineOrder_host">
+      <VirtualHost Name="onlineordering.jhancockpensions.com:443"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="SupportCentral_host">
+      <VirtualHost Name="navsmart.jhancockpensions.com:443"/>
+   </VirtualHostGroup>
+   <ServerCluster Name="EZkLiveCluster" PostBufferSize="256">
+      <Server CloneID="17bgpch2a" LoadBalanceWeight="2" Name="EZkLiveServer1">
+         <Transport Hostname="cpcwvjhpwasp02" Port="9448" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <Server CloneID="17bgpcme6" LoadBalanceWeight="2" Name="EZkLiveServer2">
+         <Transport Hostname="cpcwvjhpwasp02" Port="9449" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <Server CloneID="17bgpcnp5" LoadBalanceWeight="2" Name="EZkLiveServer3">
+         <Transport Hostname="cpcwvjhpwasp01" Port="9448" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <Server CloneID="17bgpcp0b" LoadBalanceWeight="2" Name="EZkLiveServer4">
+         <Transport Hostname="cpcwvjhpwasp01" Port="9449" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="PSWLiveCluster" PostBufferSize="256">
+      <Server CloneID="17bgq1mv9" LoadBalanceWeight="2" Name="PSWLiveServer1">
+         <Transport Hostname="cpcwvjhpwasp02" Port="9450" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <Server CloneID="17bgq1oh4" LoadBalanceWeight="2" Name="PSWLiveServer2">
+         <Transport Hostname="cpcwvjhpwasp02" Port="9451" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <Server CloneID="17bgq1p8u" LoadBalanceWeight="2" Name="PSWLiveServer3">
+         <Transport Hostname="cpcwvjhpwasp01" Port="9450" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <Server CloneID="17bgq1q3i" LoadBalanceWeight="2" Name="PSWLiveServer4">
+         <Transport Hostname="cpcwvjhpwasp01" Port="9451" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="OnlineOrderLiveCluster" PostBufferSize="256">
+      <Server CloneID="17bgr9n9s" LoadBalanceWeight="2" Name="OnlineOrderLiveServer1">
+         <Transport Hostname="cpcwvjhpwasp02" Port="9453" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <Server CloneID="17bgr9p0l" LoadBalanceWeight="2" Name="OnlineOrderLiveServer2">
+         <Transport Hostname="cpcwvjhpwasp01" Port="9453" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="SCLiveCluster" PostBufferSize="256">
+      <Server CloneID="17bgr88fq" LoadBalanceWeight="2" Name="SCLiveServer1">
+          <Transport Hostname="cpcwvjhpwasp02" Port="9452" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <Server CloneID="17bgr8a4d" LoadBalanceWeight="2" Name="SCLiveServer2">
+         <Transport Hostname="cpcwvjhpwasp01" Port="9452" Protocol="https">
+            <Property Name="keyring" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.kdb"/>
+            <Property Name="stashfile" Value="D:\Websphere9\Plugins\config\LiveWebServer\plugin-key.sth"/>
+         </Transport>
+      </Server>
+   </ServerCluster>
+   <UriGroup Name="EZk_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/investments/*"/>
+      <Uri Name="/money101/*"/>
+      <Uri Name="/tools/*"/>
+      <Uri Name="/RestService/*"/>
+      <Uri Name="/ServiceServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="PSWLiveUSA_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="*.jsp"/>
+      <Uri Name="/unallocated/*"/>
+   </UriGroup>
+   <UriGroup Name="PSWLiveNY_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="BrokerDealer_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/activation/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="/PingServlet"/>
+      <Uri Name="/ViewRIAStatements"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="OnlineOrder_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/error.jsp"/>
+      <Uri Name="/rpsservices/*"/>
+      <Uri Name="/planreview/*"/>
+   </UriGroup>
+   <UriGroup Name="SupportCentral_URIs">
+      <Uri Name="/*.action"/>
+   </UriGroup>
+   <Route ServerCluster="EZkLiveCluster" UriGroup="EZk_URIs" VirtualHostGroup="EZkLiveUSA_host"/>
+   <Route ServerCluster="EZkLiveCluster" UriGroup="EZk_URIs" VirtualHostGroup="EZkLiveNY_host"/>
+   <Route ServerCluster="PSWLiveCluster" UriGroup="PSWLiveUSA_URIs" VirtualHostGroup="PSWLiveUSA_host"/>
+   <Route ServerCluster="PSWLiveCluster" UriGroup="PSWLiveNY_URIs" VirtualHostGroup="PSWLiveNY_host"/>
+   <Route ServerCluster="PSWLiveCluster" UriGroup="BrokerDealer_URIs" VirtualHostGroup="BDLive_host"/>
+   <Route ServerCluster="OnlineOrderLiveCluster" UriGroup="OnlineOrder_URIs" VirtualHostGroup="OnlineOrder_host"/>
+   <Route ServerCluster="SCLiveCluster" UriGroup="SupportCentral_URIs" VirtualHostGroup="SupportCentral_host"/>
+</Config>

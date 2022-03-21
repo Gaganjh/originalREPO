@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Config RefreshInterval="7200" ResponseChunkSize="256">
+   <Log LogLevel="Warn" Name="d:\webSphere9\Plugins\logs\WebServer\http_plugin.log"/>
+   <Property Name="ESIEnable" Value="false"/>
+   <VirtualHostGroup Name="EZkCMA_host">
+      <VirtualHost Name="usgpezk23cma.manulife.com:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWCMA_host">
+      <VirtualHost Name="usgpps23cma.manulife.com:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="EZkUSA_host">
+      <VirtualHost Name="usgpezk23us.test-qa.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="EZkNY_host">
+      <VirtualHost Name="usgpezk23ny.test-qa02.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PlanSponsorUSA_host">
+      <VirtualHost Name="usgpps23us.test-qa.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PlanSponsorNY_host">
+      <VirtualHost Name="usgpps23ny.test-qa02.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="ACR_host">
+      <VirtualHost Name="usgppresit23:87"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="OnlineOrder_host">
+      <VirtualHost Name="usgppresit23:86" />
+   </VirtualHostGroup>
+   <ServerCluster Name="PSWServer" PostBufferSize="256">
+      <Server Name="PSWServer">
+         <Transport Hostname="localhost" Port="9080" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="EZkServer" PostBufferSize="256">
+      <Server Name="EZkServer">
+         <Transport Hostname="localhost" Port="9081" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="PSWCMAServer" PostBufferSize="256">
+      <Server Name="PSWCMAServer">
+         <Transport Hostname="localhost" Port="9082" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="EZkCMAServer" PostBufferSize="256">
+      <Server Name="EZkCMAServer">
+         <Transport Hostname="localhost" Port="9083" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="BrokerServer" PostBufferSize="256">
+      <Server Name="BrokerServer">
+         <Transport Hostname="localhost" Port="9084" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="OnlineOrderServer" PostBufferSize="256">
+      <Server Name="OnlineOrderServer">
+         <Transport Hostname="localhost" Port="9085" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="ACRServer" PostBufferSize="256">
+      <Server Name="ACRServer">
+         <Transport Hostname="localhost" Port="9086" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <UriGroup Name="PlanSponsorUSA_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="*.jsp"/>
+      <Uri Name="/servlet/AddIUMUser"/>
+      <Uri Name="/servlet/AddRMUser"/>
+      <Uri Name="/servlet/ResetInternalUserPassword"/>
+      <Uri Name="/servlet/DeleteRMUser"/>
+      <Uri Name="/unallocated/*"/>
+   </UriGroup>
+   <UriGroup Name="PlanSponsorNY_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="EZk_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/investments/*"/>
+      <Uri Name="/money101/*"/>
+      <Uri Name="/tools/*"/>
+      <Uri Name="/ServiceServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="ACR_URIs">
+      <Uri Name="/*.sdirect"/>
+      <Uri Name="/*.direct"/>
+      <Uri Name="/*.html"/>
+      <Uri Name="/assets/*"/>
+      <Uri Name="/*.svc"/>
+      <Uri Name="/servlet/*"/>
+      <Uri Name="/resources/*"/>
+   </UriGroup>
+   <UriGroup Name="All_JSPs_URIs">
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="OnlineOrder_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/error.jsp"/>
+   </UriGroup>
+   <Route ServerCluster="PSWCMAServer" UriGroup="All_JSPs_URIs" VirtualHostGroup="PSWCMA_host"/>
+   <Route ServerCluster="EZkCMAServer" UriGroup="All_JSPs_URIs" VirtualHostGroup="EZkCMA_host"/>
+   <Route ServerCluster="PSWServer" UriGroup="PlanSponsorUSA_URIs" VirtualHostGroup="PlanSponsorUSA_host"/>
+   <Route ServerCluster="PSWServer" UriGroup="PlanSponsorNY_URIs" VirtualHostGroup="PlanSponsorNY_host"/>
+   <Route ServerCluster="EZkServer" UriGroup="EZk_URIs" VirtualHostGroup="EZkUSA_host"/>
+   <Route ServerCluster="EZkServer" UriGroup="EZk_URIs" VirtualHostGroup="EZkNY_host"/>
+   <Route ServerCluster="ACRServer" UriGroup="ACR_URIs" VirtualHostGroup="ACR_host"/>
+   <Route ServerCluster="OnlineOrderServer" UriGroup="OnlineOrder_URIs" VirtualHostGroup="OnlineOrder_host" />
+</Config>

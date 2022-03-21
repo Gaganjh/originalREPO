@@ -1,0 +1,191 @@
+/*******************************************************************************
+* PREFRENCE TABLE CONTENT
+********************************************************************************/
+#page_content .report_table_pref .page_section_subheader, #page_content .report_table_pref .page_section_subsubheader {
+	margin-bottom:2px;
+}
+.report_table_pref_lic{
+
+}
+.report_table_content_pref {
+	border-bottom:4px solid #cac8c4;
+	border-collapse:collapse;
+	margin: 0 0 5px 0;
+	padding: 0;
+	width: 100%;
+}
+.report_table_content_pref .hover {
+	background-color:#eceae3;
+}
+.report_table_content_pref .hovercell {
+	background-color:#fff;
+	cursor:pointer;
+}
+.report_table_content_pref th {
+	background-color: #eceae3;
+	border-left: 1px solid #cac8c4;
+	font-size:0.6875em;
+	font-weight: normal;
+	text-align: left;
+	margin: 0;
+	padding: 4px 8px 6px 8px;
+}
+.report_table_content_pref th:first-child {
+	border-left: none;
+}
+.report_table_content_pref th.right_align {
+	text-align: right;
+}
+.report_table_content_pref th.left_align {
+	text-align: left;
+}
+.report_table_content_pref th.sub {
+	border-left: none;
+}
+.report_table_content th.sub:first-child {
+	border-left: 1px solid #cac8c4;
+}
+.report_table_pref td.cur,  .report_table_pref th.cur,  .report_table_pref th.pct,  .report_table_pref td.num {
+	text-align: left;
+}
+.report_table_pref th.name {
+	text-align:left;
+}
+.report_table_pref th.date,  .report_table_pref th.val_num_cnt,  .report_table_pref th.val_str  .report_table_pref th.button {
+	text-align: left;
+}
+.report_table_content_pref a {
+	color: #000;
+	text-decoration: underline;
+}
+.report_table_content_pref a:hover {
+	color: #000;
+	text-decoration: none;
+}
+.report_table_content_pref a.sort_ascending {
+	background: transparent url('/assets/unmanaged/images/icons/icon_sort_ascending.gif') no-repeat scroll left 2px;
+	color: #000;
+	font-weight: bold;
+	padding: 0 0 0 10px;
+	text-decoration: none;
+}
+.report_table_content_pref a.sort_descending {
+	background: transparent url('/assets/unmanaged/images/icons/icon_sort_descending.gif') no-repeat scroll left 2px;
+	color: #333333;
+	font-weight: bold;
+	padding: 0 0 0 10px;
+	text-decoration: none;
+}
+.report_table_content_pref a.sort_ascending:hover,  .report_table_content_pref a.sort_descending:hover {
+	text-decoration: underline;
+}
+.report_table_pref tr {
+	border-top: 1px solid #f0f1e6;
+}
+.report_table_pref tr.spec {
+	background-color: #fafaf8;
+}
+.report_table_pref td {
+	padding: 4px 10px 4px 10px;
+	font-size: 0.6875em;
+}
+.report_table_pref td.spec {
+	border-left: none;
+}
+.report_table_pref tr td.sub {
+	border-left: 1px solid #eceae3;
+}
+.report_table_pref tr td:first-child {
+	border-left: none;
+}
+.report_table_pref td.cur,  .report_table_pref td.num {
+	text-align: right;
+}
+.report_table_pref td.date,  .report_table_pref td.name,  .report_table_pref td.val_num_cnt,  .report_table_pref td.val_str {
+	text-align: left;
+}
+.report_table_pref td.neg {
+	color: #e00000;
+}
+.report_table_pref td.pos {
+	color: #159722;
+}
+/*******************************************************************************
+* BUTTONS
+********************************************************************************/
+
+.button_regular_pref {
+	background:transparent url('/assets/unmanaged/images/buttons/button_regular_both_left.gif') no-repeat scroll top left;
+}
+.button_regular_pref a {
+	background:transparent url('/assets/unmanaged/images/buttons/button_regular_both_right.gif') no-repeat scroll top right;
+}
+.button_header_pref {
+	background:transparent url('/assets/unmanaged/images/buttons/button_header_both_left.gif') no-repeat scroll top left;
+}
+.button_header_pref input {
+	background:transparent url('/assets/unmanaged/images/buttons/button_header_both_right.gif') no-repeat scroll top right;
+}
+.button_search_pref  {
+	background:transparent url('/assets/unmanaged/images/buttons/button_search_both_left.gif') no-repeat scroll top left;
+}
+.button_search_pref input   {
+	background:transparent url('/assets/unmanaged/images/buttons/button_search_both_right.gif') no-repeat scroll top right;
+}
+.button_header_pref, .button_regular_pref, .button_search_pref {
+	cursor: pointer;
+	float: right;
+	height: 19px;
+	padding-top: 0pt;
+	padding-right: 0;
+	padding-bottom: 0pt;
+	padding-left: 5px;
+}
+
+.button_regular_pref, .button_search_pref  {
+	margin:2px 10px 0 0;
+}
+.button_header_pref {
+	margin-left:10px;
+	margin-top:0px;
+}
+.button_regular_pref a,  .button_search_pref input   {
+	color: #fff;
+}
+.button_header_pref input {
+	color:#000;
+}
+.button_header_pref input,  .button_regular_pref a,  .button_search_pref input {
+	border: none;
+	cursor:pointer;
+	display:block;
+	float:left;
+	font-size:0.6875em;
+	font-style:normal;
+	font-weight:bold;
+	text-decoration: none;
+}
+
+.button_regular_pref a {
+	padding: 2px 10px 4px 5px;
+}
+.button_header_pref input,  .button_search_pref input   {
+	padding: 2px 10px 2px 5px;
+}
+.button_regular_pref:hover {
+	background-position: 0% -19px;
+}
+.button_regular_pref a:visited,  .button_regular_pref a:link {
+	color:#fff;
+}
+.button_regular_pref:hover a {
+	background-position:100% -19px;
+	color: #fff;
+	text-decoration: none;
+}
+.button_header_pref:hover, .button_search_pref:hover{
+	background-position: 0% -19px;
+}
+.button_header_pref:hover input,  .button_search_pref:hover input  {
+	background-position: 100% -19px;
+}

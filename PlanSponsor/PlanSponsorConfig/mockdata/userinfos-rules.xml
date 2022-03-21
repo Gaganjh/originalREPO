@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<digester-rules>
+
+    <pattern value="userinfos">
+           <object-create-rule classname="java.util.ArrayList" />
+    </pattern>
+
+    <pattern value="userinfos/userinfo">
+    
+        <object-create-rule classname="com.manulife.pension.ps.service.security.valueobject.UserInfo" />
+
+        <call-method-rule pattern="userid" methodname="setUserName"
+                          paramcount="0" />
+
+        <call-method-rule pattern="firstName" methodname="setFirstName"
+                          paramcount="0" />
+
+        <call-method-rule pattern="lastName" methodname="setLastName"
+                          paramcount="0" />
+
+        <call-method-rule pattern="email" methodname="setEmail"
+                          paramcount="0" />
+
+        <call-method-rule pattern="employeeNumber" methodname="setEmployeeNumber"
+                          paramcount="0" />
+
+        <call-method-rule pattern="profileLastUpdatedBy" methodname="setProfileLastUpdatedBy"
+                          paramcount="0" />
+
+        <call-method-rule pattern="passwordState" methodname="setPasswordState"
+                          paramcount="0" />
+
+        <call-method-rule pattern="profileStatus" methodname="setProfileStatus"
+                          paramcount="0" />
+
+        <call-method-rule pattern="role" methodname="setRole"
+                          paramcount="0" paramtypes="com.manulife.pension.ps.service.security.role.UserRole"/>
+
+        <call-method-rule pattern="profileLastUpdatedByInternal" methodname="setProfileLastUpdatedByInternal"
+                          paramcount="0" paramtypes="java.lang.Boolean"/>
+
+        <!-- Add the created UserInfo into the ArrayList at the top
+             of the stack -->
+        <set-next-rule methodname="add" paramtype="java.lang.Object"/>
+
+    </pattern>
+
+</digester-rules>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Config RefreshInterval="7200" ResponseChunkSize="256">
+   <Log LogLevel="Error" Name="c:\webSphere9\Plugins\logs\http_plugin.log"/>
+   <Property Name="ESIEnable" Value="false"/>
+   <VirtualHostGroup Name="EZkLiveUSA_host">
+      <VirtualHost Name="ezusqa3.test-qa.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="EZkLiveNY_host">
+      <VirtualHost Name="eznyqa3.test-qa02.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWLiveUSA_host">
+      <VirtualHost Name="psusqa3.test-qa.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWLiveNY_host">
+      <VirtualHost Name="psnyqa3.test-qa02.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="BDLive_host">
+      <VirtualHost Name="bdqa3.test-qa.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="SupportCentral_host">
+      <VirtualHost Name="scqa3.test-qa.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="ACR_host">
+      <VirtualHost Name="acrqa3.test-qa.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="EZkCMA_host">
+      <VirtualHost Name="ezcmaqa3.manulife.com:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="EZkPreviewUSA_host">
+      <VirtualHost Name="ezusqa3preview.test-qa.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="EZkPreviewNY_host">
+      <VirtualHost Name="eznyqa3preview.test-qa02.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="OnlineOrdering_host">
+      <VirtualHost Name="oosqa3.manulife.com:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWCMA_host">
+      <VirtualHost Name="pscmaqa3.manulife.com:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWPreviewUSA_host">
+      <VirtualHost Name="psusqa3preview.test-qa.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="PSWPreviewNY_host">
+      <VirtualHost Name="psnyqa3preview.test-qa02.net:80"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="BDPreview_host">
+      <VirtualHost Name="bdqa3preview.test-qa.net:80"/>
+   </VirtualHostGroup>
+   <ServerCluster Name="EZkLiveCluster" PostBufferSize="256">
+      <Server CloneID="15bjtckd3" LoadBalanceWeight="2" Name="EZkLiveServer1">
+         <Transport Hostname="localhost" Port="9080" Protocol="http"/>
+      </Server>
+      <Server CloneID="15bjtcle9" LoadBalanceWeight="2" Name="EZkLiveServer2">
+         <Transport Hostname="localhost" Port="9081" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="PSWLiveCluster" PostBufferSize="256">
+      <Server CloneID="15bjtg3qh" LoadBalanceWeight="2" Name="PSWLiveServer1">
+         <Transport Hostname="localhost" Port="9082" Protocol="http"/>
+      </Server>
+      <Server CloneID="15bjtg4hf" LoadBalanceWeight="2" Name="PSWLiveServer2">
+         <Transport Hostname="localhost" Port="9083" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="SCLiveCluster" PostBufferSize="256">
+      <Server CloneID="15bjthq69" LoadBalanceWeight="2" Name="SCLiveServer1">
+         <Transport Hostname="localhost" Port="9084" Protocol="http"/>
+      </Server>
+      <Server CloneID="15bjthqtn" LoadBalanceWeight="2" Name="SCLiveServer2">
+         <Transport Hostname="localhost" Port="9085" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="ACRLiveServer" PostBufferSize="256">
+      <Server Name="ACRLiveServer">
+         <Transport Hostname="localhost" Port="9086" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="DurableEventServer" PostBufferSize="256">
+      <Server Name="DurableEventServer">
+         <Transport Hostname="localhost" Port="9087" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="EZkCMAServer" PostBufferSize="256">
+      <Server Name="EZkCMAServer">
+         <Transport Hostname="localhost" Port="9088" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="EZkPreviewServer" PostBufferSize="256">
+      <Server Name="EZkPreviewServer">
+         <Transport Hostname="localhost" Port="9089" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="EventServer" PostBufferSize="256">
+      <Server Name="EventServer">
+         <Transport Hostname="localhost" Port="9090" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="OnlineOrderLiveServer" PostBufferSize="256">
+      <Server Name="OnlineOrderLiveServer">
+         <Transport Hostname="localhost" Port="9091" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="PSWCMAServer" PostBufferSize="256">
+      <Server Name="PSWCMAServer">
+         <Transport Hostname="localhost" Port="9092" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <ServerCluster Name="PSWPreviewServer" PostBufferSize="256">
+      <Server Name="PSWPreviewServer">
+         <Transport Hostname="localhost" Port="9093" Protocol="http"/>
+      </Server>
+   </ServerCluster>
+   <UriGroup Name="OnlineOrdering_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/home"/>
+      <Uri Name="/error.jsp"/>
+   </UriGroup>
+   <UriGroup Name="ACR_URIs">
+      <Uri Name="/*.sdirect"/>
+      <Uri Name="/*.direct"/>
+      <Uri Name="/*.html"/>
+      <Uri Name="/assets/*"/>
+      <Uri Name="/*.svc"/>
+      <Uri Name="/servlet/*"/>
+      <Uri Name="/resources/*"/>
+   </UriGroup>
+   <UriGroup Name="EZk_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/investments/*"/>
+      <Uri Name="/money101/*"/>
+      <Uri Name="/tools/*"/>
+      <Uri Name="/ServiceServlet"/>
+      <Uri Name="/webservice/RequestForwarder/*"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="SupportCentral_URIs">
+      <Uri Name="/*.action"/>
+   </UriGroup>
+   <UriGroup Name="PSWLiveNY_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="PSWLiveUSA_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="/unallocated/*"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="FRW_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/activation/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/PingServlet"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="All_JSPs_URIs">
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="PSWPreviewUSA_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="/servlet/AddIUMUser"/>
+      <Uri Name="/servlet/AddRMUser"/>
+      <Uri Name="/servlet/ResetInternalUserPassword"/>
+      <Uri Name="/servlet/DeleteRMUser"/>
+      <Uri Name="/servlet/DeleteIUMUser"/>
+      <Uri Name="/unallocated/*"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <UriGroup Name="PSWPreviewNY_URIs">
+      <Uri Name="/do/*"/>
+      <Uri Name="/login/*"/>
+      <Uri Name="/home/*"/>
+      <Uri Name="/global/*"/>
+      <Uri Name="/public/*"/>
+      <Uri Name="/tpadownload/*"/>
+      <Uri Name="/PieChartServlet"/>
+      <Uri Name="/BarChartServlet"/>
+      <Uri Name="/LineChartServlet"/>
+      <Uri Name="/servlet/AddIUMUser"/>
+      <Uri Name="/servlet/AddRMUser"/>
+      <Uri Name="/servlet/ResetInternalUserPassword"/>
+      <Uri Name="/servlet/DeleteRMUser"/>
+      <Uri Name="/servlet/DeleteIUMUser"/>
+      <Uri Name="*.jsp"/>
+   </UriGroup>
+   <Route ServerCluster="ACRLiveServer" UriGroup="ACR_URIs" VirtualHostGroup="ACR_host"/>
+   <Route ServerCluster="EZkLiveCluster" UriGroup="EZk_URIs" VirtualHostGroup="EZkLiveUSA_host"/>
+   <Route ServerCluster="EZkLiveCluster" UriGroup="EZk_URIs" VirtualHostGroup="EZkLiveNY_host"/>
+   <Route ServerCluster="SCLiveCluster" UriGroup="SupportCentral_URIs" VirtualHostGroup="SupportCentral_host"/>
+   <Route ServerCluster="EZkPreviewServer" UriGroup="EZk_URIs" VirtualHostGroup="EZkPreviewNY_host"/>
+   <Route ServerCluster="EZkPreviewServer" UriGroup="EZk_URIs" VirtualHostGroup="EZkPreviewUSA_host"/>
+   <Route ServerCluster="PSWLiveCluster" UriGroup="PSWLiveUSA_URIs" VirtualHostGroup="PSWLiveUSA_host"/>
+   <Route ServerCluster="PSWLiveCluster" UriGroup="PSWLiveNY_URIs" VirtualHostGroup="PSWLiveNY_host"/>
+   <Route ServerCluster="PSWLiveCluster" UriGroup="FRW_URIs" VirtualHostGroup="BDLive_host"/>
+   <Route ServerCluster="EZkCMAServer" UriGroup="All_JSPs_URIs" VirtualHostGroup="EZkCMA_host"/>
+   <Route ServerCluster="PSWCMAServer" UriGroup="All_JSPs_URIs" VirtualHostGroup="PSWCMA_host"/>
+   <Route ServerCluster="PSWPreviewServer" UriGroup="PSWPreviewUSA_URIs" VirtualHostGroup="PSWPreviewUSA_host"/>
+   <Route ServerCluster="PSWPreviewServer" UriGroup="PSWPreviewNY_URIs" VirtualHostGroup="PSWPreviewNY_host"/>
+   <Route ServerCluster="PSWPreviewServer" UriGroup="FRW_URIs" VirtualHostGroup="BDPreview_host"/>
+   <Route ServerCluster="OnlineOrderLiveServer" UriGroup="OnlineOrdering_URIs" VirtualHostGroup="OnlineOrdering_host"/>
+</Config>

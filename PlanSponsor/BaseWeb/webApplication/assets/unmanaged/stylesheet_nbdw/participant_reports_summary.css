@@ -1,0 +1,194 @@
+/*******************************************************************************
+*	participant_reports_summary.css
+*	Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*	Participant Reports Summary specific styles for use with the John Hancock Broker Dealer website.
+********************************************************************************/
+
+@import url("screen.css");
+
+.message{
+	/*display:none;*/
+}	
+
+a#customize_report{
+	color:#fff;
+	float:left;
+	font-size:.75em;
+	padding:13px 0 0 15px;
+}
+
+.button_header_reduced_margin{
+    margin-left:1px;
+}
+
+#participant_search{
+	float:left;
+	margin:-2px 10px 0 0;
+}
+.page_section_subsubheader div.button_search{
+	float:left;
+	margin-top:0px;
+}
+
+div#participant_summary_report{
+	background-color:#f6f4f1;
+	margin-top: 5px;
+	margin-right: 0;
+	margin-left: 0;
+	padding-top: 2px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+	div#participant_summary_report h4{
+		background: none;
+		color:#333;
+		font: normal 1em georgia, times, serif;
+		margin: 0;
+		padding: 0 0 10px 15px;
+	}
+
+	div#participant_summary_report fieldset{
+		border:none;
+		margin:0;
+		padding:0;
+	}
+	
+		div#participant_summary_report div.form_section{
+			margin-left:15px;
+			padding-bottom:10px;
+		}
+	
+		div#participant_summary_report div.form_section select{
+			width:50px;
+		}
+		
+		div#participant_summary_report form p{
+			float:left;			
+			margin:0 5px 0 0;
+			padding:0;
+		}
+	
+		div#participant_summary_report select{
+			float:left;
+			margin-right:5px;
+			width:100px;
+		}
+	
+		div#participant_summary_report .select_group{
+			clear:left;
+			margin:0px 0px 5px 15px;
+		}
+		
+			div#participant_summary_report .select_group input{
+				float:left;
+				margin-right:5px;
+				width:95px;
+			}
+	
+		div#participant_summary_report .form_section select,
+		div#participant_summary_report .select_group select {
+			font-size: 0.75em;
+		}
+	
+	 	div.selection_input {
+			clear:left;
+			float:left;
+			margin-left: 15px;
+		}
+		
+		table#participants_table td.name{
+			width:140px;
+		}
+		
+			table#participants_table td.name div{
+				float:left;
+				
+			}
+	
+
+#contract_information{
+	float:left;
+	width:390px;
+	
+}
+
+	#contract_information p{
+		margin:5px 0 5px 15px;
+		padding:0;
+	}
+
+#participant_summary_table{
+	float:left;
+	margin:0;
+	width:500px;
+	
+}
+
+	#participant_summary_table table th{	
+		font-weight:bold;
+	}
+	
+		
+	a.transaction_history{
+		background: url('/assets/unmanaged/images/buttons/button_calendar.gif') no-repeat center center;
+		display:none;
+		height:16px;
+		margin-left:15px;
+		outline:none;
+		text-indent:-100000px;
+		width:16px;		
+	}
+	
+	
+
+#report_customization_wrapper {
+	display:none;
+	margin-bottom: 30px;
+}
+
+form.page_section_filter #div_totalAssets,
+form.page_section_filter #div_namePhrase,
+form.page_section_filter #div_firstName,
+form.page_section_filter #div_status,
+form.page_section_filter #div_employmentstatus,
+form.page_section_filter #div_division,
+form.page_section_filter #div_gateway,
+form.page_section_filter #div_managedAccount{
+	float:left;
+}
+
+form.page_section_filter #div_totalAssets,
+form.page_section_filter #div_namePhrase,
+form.page_section_filter #div_firstName,
+form.page_section_filter #div_status,
+form.page_section_filter #div_employmentstatus,
+form.page_section_filter #div_division,
+form.page_section_filter #div_gateway,
+form.page_section_filter #div_managedAccount{
+	margin-top: 0px;
+	margin-right: 5px;
+	margin-bottom: 0;
+	margin-left: -2px;
+}
+
+form.page_section_filter #div_totalAssets,
+form.page_section_filter #div_namePhrase,
+form.page_section_filter #div_firstName,
+form.page_section_filter #div_status,
+form.page_section_filter #div_employmentstatus,
+form.page_section_filter #div_division,
+form.page_section_filter #div_gateway,
+form.page_section_filter #div_managedAccount{
+	font-size:1em;
+}
+
+form.page_section_filter #div_totalAssets input,
+form.page_section_filter #div_namePhrase input,
+form.page_section_filter #div_firstName input,
+form.page_section_filter #div_status select
+form.page_section_filter #div_employmentstatus select
+{
+	font-size:0.685em;
+}

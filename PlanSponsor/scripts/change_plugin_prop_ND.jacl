@@ -1,0 +1,25 @@
+# ==============================================================================
+# WAS script to change plugin properties
+# ==============================================================================
+
+set webserver [lindex $argv 0]
+set node [lindex $argv 1]
+set rootdrive [lindex $argv 2]
+
+set server [$AdminConfig getid /Node:$node/Server:$webserver/]
+puts $server
+set pluginProp [$AdminConfig list PluginProperties $server]
+puts $pluginProp
+
+$AdminTask createWebServer $node {-name $webserver -templateName IIS}
+
+set pluginroot $rootdrive/WebSphere9/Plugins
+set logfile [append s1 $rootdrive/WebSphere9/Plugins/logs/ $webserver /http_plugin.log]
+set pluginfile [append s2 $rootdrive/WebSphere9/Plugins/config/ $webserver /plugin-cfg.xml]
+set keyfile [append s3 $rootdrive/WebSphere9/Plugins/config/ $webserver /plugin-key.kdb]
+puts $logfile
+
+
+$AdminConfig modify $pluginProp [list [list LogFilename $logfile] [list RemoteConfigFilename $pluginfile] [list RemoteKeyRingFilename $keyfile] [list PluginInstallRoot $pluginroot]]
+
+$AdminConfig save

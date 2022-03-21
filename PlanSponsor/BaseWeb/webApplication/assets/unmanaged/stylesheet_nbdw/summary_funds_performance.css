@@ -1,0 +1,814 @@
+/*******************************************************************************
+*   summary.css
+*   Copyright © 2008 John Hancock All Rights Reserved. Designated trademarks and brands are the property of their respective owners.
+*
+*   Global styles used throughout the John Hancock Broker Dealer website.
+********************************************************************************/
+
+/*******************************************************************************
+* HTML ELEMENTS
+********************************************************************************/
+#summaryBoxFP {
+    height: 200px;
+    width: auto;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 0.6875em;
+    min-height:100%;
+    text-align: left;
+    margin-bottom: 15px;
+    padding-top: 5px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    float: right;
+    margin-left: 15px;
+}
+#summaryBoxFP h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #000000;
+}
+#summaryBoxFP TD {
+    font-size: 1em;
+    color: #005B80;
+    padding: 2px;
+}
+/*******************************************************************************
+* FILTER
+********************************************************************************/
+
+#filterSum_wrapper { /* need wrapper because of background with curved upper edges */
+    background: transparent url('/assets/unmanaged/images/backgrounds/tab_nav_background_left.gif') no-repeat scroll top left;
+    clear: left;
+}
+
+    #filterSum {
+    height: 27px;
+    margin-top: 0px;
+    margin-right: 0;
+    margin-bottom: 4px;
+    margin-left: 0;
+    padding-top: 5px;
+    padding-right: 15px;
+    padding-bottom: 0;
+    padding-left: 10px;
+    width: 275px;
+    
+    }
+
+
+        #filterSum ul {
+            list-style-image:none;
+            list-style-position:outside;
+            list-style-type: none;
+            margin:0;
+            padding:0;
+        }
+
+            #filterSum ul li.active {
+                background: transparent url('/assets/unmanaged/images/buttons/button_filter_selected_left.gif') no-repeat scroll top left;
+                cursor: auto;
+                float: left;
+            }
+
+            
+                #filterSum ul li.active em {
+                    background:transparent url('/assets/unmanaged/images/buttons/button_filter_selected_right.gif') no-repeat scroll top right;
+                    color: #fff;
+                    display:block;
+                    font-size:0.6875em;
+                    font-style:normal;
+                    font-weight:normal;
+                    padding: 5px 10px 5px 5px;
+                }
+
+            #filterSum ul li {
+    cursor: pointer;
+    float:left;
+    margin: 0 10px 0 0;
+    padding:0 0 0 5px;
+    background-image: url(/assets/unmanaged/images/buttons/button_filter_left_both_sum.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+            }
+            
+            #filterSum ul li.util {
+                float:right;
+            }
+
+            #filterSum ul li:hover {
+                background-position:0% -23px;
+            }
+
+            #filterSum ul a {
+                width:auto;
+            }
+
+            #filterSum a {
+                float:none;
+            }
+
+
+                #filterSum ul li a {
+    color: #002c3d;
+    display:block;
+    float:left;
+    font-size:0.9875em;
+    font-style:normal;
+    font-weight:normal;
+    margin: 0;
+    padding:5px 10px 5px 5px;
+    text-decoration: none;
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: url(/assets/unmanaged/images/buttons/button_filter_right_both_sum.gif);
+    background-repeat: no-repeat;
+    background-position: right top;
+                }
+
+
+                #filterSum ul a:visited, 
+                #filterSum a:link {
+                    color:#002c3d;  
+                }
+
+                #filterSum ul li:hover {
+                    background-position:0% -23px;
+                        
+                }
+                
+                /* to over-ride rollover applied above */
+                #filterSum ul li.active:hover {
+                    background:transparent url('/assets/unmanaged/images/buttons/button_filter_selected_left.gif') no-repeat scroll top left;
+                }
+
+                
+                
+                
+                #filterSum ul li:hover a {
+    background-position:100% -23px;
+    color:#fff;
+    text-decoration: none;
+                    
+                }
+                #filterSum form{
+    font-size: 11px;
+    color: #717B80;
+    float: left;
+}
+
+#filterSum .print_btn, 
+    #filterSum .print_all_btn,
+    #filterSum .csv_btn,
+    #filterSum .pdf_btn
+    {
+    float:right;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-left: 0;
+        }   
+        
+        #filterSum select,
+    #filterSum input{
+
+    }
+    
+        #filterSum select,
+    #filterSum input{
+    font-size:1em;
+    margin-top: 0px;
+    margin-right: 0;
+    margin-bottom: 0px;
+    margin-left: -2px;
+    }
+
+
+/*******************************************************************************
+* Popups... Fuzzy logics
+********************************************************************************/
+    div.modal_glass_panel {
+        z-index:5;
+        position:absolute;
+        top:1px;
+        left:1px;
+        width:1024px;
+        height:100%;
+        background-color:#C0C0C0;        
+        filter:alpha(opacity=50);
+        -moz-opacity:0.5;
+        opacity:0.5;
+     }        
+
+    div.modal_dialog {
+        z-index:10;
+        font-size:11px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        margin:auto;
+        padding:0px;
+        position:absolute;
+        background:#FFFFFF;
+        border:2px inset #005B80;
+              
+    }
+
+     div.dialog_content {
+        width:85%;
+        padding:8px;
+    }
+    div.dialog_title {
+        width:100%;
+        padding-top:4px;
+        padding-bottom:4px;        
+        background-color:#005B80;
+        color:white;
+        font-size:12px;
+    }
+    
+    div.change_sort_dialog {
+        width:350px;
+        height:220px;
+        top:500px;
+        left:400px;
+    }
+    
+    div.contact_search_dialog {
+            width:350px;
+            height:160px;
+            top:500px;
+            left:400px;
+    }
+
+
+
+
+
+    table.advanced_filters {
+    width:900px;
+
+    padding:0px;
+    border-collapse: collapse;
+    border-spacing:0px;
+    background-color: #f6f4f1;
+    }
+    table.advanced_filters th {
+    height:18px;
+    font-size:11px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    text-align: left;
+    }
+    table.advanced_filters td.right_panel {
+       width:430px;
+       text-align:center;
+       vertical-align:top;
+       padding:0px;
+    }
+
+    table.advanced_filters td.left_panel {
+        width:430px;
+        text-align:center;
+        vertical-align:top;
+        padding:0px;
+     }
+     
+     
+     .btn_save_list {
+         width:115px;
+     }
+
+     .btn_apply_to_table_below{
+         width:165px;
+     }
+
+    #page_content fieldset div {
+        font-size: 11px;
+    }
+    
+    .warning_panel {
+    font-size:12px;
+    text-align:left;
+    vertical-align:top;
+}
+    
+    #funds_and_performance_filters div {
+    font-size:12px;
+    text-align:left;
+    vertical-align:top;
+}
+#funds_and_performance_filters td {
+    font-size:11px;
+    vertical-align:top;
+}
+#funds_and_performance_filters body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+#funds_and_performance_filters select {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:11px;
+}
+#funds_and_performance_filters input {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:11px;
+}
+
+
+
+    .selected_funds_panel {
+    width:100%;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: #eceae3;
+    margin-top: 5px;
+    }
+
+    .query_results_panel {
+    width:100%;
+    height:250px;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: #eceae3;
+    margin-top: 5px;
+    border-right-width: 3px;
+    border-left-width: 3px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #F6F4F1;
+    border-left-color: #F6F4F1;
+    margin-left: 5px;
+    }
+    
+    .full_size {
+    border-collapse: collapse;
+    border-spacing:0px;
+    width:100%;
+    }
+
+    div.query_selection_panel {
+    text-align:left;
+    vertical-align:top;
+    width:100%;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: #eceae3;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+    float: left;
+    clear: left;
+    }
+    
+    div.query_panel {
+    text-align:left;
+    vertical-align:top;
+    width:100%;
+    padding-top: 0px;
+    margin-left: 5px;
+    margin-top: 0px;
+    clear: left;
+    }
+
+    table.query_settings {
+    }
+    
+    select.fundlist_multi_select {
+        width:100%;
+        height:230px;
+        padding:0px;
+        font-family:"Courier New", monospaced;
+        font-size:12px;
+    }
+    
+    td.fundlist_multi_select {
+        height:230px;
+        padding:0px;
+    }
+    
+    select.custom_query {
+        font-size:11px;
+    }
+    option.heading {
+        background-color:#000000;
+        color:white;
+        font-weight:bold;
+    }
+    table.custom_query td {
+        padding:0px;
+        width:100%;
+    }
+    .left_align {
+    text-align:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 13px;
+     }
+     .right_align {
+        text-align:right;
+     }
+    .btn_add {
+        width:80px;
+    }
+    .btn_add_all {
+        width:80px;
+    }
+    .btn_remove {
+        width:90px;
+    }
+    .btn_remove_all {
+        width:95px;
+    }
+    .btn_edit {
+       width:70px;
+    }
+    .btn_new{
+       width:70px;
+    }
+    .btn_delete{
+       width:75px;
+    }
+#funds_and_performance_filters div {
+    font-size:12px;
+    text-align:left;
+    vertical-align:top;
+}
+#funds_and_performance_filters td {
+    font-size:11px;
+    vertical-align:top;
+}
+#funds_and_performance_filters body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+#funds_and_performance_filters select {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:11px;
+}
+#funds_and_performance_filters input {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:11px;
+}
+
+.highlight_fund {
+    background-color:#FFFFDB;
+}
+    
+    
+    
+.custom-query-row-button {
+    padding:0px;
+    border:0px;
+}    
+    
+.custom-query-criteria-table {    
+    width:800px;
+    padding:0px;
+    margin:0px;
+    
+}
+
+.custom-query-criteria-table td {    
+    font-size:9px!important;
+}    
+    
+.custom_query_row_button_column { 
+    font-size:9px!important;
+    width:10px!important;
+}    
+
+.custom_query_logic_column {
+    font-size:9px!important;
+    width:70px!important;
+}    
+
+.custom_query_bracket_column {
+    font-size:9px!important;
+    width:30px!important;
+    text-align:center;
+}    
+
+.custom_query_fieldname_column {
+    font-size:9px!important;
+    width:250px!important;
+}    
+
+.custom_query_operator_column {
+    font-size:9px!important;
+    width:90px;
+}    
+
+.custom_query_value_column {
+    font-size:9px!important;
+    width:280px!important;
+}    
+
+.custom_query_scroll {
+    overflow-y:scroll;
+    width:820px!important;
+    margin-left:20px;
+    text-align:center;
+    height:110px;
+}
+
+.custom_query_no_scroll {
+    width:820px!important;
+    margin-left:20px;
+    text-align:center;
+}
+
+div.assetClassListStyle {       
+       font-family:"Courier New", monospaced;
+       font-size:8px;
+   }
+
+div.assetClassListStyle td.headers{
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/*******************************************************************************
+* Overrides the screen.css
+********************************************************************************/
+
+#contract_funds #page_wrapper #page_content .report_table .report_table_content .shadedRow {
+    background-color: #b9b1a9;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+#contract_funds #page_wrapper #page_content .report_table .report_table_content #IRtitleLft {
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    height: 20px;
+    width: 95%;
+   }
+
+#contract_funds #page_wrapper #page_content .report_table .report_table_content .shadedRow .shadedRow #tabImgNone {
+    background-color: #B9B1A9;
+    text-align: center;
+    height: 20px;
+    width: 61px;
+    padding-top: 5px;
+    margin-top: 0px;
+}
+
+#contract_funds #page_wrapper #page_content .report_table .report_table_content #tabImg {
+    background-image: url(/assets/unmanaged/images/performance_tab.gif);
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 20px;
+    padding-top: 5px;
+    background-position: left;
+    width: 61px;
+    margin-top: 0px;
+}
+
+.report_table_content th {
+    background-color: #DEDED8;
+    border-left: 1px solid #cac8c4;
+    font-size:10px;
+    font-weight: normal;
+    text-align: left;
+    margin: 0;
+    padding: 4px 4px 6px 4px;
+}
+
+ .report_table td {
+    padding-right: 3px;
+    padding-left: 3px;
+    }
+
+.report_table td.cur {
+    font-weight: normal;
+    font-size: 10px;
+}
+
+.report_table tr.spec1 {
+    background-color: #ffffff;
+}
+
+.report_table td.date {
+	text-align:center;
+}
+
+.report_table th.date{
+	text-align:center;
+}
+
+.report_table th.cur, .report_table th.pct{
+	text-align:center;
+}
+
+.report_table td.name {
+	text-align:right;
+}
+
+.report_table th.name {
+	text-align:center;
+}
+
+/***************************************
+Closed Funds are displayed in gray color
+***************************************/
+
+#closed a:visited {
+    color: #767676;
+}
+
+
+#advancedFilterButton .fap-apply-filter-button {
+     background:url('/assets/unmanaged/images/fandp_apply_filter_off.gif');
+     width:260px;
+     height:21px;
+     border:0px;
+     color:white;
+     font-weight:bold;
+     font-family: Arial, Helvetica, sans-serif;
+     font-size:12px;
+}
+#advancedFilterButton .hover {
+     background:url('/assets/unmanaged/images/fandp_apply_filter_on.gif');
+}
+
+#advancedFilterButton .disabled  {
+     background:url('/assets/unmanaged/images/fandp_apply_filter_disabled.gif');
+     width:260px;
+     height:21px;
+     border:0px;
+     color:white;
+     font-weight:bold;
+     font-family: Arial, Helvetica, sans-serif;
+     font-size:12px;
+}
+
+.greenViewResults {
+     background:url('/assets/unmanaged/images/buttons/green_button_85px_off.gif')!important;
+     width:85px;
+     height:19px;
+     border:0px;
+     padding:0px;
+     cursor:pointer;     
+     margin-top:2px;
+     color:white;
+     font-weight:bold;
+     font-family: Arial, Helvetica, sans-serif;
+     font-size:12px;
+}
+.greenViewResults .hover {
+     background:url('/assets/unmanaged/images/buttons/green_button_85px_on.gif')!important;
+}
+input.greenViewResults:hover {
+     background:url('/assets/unmanaged/images/buttons/green_button_85px_on.gif')!important;
+}
+
+.button_green{
+	float: left;
+	margin:2px 10px 0 0;
+}
+
+.fcalign{
+	text-align: center !important;
+	width:10%;
+}
+
+.eralign{
+		text-align: center !important;
+		width:19% !important;
+}
+
+.report_table th.mornigstarLogo {
+	background-image: url(/assets/unmanaged/images/mstar_web.png);
+	background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    border-left: 1px solid #cac8c4;
+    border-right: 1px solid #cac8c4;
+    height:55px;
+    width: 700px;
+}
+
+.report_table th.fi360Logo {
+	background-image: url(/assets/unmanaged/images/fi360_web.png);
+	background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    border-left: 1px solid #cac8c4;
+    border-right: 1px solid #cac8c4;
+    height:55px;
+    width: 440px;
+}
+
+
+.report_table th.rpagLogo {
+	background-image: url(/assets/unmanaged/images/rpag_web.png);
+	background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    border-left: 1px solid #cac8c4;
+    border-right: 1px solid #cac8c4;
+    height:55px;
+    width: 440px;
+}
+
+.report_table th.jh_scorecard_header_row {
+	background-color: white;
+	border: none;
+}
+
+.report_table tr.jh_scorecard_header_row_small {
+	background-color: white;
+	border: none;
+	height: 8px
+}
+
+.report_table th.val_str_white_background {
+	background-color: white;
+}
+
+.report_table tr.ignoreBorder {
+	border:none;
+}
+
+.report_table th.score {
+    text-align: center;
+    font-size: 9.4px !important;
+    padding-left: 1.5px !important;
+    padding-right: 1.5px !important;
+}
+
+.report_table th.val_str_font {
+    font-size: 9.4px !important;
+}
+
+.report_table td.score {
+    text-align: center;
+    font-size: 10px !important;
+    padding-left: 1.5px !important;
+    padding-right: 1.5px !important;
+}
+
+.report_table td.score_bold {
+    font-weight: bold;
+}
+
+.report_table td.score_wrap {
+   white-space: normal;
+}
+
+.report_table td.val_str_font {
+   font-size: 10px !important;
+}
+
+
+.report_table td.val_str_font sup {
+   font-size: 9px !important;
+}
+
+.report_table th.val_str_white_background {
+	background-color: white;
+	border-top: none !important;
+}
+
+.button_fap {
+	margin : 2px 6px 0 0 !important;
+}
+
+
+.fap_navigation_header {
+	height: 30px! important;
+	text-align: center;
+}
+
+.fi360firstQuartile  { background-color: #00FF00; }
+.fi360secondQuartile { background-color: #C8FF96; }
+.fi360thirdQuartile  { background-color: #FFFF00; }
+.fi360fourthQuartile { background-color: #FF0000; }
+
+
+#fi360Legend {
+	width: 330px;
+	border: 0;
+}
+
+#fi360Legend tr {
+	border: 0;
+	font-size: 10px ;
+}
+
+
+#fi360Legend td {
+	border: 0;
+	font-size: 10px ;
+}
+
+.fi360Legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px;  }

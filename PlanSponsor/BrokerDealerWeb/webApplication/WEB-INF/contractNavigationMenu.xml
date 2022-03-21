@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+           
+<!-- This XML file will have the Contract Navigation Menu Items related information. -->
+
+	<bean abstract="true" name="menuItem"
+		class="com.manulife.pension.bd.web.navigation.UserMenuItem" />
+
+	<bean name="contractNavigMenu" parent="menuItem">
+		<property name="subMenuItems"> 
+			<list>
+			    <!--  Contract Information  -->
+				<bean name="contractInformation" parent="menuItem" p:id="contractInformation" p:title="Contract Information"
+					p:actionURL="/do/bob/contract/contractInformation/" >
+					<property name="subMenuItems">
+						<list>
+							<bean parent="menuItem" p:id="contractInfo" p:title="Contract Summary"
+								p:actionURL="/do/bob/contract/contractInformation/" />
+							<bean parent="menuItem" p:id="contractSnapshot" p:title="Asset Overview"
+								p:actionURL="/do/bob/contract/contractSnapshot/" />
+							<bean parent="menuItem" p:id="contractDocuments" p:title="Contract Documents"
+								p:actionURL="/do/bob/contract/contractDocuments/" />
+							<bean parent="menuItem" p:id="definedBenefitAcct" p:title="Defined Benefit Account"
+								p:actionURL="/do/bob/db/definedBenefitAccount/" />
+							<bean parent="menuItem" p:id="contractStatements" p:title="Contract Statements"
+								p:actionURL="/do/bob/contract/contractStatements/" />	
+							<bean parent="menuItem" p:id="planReviewReports" p:title="Plan Review Reports"
+								p:actionURL="/do/bob/contract/planReview/" />									
+							<bean parent="menuItem" p:id="regulatoryDisclosures" p:title="Regulatory Disclosures"
+								p:actionURL="/do/bob/contract/regulatoryDisclosures/" />								
+						</list>
+					</property>
+				</bean>
+    			<!-- Investment Reports -->
+				<bean name="investmentReports" parent="menuItem" p:id="investmentReports"
+					p:title="Investment Reports" p:actionURL="/do/bob/investment/investmentAllocationReport/">
+					<property name="subMenuItems">
+						<list>
+							<bean parent="menuItem" p:id="contractFandp" p:title="Funds &amp; Performance"
+								p:actionURL="/do/bob/contractFandp/" />
+							<bean parent="menuItem" p:id="contractInvAlloc" p:title="Investment Allocation"
+								p:actionURL="/do/bob/investment/investmentAllocationReport/" />
+							<bean parent="menuItem" p:id="fundAdmin" p:title="Fund Administration"
+								p:actionURL="/do/bob/fundAdministration/" />
+							
+							<bean parent="menuItem" p:id="contractIPSMgr" p:title="IPS Manager"
+								p:actionURL="/do/bob/investment/ipsManager/" />
+							<bean parent="menuItem" p:id="contractCoFid321" p:title="Co-Fiduciary Reports"
+								p:actionURL="/do/bob/investment/cofidQtrlyReview/" />
+							<bean parent="menuItem" p:id="contractCoFidRecommendation" p:title="Co-Fiduciary Fund Change Review"
+								p:actionURL="/do/bob/investment/coFiduciaryFundRecommendationReview/" />
+							
+						</list>
+					</property>
+				</bean>
+				<!--  Participant Reports -->
+				<bean name="pptReports" parent="menuItem" p:id="pptReports" p:title="Participant Reports" 
+					p:actionURL="/do/bob/participant/participantSummary/">
+					<property name="subMenuItems">
+						<list>
+							<bean parent="menuItem" p:id="pptSummary" p:title="Summary"
+								p:actionURL="/do/bob/participant/participantSummary/" />
+							<bean parent="menuItem" p:id="pptAccount" p:title="Account"
+								p:actionURL="/do/bob/participant/participantAccount/" />
+							<bean parent="menuItem" p:id="pptStatementsResults" p:title="Statements"
+								p:actionURL="/do/bob/participant/participantStatementSearch/" />
+							<bean parent="menuItem" p:id="pptTxnHistory" p:title="Transaction History"
+								p:actionURL="/do/bob/transaction/participantTransactionHistory/" />
+							<bean parent="menuItem" p:id="pptBenefitBaseInfo" p:title="Guaranteed Income Feature Details"
+								p:actionURL="/do/bob/participant/participantBenefitBaseInformation/" />
+							<bean parent="menuItem" p:id="rorCalculator" p:title="Rate of Return Calculator"
+								p:actionURL="/do/bob/contract/RORCalculator/" />
+						</list>
+					</property>
+				</bean>
+				<!--  Transaction Reports -->
+				<bean name="txnReports" parent="menuItem" p:id="txnReports"
+					p:title="Transaction Reports" p:actionURL="/do/bob/transaction/transactionHistoryReport/">
+					<property name="subMenuItems">
+						<list>
+							<bean parent="menuItem" p:id="txnHistory" p:title="Transaction History"
+								p:actionURL="/do/bob/transaction/transactionHistoryReport/" />
+							<bean parent="menuItem" p:id="cashAccount" p:title="Cash Account"
+								p:actionURL="/do/bob/transaction/cashAccountReport/" />
+							<bean parent="menuItem" p:id="currLoanSummary" p:title="Current Loan Summary"
+								p:actionURL="/do/bob/transaction/loanSummaryReport/" />								
+									<bean parent="menuItem" p:id="sysWithdrawReport" p:title="Systematic Withdrawals"
+								p:actionURL="/do/bob/transaction/systematicWithdrawalReport/" /> 
+						</list>
+					</property>
+				</bean>
+				
+					<!--  Submit a Document -->
+				<bean name="secureDocumentUpload" parent="menuItem" p:id="secureDocumentUpload"
+					p:title="Submit a Document" p:actionURL="/do/bob/secureDocumentUpload/sduSubmitTab/">
+					<property name="subMenuItems">
+						<list>
+							<bean parent="menuItem" p:id="sduSubmitTab" p:title="Submit a Document"
+								p:actionURL="/do/bob/secureDocumentUpload/submit/" />
+							<bean parent="menuItem" p:id="sduHistoryTab" p:title="Submission History"
+								p:actionURL="/do/bob/secureDocumentUpload/history/" />
+							<bean parent="menuItem" p:id="sduViewTab" p:title="View a Document"
+								p:actionURL="/do/bob/secureDocumentUpload/view/" />
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE categoryUrlSpecifications
+[
+<!ELEMENT categoryUrlSpecifications (categoryUrlSpecification*)>
+<!ELEMENT categoryUrlSpecification (url+)>
+	<!ATTLIST categoryUrlSpecification category CDATA #REQUIRED>
+<!ELEMENT url (condition?)>
+	<!ATTLIST url href CDATA #REQUIRED>
+<!ELEMENT condition EMPTY>
+	<!ATTLIST condition operator (equals|notEquals) #REQUIRED>
+	<!ATTLIST condition property CDATA #REQUIRED>
+	<!ATTLIST condition value CDATA #REQUIRED>
+]>
+<categoryUrlSpecifications>
+   	<categoryUrlSpecification category="Testimonial">
+		<url href="/testimonials/topicindex"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="newsletter">
+		<url href="/newsletter/nlissueindex"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="StandAloneArticle">
+		<url href="/articles/articles_by_topic"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="money">
+		<url href="/money101/lessons101"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="StandAloneTool">
+		<url href="/tools/toolsindex"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="WebSeminar">
+		<url href="/webcasts/webcasts"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="personal finance topics - function">
+		<url href="/financetopics/financetopics"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="enrollment - function">
+		<url href="/do/enrollment/processWelcomeScreen"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="account management - function">
+		<url href="/account/AccountSummary"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="investment - function">
+		<url href="/investments/FundList"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="retirement goal setter - function">
+		<url href="/goalsetter/splash_page"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="action plan - function">
+		<url href="/goalsetter/action_plan_page"><condition operator="equals" property="userprofile.goalSetFlag" value="true"/></url>
+		<url href="/goalsetter/splash_page"><condition operator="equals" property="userprofile.goalSetFlag" value="false"/></url>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="modify personal information - function">
+		<url href="/do/pim/personalInformationMgmt"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="Glossary_Category">
+		<url href="/glossary/manulife_terms"/>
+	</categoryUrlSpecification>
+	<categoryUrlSpecification category="MoneyGlossaryCategory">
+		<url href="/glossary/glossary"/>
+	</categoryUrlSpecification>	
+	
+</categoryUrlSpecifications>
+

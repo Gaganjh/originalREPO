@@ -1,0 +1,45 @@
+<project name="fileArchiver" default="zip" basedir=".">
+<!-- Moves a file to an archive directory and zips it                             -->
+<!-- USAGE:                                                                       -->
+<!-- ant -f fileMover.xml -DFILE=inputFile -DDIR=inputDir -DARCHIVEDIR=archiveDir -->
+
+    <!-- start Properties -->
+    <property name="FILE" value="undefined"/>
+    <property name="FILES" value="undefined"/>
+    <property name="DIR" value="undefined"/>
+    <property name="ARCHIVEDIR" value="undefined"/>
+    <!-- end Properties -->
+
+    <target name="zip">
+        <!-- date-time stamp in filename -->
+        <tstamp>
+            <format property="TIMESTAMP" pattern="yyyy-MM-dd-HH.mm.ss"/>
+        </tstamp>
+   
+        <!-- zip file-->
+        <zip destfile="${ARCHIVEDIR}/${TIMESTAMP}_${FILE}.zip">
+            <zipfileset dir="${DIR}" includes="${FILE}" fullpath="${DIR}${FILE}"/>
+        </zip>
+
+        <!-- delete the original file, only if the above step was successful -->
+		<delete file="${DIR}\${FILE}"/>
+    </target>
+
+    <target name="zipfiles">
+        <!-- date-time stamp in filename -->
+        <tstamp>
+            <format property="TIMESTAMP" pattern="yyyy-MM-dd-HH.mm.ss"/>
+        </tstamp>
+   
+        <!-- zip file-->
+        <zip destfile="${ARCHIVEDIR}/${TIMESTAMP}_${FILE}.zip">
+            <zipfileset dir="${DIR}" includes="${FILES}"/>
+        </zip>
+
+        <!-- delete the original file, only if the above step was successful -->
+		<delete>
+			<fileset dir="${DIR}" includes="${FILES}"/>
+		</delete>
+    </target>
+
+</project>

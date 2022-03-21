@@ -1,0 +1,78 @@
+# ==============================================================================
+# WAS script to create a DataSource based on the parameters provided
+# $ID:$
+# ==============================================================================
+
+global AdminConfig
+
+set dsName [lindex $argv 0]
+#set nodeName [lindex $argv 1]
+set cellName [lindex $argv 1]
+set providerName [lindex $argv 2]
+set authAlias [lindex $argv 3]
+set dsJndiName [lindex $argv 4]
+set dbName [lindex $argv 5]
+set providername DB2_JDBC_Driver_XA_UV
+
+set drverType 2
+if {$dbName=="HODB2GW"} {
+   set drverType 4
+   set maxConn 5
+} else {set maxConn 10}
+
+puts "Setting up DataSource ... "
+puts "nodeName=$nodeName providerName=$providerName authAlias=$authAlias dsName=$dsName dsJndiName=$dsJndiName dbName=$dbName"
+puts "cellName=$cellName providerName=$providerName authAlias=$authAlias dsName=$dsName dsJndiName=$dsJndiName dbName=$dbName"
+
+set JDBCProvider [$AdminConfig getid /Cell:$cellName/JDBCProvider:$providerName/]   
+ 
+if {[llength $JDBCProvider] == 0} {   
+    puts "No DB2_JDBC_Driver_XA_UV JDBC Provider does not exist...returning "   
+    return    
+}   
+ 
+set p_name [list name $dsName]
+set p_description [list description $dsName]
+set p_authDataAlias [list authDataAlias $authAlias]
+#set p_xaRecoveryAuthAlias [list xaRecoveryAuthAlias $authAlias]
+set p_jndiName [list jndiName $dsJndiName]
+#set p_authMechanismPreference [list authMechanismPreference BASIC_PASSWORD]
+set p_datasourceHelperClassname [list datasourceHelperClassname com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper]
+
+set p_driverType [list [list description "The type of the DB2 Driver."] [list name driverType] [list required false] [list type java.lang.String] [list value $drverType]]
+set p_databaseName [list [list description "The database name."] [list name databaseName] [list required false]  [list type java.lang.String] [list value $dbName]]
+
+if {$dbName=="HODB2GW"} {
+set p_port [list [list description "The port number of the DB server."] [list name portNumber] [list required false] [list type java.lang.String] [list value "5021"]]
+set p_serverName [list [list description "The name of the server, used with thin driver setup"] [list name serverName] [list required false] [list type java.lang.String] [list value "mainframe.manulife.com"]]
+set p_resourceProperties [list resourceProperties [list $p_driverType $p_databaseName $p_port $p_serverName] ]
+} else {
+set p_resourceProperties [list resourceProperties [list $p_driverType $p_databaseName] ]
+}
+
+set p_propertySet [list propertySet [list $p_resourceProperties ] ]
+set p_connectionPool [list connectionPool [list [list maxConnections $maxConn] [list minConnections "0"] [list purgePolicy "EntirePool"]]]
+
+if {$dsJndiName=="jdbc/event"} {
+	set parm [list $p_name $p_description $p_jndiName $p_datasourceHelperClassname $p_propertySet $p_connectionPool]
+} else {
+	set parm [list $p_name $p_description $p_authDataAlias $p_jndiName $p_datasourceHelperClassname $p_propertySet $p_connectionPool]
+}
+
+#set parm [list $p_name $p_description $p_authDataAlias $p_jndiName $p_datasourceHelperClassname $p_propertySet]
+
+$AdminConfig create DataSource $JDBCProvider $parm
+
+$AdminConfig save
+
+#For DataSource of EventApp, setting the authDataAlias, and other parameters.
+if {$dsJndiName=="jdbc/event"} {
+	set eventDataSourceId [$AdminConfig getid /DataSource:$dsName]
+	set p_authDataAlias [list authDataAlias $authAlias]
+	$AdminConfig modify $eventDataSourceId [list $p_authDataAlias]
+	$AdminConfig save
+	
+	$AdminConfig modify $eventDataSourceId {{connectionPool {{maxConnections 30}}}}
+	$AdminConfig modify $eventDataSourceId {{statementCacheSize 40}}	
+	$AdminConfig save
+}

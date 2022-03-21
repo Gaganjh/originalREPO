@@ -1,0 +1,49 @@
+# ==============================================================================
+# WAS script to change the log file name
+# ==============================================================================
+
+set ezkServerId  [$AdminConfig getid /Server:EZkServer/]
+set ezkCMAServerId  [$AdminConfig getid /Server:EZkCMAServer/]
+set pswServerId  [$AdminConfig getid /Server:PSWServer/]
+set pswCMAServerId  [$AdminConfig getid /Server:PSWCMAServer/]
+set WebServicesServerId  [$AdminConfig getid /Server:WebServices1/]
+set OOServerId  [$AdminConfig getid /Server:OnlineOrderServer/]
+set scwServerId  [$AdminConfig getid /Server:SCWServer/]
+
+set durableEventClusterId [$AdminConfig getid /ServerCluster:DurableEventCluster/]
+set durableEventServer1Id [$AdminConfig getid /Server:DurableEventServer1/]
+set durableEventServer2Id [$AdminConfig getid /Server:DurableEventServer2/] 
+
+set eventClusterId [$AdminConfig getid /ServerCluster:EventCluster/]
+set eventServer1Id [$AdminConfig getid /Server:EventServer1/]
+set eventServer2Id [$AdminConfig getid /Server:EventServer2/]
+
+set eventClusterIdVarLength [string length $eventClusterId]
+set durableEventClusterIdVarLength [string length $durableEventClusterId]
+set durableEventServer1IdVarLength [string length $durableEventServer1Id]
+set eventServer1IdVarLength [string length $eventServer1Id]
+if {$eventClusterIdVarLength > 0 && $durableEventClusterIdVarLength > 0} {
+set serverId [list $ezkServerId $ezkCMAServerId $pswServerId $pswCMAServerId $WebServicesServerId $OOServerId $eventServer1Id $eventServer2Id $durableEventServer1Id $durableEventServer2Id $scwServerId]
+set serverName [list EZkServer EZkCMAServer PSWServer PSWCMAServer WebServices1 OnlineOrderServer EventServer1 EventServer2 DurableEventServer1 DurableEventServer2 SCWServer]
+} else {
+if {$eventServer1IdVarLength > 0 && $durableEventServer1IdVarLength > 0} {
+set serverId [list $ezkServerId $ezkCMAServerId $pswServerId $pswCMAServerId $WebServicesServerId $OOServerId $eventServer1Id $durableEventServer1Id $scwServerId]
+set serverName [list EZkServer EZkCMAServer PSWServer PSWCMAServer WebServices1 OnlineOrderServer EventServer1 DurableEventServer1 SCWServer]
+}
+}
+set n 0
+
+foreach varServerId $serverId {
+	set sysLog [$AdminConfig showAttribute $varServerId outputStreamRedirect]
+	#puts $sysLog
+	set errLog [$AdminConfig showAttribute $varServerId errorStreamRedirect]
+	#puts $errLog
+	set errlogName [append a "\$\{SERVER_LOG_ROOT\}/" [lindex $serverName $n] _stderr.txt]
+	set syslogName [append b "\$\{SERVER_LOG_ROOT\}/" [lindex $serverName $n] _stdout.txt]
+	$AdminConfig modify $errLog [list [list fileName $errlogName]]
+	$AdminConfig modify $sysLog [list [list fileName $syslogName]]
+	set n [expr $n + 1]
+	unset a b
+}	
+
+$AdminConfig save

@@ -1,0 +1,11 @@
+# ==============================================================================
+# WAS script to change the Node agent auto sync to true
+# ===
+
+set node [lindex $argv 0]
+
+set na_id [$AdminConfig getid /Node:$node/Server:nodeagent/]  
+set syncServ [$AdminConfig list ConfigSynchronizationService $na_id]  
+$AdminConfig modify $syncServ {{autoSynchEnabled false}}  
+$AdminConfig modify $syncServ {{synchOnServerStartup true}}
+$AdminConfig save

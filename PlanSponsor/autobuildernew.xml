@@ -1,0 +1,241 @@
+<!-- ======================================================================= -->
+<!-- Autobuildernew		 				                                         			 -->
+<!-- ======================================================================= -->
+<project name="autobuildernew" default="autobuilder_default_target" basedir=".">
+
+	<property environment="env"/>
+  <!-- property name="svn.root" value=":pserver:Automated_Build@jhrpscvs:/USGP_Repository" / -->
+	<property name="mrl.dir" value="/apps/mrl/lib"/>
+  <property name="manulife.properties.dir" value="/apps/manulife/properties"/>
+  <property name="manulife.scripts.dir" value="/apps/manulife/scripts"/>
+	<available property="manulife.dir.exist" file="/apps/manulife" type="dir" />
+	
+	<!-- PROPERTIES TO BE CHECKED BEFORE EXECUTION -->
+	
+	
+		<!-- APPLICATIONS TO BE DEPLOYED --> 	<property name="apps_build_target" value="full_deploy" />
+		
+		
+		<!-- OPTIONS WILL BE INCLUDED SOON	-->
+		<!--	1. noiis\iis
+					2. nodb\localrebuild\localrefresh\remoterefresh\refreshsp
+					3. nocvsupdate\cvsupdate\cvsprevtagupdate\cvsnewtagupdate	-->
+		
+		<!-- CURRENT OPTIONS -->
+		<!--	1. noiis\iis
+					2. nodb
+					3. nocvsupdate -->
+					
+		<!-- psw				--> <property name="psw_build_target" value="psw_noiis_nodb_nosvnupdate" />
+		<!-- ezk				--> <property name="ezk_build_target" value="ezk_noiis_nodb_nosvnupdate" />
+		<!-- pswcma			--> <property name="pswcma_build_target" value="pswcma_noiis_nodb_nosvnupdate" />
+		<!-- ezkcma			--> <property name="ezkcma_build_target" value="ezkcma_noiis_nodb_nosvnupdate" />
+		<!-- acr				--> <property name="acr_build_target" value="acr_noiis_nodb_nosvnupdate" />
+		<!-- oos				--> <property name="oos_build_target" value="oos_noiis_nodb_nosvnupdate" />
+		<!-- oosbatch		--> <property name="oosbatch_build_target" value="oosbatch_nodb_nosvnupdate" />
+		<!-- stp				--> <property name="stp_build_target" value="stp_nodb_nosvnupdate" />
+		<!-- gft				--> <property name="gft_build_target" value="gft_nodb_nosvnupdate" />
+		<!-- sj					--> <property name="sj_build_target" value="sj_nodb_nosvnupdate" />
+		<!-- autoloader	--> <property name="autoloader_build_target" value="autoloader_nodb_nosvnupdate" />
+		<!-- ereports		--> <property name="ereports_build_target" value="ereports_nodb_nosvnupdate" />
+		
+		
+	<!-- TARGET TO BE EXECUTED -->	
+	<target name="autobuilder_default_target" depends="init">
+		<antcall target="stop_RMI_services"/>
+		<echo> Running ${apps_build_target} target !!</echo>
+		<exec executable="ant.bat" dir="${basedir}" taskname="AntRunner" failonerror="true">
+			<arg value="-f" />
+			<arg value="${basedir}\autobuildernew.xml" />
+			<!-- cvs.tag property is for Build log file. Later we need modify the variabe name -->
+			<arg value="-Dcvs.tag=BUILD-${DSTAMP}-${TSTAMP}" /> 			
+			<arg value="-Dautobuilder.log.dir=${env.HOMEDRIVE}\BuildLogs" />			
+			<arg value="-logger" />
+			<arg value="com.intware.devtools.ant.AutobuildLogger" />
+			<arg value="${apps_build_target}" />
+			<arg value="-Dpsw_build_target=${psw_build_target}" />
+			<arg value="-Dezk_build_target=${ezk_build_target}" />
+			<arg value="-Dpswcma_build_target=${pswcma_build_target}" />
+			<arg value="-Dezkcma_build_target=${ezkcma_build_target}" />
+			<arg value="-Dacr_build_target=${acr_build_target}" />
+			<arg value="-Doos_build_target=${oos_build_target}" />
+			<arg value="-Doosbatch_build_target=${oosbatch_build_target}" />
+			<arg value="-Dstp_build_target=${stp_build_target}" />
+			<arg value="-Dgft_build_target=${gft_build_target}" />			
+			<arg value="-Dsj_build_target=${sj_build_target}" />			
+			<arg value="-Dautoloader_build_target=${autoloader_build_target}" />			
+			<arg value="-Dereports_build_target=${ereports_build_target}" />			
+		</exec>
+		<antcall target="start_RMI_services"/>
+	</target>
+
+	
+  <target name="init">
+		<tstamp/>
+	</target>
+	
+	<target name="full_deploy" depends="psw_deploy,ezk_deploy,pswcma_ezkcma,acr_deploy,oos_oosbatch,stp_gft_sj_al_er"/>
+	<target name="psw_pswcma" depends="psw_deploy,pswcma_deploy"/>
+	<target name="ezk_ezkcma" depends="ezk_deploy,ezkcma_deploy"/>
+	<target name="psw_ezk" depends="psw_deploy,ezk_deploy"/>
+	<target name="pswcma_ezkcma" depends="pswcma_deploy,ezkcma_deploy"/>
+	<target name="oos_oosbatch" depends="oos_deploy,oosbatch_deploy"/>
+	<target name="stp_gft_sj_al_er" depends="stp_deploy,gft_deploy,sj_deploy,autoloader_deploy, ereports_deploy"/>
+	<target name="psw_ezk_cma_stp" depends="psw_deploy,ezk_deploy,pswcma_ezkcma,stp_gft_sj_al_er"/>
+	<target name="psw_ezk_acr_oos_stp" depends="psw_deploy,ezk_deploy,acr_deploy,oos_oosbatch,stp_gft_sj_al_er"/>
+
+	<!-- Targets will be added soon for the following, 
+		 . Broker Dealer deployment, PAP delpoyment
+		1. Required folders existance check for the applications going to be built
+		2. Checkout/update/previous_tagged_update/new_tagged_update of modules
+		3. Required parameters verfication
+		4. Databases activity targets
+	-->
+	
+	<target name="psw_deploy">
+		<ant antfile="build.xml" dir="${basedir}\..\plansponsor" target="${psw_build_target}"/>
+	</target>
+
+	<target name="ezk_deploy">
+		<ant antfile="build.xml" dir="${basedir}\..\ezk" target="${ezk_build_target}"/>
+	</target>
+
+	<target name="pswcma_deploy">
+		<ant antfile="buildCMA.xml" dir="${basedir}\..\cma" target="${pswcma_build_target}"/>
+	</target>
+
+	<target name="ezkcma_deploy">
+    <ant antfile="buildEzkCMA.xml" dir="${basedir}\..\cma" target="${ezkcma_build_target}"/>
+	</target>
+	
+	<target name="acr_deploy">
+    <ant antfile="build.xml" dir="${basedir}\..\acr\acrweb" target="${acr_build_target}"/>
+	</target>
+	
+	<target name="oos_deploy">
+    <ant antfile="build.xml" dir="${basedir}\..\onlineordering" target="${oos_build_target}"/>
+	</target>
+	
+	<target name="oosbatch_deploy">
+    <ant antfile="build.xml" dir="${basedir}\..\onlineordering\onlineorderbatch" target="${oosbatch_build_target}"/>
+	</target>
+	
+	<target name="stp_deploy" depends="onetime_deploy">
+    <ant antfile="build.xml" dir="${basedir}\..\stp" target="${stp_build_target}"/>
+	</target>
+
+	<target name="gft_deploy" depends="onetime_deploy">
+    <ant antfile="build.xml" dir="${basedir}\..\gft" target="${gft_build_target}"/>
+	</target>
+	
+	<target name="sj_deploy" depends="onetime_deploy">
+    <ant antfile="build.xml" dir="${basedir}\..\submissionjournal" target="${sj_build_target}"/>
+	</target>
+	
+	<target name="autoloader_deploy" depends="onetime_deploy">
+    <ant antfile="build.xml" dir="${basedir}\..\stp\autoloader" target="${autoloader_build_target}"/>
+	</target>	
+
+	<target name="ereports_deploy" depends="onetime_deploy">
+    <ant antfile="build.xml" dir="${basedir}\..\ereports" target="${ereports_build_target}"/>
+	</target>
+		
+	<target name="onetime_deploy" depends="init,common_directories" unless="manulife.dir.exist">
+      <copy todir="${manulife.properties.dir}">
+          <fileset dir="${env.HOMEDRIVE}/svn/mrl\properties" >
+          	<include name="PropertiesConfiguration.properties"/>
+          	<include name="DefaultRuntimeParms.properties"/>
+          	<include name="LoggerRuntimeParms.properties"/>
+          	<include name="mrl.policy"/>
+          </fileset>
+      </copy>      
+      <copy todir="c:${manulife.properties.dir}" overwrite="yes" >
+          <fileset dir="${env.HOMEDRIVE}/svn/mrl\properties" >
+          	<include name="PropertiesConfiguration.properties"/>
+          	<include name="DefaultRuntimeParms.properties"/>
+          </fileset>
+      </copy>
+      <copy todir="${manulife.scripts.dir}" >
+          <fileset dir="${env.HOMEDRIVE}/svn/mrl\scripts" includes ="*.*" />
+          <fileset dir="${env.HOMEDRIVE}/svn/common\ant" >
+          	<include name="killrmiregistry.cmd"/>
+          </fileset>
+      </copy>
+			<copy file="${env.HOMEDRIVE}/svn/common\lib\mrl.jar" tofile="${env.HOMEDRIVE}/apps/mrl/lib/mrl.jar" overwrite="yes" />
+    	<antcall target="update_common_files"/>
+	</target>
+
+	<target name="common_directories" unless="manulife.dir.exist">
+		<exec executable="cmd.exe" failonerror="true">
+			<arg value="/X /C "/>
+			<arg file="${basedir}\scripts\autobuildersupport.bat" />
+			<arg value="common_directories" />
+		</exec>
+	</target>	
+
+	<target name="update_common_files">
+        <replace dir="${manulife.properties.dir}" value="${env.HOMEDRIVE}/">
+			<include name="*.properties"/>
+		  	<replacefilter token="\\" value="/"/>
+			<replacefilter token="c:/"/> <replacefilter token="d:/"/> <replacefilter token="C:/"/> <replacefilter token="D:/"/>
+			<replacefilter token="c:\" value="${env.HOMEDRIVE}\" /> <replacefilter token="d:\" value="${env.HOMEDRIVE}\" /> <replacefilter token="C:\" value="${env.HOMEDRIVE}\" /> <replacefilter token="D:\" value="${env.HOMEDRIVE}\" />
+		</replace>
+        <replace dir="c:${manulife.properties.dir}" value="${env.HOMEDRIVE}/">
+			<include name="*.properties"/>
+		  	<replacefilter token="\\" value="/"/>
+			<replacefilter token="c:/"/> <replacefilter token="d:/"/> <replacefilter token="C:/"/> <replacefilter token="D:/"/>
+			<replacefilter token="c:\" value="${env.HOMEDRIVE}\" /> <replacefilter token="d:\" value="${env.HOMEDRIVE}\" /> <replacefilter token="C:\" value="${env.HOMEDRIVE}\" /> <replacefilter token="D:\" value="${env.HOMEDRIVE}\" />
+		</replace>
+        <echo file="${manulife.properties.dir}/PropertiesConfiguration.properties" append="true">
+		MF.eReports.propertiesPath=${env.HOMEDRIVE}/apps/eReports/properties/eReportsRuntimeParms.properties
+		MF.eReports.configName=dev        
+        </echo>
+        <echo file="c:${manulife.properties.dir}/PropertiesConfiguration.properties" append="true">
+		MF.eReports.propertiesPath=${env.HOMEDRIVE}/apps/eReports/properties/eReportsRuntimeParms.properties
+		MF.eReports.configName=dev
+        </echo>
+        <replace dir="${manulife.scripts.dir}" value="${env.HOMEDRIVE}/">
+			<include name="*.bat"/>
+		  	<replacefilter token="c:/"/> <replacefilter token="d:/"/> <replacefilter token="C:/"/> <replacefilter token="D:/"/>
+			<replacefilter token="c:\" value="${env.HOMEDRIVE}\" /> <replacefilter token="d:\" value="${env.HOMEDRIVE}\" /> <replacefilter token="C:\" value="${env.HOMEDRIVE}\" /> <replacefilter token="D:\" value="${env.HOMEDRIVE}\" />
+		  	<replacefilter token="rem exit /B %ERRORLEVEL%" value="exit /B %ERRORLEVEL%"/>
+		  	<replacefilter token="set CLASSPATH=%MRL_APP_HOME%\lib\mrl.jar" value="set CLASSPATH=%CLASSPATH%;%MRL_APP_HOME%/lib/mrl.jar"/>
+		</replace>        
+        <replace file="${manulife.scripts.dir}/startAllRmiServices.bat" token="exit" value=" " />
+        <echo file="${manulife.scripts.dir}/startAllRmiServices.bat" append="true">
+        start ${env.HOMEDRIVE}/apps/autoloader/scripts/launchAutoloaderService.bat
+        sleep 1
+        exit
+        </echo>
+        <replace file="${manulife.scripts.dir}/stopAllRmiServices.bat" token="exit" value=" " />        
+        <replace file="${manulife.scripts.dir}/stopAllRmiServices.bat" token="call d:/apps/manulife/scripts/killrmiregistry.cmd" value=" " />
+        <echo file="${manulife.scripts.dir}/stopAllRmiServices.bat" append="true">
+        start /wait ${env.HOMEDRIVE}/apps/autoloader/scripts/stopAutoloaderService.bat
+        sleep 10
+        call ${env.HOMEDRIVE}/apps/manulife/scripts/killrmiregistry.cmd
+        exit
+        </echo>
+       	<replaceregexp match="set JAVA_APP_HOME=(...)webSphere9(.)AppServer(.)java(.)8.0(.)jre" replace="set JAVA_APP_HOME=%JAVA_HOME%" flags="i" byline="true">
+			<fileset dir="${manulife.scripts.dir}">
+				<include name="*.bat"/>
+			</fileset>
+ 		</replaceregexp>      
+       	<replaceregexp match="SET DB2_HOME=(...)PROGRA~1(.)IBM(.)SQLLIB" replace="SET DB2_HOME=${db2.home}" flags="i" byline="true">
+			<fileset dir="${manulife.scripts.dir}">
+				<include name="*.bat"/>
+			</fileset>
+ 		</replaceregexp>
+	</target>
+	<target name="stop_RMI_services">
+		<exec executable="schtasks">
+      		<arg line = "/run /tn StopAllRMIServices"/>
+    	</exec>
+    	<sleep seconds="30"/>
+	</target>
+  	<target name="start_RMI_services">
+    <!-- with Windows XP and server 2003, there's a schtasks.exe process that can do this, but I don't know how to do it with Windows 2000 -->
+     	<exec executable="schtasks">
+      		<arg line = "/run /tn StartAllRMIServices"/>
+    	</exec>
+  	</target>
+</project>

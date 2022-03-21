@@ -1,0 +1,419 @@
+/* This rule resets a core set of elements so that they will appear consistent across browsers. Without this rule, content styled with an h1 tag, for example, would appear in different places in Firefox and Internet Explorer because each browser has a different top margin default value. By resetting these values to 0, the elements will initially be rendered in an identical fashion and their properties can be easily defined by the designer in any subsequent rule. */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+}
+body {
+    background-color: #eceae3;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    line-height: 14px;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    text-align: center;
+}
+h1 {
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 14px;
+}
+h2 {
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.2em;
+}
+
+#outerWrapper {
+    text-align: left;
+    width: 969px;
+    background-color: #fff;
+    background-image: url(/assets/unmanaged/images/backgrounds/background_tile.gif);
+    background-repeat: repeat-y;
+    background-position: center top;
+    min-height: 600px;
+    height: 100%;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#outerWrapper #header {
+    background-color: #004059;
+    background-image: url(/assets/unmanaged/images/jh_logo.gif);
+    background-position: 25px 8px;
+    background-repeat: no-repeat;
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    height: 60px;
+    line-height: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 0px;
+    padding: 10px;
+}
+#outerWrapper #header a, #outerWrapper #header a:link {
+  color: #FFFFFF;
+}
+#outerWrapper #topNavigation {
+    background-color: #005b80;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 6px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 6px;
+}
+#outerWrapper #contentWrapper {
+    font-size: 12px;
+    margin-right: 25px;
+    margin-left: 25px;
+    background-image: url(/assets/unmanaged/images/backgrounds/background_page_contents.gif);
+    background-repeat: repeat-x;
+    background-position: left top;
+    margin-top: 4px;
+    height: 1%;   // workaround of IE6 that make the image cover the text
+}
+#outerWrapper #contentWrapper #rightColumn1 {
+    background-color: #f5f6f1;
+    float: right;
+    font-family: Verdana, Geneva, sans-serif;
+    padding: 10px;
+    width: 230px;
+    margin-bottom: 10px;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #febe10;
+    clear: right;
+    margin-top: 0px;
+}
+#outerWrapper #contentWrapper #rightColumn1 h1 {
+    color: #22485e;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.8em;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: .9em;
+}
+#outerWrapper #contentWrapper #content {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px 10px 10px 0px;
+    margin-top: 4px;
+    margin-right: 290px;
+    margin-bottom: 15px;
+    width: 590px;
+}
+#outerWrapper #contentWrapper #content h1 {
+    color: #000000;
+    line-height: 1.8em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+}
+
+#outerWrapper #contentWrapper .clearFloat {
+  clear: right;
+  display: block;
+  overflow: auto;
+}
+
+#outerWrapper #contentWrapper .clearLeft {
+  clear: left;
+  display: block;
+  overflow: auto;
+}
+
+#outerWrapper #contentWrapper .footnotes .footnotes_footer {
+    clear: both;
+}
+
+#outerWrapper #contentWrapper .footnotes dl dd {
+    color:black;
+    font-size:1em;
+    padding-top: 0px;
+    padding-left: 0px; 
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: verdana, arial, helvetica, sans-serif;
+}
+
+#outerWrapper #contentWrapper .footnotes dl dd p{
+    color:black;
+    font-size:1em;
+    padding-top: 0px;
+    padding-left: 0px; 
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: verdana, arial, helvetica, sans-serif;
+}
+
+#outerWrapper #footer {
+    border-top: solid 1px #c4cfd8;
+    margin-left: 15px;
+    margin-right: 25px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+}
+
+#outerWrapper #footer ul {
+    margin: 0;
+    padding: 10px 0 10px 0;
+    list-style-type: none;
+}
+#outerWrapper #footer ul li:first-child  {
+    background: none;
+    padding-left: 20px;
+}
+
+#outerWrapper #footer ul li {
+    float: left;
+    padding: 0 20px 0 20px;
+    background-color: transparent;
+    background-image: url(/assets/unmanaged/images/footer_divider.gif);
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+#outerWrapper #footer ul li {
+    padding: 0 20px 0 20px;
+}
+
+#outerWrapper #footer a, #outerWrapper #footer a:link {
+    text-decoration: none;
+    font-weight: normal;
+    text-decoration: none;
+
+}
+#outerWrapper #footerDisclaimer {
+    color: #767690;
+    margin-right: 25px;
+    margin-left: 25px;
+    font-size: 11px;
+}
+
+#outerWrapper #footerDisclaimer p {
+    padding: 0px 20px 0px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#outerFooterWrapper {
+    text-align: left;
+    width: 969px;
+    background-color: #ECEAE3;
+    background-image: url(/assets/unmanaged/images/backgrounds/background_footer.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+}
+#outerWrapper #topNavigationSub {
+    background-color: #bed5e6;
+    height: 4px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+#outerWrapper #contentWrapper #rightColumn1 p {
+    color: #000;
+}
+#outerWrapper #contentWrapper #contentFull {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin-top: 4px;
+    margin-bottom: 15px;
+}
+#outerWrapper #contentWrapper #contentFull h1 {
+    color: #000000;
+    line-height: 1.8em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+}
+
+#outerWrapper #contentWrapper #content .RegBox #frBox {
+    padding: 10px;
+    width: 200px;
+    background-color: #E5EAEE;
+    text-align: center;
+    margin-left: 5px;
+}
+#outerWrapper #contentWrapper #content .RegBox #otherBox {
+    padding: 10px;
+    width: 200px;
+    background-color: #E5EAEE;
+    text-align: center;
+    float: right;
+    margin-right: 5px;
+}
+#outerWrapper #contentWrapper #content .RegBox #middleBox {
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    margin-left: auto;
+    top: 377px;
+    background-color: #E5EAEE;
+    margin-right: auto;
+}
+
+
+#outerWrapper #contentWrapper #content .report_table_content .RegPref {
+    font-size: 12px;
+    padding: 0px;
+}
+#outerWrapper #contentWrapper #content .BottomBorderText .intro {
+    color: #000000;
+    float: left;
+    clear: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+#outerWrapper #contentWrapper  #rightColumn2 {
+    float: right;
+    padding: 10px; /* Sets the padding properties for an element using shorthand notation (top, right, bottom, left) */
+    width: 230px;
+    color: #FFFFFF;
+    background-color: #455560;
+    margin-top: 0px;
+    clear: right;
+}
+#rightColumn2 h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: normal;
+    padding: 0px;
+    color: #FFFFFF;
+
+}
+#rightColumn2 h2 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.4em;
+    font-weight: normal;
+    color: #dcd087;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    line-height: 1.2em;
+
+}
+#rightColumn2 p {
+    color: #FFFFFF;
+    font-size: 11px;
+    padding: 0px;
+}
+#rightColumn2 a:link, a:visited, a:hover, a:active{
+    color: #204766;
+    outline:none;
+} 
+#rightColumn2 a:link, a:visited{
+    text-decoration: underline;
+} 
+#rightColumn2 a:hover, a:active{
+    text-decoration: underline;
+    color: #dcd087;
+} 
+#outerWrapper #contentWrapper #rightColumn2 p a {
+    color: #FFF;
+    text-decoration: underline;
+}
+#outerWrapper #contentWrapper #rightColumn2 p a:hover {
+    color: #dcd087;
+    text-decoration: underline;
+}
+
+.regSection {
+    background-color: #f5f6f1;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-top-color: #004059;
+    padding: 7px;
+    zoom: 1;
+    overflow: auto;
+}
+.regSectionNoBorder {
+    background-color: #f5f6f1;
+    padding: 7px;
+}
+
+.regButton  {
+    background-image: url(/assets/unmanaged/images/buttons/regButton.png);
+    height: 40px;
+    width: 140px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #FFF;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    background-color: transparent;
+    cursor: hand;
+    text-align: center;
+}
+.regButton:hover {
+    background-image: url(/assets/unmanaged/images/buttons/regButton_on.png);
+    height: 40px;
+    width: 140px;
+    color: #FFF;
+    background-color: transparent;
+    cursor: hand;
+}
+#frBox h5 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 18px;
+    height: 90px;
+}
+#otherBox h5 {
+    height: 90px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+}
+#middleBox h5 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 18px;
+    height: 70px;
+}
+#frBox h6 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 16px;
+}
+#otherBox h6 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: normal;
+}
